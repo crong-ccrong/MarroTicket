@@ -1,0 +1,66 @@
+package com.marroticket.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+<<<<<<< HEAD
+	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	//회원가입
+	@GetMapping("/join")
+	public String joinChoose() {
+		return "joinChoose";
+	}
+	@GetMapping("/userJoinForm")
+	public String userJoin() {
+		return "userJoinForm";
+	}
+	@GetMapping("/theaterJoinForm")
+	public String theaterJoin() {
+		return "theaterJoinForm";
+	}
+=======
+=======
+>>>>>>> practice
+=======
+
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+	@GetMapping("/privacy")
+	public String privacy() {
+		return "privacy";
+	}
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+	@GetMapping("/companyinfo")
+	public String companyinfo() {
+		return "companyinfo";
+	}
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+	@GetMapping("/termsofuse")
+	public String termsofuse() {
+		return "termsofuse";
+	}
+<<<<<<< HEAD
+	
+<<<<<<< HEAD
+>>>>>>> practice
+=======
+>>>>>>> practice
+=======
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+}
+

@@ -1,0 +1,18 @@
+package com.marroticket.umember.member.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.marroticket.umember.member.mapper.UmemberMapper;
+
+@Service
+public class UmemberServiceImpl implements UmemberService {
+	@Autowired
+	private UmemberMapper umembermapper;
+	
+	@Override
+	public String findId(String uName, String uPhoneNumber) {
+		return umembermapper.findId(uName, uPhoneNumber);
+	}
+	
+}

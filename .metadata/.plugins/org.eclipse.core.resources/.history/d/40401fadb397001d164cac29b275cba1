@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#userLogin").on("click", function() {
+			self.location = "login/";
+		});
+	
+		$("#t_userLogin").on("click", function() {
+			self.location = "list";
+		});
+	
+	});
+</script>
+</head>
+<body>
+<div>
+	<section>
+		<table>
+			<tr>
+				<td><input type='button' id='userLogin' value="일반회원으로 로그인하기"/></td>
+				<td><input type='button' id='t_userLogin' value="극단회원으로 로그인하기"/></td>
+			</tr>
+		</table>
+	</section>
+</div>
+</body>
+</html>

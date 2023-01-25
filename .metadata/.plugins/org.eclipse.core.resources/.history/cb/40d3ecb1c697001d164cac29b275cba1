@@ -1,0 +1,5 @@
+package com.marroticket.admin.ufaq.controller;
+
+public class UfaqController {
+
+}

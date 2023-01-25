@@ -1,0 +1,15 @@
+package com.marroticket.admin.ufaq.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/ufaq")
+public class UfaqController {
+	//일반회원 FAQ 목록
+	@GetMapping("/ufaqList")
+	public String ufaqList() {
+		return "";
+	}
+}

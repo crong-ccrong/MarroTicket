@@ -1,0 +1,5 @@
+package com.marroticket.umember.member.domain;
+
+public class UmemberVO {
+
+}

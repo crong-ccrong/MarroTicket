@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
+    pageEncoding="UTF-8"%>
+
+<hr>
+<div align="center">
+	<p>회사소개 | 이용약관 | <a href="/privacy">개인정보취급방침</a></p>
+=======
+	pageEncoding="UTF-8"%>
+
+<hr>
+<div align="center">
+	<p>
+		<a href="/companyinfo">회사소개</a> | <a href="/termsofuse">이용약관</a> | <a href="/privacy">개인정보취급방침</a>
+	</p>
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+</div>
+<hr>
