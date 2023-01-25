@@ -26,15 +26,15 @@ public class HomeController {
 	//footer 
 	@GetMapping("/privacy")
 	public String privacy() {
-		return "umember.footer.privacy";
+		return "footer.privacy";
 	}
 	@GetMapping("/companyinfo")
 	public String companyinfo() {
-		return "umember.footer.companyinfo";
+		return "footer.companyinfo";
 	}
 	@GetMapping("/termsofuse")
 	public String termsofuse() {
-		return "umember.footer.termsofuse";
+		return "footer.termsofuse";
 	}
 	
 	//고객센터

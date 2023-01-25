@@ -15,7 +15,7 @@
 
 		if (chk) {
 			alert("이용약관에 모두 동의하셨습니다.")
-			location.href = "/member/umemberJoinForm";
+			location.href = "/umember/umemberJoinForm";
 			return false;
 		} else {
 			alert("마로티켓 이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.")

@@ -3,7 +3,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#umemberJoin").on("click", function() {
-			location.href = "/umemberJoinForm";
+			location.href = "/umember/umemberAgreement";
 		});
 
 		$("#tmemberJoin").on("click", function() {

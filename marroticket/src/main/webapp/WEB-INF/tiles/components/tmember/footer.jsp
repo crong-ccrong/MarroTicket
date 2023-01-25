@@ -3,7 +3,7 @@
 <hr>
 <div align="center">
 	<p>
-		<a href="/companyinfo">회사소개</a> | <a href="/termsofuse">이용약관</a> | <a href="/privacy">개인정보취급방침</a>
+		<a href="/theater/companyinfo">회사소개</a> | <a href="/theater/termsofuse">이용약관</a> | <a href="/theater/privacy">개인정보취급방침</a>
 	</p>
 </div>
 <hr>

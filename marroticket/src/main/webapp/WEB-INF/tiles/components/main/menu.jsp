@@ -40,8 +40,8 @@
 	<div class="dropdown">
 	  <span> 고객센터</span>
 	  <div class="dropdown-content">
-	  <p><a href="/ufaq/ufaqList">자주 묻는 질문</a></p>
-	  <p><a href="/ufaq/otherInquiries">기타 문의</a></p>
+	  <p><a href="/ufaqList">자주 묻는 질문</a></p>
+	  <p><a href="/otherInquiries">기타 문의</a></p>
 	  </div>
 	</div>
 </div>
