@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marroticket.mapper.PlayMapper">
+
+	<resultMap type="com.marroticket.umember.play.domain.PlayVO"
+		id="play">
+		<id column="p_number" property="pNumber" />
+		<result column="p_name" property="pName" />
+		<result column="P_STARTDATE" property="pStartDate" />
+		<result column="P_CLOSEDATE" property="pCloseDate" />
+		<result column="P_RUNNINGTIME" property="pRunningTime" />
+		<result column="P_THEATERNAME" property="pTheaterName" />
+		<result column="P_THEATERADDRESS" property="pTheaterAddress" />
+		<result column="P_THEATERMAP" property="pTheaterMap" />
+		<result column="P_AGENCY" property="pAgency" />
+		<result column="P_RATINGS" property="pRatings" />
+		<result column="P_CASTING" property="pCasting" />
+		<result column="P_TICKETOPENDATE" property="pTicketOpenDate" />
+		<result column="P_PLOT" property="pPlot" />
+		<result column="P_SEATTYPE" property="pSeatType" />
+		<result column="P_SEATNUMBER" property="pSeatNumber" />
+		<result column="P_TICKETPRICE" property="pTicketPrice" />
+		<result column="P_GENRE" property="pGenre" />
+		<result column="P_POSTER" property="pPoster" />
+		<result column="P_FIRSTPLAY" property="pFirstPlay" />
+		<result column="P_SECONDPLAY" property="pSecondPlay" />
+		<result column="P_AGREE" property="pAgree" />
+		<result column="P_AMENDMENTAPPROVED"
+			property="pAmendmentApproved" />
+		<result column="P_REGISTRATIONAPPROVAL"
+			property="pRegistrationApproval" />
+		<result column="T_NUMBER" property="tNumber" />
+		<result column="PD_NUMBER" property="pdNumber" />
+	</resultMap>
+
+
+	<select id="playCurrentList"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+		<![CDATA[ select p_poster, 
+		p_name, 
+		p_theaterName, 
+		p_startDate, 
+		p_closeDate, 
+		p_runningtime 
+		from Play where to_Date(p_closeDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD') 
+			and to_Date(sysdate,'YYYY/MM/DD') >= to_Date(p_startDate,'YYYY/MM/DD') 
+		order by p_startDate ]]>
+	</select>
+
+	<select id="playPassList"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+		<![CDATA[
+		SELECT p_poster,
+		p_name,
+		p_theaterName,
+		p_startDate,
+		p_closeDate,
+		p_runningtime
+		FROM Play
+		WHERE to_Date(sysdate,'YYYY/MM/DD')
+		>= to_Date(p_closeDate,'YYYY/MM/DD')
+		order
+		by
+		p_startDate
+		]]>
+	</select>
+
+	<select id="playExpectedList"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+		<![CDATA[
+		SELECT p_poster,
+		p_name,
+		p_theaterName,
+		p_startDate,
+		p_closeDate,
+		p_runningtime
+		FROM Play
+		WHERE
+		to_Date(p_startDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD')
+		order
+		by
+		p_startDate
+		]]>
+	</select>
+
+</mapper>
