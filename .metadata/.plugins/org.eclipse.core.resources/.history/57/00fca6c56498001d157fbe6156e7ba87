@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<h1>메인페이지 내용</h1>
+=======
+<h1>메인페이지 내용</h1>
+>>>>>>> practice
+=======
+<h1>메인페이지 내용</h1>
+>>>>>>> practice
+=======
+<h1>메인페이지 내용</h1>
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5

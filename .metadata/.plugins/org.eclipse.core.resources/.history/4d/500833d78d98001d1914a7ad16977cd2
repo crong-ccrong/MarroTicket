@@ -1,0 +1,10 @@
+package com.marroticket.umember.member.mapper;
+
+import java.util.Map;
+
+import com.marroticket.umember.member.domain.UmemberVO;
+
+public interface UmemberMapper {
+	//아이디찾기
+	public String findId(UmemberVO umember);
+}

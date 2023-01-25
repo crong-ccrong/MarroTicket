@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title><tiles:getAsString name="title" /></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#userLogin").on("click", function() {
+			location.href = "/login/userlogin";
+		});
+
+		$("#t_userLogin").on("click", function() {
+			location.href = "/login/theaterlogin";
+		});
+
+	});
+</script>
+<style type="text/css">
+	*{
+		text-decoration:none;
+		margin : 0 auto;
+		text-align: center
+	}
+	section {
+		margin : 10% 8%;
+	}
+</style>
+</head>
+<body>
+<div>
+	<section>
+<<<<<<< HEAD
+		<div>
+			<tiles:insertAttribute name="logo" />
+		</div>
+		<div>
+=======
+		<div align='center'>
+		<!-- content -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> practice
+=======
+>>>>>>> practice
+=======
+>>>>>>> a8af6189a5c9c1cf58e1577e01b3ae684f1008b5
+			<tiles:insertAttribute name="content" />
+		</div>
+	</section>
+</div>
+</body>
+</html>

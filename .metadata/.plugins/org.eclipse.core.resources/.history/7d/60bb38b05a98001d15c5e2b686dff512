@@ -1,0 +1,30 @@
+package com.marroticket.common.login.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+@RequestMapping("/login")
+public class LoginController { //로그인 관련 controller
+	
+		//로그인 유형 선택
+		@GetMapping("")
+		public String login() {
+			return "loginChoose";
+		}
+		
+		//일반회원로그인
+		@GetMapping("/userlogin")
+		public String userlogin() {
+			System.out.println("logincontroller 호출 완료");
+			return "userLogin";
+		}
+		
+		@GetMapping("/theaterlogin")
+		public String theaterlogin() {
+			System.out.println("logincontroller 호출 완료");
+			return "theaterLogin";
+		}
+}

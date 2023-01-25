@@ -1,0 +1,5 @@
+package com.marroticket.theater.member.controller;
+
+public class TheaterController {
+
+}

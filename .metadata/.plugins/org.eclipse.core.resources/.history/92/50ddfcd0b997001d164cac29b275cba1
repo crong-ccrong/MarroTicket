@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#userLogin").on("click", function() {
+			self.location = "/userlogin";
+		});
+
+		$("#t_userLogin").on("click", function() {
+			self.location = "/theaterlogin";
+		});
+
+	});
+</script>
+<table>
+	<tr>
+		<td><input type='button' id='userLogin' value="일반회원으로 로그인하기" /></td>
+		<td><input type='button' id='t_userLogin' value="극단회원으로 로그인하기" /></td>
+	</tr>
+</table>

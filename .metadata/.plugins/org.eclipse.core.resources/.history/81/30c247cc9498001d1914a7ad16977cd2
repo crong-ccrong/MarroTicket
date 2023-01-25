@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<script>
+$(document).ready(function() {
+	$("#umemberFindId").on("click", function() {
+		//json
+		var uName =  $("#uName");
+		var uPhoneNumber =  $("#uPhoneNumber");
+		var uNameVal = uName.val();
+		var uPhoneNumberVal = uPhoneNumber.val();
+		
+		var jsonObject = { uName : uNameVal , uPhoneNumber:uPhoneNumberVal };
+		var jsonStg = JSON.stringify(jsonObject);
+		console.log(jsonStg);
+		
+		//ajax
+		$.ajax({
+			type : "post",
+			url : "/umember/findId",
+			data : jsonStg,
+			contentType : "application/json; charset=utf-8",
+			success : function(result){
+				console.log('회원의 아이디 : ' + result);
+				if (result == 'none') {
+					alert("정보를 입력하세요.");
+				} else if(result =='fail'){
+					alert("아이디 찾기 실패 \n입력하신 정보와 일치하는 아이디가 없습니다.");
+				} else{
+					alert("아이디 찾기 성공 \n아이디는 "+result+"입니다.");
+				}
+			}
+		});
+	});
+});	
+</script>
+<p>아이디 찾기</p>
+<div>
+	<table>
+		<tr>
+			<td><label for="u_name">이름</label></td>
+		</tr>
+		<tr>
+			<td><input type='text' name='uName' id='uName'/><form:errors
+							path="uName" /></td>
+		</tr>
+		<tr>
+			<td><label for="u_phoneNumber">휴대폰번호</label></td>
+		</tr>
+		<tr>
+			<td><input type='text' name='uPhoneNumber' id='uPhoneNumber' /><form:errors
+							path="uPhoneNumber" /></td>
+		</tr>
+		<tr>
+			<td align='right'><input type='button' id='umemberFindId' value='찾기'></td>
+		</tr>
+	</table>
+</div>
