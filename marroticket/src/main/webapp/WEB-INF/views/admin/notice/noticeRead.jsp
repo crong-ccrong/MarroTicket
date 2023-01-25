@@ -7,7 +7,7 @@
 <h2>
 	<spring:message code="notice.header.read" />
 </h2>
-<form:form modelAttribute="notice">
+<form:form modelAttribute="noticeVO">
 	<form:hidden path="n_number" />
 	<table>
 		<tr>
@@ -37,7 +37,7 @@
 </div>
 <script>
 	$(document).ready(function() {
-		var formObj = $("#notice");
+		var formObj = $("#noticeVO");
 		console.log(formObj);
 		$("#btnEdit").on("click", function() {
 			var n_numberNo = $("#n_number");

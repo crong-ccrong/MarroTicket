@@ -38,7 +38,7 @@ public class NoticeController {
 	public String register(NoticeVO noticeVO, RedirectAttributes rttr) throws Exception {
 		service.register(noticeVO);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		return "redirect:/notice/noticeList";
 	}
 
 	// 공지사항 목록 페이지
@@ -68,7 +68,7 @@ public class NoticeController {
 	public String modify(NoticeVO noticeVO, RedirectAttributes rttr) throws Exception {
 		service.modify(noticeVO);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		return "redirect:/notice/noticeList";
 	}
 
 	// 공지사항 삭제 처리
@@ -77,6 +77,6 @@ public class NoticeController {
 	public String remove(int n_number, RedirectAttributes rttr) throws Exception {
 		service.remove(n_number);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		return "redirect:/notice/noticeList";
 	}
 }

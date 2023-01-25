@@ -157,7 +157,7 @@
 	<definition name="admin" extends="admin-template">
 		<put-attribute name="title" value="마로티켓 관리자페이지" />
 		<put-attribute name="content"
-			value="/WEB-INF/views/adminhome.jsp" />
+			value="/WEB-INF/views/admin/adminhome.jsp" />
 	</definition>
 	<!-- 관리자의 공지사항, faq -->
 	<definition name="admin.*.*" extends="admin-template">

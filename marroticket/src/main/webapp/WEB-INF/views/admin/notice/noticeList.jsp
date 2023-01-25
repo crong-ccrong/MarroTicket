@@ -16,6 +16,7 @@
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="register"><spring:message code="action.new" /></a>
 </sec:authorize>
+
 <table border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="notice.n_number" /></th>
@@ -30,6 +31,7 @@
 				<td colspan="3"><spring:message code="common.listEmpty" /></td>
 			</tr>
 		</c:when>
+		
 		<c:otherwise>
 			<c:forEach items="${list}" var="noticeVO">
 				<tr>
@@ -44,6 +46,7 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+
 <script>
 	var result = "${msg}";
 	if (result === "SUCCESS") {
