@@ -4,7 +4,7 @@
 	namespace="com.marroticket.mapper.UmemberMapper">
 	<!--일반회원 아이디 찾기-->
 	<select id="findId" resultType="String">
-		SELECT u_id 
+		SELECT u_id
 		FROM umember
 		WHERE u_name = #{uName} and u_phoneNumber = #{uPhoneNumber}
 	</select>

@@ -14630,3 +14630,21 @@ java.io.FileNotFoundException: C:\SpringBootProject\marroticket\.metadata\.plugi
 2023-01-25 17:41:18,027 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-01-25 17:41:18,027 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-01-25 17:41:18,027 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\SpringBootProject\marroticket\marroticket\src\test\resources
+2023-01-25 19:39:22,777 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-01-25 19:39:26,584 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+2023-01-25 19:39:27,461 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-25 19:39:27,462 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-25 19:39:27,474 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-01-25 19:39:27,561 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2023-01-25 19:39:27,636 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-25 19:39:27,636 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-25 19:39:27,637 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\SpringBootProject\marroticket\marroticket\src\test\resources
+2023-01-25 20:44:22,064 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-01-25 20:44:25,684 [Worker-10: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+2023-01-25 20:44:27,108 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-25 20:44:27,109 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-25 20:44:27,120 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-01-25 20:44:27,160 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2023-01-25 20:44:27,225 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-25 20:44:27,225 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-25 20:44:27,226 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\SpringBootProject\marroticket\marroticket\src\test\resources

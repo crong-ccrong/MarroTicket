@@ -71,7 +71,7 @@ $(document).ready(function() {
 			<td><label for="uPhoneNumber">휴대폰번호</label></td>
 		</tr>
 		<tr>
-			<td><input type='text' name='uPhoneNumber' id='uPhoneNumber' />
+			<td><input type='text' name='uPhoneNumber' id='uPhoneNumber' placeholder="(-)을 제외하고 입력하세요" />
 		</tr>
 		<tr>
 			<td align='right'><input type='button' id='umemberFindId' value='찾기'></td>

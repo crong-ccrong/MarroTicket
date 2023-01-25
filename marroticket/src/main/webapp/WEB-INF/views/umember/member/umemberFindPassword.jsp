@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <script>
     $(document).ready(function() {
         $("#umemberFindPassword").on("click", function() {
@@ -8,9 +8,11 @@
             var uEmail =  $("#uEmail");
             var uIdVal = uId.val();
             var uEmailVal = uEmail.val();
+
             var jsonObject = { uId : uIdVal , uEmail:uEmailVal };
             var jsonStg = JSON.stringify(jsonObject);
             console.log(jsonStg);
+
             //ajax
             $.ajax({
                 type : "post",
