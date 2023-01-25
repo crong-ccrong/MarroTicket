@@ -15,5 +15,9 @@ public class UmemberServiceImpl implements UmemberService {
 	public String findId(UmemberVO umember) throws Exception {
 		return umembermapper.findId(umember);
 	}
-	
+
+	@Override
+	public String findPassword(UmemberVO umember) throws Exception{
+		return umembermapper.findPassword(umember);
+	};
 }

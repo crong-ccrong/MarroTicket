@@ -37,7 +37,8 @@ public class UmemberVO {
 	private Date uUnjoinDate; //탈퇴일
 	private String uGenre; //관심 장르
 	private String uAgree; //약관 동의 여부
-	
+
+
 	public String getuName() {
 		return uName;
 	}
@@ -49,5 +50,21 @@ public class UmemberVO {
 	}
 	public void setuPhoneNumber(String uPhoneNumber) {
 		this.uPhoneNumber = uPhoneNumber;
+	}
+
+	public String getuId() {
+		return uId;
+	}
+
+	public void setuId(String uId) {
+		this.uId = uId;
+	}
+
+	public String getuEmail() {
+		return uEmail;
+	}
+
+	public void setuEmail(String uEmail) {
+		this.uEmail = uEmail;
 	}
 }
