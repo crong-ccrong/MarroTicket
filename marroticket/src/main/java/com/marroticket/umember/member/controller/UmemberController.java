@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/umember")
-@MapperScan(basePackages = "com.marroticket.mapper")
 @Slf4j
 public class UmemberController {
 	@Autowired
@@ -28,24 +28,39 @@ public class UmemberController {
 
 	// 아이디 찾기
 	@PostMapping("/findId")
-	public ResponseEntity<String> findId(@Validated @RequestBody UmemberVO umember, BindingResult result)
+	public ResponseEntity<String> findId(@RequestBody UmemberVO umember)
+			throws Exception {
+
+		// 입력값이 있을 때
+		String uId = umemberService.findId(umember);
+
+		// 정상적으로 입력했을 때
+		if (uId != null && uId.length() > 0) {
+			return new ResponseEntity<String>(uId, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
+		}
+	}
+	// 비밀번호 찾기
+	@PostMapping("/findPassword")
+	public ResponseEntity<String> findPassword(@Validated @RequestBody UmemberVO umember, BindingResult result)
 			throws Exception {
 		// 입력값이 하나라도 null일 때
-		System.out.println(umember.getuName());
-		if ((umember.getuName() == null || umember.getuName().length() == 0)
-				|| (umember.getuPhoneNumber() == null || umember.getuPhoneNumber().length() == 0)) {
+		System.out.println(umember.getuId());
+		if ((umember.getuId() == null || umember.getuId().length() == 0)
+				|| (umember.getuEmail() == null || umember.getuEmail().length() == 0)) {
 			return new ResponseEntity<String>("none", HttpStatus.OK);
 		}
 
 		// 입력값이 있을 때
-		String uId = umemberService.findId(umember);
+		String upassword = umemberService.findPassword(umember);
 		// 입력값이 유효하지 않을 때
-		if (result.hasErrors()) {
+		if (!result.hasErrors()) {
 			return new ResponseEntity<String>("novalid", HttpStatus.OK);
 		}
 		// 정상적으로 입력했을 때
-		if (uId != null && uId.length() > 0) {
-			return new ResponseEntity<String>(uId, HttpStatus.OK);
+		if (upassword != null && upassword.length() > 0) {
+			return new ResponseEntity<String>(upassword, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 		}
