@@ -10,7 +10,6 @@ $(document).ready(function() {
 		var uPhoneNumberVal = uPhoneNumber.val();
 
 		//유효성 검사
-		var getPhoneCheck= '/^\d{3}-\d{3,4}-\d{4}$/';
 		//이름
 		if(uNameVal.length>6){
 			alert("이름은 6자리까지 입력가능합니다.");

@@ -1,5 +1,3 @@
 INDEX VERSION 1.131
-C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4053335348.index
-\marroticket\src\main\java
 C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2005111262.index
 \marroticket\src\main\java

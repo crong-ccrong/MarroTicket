@@ -1,18 +1,15 @@
 package com.marroticket.umember.member.controller;
 
-import org.mybatis.spring.annotation.MapperScan;
+import com.marroticket.common.email.service.EmailService;
+import com.marroticket.common.email.vo.EmailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.member.service.UmemberService;
@@ -25,16 +22,18 @@ import lombok.extern.slf4j.Slf4j;
 public class UmemberController {
 	@Autowired
 	private UmemberService umemberService;
+	@Autowired
+	private EmailService emailService;
 
 // 아이디 찾기
 	@PostMapping("/findId")
 	public ResponseEntity<String> findId(@RequestBody UmemberVO umember)
 			throws Exception {
 
-		// 입력값이 있을 때
+		// 값이 정상적으로 입력됐을 때
 		String uId = umemberService.findId(umember);
 
-		// 정상적으로 입력했을 때
+		// 응답
 		if (uId != null && uId.length() > 0) {
 			return new ResponseEntity<String>(uId, HttpStatus.OK);
 		} else {
@@ -43,24 +42,22 @@ public class UmemberController {
 	}
 	// 비밀번호 찾기
 	@PostMapping("/findPassword")
-	public ResponseEntity<String> findPassword(@Validated @RequestBody UmemberVO umember, BindingResult result)
+	public ResponseEntity<String> findPassword(@RequestBody UmemberVO umember, EmailVO email)
 			throws Exception {
-		// 입력값이 하나라도 null일 때
-		System.out.println(umember.getuId());
-		if ((umember.getuId() == null || umember.getuId().length() == 0)
-				|| (umember.getuEmail() == null || umember.getuEmail().length() == 0)) {
-			return new ResponseEntity<String>("none", HttpStatus.OK);
-		}
-
-		// 입력값이 있을 때
+		// 값이 정상적으로 입력됐을 때
 		String upassword = umemberService.findPassword(umember);
-		// 입력값이 유효하지 않을 때
-		if (!result.hasErrors()) {
-			return new ResponseEntity<String>("novalid", HttpStatus.OK);
-		}
-		// 정상적으로 입력했을 때
+
+		// 응답
 		if (upassword != null && upassword.length() > 0) {
-			return new ResponseEntity<String>(upassword, HttpStatus.OK);
+			//이메일 보내기
+			String content ="귀하의 비밀번호는 '"+upassword+"' 입니다.";
+			String title ="마로티켓입니다. 비밀번호를 확인해주세요";
+			email.setAddress(umember.getuEmail());
+			email.setContent(content);
+			email.setTitle(title);
+			emailService.sendSimpleMessage(email);
+			//return
+			return new ResponseEntity<String>("send", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 		}
