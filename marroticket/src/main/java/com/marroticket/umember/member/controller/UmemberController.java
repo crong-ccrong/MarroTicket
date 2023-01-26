@@ -2,10 +2,15 @@ package com.marroticket.umember.member.controller;
 
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.common.email.vo.EmailVO;
+
+import java.security.SecureRandom;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +32,7 @@ public class UmemberController {
 
 // 아이디 찾기
 	@PostMapping("/findId")
-	public ResponseEntity<String> findId(@RequestBody UmemberVO umember)
-			throws Exception {
+	public ResponseEntity<String> findId(@RequestBody UmemberVO umember) throws Exception {
 
 		// 값이 정상적으로 입력됐을 때
 		String uId = umemberService.findId(umember);
@@ -40,27 +44,66 @@ public class UmemberController {
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 		}
 	}
-	// 비밀번호 찾기
-	@PostMapping("/findPassword")
-	public ResponseEntity<String> findPassword(@RequestBody UmemberVO umember, EmailVO email)
-			throws Exception {
-		// 값이 정상적으로 입력됐을 때
-		String upassword = umemberService.findPassword(umember);
 
-		// 응답
-		if (upassword != null && upassword.length() > 0) {
-			//이메일 보내기
-			String content ="귀하의 비밀번호는 '"+upassword+"' 입니다.";
-			String title ="마로티켓입니다. 비밀번호를 확인해주세요";
-			email.setAddress(umember.getuEmail());
+	// 비밀번호 찾기 - 임시비밀번호 업데이트
+	@PostMapping("/findPassword")
+	public ResponseEntity<String> findPassword(@RequestBody UmemberVO umember) throws Exception {
+		ResponseEntity<String> entity;
+
+		// 임시비밀번호 생성(15자리)
+		String temporaryPassword = getRamdomPassword(15);
+		umember.setUPassword(temporaryPassword);
+
+		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
+		int success = umemberService.passwordUpdate(umember);
+
+		if (success != 0) { // 업데이트 성공
+			temporaryPasswordSendEmail(temporaryPassword, umember.getuEmail()); //임시비밀번호 발송
+			entity = new ResponseEntity<String>(temporaryPassword, HttpStatus.OK);
+			// 임시비밀번호 이메일 발송
+		} else { // 업데이트 실패
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+		}
+		return entity;
+	}
+
+	public String getRamdomPassword(int size) { // 랜덤한 임시비밀번호 생성
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a',
+				'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+				'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&' };
+
+		StringBuffer sb = new StringBuffer();
+		SecureRandom sr = new SecureRandom();
+		sr.setSeed(new Date().getTime());
+
+		int idx = 0;
+		int len = charSet.length;
+		for (int i = 0; i < size; i++) {
+			// idx = (int) (len * Math.random());
+			idx = sr.nextInt(len); // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다.
+			sb.append(charSet[idx]);
+		}
+
+		return sb.toString();
+	}
+
+		// 임시비밀번호 이메일 발송
+		public void temporaryPasswordSendEmail(String temporaryPassword, String uEmail) throws Exception {
+			//변수
+			String content = "귀하의 임시비밀번호는 \n\n" + temporaryPassword + "\n\n입니다."; //이메일 내용
+			content += "\n발급받은 임시비밀번호를 마이페이지에서 수정하세요.";
+			String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; //이메일 제목
+			//set
+			EmailVO email = new EmailVO(); //이메일 객체
+			email.setAddress(uEmail);
 			email.setContent(content);
 			email.setTitle(title);
+			
+			//이메일 발송
 			emailService.sendSimpleMessage(email);
-			//return
-			return new ResponseEntity<String>("send", HttpStatus.OK);
-		} else {
-			return new ResponseEntity<String>("fail", HttpStatus.OK);
-		}
+			//console 확인
+			System.out.println("findPasswordSendEmail : " + temporaryPassword +" 임시이메일 발송 완료");
 	}
 
 	// 마이페이지

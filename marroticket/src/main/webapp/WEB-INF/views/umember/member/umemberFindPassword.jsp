@@ -48,9 +48,19 @@
                             //입력한 아이디와 이메일에 일치하는 아이디가 없을 때
                             alert("비밀번호 찾기 실패 \n입력하신 정보와 일치하는 비밀번호가 없습니다.");
                             break;
-                        case 'send':
+                        default:
                             //입력한 아이디와 이메일로 비밀번호 찾기를 성공했을 때. 이메일 발송 사실을 alert.
-                            alert("비밀번호가 입력하신 이메일로 발송됐습니다!");
+                            console.log(result);
+                            alert("임시비밀번호가 입력하신 이메일로 발송됐습니다!");
+                        	/* 
+                        	//formdata
+                        	var formData = new FormData();
+                        	formData.append("password", result);
+                        	fetch('http://localhost:8080/umember/findPasswordSendEmail',{
+                        		method:'POST',
+                        		body : formData
+                        	});
+                        	location.replace = "http://localhost:8080"; */
                             break;
                     }
                 }

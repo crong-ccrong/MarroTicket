@@ -7,4 +7,6 @@ public interface UmemberMapper {
 	public String findId(UmemberVO umember) throws Exception;
 
 	public String findPassword(UmemberVO umember) throws Exception;
+	
+	public int updatePassword(UmemberVO umember) throws Exception;
 }
