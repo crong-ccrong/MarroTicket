@@ -70,9 +70,6 @@ local.properties
 # STS (Spring Tool Suite)
 .springBeans
 
-# IntelliJ IDEA
-application-aws.properties
-
 # Code Recommenders
 .recommenders/
 
