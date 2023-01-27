@@ -58,7 +58,7 @@ public class UmemberController {
 		int success = umemberService.passwordUpdate(umember);
 
 		if (success != 0) { // 업데이트 성공
-			temporaryPasswordSendEmail(temporaryPassword, umember.getuEmail()); //임시비밀번호 발송
+			temporaryPasswordSendEmail(temporaryPassword, umember.getuEmail()); // 임시비밀번호 발송
 			entity = new ResponseEntity<String>(temporaryPassword, HttpStatus.OK);
 			// 임시비밀번호 이메일 발송
 		} else { // 업데이트 실패
@@ -66,46 +66,6 @@ public class UmemberController {
 		}
 		return entity;
 	}
-
-	public String getRamdomPassword(int size) { // 랜덤한 임시비밀번호 생성
-		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a',
-				'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-				'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&' };
-
-		StringBuffer sb = new StringBuffer();
-		SecureRandom sr = new SecureRandom();
-		sr.setSeed(new Date().getTime());
-
-		int idx = 0;
-		int len = charSet.length;
-		for (int i = 0; i < size; i++) {
-			// idx = (int) (len * Math.random());
-			idx = sr.nextInt(len); // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다.
-			sb.append(charSet[idx]);
-		}
-
-		return sb.toString();
-	}
-
-		// 임시비밀번호 이메일 발송
-		public void temporaryPasswordSendEmail(String temporaryPassword, String uEmail) throws Exception {
-			//변수
-			String content = "귀하의 임시비밀번호는 \n\n" + temporaryPassword + "\n\n입니다."; //이메일 내용
-			content += "\n발급받은 임시비밀번호를 마이페이지에서 수정하세요.";
-			String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; //이메일 제목
-			//set
-			EmailVO email = new EmailVO(); //이메일 객체
-			email.setAddress(uEmail);
-			email.setContent(content);
-			email.setTitle(title);
-			
-			//이메일 발송
-			emailService.sendSimpleMessage(email);
-			//console 확인
-			System.out.println("findPasswordSendEmail : " + temporaryPassword +" 임시이메일 발송 완료");
-	}
-
 	// 마이페이지
 	/* 1) 일반 회원 정보 */
 	@GetMapping("/umembermypage")
@@ -138,6 +98,56 @@ public class UmemberController {
 		System.out.println("umemberJoinForm 호출 완료");
 		return "uMemberJoin.umemberJoinForm";
 	}
+	
+	// 랜덤한 임시비밀번호 생성
+	public String getRamdomPassword(int size) { 
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a',
+				'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+				'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&' };
+
+		StringBuffer sb = new StringBuffer();
+		SecureRandom sr = new SecureRandom();
+		sr.setSeed(new Date().getTime());
+
+		int idx = 0;
+		int len = charSet.length;
+		for (int i = 0; i < size; i++) {
+			// idx = (int) (len * Math.random());
+			idx = sr.nextInt(len); // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다.
+			sb.append(charSet[idx]);
+		}
+
+		return sb.toString();
+	}
+	/*
+	 * // 임시비밀번호 이메일 발송 public void temporaryPasswordSendEmail(String
+	 * temporaryPassword, String uEmail) throws Exception { // 변수 String content =
+	 * "귀하의 임시비밀번호는 \n\n" + temporaryPassword + "\n\n입니다."; // 이메일 내용 content +=
+	 * "\n발급받은 임시비밀번호를 마이페이지에서 수정하세요."; String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; //
+	 * 이메일 제목 // set EmailVO email = new EmailVO(); // 이메일 객체
+	 * email.setAddress(uEmail); email.setContent(content); email.setTitle(title);
+	 * 
+	 * // 이메일 발송 emailService.sendSimpleMessage(email); // console 확인
+	 * System.out.println("findPasswordSendEmail : " + temporaryPassword +
+	 * " 임시이메일 발송 완료"); }
+	 */
+	
+	// 임시비밀번호 이메일 발송
+	public void temporaryPasswordSendEmail(String temporaryPassword, String uEmail) throws Exception {
+		String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; // 이메일 제목
+		// set
+		EmailVO email = new EmailVO(); // 이메일 객체
+		email.setAddress(uEmail);
+		email.setTitle(title);
+		email.setPassword(temporaryPassword);
+
+		// 이메일 발송
+		emailService.sendSimpleMessage(email);
+		// console 확인
+		System.out.println("findPasswordSendEmail : " + temporaryPassword + " 임시이메일 발송 완료");
+	}
+
 
 	// 일반 사용자 아이디 중복 체크
 
