@@ -16,11 +16,6 @@ public class UmemberServiceImpl implements UmemberService {
 		return umembermapper.findId(umember);
 	}
 
-	@Override
-	public String findPassword(UmemberVO umember) throws Exception{
-		return umembermapper.findPassword(umember);
-	};
-
 	//임시비밀번호로 업데이트
 	public int passwordUpdate(UmemberVO umember) throws Exception{
 		return umembermapper.updatePassword(umember);

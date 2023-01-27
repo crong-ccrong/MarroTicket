@@ -34,7 +34,7 @@ public class UmemberController {
 	@PostMapping("/findId")
 	public ResponseEntity<String> findId(@RequestBody UmemberVO umember) throws Exception {
 
-		// 값이 정상적으로 입력됐을 때
+		// 값이 정상적으로 입력됐을 때, db조회
 		String uId = umemberService.findId(umember);
 
 		// 응답
@@ -120,18 +120,6 @@ public class UmemberController {
 
 		return sb.toString();
 	}
-	/*
-	 * // 임시비밀번호 이메일 발송 public void temporaryPasswordSendEmail(String
-	 * temporaryPassword, String uEmail) throws Exception { // 변수 String content =
-	 * "귀하의 임시비밀번호는 \n\n" + temporaryPassword + "\n\n입니다."; // 이메일 내용 content +=
-	 * "\n발급받은 임시비밀번호를 마이페이지에서 수정하세요."; String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; //
-	 * 이메일 제목 // set EmailVO email = new EmailVO(); // 이메일 객체
-	 * email.setAddress(uEmail); email.setContent(content); email.setTitle(title);
-	 * 
-	 * // 이메일 발송 emailService.sendSimpleMessage(email); // console 확인
-	 * System.out.println("findPasswordSendEmail : " + temporaryPassword +
-	 * " 임시이메일 발송 완료"); }
-	 */
 	
 	// 임시비밀번호 이메일 발송
 	public void temporaryPasswordSendEmail(String temporaryPassword, String uEmail) throws Exception {
@@ -143,7 +131,7 @@ public class UmemberController {
 		email.setPassword(temporaryPassword);
 
 		// 이메일 발송
-		emailService.sendSimpleMessage(email);
+		emailService.sendUmemberEmail(email);
 		// console 확인
 		System.out.println("findPasswordSendEmail : " + temporaryPassword + " 임시이메일 발송 완료");
 	}
