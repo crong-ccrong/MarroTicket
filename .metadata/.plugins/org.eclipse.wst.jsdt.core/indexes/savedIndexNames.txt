@@ -4,4 +4,8 @@ INDEX VERSION 1.4+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclips
 2357012513.index
 2953872213.index
 2536398460.index
+<<<<<<< HEAD
+=======
+2005111262.index
+>>>>>>> 1f4924e (version 2 id/password find)
 3722809577.index

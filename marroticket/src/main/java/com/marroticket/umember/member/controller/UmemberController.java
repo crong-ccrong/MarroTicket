@@ -1,7 +1,7 @@
 package com.marroticket.umember.member.controller;
 
+import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
-import com.marroticket.common.email.vo.EmailVO;
 
 import java.security.SecureRandom;
 import java.util.Date;

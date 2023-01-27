@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="viewport"/>
+		<item key="selection" value="marro"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="marro"/>
+			<item value="마 로"/>
+			<item value="마로"/>
+			<item value="마로티켓"/>
+			<item value="${url"/>
+			<item value="umember"/>
 			<item value="viewport"/>
 			<item value="${pass"/>
 			<item value="임시"/>
@@ -17,12 +23,6 @@
 			<item value="text-decorat"/>
 			<item value="marroticket"/>
 			<item value="login"/>
-			<item value="비밀번호"/>
-			<item value="ㅇㅇ"/>
-			<item value="image"/>
-			<item value="http://localhost:8080"/>
-			<item value="local"/>
-			<item value="tname"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -44,3 +44,10 @@
 1674823218904	Copy file
 1674823251046	Rename resource 'index.html'
 1674823273493	Rename resource 'index2.html'
+1674833520552	Delete element
+1674833821369	Copy compilation units
+1674833833813	Rename type 'UmemberService'
+1674833844376	Rename type 'UmemberServiceImpl'
+1674833953937	Copy compilation unit
+1674834031833	Rename package 'com.marroticket.common.email.vo'
+1674834053781	Move compilation unit

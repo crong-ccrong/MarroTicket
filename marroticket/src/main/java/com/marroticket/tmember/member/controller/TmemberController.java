@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
-import com.marroticket.common.email.vo.EmailVO;
 import com.marroticket.tmember.member.service.TmemberService;
-import com.marroticket.tmember.member.vo.TmemberVO;
-import com.marroticket.umember.member.domain.UmemberVO;
+import com.marroticket.tmember.member.domain.TmemberVO;
 
 @Controller
 @RequestMapping("/theater")
