@@ -1,6 +1,0 @@
-package com.marroticket.umember.member.service;
-
-public interface UmemberService {
-	//read
-	public String find
-}

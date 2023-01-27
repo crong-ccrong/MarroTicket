@@ -59,7 +59,7 @@ public class UmemberController {
 
 		if (success != 0) { // 업데이트 성공
 			temporaryPasswordSendEmail(temporaryPassword, umember.getuEmail()); // 임시비밀번호 발송
-			entity = new ResponseEntity<String>(temporaryPassword, HttpStatus.OK);
+			entity = new ResponseEntity<String>("send", HttpStatus.OK);
 			// 임시비밀번호 이메일 발송
 		} else { // 업데이트 실패
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);

@@ -1,6 +1,0 @@
-package com.marroticket.umember.member.service;
-
-public interface UmemberService {
-	//아이디 찾기
-	public String 
-}
