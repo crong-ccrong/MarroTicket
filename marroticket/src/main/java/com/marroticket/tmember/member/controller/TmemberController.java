@@ -158,7 +158,7 @@ public class TmemberController {
 		// 이메일 발송
 		emailService.sendTmemberEmail(email);
 		// console 확인
-		System.out.println("idOrTemporaryPassword : " + idOrTemporaryPassword + " 이메일 발송 완료");
+		System.out.println("idOrTemporaryPassword 이메일 발송 완료");
 	}
 
 	// 랜덤한 임시비밀번호 생성

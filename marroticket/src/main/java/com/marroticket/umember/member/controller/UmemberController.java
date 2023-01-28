@@ -133,7 +133,7 @@ public class UmemberController {
 		// 이메일 발송
 		emailService.sendUmemberEmail(email);
 		// console 확인
-		System.out.println("findPasswordSendEmail : " + temporaryPassword + " 임시이메일 발송 완료");
+		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
 
 
