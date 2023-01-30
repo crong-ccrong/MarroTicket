@@ -17478,3 +17478,10 @@ java.io.FileNotFoundException: C:\SpringBootProject\marroticket\.metadata\.plugi
 2023-01-30 10:51:37,734 [Worker-649: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-01-30 10:51:37,734 [Worker-649: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-01-30 10:51:37,734 [Worker-649: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/yujeong-won/Spring_STS/marroticket/marroticket/src/test/resources
+2023-01-30 11:06:38,580 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-30 11:06:38,581 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-30 11:06:38,581 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-01-30 11:06:38,597 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2023-01-30 11:06:38,599 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-01-30 11:06:38,599 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-01-30 11:06:38,599 [Worker-649: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/yujeong-won/Spring_STS/marroticket/marroticket/src/test/resources

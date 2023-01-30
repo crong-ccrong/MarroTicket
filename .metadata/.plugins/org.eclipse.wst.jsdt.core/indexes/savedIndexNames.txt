@@ -1,9 +1,3 @@
 INDEX VERSION 1.4+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-3933423568.index
-2869696249.index
-2869696249.index
-1296054162.index
-3360539720.index
-3330863894.index
 3752426277.index
-3890786742.index
+2869696249.index
