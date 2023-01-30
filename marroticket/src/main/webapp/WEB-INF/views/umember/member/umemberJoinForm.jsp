@@ -1,182 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <!-- 일반회원 회원가입 페이지 -->
 
 <h3>마로 티켓 일반 회원 가입 페이지</h3>
-<form enctype="UTF-8" name='join_form'>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<form:form method="post" action="register" modelAttribute="umember">
+
 	<table border="1">
 		<tr>
-			<td>이름</td>
-			<td><input type="text" name="name" placeholder="(필수)6자 이내 입력"
-				required="required" /></td>
+				<th>이름</th>
+				<td><form:input path="uName" placeholder="(필수)6자까지 입력 가능" /><font color="red"> <form:errors
+							path="uName" /></font></td>
+			</tr>
+
+		<tr>
+			<th>아이디</th>
+			<td><form:input path="uId" placeholder="(필수)영문/숫자 포함 8~20자"  id="uId"/><font color="red"> <form:errors path="uId" /></font>
+				<button  type="button" id="idCheck"
+					onclick="uIdChk()">중복확인</button></td>
 		</tr>
 
 		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="id" required="required"
-				autofocus="autofocus" placeholder="(필수)영문/숫자 포함 8~20자" /></td>
+			<th>비밀번호</th>
+			<td>
+				<form:input path="uPassword" placeholder="(필수)영문/숫자 포함 8~20자" /><font color="red"> <form:errors path="uPassword" /></font>
+				</td>
 		</tr>
 
 		<tr>
-			<td>비밀번호</td>
-			<td><input type="password" name="pwd"
-				placeholder="(필수)영문/숫자 포함 8~20자" required="required" /></td>
+			<th>비밀번호 재확인</th>
+			<td><input type="Password" id="uPasswordConfirm" placeholder="(필수)비밀번호 재입력" /> 
+			</td>
+		</tr>
+		
+
+		<tr>
+			<th>생년월일</th>
+			<td>
+				<form:input path="uBirthday" placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /><font color="red"> <form:errors path="uBirthday" /></font>
+				</td>
 		</tr>
 
 		<tr>
-			<td>비밀번호 확인</td>
-			<td><input type="password" name="pwd" placeholder="(필수)비밀번호 재입력"
-				required="required" /></td>
+			<th>성별</th>
+			<td><form:radiobutton path="uGender" value="1" label="남자" />
+			<form:radiobutton path="uGender" value="2" label="여자" /> 
 		</tr>
 
 		<tr>
-			<td>생년월일</td>
-			<td><input name="birth" type="date"
-				placeholder="(필수) 생년월일을 입력하세요" /></td>
+			<th>이메일</th>
+			<td>
+				<form:input path="uEmail" placeholder="(필수)@ 포함 영문/숫자 10~15자" /><font color="red"> <form:errors path="uEmail" /></font>
+				</td>
 		</tr>
 
 		<tr>
-			<td>성별</td>
-			<td><font color='red'>택 1 필수 </font> <input type="radio"
-				value="여자" name="gender" id="woman" checked /><label for="여자">여자</label>
-				<input type="radio" value="남자" name="gender" id="men" /><label
-				for="남자">남자</label></td>
+			<th>휴대폰번호</th>
+			<td>
+				<form:input path="uPhoneNumber" placeholder="(필수)-제외 숫자만 입력 ,11자" /><font color="red"> <form:errors path="uPhoneNumber" /></font>
+				</td>
 		</tr>
 
 		<tr>
-			<td>주소</td>
-			<td><input type="text" name='postcode' id="sample6_postcode"
-				placeholder="우편번호"> <input type="button"
-				onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" name='address' id="sample6_address"
-				placeholder="주소"><br> <input type="text" name='address'
-				id="sample6_detailAddress" placeholder="상세주소"> <input
-				type="text" name='address' id="sample6_extraAddress"
-				placeholder="참고항목"></td>
+			<th>관심장르</th>
+			<td><form:radiobutton path="uGenre" value="1" label="로맨스" />
+			<form:radiobutton path="uGenre" value="2" label="드라마" /> 
+			<form:radiobutton path="uGenre" value="3" label="공포" /> 
+			<form:radiobutton path="uGenre" value="4" label="추리/스릴러" /> 
+			<form:radiobutton path="uGenre" value="5" label="판타지" /> 
+			<form:radiobutton path="uGenre" value="6" label="시대/역사" /> </td>
 		</tr>
-
+		<input type="hidden" name="uAgree" value="1" />
 		<tr>
-			<td>이메일</td>
-			<td><input type="email" name="email" required="required"
-				placeholder="(필수)@ 포함 영문/숫자 10~15자"></td>
-		</tr>
-
-		<tr>
-			<td>휴대폰 번호</td>
-			<td><input type="text" name="phone" required="required"
-				placeholder="(필수)(-)제외 숫자만 입력 ,11자" /></td>
-		</tr>
-
-
-
-		<tr>
-			<td>관심 장르</td>
-			<td><input type="radio" value="로맨스" name="subscription_path"
-				id="로맨스극" checked /><label for="로맨스">로맨스</label> <input
-				type="radio" value="드라마" name="subscription_path" id="드라마극" /><label
-				for="드라마">드라마</label> <input type="radio" value="공포"
-				name="subscription_path" id="공포극" /><label for="공포물">공포</label> <input
-				type="radio" value="추리스릴러" name="subscription_path" id="추리스릴러극" /><label
-				for="추리스릴러">추리/스릴러</label> <input type="radio" value="판타지"
-				name="subscription_path" id="판타지극" /><label for="판타지">판타지</label> <input
-				type="radio" value="시대역사" name="subscription_path" id="시대역사극" /><label
-				for="시대역사">시대/역사</label>
-		</tr>
-
-
-		<tr>
-			<td colspan="2"><input type="button" onclick='join_fuction()'
-				value="회원가입" /> <input type="reset" value="이전" /> <input
-				type='hidden' name='command' value='joinmember'></td>
+			<td colspan="2" align="center"><input type="submit" value="회원가입" />
+				<input type="reset" value="이전" /></td>
 		</tr>
 	</table>
-</form>
-</body>
-<script type="text/javascript">
-	function join_fuction() {
-		var formJoin = document.join_form;
-		var id = formJoin.id.value;
-		var pwd = formJoin.pwd.value;
-		var name = formJoin.name.value;
-		var nickname = formJoin.nickname.value;
-		var email = formJoin.email.value;
-		//가입경로들
-		var susin = formJoin.subscription_path.value;
-		var tel = formJoin.tel.value;
-		var phone = formJoin.phone.value;
-		var birth = formJoin.birth.value;
-		var postcode = formJoin.postcode.value;
-		var address = formJoin.address.value;
-		// var joinDate = formJoin.joinDate.value;
-		if ((id.length == 0 || id == null) || (pwd.length == 0 || pwd == null)
-				|| (name.length == 0 || name == null)
-				|| (nickname.length == 0 || nickname == null)
-				|| (email.length == 0 || email == null)
-				|| (tel.length == 0 || tel == null)
-				|| (phone.length == 0 || phone == null)
-				|| (birth.length == 0 || birth == null)
-				|| (postcode.length == 0 || postcode == null)
-		//|| (address.length == 0 || address == null)
+</form:form>
 
-		) {
-			alert("필수 항목은 반드시 입력해주세요!");
-		} else {
-			formJoin.method = 'post';
-			formJoin.action = 'joinwith';
-			formJoin.submit();
-		}
-	}
-</script>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+
+
+
+
+<!-- 중복아이디 체크 (절대 지우지마) -->
 <script>
-	function sample6_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기한다.
-						var addr = ''; // 주소 변수
-						var extraAddr = ''; // 참고항목 변수
-						//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을경우
-							addr = data.roadAddress;
-						} else { // 사용자가 지번 주소를 선택했을 경우(J)
-							addr = data.jibunAddress;
-						}
-						// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-						if (data.userSelectedType === 'R') {
-							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
-								extraAddr += data.bname;
-							}
-							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-							if (extraAddr !== '') {
-								extraAddr = ' (' + extraAddr + ')';
-							}
-							// 조합된 참고항목을 해당 필드에 넣는다.
-							document.getElementById("sample6_extraAddress").value = extraAddr;
+	function uIdChk() {
 
-						} else {
-							document.getElementById("sample6_extraAddress").value = '';
-						}
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample6_postcode').value = data.zonecode;
-						document.getElementById("sample6_address").value = addr;
-						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById("sample6_detailAddress")
-								.focus();
-					}
-				}).open();
+		$.ajax({
+			url : "/umember/uIdCheck",
+			type : "post",
+			data : {
+				"uId" : $("#uId").val()
+			},
+			success : function(data) {
+				if (data == "overlap") {
+					alert("중복된 아이디 입니다.");
+				} else {
+					alert("사용가능한 아이디입니다.");
+				}
+			}
+		});
 	}
 </script>
+
+<script type="text/javascript">
+$(function(){
+	//비밀번호 확인
+		$('#uPasswordConfirm').blur(function(){
+		   if($('#uPassword').val() != $('#uPasswordConfirm').val()){
+		    	if($('#uPasswordConfirm').val()!=''){
+			    alert("비밀번호가 일치하지 않습니다.");
+		    	    $('#uPasswordConfirm').val('');
+		          $('#uPasswordConfirm').focus();
+		       }
+		    }
+		})  	   
+	});
+</script>
+
+
 

@@ -1,6 +1,0 @@
-package com.marroticket.umember.member.mapper;
-
-public interface UmemberMapper {
-	//아이디찾기
-	public String findId(String uName, String uPhoneNumber);
-}
