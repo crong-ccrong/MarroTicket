@@ -56,8 +56,8 @@
 	</definition>
 	
 	<!-- 일반회원 로그인 페이지 -->
-	<definition name="umemberLogin" extends="login-template">
-		<put-attribute name="content" value="/WEB-INF/views/umember/member/umemberLogin.jsp" />
+	<definition name="umemberAuth.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/umember/member/auth/umember{1}.jsp" />
 	</definition>
 	
 	<!-- 일반회원 아이디찾기/비밀번호 찾기 페이지 -->
@@ -66,8 +66,8 @@
 	</definition>
 	
 	<!-- 극단회원 로그인 -->
-	<definition name="tmemberLogin" extends="login-template">
-		<put-attribute name="content" value="/WEB-INF/views/tmember/member/tmemberLogin.jsp" />
+	<definition name="tmemberAuth.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/tmember/member/auth/tmember{1}.jsp" />
 	</definition>
 	
 	<!-- 극단회원 아이디찾기/비밀번호 찾기 페이지 -->

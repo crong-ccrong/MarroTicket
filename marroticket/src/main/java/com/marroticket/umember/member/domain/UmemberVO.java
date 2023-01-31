@@ -1,6 +1,7 @@
 package com.marroticket.umember.member.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -52,6 +53,8 @@ public class UmemberVO {
 	private Date uUnjoinDate; //탈퇴일
 	private String uGenre; //관심 장르
 	private String uAgree; //약관 동의 여부
+
+	private List<UmemberAuth> umemberAuthList; //권한
 
 
 	public String getuName() {

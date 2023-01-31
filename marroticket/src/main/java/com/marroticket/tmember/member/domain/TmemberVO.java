@@ -1,6 +1,7 @@
 package com.marroticket.tmember.member.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,7 +38,11 @@ public class TmemberVO {
 	
 	@NonNull
 	private String tBusinessRegisterationImage; // 사업자등록증 사본
+	private String tAuth;
 	private String tAgree; // 약관 동의 여부
+	
+
+	private List<TmemberAuth> tmemberAuthList; //권한
 	
 	//JSON
 	public String gettId() {

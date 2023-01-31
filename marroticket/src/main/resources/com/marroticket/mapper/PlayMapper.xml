@@ -4,33 +4,32 @@
 
 	<resultMap type="com.marroticket.umember.play.domain.PlayVO"
 		id="play">
-		<id column="p_number" property="pNumber" />
-		<result column="p_name" property="pName" />
-		<result column="P_STARTDATE" property="pStartDate" />
-		<result column="P_CLOSEDATE" property="pCloseDate" />
-		<result column="P_RUNNINGTIME" property="pRunningTime" />
-		<result column="P_THEATERNAME" property="pTheaterName" />
-		<result column="P_THEATERADDRESS" property="pTheaterAddress" />
-		<result column="P_THEATERMAP" property="pTheaterMap" />
-		<result column="P_AGENCY" property="pAgency" />
-		<result column="P_RATINGS" property="pRatings" />
-		<result column="P_CASTING" property="pCasting" />
-		<result column="P_TICKETOPENDATE" property="pTicketOpenDate" />
-		<result column="P_PLOT" property="pPlot" />
-		<result column="P_SEATTYPE" property="pSeatType" />
-		<result column="P_SEATNUMBER" property="pSeatNumber" />
-		<result column="P_TICKETPRICE" property="pTicketPrice" />
-		<result column="P_GENRE" property="pGenre" />
-		<result column="P_POSTER" property="pPoster" />
-		<result column="P_FIRSTPLAY" property="pFirstPlay" />
-		<result column="P_SECONDPLAY" property="pSecondPlay" />
-		<result column="P_AGREE" property="pAgree" />
+		<id column="p_number" property="pnumber" />
+		<result column="p_name" property="pname" />
+		<result column="P_STARTDATE" property="pstartDate" />
+		<result column="P_CLOSEDATE" property="pcloseDate" />
+		<result column="P_RUNNINGTIME" property="prunningTime" />
+		<result column="P_THEATERNAME" property="ptheaterName" />
+		<result column="P_THEATERADDRESS" property="ptheaterAddress" />
+		<result column="P_THEATERMAP" property="ptheaterMap" />
+		<result column="P_AGENCY" property="pagency" />
+		<result column="P_RATINGS" property="pratings" />
+		<result column="P_CASTING" property="pcasting" />
+		<result column="P_TICKETOPENDATE" property="pticketOpenDate" />
+		<result column="P_PLOT" property="pplot" />
+		<result column="P_SEATTYPE" property="pseatType" />
+		<result column="P_SEATNUMBER" property="pseatNumber" />
+		<result column="P_TICKETPRICE" property="pticketPrice" />
+		<result column="P_GENRE" property="pgenre" />
+		<result column="P_POSTER" property="pposter" />
+		<!-- <result column="P_FIRSTPLAY" property="pfirstPlay" />
+		<result column="P_SECONDPLAY" property="psecondPlay" /> -->
+		<result column="P_AGREE" property="pagree" />
 		<result column="P_AMENDMENTAPPROVED"
-			property="pAmendmentApproved" />
+			property="pamendmentApproved" />
 		<result column="P_REGISTRATIONAPPROVAL"
-			property="pRegistrationApproval" />
-		<result column="T_NUMBER" property="tNumber" />
-		<result column="PD_NUMBER" property="pdNumber" />
+			property="pregistrationApproval" />
+		<result column="T_NUMBER" property="tnumber" />
 	</resultMap>
 
 

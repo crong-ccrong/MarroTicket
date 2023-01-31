@@ -3,11 +3,11 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#umemberLogin").on("click", function() {
-			location.href = "/login/umemberlogin";
+			location.href = "/auth/umemberlogin";
 		});
 
 		$("#tmemberLogin").on("click", function() {
-			location.href = "/login/tmemberlogin";
+			location.href = "/auth/tmemberlogin";
 		});
 
 	});

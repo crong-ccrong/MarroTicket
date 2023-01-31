@@ -23,6 +23,50 @@ public class HomeController {
 		return "tMemberJoin.tmemberJoinForm";
 	}
 	
+	//회원 관련 
+
+	// 로그인 유형 선택
+	@GetMapping("/loginChoose")
+	public String login() {
+		return "loginChoose";
+	}
+	// 아이디 찾기 유형 선택
+	@GetMapping("/idFindChoose")
+	public String idFindChoose() {
+		return "idFindChoose";
+	}
+	// 비밀번호 찾기 유형 선택
+	@GetMapping("/passwordFindChoose")
+	public String passwordFindChoose() {
+		return "passwordFindChoose";
+	}
+
+	// 일반회원 아이디찾기
+	@GetMapping("/umemberFindId")
+	public String userFindId() {
+		System.out.println("logincontroller 호출 완료");
+		return "umemberFind.Id";
+	}
+	// 일반회원 비밀번호찾기
+	@GetMapping("/umemberFindPassword")
+	public String userFindPassword() {
+		System.out.println("logincontroller 호출 완료");
+		return "umemberFind.Password";
+	}
+
+	// 극단회원 아이디찾기
+	@GetMapping("/tmemberFindId")
+	public String tmemberFindId() {
+		System.out.println("logincontroller 호출 완료");
+		return "tmemberFind.Id";
+	}
+	// 극단회원 비밀번호찾기
+	@GetMapping("/tmemberFindPassword")
+	public String tmemberFindPassword() {
+		System.out.println("logincontroller 호출 완료");
+		return "tmemberFind.Password";
+	}
+	
 	//footer 
 	@GetMapping("/privacy")
 	public String privacy() {

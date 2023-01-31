@@ -8,4 +8,7 @@ public interface TmemberMapper {
 	
 	//임시비밀번호 업데이트
 	public int updatePassword(TmemberVO tmember) throws Exception;
+
+	//아이디 읽어오기
+	public TmemberVO readByUserId(String userId);
 }
