@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
 <!-- 일반회원 회원가입 페이지 -->
+
 
 <h3>마로 티켓 일반 회원 가입 페이지</h3>
 
@@ -24,7 +24,6 @@
 				<button  type="button" id="idCheck"
 					onclick="uIdChk()">중복확인</button></td>
 		</tr>
-
 		<tr>
 			<th>비밀번호</th>
 			<td>
@@ -42,13 +41,13 @@
 		<tr>
 			<th>생년월일</th>
 			<td>
-				<form:input path="uBirthday" placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /><font color="red"> <form:errors path="uBirthday" /></font>
+				<form:input path="uBirthday"  placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /><font color="red"> <form:errors path="uBirthday" /></font>
 				</td>
 		</tr>
 
 		<tr>
 			<th>성별</th>
-			<td><form:radiobutton path="uGender" value="1" label="남자" />
+			<td><form:radiobutton path="uGender" value="1" label="남자"  id="gender"/>
 			<form:radiobutton path="uGender" value="2" label="여자" /> 
 		</tr>
 
@@ -68,7 +67,7 @@
 
 		<tr>
 			<th>관심장르</th>
-			<td><form:radiobutton path="uGenre" value="1" label="로맨스" />
+			<td><form:radiobutton path="uGenre" value="1" label="로맨스"  id="genre" />
 			<form:radiobutton path="uGenre" value="2" label="드라마" /> 
 			<form:radiobutton path="uGenre" value="3" label="공포" /> 
 			<form:radiobutton path="uGenre" value="4" label="추리/스릴러" /> 
@@ -78,16 +77,26 @@
 		<input type="hidden" name="uAgree" value="1" />
 		<tr>
 			<td colspan="2" align="center"><input type="submit" value="회원가입" />
-				<input type="reset" value="이전" /></td>
+				<input type="button" value="이전" id = "back"/></td>
 		</tr>
 	</table>
 </form:form>
 
+<!-- 장르와 성별의 기본 체크 -->
+<script>
+$("#gender").attr("checked","checked")
+$("#genre").attr("checked","checked")
 
+</script>
 
-
-
-
+<!-- 이전 버튼 -->
+<script>
+$(document).ready(function() {
+	$("#back").on("click", function() {
+		location.href = "/umember/umemberAgreement";
+	});
+});
+</script>
 
 <!-- 중복아이디 체크 (절대 지우지마) -->
 <script>
@@ -110,9 +119,9 @@
 	}
 </script>
 
+<!-- 비밀번호 확인 -->
 <script type="text/javascript">
 $(function(){
-	//비밀번호 확인
 		$('#uPasswordConfirm').blur(function(){
 		   if($('#uPassword').val() != $('#uPasswordConfirm').val()){
 		    	if($('#uPasswordConfirm').val()!=''){
@@ -124,6 +133,11 @@ $(function(){
 		})  	   
 	});
 </script>
+
+
+
+
+
 
 
 

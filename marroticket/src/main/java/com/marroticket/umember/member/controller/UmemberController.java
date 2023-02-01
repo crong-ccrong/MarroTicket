@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -92,13 +90,6 @@ public class UmemberController {
 		return "uMemberJoin.umemberJoinForm";
 	}
 
-	// 회원가입 성공 페이지
-	@GetMapping("/umemberJoinSuccess")
-	public String umemberJoinSuccess() {
-		System.out.println("umemberJoinSuccess 호출 완료");
-		return "uMemberJoin.umemberJoinSuccess";
-	}
-
 	// 아이디 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "/uIdCheck", method = RequestMethod.POST)
@@ -116,14 +107,11 @@ public class UmemberController {
 	}
 
 	// 회원가입 등록
-	
 	@PostMapping("/register")
-	public String register( @ModelAttribute("umember") @Validated  UmemberVO umember, BindingResult result,  ModelMap model) throws Exception {
+	public String register( @ModelAttribute("umember") @Validated  UmemberVO umember, BindingResult result) throws Exception {
 		log.info("register호출");
-		model.addAttribute("umember", umember);
-		// 회원 가입 실패시
+		// 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {
-			
 	            List<ObjectError> list = result.getAllErrors();
 	            for(ObjectError error : list){
 	                System.out.println(error);
@@ -131,14 +119,17 @@ public class UmemberController {
 			return "uMemberJoin.umemberJoinForm";
 			}
 	
-		// 회원 가입 성공시
+		// 회원 가입 성공시 성공 페이지로 이동
 		umemberService.register(umember);
 		System.out.println("등록 성공" + umember.toString());
 	
 		return "uMemberJoin.umemberJoinSuccess";
-		
-		
 	}
-	
+	// 회원가입 성공 페이지
+	@GetMapping("/umemberJoinSuccess")
+	public String umemberJoinSuccess() {
+		System.out.println("umemberJoinSuccess 호출 완료");
+		return "uMemberJoin.umemberJoinSuccess";
+	}
 
 	}

@@ -43,9 +43,13 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="/Users/yujeong-won/Spring_STS/marroticket/DevProject8"/>
-			<item value="/Users/yujeong-won/Spring_STS/marroticket/ImageShop"/>
 			<item value="/Users/yujeong-won/Spring_STS/marroticket/springSite"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/SpringBootEdpendencyInjection"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/SpringJDBCBoard"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/springSiteDasi"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/ImageShop"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/marroticket_jw1"/>
+			<item value="/Users/yujeong-won/Spring_STS/marroticket/DevProject8"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

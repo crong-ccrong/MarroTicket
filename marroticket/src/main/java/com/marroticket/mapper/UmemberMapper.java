@@ -1,6 +1,5 @@
 package com.marroticket.mapper;
 
-import javax.validation.Valid;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 
@@ -12,5 +11,5 @@ public interface UmemberMapper {
 	public  int uIdCheck (UmemberVO umember) throws Exception;
 
 	//회원등록
-	public void register(@Valid UmemberVO umember) throws Exception;
+	public void register( UmemberVO umember) throws Exception;
 }

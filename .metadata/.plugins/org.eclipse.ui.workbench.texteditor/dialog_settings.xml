@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="uPasswordConfirm"/>
+		<item key="selection" value="Common"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="common"/>
+			<item value="io"/>
+			<item value="file"/>
+			<item value="upload"/>
+			<item value="commons"/>
+			<item value="sample6"/>
+			<item value="smaple6"/>
+			<item value="반드시"/>
+			<item value="Date"/>
+			<item value="log"/>
+			<item value="spring-boot-starter-security"/>
+			<item value="security"/>
+			<item value="starter"/>
 			<item value="upasswordConfirm"/>
 			<item value="umember"/>
-			<item value=".Id"/>
-			<item value=".id"/>
-			<item value="idfindchoose"/>
-			<item value="@ModelAttribute"/>
-			<item value="model"/>
-			<item value="register"/>
-			<item value="공백"/>
-			<item value="findId"/>
-			<item value="MemberForm"/>
-			<item value="memberId"/>
-			<item value="hibernate"/>
-			<item value="val"/>
-			<item value="start"/>
 		</list>
 		<list key="replacehistory">
+			<item value="tAddress"/>
+			<item value=""/>
 			<item value="uIdCheck"/>
 			<item value="umemberJoinForm"/>
 			<item value="umemberId"/>
