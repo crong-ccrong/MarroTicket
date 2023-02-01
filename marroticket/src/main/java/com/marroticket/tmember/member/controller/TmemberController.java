@@ -2,26 +2,39 @@ package com.marroticket.tmember.member.controller;
 
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.List;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
+
+import lombok.extern.slf4j.Slf4j;
+
 import com.marroticket.tmember.member.domain.TmemberVO;
 
 @Controller
+@MapperScan(basePackages = "com.marroticket.mapper")
 //@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @RequestMapping("/theater")
+@Slf4j
 public class TmemberController {
 
 	@Autowired
@@ -61,19 +74,51 @@ public class TmemberController {
 	}
 
 	// 극단 이용약관 페이지
-	@GetMapping("/tMemberAgreement")
-	public String tMemberAgreement() {
-		System.out.println("tMemberAgreement 호출 완료");
-		return "tMemberJoin.tMemberAgreement";
+	@GetMapping("/tmemberAgreement")
+	public String tmemberAgreement() {
+		System.out.println("tmemberAgreement 호출 완료");
+		return "tMemberJoin.tmemberAgreement";
 	}
 
 	// 극단 회원 가입 페이지
-	@GetMapping("/tMemberJoinForm")
-	public String tMemberJoinForm() {
-		System.out.println("tMemberJoinForm 호출 완료");
-		return "tMemberJoin.tMemberJoinForm";
+	@GetMapping("/tmemberJoinForm")
+	public String tmemberJoinForm(@ModelAttribute("tmember") TmemberVO tmember) {
+		System.out.println("tmemberJoinForm 호출 완료");
+		return "tMemberJoin.tmemberJoinForm";
 	}
 
+	// 극단 회원 가입
+	@PostMapping("/signUp")
+	public String signUp(@ModelAttribute("tmember") @Validated TmemberVO tmember, BindingResult result,
+			@RequestParam(value = "file", required = false) MultipartFile file) throws Exception {
+		log.info("signUp 호출");
+
+		// 극단 회원 가입 실패시 리스트로 나열
+		if (result.hasErrors()) {
+			List<ObjectError> list = result.getAllErrors();
+			for (ObjectError error : list) {
+				System.out.println(error);
+			}
+			return "tMemberJoin.tmemberJoinForm";
+		}
+
+		// 비밀번호 암호화
+		String inputPassword = tmember.getTPassword();
+		tmember.setTPassword(passwordEncoder.encode(inputPassword));
+		
+		// 가입 성공시 등록 성공 페이지로 이동
+		tmemberService.register(tmember, file);
+		System.out.println("등록성공" + tmember.toString());
+		return "tMemberJoin.tmemberJoinSuccess";
+	}
+
+	// 극단 회원가입 성공 페이지
+	@GetMapping("/tmemberJoinSuccess")
+	public String tmemberJoinSuccess() {
+		System.out.println("tmemberJoinSuccess호출 완료");
+		return "tMemberJoin.tmemberJoinSuccess";
+	}
+	
 	// 극단 공지사항, faq
 
 	// 극단회원 FAQ
@@ -129,7 +174,7 @@ public class TmemberController {
 		// 임시비밀번호 생성(15자리)
 		String temporaryPassword = getRamdomPassword(15);
 		tmember.setTPassword(temporaryPassword);
-		
+
 		// 비밀번호 암호화
 		tmember.setTPassword(passwordEncoder.encode(temporaryPassword));
 

@@ -8,7 +8,7 @@
 </sec:authorize>
 <!-- 로그인을 한(인증된 사용자인) 경우 -->
 <sec:authorize access="isAuthenticated()">
-	<div style="font-size : 12px; text-align:right"> <a href="#" onclick="document.getElementById('logout').submit();">로그아웃</a> | <a href="/umember/umembermypage">마이페이지</a> | <a href="/umember/umemberReserveInfo">예매확인/취소</a> | <a href="/join">회원가입</a></div>
+	<div style="font-size : 12px; text-align:right"> <a href="#" onclick="document.getElementById('logout').submit();">로그아웃</a> | <a href="/umember/umembermypage">마이페이지</a> | <a href="/umember/umemberReserveInfo">예매확인/취소</a></div>
 </sec:authorize>
 <form id="logout" action="/memberlogout" method="POST">
    <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>

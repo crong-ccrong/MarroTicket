@@ -1,36 +1,73 @@
 package com.marroticket.tmember.member.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
-import com.marroticket.tmember.member.domain.TmemberAuth;
-import com.marroticket.umember.member.domain.UmemberVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.marroticket.mapper.TmemberMapper;
+import com.marroticket.tmember.member.domain.TmemberAuth;
 import com.marroticket.tmember.member.domain.TmemberVO;
 
 @Service
 public class TmemberServiceImpl implements TmemberService {
 	@Autowired
-	private TmemberMapper mapper;
+	private TmemberMapper tmembermapper;
 
 	@Override
 	public String findId(TmemberVO tmember) throws Exception {
-		return mapper.findId(tmember);
+		return tmembermapper.findId(tmember);
 	}
 
 	@Override
 	public int passwordUpdate(TmemberVO tmember) throws Exception {
-		return mapper.updatePassword(tmember);
+		return tmembermapper.updatePassword(tmember);
 	}
-	
 
-	//회원가입
-	public void register(TmemberVO member) throws Exception{
-		mapper.create(member);
+	// 아이디 중복체크
+	@Override
+	public int tIdCheck(TmemberVO tmember) throws Exception {
+		return tmembermapper.tIdCheck(tmember);
+	}
+
+	//
+	@Value("${file.dir}") // 맥용으로 설정했으니 윈도우일땐 프로퍼티에서 설정 바꾸기
+	private String uploadDir;
+
+	//회원 등록
+	@Override
+	public void register(TmemberVO tmember, MultipartFile file) throws Exception {
+		System.out.println(uploadDir);
+		System.out.println(File.separator);
+		System.out.println(file.getOriginalFilename());
+
+		Path upload = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
+
+		String Url = uploadDir;
+		tmember.setTFileUrl(Url);
+		tmember.setTBusinessRegisterationImage(file.getOriginalFilename());
+		tmember.setTFileName(file.getName());
+
+		try {
+			Files.copy(file.getInputStream(), upload, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		//auth
+		//회원등록 
+		tmembermapper.create(tmember);
+		
+		// auth
 		TmemberAuth auth = new TmemberAuth();
 		auth.setTmemberAuth("ROLE_TMEMBER");
-		mapper.createAuth(auth);
-	};
+		tmembermapper.createAuth(auth);
+	}
 }

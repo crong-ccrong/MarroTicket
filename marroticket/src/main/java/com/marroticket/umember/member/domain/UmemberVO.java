@@ -39,7 +39,6 @@ public class UmemberVO {
 	
 	@NotBlank(message = "생일은 필수 입력 값입니다.")
 	@Pattern(regexp = "(19|20)\\d{2}\\-((10|11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 생년월일 입력해주세요.")
-	@Past
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String uBirthday; //생년월일
 	private String uGender; //성별

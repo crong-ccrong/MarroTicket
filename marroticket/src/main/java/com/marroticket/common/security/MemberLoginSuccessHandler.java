@@ -59,6 +59,9 @@ public class MemberLoginSuccessHandler implements AuthenticationSuccessHandler {
 				roleNames.add(authority.getAuthority());
 			});
 
+			System.out.println(roleNames.isEmpty());
+			System.out.println(roleNames.toString());
+
 			if(roleNames.contains("ROLE_ADMIN")) {
 				targetUrl = "/admin";
 			}

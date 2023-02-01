@@ -31,10 +31,10 @@ public class MemberDetailsService implements UserDetailsService {
 		UmemberVO umember = umapper.read(userId);
 		if (umember == null) {
 			TmemberVO tmember = tmapper.readByUserId(userId);
-			log.info("queried by member mapper: " + umember);
+			log.info("queried by umember mapper: " + tmember);
 			return tmember == null ? null : new TmemberCustom(tmember);
 		} else {
-			log.info("queried by member mapper: " + umember);
+			log.info("queried by tmember mapper: " + umember);
 			return umember == null ? null : new UmemberCustom(umember);
 		}
 	}

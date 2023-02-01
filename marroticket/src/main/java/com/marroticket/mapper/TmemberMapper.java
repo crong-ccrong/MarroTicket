@@ -15,9 +15,11 @@ public interface TmemberMapper {
 	public TmemberVO readByUserId(String userId);
 	
 
-	//회원가입
-	//1. 회원 create
+	//회원가입	
+	//아이디 중복체크
+	public  int tIdCheck (TmemberVO tmember) throws Exception;
+	//회원 create
 	public void create(TmemberVO member);
-	//1. 회원 auth create
+	//회원 auth create
 	public void createAuth(TmemberAuth auth);
 }

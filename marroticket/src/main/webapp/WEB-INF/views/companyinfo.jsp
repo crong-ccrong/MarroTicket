@@ -1,117 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<div id="contents" class="summary">
-	<div class="inner">
-		<div class="cont-tit">
-			<h2>개요</h2>
-			<p>
-				깨끗하고 편리한 세상을 만드는 <span>Electrification Linchpin</span>
-			</p>
-			<span class="margin"></span>
-		</div>
+    pageEncoding="UTF-8"%>
+    <!-- container -->
+    <div>
+		 <img src="/images/marroInfoLogo.png" alt="">
+		 <p>고객을 위한 최고의</p>
+		 <p>티켓예매 서비스를 제공하기 위해</p>
+		 <p>앞장서는 사람들이 모인 곳</p>
+    </div>
 
-		<div class="section no-mar">
-			<p class="overview-bg battery-bg-1">
-				<span class="quote-1"><img
-					src="/images/company/txt_quote_1.png" alt="“"></span> 끊임없는 기술 혁신과
-				글로벌 파트너십을 기반으로 신에너지 분야에서<br> Leadership을 확보해가고 있습니다. <span
-					class="quote-2"><img src="/images/company/txt_quote_2.png"
-					alt="”"></span>
-			</p>
-		</div>
-		<div class="section mt60">
-			<div class="t-b fir">
-				<div class="t-c tal">
-					<img src="/images/company/over_13.png" alt="">
-				</div>
-				<div class="t-c tal">
-					<h4 class="big">기술 혁신으로 미래 에너지를 선도합니다.</h4>
-					<p>
-						SK온은 전기차의 시장 성장과 기술적 트렌드 변화에 맞춰 혁신적인 배터리 기술을 개발해왔습니다. <br>세계에서
-						가장 앞서가는 High-Nickel 기술 선두주자로서 고에너지밀도 전기차 배터리 개발 및 <br>NCM622
-						(2014년), NCM811 (2018년), NCM9<span class="font-tp">½½</span>배터리를<br>양산하고
-						있습니다.(2022년)<br>
-					</p>
-				</div>
-			</div>
-			<div class="t-b">
-				<div class="t-c tar">
-					<h4 class="big">글로벌 자동차 기업들과 함께 전기차 시대를 열어갑니다.</h4>
-					<p>
-						전기차 시대를 선도하는 글로벌 자동차 업체들과 공급 계약을 체결하고 <br>다양한 분야에서 협력하며 전기차
-						배터리 사업을 확장하고 있습니다. <br>우수한 기술력과 신뢰를 바탕으로 유수의 업체들과 파트너십을 이어가고
-						있습니다.
-					</p>
-				</div>
-				<div class="t-c tar">
-					<img src="/images/company/over_2.png" alt="">
-				</div>
-			</div>
+            <div>
+				<table>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+				</table>
+            </div>
 
-			<div class="t-b">
-				<div class="t-c tal">
-					<img src="/images/company/over_3.png" alt="">
-				</div>
-				<div class="t-c tal">
-					<h4 class="big">환경 개선에 기여하는 기술과 제품으로 사회적 가치를 창출합니다.</h4>
-					<p>
-						사회적 책임을 이행하기 위해 환경을 고려한 배터리 기술 개발에 많은 노력을 기울이고 있습니다. <br>고효율,
-						고용량 리튬이온 배터리를 개발하고 글로벌 자동차 업체에 공급함으로써 <br>CO<sub>2</sub> 배출로
-						인해 발생하는 대기 오염을 최소화하고 있습니다.
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="section">
-			<table class="summ-tbl">
-				<caption>SK온의 기본정보(표)입니다. 이 표는 회사명, 설립연도, 본사주소에 대한 정보를 확인할
-					수 있습니다.</caption>
-				<tbody>
-					<tr>
-						<th scope="col">회사명<span class="line"></span></th>
-						<th scope="col">설립연도<span class="line"></span></th>
-						<th scope="col">본사주소<span class="line"></span></th>
-					</tr>
-					<tr class="line-b">
-						<td><span class="c-red">SK온</span></td>
-						<td>2021년 10월 01일</td>
-						<td>서울특별시 종로구 종로 26</td>
-					</tr>
-				</tbody>
-			</table>
-			<table class="summ-tbl2">
-				<caption>SK온의 기본정보(표)입니다. 임직원현황, 매출액, 영업이익에 대한 정보를 확인할 수
-					있습니다.</caption>
-				<!-- 21년도 접근성 -->
-				<tbody>
-					<tr class="bg-gray">
-						<th scope="col">임직원현황<span class="line"></span></th>
-						<th scope="col">매출액<span class="line"></span></th>
-						<th scope="col">영업이익<span class="line"></span></th>
-					</tr>
-					<tr class="line-b bg-gray">
-						<td class="tac">
-							<div class="ic-1">
-								<span class="c-red"> 1,512</span>명
-							</div>
-							<p>2021년 4분기 말 기준</p>
-						</td>
-						<td class="tac">
-							<div class="ic-2">
-								<span class="c-red">1조 2,623억</span>원
-							</div>
-							<p>2022년 1분기 말 기준(*)</p> <!-- <p>10/1(분할설립일)~12/31 기준</p> -->
-						</td>
-						<td class="tac">
-							<div class="ic-3">
-								<span class="c-red">△2,733억</span>원
-							</div>
-							<p>2022년 1분기 말 기준(*)</p>
-						</td>
-					</tr>
+            <div class="ticketlink_area">
+                <div class="layout">
+                    <strong class="logo">
+                        <span class="blind">Ticketlink</span>
+                    </strong>
+                    <a href="http://www.ticketlink.co.kr" target="_blank" class="go_toast">WWW.TICKETLINK.CO.KR</a>
+                </div>
+            </div>
+            <div class="notice">
+                <div class="layout">
+                    <h3 class="htit">NOTICE</h3>
+                    <div class="notice_box">
+                        <ul class="notice_lst no_data">
+                            <li>
+                                <p>등록된 게시글이 없습니다.</p>
+                            </li>
+                        </ul>
+                        <p><span class="dot"></span>PDF파일을 보시려면 <strong class="adobe_reader">Adobe Reader</strong>가 필요합니다.</p>
+                        <!--a href="/pixelcube/ir/irNotice.nhn" class="btn_more"><span class="blind">공지사항</span> 더보기</a-->
+                    </div>
+                </div>
+            </div>
+            <div class="careers">
+                <div class="layout">
+                    <div class="careers_area">
+                        <h2 class="logo">
+                            <span class="blind">NHN LINK</span>
+                        </h2>
+                        <span class="bar"></span>
+                        <p class="desc">나 스스로 <span class="text_primary">행복한 구성원</span>이 <br class="media_mobile">되도록 <br class="media_tablet">의견을 <br
+                                class="media_pc">서로 나누고<br class="media_mobile"> 조율할 수 있는곳,<br class="media_tablet media_mobile"> 이제 만나보세요</p>
+                        <a href="http://recruit.nhn.com/ent/index" class="btn_full media_pc" target="_blank">채용공고</a>
+                        <a href="javascript:alert('채용확인 및 지원은 PC에서만 가능합니다')" class="btn_full media_mobile">채용공고</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="layout">
+                    <h3 class="blind">Contact</h3>
+                    <div class="ent_info">
+                        <dl>
+                            <dt>NHN LINK</dt>
+                            <dd>경기도 성남시 분당구 대왕판교로 645번길 16 NHN 플레이뮤지엄</dd>
+                            <dd class="en">NHN Play Museum, 16, Daewangpangyo-ro 645beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do</dd>
+                        </dl>
+                        <ul>
+                            <li><strong>TEL</strong>1588-7890</li>
+                        </ul>
+                    </div>
+                    <div class="ent_info help_desk">
+                        <dl>
+                            <dt><strong>고객센터</strong></dt>
+                            <dd>예매상담 : 1588-7890, 문의하기 : 1588-4567<br>운영시간 : 10:00~19:00(월~일)</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
 
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
+            <div class="map" id="mapContainer">
+                <img src="//tketlink.dn.toastoven.net/markup_resources/2022041802/renewal/pcweb/img/company/@temp_map.jpg" alt="티켓링크 지도">
+            </div>
+
+        </div>
+    </div>
+    <!-- //container -->
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="layout">
+            <div class="f_left">
+                <div class="f_global">
+                    <span class="line">&nbsp;</span>
+                    <a href="javascript:void(0);" onclick="globalMenu();">FAMILY SITE<span class="arr_dn"><span class="blind">레이어 열기</span></span></a>
+                    <ul>
+                        <li><a href="http://www.nhnent.com" target="_blank">NHN</a></li>
+                    </ul>
+                </div>
+                <div class="copyright"><span class="tx"><span class="bul_txt">Copyright</span> <span class="bul">©</span> NHN LINK Corporation.</span><span
+                        class="tx"> All rights reserved.</span></div>
+                <p class="f_logo">
+                    <a href="http://www.hangame.com" class="hangame" target="_blank">HANGAME</a><span class="line">&nbsp;</span>
+                    <a href="http://www.nhnent.com" class="nhnent" target="_blank">NHN</a>
+                </p>
+            </div>
+        </div>
+    </div>

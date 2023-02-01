@@ -1,9 +1,10 @@
 select * from umember;
-select * from umember_auth order by u_number;
+select * from tmember_auth order by t_number;
 
 update umember_auth set umember_auth='ROLE_ADMIN' where u_number=1;
 
 commit;
+
 
 --삭제는 다음 순서에 따르면 됨
 drop table payment purge;
@@ -75,6 +76,8 @@ t_bank VARCHAR2(50) NOT NULL,--거래 은행
 t_bankNumber VARCHAR2(50) NOT NULL,--계좌번호
 t_bankOwner VARCHAR2(50) NOT NULL,--예금주
 t_businessRegistrationImage VARCHAR2(100) NOT NULL,--사업자등록증 사본
+t_fileurl VARCHAR2(100) NOT NULL ,
+t_filename VARCHAR2(100) NOT NULL,
 t_auth  VARCHAR2(10) NOT NULL,--극단 회원 상태(가입승인예정/가입승인완료/계약종료
 t_agree VARCHAR2(1) NOT NULL--약관 동의여부
 );
