@@ -7,16 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import lombok.extern.java.Log;
 
-@Log
 public class MemberAccessDeniedHandler implements AccessDeniedHandler {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
-		log.info("Access Denied Handler");
-		log.info("Redirect....");
+		System.out.println("접근권한이 없는 request의 접근");
 		response.sendRedirect("/error/accessError");
 	}
 

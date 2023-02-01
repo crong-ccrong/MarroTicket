@@ -24,21 +24,19 @@ public class HomeController {
 	}
 	
 	//회원 관련 
-
-	// 로그인 유형 선택
 	@GetMapping("/loginChoose")
 	public String login() {
 		return "loginChoose";
 	}
 	// 아이디 찾기 유형 선택
-	@GetMapping("/idFindChoose")
+	@GetMapping("/memberFindId")
 	public String idFindChoose() {
-		return "idFindChoose";
+		return "memberFind.Id";
 	}
 	// 비밀번호 찾기 유형 선택
-	@GetMapping("/passwordFindChoose")
+	@GetMapping("/memberFindPassword")
 	public String passwordFindChoose() {
-		return "passwordFindChoose";
+		return "memberFind.Password";
 	}
 
 	// 일반회원 아이디찾기

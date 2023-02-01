@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.member.domain.TmemberVO;
 
 @Controller
+//@PreAuthorize("hasRole('ROLE_MEMBER')")
 @RequestMapping("/theater")
 public class TmemberController {
 

@@ -5,16 +5,24 @@ import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.member.service.UmemberService;
@@ -29,6 +37,8 @@ public class UmemberController {
 	private UmemberService umemberService;
 	@Autowired
 	private EmailService emailService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 // 아이디 찾기
 	@PostMapping("/findId")
@@ -52,7 +62,9 @@ public class UmemberController {
 
 		// 임시비밀번호 생성(15자리)
 		String temporaryPassword = getRamdomPassword(15);
-		umember.setUPassword(temporaryPassword);
+		
+		// 비밀번호 암호화
+		umember.setUPassword(passwordEncoder.encode(temporaryPassword));
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = umemberService.passwordUpdate(umember);
@@ -66,6 +78,7 @@ public class UmemberController {
 		}
 		return entity;
 	}
+
 	// 마이페이지
 	/* 1) 일반 회원 정보 */
 	@GetMapping("/umembermypage")
@@ -94,13 +107,61 @@ public class UmemberController {
 
 	// 일반 회원가입 페이지
 	@GetMapping("/umemberJoinForm")
-	public String umemberJoinForm() {
+	public String umemberJoinForm(@ModelAttribute("umember") UmemberVO umember) {
 		System.out.println("umemberJoinForm 호출 완료");
 		return "uMemberJoin.umemberJoinForm";
 	}
-	
+
+	// 아이디 중복 체크
+	@ResponseBody
+	@PostMapping("/uIdCheck")
+	public ResponseEntity<String> uIdCheck(UmemberVO umember) throws Exception {
+		System.out.println("중복 아이디 체크 컨트롤러 불러옴\numember : " + umember.toString());
+		int result = umemberService.uIdCheck(umember);
+		ResponseEntity<String> entity = null;
+		System.out.println(result);
+		if (result == 1) {
+			entity = new ResponseEntity<>("overlap", HttpStatus.OK);
+		} else {
+			entity = new ResponseEntity<>("no overlap", HttpStatus.OK);
+		}
+		return entity;
+	}
+
+	// 회원가입 등록
+	@PostMapping("/register")
+	public String register(@ModelAttribute("umember") @Validated UmemberVO umember, BindingResult result)
+			throws Exception {
+		log.info("register호출");
+		// 회원 가입 실패시 리스트로 나열
+		if (result.hasErrors()) {
+			List<ObjectError> list = result.getAllErrors();
+			for (ObjectError error : list) {
+				System.out.println(error);
+			}
+			return "uMemberJoin.umemberJoinForm";
+		}
+
+		// 비밀번호 암호화
+		String inputPassword = umember.getUPassword();
+		umember.setUPassword(passwordEncoder.encode(inputPassword));
+		
+		// 등록 service 호출
+		umemberService.register(umember);
+		System.out.println("등록 성공" + umember.toString());
+
+		return "uMemberJoin.umemberJoinSuccess";
+	}
+
+	// 회원가입 성공 페이지
+	@GetMapping("/umemberJoinSuccess")
+	public String umemberJoinSuccess() {
+		System.out.println("umemberJoinSuccess 호출 완료");
+		return "uMemberJoin.umemberJoinSuccess";
+	}
+
 	// 랜덤한 임시비밀번호 생성
-	public String getRamdomPassword(int size) { 
+	public String getRamdomPassword(int size) {
 		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
 				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a',
 				'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -120,7 +181,7 @@ public class UmemberController {
 
 		return sb.toString();
 	}
-	
+
 	// 임시비밀번호 이메일 발송
 	public void temporaryPasswordSendEmail(String temporaryPassword, String uEmail) throws Exception {
 		String title = "마로티켓입니다. 임시비밀번호를 확인해주세요"; // 이메일 제목
@@ -135,7 +196,6 @@ public class UmemberController {
 		// console 확인
 		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
-
 
 	// 일반 사용자 아이디 중복 체크
 

@@ -9,8 +9,8 @@ drop table tmember purge;
 
 --순서에 상관 없는 테이블들
 drop table tfaq purge;
-drop table notice purge;
 drop table ufaq purge;
+drop table notice purge;
 
 --시퀀스 삭제
 drop sequence notice_seq;
@@ -46,8 +46,8 @@ increment by 1;
 
 --일반 회원 권한 테이블
 CREATE TABLE umember_auth (
-u_number NUMBER(5) NOT NULL,
-u_auth VARCHAR2(50) NOT NULL,
+u_number NUMBER(38) NOT NULL,
+umember_auth VARCHAR2(50) NOT NULL,
 FOREIGN KEY ( u_number ) REFERENCES umember ( u_number )
 );
 
@@ -79,8 +79,8 @@ increment by 1;
 
 --극단 회원 권한 테이블
 CREATE TABLE tmember_auth (
-t_number NUMBER(5) NOT NULL,
-t_auth VARCHAR2(50) NOT NULL,
+t_number NUMBER(38) NOT NULL,
+tmember_auth VARCHAR2(50) NOT NULL,
 FOREIGN KEY ( t_number ) REFERENCES tmember ( t_number )
 );
 
@@ -375,3 +375,12 @@ primary key(N_number)
 );
 --공지사항 시퀀스 생성
 CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1;
+
+--쿠키 저장 테이블
+CREATE TABLE persistent_logins (
+username VARCHAR2(64) NOT NULL,
+series VARCHAR2(64) NOT NULL,
+token VARCHAR2(64) NOT NULL,
+last_used DATE NOT NULL,
+PRIMARY KEY (series)
+);

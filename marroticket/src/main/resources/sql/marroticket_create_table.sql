@@ -375,3 +375,12 @@ primary key(N_number)
 );
 --공지사항 시퀀스 생성
 CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1;
+
+--쿠키 저장 테이블
+CREATE TABLE persistent_logins (
+username VARCHAR2(64) NOT NULL,
+series VARCHAR2(64) NOT NULL,
+token VARCHAR2(64) NOT NULL,
+last_used DATE NOT NULL,
+PRIMARY KEY (series)
+);

@@ -1,34 +1,25 @@
 package com.marroticket.common.login.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/auth")
 public class LoginController { // 로그인 관련 controller
 	// 일반회원로그인
-	@GetMapping("/umemberlogin")
-	public String umemberlogin() {
-		System.out.println("umemberLogin logincontroller 호출 완료");
-		return "umemberAuth.login";
-	}
-	//일반회원로그아웃
-	@GetMapping("/umemberlogout")
-	public String umemberlogout() {
-		System.out.println("umemberLogout logoutcontroller 호출 완료");
-		return "umemberAuth.logout";
-	}
-	// 극단회원로그인
-	@GetMapping("/tmemberlogin")
-	public String tmemberlogin() {
-		System.out.println("tMemberLogin logincontroller 호출 완료");
-		return "tmemberAuth.login";
-	}
-	// 극단회원로그인
-	@GetMapping("/tmemberlogout")
-	public String tmemberlogout() {
-		System.out.println("tMemberLogout logoutcontroller 호출 완료");
-		return "tmemberAuth.logout";
+	@RequestMapping("/memberlogin")
+	public String loginForm(String error, String logout, Model model) {
+		if (error != null) {
+			System.out.println("com.marroticket.common.login.controller.LoginController : /login : 에러");
+			model.addAttribute("error", "로그인 에러!!!");
+		}
+		if (logout != null) {
+			System.out.println("com.marroticket.common.login.controller.LoginController : /login : 로그아웃");
+			//model.addAttribute("logout", "로그아웃!!!");
+			return "redirect:/";
+		}
+		return "log.in";
 	}
 }
