@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.marroticket.common.email.domain.EmailVO;
@@ -85,6 +86,21 @@ public class TmemberController {
 	public String tmemberJoinForm(@ModelAttribute("tmember") TmemberVO tmember) {
 		System.out.println("tmemberJoinForm 호출 완료");
 		return "tMemberJoin.tmemberJoinForm";
+	}
+	
+	//아이디 중복체크
+	@PostMapping("/tIdCheck")
+	public ResponseEntity<String> tIdCheck(TmemberVO tmember) throws Exception{
+		System.out.println("중복 아이디 체크 컨트롤러 불러옴\numember : " + tmember.toString());
+		int result = tmemberService.tIdCheck(tmember);
+		ResponseEntity<String> entity = null;
+		System.out.println(result);
+		if (result == 1) {
+			entity = new ResponseEntity<>("overlap", HttpStatus.OK);
+		} else {
+			entity = new ResponseEntity<>("no overlap", HttpStatus.OK);
+		}
+		return entity;
 	}
 
 	// 극단 회원 가입

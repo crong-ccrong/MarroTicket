@@ -154,14 +154,20 @@ $(document).ready(function() {
 				"tId" : $("#tId").val()
 			},
 			success : function(data) {
-				if (data == 1) {
+				if (data == 'overlap') {
 					alert("중복된 아이디 입니다.");
 				} else {
 					alert("사용가능한 아이디입니다.");
 				}
 			}
 		});
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+		    xhr.setRequestHeader(header, token);
+		});
 	}
+	
 </script>
 
 <!-- 비밀번호 확인 -->
