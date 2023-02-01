@@ -13,4 +13,7 @@ public interface UmemberService {
 	// 회원 등록
 	public void register( UmemberVO umember) throws Exception;
 
+	
+	
+
 }

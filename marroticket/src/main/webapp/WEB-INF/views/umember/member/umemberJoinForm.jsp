@@ -74,7 +74,7 @@
 			<form:radiobutton path="uGenre" value="5" label="판타지" /> 
 			<form:radiobutton path="uGenre" value="6" label="시대/역사" /> </td>
 		</tr>
-		<input type="hidden" name="uAgree" value="1" />
+		<form:hidden path="uAgree" value="1" />
 		<tr>
 			<td colspan="2" align="center"><input type="submit" value="회원가입" />
 				<input type="button" value="이전" id = "back"/></td>

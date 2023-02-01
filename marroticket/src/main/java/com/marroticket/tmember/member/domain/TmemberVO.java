@@ -62,6 +62,7 @@ public class TmemberVO {
    private String tBankNumber; // 계좌 번호
    private String tBankOwner; // 예금주
    
+   @NotBlank(message = "사업자 등록증을 첨부하세요.")
    private String tBusinessRegisterationImage; // 사업자등록증  오리지널
    private String tFileUrl; // 파일경로
    private String tFileName; //파일 이름

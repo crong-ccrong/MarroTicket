@@ -2,11 +2,14 @@ package com.marroticket.umember.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -132,4 +135,19 @@ public class UmemberController {
 		return "uMemberJoin.umemberJoinSuccess";
 	}
 
+//	//회원 정보 보기
+//	@RequestMapping(value = "/info", method = RequestMethod.GET)
+//	public void infoGET(HttpSession session, Model model) throws Exception{
+//
+//		//세션 객체 안에 있는 ID정보 저장
+//		String id = (String) session.getAttribute("id");
+//		log.info("회원정보보기 GET의 아이디 "+id);
+//
+//		//서비스안의 회원정보보기 메서드 호출
+//		UmemberVO umember = umemberService.readMember(id);
+//
+//		//정보저장 후 페이지 이동
+//		model.addAttribute("umember", umember);
+//		log.info("회원정보보기 GET의 VO "+ umember);
+//	}
 	}

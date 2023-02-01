@@ -102,7 +102,8 @@
 	<tr>
 		<th>사업자 등록증</th>
 		<td>
-			<input type="file" name="file" />
+			<input type="file" name="file" /><font color="red"><form:errors
+							path="tBusinessRegisterationImage" /></font>
 			
 		</td>
 	</tr>
