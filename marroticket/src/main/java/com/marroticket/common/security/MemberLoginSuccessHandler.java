@@ -58,7 +58,10 @@ public class MemberLoginSuccessHandler implements AuthenticationSuccessHandler {
 			auth.getAuthorities().forEach(authority->{
 				roleNames.add(authority.getAuthority());
 			});
-			
+
+			if(roleNames.contains("ROLE_ADMIN")) {
+				targetUrl = "/admin";
+			}
 			if(roleNames.contains("ROLE_UMEMBER")) {
 				targetUrl = "/";
 			}

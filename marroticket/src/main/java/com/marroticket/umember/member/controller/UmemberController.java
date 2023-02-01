@@ -2,6 +2,7 @@ package com.marroticket.umember.member.controller;
 
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
+import com.marroticket.common.security.MemberDetailsService;
 
 import java.security.SecureRandom;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,9 +45,12 @@ public class UmemberController {
 // 아이디 찾기
 	@PostMapping("/findId")
 	public ResponseEntity<String> findId(@RequestBody UmemberVO umember) throws Exception {
+		System.out.println("아이디 찾기 메서드 호출");
 
 		// 값이 정상적으로 입력됐을 때, db조회
 		String uId = umemberService.findId(umember);
+		
+		System.out.println("아이디 찾기 : "+umember);
 
 		// 응답
 		if (uId != null && uId.length() > 0) {
@@ -65,6 +70,8 @@ public class UmemberController {
 		
 		// 비밀번호 암호화
 		umember.setUPassword(passwordEncoder.encode(temporaryPassword));
+		
+		System.out.println("비밀번호 찾기 : "+umember);
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = umemberService.passwordUpdate(umember);

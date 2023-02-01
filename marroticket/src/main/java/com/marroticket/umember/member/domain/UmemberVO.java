@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -37,7 +38,8 @@ public class UmemberVO {
 	private String uPhoneNumber; //휴대폰	번호
 	
 	@NotBlank(message = "생일은 필수 입력 값입니다.")
-	@Pattern(regexp = "(19|20)\\d{2}\\-((11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 생년월일 입력해주세요.")
+	@Pattern(regexp = "(19|20)\\d{2}\\-((10|11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 생년월일 입력해주세요.")
+	@Past
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String uBirthday; //생년월일
 	private String uGender; //성별

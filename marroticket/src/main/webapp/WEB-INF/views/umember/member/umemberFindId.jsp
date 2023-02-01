@@ -55,6 +55,14 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	// ajax 통신을 위한 csrf 설정
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+	    xhr.setRequestHeader(header, token);
+	});
+
 });	
 </script>
 <p>아이디 찾기</p>

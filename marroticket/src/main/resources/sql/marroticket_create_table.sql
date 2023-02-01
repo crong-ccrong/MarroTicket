@@ -1,3 +1,10 @@
+select * from umember;
+select * from umember_auth order by u_number;
+
+update umember_auth set umember_auth='ROLE_ADMIN' where u_number=1;
+
+commit;
+
 --삭제는 다음 순서에 따르면 됨
 drop table payment purge;
 drop table reservation purge;

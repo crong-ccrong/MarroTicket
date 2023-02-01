@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.member.domain.TmemberVO;
 
 @Controller
-//@PreAuthorize("hasRole('ROLE_MEMBER')")
+//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @RequestMapping("/theater")
 public class TmemberController {
 
@@ -27,6 +28,8 @@ public class TmemberController {
 	TmemberService tmemberService;
 	@Autowired
 	EmailService emailService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("")
 	public String home() {
@@ -126,6 +129,9 @@ public class TmemberController {
 		// 임시비밀번호 생성(15자리)
 		String temporaryPassword = getRamdomPassword(15);
 		tmember.setTPassword(temporaryPassword);
+		
+		// 비밀번호 암호화
+		tmember.setTPassword(passwordEncoder.encode(temporaryPassword));
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = tmemberService.passwordUpdate(tmember);

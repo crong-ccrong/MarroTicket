@@ -42,7 +42,7 @@ public class HomeController {
 	// 일반회원 아이디찾기
 	@GetMapping("/umemberFindId")
 	public String userFindId() {
-		System.out.println("logincontroller 호출 완료");
+		System.out.println("umemberFindId 메세드 호출");
 		return "umemberFind.Id";
 	}
 	// 일반회원 비밀번호찾기

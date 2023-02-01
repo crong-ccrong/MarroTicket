@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.marroticket.umember.play.domain.PlayVO;
 import com.marroticket.umember.play.service.PlayService;
 
-@PreAuthorize("hasRole('ROLE_UMEMBER')")
+//@PreAuthorize("hasRole('ROLE_UMEMBER')")
 @RequestMapping("/play")
 @Controller
 @MapperScan(basePackages = "com.marroticket.mapper")

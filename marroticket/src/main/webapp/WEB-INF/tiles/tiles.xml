@@ -43,6 +43,8 @@
 	
 	
 	
+	
+	
 	<!-- login_template를 따르는 jsp페이지 -->
 	<!-- 로그인 페이지 -->
 	<definition name="login-template" template="/WEB-INF/tiles/layouts/default/login_template.jsp">

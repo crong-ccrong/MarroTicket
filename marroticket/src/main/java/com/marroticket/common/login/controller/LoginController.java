@@ -13,7 +13,7 @@ public class LoginController { // 로그인 관련 controller
 	public String loginForm(String error, String logout, Model model) {
 		if (error != null) {
 			System.out.println("com.marroticket.common.login.controller.LoginController : /login : 에러");
-			model.addAttribute("error", "로그인 에러!!!");
+			model.addAttribute("error", "error");
 		}
 		if (logout != null) {
 			System.out.println("com.marroticket.common.login.controller.LoginController : /login : 로그아웃");

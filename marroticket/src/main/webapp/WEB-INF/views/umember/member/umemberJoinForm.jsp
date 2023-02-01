@@ -41,7 +41,8 @@
 		<tr>
 			<th>생년월일</th>
 			<td>
-				<form:input path="uBirthday"  placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /><font color="red"> <form:errors path="uBirthday" /></font>
+				<input type='date' name="uBirthday" />
+				<!-- form:input path="uBirthday"  placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /--><font color="red"> <form:errors path="uBirthday" /></font>
 				</td>
 		</tr>
 

@@ -1,4 +1,4 @@
-package com.marroticket.common;
+package com.marroticket.common.controller;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.stereotype.Controller;
@@ -9,12 +9,7 @@ import lombok.extern.java.Log;
 
 @Log
 @Controller
-public class CommonController {
-	/*
-	 * @RequestMapping(value = "/error/errorCommon", method = RequestMethod.GET)
-	 * public void handleCommonError() { log.info("errorCommon"); }
-	 */
-	
+public class CommonController {	
 	@GetMapping(value = "/error/accessError")
 	public void accessDenied(Authentication auth, Model model) {
 		log.info("access Denied : " + auth);
