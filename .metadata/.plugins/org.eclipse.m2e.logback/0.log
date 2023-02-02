@@ -20845,3 +20845,5 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact stax:stax-api
 2023-02-01 17:24:31,959 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-02-01 17:24:31,959 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-02-01 17:24:31,959 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/yujeong-won/Spring_STS/marroticket/marroticket/src/test/resources
+2023-02-01 17:34:20,297 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-02-01 17:34:25,371 [Worker-10: Launching marroticket - MarroticketApplication] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
