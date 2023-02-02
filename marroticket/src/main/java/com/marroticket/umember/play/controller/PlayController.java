@@ -63,7 +63,8 @@ public class PlayController {
 	}
 	// 연극 공연 정보 상세 페이지
 	@GetMapping("/playDetail")
-	public String playDetail() {
+	public String playDetail(Model model) {
+		model.addAttribute("test", "test");
 		return "playDetail";
 	}
 }

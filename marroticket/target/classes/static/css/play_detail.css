@@ -1,17 +1,47 @@
 @charset "UTF-8";
 /* 전체 css */
-* {
-	box-sizing: border-box;
-}
-
 a {
 	text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+li {
+	text-align: -webkit-match-parent;
+}
+
+input, select, textarea, button {
+	font-size: 14px;
+    letter-spacing: -0.03em;
+    color: #242428;
+}
+
+input, select, button, img, textarea {
+    vertical-align: middle;
+    text-rendering: auto;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+}
+
+button {
+	cursor: pointer;
+	overflow: visible;
+    border: 0;
+    background-color: transparent;
 }
 
 #content {
 	width: 1050px;
 	margin: 0 auto;
 	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
 }
 
 #play_tickect_info {
@@ -38,22 +68,250 @@ a {
 	float: right;
 }
 
-#content_ticketingInfo_tickecting {
-	height: 260px;
-	clear: both;
-}
-
-#content_ticketingInfo {
-	height: 200px;
-	border-radius: 15px;
-	border: 2px solid rgba(179, 179, 179, 1);
-}
-
 #content_detail {
 	margin-bottom: 100px;
 }
 
 /* ticketingInfo css*/
+#content_ticketingInfo_tickecting {
+	height: 350px;
+	clear: both;
+}
+
+.content_ticketingInfo {
+    display: flex;
+    max-height: 305px;
+    border: 1px solid #878d95;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* 날짜 선택*/
+.play_reserve_date {
+	margin: 0;
+    display: flex;
+    padding: 5px 5px 13px 23px;
+	width :35%;
+}
+.play_reserve_heading {
+    margin-bottom: 18px;
+    width: 100px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    color: #242428;
+}
+.play_reserve_step {
+    display: block;
+    margin-bottom: 4px;
+    color: #fa2828;
+}
+.play_reserve_title {
+    font-weight: 700;
+}
+.datepicker {
+	display: block;
+    padding: 20px 5px 13px 4px;
+    border: 0;
+    border-radius: 0;
+}
+.datepicker_triangle {
+    position: absolute;
+    left: 50px;
+}
+.datepicker_month-container {
+	    float: none;
+}
+.datepicker_header {
+    border-top-right-radius: 0.3rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+}
+.calendar_header {
+    position: relative;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.calendar_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 5px;
+}
+.calendar_title {
+    top: 0;
+    left: 50%;
+    margin : 0 13% 5% 13%; 
+    padding-bottom : 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    color: black;
+    transform: translateX(-50%);
+    letter-spacing: -0.03em;
+}
+.calendar_nav_btn_prev, .calendar_nav_btn_next {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;    
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 0;
+}
+.calendar_nav_btn_prev{
+	margin-left:10%;
+}
+.calendar_nav_btn_next{
+	margin-right:10%;
+}
+.day_names {
+	margin: 12px 0 7px;
+	display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    text-align : center;
+}
+.day_name:first-child{
+	color: #dd6045;
+}
+.day_name:last-child{
+	color: #3d85b9;
+}
+.calandar_content {
+	width: 250px;
+	margin : 0;
+	text-align :center;
+	padding:0;
+	display : block;
+	font-size: 0.8rem;
+	color: #000;
+	letter-spacing: -0.03em;
+}
+.calandar_week {
+    display: flex;
+    justify-content: space-between;
+	white-space: nowrap;
+	margin: 0;
+    padding: 0;
+}
+.calandar_day:first-child {
+	color: #dd6045;
+}
+.calandar_day:last-child {
+	color: #3d85b9;
+}
+.calandar_day {
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	padding: 0;
+	white-space: nowrap;
+	letter-spacing: -0.03em;
+}
+
+.day_name {
+	margin: 0;
+    width: 34px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #242428;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.datepicker_content {
+	width: 298px;
+	margin: 0;
+	text-align: center;
+}
+/* 회차 선택 */
+.play_reserve_time {
+    display: flex;
+	width :35%;
+    align-items: flex-start;
+    padding: 5px 0 20px 24px;
+    border-left: 1px solid #ecedf2;
+}
+.play_time_list {
+    padding: 20px 24px 20px 24px;
+    width: 257px;
+    height: 100%;
+    overflow-y: overlay;
+}
+.play_time_item {
+    border: 0;
+    vertical-align: top;
+}
+.play_time_btn {
+    padding: 11px 18px 11px 15px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 6px;
+    text-align: left;
+    background-color: transparent;
+}
+.play_time {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #242428;
+}
+/* 예매가능좌석 */
+.play_reserve_seat {
+    flex: 1;
+	width :35%;
+    padding: 15px 0 20px 20px;
+    border-left: 1px solid #ecedf2;
+    border-radius: 0 10px 10px 0;
+    background: #f8f9fa;
+}
+.play_seat_list {
+    overflow-y: overlay;
+    padding-left: 5px;
+    padding-right:30px;
+    max-height: 222px;
+}
+.play_seat_item {
+	margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    line-height: 18px;
+    border: 0;
+    vertical-align: top;
+}
+.play_seat_title {
+	color: #62676c;
+    display: inline-block;
+    padding-right : 120px;
+}
+.play_seat_remain {
+	display: inline-flex;
+	font-weight : bold;
+    color: black;
+}
+
 .reservation_button {
 	margin-top: 12px;
 	margin-right: 4px;
@@ -63,6 +321,7 @@ a {
 	width: 20%;
 	height: 33px;
 	border-radius: 30px;
+	cursor: pointer;
 }
 
 /* playInfo css */
@@ -84,22 +343,17 @@ tr .first_column{
 	url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@200,400&display=swap")
 	;
 
-body {
-	font-family: "Poppins", sans-serif;
-	margin: 0;
-}
-
 .tab-content {
 	display: none;
 }
 
-ul {
+.tab-ul {
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
 }
 
-li {
+.tab-ul li{
 	float: left;
 	width: 33.3%;
 	text-align: center;

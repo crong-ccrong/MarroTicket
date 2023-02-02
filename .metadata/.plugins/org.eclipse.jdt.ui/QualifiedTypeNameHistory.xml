@@ -18,7 +18,6 @@
     <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.builders.HttpSecurity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpMethod"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="javax.activation.DataSource"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
     <fullyQualifiedTypeName name="com.marroticket.tmember.member.domain.TmemberVO"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.marroticket.tmember.member.domain.TmemberAuth"/>
     <fullyQualifiedTypeName name="javax.validation.constraints.Past"/>
     <fullyQualifiedTypeName name="org.mybatis.spring.annotation.MapperScan"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 </qualifiedTypeNameHistroy>
