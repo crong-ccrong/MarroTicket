@@ -77,7 +77,7 @@
 		</tr>
 		<input type="hidden" name="uAgree" value="1" />
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입" />
+			<td colspan="2" align="center"><input type="submit" value="회원가입" id="joinBtn"/>
 				<input type="button" value="이전" id = "back"/></td>
 		</tr>
 	</table>
@@ -128,17 +128,31 @@ $(document).ready(function() {
 	}
 </script>
 
-<!-- 비밀번호 확인 -->
+<!-- 비밀번호 재확인 체크  --> 
+<script type="text/javascript">
+$(function() {
+	  $("#joinBtn").click(function() {
+	    if ($("#uPasswordConfirm").val() === "") {
+	      alert("비밀번호 재확인을 해야합니다.");
+	     return false;
+	      $("#uPasswordConfirm").focus();
+	    } 
+	  });
+	});
+
+</script>
+
+<!-- 비밀번호 불일치 --> 
 <script type="text/javascript">
 $(function(){
-		$('#uPasswordConfirm').blur(function(){
-		   if($('#uPassword').val() != $('#uPasswordConfirm').val()){
-		    	if($('#uPasswordConfirm').val()!=''){
-			    alert("비밀번호가 일치하지 않습니다.");
-		    	    $('#uPasswordConfirm').val('');
-		          $('#uPasswordConfirm').focus();
-		       }
-		    }
-		})  	   
-	});
+      $('#uPasswordConfirm').blur(function(){
+         if($('#uPassword').val() != $('#uPasswordConfirm').val()){
+             if($('#uPasswordConfirm').val()!=''){
+             alert("비밀번호가 일치하지 않습니다.");
+                 $('#uPasswordConfirm').val('');
+                $('#uPasswordConfirm').focus();
+             }
+          }
+      })        
+   });
 </script>

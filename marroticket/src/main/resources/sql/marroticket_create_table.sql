@@ -1,9 +1,19 @@
-select * from umember;
+/* select * from umember;
 select * from tmember_auth order by t_number;
 
 update umember_auth set umember_auth='ROLE_ADMIN' where u_number=1;
 
-commit;
+commit;*/
+
+-- 시퀀스 번호 넘어가는 오류 방지
+alter sequence notice_seq nocache;
+alter sequence tfaq_seq nocache;
+alter sequence ufaq_seq nocache;
+alter sequence pay_seq nocache;
+alter sequence play_seq nocache;
+alter sequence reservation_seq nocache;
+alter sequence tmember_seq nocache;
+alter sequence umember_seq nocache;
 
 
 --삭제는 다음 순서에 따르면 됨
@@ -94,216 +104,40 @@ tmember_auth VARCHAR2(50) NOT NULL,
 FOREIGN KEY ( t_number ) REFERENCES tmember ( t_number )
 );
 
-
 --PLAY(연극) 테이블
 CREATE TABLE play (
-    p_number                     NUMBER(38) NOT NULL, --연극 번호
-    p_name                       VARCHAR2(50) NOT NULL, --연극명
-    p_startdate                  DATE NOT NULL, --연극 시작일
-    p_closedate                  DATE NOT NULL, --연극 종료일
-    p_runningtime                NUMBER(3) NOT NULL, --연극 소요시간(러닝타임)
-    p_theatername                VARCHAR2(20) NOT NULL, --극장 이름
-    p_theateraddress             VARCHAR2(100) NOT NULL, --극장 주소
-    p_theatermap                 VARCHAR2(100) NOT NULL, --극장 약도 이미지
-    p_agency                     VARCHAR2(20) NOT NULL, --기획사 정보
-    p_ratings                    NUMBER(1) NOT NULL, --관람 등급
-    p_casting                    VARCHAR2(2000) NOT NULL, --캐스팅 데이터
-    p_ticketopendate             DATE NOT NULL, --예매 오픈 희망일
-    p_plot                       VARCHAR2(4000) NOT NULL, --공연 줄거리
-    p_seattype                   VARCHAR2(10) NOT NULL, --좌석 종류
-    p_seatnumber                 NUMBER(20) NOT NULL, --좌석 개수
-    p_ticketprice                NUMBER(7) NOT NULL, --티켓 가격
-    p_genre                      NUMBER(1) NOT NULL, --장르 정보
-    p_poster                     VARCHAR2(100) NOT NULL, --연극 포스터
-    p_amendmentapproved          NUMBER(1), --공연 수정 승인 여부
-    p_registrationapproval       NUMBER(1), --공연 등록 승인 여부
-    p_eachdateone                DATE NOT NULL, -- 상연 날짜 1
-    p_eachdatetwo                DATE, -- 상연 날짜 2
-    p_eachdatethree              DATE, -- 상연 날짜 3
-    p_eachdatefour               DATE, -- 상연 날짜 4
-    p_eachdatefive               DATE, -- 상연 날짜 5
-    p_eachdatesix                DATE, -- 상연 날짜 6
-    p_eachdateseven              DATE, -- 상연 날짜 7
-    p_eachdateeight              DATE, -- 상연 날짜 8
-    p_eachdatenine               DATE, -- 상연 날짜 9
-    p_eachdateten                DATE, -- 상연 날짜 10
-    p_eachdateeleven             DATE, -- 상연 날짜 11
-    p_eachdatetwelve             DATE, -- 상연 날짜 12
-    p_eachdatethirteen           DATE, -- 상연 날짜 13
-    p_eachdatefourteen           DATE, -- 상연 날짜 14
-    p_eachdatefifteen            DATE, -- 상연 날짜 15
-    p_eachdatesixteen            DATE, -- 상연 날짜 16
-    p_eachdateseventeen          DATE, -- 상연 날짜 17
-    p_eachdateeighteen           DATE, -- 상연 날짜 18
-    p_eachdatenineteen           DATE, -- 상연 날짜 19
-    p_eachdatetwenty             DATE, -- 상연 날짜 20
-    p_eachdatetwentyone          DATE, -- 상연 날짜 21
-    p_eachdatetwentytwo          DATE, -- 상연 날짜 22
-    p_eachdatetwentythree        DATE, -- 상연 날짜 23
-    p_eachdatetwentyfour         DATE, -- 상연 날짜 24
-    p_eachdatetwentyfive         DATE, -- 상연 날짜 25
-    p_eachdatetwentysix          DATE, -- 상연 날짜 26
-    p_eachdatetwentyseven        DATE, -- 상연 날짜 27
-    p_eachdatetwentyeight        DATE, -- 상연 날짜 28
-    p_eachdatetwentynine         DATE, -- 상연 날짜 29
-    p_eachdatethirty             DATE, -- 상연 날짜 30
-    p_eachdatethirtyone          DATE, -- 상연 날짜 31
-    p_eachdatethirtytwo          DATE, -- 상연 날짜 32
-    p_eachdatethirtythree        DATE, -- 상연 날짜 33
-    p_eachdatethirtyfour         DATE, -- 상연 날짜 34
-    p_eachdatethirtyfive         DATE, -- 상연 날짜 35
-    p_eachdatethirtysix          DATE, -- 상연 날짜 36
-    p_eachdatethirtyseven        DATE, -- 상연 날짜 37
-    p_eachdatethirtyeight        DATE, -- 상연 날짜 38
-    p_eachdatethirtynine         DATE, -- 상연 날짜 39
-    p_eachdateforty              DATE, -- 상연 날짜 40
-    p_eachdatefortyone           DATE, -- 상연 날짜 41
-    p_eachdatefortytwo           DATE, -- 상연 날짜 42
-    p_eachdatefortythree         DATE, -- 상연 날짜 43
-    p_eachdatefortyfour          DATE, -- 상연 날짜 44
-    p_eachdatefortyfive          DATE, -- 상연 날짜 45
-    p_eachdatefortysix           DATE, -- 상연 날짜 46
-    p_eachdatefortyseven         DATE, -- 상연 날짜 47
-    p_eachdatefortyeight         DATE, -- 상연 날짜 48
-    p_eachdatefortynine          DATE, -- 상연 날짜 49
-    p_eachdatefifty              DATE, -- 상연 날짜 50
-    p_eachdatefiftyone           DATE, -- 상연 날짜 51
-    p_eachdatefiftytwo           DATE, -- 상연 날짜 52
-    p_eachdatefiftythree         DATE, -- 상연 날짜 53
-    p_eachdatefiftyfour          DATE, -- 상연 날짜 54
-    p_eachdatefiftyfive          DATE, -- 상연 날짜 55
-    p_eachdatefiftysix           DATE, -- 상연 날짜 56
-    p_eachdatefiftyseven         DATE, -- 상연 날짜 57
-    p_eachdatefiftyeight         DATE, -- 상연 날짜 58
-    p_eachdatefiftynine          DATE, -- 상연 날짜 59
-    p_eachdatesixty              DATE, -- 상연 날짜 60
-
-    p_firststarttimeone          VARCHAR2(10) NOT NULL, -- 1회차 상연 시작 시각 1
-    p_firststarttimetwo          VARCHAR2(10), -- 1회차 상연 시작 시각 2
-    p_firststarttimethree        VARCHAR2(10), -- 1회차 상연 시작 시각 3
-    p_firststarttimefour         VARCHAR2(10), -- 1회차 상연 시작 시각 4
-    p_firststarttimefive         VARCHAR2(10), -- 1회차 상연 시작 시각 5
-    p_firststarttimesix          VARCHAR2(10), -- 1회차 상연 시작 시각 6
-    p_firststarttimeseven        VARCHAR2(10), -- 1회차 상연 시작 시각 7
-    p_firststarttimeeight        VARCHAR2(10), -- 1회차 상연 시작 시각 8
-    p_firststarttimenine         VARCHAR2(10), -- 1회차 상연 시작 시각 9
-    p_firststarttimeten          VARCHAR2(10), -- 1회차 상연 시작 시각 10
-    p_firststarttimeeleven       VARCHAR2(10), -- 1회차 상연 시작 시각 11
-    p_firststarttimetwelve       VARCHAR2(10), -- 1회차 상연 시작 시각 12
-    p_firststarttimethirteen     VARCHAR2(10), -- 1회차 상연 시작 시각 13
-    p_firststarttimefourteen     VARCHAR2(10), -- 1회차 상연 시작 시각 14
-    p_firststarttimefifteen      VARCHAR2(10), -- 1회차 상연 시작 시각 15
-    p_firststarttimesixteen      VARCHAR2(10), -- 1회차 상연 시작 시각 16
-    p_firststarttimeseventeen    VARCHAR2(10), -- 1회차 상연 시작 시각 17
-    p_firststarttimeeighteen     VARCHAR2(10), -- 1회차 상연 시작 시각 18
-    p_firststarttimenineteen     VARCHAR2(10), -- 1회차 상연 시작 시각 19
-    p_firststarttimetwenty       VARCHAR2(10), -- 1회차 상연 시작 시각 20
-    p_firststarttimetwentyone    VARCHAR2(10), -- 1회차 상연 시작 시각 21
-    p_firststarttimetwentytwo    VARCHAR2(10), -- 1회차 상연 시작 시각 22
-    p_firststarttimetwentythree  VARCHAR2(10), -- 1회차 상연 시작 시각 23
-    p_firststarttimetwentyfour   VARCHAR2(10), -- 1회차 상연 시작 시각 24
-    p_firststarttimetwentyfive   VARCHAR2(10), -- 1회차 상연 시작 시각 25
-    p_firststarttimetwentysix    VARCHAR2(10), -- 1회차 상연 시작 시각 26
-    p_firststarttimetwentyseven  VARCHAR2(10), -- 1회차 상연 시작 시각 27
-    p_firststarttimetwentyeight  VARCHAR2(10), -- 1회차 상연 시작 시각 28
-    p_firststarttimetwentynine   VARCHAR2(10), -- 1회차 상연 시작 시각 29
-    p_firststarttimethirty       VARCHAR2(10), -- 1회차 상연 시작 시각 30
-    p_firststarttimethirtyone    VARCHAR2(10), -- 1회차 상연 시작 시각 31
-    p_firststarttimethirtytwo    VARCHAR2(10), -- 1회차 상연 시작 시각 32
-    p_firststarttimethirtythree  VARCHAR2(10), -- 1회차 상연 시작 시각 33
-    p_firststarttimethirtyfour   VARCHAR2(10), -- 1회차 상연 시작 시각 34
-    p_firststarttimethirtyfive   VARCHAR2(10), -- 1회차 상연 시작 시각 35
-    p_firststarttimethirtysix    VARCHAR2(10), -- 1회차 상연 시작 시각 36
-    p_firststarttimethirtyseven  VARCHAR2(10), -- 1회차 상연 시작 시각 37
-    p_firststarttimethirtyeight  VARCHAR2(10), -- 1회차 상연 시작 시각 38
-    p_firststarttimethirtynine   VARCHAR2(10), -- 1회차 상연 시작 시각 39
-    p_firststarttimeforty        VARCHAR2(10), -- 1회차 상연 시작 시각 40
-    p_firststarttimefortyone     VARCHAR2(10), -- 1회차 상연 시작 시각 41
-    p_firststarttimefortytwo     VARCHAR2(10), -- 1회차 상연 시작 시각 42
-    p_firststarttimefortythree   VARCHAR2(10), -- 1회차 상연 시작 시각 43
-    p_firststarttimefortyfour    VARCHAR2(10), -- 1회차 상연 시작 시각 44
-    p_firststarttimefortyfive    VARCHAR2(10), -- 1회차 상연 시작 시각 45
-    p_firststarttimefortysix     VARCHAR2(10), -- 1회차 상연 시작 시각 46
-    p_firststarttimefortyseven   VARCHAR2(10), -- 1회차 상연 시작 시각 47
-    p_firststarttimefortyeight   VARCHAR2(10), -- 1회차 상연 시작 시각 48
-    p_firststarttimefortynine    VARCHAR2(10), -- 1회차 상연 시작 시각 49
-    p_firststarttimefifty        VARCHAR2(10), -- 1회차 상연 시작 시각 50
-    p_firststarttimefiftyone     VARCHAR2(10), -- 1회차 상연 시작 시각 51
-    p_firststarttimefiftytwo     VARCHAR2(10), -- 1회차 상연 시작 시각 52
-    p_firststarttimefiftythree   VARCHAR2(10), -- 1회차 상연 시작 시각 53
-    p_firststarttimefiftyfour    VARCHAR2(10), -- 1회차 상연 시작 시각 54
-    p_firststarttimefiftyfive    VARCHAR2(10), -- 1회차 상연 시작 시각 55
-    p_firststarttimefiftysix     VARCHAR2(10), -- 1회차 상연 시작 시각 56
-    p_firststarttimefiftyseven   VARCHAR2(10), -- 1회차 상연 시작 시각 57
-    p_firststarttimefiftyeight   VARCHAR2(10), -- 1회차 상연 시작 시각 58
-    p_firststarttimefiftynine    VARCHAR2(10), -- 1회차 상연 시작 시각 59
-    p_firststarttimesixty        VARCHAR2(10), -- 1회차 상연 시작 시각 60
-    p_secondstarttimeone         VARCHAR2(10), -- 2회차 상연 시작 시각 1
-    p_secondstarttimetwo         VARCHAR2(10), -- 2회차 상연 시작 시각 2
-    p_secondstarttimethree       VARCHAR2(10), -- 2회차 상연 시작 시각 3
-    p_secondstarttimefour        VARCHAR2(10), -- 2회차 상연 시작 시각 4
-    p_secondstarttimefive        VARCHAR2(10), -- 2회차 상연 시작 시각 5
-    p_secondstarttimesix         VARCHAR2(10), -- 2회차 상연 시작 시각 6
-    p_secondstarttimeseven       VARCHAR2(10), -- 2회차 상연 시작 시각 7
-    p_secondstarttimeeight       VARCHAR2(10), -- 2회차 상연 시작 시각 8
-    p_secondstarttimenine        VARCHAR2(10), -- 2회차 상연 시작 시각 9
-    p_secondstarttimeten         VARCHAR2(10), -- 2회차 상연 시작 시각 10
-    p_secondstarttimeeleven      VARCHAR2(10), -- 2회차 상연 시작 시각 11
-    p_secondstarttimetwelve      VARCHAR2(10), -- 2회차 상연 시작 시각 12
-    p_secondstarttimethirteen    VARCHAR2(10), -- 2회차 상연 시작 시각 13
-    p_secondstarttimefourteen    VARCHAR2(10), -- 2회차 상연 시작 시각 14
-    p_secondstarttimefifteen     VARCHAR2(10), -- 2회차 상연 시작 시각 15
-    p_secondstarttimesixteen     VARCHAR2(10), -- 2회차 상연 시작 시각 16
-    p_secondstarttimeseventeen   VARCHAR2(10), -- 2회차 상연 시작 시각 17
-    p_secondstarttimeeighteen    VARCHAR2(10), -- 2회차 상연 시작 시각 18
-    p_secondstarttimenineteen    VARCHAR2(10), -- 2회차 상연 시작 시각 19
-    p_secondstarttimetwenty      VARCHAR2(10), -- 2회차 상연 시작 시각 20
-    p_secondstarttimetwentyone   VARCHAR2(10), -- 2회차 상연 시작 시각 21
-    p_secondstarttimetwentytwo   VARCHAR2(10), -- 2회차 상연 시작 시각 22
-    p_secondstarttimetwentythree VARCHAR2(10), -- 2회차 상연 시작 시각 23
-    p_secondstarttimetwentyfour  VARCHAR2(10), -- 2회차 상연 시작 시각 24
-    p_secondstarttimetwentyfive  VARCHAR2(10), -- 2회차 상연 시작 시각 25
-    p_secondstarttimetwentysix   VARCHAR2(10), -- 2회차 상연 시작 시각 26
-    p_secondstarttimetwentyseven VARCHAR2(10), -- 2회차 상연 시작 시각 27
-    p_secondstarttimetwentyeight VARCHAR2(10), -- 2회차 상연 시작 시각 28
-    p_secondstarttimetwentynine  VARCHAR2(10), -- 2회차 상연 시작 시각 29
-    p_secondstarttimethirty      VARCHAR2(10), -- 2회차 상연 시작 시각 30
-    p_secondstarttimethirtyone   VARCHAR2(10), -- 2회차 상연 시작 시각 31
-    p_secondstarttimethirtytwo   VARCHAR2(10), -- 2회차 상연 시작 시각 32
-    p_secondstarttimethirtythree VARCHAR2(10), -- 2회차 상연 시작 시각 33
-    p_secondstarttimethirtyfour  VARCHAR2(10), -- 2회차 상연 시작 시각 34
-    p_secondstarttimethirtyfive  VARCHAR2(10), -- 2회차 상연 시작 시각 35
-    p_secondstarttimethirtysix   VARCHAR2(10), -- 2회차 상연 시작 시각 36
-    p_secondstarttimethirtyseven VARCHAR2(10), -- 2회차 상연 시작 시각 37
-    p_secondstarttimethirtyeight VARCHAR2(10), -- 2회차 상연 시작 시각 38
-    p_secondstarttimethirtynine  VARCHAR2(10), -- 2회차 상연 시작 시각 39
-    p_secondstarttimeforty       VARCHAR2(10), -- 2회차 상연 시작 시각 40
-    p_secondstarttimefortyone    VARCHAR2(10), -- 2회차 상연 시작 시각 41
-    p_secondstarttimefortytwo    VARCHAR2(10), -- 2회차 상연 시작 시각 42
-    p_secondstarttimefortythree  VARCHAR2(10), -- 2회차 상연 시작 시각 43
-    p_secondstarttimefortyfour   VARCHAR2(10), -- 2회차 상연 시작 시각 44
-    p_secondstarttimefortyfive   VARCHAR2(10), -- 2회차 상연 시작 시각 45
-    p_secondstarttimefortysix    VARCHAR2(10), -- 2회차 상연 시작 시각 46
-    p_secondstarttimefortyseven  VARCHAR2(10), -- 2회차 상연 시작 시각 47
-    p_secondstarttimefortyeight  VARCHAR2(10), -- 2회차 상연 시작 시각 48
-    p_secondstarttimefortynine   VARCHAR2(10), -- 2회차 상연 시작 시각 49
-    p_secondstarttimefifty       VARCHAR2(10), -- 2회차 상연 시작 시각 50
-    p_secondstarttimefiftyone    VARCHAR2(10), -- 2회차 상연 시작 시각 51
-    p_secondstarttimefiftytwo    VARCHAR2(10), -- 2회차 상연 시작 시각 52
-    p_secondstarttimefiftythree  VARCHAR2(10), -- 2회차 상연 시작 시각 53
-    p_secondstarttimefiftyfour   VARCHAR2(10), -- 2회차 상연 시작 시각 54
-    p_secondstarttimefiftyfive   VARCHAR2(10), -- 2회차 상연 시작 시각 55
-    p_secondstarttimefiftysix    VARCHAR2(10), -- 2회차 상연 시작 시각 56
-    p_secondstarttimefiftyseven  VARCHAR2(10), -- 2회차 상연 시작 시각 57
-    p_secondstarttimefiftyeight  VARCHAR2(10), -- 2회차 상연 시작 시각 58
-    p_secondstarttimefiftynine   VARCHAR2(10), -- 2회차 상연 시작 시각 59
-    p_secondstarttimesixty       VARCHAR2(10), -- 2회차 상연 시작 시각 60
-    p_seatcolumn                 NUMBER(2), --좌석 세로열
-    p_seatrow                    NUMBER(2), --좌석 가로행
-    p_agree                      NUMBER(1) NOT NULL, --약관 동의 여부
-    t_number                     NUMBER(38) NOT NULL, --극단 회원 번호
+    p_number                 NUMBER(38) NOT NULL, --연극 번호
+    p_name                   VARCHAR2(50) NOT NULL, --연극명
+    p_startdate              DATE NOT NULL, --연극 시작일
+    p_closedate              DATE NOT NULL, --연극 종료일
+    p_runningtime            VARCHAR2(3) NOT NULL, --연극 소요시간(러닝타임)
+    p_theatername            VARCHAR2(20) NOT NULL, --극장 이름
+    p_theateraddress         VARCHAR2(100) NOT NULL, --극장 주소
+    p_theatermapurl          VARCHAR2(100) NOT NULL, --극장 약도 이미지Url
+    p_theatermapfilename     VARCHAR2(100) NOT NULL,--극장 약도 변환된 이름
+    p_theatermaporiginalname VARCHAR2(100) NOT NULL,--극장 약도 원래 이름
+    p_theatermapuuid varchar2(100) not null, --극장 약도 uuid
+    p_agency                 VARCHAR2(20) NOT NULL, --기획사 정보
+    p_ratings                VARCHAR2(1) NOT NULL, --관람 등급
+    p_casting                VARCHAR2(2000) NOT NULL, --캐스팅 데이터
+    p_ticketopendate         DATE NOT NULL, --예매 오픈 희망일
+    p_plot                   VARCHAR2(4000) NOT NULL, --공연 줄거리
+    p_seatnumber             NUMBER(20) NOT NULL, --좌석 개수
+    p_ticketprice            NUMBER(7) NOT NULL, --티켓 가격
+    p_genre                  VARCHAR2(1) NOT NULL, --장르 정보
+    p_posterurl              VARCHAR2(100) NOT NULL, --연극 포스터url
+    p_posterfilename         VARCHAR2(100) NOT NULL, --연극 포스터 변환된 이름
+    p_posteroriginalname     VARCHAR2(100) NOT NULL, --연극 포스터 원래 이름
+    p_posterUUID varchar2(100) not null, --연극 포스터 uuid
+    p_amendmentapproved      VARCHAR2(1), --공연 수정 승인 여부
+    p_registrationapproval   VARCHAR2(1), --공연 등록 승인 여부
+    p_firststarttime         VARCHAR2(10) NOT NULL, -- 1회차 상연 시작 시각 
+    p_secondstarttime        VARCHAR2(10), -- 2회차 상연 시작 시각 
+    p_agree                  VARCHAR2(1) NOT NULL, --약관 동의 여부
+    t_number                 NUMBER(38) NOT NULL, --극단 회원 번호
     PRIMARY KEY ( p_number ),
-    FOREIGN KEY ( t_number ) REFERENCES tmember ( t_number )
+    FOREIGN KEY ( t_number )
+        REFERENCES tmember ( t_number )
 );
 
 --연극 시퀀스 생성 

@@ -109,7 +109,7 @@
 			<td><input type="file" name="file" /></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입" id="join_submit" />
+			<td colspan="2" align="center"><input type="submit" value="회원가입" id="joinBtn" />
 				<input type="button" value="이전" id="back" /></td>
 		</tr>
 	</table>
@@ -170,19 +170,35 @@ $(document).ready(function() {
 	
 </script>
 
-<!-- 비밀번호 확인 -->
+
+<!-- 비밀번호 재확인 체크  --> 
 <script type="text/javascript">
-	$(function() {
-		$('#tPasswordConfirm').blur(function() {
-			if ($('#tPassword').val() != $('#tPasswordConfirm').val()) {
-				if ($('#tPasswordConfirm').val() != '') {
-					alert("비밀번호가 일치하지 않습니다.");
-					$('#tPasswordConfirm').val('');
-					$('#tPasswordConfirm').focus();
-				}
-			}
-		})
+
+$(function() {
+	  $("#joinBtn").click(function() {
+	    if ($("#tPasswordConfirm").val() === "") {
+	      alert("비밀번호 재확인을 해야합니다.");
+	     return false;
+	      $("#tPasswordConfirm").focus();
+	    } 
+	  });
 	});
+
+</script>
+
+<!-- 비밀번호 불일치 --> 
+<script type="text/javascript">
+$(function(){
+      $('#tPasswordConfirm').blur(function(){
+         if($('#tPassword').val() != $('#tPasswordConfirm').val()){
+             if($('#tPasswordConfirm').val()!=''){
+             alert("비밀번호가 일치하지 않습니다.");
+                 $('#tPasswordConfirm').val('');
+                $('#tPasswordConfirm').focus();
+             }
+          }
+      })        
+   });
 </script>
 
 

@@ -3,39 +3,43 @@
 <mapper namespace="com.marroticket.mapper.PlayMapper">
 
 	<resultMap type="com.marroticket.umember.play.domain.PlayVO"
-		id="play">
+		id="playmap">
 		<id column="p_number" property="pnumber" />
 		<result column="p_name" property="pname" />
-		<result column="P_STARTDATE" property="pstartDate" />
-		<result column="P_CLOSEDATE" property="pcloseDate" />
-		<result column="P_RUNNINGTIME" property="prunningTime" />
-		<result column="P_THEATERNAME" property="ptheaterName" />
-		<result column="P_THEATERADDRESS" property="ptheaterAddress" />
-		<result column="P_THEATERMAP" property="ptheaterMap" />
-		<result column="P_AGENCY" property="pagency" />
-		<result column="P_RATINGS" property="pratings" />
-		<result column="P_CASTING" property="pcasting" />
-		<result column="P_TICKETOPENDATE" property="pticketOpenDate" />
-		<result column="P_PLOT" property="pplot" />
-		<result column="P_SEATTYPE" property="pseatType" />
-		<result column="P_SEATNUMBER" property="pseatNumber" />
-		<result column="P_TICKETPRICE" property="pticketPrice" />
-		<result column="P_GENRE" property="pgenre" />
-		<result column="P_POSTER" property="pposter" />
-		<!-- <result column="P_FIRSTPLAY" property="pfirstPlay" />
-		<result column="P_SECONDPLAY" property="psecondPlay" /> -->
-		<result column="P_AGREE" property="pagree" />
-		<result column="P_AMENDMENTAPPROVED"
-			property="pamendmentApproved" />
-		<result column="P_REGISTRATIONAPPROVAL"
-			property="pregistrationApproval" />
-		<result column="T_NUMBER" property="tnumber" />
+		<result column="p_startdate" property="pstartDate" />
+		<result column="p_closedate" property="pcloseDate" />
+		<result column="p_runningtime" property="prunningTime" />
+		<result column="p_theatername" property="ptheaterName" />
+		<result column="p_theateraddress" property="ptheaterAddress" />
+		<result column="p_theatermapurl" property="ptheaterMapUrl" />
+		<result column="p_theatermapfilename" property="ptheaterMapFileName" />
+		<result column="p_theatermaporiginalname" property="ptheaterMapOriginalName" />
+		<result column="p_theatermapuuid" property="ptheaterMapUUID" />
+		<result column="p_agency" property="pagency" />
+		<result column="p_ratings" property="pratings" />
+		<result column="p_casting" property="pcasting" />
+		<result column="p_ticketopendate" property="pticketOpenDate" />
+		<result column="p_plot" property="pplot" />
+		<result column="p_seatnumber" property="pseatNumber" />
+		<result column="p_ticketprice" property="pticketPrice" />
+		<result column="p_genre" property="pgenre" />
+		<result column="p_posterurl" property="pposterUrl" />
+		<result column="p_posterfilename" property="pposterFileName" />
+		<result column="p_posteroriginalname" property="pposterOriginalName" />
+		<result column="p_posterUUID" property="pposterUUID" />
+		<result column="p_amendmentapproved" property="pamendmentApproved" />
+		<result column="p_registrationapproval" property="pregistrationApproval" />
+		<result column="p_firststarttime" property="pfirstStartTime" />
+		<result column="p_secondstarttime" property="psecondStartTime" />
+		<result column="p_agree" property="pagree" />
+		<result column="t_number" property="tnumber" />
 	</resultMap>
 
 
 	<select id="playCurrentList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
-		<![CDATA[ select p_poster, 
+		<![CDATA[ 
+		select p_posterurl, p_posterfilename, p_posteroriginalname, p_posterUUID,
 		p_name, 
 		p_theaterName, 
 		p_startDate, 
@@ -49,12 +53,12 @@
 	<select id="playPassList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
 		<![CDATA[
-		SELECT p_poster,
-		p_name,
-		p_theaterName,
-		p_startDate,
-		p_closeDate,
-		p_runningtime
+		SELECT p_posterurl, p_posterfilename, p_posteroriginalname, p_posterUUID,
+		p_name, 
+		p_theaterName, 
+		p_startDate, 
+		p_closeDate, 
+		p_runningtime 
 		FROM Play
 		WHERE to_Date(sysdate,'YYYY/MM/DD')
 		>= to_Date(p_closeDate,'YYYY/MM/DD')
@@ -67,12 +71,12 @@
 	<select id="playExpectedList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
 		<![CDATA[
-		SELECT p_poster,
-		p_name,
-		p_theaterName,
-		p_startDate,
-		p_closeDate,
-		p_runningtime
+		SELECT  p_posterurl, p_posterfilename, p_posteroriginalname, p_posterUUID,
+		p_name, 
+		p_theaterName, 
+		p_startDate, 
+		p_closeDate, 
+		p_runningtime 
 		FROM Play
 		WHERE
 		to_Date(p_startDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD')
