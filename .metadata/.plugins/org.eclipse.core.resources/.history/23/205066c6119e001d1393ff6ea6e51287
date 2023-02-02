@@ -1,0 +1,5 @@
+package com.marroticket.tmember.member.vo;
+
+public class TmemberVO {
+
+}

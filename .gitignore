@@ -28,8 +28,11 @@ replay_pid*
 .metadata
 bin/
 tmp/
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
 *.tmp
 *.bak
 *.swp
@@ -91,5 +94,8 @@ application-aws.properties
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
 
+<<<<<<< HEAD
 
 .DS_Store
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51

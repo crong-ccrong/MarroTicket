@@ -1,8 +1,0 @@
-package com.marroticket.umember.member.mapper;
-
-import java.util.Map;
-
-public interface UmemberMapper {
-	//아이디찾기
-	public String findId(Map<String, String> map);
-}
