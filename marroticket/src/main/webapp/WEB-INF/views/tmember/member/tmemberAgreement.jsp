@@ -57,7 +57,7 @@
 
 	<div>
 		<p>
-			<input type="checkbox" name="agree"><b>동의합니다.</b>
+			<input type="checkbox" name="agree" id="agree_second"><label for="agree_second"><b>동의합니다.</label></b>
 		</p>
 	</div>
 
@@ -105,7 +105,7 @@
 
 	<div>
 		<p>
-			<input type="checkbox" name="agree"><b>동의합니다.</b>
+			<input type="checkbox" name="agree" id="agree_first"><label for="agree_first"><b>동의합니다.</label></b>
 		</p>
 	</div>
 

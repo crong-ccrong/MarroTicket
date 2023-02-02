@@ -8,11 +8,32 @@ $(document).ready(function() {
 		var uPhoneNumber =  $("#uPhoneNumber");
 		var uNameVal = uName.val();
 		var uPhoneNumberVal = uPhoneNumber.val();
-		
+
+		//유효성 검사
+		//이름
+		if(uNameVal.length>6){
+			alert("이름은 6자리까지 입력가능합니다.");
+			return;
+		}
+		if (uNameVal==null || uNameVal.length==0){
+			alert("이름을 입력하세요");
+			return;
+		}
+		//전화번호
+		if (uPhoneNumberVal==null || uPhoneNumberVal.length==0){
+			console.log(uNameVal+" 길이 : "+uNameVal.length);
+			alert("휴대폰번호를 입력하세요");
+			return;
+		}
+		if(!uPhoneNumberVal.match(/^\d{3}\d{3,4}\d{4}$/)){
+			alert("휴대폰번호가 올바르게 입력되지 않았습니다.");
+			return;
+		}
+
 		var jsonObject = { uName : uNameVal , uPhoneNumber:uPhoneNumberVal };
 		var jsonStg = JSON.stringify(jsonObject);
 		console.log(jsonStg);
-		
+
 		//ajax
 		$.ajax({
 			type : "post",
@@ -21,17 +42,9 @@ $(document).ready(function() {
 			contentType : "application/json; charset=utf-8",
 			success : function(result){
 				switch (result) {
-				case 'none':
-					//이름 또는 휴대폰 번호를 하나 이상 입력하지 않았을 때
-					alert("정보를 입력하세요.");
-					break;
 				case 'fail':
 					//입력한 이름와 휴대폰 번호에 일치하는 아이디가 없을 때
 					alert("아이디 찾기 실패 \n입력하신 정보와 일치하는 아이디가 없습니다.");
-					break;
-				case 'novalid':
-					//입력한 이름와 휴대폰 번호가 유효하지 않을 때
-					alert("알맞은 형식에 맞게 정보를 입력해주세요");
 					break;
 				default :	
 					//아이디 찾기 성공
@@ -42,22 +55,30 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	// ajax 통신을 위한 csrf 설정
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+	    xhr.setRequestHeader(header, token);
+	});
+
 });	
 </script>
 <p>아이디 찾기</p>
 <div>
 	<table>
 		<tr>
-			<td><label for="u_name">이름</label></td>
+			<td><label for="uName">이름</label></td>
 		</tr>
 		<tr>
 			<td><input type='text' name='uName' id='uName'/></td>
 		</tr>
 		<tr>
-			<td><label for="u_phoneNumber">휴대폰번호</label></td>
+			<td><label for="uPhoneNumber">휴대폰번호</label></td>
 		</tr>
 		<tr>
-			<td><input type='text' name='uPhoneNumber' id='uPhoneNumber' />
+			<td><input type='text' name='uPhoneNumber' id='uPhoneNumber' placeholder="(-)을 제외하고 입력하세요" />
 		</tr>
 		<tr>
 			<td align='right'><input type='button' id='umemberFindId' value='찾기'></td>

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=/Users/yujeong-won/Spring_STS/marroticket/.git\:
 GitRepositoriesView.GitDirectories.relative=.git\:
+=======
+GitRepositoriesView.GitDirectories=C\:\\SpringBootProject\\marroticket\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+>>>>>>> main
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
