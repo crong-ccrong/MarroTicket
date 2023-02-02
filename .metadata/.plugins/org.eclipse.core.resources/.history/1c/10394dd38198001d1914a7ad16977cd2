@@ -1,5 +1,0 @@
-package com.marroticket.umember.member.domain;
-
-public class UmemberVO {
-	private int uNumber; //일반회원번호
-}

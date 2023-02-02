@@ -2,6 +2,7 @@ package com.marroticket.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -9,6 +10,7 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
+	
 	//회원가입
 	@GetMapping("/join")
 	public String joinChoose() {
@@ -54,7 +56,7 @@ public class HomeController {
 	//주소창에 admin 입력시(=> 관리자 로그인시) 관리자 메인 페이지로 전환
 	@GetMapping("/admin")
 	public String admin() {
-		return "admin";
+		return "adminhome";
 	}
 }
 

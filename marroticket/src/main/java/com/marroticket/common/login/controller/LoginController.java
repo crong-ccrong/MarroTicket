@@ -1,8 +1,10 @@
 package com.marroticket.common.login.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/login")
@@ -13,17 +15,18 @@ public class LoginController { // 로그인 관련 controller
 	public String login() {
 		return "loginChoose";
 	}
+
 	// 아이디 찾기 유형 선택
 	@GetMapping("/idFindChoose")
 	public String idFindChoose() {
 		return "idFindChoose";
 	}
+
 	// 비밀번호 찾기 유형 선택
 	@GetMapping("/passwordFindChoose")
 	public String passwordFindChoose() {
 		return "passwordFindChoose";
 	}
-	
 
 	// 일반회원로그인
 	@GetMapping("/umemberlogin")
@@ -38,6 +41,7 @@ public class LoginController { // 로그인 관련 controller
 		System.out.println("logincontroller 호출 완료");
 		return "umemberFind.Id";
 	}
+
 	// 일반회원 비밀번호찾기
 	@GetMapping("/umemberFindPassword")
 	public String userFindPassword() {
@@ -58,10 +62,21 @@ public class LoginController { // 로그인 관련 controller
 		System.out.println("logincontroller 호출 완료");
 		return "tmemberFind.Id";
 	}
+
 	// 극단회원 비밀번호찾기
 	@GetMapping("/tmemberFindPassword")
 	public String tmemberFindPassword() {
 		System.out.println("logincontroller 호출 완료");
 		return "tmemberFind.Password";
 	}
+
+	// 관리자 로그인
+	/*@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
+	
+	public String adminlogin(Model model) {
+		System.out.println("adminLogin logincontroller 호출 완료");
+
+		return "adminLogin";
+	}*/
+
 }
