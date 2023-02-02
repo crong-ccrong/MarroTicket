@@ -61,4 +61,9 @@ public class PlayController {
 	public String quickReserve() {
 		return "play.quickReserve";
 	}
+	// 연극 공연 정보 상세 페이지
+	@GetMapping("/playDetail")
+	public String playDetail() {
+		return "playDetail";
+	}
 }

@@ -102,6 +102,14 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 (절대 지우지마) -->
 <script>
 	function uIdChk() {
+		
+		// ajax 통신을 위한 csrf 설정
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+		    xhr.setRequestHeader(header, token);
+		});
+
 
 		$.ajax({
 			url : "/umember/uIdCheck",

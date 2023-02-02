@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* 전체 css */
+* {
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+#content {
+	width: 1050px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#play_tickect_info {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+#content_p_i {
+	border: 1px;
+	height: 500px;
+	margin-bottom: 50px;
+}
+
+#content_poster {
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+#content_playInfo {
+	width: 58%;
+	height: 100%;
+	padding-left : 5px;
+	float: right;
+}
+
+#content_ticketingInfo_tickecting {
+	height: 260px;
+	clear: both;
+}
+
+#content_ticketingInfo {
+	height: 200px;
+	border-radius: 15px;
+	border: 2px solid rgba(179, 179, 179, 1);
+}
+
+#content_detail {
+	margin-bottom: 100px;
+}
+
+/* ticketingInfo css*/
+.reservation_button {
+	margin-top: 12px;
+	margin-right: 4px;
+	background-color: red;
+	border: none;
+	color: white;
+	width: 20%;
+	height: 33px;
+	border-radius: 30px;
+}
+
+/* playInfo css */
+.playInfo_table {
+	width:100%;
+	padding-left : 15px;
+	font-size: 1.1em;
+	font-family: "Poppins", sans-serif;
+}
+
+tr .first_column{
+	font-weight : bold;
+	color : rgba(97, 97, 97, 1);
+}
+
+
+/*playDetail css*/
+@import
+	url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@200,400&display=swap")
+	;
+
+body {
+	font-family: "Poppins", sans-serif;
+	margin: 0;
+}
+
+.tab-content {
+	display: none;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+	width: 33.3%;
+	text-align: center;
+	list-style: none;
+	padding: 25px 0;
+	cursor: pointer;
+}
+
+li.active {
+	background-color: red;
+	color: #fff;
+}
+
+.tab-content {
+	border-top: 1px solid #333;
+	padding-top: 15px;
+}

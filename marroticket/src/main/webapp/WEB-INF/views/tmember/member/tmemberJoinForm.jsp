@@ -147,6 +147,11 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 -->
 <script>
 	function tIdChk() {
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+		    xhr.setRequestHeader(header, token);
+		});
 		$.ajax({
 			url : "/theater/tIdCheck",
 			type : "post",
@@ -160,11 +165,6 @@ $(document).ready(function() {
 					alert("사용가능한 아이디입니다.");
 				}
 			}
-		});
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
-		$(document).ajaxSend(function(e, xhr, options) {
-		    xhr.setRequestHeader(header, token);
 		});
 	}
 	
