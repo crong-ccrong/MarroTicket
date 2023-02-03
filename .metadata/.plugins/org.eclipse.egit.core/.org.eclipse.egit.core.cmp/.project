@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>.settings/accessError.jsp</name>
+			<type>1</type>
+			<locationURI>egit-internal:///C:/SpringBootProject/marroticket/.git/$4$WORKTREE:o7/marroticket/src/main/webapp/WEB-INF/views/error/accessError.jsp</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
