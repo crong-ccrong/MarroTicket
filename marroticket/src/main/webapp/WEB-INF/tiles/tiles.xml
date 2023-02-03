@@ -29,11 +29,6 @@
 		<put-attribute name="content" value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
 	</definition>
 	
-	<!-- 연극 공연 정보 페이지 -->
-	<definition name="play.*" extends="main-template">
-		<put-attribute name="title" value="마로티켓 연극공연정보" />
-		<put-attribute name="content" value="/WEB-INF/views/umember/play/{1}.jsp" />
-	</definition>
 	
 	<!-- footer -->
 	<definition name="footer.*" extends="main-template">
@@ -50,24 +45,23 @@
 		<put-attribute name="title" value="마로티켓 로그인" />
 	</definition>
 	
-	<!-- 로그인 유형 선택 페이지(일반/극단) -->
+	<!-- 회원 로그인 페이지 -->
+	<definition name="log.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/auth/memberlog{1}.jsp" />
+	</definition>
+	<!-- 로그인 유형 선택 페이지(일반/극단)
 	<definition name="loginChoose" extends="login-template">
 		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
-	</definition>
+	</definition> -->
 	
-	<!-- 일반회원 로그인 페이지 -->
-	<definition name="umemberLogin" extends="login-template">
-		<put-attribute name="content" value="/WEB-INF/views/umember/member/umemberLogin.jsp" />
+	<!-- 아이디/비밀번호찾기 유형 선택 페이지(일반/극단) -->
+	<definition name="memberFind.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/memberFind{1}.jsp" />
 	</definition>
 	
 	<!-- 일반회원 아이디찾기/비밀번호 찾기 페이지 -->
 	<definition name="umemberFind.*" extends="login-template">
 		<put-attribute name="content" value="/WEB-INF/views/umember/member/umemberFind{1}.jsp" />
-	</definition>
-	
-	<!-- 극단회원 로그인 -->
-	<definition name="tmemberLogin" extends="login-template">
-		<put-attribute name="content" value="/WEB-INF/views/tmember/member/tmemberLogin.jsp" />
 	</definition>
 	
 	<!-- 극단회원 아이디찾기/비밀번호 찾기 페이지 -->
@@ -129,18 +123,18 @@
 	<!-- 고객센터 페이지 -->
 	<definition name="tserviceCenter.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 notice" />
-		<put-attribute name="content" value="/marroticket/src/main/webapp/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
 	</definition>
 	
 	<definition name="tfaq.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 faq" />
-		<put-attribute name="content" value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
 	</definition>
 	
 	<!-- footer -->
-	<definition name="*.footer.*" extends="tmember-template">
+	<definition name="tmember.footer.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 	
 	

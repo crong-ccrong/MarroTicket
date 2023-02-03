@@ -7,7 +7,7 @@
 		});
 
 		$("#tmemberJoin").on("click", function() {
-			location.href = "/tmemberJoinForm";
+			location.href = "/theater/tmemberAgreement";
 		}); 
 
 	});

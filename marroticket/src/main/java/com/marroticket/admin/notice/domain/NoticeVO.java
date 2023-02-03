@@ -11,9 +11,9 @@ import lombok.ToString;
 @ToString
 public class NoticeVO {
 
-	private int n_number;
-	private String n_title;
-	private String n_content;
-	private Date n_date;
+	private int noticeNo;
+	private String title;
+	private String content;
+	private Date regDate;
 
 }
