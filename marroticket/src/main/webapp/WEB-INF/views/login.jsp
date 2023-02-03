@@ -10,11 +10,16 @@
 			location.href = "/login/tmemberlogin";
 		});
 
+		/* 	$("#adminLogin").on("click", function() {
+				location.href = "/login/adminlogin";
+			});*/
+
 	});
 </script>
 <table>
 	<tr>
 		<td><input type='button' id='umemberLogin' value="일반회원으로 로그인하기" /></td>
 		<td><input type='button' id='tmemberLogin' value="극단회원으로 로그인하기" /></td>
+		<!-- <td><input type='button' id='adminLogin' value="관리자로 로그인하기" /></td> -->
 	</tr>
 </table>

@@ -25,7 +25,7 @@
 							<tr>
 								<td align="center"><a
 									href="/play/playDetail?PNumber=${CurrentList.pnumber }"><img
-										src="C:/${CurrentList.pposterUrl}/${CurrentList.pposterUUID}"></img></a></td>
+										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
 							</tr>
 							<tr>
 								<td align="center">${CurrentList.pname}</td>

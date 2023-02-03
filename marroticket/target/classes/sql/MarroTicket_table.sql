@@ -75,10 +75,7 @@ CREATE TABLE play (
     p_runningtime            VARCHAR2(3) NOT NULL, --연극 소요시간(러닝타임)
     p_theatername            VARCHAR2(20) NOT NULL, --극장 이름
     p_theateraddress         VARCHAR2(100) NOT NULL, --극장 주소
-    p_theatermapurl          VARCHAR2(100) NOT NULL, --극장 약도 이미지Url
-    p_theatermapfilename     VARCHAR2(100) NOT NULL,--극장 약도 변환된 이름
-    p_theatermaporiginalname VARCHAR2(100) NOT NULL,--극장 약도 원래 이름
-    p_theatermapuuid varchar2(100) not null, --극장 약도 uuid
+    p_theatermapurl     VARCHAR2(100) NOT NULL,--극장 약도 url
     p_agency                 VARCHAR2(20) NOT NULL, --기획사 정보
     p_ratings                VARCHAR2(1) NOT NULL, --관람 등급
     p_casting                VARCHAR2(2000) NOT NULL, --캐스팅 데이터
@@ -87,10 +84,7 @@ CREATE TABLE play (
     p_seatnumber             NUMBER(20) NOT NULL, --좌석 개수
     p_ticketprice            NUMBER(7) NOT NULL, --티켓 가격
     p_genre                  VARCHAR2(1) NOT NULL, --장르 정보
-    p_posterurl              VARCHAR2(100) NOT NULL, --연극 포스터url
-    p_posterfilename         VARCHAR2(100) NOT NULL, --연극 포스터 변환된 이름
-    p_posteroriginalname     VARCHAR2(100) NOT NULL, --연극 포스터 원래 이름
-    p_posterUUID varchar2(100) not null, --연극 포스터 uuid
+    p_posterurl         VARCHAR2(100) NOT NULL, --연극 포스터 url
     p_amendmentapproved      VARCHAR2(1), --공연 수정 승인 여부
     p_registrationapproval   VARCHAR2(1), --공연 등록 승인 여부
     p_firststarttime         VARCHAR2(10) NOT NULL, -- 1회차 상연 시작 시각 

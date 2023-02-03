@@ -2,6 +2,8 @@ package com.marroticket.tmember.member.domain;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -48,7 +50,7 @@ public class TmemberVO {
 	@Size(max = 10, message = "10자 이내로 작성해주세요.")
 	private String tBusinessRegistractionNumber; // 사업자 등록 번호
 
-	@Pattern(regexp = "(19|20)\\d{2}\\-((11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 년월일 입력해주세요.")
+	@Pattern(regexp = "(19|20)\\d{2}\\-((10|11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 년월일 입력해주세요.")
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String tEstablishmentDate; // 설립일
 
@@ -60,10 +62,12 @@ public class TmemberVO {
 	private String tBusinessRegisterationImage; // 사업자등록증 오리지널
 	private String tFileUrl; // 파일경로
 	private String tFileName; // 파일 이름
-//   private String tFileUuid; 
+	// private String tFileUuid;
 
 	private String tAuth;// 극단 가입 승인 여부
 	private String tAgree; // 약관 동의 여부
+
+	private List<TmemberAuth> tmemberAuthList; // 권한
 
 	// JSON
 	public String gettId() {
@@ -89,5 +93,4 @@ public class TmemberVO {
 	public void settOwnerEmail(String tOwnerEmail) {
 		this.tOwnerEmail = tOwnerEmail;
 	}
-
 }

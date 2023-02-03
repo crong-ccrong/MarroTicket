@@ -5,12 +5,16 @@
 		<item key="height" value="400"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
+<<<<<<< HEAD
 		<item key="moveWizard.updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
 		<item key="deleteSubPackages" value="false"/>
 	</section>
 	<section name="RefactoringPropertyPage">
 		<item key="org.eclipse.ltk.ui.refactoring.sortRefactorings" value="true"/>
+=======
+		<item key="deleteSubPackages" value="true"/>
+>>>>>>> 79ab777f2a9cad4fbcbb343faff94669788c8f41
 	</section>
 	<section name="RefactoringStatusDialog">
 		<item key="DIALOG_WIDTH" value="816"/>

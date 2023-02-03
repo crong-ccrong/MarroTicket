@@ -21,7 +21,8 @@
 					<td><table>
 							<tr>
 								<td align="center"><a
-									href="/play/playDetail?pNumber=${CurrentList.PNumber }">${CurrentList.PPoster }</a></td>
+									href="/play/playDetail?pNumber=${CurrentList.PNumber }"><img
+										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
 							</tr>
 							<tr>
 								<td align="center">${CurrentList.PName}</td>

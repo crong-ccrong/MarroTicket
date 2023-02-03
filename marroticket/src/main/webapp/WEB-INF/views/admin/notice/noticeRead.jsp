@@ -7,49 +7,61 @@
 <h2>
 	<spring:message code="notice.header.read" />
 </h2>
-<form:form modelAttribute="notice">
-	<form:hidden path="n_number" />
+<form:form modelAttribute="noticeVO">
+	<form:hidden path="noticeNo" />
 	<table>
 		<tr>
-			<td><spring:message code="notice.n_title" /></td>
-			<td><form:input path="n_title" readonly="true" /></td>
-			<td><font color="red"><form:errors path="n_title" /></font></td>
+			<td><spring:message code="notice.title" /></td>
+			<td><form:input path="title" readonly="true" /></td>
+			<td><font color="red"><form:errors path="title" /></font></td>
 		</tr>
+
 		<tr>
-			<td><spring:message code="notice.n_content" /></td>
-			<td><form:textarea path="n_content" readonly="true" /></td>
-			<td><font color="red"><form:errors path="n_content" /></font></td>
+			<td><spring:message code="notice.content" /></td>
+			<td><form:textarea path="content" readonly="true" /></td>
+			<td><font color="red"><form:errors path="content" /></font></td>
 		</tr>
 	</table>
 </form:form>
 <div>
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<button type="submit" id="btnEdit">
-			<spring:message code="action.edit" />
-		</button>
-		<button type="submit" id="btnRemove">
-			<spring:message code="action.remove" />
-		</button>
-	</sec:authorize>
+	<button type="submit" id="btnEdit">
+		<spring:message code="action.edit" />
+	</button>
+
+	<button type="submit" id="btnRemove">
+		<spring:message code="action.remove" />
+	</button>
+
 	<button type="submit" id="btnList">
 		<spring:message code="action.list" />
 	</button>
 </div>
 <script>
 	$(document).ready(function() {
-		var formObj = $("#notice");
+
+		var formObj = $("#noticeVO");
+
 		console.log(formObj);
+
+		// 현재 페이지 번호와 페이징 크기
+		var pageObj = $("#page");
+		var sizePerPageObj = $("#sizePerPage");
+		var pageVal = pageObj.val();
+		var sizePerPageVal = sizePerPageObj.val();
+
 		$("#btnEdit").on("click", function() {
-			var n_numberNo = $("#n_number");
-			var n_numberVal = n_number.val();
-			self.location = "modify?n_number=" + n_numberVal;
+			var noticeNo = $("#noticeNo");
+			var noticeNoVal = noticeNo.val();
+
+			self.location = "noticeModify?noticeNo=" + noticeNoVal;
 		});
+
 		$("#btnRemove").on("click", function() {
 			formObj.attr("action", "remove");
 			formObj.submit();
 		});
 		$("#btnList").on("click", function() {
-			self.location = "list";
+			self.location = "/notice/noticeList";
 		});
 	});
 </script>

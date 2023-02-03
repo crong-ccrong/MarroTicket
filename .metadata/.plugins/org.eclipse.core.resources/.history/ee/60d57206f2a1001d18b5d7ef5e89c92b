@@ -2,7 +2,8 @@ package com.marroticket.admin.notice.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,61 +22,74 @@ public class NoticeController {
 	private NoticeService service;
 
 	// 공지사항 등록 페이지
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/noticeRegister", method = RequestMethod.GET)
 	public void registerForm(Model model) throws Exception {
-
+		System.out.println("공지사항 등록");
 		NoticeVO noticeVO = new NoticeVO();
 
 		model.addAttribute(noticeVO);
-
 	}
 
 	// 공지사항 등록 처리
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/noticeRegister", method = RequestMethod.POST)
+
 	public String register(NoticeVO noticeVO, RedirectAttributes rttr) throws Exception {
 		service.register(noticeVO);
+
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		System.out.println("공지사항 등록 처리");
+
+		return "redirect:/notice/noticeList";
 	}
 
-	// 공지사항 목록 페이지
+	// 공지사항 목록 페이지 -> 관리자
 
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
-		model.addAttribute("list", service.list());
+
+		model.addAttribute("noticeList", service.list());
+		System.out.println("공지사항 목록");
 		return "admin.notice.noticeList";
 	}
-
+	
 	// 공지사항 상세 페이지
-	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void read(int N_number, Model model) throws Exception {
-		model.addAttribute(service.read(N_number));
+	@RequestMapping(value = "/noticeRead", method = RequestMethod.GET)
+	public void read(int noticeNo, Model model) throws Exception {
+		model.addAttribute(service.read(noticeNo));
+		System.out.println("공지사항 상세");
 	}
 
-	// 공지사항 수정 페이지
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void modifyForm(int n_number, Model model) throws Exception {
-		model.addAttribute(service.read(n_number));
+	// 공지사항 수정 페이지,
+	@RequestMapping(value = "/noticeModify", method = RequestMethod.GET)
+	public void modifyForm(int noticeNo, Model model) throws Exception {
+
+		// 조회한 게시글 상세 정보를 뷰에 전달한다.
+		model.addAttribute(service.read(noticeNo));
+		System.out.println("공지사항 수정");
 	}
 
 	// 공지사항 수정 처리
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/noticeModify", method = RequestMethod.POST)
 	public String modify(NoticeVO noticeVO, RedirectAttributes rttr) throws Exception {
 		service.modify(noticeVO);
+
+		// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		System.out.println("공지사항 수정처리");
+
+		return "redirect:/notice/noticeList";
 	}
 
+	/*
 	// 공지사항 삭제 처리
+
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public String remove(int n_number, RedirectAttributes rttr) throws Exception {
-		service.remove(n_number);
+	public String remove(int noticeNo, RedirectAttributes rttr) throws Exception {
+		service.remove(noticeNo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/notice/list";
+		System.out.println("공지사항 삭제처리");
+
+		return "redirect:/notice/noticeList";
 	}
+	*/
 }
