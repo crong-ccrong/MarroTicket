@@ -2,105 +2,83 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-
 	<!-- main_template -->
-	<definition name="main-template"
-		template="/WEB-INF/tiles/layouts/default/main_template.jsp">
+	<definition name="main-template" template="/WEB-INF/tiles/layouts/default/main_template.jsp">
 		<put-attribute name="title" value="마로티켓" />
-		<put-attribute name="header"
-			value="/WEB-INF/tiles/components/main/header.jsp" />
-		<put-attribute name="menu"
-			value="/WEB-INF/tiles/components/main/menu.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/tiles/components/main/footer.jsp" />
+		<put-attribute name="header" value="/WEB-INF/tiles/components/main/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/components/main/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/components/main/footer.jsp" />
 	</definition>
-
 	<definition name="home" extends="main-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/home.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/home.jsp" />
 	</definition>
-
 	<!-- footer -->
 	<definition name="footer.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
-
 	<!-- 마이페이지 : 마이페이지는 레이아웃이 다르니, 다시 설정해야 합니다. -->
 	<definition name="mypage.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 마이페이지" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/member/info/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/member/info/{1}.jsp" />
 	</definition>
-
+	
 	<!-- 고객센터 페이지 -->
 	<definition name="serviceCenter.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 고객센터" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
 	</definition>
-
+	
 	<!-- 연극 공연 정보 페이지 -->
 	<definition name="play.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 연극공연정보" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/play/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/play/{1}.jsp" />
 	</definition>
-
+	
 	<!-- footer -->
 	<definition name="footer.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
-
-
-
+	
+	
+	
+	
+	
 	<!-- login_template를 따르는 jsp페이지 -->
 	<!-- 로그인 페이지 -->
-	<definition name="login-template"
-		template="/WEB-INF/tiles/layouts/default/login_template.jsp">
-		<put-attribute name="logo"
-			value="/WEB-INF/tiles/components/common/logo.jsp" />
+	<definition name="login-template" template="/WEB-INF/tiles/layouts/default/login_template.jsp">
+		<put-attribute name="logo" value="/WEB-INF/tiles/components/common/logo.jsp" />
 		<put-attribute name="title" value="마로티켓 로그인" />
 	</definition>
 
-	<!-- 로그인 유형 선택 페이지(일반/극단/관리자) -->
+	<!-- 회원 로그인 페이지 -->
+	<definition name="log.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/auth/memberlog{1}.jsp" />
+	</definition>
+	<!-- 로그인 유형 선택 페이지(일반/극단)
 	<definition name="loginChoose" extends="login-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/login.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+	</definition> -->
+	
+	<!-- 아이디/비밀번호찾기 유형 선택 페이지(일반/극단) -->
+	<definition name="memberFind.*" extends="login-template">
+		<put-attribute name="content" value="/WEB-INF/views/memberFind{1}.jsp" />
 	</definition>
-
-	<!-- 일반회원 로그인 페이지 -->
-	<definition name="umemberLogin" extends="login-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/member/umemberLogin.jsp" />
-	</definition>
-
 	<!-- 일반회원 아이디찾기/비밀번호 찾기 페이지 -->
 	<definition name="umemberFind.*" extends="login-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/member/umemberFind{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/member/umemberFind{1}.jsp" />
 	</definition>
-
-	<!-- 극단회원 로그인 -->
-	<definition name="tmemberLogin" extends="login-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/tmember/member/tmemberLogin.jsp" />
-	</definition>
-
+	
 	<!-- 극단회원 아이디찾기/비밀번호 찾기 페이지 -->
 	<definition name="tmemberFind.*" extends="login-template">
 		<put-attribute name="content"
 			value="/WEB-INF/views/tmember/member/tmemberFind{1}.jsp" />
 	</definition>
-	
+
 	<!-- 관리자 로그인 -->
-	<!-- <definition name="adminLogin" extends="login-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/adminLogin.jsp" />
-	</definition> -->
+	<!-- <definition name="adminLogin" extends="login-template"> <put-attribute 
+		name="content" value="/WEB-INF/views/admin/adminLogin.jsp" /> </definition> -->
 
 	<!-- 회원가입 유형 선택 페이지(일반/극단) -->
 	<definition name="joinChoose" extends="login-template">
@@ -207,41 +185,41 @@
 	</definition>
 
 
-	<!-- 관리자의 공지사항, faq --> <!--노답 3형제  -->
+	<!-- 관리자의 공지사항, faq --> <!--노답 3형제 -->
 	<definition name="admin.*.*" extends="admin-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/{1}/{2}.jsp" />
 	</definition>
 
-	<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다.-->
+	<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
 	<definition name="notice/*" extends="admin-template">
 		<put-attribute name="title" value="공지사항" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/notice/{1}.jsp" />
 	</definition>
 
-	<!-- 극단 FAQ 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다.-->
+	<!-- 극단 FAQ 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
 	<definition name="tfaq/*" extends="admin-template">
 		<put-attribute name="title" value="극단 FAQ" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
 	</definition>
-	
-	
+
+
 	<!-- 사용자 FAQ 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
 	<definition name="ufaq/*" extends="admin-template">
 		<put-attribute name="title" value="사용자 FAQ" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/ufaq/{1}.jsp" />
 	</definition>
-	
-	
+
+
 	<!-- 연극 정보 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
 	<definition name="play/*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 연극 공연 정보" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/admin/play/{1}.jsp" />
 	</definition>
-	
+
 </tiles-definitions>
