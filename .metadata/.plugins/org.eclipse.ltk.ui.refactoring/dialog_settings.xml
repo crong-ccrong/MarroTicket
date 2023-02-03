@@ -4,4 +4,19 @@
 		<item key="width" value="600"/>
 		<item key="height" value="400"/>
 	</section>
+<<<<<<< HEAD
+=======
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="moveWizard.updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
+	</section>
+	<section name="RefactoringPropertyPage">
+		<item key="org.eclipse.ltk.ui.refactoring.sortRefactorings" value="true"/>
+	</section>
+	<section name="RefactoringStatusDialog">
+		<item key="DIALOG_WIDTH" value="818"/>
+		<item key="DIALOG_HEIGHT" value="513"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
 </section>
