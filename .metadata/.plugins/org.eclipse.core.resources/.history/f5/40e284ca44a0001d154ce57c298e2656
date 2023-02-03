@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marroticket.mapper.PlayMapper">
+
+	<resultMap type="com.marroticket.umember.play.domain.PlayVO"
+		id="play">
+		<id column="p_number" property="pnumber" />
+		<result column="p_name" property="pname" />
+		<result column="P_STARTDATE" property="pstartDate" />
+		<result column="P_CLOSEDATE" property="pcloseDate" />
+		<result column="P_RUNNINGTIME" property="prunningTime" />
+		<result column="P_THEATERNAME" property="ptheaterName" />
+		<result column="P_THEATERADDRESS" property="ptheaterAddress" />
+		<result column="P_THEATERMAP" property="ptheaterMap" />
+		<result column="P_AGENCY" property="pagency" />
+		<result column="P_RATINGS" property="pratings" />
+		<result column="P_CASTING" property="pcasting" />
+		<result column="P_TICKETOPENDATE" property="pticketOpenDate" />
+		<result column="P_PLOT" property="pplot" />
+		<result column="P_SEATTYPE" property="pseatType" />
+		<result column="P_SEATNUMBER" property="pseatNumber" />
+		<result column="P_TICKETPRICE" property="pticketPrice" />
+		<result column="P_GENRE" property="pgenre" />
+		<result column="P_POSTER" property="pposter" />
+		<result column="P_AGREE" property="pagree" />
+		<result column="P_AMENDMENTAPPROVED"
+			property="pamendmentApproved" />
+		<result column="P_REGISTRATIONAPPROVAL"
+			property="pregistrationApproval" />
+		<result column="P_SEATCOLUMN" property="pseatColumn" />
+		<result column="P_SEATROW" property="pseatRow" />
+
+		<result property="PEachDateOne" column="P_EACHDATEONE" />
+		<result property="PEachDateTwo" column="P_EACHDATETWO" />
+		<result property="PEachDateThree" column="P_EACHDATETHREE" />
+		<result property="PEachDateFour" column="P_EACHDATEFOUR" />
+		<result property="PEachDateFive" column="P_EACHDATEFIVE" />
+		<result property="PEachDateSix" column="P_EACHDATESIX" />
+		<result property="PEachDateSeven" column="P_EACHDATESEVEN" />
+		<result property="PEachDateEight" column="P_EACHDATEEIGHT" />
+		<result property="PEachDateNine" column="P_EACHDATENINE" />
+		<result property="PEachDateTen" column="P_EACHDATETEN" />
+		<result property="PEachDateEleven" column="P_EACHDATEELEVEN" />
+		<result property="PEachDateTwelve" column="P_EACHDATETWELVE" />
+		<result property="PEachDateThirteen"
+			column="P_EACHDATETHIRTEEN" />
+		<result property="PEachDateFourteen"
+			column="P_EACHDATEFOURTEEN" />
+		<result property="PEachDateFifteen" column="P_EACHDATEFIFTEEN" />
+		<result property="PEachDateSixteen" column="P_EACHDATESIXTEEN" />
+		<result property="PEachDateSeventeen"
+			column="P_EACHDATESEVENTEEN" />
+		<result property="PEachDateEighteen"
+			column="P_EACHDATEEIGHTEEN" />
+		<result property="PEachDateNineteen"
+			column="P_EACHDATENINETEEN" />
+		<result property="PEachDateTwenty" column="P_EACHDATETWENTY" />
+		<result property="PEachDateTwentyOne"
+			column="P_EACHDATETWENTYONE" />
+		<result property="PEachDateTwentyTwo"
+			column="P_EACHDATETWENTYTWO" />
+		<result property="PEachDateTwentyThree"
+			column="P_EACHDATETWENTYTHREE" />
+		<result property="PEachDateTwentyFour"
+			column="P_EACHDATETWENTYFOUR" />
+		<result property="PEachDateTwentyFive"
+			column="P_EACHDATETWENTYFIVE" />
+		<result property="PEachDateTwentySix"
+			column="P_EACHDATETWENTYSIX" />
+		<result property="PEachDateTwentySeven"
+			column="P_EACHDATETWENTYSEVEN" />
+		<result property="PEachDateTwentyEight"
+			column="P_EACHDATETWENTYEIGHT" />
+		<result property="PEachDateTwentyNine"
+			column="P_EACHDATETWENTYNINE" />
+		<result property="PEachDateThirty" column="P_EACHDATETHIRTY" />
+		<result property="PEachDateThirtyOne"
+			column="P_EACHDATETHIRTYONE" />
+		<result property="PEachDateThirtyTwo"
+			column="P_EACHDATETHIRTYTWO" />
+		<result property="PEachDateThirtyThree"
+			column="P_EACHDATETHIRTYTHREE" />
+		<result property="PEachDateThirtyFour"
+			column="P_EACHDATETHIRTYFOUR" />
+		<result property="PEachDateThirtyFive"
+			column="P_EACHDATETHIRTYFIVE" />
+		<result property="PEachDateThirtySix"
+			column="P_EACHDATETHIRTYSIX" />
+		<result property="PEachDateThirtySeven"
+			column="P_EACHDATETHIRTYSEVEN" />
+		<result property="PEachDateThirtyEight"
+			column="P_EACHDATETHIRTYEIGHT" />
+		<result property="PEachDateThirtyNine"
+			column="P_EACHDATETHIRTYNINE" />
+		<result property="PEachDateForty" column="P_EACHDATEFORTY" />
+		<result property="PEachDateFortyOne"
+			column="P_EACHDATEFORTYONE" />
+		<result property="PEachDateFortyTwo"
+			column="P_EACHDATEFORTYTWO" />
+		<result property="PEachDateFortyThree"
+			column="P_EACHDATEFORTYTHREE" />
+		<result property="PEachDateFortyFour"
+			column="P_EACHDATEFORTYFOUR" />
+		<result property="PEachDateFortyFive"
+			column="P_EACHDATEFORTYFIVE" />
+		<result property="PEachDateFortySix"
+			column="P_EACHDATEFORTYSIX" />
+		<result property="PEachDateFortySeven"
+			column="P_EACHDATEFORTYSEVEN" />
+		<result property="PEachDateFortyEight"
+			column="P_EACHDATEFORTYEIGHT" />
+		<result property="PEachDateFortyNine"
+			column="P_EACHDATEFORTYNINE" />
+		<result property="PEachDateFifty" column="P_EACHDATEFIFTY" />
+		<result property="PEachDateFiftyOne"
+			column="P_EACHDATEFIFTYONE" />
+		<result property="PEachDateFiftyTwo"
+			column="P_EACHDATEFIFTYTWO" />
+		<result property="PEachDateFiftyThree"
+			column="P_EACHDATEFIFTYTHREE" />
+		<result property="PEachDateFiftyFour"
+			column="P_EACHDATEFIFTYSEVEN" />
+		<result property="PEachDateFiftyFive"
+			column="P_EACHDATEFIFTYFIVE" />
+		<result property="PEachDateFiftySix"
+			column="P_EACHDATEFIFTYSIX" />
+		<result property="PEachDateFiftySeven"
+			column="P_EACHDATEFIFTYSEVEN" />
+		<result property="PEachDateFiftyEight"
+			column="P_EACHDATEFIFTYEIGHT" />
+		<result property="PEachDateFiftyNine"
+			column="P_EACHDATEFIFTYNINE" />
+		<result property="PEachDateSixty" column="P_EACHDATESIXTY" />
+
+		<result property="PFirstStartTimeOne"
+			column="P_FIRSTSTARTTIMEONE" />
+		<result property="PFirstStartTimeTwo"
+			column="P_FIRSTSTARTTIMETWO" />
+		<result property="PFirstStartTimeThree"
+			column="P_FIRSTSTARTTIMETHREE" />
+		<result property="PFirstStartTimeFour"
+			column="P_FIRSTSTARTTIMEFOUR" />
+		<result property="PFirstStartTimeFive"
+			column="P_FIRSTSTARTTIMEFIVE" />
+		<result property="PFirstStartTimeSix"
+			column="P_FIRSTSTARTTIMESIX" />
+		<result property="PFirstStartTimeSeven"
+			column="P_FIRSTSTARTTIMESEVEN" />
+		<result property="PFirstStartTimeEight"
+			column="P_FIRSTSTARTTIMEEIGHT" />
+		<result property="PFirstStartTimeNine"
+			column="P_FIRSTSTARTTIMENINE" />
+		<result property="PFirstStartTimeTen"
+			column="P_FIRSTSTARTTIMETEN" />
+		<result property="PFirstStartTimeEleven"
+			column="P_FIRSTSTARTTIMEELEVEN" />
+		<result property="PFirstStartTimeTwelve"
+			column="P_FIRSTSTARTTIMETWELVE" />
+		<result property="PFirstStartTimeThirteen"
+			column="P_FIRSTSTARTTIMETHIRTEEN" />
+		<result property="PFirstStartTimeFourteen"
+			column="P_FIRSTSTARTTIMEFOURTEEN" />
+		<result property="PFirstStartTimeFifteen"
+			column="P_FIRSTSTARTTIMEFIFTEEN" />
+		<result property="PFirstStartTimeSixteen"
+			column="P_FIRSTSTARTTIMESIXTEEN" />
+		<result property="PFirstStartTimeSeventeen"
+			column="P_FIRSTSTARTTIMESEVENTEEN" />
+		<result property="PFirstStartTimeEighteen"
+			column="P_FIRSTSTARTTIMEEIGHTEEN" />
+		<result property="PFirstStartTimeNineteen"
+			column="P_FIRSTSTARTTIMENINETEEN" />
+		<result property="PFirstStartTimeTwenty"
+			column="P_FIRSTSTARTTIMETWENTY" />
+		<result property="PFirstStartTimeTwentyOne"
+			column="P_FIRSTSTARTTIMETWENTYONE" />
+		<result property="PFirstStartTimeTwentyTwo"
+			column="P_FIRSTSTARTTIMETWENTYTWO" />
+		<result property="PFirstStartTimeTwentyThree"
+			column="P_FIRSTSTARTTIMETWENTYTHREE" />
+		<result property="PFirstStartTimeTwentyFour"
+			column="P_FIRSTSTARTTIMETWENTYFOUR" />
+		<result property="PFirstStartTimeTwentyFive"
+			column="P_FIRSTSTARTTIMETWENTYFIVE" />
+		<result property="PFirstStartTimeTwentySix"
+			column="P_FIRSTSTARTTIMETWENTYSIX" />
+		<result property="PFirstStartTimeTwentySeven"
+			column="P_FIRSTSTARTTIMETWENTYSEVEN" />
+		<result property="PFirstStartTimeTwentyEight"
+			column="P_FIRSTSTARTTIMETWENTYEIGHT" />
+		<result property="PFirstStartTimeTwentyNine"
+			column="P_FIRSTSTARTTIMETWENTYNINE" />
+		<result property="PFirstStartTimeThirty"
+			column="P_FIRSTSTARTTIMETHIRTY" />
+		<result property="PFirstStartTimeThirtyOne"
+			column="P_FIRSTSTARTTIMETHIRTYONE" />
+		<result property="PFirstStartTimeThirtyTwo"
+			column="P_FIRSTSTARTTIMETHIRTYTWO" />
+		<result property="PFirstStartTimeThirtyThree"
+			column="P_FIRSTSTARTTIMETHIRTYTHREE" />
+		<result property="PFirstStartTimeThirtyFour"
+			column="P_FIRSTSTARTTIMETHIRTYFOUR" />
+		<result property="PFirstStartTimeThirtyFive"
+			column="P_FIRSTSTARTTIMETHIRTYFIVE" />
+		<result property="PFirstStartTimeThirtySix"
+			column="P_FIRSTSTARTTIMETHIRTYSIX" />
+		<result property="PFirstStartTimeThirtySeven"
+			column="P_FIRSTSTARTTIMETHIRTYSEVEN" />
+		<result property="PFirstStartTimeThirtyEight"
+			column="P_FIRSTSTARTTIMETHIRTYEIGHT" />
+		<result property="PFirstStartTimeThirtyNine"
+			column="P_FIRSTSTARTTIMETHIRTYNINE" />
+		<result property="PFirstStartTimeForty"
+			column="P_FIRSTSTARTTIMEFORTY" />
+		<result property="PFirstStartTimeFortyOne"
+			column="P_FIRSTSTARTTIMEFORTYONE" />
+		<result property="PFirstStartTimeFortyTwo"
+			column="P_FIRSTSTARTTIMEFORTYTWO" />
+		<result property="PFirstStartTimeFortyThree"
+			column="P_FIRSTSTARTTIMEFORTYTHREE" />
+		<result property="PFirstStartTimeFortyFour"
+			column="P_FIRSTSTARTTIMEFORTYFOUR" />
+		<result property="PFirstStartTimeFortyFive"
+			column="P_FIRSTSTARTTIMEFORTYFIVE" />
+		<result property="PFirstStartTimeFortySix"
+			column="P_FIRSTSTARTTIMEFORTYSIX" />
+		<result property="PFirstStartTimeFortySeven"
+			column="P_FIRSTSTARTTIMEFORTYSEVEN" />
+		<result property="PFirstStartTimeFortyEight"
+			column="P_FIRSTSTARTTIMEFORTYEIGHT" />
+		<result property="PFirstStartTimeFortyNine"
+			column="P_FIRSTSTARTTIMEFORTYNINE" />
+		<result property="PFirstStartTimeFifty"
+			column="P_FIRSTSTARTTIMEFIFTY" />
+		<result property="PFirstStartTimeFiftyOne"
+			column="P_FIRSTSTARTTIMEFIFTYONE" />
+		<result property="PFirstStartTimeFiftyTwo"
+			column="P_FIRSTSTARTTIMEFIFTYTWO" />
+		<result property="PFirstStartTimeFiftyThree"
+			column="P_FIRSTSTARTTIMEFIFTYTHREE" />
+		<result property="PFirstStartTimeFiftyFour"
+			column="P_FIRSTSTARTTIMEFIFTYFOUR" />
+		<result property="PFirstStartTimeFiftyFive"
+			column="P_FIRSTSTARTTIMEFIFTYFIVE" />
+		<result property="PFirstStartTimeFiftySix"
+			column="P_FIRSTSTARTTIMEFIFTYSIX" />
+		<result property="PFirstStartTimeFiftySeven"
+			column="P_FIRSTSTARTTIMEFIFTYSEVEN" />
+		<result property="PFirstStartTimeFiftyEight"
+			column="P_FIRSTSTARTTIMEFIFTYEIGHT" />
+		<result property="PFirstStartTimeFiftyNine"
+			column="P_FIRSTSTARTTIMEFIFTYNINE" />
+		<result property="PFirstStartTimeSixty"
+			column="P_FIRSTSTARTTIMESIXTY" />
+
+		<result property="PSecondStartTimeOne"
+			column="P_SECONDSTARTTIMEONE" />
+		<result property="PSecondStartTimeTwo"
+			column="P_SECONDSTARTTIMETWO" />
+		<result property="PSecondStartTimeThree"
+			column="P_SECONDSTARTTIMETHREE" />
+		<result property="PSecondStartTimeFour"
+			column="P_SECONDSTARTTIMEFOUR" />
+		<result property="PSecondStartTimeFive"
+			column="P_SECONDSTARTTIMEFIVE" />
+		<result property="PSecondStartTimeSix"
+			column="P_SECONDSTARTTIMESIX" />
+		<result property="PSecondStartTimeSeven"
+			column="P_SECONDSTARTTIMESEVEN" />
+		<result property="PSecondStartTimeEight"
+			column="P_SECONDSTARTTIMEEIGHT" />
+		<result property="PSecondStartTimeNine"
+			column="P_SECONDSTARTTIMENINE" />
+		<result property="PSecondStartTimeTen"
+			column="P_SECONDSTARTTIMETEN" />
+		<result property="PSecondStartTimeEleven"
+			column="P_SECONDSTARTTIMEELEVEN" />
+		<result property="PSecondStartTimeTwelve"
+			column="P_SECONDSTARTTIMETWELVE" />
+		<result property="PSecondStartTimeThirteen"
+			column="P_SECONDSTARTTIMETHIRTEEN" />
+		<result property="PSecondStartTimeFourteen"
+			column="P_SECONDSTARTTIMEFOURTEEN" />
+		<result property="PSecondStartTimeFifteen"
+			column="P_SECONDSTARTTIMEFIFTEEN" />
+		<result property="PSecondStartTimeSixteen"
+			column="P_SECONDSTARTTIMESIXTEEN" />
+		<result property="PSecondStartTimeSeventeen"
+			column="P_SECONDSTARTTIMESEVENTEEN" />
+		<result property="PSecondStartTimeEighteen"
+			column="P_SECONDSTARTTIMEEIGHTEEN" />
+		<result property="PSecondStartTimeNineteen"
+			column="P_SECONDSTARTTIMENINETEEN" />
+		<result property="PSecondStartTimeTwenty"
+			column="P_SECONDSTARTTIMETWENTY" />
+		<result property="PSecondStartTimeTwentyOne"
+			column="P_SECONDSTARTTIMETWENTYONE" />
+		<result property="PSecondStartTimeTwentyTwo"
+			column="P_SECONDSTARTTIMETWENTYTWO" />
+		<result property="PSecondStartTimeTwentyThree"
+			column="P_SECONDSTARTTIMETWENTYTHREE" />
+		<result property="PSecondStartTimeTwentyFour"
+			column="P_SECONDSTARTTIMETWENTYFOUR" />
+		<result property="PSecondStartTimeTwentyFive"
+			column="P_SECONDSTARTTIMETWENTYFIVE" />
+		<result property="PSecondStartTimeTwentySix"
+			column="P_SECONDSTARTTIMETWENTYSIX" />
+		<result property="PSecondStartTimeTwentySeven"
+			column="P_SECONDSTARTTIMETWENTYSEVEN" />
+		<result property="PSecondStartTimeTwentyEight"
+			column="P_SECONDSTARTTIMETWENTYEIGHT" />
+		<result property="PSecondStartTimeTwentyNine"
+			column="P_SECONDSTARTTIMETWENTYNINE" />
+		<result property="PSecondStartTimeThirty"
+			column="P_SECONDSTARTTIMETHIRTY" />
+		<result property="PSecondStartTimeThirtyOne"
+			column="P_SECONDSTARTTIMETHIRTYONE" />
+		<result property="PSecondStartTimeThirtyTwo"
+			column="P_SECONDSTARTTIMETHIRTYTWO" />
+		<result property="PSecondStartTimeThirtyThree"
+			column="P_SECONDSTARTTIMETHIRTYTHREE" />
+		<result property="PSecondStartTimeThirtyFour"
+			column="P_SECONDSTARTTIMETHIRTYFOUR" />
+		<result property="PSecondStartTimeThirtyFive"
+			column="P_SECONDSTARTTIMETHIRTYFIVE" />
+		<result property="PSecondStartTimeThirtySix"
+			column="P_SECONDSTARTTIMETHIRTYSIX" />
+		<result property="PSecondStartTimeThirtySeven"
+			column="P_SECONDSTARTTIMETHIRTYSEVEN" />
+		<result property="PSecondStartTimeThirtyEight"
+			column="P_SECONDSTARTTIMETHIRTYEIGHT" />
+		<result property="PSecondStartTimeThirtyNine"
+			column="P_SECONDSTARTTIMETHIRTYNINE" />
+		<result property="PSecondStartTimeForty"
+			column="P_SECONDSTARTTIMEFORTY" />
+		<result property="PSecondStartTimeFortyOne"
+			column="P_SECONDSTARTTIMEFORTYONE" />
+		<result property="PSecondStartTimeFortyTwo"
+			column="P_SECONDSTARTTIMEFORTYTWO" />
+		<result property="PSecondStartTimeFortyThree"
+			column="P_SECONDSTARTTIMEFORTYTHREE" />
+		<result property="PSecondStartTimeFortyFour"
+			column="P_SECONDSTARTTIMEFORTYFOUR" />
+		<result property="PSecondStartTimeFortyFive"
+			column="P_SECONDSTARTTIMEFORTYFIVE" />
+		<result property="PSecondStartTimeFortySix"
+			column="P_SECONDSTARTTIMEFORTYSIX" />
+		<result property="PSecondStartTimeFortySeven"
+			column="P_SECONDSTARTTIMEFORTYSEVEN" />
+		<result property="PSecondStartTimeFortyEight"
+			column="P_SECONDSTARTTIMEFORTYEIGHT" />
+		<result property="PSecondStartTimeFortyNine"
+			column="P_SECONDSTARTTIMEFORTYNINE" />
+		<result property="PSecondStartTimeFifty"
+			column="P_SECONDSTARTTIMEFIFTY" />
+		<result property="PSecondStartTimeFiftyOne"
+			column="P_SECONDSTARTTIMEFIFTYONE" />
+		<result property="PSecondStartTimeFiftyTwo"
+			column="P_SECONDSTARTTIMEFIFTYTWO" />
+		<result property="PSecondStartTimeFiftyThree"
+			column="P_SECONDSTARTTIMEFIFTYTHREE" />
+		<result property="PSecondStartTimeFiftyFour"
+			column="P_SECONDSTARTTIMEFIFTYFOUR" />
+		<result property="PSecondStartTimeFiftyFive"
+			column="P_SECONDSTARTTIMEFIFTYFIVE" />
+		<result property="PSecondStartTimeFiftySix"
+			column="P_SECONDSTARTTIMEFIFTYSIX" />
+		<result property="PSecondStartTimeFiftySeven"
+			column="P_SECONDSTARTTIMEFIFTYSEVEN" />
+		<result property="PSecondStartTimeFiftyEight"
+			column="P_SECONDSTARTTIMEFIFTYEIGHT" />
+		<result property="PSecondStartTimeFiftyNine"
+			column="P_SECONDSTARTTIMEFIFTYNINE" />
+		<result property="PSecondStartTimeSixty"
+			column="P_SECONDSTARTTIMESIXTY" />
+		<result column="T_NUMBER" property="TNumber" />
+	</resultMap>
+
+
+	<select id="playCurrentList" resultMap="play">
+		<![CDATA[ select
+		p_poster, 
+		p_name, 
+		p_theaterName, 
+		p_startDate, 
+		p_closeDate, 
+		p_runningtime 
+		from Play 
+		where p_closeDate >= sysdate and sysdate >= p_startDate
+		order by p_startDate ]]>
+	</select>
+
+	<select id="playPassList" resultMap="play">
+		<![CDATA[
+		SELECT p_number,
+		 p_poster,
+		p_name,
+		p_theaterName,
+		p_startDate,
+		p_closeDate,
+		p_runningtime
+		FROM Play
+		WHERE sysdate >= p_closeDate
+		order
+		by
+		p_startDate
+		]]>
+	</select>
+
+	<select id="playExpectedList" resultMap="play">
+		<![CDATA[
+		SELECT p_number,
+		p_poster,
+		p_name,
+		p_theaterName,
+		p_startDate,
+		p_closeDate,
+		p_runningtime
+		FROM Play
+		WHERE p_startDate >= sysdate
+		order
+		by
+		p_startDate
+		]]>
+	</select>
+
+</mapper>

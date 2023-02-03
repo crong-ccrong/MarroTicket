@@ -1,0 +1,21 @@
+package com.marroticket.common.util.service;
+
+import org.springframework.stereotype.Service;
+
+import com.marroticket.umember.play.domain.PlayVO;
+
+@Service
+public class FilesService {
+
+	public void save(PlayVO playVO) {
+		PlayVO f = new PlayVO();
+		f.setPtheaterMapFileName(playVO.getPtheaterMapFileName());
+		f.setPtheaterMapOriginalFileName(playVO.getPtheaterMapOriginalFileame());
+		f.setPtheaterMapUrl(playVO.getPtheaterMapUrl());
+		/*
+		 * f.setPposterFileName(playVO.getPposterFileName());
+		 * f.setPposterOriginalName(playVO.getPposterOriginalName());
+		 * f.setPposterUrl(playVO.getPposterUrl());
+		 */
+	}
+}

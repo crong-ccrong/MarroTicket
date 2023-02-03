@@ -1,0 +1,9 @@
+package com.marroticket.common.util.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.marroticket.common.util.domain.FileEntity;
+
+public interface FileRepository extends JpaRepository<FileEntity, Long> {
+
+}
