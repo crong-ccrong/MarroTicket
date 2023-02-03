@@ -1,5 +1,0 @@
-package com.marroticket.umember.member.mapper;
-
-public interface UmemberMapper {
-	
-}

@@ -1,8 +1,0 @@
-package com.marroticket.umember.member.domain;
-
-public class UmemberVO {
-	private int uNumber; //일반회원번호
-	private String uId; //아이디
-	private String uPassword; //비밀번호
-	
-}
