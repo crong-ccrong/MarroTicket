@@ -10,8 +10,6 @@
 		<result property="regDate" column="n_date" />
 	</resultMap>
 
-
-
 	<!-- 공지사항 등록 처리 -->
 	<insert id="create">
 		INSERT INTO notice
@@ -23,8 +21,7 @@
 		VALUES
 		(
 		notice_seq.NEXTVAL,
-		#{title},
-		#{content}
+		#{title}, #{content}
 		)
 	</insert>
 
@@ -59,7 +56,6 @@
 		#{content}
 		WHERE n_number = #{noticeNo}
 	</update>
-
 
 	<!-- 공지사항 삭제 처리 -->
 	<delete id="delete">

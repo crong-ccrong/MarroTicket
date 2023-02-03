@@ -2,9 +2,11 @@ package com.marroticket.admin.notice.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -44,11 +46,7 @@ public class NoticeController {
 	// 공지사항 목록 페이지
 
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
-	public String list(Model model ) throws Exception {
-
-		/*
-		 * List<NoticeVO> list = service.list(); System.out.println(list.toString());
-		 */
+	public String list(Model model) throws Exception {
 
 		model.addAttribute("noticeList", service.list());
 		System.out.println("공지사항 목록");

@@ -20,15 +20,6 @@
 		<th align="center" width="180"><spring:message
 				code="ufaq.regdate" /></th>
 	</tr>
-<%-- 
-<c:foreach ~~~~~~>
-  <c:set var="num" value="${페이징 쪽에 보면 총 게시물이 몇 건인지 뿌려주는 변수가 있을 텐데 그 변수명 입력}"></c:set>
-    // 게시판의 글번호 컬럼에  ${num} 변수 주고
-    // 나머지 코딩 내용~~~~~
-  <c:set var="num" value="${num-1}">
-</c:foreach>
-
- --%>
 
 
 	<c:choose>

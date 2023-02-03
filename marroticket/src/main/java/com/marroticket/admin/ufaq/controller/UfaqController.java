@@ -94,6 +94,7 @@ public class UfaqController {
 		rttr.addAttribute("page", pageRequest.getPage());
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
+		
 		return "redirect:/ufaq/ufaqList";
 
 	}

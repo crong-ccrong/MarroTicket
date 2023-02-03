@@ -3,6 +3,14 @@ package com.marroticket.common.domain;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Setter
+@Getter
+@ToString
 public class Pagination {
 
 	private int totalCount;// 전체 게시글 수
