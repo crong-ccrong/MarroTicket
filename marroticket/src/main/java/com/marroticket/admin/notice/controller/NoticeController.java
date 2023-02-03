@@ -43,7 +43,7 @@ public class NoticeController {
 		return "redirect:/notice/noticeList";
 	}
 
-	// 공지사항 목록 페이지
+	// 공지사항 목록 페이지 -> 관리자
 
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
@@ -52,7 +52,7 @@ public class NoticeController {
 		System.out.println("공지사항 목록");
 		return "admin.notice.noticeList";
 	}
-
+	
 	// 공지사항 상세 페이지
 	@RequestMapping(value = "/noticeRead", method = RequestMethod.GET)
 	public void read(int noticeNo, Model model) throws Exception {
@@ -81,6 +81,7 @@ public class NoticeController {
 		return "redirect:/notice/noticeList";
 	}
 
+	/*
 	// 공지사항 삭제 처리
 
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -91,4 +92,5 @@ public class NoticeController {
 
 		return "redirect:/notice/noticeList";
 	}
+	*/
 }

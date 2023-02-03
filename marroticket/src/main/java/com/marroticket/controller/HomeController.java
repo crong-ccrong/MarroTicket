@@ -3,6 +3,8 @@ package com.marroticket.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+
 
 @Controller
 public class HomeController {
@@ -76,9 +78,15 @@ public class HomeController {
 	public String companyinfo() {
 		return "footer.companyinfo";
 	}
-	@GetMapping("/termsofuse")
-	public String termsofuse() {
-		return "footer.termsofuse";
+	@GetMapping("/umembertermsofuse")
+	public String umembertermsofuse(Model model) {
+		model.addAttribute("umember","umember");
+		return "footer.umembertermsofuse";
+	}
+	@GetMapping("/tmembertermsofuse")
+	public String tmembertermsofuse(Model model) {
+		model.addAttribute("umember","umember");
+		return "footer.tmembertermsofuse";
 	}
 	
 	//고객센터

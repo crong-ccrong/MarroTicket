@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -162,9 +163,15 @@ public class TmemberController {
 		return "tmember.footer.companyinfo";
 	}
 
-	@GetMapping("/termsofuse")
-	public String termsofuse() {
-		return "tmember.footer.termsofuse";
+	@GetMapping("/tmembertermsofuse")
+	public String termsofuse(Model model) {
+		model.addAttribute("tmember", "tmember");
+		return "tmember.footer.tmembertermsofuse";
+	}
+	@GetMapping("/umembertermsofuse")
+	public String umembertermsofuse(Model model) {
+		model.addAttribute("tmember", "tmember");
+		return "tmember.footer.umembertermsofuse";
 	}
 
 	// 극단회원 아이디 찾기
