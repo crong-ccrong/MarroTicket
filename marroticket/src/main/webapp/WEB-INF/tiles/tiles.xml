@@ -29,19 +29,12 @@
 		<put-attribute name="content" value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
 	</definition>
 	
-	<!-- 연극 공연 정보 페이지 -->
-	<definition name="play.*" extends="main-template">
-		<put-attribute name="title" value="마로티켓 연극공연정보" />
-		<put-attribute name="content" value="/WEB-INF/views/umember/play/{1}.jsp" />
-	</definition>
 	
 	<!-- footer -->
 	<definition name="footer.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
-	
-	
 	
 	
 	
@@ -145,18 +138,18 @@
 	<!-- 고객센터 페이지 -->
 	<definition name="tserviceCenter.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 notice" />
-		<put-attribute name="content" value="/marroticket/src/main/webapp/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
 	</definition>
 	
 	<definition name="tfaq.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 faq" />
-		<put-attribute name="content" value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
 	</definition>
 	
 	<!-- footer -->
-	<definition name="*.footer.*" extends="tmember-template">
+	<definition name="tmember.footer.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 	
 	

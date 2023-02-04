@@ -33,6 +33,8 @@ public class PlayServiceImpl implements PlayService {
 	public PlayVO read() throws Exception {
 		return mapper.read();
 	}
-	
-	
+
+	public String getPposter(Integer pnumber) throws Exception {
+		return mapper.getPposter(pnumber);
+	}
 }
