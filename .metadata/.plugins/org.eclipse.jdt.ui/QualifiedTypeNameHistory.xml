@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="org.thymeleaf.context.Context"/>
     <fullyQualifiedTypeName name="com.marroticket.common.email.vo.EmailVO"/>
     <fullyQualifiedTypeName name="com.marroticket.tmember.member.TmemberVO"/>
@@ -36,7 +35,6 @@
     <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
     <fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
     <fullyQualifiedTypeName name="com.marroticket.umember.member.domain.UmemberVO"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="com.marroticket.common.security.MemberDetailsService"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="javax.validation.constraints.Past"/>
     <fullyQualifiedTypeName name="org.mybatis.spring.annotation.MapperScan"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="com.marroticket.umember.play.domain.PlayVO"/>
 </qualifiedTypeNameHistroy>

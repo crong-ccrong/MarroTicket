@@ -15,4 +15,5 @@ public interface PlayMapper {
 
 	public List<PlayVO> playExpectedList() throws Exception;
 
+	public PlayVO read() throws Exception;
 }

@@ -28,4 +28,11 @@ public class PlayServiceImpl implements PlayService {
 	public List<PlayVO> playExpectedList() throws Exception {
 		return mapper.playExpectedList();
 	}
+
+	@Override
+	public PlayVO read() throws Exception {
+		return mapper.read();
+	}
+	
+	
 }
