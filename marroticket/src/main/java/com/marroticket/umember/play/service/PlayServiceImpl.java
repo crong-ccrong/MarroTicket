@@ -34,5 +34,7 @@ public class PlayServiceImpl implements PlayService {
 		return mapper.read();
 	}
 	
-	
+	public String getPposter(Integer pnumber) throws Exception {
+		return mapper.getPposter(pnumber);
+	}
 }

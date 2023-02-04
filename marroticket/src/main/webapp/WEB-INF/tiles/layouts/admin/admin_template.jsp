@@ -11,10 +11,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<!-- header -->
 	<tiles:insertAttribute name="header" ignore="true" />
 
-	<tiles:insertAttribute name="sidebar" ignore="true" />
+	<!-- menu -->
+	<tiles:insertAttribute name="menu"  ignore="true"/>
 
+	<!-- content -->
 	<div align="center">
 		<tiles:insertAttribute name="content" ignore="true" />
 	</div>

@@ -1,0 +1,14 @@
+package com.marroticket.tmember.registe.service;
+
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.marroticket.umember.play.domain.PlayVO;
+
+public interface RegisteService {
+
+	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, Model model, BindingResult result)
+			throws Exception;
+}
