@@ -1,6 +1,6 @@
 package com.marroticket.tmember.member.domain;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.validation.constraints.Email;

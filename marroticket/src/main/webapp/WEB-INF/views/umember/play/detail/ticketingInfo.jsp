@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!-- ticketingInfo -->
 <!-- content_ticketingInfo -->
 <div class="content_ticketingInfo">

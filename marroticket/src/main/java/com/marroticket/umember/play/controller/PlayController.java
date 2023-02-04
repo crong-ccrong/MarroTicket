@@ -63,8 +63,54 @@ public class PlayController {
 	}
 	// 연극 공연 정보 상세 페이지
 	@GetMapping("/playDetail")
-	public String playDetail(Model model) {
-		model.addAttribute("test", "test");
+	public String playDetail(Model model) throws Exception{
+		PlayVO play = playService.read();
+		
+		//관람등급 set
+		play.setPratings(ratingSet(play));
+		//장르 정보 set
+		play.setPgenre(genreSet(play));
+		
+		System.out.println(play);
+		
+		model.addAttribute("play", play);
 		return "playDetail";
+	}
+
+	//관람등급 set
+	public String ratingSet(PlayVO play) {
+		switch (play.getPratings().charAt(0)) {
+		case '1':
+			return "전체";
+		case '2':
+			return "12세 이상";
+		case '3':
+			return "15세 이상";
+		case '4':
+			return "18세 이상";
+		default : 
+			return null;
+		}
+	}
+	//장르정보 set
+	public String genreSet(PlayVO play) {
+		switch (play.getPratings().charAt(0)) {
+		case '1':
+			return "로맨스극";
+		case '2':
+			return "코미디극";
+		case '3':
+			return "드라마극";
+		case '4':
+			return "공포극";
+		case '5':
+			return "추리스릴러극";
+		case '6':
+			return "판타지극";
+		case '7':
+			return "시대/역사극";
+		default:
+			return null;
+		}
 	}
 }

@@ -85,5 +85,11 @@
 		p_startDate
 		]]>
 	</select>
+	
+	<!-- 공연정보 읽기 -->
+	<select id="read" resultMap="playmap">
+		SELECT *
+		FROM play
+	</select>
 
 </mapper>
