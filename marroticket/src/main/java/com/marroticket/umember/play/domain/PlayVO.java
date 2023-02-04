@@ -3,13 +3,13 @@ package com.marroticket.umember.play.domain;
 import java.io.File;
 import java.util.Date;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,14 +37,11 @@ public class PlayVO {
 	@Size(max = 100, message = "100자 이내로 입력해주세요.")
 	private String ptheaterAddress; // 극장 주소
 
-	private String ptheaterMapOriginalName; // 극장 약도 원래 이름
-	private String pposterOriginalName; // 연극 포스터 원래 이름
-	private String ptheaterMapUrl; // 극장 약도 이미지Url
-	private String pposterUrl; // 연극 포스터 Url
-	private String ptheaterMapFileName; // 극장 약도 변환된 이름
-	private String pposterFileName; // 연극 포스터 변환된 이름
-	private String ptheaterMapUUID;// 극장 약도 UUID
-	private String pposterUUID;// 연극 포스터 UUID
+	private MultipartFile ptheaterMap;// 극장 약도 파일
+	private String ptheaterMapUrl; // 약도url
+
+	private MultipartFile pposter; // 연극 포스터 파일
+	private String pposterUrl; // 포스터url
 
 	@NotBlank(message = "기획사 정보는 필수 입력 값입니다.")
 	@Size(max = 20, message = "20자 이내로 입력해주세요.")
@@ -77,12 +74,10 @@ public class PlayVO {
 	private String pamendmentApproved;// 공연 수정 승인 여부
 
 	@NotNull
-	@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pstartDate; // 연극 시작일
 
 	@NotNull
-	@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pcloseDate; // 연극 종료일
 
