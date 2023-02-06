@@ -59,3 +59,12 @@
 2023-02-06 16:41:02,582 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-02-06 16:41:02,582 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\java8\Desktop\paging\공지사항 tfaq 페이징까지 완료함\marroticket\marroticket\src\test\resources
 2023-02-06 17:06:38,251 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-02-06 17:09:30,452 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-02-06 17:12:15,530 [Worker-10: Launching marroticket - MarroticketApplication] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+2023-02-06 17:12:16,105 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-02-06 17:12:16,105 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-02-06 17:12:16,110 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2023-02-06 17:12:16,132 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 15 resources
+2023-02-06 17:12:16,272 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-02-06 17:12:16,272 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-02-06 17:12:16,272 [Worker-10: Launching marroticket - MarroticketApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\springbootproject\marroticket\marroticket\src\test\resources
