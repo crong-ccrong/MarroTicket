@@ -46,10 +46,17 @@
 		<span> 고객센터</span>
 		<div class="dropdown-content">
 			<p>
+<<<<<<< HEAD
 				<a href="/notice/noticeList?accept=tmember">공지사항</a>
 			</p>
 			<p>
 				<a href="/tfaq/tfaqList?accept=tmember">자주 묻는 질문</a>
+=======
+				<a href="/theater/noticeList">공지사항</a>
+			</p>
+			<p>
+				<a href="/theater/tfaqList">자주 묻는 질문</a>
+>>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 			</p>
 		</div>
 	</div>

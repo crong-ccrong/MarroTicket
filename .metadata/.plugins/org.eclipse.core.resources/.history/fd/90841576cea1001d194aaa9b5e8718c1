@@ -1,0 +1,39 @@
+package com.marroticket.common.util.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
+@Entity
+@Table(name="file_db")
+public class File extends BaseEntity{
+ 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+ 
+	@Column(name="FILE_NM")
+	private String realName;
+	
+	@Column(name="FILE_TEMP_NM")
+	private String uuidName;
+ 
+	@Column(name="FILE_EXT")
+	private String extension;
+ 
+	@Column(name="FILE_PATH")
+	private String filePath;
+	
+	@Column(name="FILE_SIZE")
+	private long fileSize;
+ 

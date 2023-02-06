@@ -15,11 +15,33 @@
 			</tr>
 		</c:when>
 		<c:otherwise>
-			<c:forEach items="${list}" var="playExpectedList">
-				<tr>
-					<td width="160">${playExpectedList.pPoster }<br>${playExpectedList.pName }<br>${playExpectedList.pTheaterName }<br>${playExpectedList.pStartDate }~${playExpectedList.pCloseDate }</td>
-				</tr>
-			</c:forEach>
+
+			<tr>
+				<c:forEach items="${playExpectedList}" var="CurrentList"
+					varStatus="status">
+					<td><table>
+							<tr>
+								<td align="center"><a
+									href="/play/playDetail?pNumber=${CurrentList.pnumber }"> <img
+										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
+							</tr>
+							<tr>
+								<td align="center">${CurrentList.pname}</td>
+							</tr>
+							<tr>
+								<td align="center">${CurrentList.ptheaterName}</td>
+							</tr>
+							<tr>
+								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
+										value="${CurrentList.pstartDate}" />~<br> <fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${CurrentList.pcloseDate }" /></td>
+							</tr>
+						</table></td>
+					<c:if test="${status.count%4 == 0 }">
+						<tr></tr>
+					</c:if>
+				</c:forEach>
+			</tr>
 		</c:otherwise>
 	</c:choose>
 </table>

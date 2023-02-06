@@ -56,6 +56,7 @@ public class TfaqController {
 	 */
 
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
+
 	//@PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/tfaqList", method = RequestMethod.GET)
 	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
@@ -69,17 +70,7 @@ public class TfaqController {
 			url = "admin.tfaq.tfaqList";
 		}
 		
-		/* 이렇게 처리하면 tmember에서 페이지 넘겼을 때 정상적으로 표시됨
-		 * String url = "tfaq.tfaqList";
-		 * System.out.println("극단회원 FAQ 목록");
-		 * 
-		 * if ("admin".equals(accept)) {
-		 * url = "admin.tfaq.tfaqList"; }
-		 */
-		
-		
 		// 페이징 네비게이션 정보를 뷰에 전달한다.
-		//if ("tmember".equals(accept)) {
 		Pagination pagination = new Pagination();
 		pagination.setPageRequest(pageRequest);
 		pagination.setTotalCount(service.count());
@@ -88,8 +79,6 @@ public class TfaqController {
 	
 		// 뷰에 페이징 처리를 한 게시글 목록을 전달한다.
 		model.addAttribute("tfaqList", service.list(pageRequest));
-		
-		
 		
 		return url;
 	}
@@ -134,7 +123,6 @@ public class TfaqController {
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/tfaq/tfaqList";
-
-	}*/
-
+	}
+	*/
 }

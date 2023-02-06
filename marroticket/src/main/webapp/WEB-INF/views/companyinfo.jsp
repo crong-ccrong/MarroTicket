@@ -78,8 +78,11 @@
                 <img src="//tketlink.dn.toastoven.net/markup_resources/2022041802/renewal/pcweb/img/company/@temp_map.jpg" alt="티켓링크 지도">
             </div>
 
+<<<<<<< HEAD
         </div>
     </div>
+=======
+>>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
     <!-- //container -->
 
     <!-- footer -->

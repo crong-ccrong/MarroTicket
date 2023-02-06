@@ -1,2 +1,19 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+=======
+encoding//.settings/HomeController.class=UTF-8
+encoding//.settings/LoginController.class=UTF-8
+encoding//.settings/LoginController.java=UTF-8
+encoding//.settings/accessError.jsp=UTF-8
+encoding//.settings/adminPlayCurrentList.jsp=UTF-8
+encoding//.settings/adminPlayExpectedList.jsp=UTF-8
+encoding//.settings/adminPlayPassList.jsp=UTF-8
+encoding//.settings/application.properties=UTF-8
+encoding//.settings/login.jsp=UTF-8
+encoding//.settings/pom.properties=UTF-8
+encoding//.settings/pom.xml=UTF-8
+encoding//.settings/tiles.xml=UTF-8
+encoding//src2/application.properties=ISO-8859-1
+encoding//src2/pom.xml=UTF-8
+>>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 encoding/<project>=UTF-8

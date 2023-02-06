@@ -13,4 +13,7 @@
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="EmptyDefaultAssistCategory" value="false"/>
+	</section>
 </section>

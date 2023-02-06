@@ -1,0 +1,5 @@
+package com.marroticket.common.util.Service;
+
+public interface FileService {
+
+}

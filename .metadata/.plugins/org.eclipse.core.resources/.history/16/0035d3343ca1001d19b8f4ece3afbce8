@@ -1,0 +1,10 @@
+package com.marroticket.common.util;
+
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Table(name = "file")
+@Entity
+public class FileEntity {
+
+}

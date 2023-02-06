@@ -1,0 +1,14 @@
+package com.marroticket.common.security;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SecurityConfig extends WebMvcConfigurerAdapter {
+	
+//	@Bean
+//	public BCryptPasswordEncoder passwordEncoder() {
+//	    return new BCryptPasswordEncoder();
+//	  }
+	
+
+}

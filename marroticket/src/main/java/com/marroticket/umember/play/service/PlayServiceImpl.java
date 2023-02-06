@@ -28,4 +28,10 @@ public class PlayServiceImpl implements PlayService {
 	public List<PlayVO> playExpectedList() throws Exception {
 		return mapper.playExpectedList();
 	}
+
+
+	@Override
+	public String getPposter(Integer pnumber) throws Exception {
+		return mapper.getPposter(pnumber);
+	}
 }
