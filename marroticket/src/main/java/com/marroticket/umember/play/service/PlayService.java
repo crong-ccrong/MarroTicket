@@ -11,7 +11,7 @@ public interface PlayService {
 
 	public List<PlayVO> playExpectedList() throws Exception;
 	
-	public PlayVO read() throws Exception;
+	public PlayVO read(Integer pNumber) throws Exception;
 
 	public String getPposter(Integer pnumber) throws Exception;
 

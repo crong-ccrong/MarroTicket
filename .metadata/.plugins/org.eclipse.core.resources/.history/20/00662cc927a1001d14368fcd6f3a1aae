@@ -1,5 +1,0 @@
-package com.marroticket.common.util.repository;
-
-public interface FilesRepository {
-
-}

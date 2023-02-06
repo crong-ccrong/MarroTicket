@@ -234,7 +234,7 @@ button {
 .sat, div.sat.a.event {
 	color: #0000CD;
 }
-.calandar_day a.event, .calandar_day.today a.event {
+.calandar_day a.event {
 	/*공연이 있는 날에만 다른 css적용*/
 	cursor: pointer;
 	color : black;
@@ -248,7 +248,7 @@ button {
  color: #FF0000;
 	font-weight: bold;
 }
-.sat.today a.event, .sun.today a.event {
+.sat.today a.event, .sun.today a.event,  .calandar_day.today a.event {
  background-color: black;
  color :white;
   border-radius: 50px;
