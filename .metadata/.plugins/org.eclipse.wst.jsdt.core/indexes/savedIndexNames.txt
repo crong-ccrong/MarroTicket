@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\Users\java8\Desktop\paging\공지사항 tfaq 페이징까지 완료함\marroticket\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+677450669.index
+3598219780.index
+1115845636.index
+3755007747.index
+2357012513.index
