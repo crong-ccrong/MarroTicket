@@ -147,6 +147,11 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 -->
 <script>
 	function tIdChk() {
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			$(document).ajaxSend(function(e, xhr, options) {
+			    xhr.setRequestHeader(header, token);
+			});
 		$.ajax({
 			url : "/theater/tIdCheck",
 			type : "post",
@@ -161,28 +166,41 @@ $(document).ready(function() {
 				}
 			}
 		});
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
-		$(document).ajaxSend(function(e, xhr, options) {
-		    xhr.setRequestHeader(header, token);
-		});
+	
 	}
 </script>
 
 <!-- 비밀번호 확인 -->
 <script type="text/javascript">
-	$(function() {
-		$('#tPasswordConfirm').blur(function() {
-			if ($('#tPassword').val() != $('#tPasswordConfirm').val()) {
-				if ($('#tPasswordConfirm').val() != '') {
-					alert("비밀번호가 일치하지 않습니다.");
-					$('#tPasswordConfirm').val('');
-					$('#tPasswordConfirm').focus();
-				}
-			}
-		})
+
+$(function() {
+	  $("#join_submit").click(function() {
+	    if ($("#tPasswordConfirm").val() === "") {
+	      alert("비밀번호 재확인을 해야합니다.");
+	     return false;
+	      $("#tPasswordConfirm").focus();
+	    } 
+	  });
 	});
+
 </script>
+
+<!-- 비밀번호 확인 -->
+<script type="text/javascript">
+$(function(){
+      $('#tPasswordConfirm').blur(function(){
+         if($('#tPassword').val() != $('#tPasswordConfirm').val()){
+             if($('#tPasswordConfirm').val()!=''){
+             alert("비밀번호가 일치하지 않습니다.");
+                 $('#tPasswordConfirm').val('');
+                $('#tPasswordConfirm').focus();
+             }
+          }
+      })        
+   });
+</script>
+ 
+
 
 
 <!-- 극단 주소 -->
@@ -237,4 +255,32 @@ $(document).ready(function() {
 					}
 				}).open();
 	}
+</script>
+
+<!-- 파일 업로드 유효성 검사 -->
+
+<script type="text/javascript">
+const input = document.querySelector("input[name='file']");
+
+input.addEventListener("change", function() {
+  if (this.files.length === 0) {
+    alert("파일을 선택해주세요!!");
+    return;
+  }
+
+  const file = this.files[0];
+  if (file.size > 10485760) {
+    alert("파일 크기가 10MB를 초과합니다. 10MB보다 용량이 작은  파일을 선택하세요.");
+    return;
+  }
+
+  // Check for allowed file types
+  const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+  if (!allowedTypes.includes(file.type)) {
+    alert("파일 형식이 허용되지 않습니다. JPEG, PNG 또는 PDF 파일을 선택하세요.");
+    return;
+  }
+
+});
+
 </script>

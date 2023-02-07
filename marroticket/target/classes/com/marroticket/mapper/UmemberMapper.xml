@@ -112,4 +112,30 @@
 			#{umemberAuth}
 		)
 	</insert>	
+	
+	<!-- 마이페이지 회원정보 -->
+	<select id="getUmemberByUId"  resultMap="umemberMap">
+	SELECT *
+	FROM umember 
+	WHERE u_id = #{uId}
+	</select>
+	<!-- 마이페이지 회원수정 -->
+	<update id="updateInfo" >
+		update UMEMBER 
+		set u_password=#{uPassword},
+		u_phoneNumber=#{uPhoneNumber},
+		u_email=#{uEmail},
+		u_genre=#{uGenre}
+		where u_id=#{uId}
+	</update>
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteAuth" parameterType="int">
+	  DELETE FROM UMEMBER_AUTH 
+	  WHERE u_number  = #{uNumber}
+	</delete>
+	<delete id="deleteMember">
+	DELETE FROM UMEMBER 
+	WHERE u_id = #{uId}
+	</delete>
+	
 </mapper>

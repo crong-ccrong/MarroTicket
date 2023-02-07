@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -88,4 +87,57 @@ public class UmemberVO {
 	public void setuEmail(String uEmail) {
 		this.uEmail = uEmail;
 	}
+	public int getuNumber() {
+		return uNumber;
+	}
+	public void setuNumber(int uNumber) {
+		this.uNumber = uNumber;
+	}
+
+	public String getuBirthday() {
+		return uBirthday;
+	}
+	public void setuBirthday(String uBirthday) {
+		this.uBirthday = uBirthday;
+	}
+	public String getuGender() {
+		return uGender;
+	}
+	public void setuGender(String uGender) {
+		this.uGender = uGender;
+	}
+	public Date getuJoinDate() {
+		return uJoinDate;
+	}
+	public void setuJoinDate(Date uJoinDate) {
+		this.uJoinDate = uJoinDate;
+	}
+	public String getuUnjoin() {
+		return uUnjoin;
+	}
+	public void setuUnjoin(String uUnjoin) {
+		this.uUnjoin = uUnjoin;
+	}
+	public Date getuUnjoinDate() {
+		return uUnjoinDate;
+	}
+	public void setuUnjoinDate(Date uUnjoinDate) {
+		this.uUnjoinDate = uUnjoinDate;
+	}
+	public String getuGenre() {
+		return uGenre;
+	}
+	public void setuGenre(String uGenre) {
+		this.uGenre = uGenre;
+	}
+	public String getuAgree() {
+		return uAgree;
+	}
+	public void setuAgree(String uAgree) {
+		this.uAgree = uAgree;
+	}
+	
+	
+	
+	
 }

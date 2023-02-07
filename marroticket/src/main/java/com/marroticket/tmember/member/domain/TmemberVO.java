@@ -1,19 +1,16 @@
 package com.marroticket.tmember.member.domain;
 
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -29,7 +26,8 @@ public class TmemberVO {
 	@NotBlank(message = "비밀번호는 필수 입력 값입니다.")
 	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
 	private String tPassword; // 비밀번호
-
+	
+	
 	@NotBlank(message = "극단명은 필수 입력 값입니다.")
 	private String tName; // 극단명
 
@@ -58,11 +56,14 @@ public class TmemberVO {
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String tEstablishmentDate; // 설립일
 
-	@NotBlank(message = "계좌 정보 입력은 필수입니다.")
+	
 	private String tBank; // 거래 은행
+	@NotBlank(message = "계좌 정보 입력은 필수입니다.")
 	private String tBankNumber; // 계좌 번호
+	@NotBlank(message = "예금주 성명 입력은 필수입니다.")
 	private String tBankOwner; // 예금주
 
+	
 	private String tBusinessRegisterationImage; // 사업자등록증 오리지널
 	private String tFileUrl; // 파일경로
 	private String tFileName; // 파일 이름

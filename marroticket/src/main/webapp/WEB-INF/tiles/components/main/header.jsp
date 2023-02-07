@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-
 <!-- 로그인을 하지 않은 경우 -->
 <sec:authorize access="isAnonymous()">	
 	<div style="font-size : 12px; text-align:right"><a href="/auth/memberlogin">로그인</a> | <a href="/umember/umembermypage">마이페이지</a> | <a href="/umember/umemberReserveInfo">예매확인/취소</a> | <a href="/join">회원가입</a></div>

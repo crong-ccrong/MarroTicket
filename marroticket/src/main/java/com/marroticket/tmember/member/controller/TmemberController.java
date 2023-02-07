@@ -45,6 +45,7 @@ public class TmemberController {
 	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("")
+	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		return "tmemberhome";
 	}

@@ -2,16 +2,20 @@ package com.marroticket.umember.member.controller;
 
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
-import com.marroticket.common.security.MemberDetailsService;
 
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +28,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.member.service.UmemberService;
-
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -91,18 +96,168 @@ public class UmemberController {
 	// 마이페이지
 	/* 1) 일반 회원 정보 */
 	@GetMapping("/umembermypage")
-	public String umemberInfo() {
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String myPage(Model model) throws Exception {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println("마이페이지 정보 조회 호출");
+        String uId = authentication.getName();
+        
+        //서비스에서 아이디로 정보 불러오기
+        UmemberVO vo = umemberService.getUmemberByUId(uId);
+        
+        System.out.println(vo.getUmemberAuthList().get(0).getUNumber());
+        
+        //성별 표시
+        if (vo.getuGender().equals("1")) {
+			vo.setuGender("남자");
+		} else {
+			vo.setuGender("여자");
+		}
+        //장르표시
+        switch (vo.getuGenre()) {
+        case "1":
+            vo.setuGenre("로맨스");
+            break;
+        case "2":
+            vo.setuGenre("드라마");
+            break;
+        case "3":
+            vo.setuGenre("공포");
+            break;
+        case "4":
+            vo.setuGenre("추리/스릴러");
+            break;
+        case "5":
+            vo.setuGenre("판타지");
+            break;
+        case "6":
+            vo.setuGenre("시대/역사");
+            break;
+    }
+        model.addAttribute("vo", vo);
+        
 		return "mypage.umemberInfo"; // 일반 회원의 마이페이지 default 페이지
 	}
+	
+	
+	//회원정보 수정  페이지
+	@RequestMapping(value="/umemberModify" , method = RequestMethod.GET)
+	public String getMyPage(Model model) throws Exception {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String uId = authentication.getName();
+        
+        //서비스에서 아이디로 정보 불러오기
+        UmemberVO vo = umemberService.getUmemberByUId(uId);
+    	
+      //성별 표시
+        if (vo.getuGender().equals("1")) {
+			vo.setuGender("남자");
+		} else {
+			vo.setuGender("여자");
+		}
+        model.addAttribute("vo", vo);
+		return "mypage.umemberModify";
+	}
+	
+	@RequestMapping(value="/umemberModify", method = RequestMethod.POST)
+	public String updateMyPage(@ModelAttribute("vo")  UmemberVO vo,  HttpServletRequest request,
+	@RequestParam("uPassword") String uPassword, @RequestParam("changePw") String changePw,
+	@RequestParam("confirmPw") String confirmPw, RedirectAttributes rttr) throws Exception {
+	    System.out.println("수정 호출");
 
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String uId = authentication.getName();
+
+	    //비밀번호 암호화
+	    String inputPassword = uPassword;
+	    vo.setUPassword(passwordEncoder.encode(inputPassword));
+
+	    UmemberVO originalVO = umemberService.getUmemberByUId(uId);
+
+	    // 1. 로그인한 비밀번호 확인
+	    if (!passwordEncoder.matches(inputPassword, originalVO.getUPassword())) {
+	    	System.out.println("에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+	    	rttr.addFlashAttribute("msg","에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+	        return "redirect:/umember/umemberModify";
+	    }
+	    
+	    // 2. 변경할 비밀번호와 로그인한 비밀번호가 일치하면 오류
+	    if (passwordEncoder.matches(changePw, originalVO.getUPassword())) {
+	    	System.out.println("에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+	    	rttr.addFlashAttribute("emsg","에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+	    return "redirect:/umember/umemberModify";
+	}
+
+	    // 성별 값
+	    if (vo.getuGender().equals("1")) {
+	        vo.setuGender("남자");
+	    } else {
+	        vo.setuGender("여자");
+	    }
+	   
+	    //변경할 비밀번호가 빈칸도 아니고 기존 비밀번호랑도 다르면
+	    if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
+	    	//변경한 비밀번호도 암호화
+	    vo.setUPassword(passwordEncoder.encode(changePw));
+	    
+	    //비밀번호 변경시 로그아웃
+	    HttpSession session = request.getSession(false);
+	    if(session != null) {
+	    session.invalidate();
+	    }
+	    }
+	    umemberService.modify(vo);
+	   
+	 // 업데이트된 사용자 정보 가져오기
+	    UmemberVO updatedVO = umemberService.getUmemberByUId(uId);
+	
+	    //비밀번호 변경 없이 다른 정보들을 수정할 경우 마이페이지상태로 돌아감
+	     return "redirect:/umember/umembermypage";
+	    
+	}
+	
+	//회원탈퇴
+	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.GET)
+	public String secession (Model model) throws Exception {
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		  String uId = authentication.getName();
+
+		  model.addAttribute("uId", uId);
+		
+		return "mypage.umemberSecession";
+	}
+	
+	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.POST)
+	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,  
+            @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
+		System.out.println("탈퇴 페이지 호출");
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		  String uId = authentication.getName();
+		  
+		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
+		
+		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
+			System.out.println("비밀번호 틀림");
+			model.addAttribute("passwordError","에러메시지");
+			 return "mypage.umemberSecession";
+		}
+		umemberService.remove(originalVO);
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	
 	/* 2) 일반회원 예매 정보 */
 	@GetMapping("/umemberReserveInfo")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String umemberReserveInfo() {
 		return "mypage.umemberReserveInfo";
 	}
 
 	/* 3) 일반 회원 예매 취소 정보 */
 	@GetMapping("/umemberCancelInfo")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String umemberCancelInfo() {
 		return "mypage.umemberCancelInfo";
 	}
@@ -206,20 +361,11 @@ public class UmemberController {
 		// console 확인
 		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
+	
 
-//	//회원 정보 보기
-//	@RequestMapping(value = "/info", method = RequestMethod.GET)
-//	public void infoGET(HttpSession session, Model model) throws Exception{
-//
-//		//세션 객체 안에 있는 ID정보 저장
-//		String id = (String) session.getAttribute("id");
-//		log.info("회원정보보기 GET의 아이디 "+id);
-//
-//		//서비스안의 회원정보보기 메서드 호출
-//		UmemberVO umember = umemberService.readMember(id);
-//
-//		//정보저장 후 페이지 이동
-//		model.addAttribute("umember", umember);
-//		log.info("회원정보보기 GET의 VO "+ umember);
-//	}
+	
+		
+
+	
+	
 	}

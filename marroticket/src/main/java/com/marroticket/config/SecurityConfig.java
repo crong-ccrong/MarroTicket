@@ -93,5 +93,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public UserDetailsService createUmemberDetailsService() {
 		return new MemberDetailsService();
 	}
+	
+	
+	
 
 }
