@@ -16,7 +16,7 @@
 		<item key="size.y" value="101"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
-		<item key="EmptyDefaultAssistCategory" value="false"/>
+		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
 	</section>
 	<section name="NewClassWizardPage">
 		<item key="create_constructor" value="false"/>
