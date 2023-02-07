@@ -35,7 +35,8 @@
 				<tr>
 					<td align="center">${tfaqVO.tfaqNo}</td>
 					<!-- 게시글 상세보기할 때 페이징 요청 정보를 매개변수로 전달한다. -->
-					<td align="left"><a	href="/tfaq/tfaqRead${pagination.makeQuery(pagination.pageRequest.page)}&tfaqNo=${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
+					<td align="left"><a
+						href="/tfaq/tfaqRead${pagination.makeQuery(pagination.pageRequest.page)}&tfaqNo=${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
 					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${tfaqVO.regDate}" /></td>
 				</tr>
@@ -48,8 +49,21 @@
 	<c:if test="${pagination.prev}">
 		<a href="${pagination.startPage - 1}">&laquo;</a>
 	</c:if>
-	
-	
+
+	<!-- 관리자 네비게이션
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<c:forEach begin="${pagination.startPage }"
+			end="${pagination.endPage }" var="idx">
+
+			<a href="/tfaq/tfaqList${pagination.makeQuery(idx)}">${idx}</a>
+		</c:forEach>
+	</sec:authorize> -->
+
+
+	<!-- 극단 네비게이션
+	<sec:authorize access="hasRole('ROLE_TMEMBER')"></sec:authorize> -->
+
+
 	<c:forEach begin="${pagination.startPage }"
 		end="${pagination.endPage }" var="idx">
 

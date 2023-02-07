@@ -1,17 +1,5 @@
 package com.marroticket.tmember.member.controller;
 
-import java.security.SecureRandom;
-import java.util.Date;
-import java.util.List;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -36,14 +24,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
-
 import com.marroticket.tmember.registe.service.RegisteService;
 import com.marroticket.umember.play.domain.PlayVO;
 
@@ -52,11 +37,11 @@ import lombok.extern.slf4j.Slf4j;
 import com.marroticket.tmember.member.domain.TmemberVO;
 
 
+//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
-@MapperScan(basePackages = "com.marroticket.mapper")
-//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @RequestMapping("/theater")
+@MapperScan(basePackages = "com.marroticket.mapper")
 public class TmemberController {
 
 	@Autowired
@@ -67,10 +52,8 @@ public class TmemberController {
 
 	@Autowired
 	TmemberService tmemberService;
-	
 	@Autowired
 	EmailService emailService;
-	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -80,7 +63,6 @@ public class TmemberController {
 		return "tmemberhome";
 	}
 
-			
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO) throws Exception {
@@ -154,8 +136,7 @@ public class TmemberController {
 		System.out.println("tmemberJoinForm 호출 완료");
 		return "tMemberJoin.tmemberJoinForm";
 	}
-	
-	
+
 	// 아이디 중복체크
 	@PostMapping("/tIdCheck")
 	public ResponseEntity<String> tIdCheck(TmemberVO tmember) throws Exception {
@@ -203,22 +184,6 @@ public class TmemberController {
 		return "tMemberJoin.tmemberJoinSuccess";
 	}
 
-	// 극단 공지사항, faq
-
-	// 극단회원 FAQ
-	// 목록
-	@GetMapping("/tfaqList")
-	public String tfaqList() {
-		return "tserviceCenter.tfaqList";
-	}
-
-	// 극단회원 Notice
-	// 목록
-	@GetMapping("/noticeList")
-	public String noticeList() {
-		return "tserviceCenter.notice";
-	}
-
 	// footer
 	@GetMapping("/privacy")
 	public String privacy() {
@@ -230,6 +195,10 @@ public class TmemberController {
 		return "tmember.footer.companyinfo";
 	}
 
+	@GetMapping("/termsofuse")
+	public String termsofuse() {
+		return "tmember.footer.termsofuse";
+	}
 
 	@GetMapping("/tmembertermsofuse")
 	public String termsofuse(Model model) {
@@ -327,7 +296,6 @@ public class TmemberController {
 
 		return sb.toString();
 	}
-
 
 	// 상품 이미지 업로드
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

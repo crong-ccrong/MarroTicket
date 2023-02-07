@@ -6,13 +6,4 @@
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
-<<<<<<< HEAD
-=======
-	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard"/>
-		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.wst.web.ui"/>
-		</list>
-	</section>
->>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 </section>

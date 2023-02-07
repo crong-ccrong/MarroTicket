@@ -29,7 +29,6 @@ public class PlayServiceImpl implements PlayService {
 		return mapper.playExpectedList();
 	}
 
-
 	@Override
 	public String getPposter(Integer pnumber) throws Exception {
 		return mapper.getPposter(pnumber);

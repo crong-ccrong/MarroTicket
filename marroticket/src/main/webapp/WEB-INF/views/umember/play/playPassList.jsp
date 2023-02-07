@@ -11,7 +11,6 @@
 	<c:choose>
 		<c:when test="${empty playPassList }">
 			<tr>
-
 				<td><h3>상연기간이 지난 연극이 없습니다.</h3></td>
 			</tr>
 		</c:when>

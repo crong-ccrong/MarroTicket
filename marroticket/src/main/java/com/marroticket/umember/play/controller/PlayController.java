@@ -1,11 +1,5 @@
 package com.marroticket.umember.play.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -46,9 +40,6 @@ public class PlayController {
 	public String playCurrentList(Model model) throws Exception {
 
 		List<PlayVO> playCurrentList = new ArrayList<>();
-
-		playCurrentList = playService.playCurrentList();
-
 		playCurrentList = playService.playCurrentList();
 		model.addAttribute("playCurrentList", playCurrentList);
 
@@ -59,7 +50,7 @@ public class PlayController {
 	@GetMapping("/playPassList")
 	public String playPassList(Model model) throws Exception {
 
-		List<PlayVO> playPassList = playService.playPassList();
+		List<PlayVO> playPassList = new ArrayList<>();
 		playPassList = playService.playPassList();
 		model.addAttribute("playPassList", playPassList);
 
@@ -69,7 +60,6 @@ public class PlayController {
 	// 상연 예정 페이지
 	@GetMapping("/playExpectedList")
 	public String playExpectedList(Model model) throws Exception {
-
 
 		List<PlayVO> playExpectedList = new ArrayList<>();
 		playExpectedList = playService.playExpectedList();
