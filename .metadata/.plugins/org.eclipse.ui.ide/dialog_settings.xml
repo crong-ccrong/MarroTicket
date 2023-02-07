@@ -44,6 +44,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\springbootproject\marroticket\marroticket"/>
 			<item value="C:\Users\java8\Desktop\paging\공지사항 tfaq 페이징까지 완료함\marroticket\marroticket"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
