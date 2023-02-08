@@ -56,6 +56,10 @@
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			<item value="/Users/yujeong-won/Spring_STS/marroticket"/>
+>>>>>>> won
 			<item value="/Users/yujeong-won/Spring_STS/marroticket/ImageShop"/>
 			<item value="/Users/yujeong-won/Spring_STS/marroticket/marroticketjw"/>
 			<item value="/Users/yujeong-won/Spring_STS/marroticket/marroticket"/>
