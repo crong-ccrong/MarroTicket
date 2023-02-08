@@ -6,31 +6,7 @@
 <!-- 일반회원 마이페이지의 '일반회원정보' -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<style>
-  .sidebar {
-    float: left;
-  }
- 
-</style>
-
-<!-- sidebar section -->
-<div class="sidebar">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">내정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">예매확인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">나의 관람 연극</a>
-    </li>
-   <li class="nav-item">
-      <a class="nav-link" href="#">나의 맞춤 연극</a>
-    </li>
-  </ul>
-</div>
-
+	
 <!-- content section -->
 <div class="content">
 <form:form modelAttribute="vo"> 
