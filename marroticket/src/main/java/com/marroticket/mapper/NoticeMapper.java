@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.marroticket.admin.notice.domain.NoticeVO;
 
+
 public interface NoticeMapper {
 
 	// 공지사항 등록 처리

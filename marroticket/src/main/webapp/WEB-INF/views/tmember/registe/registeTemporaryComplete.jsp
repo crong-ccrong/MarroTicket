@@ -5,8 +5,8 @@
 	연극 정보가 입력되었습니다.<br> 관리자 승인 후 연극이 등록됩니다.
 </h1>
 <div>
-	<input type="button" value="메인화면으로 가기" id="main" /> <input type="button"
-		value="등록한 연극으로 가기" id="RegisteInfo" />
+	<input type="button" value="메인화면으로 가기" id="main" /> <input
+		type="button" value="등록한 연극으로 가기" id="RegisteInfo" />
 </div>
 
 <script>

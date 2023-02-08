@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,19 +56,31 @@ public class TfaqController {
 	 */
 
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
+
+	//@PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/tfaqList", method = RequestMethod.GET)
-	public String list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
 
-		// 뷰에 페이징 처리를 한 게시글 목록을 전달한다.
-		model.addAttribute("tfaqList", service.list(pageRequest));
-
+		String url = "tfaq.tfaqList";
+		System.out.println("극단회원 FAQ 목록");
+		
+		if ("admin".equals(accept)) {
+			// model.addAttribute("accept","tmember");
+			//url = "tfaq.tfaqList";
+			url = "admin.tfaq.tfaqList";
+		}
+		
 		// 페이징 네비게이션 정보를 뷰에 전달한다.
 		Pagination pagination = new Pagination();
 		pagination.setPageRequest(pageRequest);
 		pagination.setTotalCount(service.count());
 		model.addAttribute("pagination", pagination);
-		System.out.println("극단회원 FAQ 목록");
-		return "admin.tfaq.tfaqList";
+		//}
+	
+		// 뷰에 페이징 처리를 한 게시글 목록을 전달한다.
+		model.addAttribute("tfaqList", service.list(pageRequest));
+		
+		return url;
 	}
 
 	// 게시글 상세 페이지, 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
@@ -99,6 +112,7 @@ public class TfaqController {
 		return "redirect:/tfaq/tfaqList";
 	}
 
+	/*
 	// 게시글 삭제 처리, 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(int tfaqNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
@@ -109,7 +123,6 @@ public class TfaqController {
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/tfaq/tfaqList";
-
 	}
-
+	*/
 }
