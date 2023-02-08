@@ -10,5 +10,7 @@
    <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 </form>
 <br><br>
-<div style="font-size : 1.5em; text-align:left"><a href="/">마로티켓</a></div>
+
+<div style="font-size : 1.5em; text-align:left"><a href="/theater/">마로티켓극단</a></div>
+
 <hr>

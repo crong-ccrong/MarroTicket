@@ -20,7 +20,7 @@ public class UmemberServiceImpl implements UmemberService {
 	//임시비밀번호로 업데이트
 	public int passwordUpdate(UmemberVO umember) throws Exception{
 		return umembermapper.updatePassword(umember);
-	};
+	}
 	
 	//아이디 중복 체크
 		@Override

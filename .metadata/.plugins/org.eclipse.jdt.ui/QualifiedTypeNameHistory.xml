@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.marroticket.tmember.member.domain.TmemberAuth"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
     <fullyQualifiedTypeName name="org.hibernate.validator.constraints.SafeHtml.Attribute"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
@@ -25,4 +26,7 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.marroticket.umember.member.domain.UmemberVO"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+=======
+    <fullyQualifiedTypeName name="com.marroticket.umember.play.domain.PlayVO"/>
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 </qualifiedTypeNameHistroy>

@@ -11,4 +11,5 @@
 	 <typeAliases>
 		<package name="com.marroticket.mapper" />
 	</typeAliases>  
+	
 </configuration>

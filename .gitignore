@@ -1,6 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /.metadata/
 =======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+/.metadata/
+=======
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 ### Java template
 # Compiled class file
 *.class
@@ -98,8 +107,17 @@ application-aws.properties
 #.project
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .DS_Store
 =======
 >>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
 >>>>>>> main
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+=======
+/.metadata/
+>>>>>>> crong
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6

@@ -24,6 +24,7 @@
 1674621142832	Delete element
 1674625501675	Copy files
 <<<<<<< HEAD
+<<<<<<< HEAD
 1674693223380	Move file
 1674699789465	Delete element
 1674699796990	Delete element
@@ -31,6 +32,36 @@
 1674710757009	Delete element
 1674807199500	Delete element
 =======
+=======
+1674634518478	Rename package 'service'
+1674711028484	Delete element
+1674714393229	Delete element
+1674714415610	Delete element
+1674714423750	Move compilation units
+1674714431278	Rename package 'com.marroticket.tmember.registe.controller'
+1674714435574	Move compilation units
+1674720495995	Rename resource 'registeAgree.jsp'
+1674721148289	Delete elements
+1674799772334	Rename resource 'registeInfo3Calendar1.jsp'
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+1674695801259	Delete element
+1674713527216	Move file
+1674713532557	Copy file
+1674715526279	Delete element
+1674793222747	Rename resource 'Tfaq.xml'
+1674801499645	Delete element
+1674801505709	Copy file
+1674801527354	Rename resource 'noticeRead.jsp'
+1674802350067	Rename resource 'tfaqRead.jsp'
+1674802366857	Rename resource 'noticeRead.jsp'
+1674802370542	Move file
+1674802374506	Move file
+=======
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 1674712639763	Delete element
 1674712642882	Delete element
 1674721026076	Delete element
@@ -59,4 +90,12 @@
 1674833953937	Copy compilation unit
 1674834031833	Rename package 'com.marroticket.common.email.vo'
 1674834053781	Move compilation unit
+<<<<<<< HEAD
 >>>>>>> main
+=======
+<<<<<<< HEAD
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+=======
+>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+>>>>>>> 79ab777f2a9cad4fbcbb343faff94669788c8f41
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
