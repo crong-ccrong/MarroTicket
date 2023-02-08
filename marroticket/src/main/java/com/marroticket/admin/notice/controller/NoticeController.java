@@ -56,10 +56,7 @@ public class NoticeController {
 			// model.addAttribute("accept","tmember");
 			url = "admin.notice.noticeList";
 		}
-		/*
-		 * else { url = "admin.notice.noticeList"; model.addAttribute("noticeList",
-		 * service.list()); //model.addAttribute("accept","admin"); }
-		 */
+		
 		model.addAttribute("noticeList", service.list());
 		return url;
 	}
@@ -76,6 +73,7 @@ public class NoticeController {
 		
 		model.addAttribute(service.read(noticeNo));
 		return url;
+
 	}
 
 	// 공지사항 수정 페이지,

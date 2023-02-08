@@ -108,19 +108,19 @@ public class TmemberController {
 	// 등록한 연극
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo() {
-		return "info.tMemberPlayRegisteInfo";
+		return "info.tmemberPlayRegisteInfo";
 	}
 
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
 	public String theaterPayment() {
-		return "info.tMemberPayment";
+		return "info.tmemberPayment";
 	}
 
 	// 극단 정보 관리
 	@GetMapping("/tmembermypage")
 	public String theaterMemberInfo() {
-		return "info.tMemberMemberInfo";
+		return "info.tmemberMemberInfo";
 	}
 
 	// 극단 이용약관 페이지
@@ -131,6 +131,7 @@ public class TmemberController {
 	}
 
 	// 극단 회원 가입 페이지
+
 	@GetMapping("/tmemberJoinForm")
 	public String tmemberJoinForm(@ModelAttribute("tmember") TmemberVO tmember) {
 		System.out.println("tmemberJoinForm 호출 완료");

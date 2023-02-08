@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.marroticket.mapper.PlayMapper">
 
-
-
 	<select id="playCurrentList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
+		<![CDATA[ select p_poster, 
 		<![CDATA[ select
 		 P_POSTERURL,
 		p_number,
@@ -14,6 +13,8 @@
 		p_startDate, 
 		p_closeDate, 
 		p_runningtime 
+		from Play where to_Date(p_closeDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD') 
+			and to_Date(sysdate,'YYYY/MM/DD') >= to_Date(p_startDate,'YYYY/MM/DD') 
 		from Play 
 		where p_closeDate >= sysdate and sysdate >= p_startDate
 		order by p_startDate ]]>
@@ -22,6 +23,7 @@
 	<select id="playPassList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
 		<![CDATA[
+		SELECT p_poster,
 		SELECT 
 P_POSTERURL,
 		p_number,
@@ -31,16 +33,18 @@ P_POSTERURL,
 		p_closeDate,
 		p_runningtime
 		FROM Play
+		WHERE to_Date(sysdate,'YYYY/MM/DD')
+		>= to_Date(p_closeDate,'YYYY/MM/DD')
 		WHERE sysdate >= p_closeDate
 		order
 		by
 		p_startDate
 		]]>
 	</select>
-
 	<select id="playExpectedList"
 		resultType="com.marroticket.umember.play.domain.PlayVO">
 		<![CDATA[
+		SELECT p_poster,
 		SELECT 
 		 P_POSTERURL,
 		p_number,
@@ -50,6 +54,8 @@ P_POSTERURL,
 		p_closeDate,
 		p_runningtime
 		FROM Play
+		WHERE
+		to_Date(p_startDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD')
 		WHERE p_startDate >= sysdate
 		order
 		by
