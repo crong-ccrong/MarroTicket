@@ -1,13 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+<<<<<<< HEAD
+		<item key="selection" value="pTheaterMap"/>
+=======
+<<<<<<< HEAD
+		<item key="selection" value="Info"/>
+=======
 		<item key="selection" value="Read"/>
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
+>>>>>>> fcdf2c7e2d8049af392f014def98bc127db8fbb5
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+<<<<<<< HEAD
+			<item value="pTheaterMap"/>
+			<item value="PThaterMap"/>
+			<item value="pposter"/>
+			<item value="pposeter"/>
+			<item value="ptheatermap"/>
+			<item value="ptheaterMap"/>
+			<item value="ptheater"/>
+			<item value="registeTemporary"/>
+			<item value="ticketopen"/>
+			<item value="ticket"/>
+			<item value="thyme"/>
+			<item value="todayTime"/>
+			<item value="tid"/>
+			<item value="secu"/>
+			<item value="member"/>
+		</list>
+		<list key="replacehistory">
+			<item value="pTheaterMap"/>
+			<item value="pPoster"/>
+			<item value="pTheatermap"/>
+			<item value="currentDate"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1216"/>
+		<item key="DIALOG_Y_ORIGIN" value="241"/>
+=======
+<<<<<<< HEAD
+			<item value="info"/>
+			<item value="암호화"/>
+			<item value="update"/>
+			<item value="updqte"/>
+			<item value="validated"/>
+			<item value="valid"/>
+			<item value="va"/>
+			<item value="vai"/>
+			<item value="vaild"/>
+			<item value="mBtn"/>
+			<item value="input"/>
+			<item value="raw"/>
+			<item value="msg"/>
+			<item value="암호"/>
+			<item value="list"/>
+		</list>
+		<list key="replacehistory">
+			<item value="n"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1290"/>
+		<item key="DIALOG_Y_ORIGIN" value="528"/>
+		<item key="DIALOG_WIDTH" value="336"/>
+		<item key="DIALOG_HEIGHT" value="402"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+=======
 			<item value="read"/>
 			<item value="number"/>
 			<item value="mess"/>
@@ -19,8 +84,10 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1247"/>
 		<item key="DIALOG_Y_ORIGIN" value="317"/>
+>>>>>>> fcdf2c7e2d8049af392f014def98bc127db8fbb5
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 	</section>
 </section>

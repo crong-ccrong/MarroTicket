@@ -2,7 +2,6 @@ package com.marroticket.mapper;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 import com.marroticket.tmember.member.domain.TmemberAuth;
-import com.marroticket.tmember.member.domain.TmemberVO;
 
 public interface TmemberMapper {
 	// 아이디찾기
@@ -23,4 +22,5 @@ public interface TmemberMapper {
 
 	// 회원 auth create
 	public void createAuth(TmemberAuth auth);
+
 }
