@@ -3,6 +3,9 @@ package com.marroticket.tmember.member.controller;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
 import java.security.SecureRandom;
 import java.util.Date;
 
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,31 +61,30 @@ public class TmemberController {
 	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("")
-
+	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		return "tmemberhome";
 	}
 
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
-	public String registeForm(@ModelAttribute("playVO") PlayVO playVO) throws Exception {
-
+	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
 	}
 
 	// 연극 등록 처리
-	@PostMapping("/registePlay")
+	@PostMapping("/registePlayComplete")
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile ptheaterMap = playVO.getPtheaterMap();
-		MultipartFile pposter = playVO.getPposter();
+		MultipartFile ptheaterMap = playVO.getPTheaterMap();
+		MultipartFile pposter = playVO.getPPoster();
 
 		String ptheaterMapUrl = uploadFile(ptheaterMap.getOriginalFilename(), ptheaterMap.getBytes());
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPtheaterMapUrl(ptheaterMapUrl);
-		playVO.setPposterUrl(pposterUrl);
+		playVO.setPTheaterMapUrl(ptheaterMapUrl);
+		playVO.setPPosterUrl(pposterUrl);
 
 		registeService.registePlay(playVO);
 
@@ -97,11 +100,11 @@ public class TmemberController {
 		return "registe.registeTemporaryComplete";
 	}
 
-	// 상연 날짜 선택 팝업 이동
-	@GetMapping("/registeInfoCalendar")
-	public String registeInfoCalendar(PlayVO playVO, Model model) throws Exception {
+	// 연극 임시등록 완료페이지
+	@GetMapping("/registeTemporaryComplete")
+	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
 
-		return "tmember/registe/registeInfoCalendar";
+		return "registe.registeTemporaryComplete";
 	}
 
 	// 등록한 연극

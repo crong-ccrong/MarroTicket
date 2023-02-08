@@ -1,9 +1,0 @@
-package com.marroticket.common.domain;
-
-import lombok.Data;
-
-@Data
-@Entity
-public class Files {
-
-}

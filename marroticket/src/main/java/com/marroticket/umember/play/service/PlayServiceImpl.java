@@ -33,4 +33,9 @@ public class PlayServiceImpl implements PlayService {
 	public String getPposter(Integer pnumber) throws Exception {
 		return mapper.getPposter(pnumber);
 	}
+
+	/*
+	 * @Override public List<PlayVO> quickReserve() throws Exception { return
+	 * mapper.quickReserve(); }
+	 */
 }

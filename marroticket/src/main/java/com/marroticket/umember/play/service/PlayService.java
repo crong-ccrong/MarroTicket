@@ -13,4 +13,7 @@ public interface PlayService {
 	
 	public String getPposter(Integer pnumber) throws Exception;
 
+	/*
+	 * public List<PlayVO> quickReserve() throws Exception;
+	 */
 }

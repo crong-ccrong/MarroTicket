@@ -1,5 +1,0 @@
-package com.marroticket.common.util.domain;
-
-public class BaseEntity {
-
-}
