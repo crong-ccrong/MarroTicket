@@ -9719,3 +9719,156 @@ Caused by: java.lang.OutOfMemoryError: Java heap space
 	at org.eclipse.jdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:56)
 	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:681)
 	... 10 more
+!SESSION 2023-02-08 14:56:43.258 -----------------------------------------------
+eclipse.buildId=4.17.0.202212060857
+java.version=17.0.5
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY ch.qos.logback.classic 1 0 2023-02-08 14:56:44.327
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2023-02-08 14:56:45.390
+!MESSAGE Logback config file: C:\springbootproject\marroticket\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.0.20221015-0744.xml
+
+!ENTRY org.eclipse.jface 2 0 2023-02-08 14:56:47.166
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-02-08 14:56:47.166
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-02-08 14:56:47.166
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.edit.text.java.rename.element"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
+		Rename the selected item,
+		Category(org.eclipse.ui.category.file,File,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.ui.edit.rename"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-02-08 14:56:52.484
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\java8'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.ide.eclipse.xml.namespaces 4 0 2023-02-08 14:56:57.622
+!MESSAGE Plugin.internal_error
+!STACK 0
+java.io.FileNotFoundException: C:\springbootproject\marroticket\marroticket\target\test-classes (지정된 파일을 찾을 수 없습니다)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:111)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:86)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:189)
+	at java.base/java.net.URL.openStream(URL.java:1161)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.fetchResourceFromZip(FilteringURLResourceLoader.java:229)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.buildIndex(FilteringURLResourceLoader.java:173)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.ensureIndexed(FilteringURLResourceLoader.java:137)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.getResourcesCollection(FilteringURLResourceLoader.java:102)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.lambda$1(FilteringURLResourceLoader.java:258)
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:46)
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8143)
+	at reactor.core.publisher.FluxConcatArray$ConcatArraySubscriber.onComplete(FluxConcatArray.java:207)
+	at reactor.core.publisher.FluxConcatArray.subscribe(FluxConcatArray.java:80)
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4105)
+	at reactor.core.publisher.Mono.block(Mono.java:1662)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.PropertiesLoaderUtils.loadAllProperties(PropertiesLoaderUtils.java:88)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.getSchemaMappings(ProjectClasspathUriResolver.java:201)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.init(ProjectClasspathUriResolver.java:123)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.<init>(ProjectClasspathUriResolver.java:55)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver$1.call(ProjectClasspathExtensibleUriResolver.java:174)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver$1.call(ProjectClasspathExtensibleUriResolver.java:1)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver.getProjectResolver(ProjectClasspathExtensibleUriResolver.java:189)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver.resolve(ProjectClasspathExtensibleUriResolver.java:111)
+	at org.eclipse.wst.common.uriresolver.internal.ExtensibleURIResolver.resolve(ExtensibleURIResolver.java:86)
+	at org.eclipse.wst.xml.core.internal.modelquery.XMLCatalogIdResolver.resolve(XMLCatalogIdResolver.java:94)
+	at org.eclipse.wst.xml.core.internal.modelquery.XMLModelQueryAssociationProvider.resolveGrammarURI(XMLModelQueryAssociationProvider.java:60)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.XMLAssociationProvider.resolveGrammarURI(XMLAssociationProvider.java:170)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentManagerImpl.lookupOrCreateResolvedURI(CMDocumentManagerImpl.java:124)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentManagerImpl.addCMDocumentReference(CMDocumentManagerImpl.java:206)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentLoader.handleGrammar(CMDocumentLoader.java:226)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentLoader.loadCMDocuments(CMDocumentLoader.java:90)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.InferredGrammarBuildingCMDocumentLoader.loadCMDocuments(InferredGrammarBuildingCMDocumentLoader.java:58)
+	at org.eclipse.wst.xml.ui.internal.DOMObserver.invokeCMDocumentLoad(DOMObserver.java:216)
+	at org.eclipse.wst.xml.ui.internal.DOMObserver$TimerJob.run(DOMObserver.java:147)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.ide.eclipse.xml.namespaces 4 0 2023-02-08 14:56:57.716
+!MESSAGE Plugin.internal_error
+!STACK 0
+java.io.FileNotFoundException: C:\springbootproject\marroticket\marroticket\target\test-classes (지정된 파일을 찾을 수 없습니다)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:111)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:86)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:189)
+	at java.base/java.net.URL.openStream(URL.java:1161)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.fetchResourceFromZip(FilteringURLResourceLoader.java:229)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.buildIndex(FilteringURLResourceLoader.java:173)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.ensureIndexed(FilteringURLResourceLoader.java:137)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.getResourcesCollection(FilteringURLResourceLoader.java:102)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.FilteringURLResourceLoader.lambda$1(FilteringURLResourceLoader.java:258)
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:46)
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8143)
+	at reactor.core.publisher.FluxConcatArray$ConcatArraySubscriber.onComplete(FluxConcatArray.java:207)
+	at reactor.core.publisher.FluxConcatArray.subscribe(FluxConcatArray.java:80)
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4105)
+	at reactor.core.publisher.Mono.block(Mono.java:1662)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.PropertiesLoaderUtils.loadAllProperties(PropertiesLoaderUtils.java:88)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.getSchemaMappings(ProjectClasspathUriResolver.java:201)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.init(ProjectClasspathUriResolver.java:123)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathUriResolver.<init>(ProjectClasspathUriResolver.java:55)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver$1.call(ProjectClasspathExtensibleUriResolver.java:174)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver$1.call(ProjectClasspathExtensibleUriResolver.java:1)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver.getProjectResolver(ProjectClasspathExtensibleUriResolver.java:189)
+	at org.springframework.ide.eclipse.xml.namespaces.internal.ProjectClasspathExtensibleUriResolver.resolve(ProjectClasspathExtensibleUriResolver.java:111)
+	at org.eclipse.wst.common.uriresolver.internal.ExtensibleURIResolver.resolve(ExtensibleURIResolver.java:86)
+	at org.eclipse.wst.xml.core.internal.modelquery.XMLCatalogIdResolver.resolve(XMLCatalogIdResolver.java:94)
+	at org.eclipse.wst.xml.core.internal.modelquery.XMLModelQueryAssociationProvider.resolveGrammarURI(XMLModelQueryAssociationProvider.java:60)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.XMLAssociationProvider.resolveGrammarURI(XMLAssociationProvider.java:170)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentManagerImpl.lookupOrCreateResolvedURI(CMDocumentManagerImpl.java:124)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentManagerImpl.addCMDocumentReference(CMDocumentManagerImpl.java:206)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentLoader.handleGrammar(CMDocumentLoader.java:226)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.CMDocumentLoader.loadCMDocuments(CMDocumentLoader.java:90)
+	at org.eclipse.wst.xml.core.internal.contentmodel.modelqueryimpl.InferredGrammarBuildingCMDocumentLoader.loadCMDocuments(InferredGrammarBuildingCMDocumentLoader.java:58)
+	at org.eclipse.wst.xml.ui.internal.DOMObserver.invokeCMDocumentLoad(DOMObserver.java:216)
+	at org.eclipse.wst.xml.ui.internal.DOMObserver$TimerJob.run(DOMObserver.java:147)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-08 14:56:59.892
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-08 14:57:01.262
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
