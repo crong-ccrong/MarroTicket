@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ticketingInfo -->
 <!-- content_ticketingInfo -->
 <div class="content_ticketingInfo">
@@ -92,3 +93,10 @@
 	<input type="button" class="reservation_button" value="예매하기">
 </div>
 <div class="closeDate_content"></div>
+
+<!-- 연극 hidden -->
+<input type="hidden" name="pnumber" value="${play.pnumber} }"/>
+<input type="hidden" name="pseatNumber" value="${play.pseatNumber} }"/>
+<input type="hidden" name="pticketPrice" value="${play.pticketPrice} }"/>
+<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime} }"/>
+<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime} }"/>
