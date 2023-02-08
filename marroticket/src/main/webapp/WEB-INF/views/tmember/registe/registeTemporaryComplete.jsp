@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<h1>
+	연극 정보가 입력되었습니다.<br> 관리자 승인 후 연극이 등록됩니다.
+</h1>
+<div>
+	<input type="button" value="메인화면으로 가기" id="main" /> <input type="button"
+		value="등록한 연극으로 가기" id="RegisteInfo" />
+</div>
 
-</body>
-</html>
+<script>
+	$(document).ready(function() {
+		$("#main").on("click", function() {
+			location.href = "/theater/";
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$("#RegisteInfo").on("click", function() {
+			location.href = "/theater/playRegisteInfo/";
+		});
+	});
+</script>

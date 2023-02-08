@@ -15,7 +15,7 @@
 		p_closeDate, 
 		p_runningtime 
 		from Play 
-		where p_closeDate >= sysdate and sysdate >= p_startDate
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
 		order by p_startDate ]]>
 	</select>
 
@@ -31,7 +31,7 @@ P_POSTERURL,
 		p_closeDate,
 		p_runningtime
 		FROM Play
-		WHERE sysdate >= p_closeDate
+		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
@@ -50,12 +50,27 @@ P_POSTERURL,
 		p_closeDate,
 		p_runningtime
 		FROM Play
-		WHERE p_startDate >= sysdate
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
 		]]>
 	</select>
+
+	<!-- <select id="quickReserve"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+<![CDATA[
+		SELECT
+		P_NAME,
+		P_FIRSTSTARTTIME,
+		P_SECONDSTARTTIME
+		FROM PLAY
+		WHERE p_startDate <= 
+		sysdate and sysdate <= p_closeDate 
+		order by p_name]]>
+
+
+	</select> -->
 
 	<!-- 미리보기 이미지 표시 -->
 	<select id="getPposter" resultType="String">

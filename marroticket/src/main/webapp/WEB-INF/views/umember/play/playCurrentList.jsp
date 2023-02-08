@@ -18,25 +18,25 @@
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<c:forEach items="${playCurrentList}" var="CurrentList"
+				<c:forEach items="${playCurrentList}" var="list"
 					varStatus="status">
 
 					<td><table>
 							<tr>
 								<td align="center"><a
-									href="/play/playDetail?PNumber=${CurrentList.pnumber }"><img
-										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
+									href="/play/playDetail?PNumber=${list.pnumber }"><img
+										alt="..." src="poster?pnumber=${list.pnumber }"></a></td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.pname}</td>
+								<td align="center">${list.pname}</td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.ptheaterName}</td>
+								<td align="center">${list.ptheaterName}</td>
 							</tr>
 							<tr>
 								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
-										value="${CurrentList.pstartDate}" />~<br> <fmt:formatDate
-										pattern="YYYY-MM-dd (E)" value="${CurrentList.pcloseDate }" /></td>
+										value="${list.pstartDate}" />~<br> <fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${list.pcloseDate }" /></td>
 							</tr>
 
 						</table></td>
