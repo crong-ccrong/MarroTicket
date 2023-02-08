@@ -49,26 +49,31 @@ public class NoticeController {
 	// @PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
 	public String list(Model model, String accept) throws Exception {
-		String url = "admin.notice.noticeList";
+		String url = "notice.noticeList";
 		System.out.println("공지사항 목록");
 
-		if ("tmember".equals(accept)) {
+		if ("admin".equals(accept)) {
 			// model.addAttribute("accept","tmember");
-			url = "notice.noticeList";
+			url = "admin.notice.noticeList";
 		}
-		/*
-		 * else { url = "admin.notice.noticeList"; model.addAttribute("noticeList",
-		 * service.list()); //model.addAttribute("accept","admin"); }
-		 */
+		
 		model.addAttribute("noticeList", service.list());
 		return url;
 	}
 
 	// 공지사항 상세 페이지
 	@RequestMapping(value = "/noticeRead", method = RequestMethod.GET)
-	public void read(int noticeNo, Model model) throws Exception {
-		model.addAttribute(service.read(noticeNo));
+	public String read(int noticeNo, Model model, String accept) throws Exception {
+		String url = "notice.noticeRead";
 		System.out.println("공지사항 상세");
+		
+		if ("admin".equals(accept)) {
+			url = "admin.notice.noticeRead";
+		}
+		
+		model.addAttribute(service.read(noticeNo));
+		return url;
+		
 	}
 
 	// 공지사항 수정 페이지,

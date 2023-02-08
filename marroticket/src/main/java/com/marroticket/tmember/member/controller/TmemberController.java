@@ -87,17 +87,17 @@ public class TmemberController {
 	// 등록한 연극
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo() {
-		return "info.tMemberPlayRegisteInfo";
+		return "info.tmemberPlayRegisteInfo";
 	}
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
 	public String theaterPayment() {
-		return "info.tMemberPayment";
+		return "info.tmemberPayment";
 	}
 	// 극단 정보 관리
 	@GetMapping("/tmembermypage")
 	public String theaterMemberInfo() {
-		return "info.tMemberMemberInfo";
+		return "info.tmemberMemberInfo";
 	}
 
 
@@ -118,20 +118,17 @@ public class TmemberController {
 
 	// 극단 공지사항, faq
 
-	//극단회원 FAQ 
-	// 극단회원 FAQ
-	// 목록
-	@GetMapping("/tfaqList")
-	public String tfaqList() {
-		return "tserviceCenter.tfaqList";
-	}
-
-	// 극단회원 Notice
-	// 목록
-	@GetMapping("/noticeList")
-	public String noticeList() {
-		return "tserviceCenter.notice";
-	}
+	/*
+	 * //극단회원 FAQ // 극단회원 FAQ // 목록
+	 * 
+	 * @GetMapping("/tfaqList") public String tfaqList() { return
+	 * "tserviceCenter.tfaqList"; }
+	 * 
+	 * // 극단회원 Notice // 목록
+	 * 
+	 * @GetMapping("/noticeList") public String noticeList() { return
+	 * "tserviceCenter.notice"; }
+	 */
 	//footer 
 
 	// footer
