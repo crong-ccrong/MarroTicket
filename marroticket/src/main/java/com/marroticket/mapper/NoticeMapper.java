@@ -3,7 +3,7 @@ package com.marroticket.mapper;
 import java.util.List;
 
 import com.marroticket.admin.notice.domain.NoticeVO;
-import com.marroticket.common.domain.PageRequest;
+
 
 public interface NoticeMapper {
 

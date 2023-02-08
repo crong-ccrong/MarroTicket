@@ -49,7 +49,7 @@ public class PageRequest {
 	// 마이바티스 SQL 매퍼를 위한 메서드
 	//특정 페이지의 게시글 시작번호,시작 행 번호
 	public int getPageStart() {
-		
+
 		return (this.page - 1) * sizePerPage;
 	}
 

@@ -1,0 +1,5 @@
+package com.marroticket.mapper;
+
+public interface TmemberMapper {
+	 throws Exception
+}

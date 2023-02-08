@@ -3,6 +3,8 @@
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -12,14 +14,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-
+<sec:authentication var="principal" property="principal" />
 <h2>공연 등록 페이지</h2>
 
 
 
-<form:form method="post" modelAttribute="playVO" action="registePlay"
-	enctype="multipart/form-data">
+<form:form method="post" modelAttribute="playVO"
+	action="registePlayComplete" enctype="multipart/form-data">
 
 	<table border="1">
 		<tr>
@@ -52,46 +53,43 @@
 
 		<tr>
 			<td>연극명</td>
-			<td><form:input path="pname" placeholder="연극명 입력칸" /><font
-				color="red"><form:errors path="pname" /></font></td>
+			<td><form:input path="pName" placeholder="연극명 입력칸" /><font
+				color="red"><form:errors path="pName" /></font></td>
 		</tr>
 
 		<tr>
-			<td>연극 전체 기간</td>
-		</tr>
-		<tr>
 			<td>연극 시작일(현재일 시점부터 최소 30일 이후여야 합니다.)</td>
-			<td><form:input path="pstartDate" id="pstartDate" min="today+30" /><font
-				color="red"><form:errors path="pstartDate">
+			<td><form:input path="pStartDate" id="pstartDate" /><font
+				color="red"><form:errors path="pStartDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 		<tr>
 			<td>연극 종료일(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)</td>
-			<td><form:input path="pcloseDate" id="pcloseDate" /><font
-				color="red"><form:errors path="pcloseDate">
+			<td><form:input path="pCloseDate" id="pcloseDate" /><font
+				color="red"><form:errors path="pCloseDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
 			<td>예매오픈 희망일(연극 시작일 시점부터 최소 30일 전이여야 합니다.)</td>
-			<td><form:input path="pticketOpenDate" /><font color="red"><form:errors
-						path="pticketOpenDate">
+			<td><form:input path="pTicketOpenDate" id="pticketOpenDate" /><font color="red"><form:errors
+						path="pTicketOpenDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
 			<td>연극 소요시간(분단위)</td>
-			<td><form:input path="prunningTime" placeholder="연극 소요 시간 입력칸" />
-				<font color="red"><form:errors path="prunningTime" /></font></td>
+			<td><form:input path="pRunningTime" placeholder="연극 소요 시간 입력칸" />
+				<font color="red"><form:errors path="pRunningTime" /></font></td>
 		</tr>
 
 		<tr>
 			<td>극장명</td>
-			<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
-				color="red"><form:errors path="ptheaterName" /> </font></td>
+			<td><form:input path="pTheaterName" placeholder="극장명 입력칸" /> <font
+				color="red"><form:errors path="pTheaterName" /> </font></td>
 		</tr>
 
 		<tr>
@@ -101,36 +99,36 @@
 		</tr>
 
 		<tr>
-			<td><form:input path="ptheaterAddress" id="ptheaterAddress" />
-				<font color="red"><form:errors path="ptheaterAddress" /> </font></td>
+			<td><form:input path="pTheaterAddress" id="ptheaterAddress" />
+				<font color="red"><form:errors path="pTheaterAddress" /> </font></td>
 		</tr>
 
 		<tr>
 			<td>극장 약도</td>
-			<td><input type="File" name="ptheaterMap" id="ptheaterMap"
+			<td><input type="File" name="pTheaterMap" id="pTheaterMap"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="ptheaterMapError"><spring:message
+				id="pTheaterMapError"><spring:message
 						code="registe.file.error" /></font></td>
 		</tr>
 		<tr>
 			<td>연극포스터</td>
-			<td><input type="File" name="pposter" id="pposter"
+			<td><input type="File" name="pPoster" id="pPoster"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pposterError"><spring:message code="registe.file.error" /></font></td>
+				id="pPosterError"><spring:message code="registe.file.error" /></font></td>
 		</tr>
 
 		<tr>
 			<td>기획사 정보</td>
-			<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
+			<td><form:input path="pAgency" placeholder="기획사 정보 입력칸"
 					value="마로기획" /><font color="red"><form:errors
-						path="pagency" /></font></td>
+						path="pAgency" /></font></td>
 		</tr>
 
 
 
 		<tr>
 			<td>장르 정보</td>
-			<td><form:select path="pgenre">
+			<td><form:select path="pGenre">
 					<option value="1">로맨스극</option>
 					<option value="2">코미디극</option>
 					<option value="3">드라마극</option>
@@ -138,48 +136,50 @@
 					<option value="5">추리스릴러극</option>
 					<option value="6">판타지극</option>
 					<option value="7">시대/역사극</option>
-				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
+				</form:select><font color="red"><form:errors path="pGenre" /></font></td>
 		</tr>
 
 		<tr>
 			<td>관람 등급</td>
-			<td><form:select path="pratings">
+			<td><form:select path="pRatings">
 					<option value="1">전체 이용가</option>
 					<option value="2">12세 이상</option>
 					<option value="3">15세 이상</option>
 					<option value="4">18세 이상</option>
-				</form:select><font color="red"><form:errors path="pratings" /></font></td>
+				</form:select><font color="red"><form:errors path="pRatings" /></font></td>
 		</tr>
 
 		<tr>
-			<td>티켓 가격</td>
-			<td><form:input type="text" path="pticketPrice"
+			<td>티켓 가격(원)</td>
+			<td><form:input type="text" path="pTicketPrice"
 					placeholder="티켓 가격 입력칸" /><font color="red"><form:errors
-						path="pticketPrice" /></font></td>
+						path="pTicketPrice" /></font></td>
 		</tr>
 
 		<tr>
 			<td>캐스팅 데이터</td>
-			<td><form:textarea path="pcasting" placeholder="캐스팅 정보 입력칸" /><font
-				color="red"><form:errors path="pcasting" /></font></td>
+			<td><form:textarea rows="10" cols="120" path="pCasting"
+					placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
+						path="pCasting" /></font></td>
 		</tr>
 		<tr>
 			<td>연극 줄거리</td>
-			<td><form:textarea path="pplot" placeholder="연극 줄거리 입력칸" /><font
-				color="red"><form:errors path="pplot" /></font></td>
+			<td><form:textarea rows="10" cols="120" path="pPlot"
+					placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
+						path="pPlot" /></font></td>
 		</tr>
 
 		<tr>
 			<td>좌석 개수</td>
-			<td><form:input type="text" path="pseatNumber"
+			<td><form:input type="text" path="pSeatNumber"
 					placeholder="좌석 개수 입력칸" /><font color="red"><form:errors
-						path="pseatNumber" /></font></td>
+						path="pSeatNumber" /></font></td>
 
 		</tr>
 
 		<tr>
 			<td>상연 시각</td>
-			<td>1회차 상연 시간 선택 <form:select path="pfirstStartTime">
+			<td>1회차 상연 시간 선택 <form:select path="pFirstStartTime">
 					<option value="10:00">10:00</option>
 					<option value="10:10">10:10</option>
 					<option value="10:20">10:20</option>
@@ -253,8 +253,8 @@
 					<option value="21:40">21:40</option>
 					<option value="21:50">21:50</option>
 					<option value="22:00">22:00</option>
-				</form:select><font color="red"><form:errors path="pfirstStartTime" /></font></td>
-			<td>2회차 상영시간 선택 <form:select path="psecondStartTime">
+				</form:select><font color="red"><form:errors path="pFirstStartTime" /></font></td>
+			<td>2회차 상영시간 선택 <form:select path="pSecondStartTime">
 					<option value="없음">없음</option>
 					<option value="10:00">10:00</option>
 					<option value="10:10">10:10</option>
@@ -333,10 +333,11 @@
 		</tr>
 
 		<tr>
-			<form:input path="pregistrationApproval" value="0" hidden="true" />
-			<form:input path="pamendmentApproved" hidden="true" />
-			<form:input path="pagree" id="pagee" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
+			<form:input path="pRegistrationApproval" value="0" hidden="true" />
+			<form:input path="pAmendmentApproved" hidden="true" />
+			<form:input path="pAgree" id="pagee" value="1" hidden="true" />
+			<form:input path="tNumber" value="1" hidden="true" />
+			<form:input path="tId" hidden="true" value="${principal.tId }" />
 		</tr>
 	</table>
 </form:form>
@@ -346,12 +347,20 @@
 </div>
 
 
+<script>
+	$(document).ready(function() {
+		$("#main").on("click", function() {
+			location.href = "/theater/";
+		});
+	});
+</script>
 
 <script>
 	$(document)
 			.ready(
 					function() {
 						var formObj = $("#playVO");
+						
 						$.datepicker
 								.setDefaults({
 									dateFormat : 'yy-mm-dd',
@@ -372,11 +381,13 @@
 									showMonthAfterYear : true,
 									yearSuffix : '년'
 								});
+
 						$('#pstartDate').datepicker();
 						$('#pcloseDate').datepicker();
 						$("#pticketOpenDate").datepicker();
 						$("#pticketOpenDate")
 								.datepicker("option", "minDate", 0);
+
 						$('#pstartDate')
 								.datepicker("option", "minDate", "+30d");
 						$('#pstartDate').datepicker("option", "maxDate",
@@ -399,6 +410,7 @@
 											$("#pcloseDate").datepicker(
 													"option", "maxDate",
 													endDate);
+
 											var ticketMaxDate = new Date(
 													selectedDate);
 											ticketMaxDate.setDate(ticketMaxDate
@@ -413,11 +425,13 @@
 													"option", "maxDate",
 													ticketDate);
 										});
+
 						$("#agree1Error").hide();
 						$("#agree2Error").hide();
 						$("#agree3Error").hide();
-						$("#ptheaterMapError").hide();
-						$("#pposterError").hide();
+						$("#pTheaterMapError").hide();
+						$("#pPosterError").hide();
+
 						$("#registeTemporary")
 								.on(
 										"click",
@@ -432,14 +446,16 @@
 															'input:checkbox[name="agree3"]')
 															.is(":checked") == true) {
 												$("pagree").val(1);
-												if (!($("#ptheaterMap").val() == "" && $(
-														"#ptheaterMap").val() == null)
-														&& !($("#pposter")
+
+												if (!($("#pTheaterMap").val() == "" && $(
+														"#pTheaterMap").val() == null)
+														&& !($("#pPoster")
 																.val() == "" && $(
-																"#pposter")
+																"#pPoster")
 																.val() == null)) {
 													formObj.submit();
 												}
+
 											} else {
 												if ($(
 														'input:checkbox[name="agree1"]')
@@ -456,15 +472,20 @@
 														.is(":checked") == false) {
 													$("#agree3Error").show();
 												}
-												if ($("#ptheaterMap").val() == "") {
-													$("#ptheaterMapError")
+												if ($("#pTheaterMap").val() == "") {
+													$("#pTheaterMapError")
 															.show();
+
 												}
-												if ($("#pposter").val() == "") {
-													$("#pposterError").show();
+												if ($("#pPoster").val() == "") {
+													$("#pPosterError").show();
+
 												}
+
 											}
+
 										});
+
 					});
 </script>
 
@@ -476,16 +497,19 @@
 		new daum.Postcode({
 			oncomplete : function(data) {
 				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
 				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 				var addr = ''; // 주소 변수
 				var extraAddr = ''; // 참고항목 변수
+
 				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 					addr = data.roadAddress;
 				} else { // 사용자가 지번 주소를 선택했을 경우(J)
 					addr = data.jibunAddress;
 				}
+
 				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
 				if (data.userSelectedType === 'R') {
 					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -503,9 +527,11 @@
 						extraAddr = ' (' + extraAddr + ')';
 					}
 					// 조합된 참고항목을 해당 필드에 넣는다.
+
 				} else {
 					document.getElementById("sample6_extraAddress").value = '';
 				}
+
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				document.getElementById("ptheaterAddress").value = addr;
 				// 커서를 상세주소 필드로 이동한다.

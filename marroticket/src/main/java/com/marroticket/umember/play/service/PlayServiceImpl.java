@@ -1,13 +1,16 @@
 package com.marroticket.umember.play.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.marroticket.mapper.PlayMapper;
 import com.marroticket.umember.play.domain.PlayVO;
 
 @Service
 public class PlayServiceImpl implements PlayService {
+
 	@Autowired
 	private PlayMapper mapper;
 
@@ -26,9 +29,13 @@ public class PlayServiceImpl implements PlayService {
 		return mapper.playExpectedList();
 	}
 
-	
 	@Override
 	public String getPposter(Integer pnumber) throws Exception {
-	 return ""; // return mapper.getPposter(pnumber);
+		return mapper.getPposter(pnumber);
 	}
+
+	/*
+	 * @Override public List<PlayVO> quickReserve() throws Exception { return
+	 * mapper.quickReserve(); }
+	 */
 }

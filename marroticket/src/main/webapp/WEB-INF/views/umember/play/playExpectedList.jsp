@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <h2>상연 예정 목록</h2>
+
 <table border="1">
 	<c:choose>
 		<c:when test="${empty playExpectedList }">
@@ -12,30 +15,25 @@
 			</tr>
 		</c:when>
 		<c:otherwise>
-			<c:forEach items="${list}" var="playExpectedList">
-				<tr>
-					<td width="160">${playExpectedList.pPoster }<br>${playExpectedList.pName }<br>${playExpectedList.pTheaterName }<br>${playExpectedList.pStartDate }~${playExpectedList.pCloseDate }</td>
-				</tr>
-			</c:forEach>
 			<tr>
-				<c:forEach items="${playExpectedList}" var="CurrentList"
+				<c:forEach items="${playExpectedList}" var="list"
 					varStatus="status">
 					<td><table>
 							<tr>
 								<td align="center"><a
-									href="/play/playDetail?pNumber=${CurrentList.pnumber }">
-									<img alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
+									href="/play/playDetail?pNumber=${list.PNumber }">
+									<img alt="..." src="poster?pnumber=${list.PNumber }"></a></td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.pname}</td>
+								<td align="center">${list.PName}</td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.ptheaterName}</td>
+								<td align="center">${list.PTheaterName}</td>
 							</tr>
 							<tr>
 								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
-										value="${CurrentList.pstartDate}" />~<br> <fmt:formatDate
-										pattern="YYYY-MM-dd (E)" value="${CurrentList.pcloseDate }" /></td>
+										value="${list.PStartDate}" />~<br> <fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${list.PCloseDate }" /></td>
 							</tr>
 						</table></td>
 					<c:if test="${status.count%4 == 0 }">
@@ -46,3 +44,4 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+

@@ -112,6 +112,7 @@ public class Pagination {
 				.queryParam("page", page)
 				.queryParam("perPageNum", pageRequest.getSizePerPage())
 				.build();
+
 		return uriComponents.toUriString();
 	}
 }

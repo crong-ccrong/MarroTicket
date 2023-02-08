@@ -71,17 +71,9 @@
 	</c:forEach>
 
 
-
 	<c:if test="${pagination.next && pagination.endPage > 0}">
 		<a href="${pagination.endPage +1}">&raquo;</a>
 	</c:if>
-
-
-
-
-
-
-
 
 
 </div>

@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.marroticket.umember.play.domain.PlayVO;
 import com.marroticket.umember.play.service.PlayService;
+
+//@PreAuthorize("hasRole('ROLE_UMEMBER')")
 @RequestMapping("/play")
 @Controller
 @MapperScan(basePackages = "com.marroticket.mapper")
@@ -38,38 +40,41 @@ public class PlayController {
 	public String playCurrentList(Model model) throws Exception {
 
 		List<PlayVO> playCurrentList = new ArrayList<>();
-
 		playCurrentList = playService.playCurrentList();
-
 		model.addAttribute("playCurrentList", playCurrentList);
 
 		return "play.playCurrentList";
 	}
+
 	// 지난 상연 페이지
 	@GetMapping("/playPassList")
 	public String playPassList(Model model) throws Exception {
 
-		List<PlayVO> playPassList = playService.playPassList();
-		//List<PlayVO> playPassList = new ArrayList<>();
+		List<PlayVO> playPassList = new ArrayList<>();
 		playPassList = playService.playPassList();
 		model.addAttribute("playPassList", playPassList);
 
 		return "play.playPassList";
 	}
+
 	// 상연 예정 페이지
 	@GetMapping("/playExpectedList")
 	public String playExpectedList(Model model) throws Exception {
 
-		List<PlayVO> playExpectedList = playService.playExpectedList();
-		//List<PlayVO> playExpectedList = new ArrayList<>();
+		List<PlayVO> playExpectedList = new ArrayList<>();
 		playExpectedList = playService.playExpectedList();
 		model.addAttribute("playExpectedList", playExpectedList);
 
 		return "play.playExpectedList";
 	}
+
 	// 빠른 예매 페이지
 	@GetMapping("/quickReserve")
-	public String quickReserve() {
+	public String quickReserveForm(Model model) throws Exception {
+		/*
+		 * List<PlayVO> quickReserve = new ArrayList<>(); quickReserve =
+		 * playService.quickReserve(); model.addAttribute("quickReserve", quickReserve);
+		 */
 		return "play.quickReserve";
 	}
 

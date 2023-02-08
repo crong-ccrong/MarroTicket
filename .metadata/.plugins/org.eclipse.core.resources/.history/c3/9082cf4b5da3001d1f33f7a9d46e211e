@@ -1,0 +1,5 @@
+package com.marroticket.common.util.file;
+
+public class FileUploadUtil {
+
+}
