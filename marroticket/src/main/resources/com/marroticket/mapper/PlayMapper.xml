@@ -3,9 +3,38 @@
 <mapper namespace="com.marroticket.mapper.PlayMapper">
 
 
+	<resultMap id="play"
+		type="com.marroticket.umember.play.domain.PlayVO">
+		<id property="PNumber" column="p_number" />
+		<result property="PName" column="p_name" />
+		<result property="PStartDate" column="P_STARTDATE" />
+		<result property="PCloseDate" column="P_CLOSEDATE" />
+		<result property="PRunningTime" column="P_RUNNINGTIME" />
+		<result property="PTheaterName" column="P_THEATERNAME" />
+		<result property="PTheaterAddress" column="P_THEATERADDRESS" />
+		<result property="PTheaterMapUrl" column="P_THEATERMAPURL" />
+		<result property="PAgency" column="P_AGENCY" />
+		<result property="PRatings" column="P_RATINGS" />
+		<result property="PCasting" column="P_CASTING" />
+		<result property="PTicketOpenDate" column="P_TICKETOPENDATE" />
+		<result property="PPlot" column="P_PLOT" />
+		<result property="PSeatNumber" column="P_SEATNUMBER" />
+		<result property="PTicketPrice" column="P_TICKETPRICE" />
+		<result property="PGenre" column="P_GENRE" />
+		<result property="PPosterUrl" column="P_POSTERURL" />
+		<result property="PAgree" column="P_AGREE" />
+		<result property="PAmendmentApproved"
+			column="P_AMENDMENTAPPROVED" />
+		<result property="PRegistrationApproval"
+			column="P_REGISTRATIONAPPROVAL" />
+		<result property="TNumber" column="T_NUMBER" />
+		<result property="PFirstStartTime" column="P_FirstStartTime" />
+		<result property="PSecondStartTime" column="P_FirstStartTime" />
+	</resultMap>
+
 
 	<select id="playCurrentList"
-		resultType="com.marroticket.umember.play.domain.PlayVO">
+		resultMap="play">
 		<![CDATA[ select
 		 P_POSTERURL,
 		p_number,
@@ -20,7 +49,7 @@
 	</select>
 
 	<select id="playPassList"
-		resultType="com.marroticket.umember.play.domain.PlayVO">
+		resultMap="play">
 		<![CDATA[
 		SELECT 
 P_POSTERURL,
@@ -39,7 +68,7 @@ P_POSTERURL,
 	</select>
 
 	<select id="playExpectedList"
-		resultType="com.marroticket.umember.play.domain.PlayVO">
+		resultMap="play">
 		<![CDATA[
 		SELECT 
 		 P_POSTERURL,
@@ -57,26 +86,15 @@ P_POSTERURL,
 		]]>
 	</select>
 
-	<!-- <select id="quickReserve"
-		resultType="com.marroticket.umember.play.domain.PlayVO">
-<![CDATA[
-		SELECT
-		P_NAME,
-		P_FIRSTSTARTTIME,
-		P_SECONDSTARTTIME
-		FROM PLAY
-		WHERE p_startDate <= 
-		sysdate and sysdate <= p_closeDate 
-		order by p_name]]>
-
-
-	</select> -->
+	<!-- <select id="quickReserve" resultType="com.marroticket.umember.play.domain.PlayVO"> 
+		<![CDATA[ SELECT P_NAME, P_FIRSTSTARTTIME, P_SECONDSTARTTIME FROM PLAY WHERE 
+		p_startDate <= sysdate and sysdate <= p_closeDate order by p_name]]> </select> -->
 
 	<!-- 미리보기 이미지 표시 -->
 	<select id="getPposter" resultType="String">
 		SELECT p_posterUrl
 		FROM play
-		WHERE p_number = #{pnumber}
+		WHERE p_number = #{PNumber}
 	</select>
 
 

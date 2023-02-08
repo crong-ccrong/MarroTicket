@@ -40,7 +40,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
-
 @Slf4j
 @Controller
 @RequestMapping("/theater")
@@ -74,17 +73,17 @@ public class TmemberController {
 
 	// 연극 등록 처리
 	@PostMapping("/registePlayComplete")
-	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result
-			) throws Exception {
-		
-		MultipartFile ptheaterMap = playVO.getPtheaterMap();
-		MultipartFile pposter = playVO.getPposter();
+	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
+			throws Exception {
+
+		MultipartFile ptheaterMap = playVO.getPTheaterMap();
+		MultipartFile pposter = playVO.getPPoster();
 
 		String ptheaterMapUrl = uploadFile(ptheaterMap.getOriginalFilename(), ptheaterMap.getBytes());
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPtheaterMapUrl(ptheaterMapUrl);
-		playVO.setPposterUrl(pposterUrl);
+		playVO.setPTheaterMapUrl(ptheaterMapUrl);
+		playVO.setPPosterUrl(pposterUrl);
 
 		registeService.registePlay(playVO);
 

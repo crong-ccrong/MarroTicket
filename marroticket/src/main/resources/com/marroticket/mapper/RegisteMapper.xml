@@ -33,31 +33,31 @@
 
 		select
 		play_seq.nextval,
-		#{pname
+		#{pName
 		},
-		#{pstartDate},
-		#{pcloseDate},
-		#{prunningTime },
-		#{ptheaterName },
-		#{ptheaterAddress },
-		#{ptheaterMapUrl },
-		#{pagency },
-		#{pratings },
-		#{pcasting },
-		#{pticketOpenDate},
-		#{pplot },
-		#{pseatNumber },
-		#{pticketPrice},
-		#{pgenre },
-		#{pposterUrl },
-		#{pamendmentApproved},
-		#{pregistrationApproval },
-		#{pfirstStartTime},
-		#{psecondStartTime },
-		#{pagree} ,
+		#{pStartDate},
+		#{pCloseDate},
+		#{pRunningTime },
+		#{pTheaterName },
+		#{pTheaterAddress },
+		#{pTheaterMapUrl },
+		#{pAgency },
+		#{pRatings },
+		#{pCasting },
+		#{pTicketOpenDate},
+		#{pPlot },
+		#{pSeatNumber },
+		#{pTicketPrice},
+		#{pGenre },
+		#{pPosterUrl },
+		#{pAmendmentApproved},
+		#{pRegistrationApproval },
+		#{pFirstStartTime},
+		#{pSecondStartTime },
+		#{pAgree} ,
 		t_number
 		from tmember
-		where t_id = #{tid}
+		where t_id = #{tId}
 
 
 	</insert>
