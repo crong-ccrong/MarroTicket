@@ -38,36 +38,36 @@ public class TmemberServiceImpl implements TmemberService {
 		return tmembermapper.tIdCheck(tmember);
 	}
 
-	//
+
 	@Value("${file.dir}") // 맥용으로 설정했으니 윈도우일땐 프로퍼티에서 설정 바꾸기
 	private String uploadDir;
 
-	//회원 등록
-	@Override
-	public void register(TmemberVO tmember, MultipartFile file) throws Exception {
-		System.out.println(uploadDir);
-		System.out.println(File.separator);
-		System.out.println(file.getOriginalFilename());
+	   //회원 등록
+	   @Override
+	   public void register(TmemberVO tmember, MultipartFile file) throws Exception {
+	      System.out.println(uploadDir);
+	      System.out.println(File.separator);
+	      System.out.println(file.getOriginalFilename());
 
-		Path upload = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
+	      Path upload = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
 
-		String Url = uploadDir;
-		tmember.setTFileUrl(Url);
-		tmember.setTBusinessRegisterationImage(file.getOriginalFilename());
-		tmember.setTFileName(file.getName());
+	      String Url = uploadDir;
+	      tmember.setTFileUrl(Url);
+	      tmember.setTBusinessRegisterationImage(file.getOriginalFilename());
+	      tmember.setTFileName(file.getName());
 
-		try {
-			Files.copy(file.getInputStream(), upload, StandardCopyOption.REPLACE_EXISTING);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//회원등록 
-		tmembermapper.create(tmember);
-		
-		// auth
-		TmemberAuth auth = new TmemberAuth();
-		auth.setTmemberAuth("ROLE_TMEMBER");
-		tmembermapper.createAuth(auth);
-	}
+	      try {
+	         Files.copy(file.getInputStream(), upload, StandardCopyOption.REPLACE_EXISTING);
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	      
+	      //회원등록 
+	      tmembermapper.create(tmember);
+	      
+	      // auth
+	      TmemberAuth auth = new TmemberAuth();
+	      auth.setTmemberAuth("ROLE_TMEMBER");
+	      tmembermapper.createAuth(auth);
+	   }
 }

@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
@@ -40,6 +39,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
+
+//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
 @RequestMapping("/theater")
@@ -58,7 +59,7 @@ public class TmemberController {
 	EmailService emailService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	
 	@GetMapping("")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
@@ -183,22 +184,6 @@ public class TmemberController {
 	public String tmemberJoinSuccess() {
 		System.out.println("tmemberJoinSuccess호출 완료");
 		return "tMemberJoin.tmemberJoinSuccess";
-	}
-
-	// 극단 공지사항, faq
-
-	// 극단회원 FAQ
-	// 목록
-	@GetMapping("/tfaqList")
-	public String tfaqList() {
-		return "tserviceCenter.tfaqList";
-	}
-
-	// 극단회원 Notice
-	// 목록
-	@GetMapping("/noticeList")
-	public String noticeList() {
-		return "tserviceCenter.notice";
 	}
 
 	// footer

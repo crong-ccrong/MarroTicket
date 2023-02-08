@@ -29,6 +29,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
 	</definition>
 	
+	<!-- 연극 공연 정보 페이지 -->
+	<definition name="play.*" extends="main-template">
+		<put-attribute name="title" value="마로티켓 연극공연정보" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/play/{1}.jsp" />
+	</definition>
 	
 	<!-- footer -->
 	<definition name="footer.*" extends="main-template">
@@ -121,14 +126,20 @@
 	</definition>
 	
 	<!-- 고객센터 페이지 -->
-	<definition name="tserviceCenter.*" extends="tmember-template">
+	<definition name="notice.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 notice" />
-		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/notice/{1}.jsp" />
 	</definition>
 	
 	<definition name="tfaq.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 faq" />
-		<put-attribute name="content" value="/WEB-INF/views/tmember/tserviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
+	</definition>
+	
+	<!-- 연극 공연 정보 페이지 -->
+	<definition name="play.*" extends="main-template">
+		<put-attribute name="title" value="마로티켓 연극공연정보" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/play/{1}.jsp" />
 	</definition>
 	
 	<!-- footer -->
@@ -163,7 +174,6 @@
 	<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성 요소-->
 	<definition name="notice/*" extends="main-template">
 		<put-attribute name="title" value="Notice" />
-		<put-attribute name="content"
-			value="/WEBINF/views/notice/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/notice/{1}.jsp" />
 	</definition>
 </tiles-definitions>
