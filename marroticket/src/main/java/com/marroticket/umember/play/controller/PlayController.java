@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -91,16 +92,6 @@ public class PlayController {
 		return "playDetail";
 	}
 	
-	// 공연 회차 정보
-	@PostMapping("/schedule")
-	public ResponseEntity<String> schedule(String date) throws Exception{
-		date.substring(0, 4);
-		date.substring(5, 7);
-		date.substring(date.length()-2,date.length());
-		Date playDate = new Date();
-		ResponseEntity<String> entity = new ResponseEntity<String>(date, HttpStatus.OK);
-		return entity;
-	}
 	
 	// 연극 공연
 

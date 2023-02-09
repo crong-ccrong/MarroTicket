@@ -6,47 +6,47 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="조건 4) 종료&lt;달력(-1)"/>
+		<item key="selection" value="console.log"/>
 		<list key="findhistory">
-			<item value="조건 4) 종료&lt;달력(-1)"/>
-			<item value="[&quot;mm"/>
-			<item value="[&quot;date&quot;"/>
-			<item value="[&quot;mm&quot;"/>
-			<item value="[&apos;dd&apos;]"/>
-			<item value="[&quot;dd&quot;]"/>
-			<item value="console"/>
-			<item value="calendarJson[&quot;yyyy-mm-dd&quot;]"/>
-			<item value="calendarDateFull"/>
+			<item value="console.log"/>
+			<item value="play_time_list"/>
+			<item value="empty"/>
+			<item value="row"/>
+			<item value="getRticketSecond()"/>
+			<item value="/"/>
+			<item value="//hre"/>
+			<item value="/schedule"/>
+			<item value="/scehdule"/>
+			<item value="#{ticketNum}||&apos;%&apos;"/>
+			<item value="#{ticketNum}||%"/>
+			<item value="relayout"/>
 			<item value="today"/>
-			<item value="indate2"/>
-			<item value="indate"/>
-			<item value="console."/>
-			<item value="pastProcessing(days);"/>
-			<item value="return datein"/>
+			<item value="at12"/>
+			<item value="at"/>
 		</list>
 		<list key="replacehistory">
-			<item value="calendarJson[&quot;yyyy-mm-dd&quot;]"/>
-			<item value="pcloseDateJson[&quot;yyyy-mm-dd&quot;]"/>
-			<item value="pstartDateJson[&quot;yyyy-mm-dd&quot;]"/>
-			<item value="a.event"/>
-			<item value="div."/>
-			<item value="week"/>
-			<item value="calendarJson[&quot;day&quot;]"/>
-			<item value="calendarJson[&quot;mm&quot;]"/>
-			<item value="calendarJson[&quot;&quot;]"/>
-			<item value="return [ pstartDateJson, pcloseDateJson ]"/>
-			<item value="calendarMonth"/>
-			<item value="calendarDateFull"/>
-			<item value="calendarDate"/>
-			<item value="pcloseDateCalendar"/>
-			<item value="pcloseDateFull"/>
+			<item value="."/>
+			<item value="&apos;%&apos;||#ticketNum#||&apos;%&apos;"/>
+			<item value="new Date()"/>
+			<item value="p"/>
+			<item value="o"/>
+			<item value="n"/>
+			<item value="m"/>
+			<item value="l"/>
+			<item value="k"/>
+			<item value="j"/>
+			<item value="i"/>
+			<item value="h"/>
+			<item value="g"/>
+			<item value="f"/>
+			<item value="e"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="642"/>
-		<item key="DIALOG_Y_ORIGIN" value="461"/>
+		<item key="DIALOG_X_ORIGIN" value="1524"/>
+		<item key="DIALOG_Y_ORIGIN" value="207"/>
 		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
+		<item key="DIALOG_HEIGHT" value="425"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

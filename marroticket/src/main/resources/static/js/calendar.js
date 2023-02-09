@@ -110,14 +110,14 @@ $(document)
 				$('.calandar_content').empty();
 
 				var div = '<div class="__REST__ __TODAY__"><a __HREF__>__DATE__</a></div>';
-				var href = '/play/schedule?date='
+				var href = '/reserve/schedule?date='
 					+ date.substring(0, 8);
 				var hasEvent;
 				var divClass;
 				var week = null;
 				var days = fullDays(date); //초기화가 완료된 셀들
 				var inDate; //index일의 date객체 생성
-				var today = new Date();
+				var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 
 				for (var i = 0, length = days.length; i < length; i += 7) {
 					// 전체 셀을 주단위로 잘라서 사용
@@ -152,7 +152,7 @@ $(document)
 										divClass)
 									.replace(
 										'__TODAY__',
-										(obj['today']) ? 'today'
+										(obj['today']) ? 'today" id="itIstoday'
 											: '')
 									.replace(
 										'__HREF__',
@@ -288,6 +288,31 @@ $(document)
 							drawMonth($(this).data('ym'));
 						});
 			});
+			$(document).on("click", "#play_time_btn_first", function() {
+				$('#play_time_btn_first').css({
+					'background-color': 'red',
+					'color': 'white'
+				});
+				$('#play_time_btn_second').css({
+					'background-color': 'white',
+					'color': 'black',
+					'margin-top': '10px'
+				});
+				$('.play_seat_remain').html($('input[name=firstTimeSeatInfo]').val() + "석");
+			});
+			$(document).on("click", "#play_time_btn_second", function() {
+				$('#play_time_btn_second').css({
+					'background-color': 'red',
+					'color': 'white',
+					'margin-top': '10px'
+				});
+				$('#play_time_btn_first').css({
+					'background-color': 'white',
+					'color': 'black'
+				});
+				$('.play_seat_remain').html($('input[name=secondTimeSeatInfo]').val() + "석");
+			});
+
 
 			$(document).on("click", "a.event", function(e) { //a태그를 이용해서 공연 정보 가져오기
 				e.preventDefault();
@@ -299,21 +324,59 @@ $(document)
 					xhr.setRequestHeader(header, token);
 				});
 
-				var href = $(this).attr('href');
+				var href = $(this).attr('href').replace(/-/g, ''); //href = "/reserve/schedule?date=yyyymmdd"
+				var pnumberVal = $('input[name=pnumber]').val(); //공연번호
+				var pseatNumberVal = $('input[name=pseatNumber]').val(); //좌석개수
+				var pfirstStartTimeVal = $('input[name=pfirstStartTime]').val(); //1회차
+				var psecondStartTimeVal = $('input[name=psecondStartTime]').val();//2회차
+
+				var playInfoJSON = {
+					"pnumber": pnumberVal,
+					"pseatNumber": pseatNumberVal,
+					"pfirstStartTime": pfirstStartTimeVal,
+					"psecondStartTime": psecondStartTimeVal
+				}
+				var playInfoJSONStr = JSON.stringify(playInfoJSON);
+
 
 				$.ajax({
 					type: "post",
 					url: href,
+					data: playInfoJSONStr,
+					traditional: true,
+					contentType: "application/json; charset=utf-8",
 					success: function(result) {
-						switch (result) {
-							case 'fail':
-								//입력한 이름와 휴대폰 번호에 일치하는 아이디가 없을 때
-								alert("아이디 찾기 실패 \n입력하신 정보와 일치하는 아이디가 없습니다.");
+						console.log("1회차 잔여좌석 : " + result["first"]);
+						//기존 회차별 좌석 정보 엘리먼트 지움
+						$('.play_time_list').empty();
+						$('#hiddenSeatInfoFirst').empty();
+						$('#hiddenSeatInfoSecond').empty();
+
+						//1회차 좌석 정보(회차선택)
+						var firstTurnInfoElement
+							= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_first" class="play_time_btn" role="option"aria-selected="true" style="background-color:red; color:white;"><span class="play_time">1회차 ' + $('input[name=pfirstStartTime]').val() + '</span></button></li>';
+						var firstTurnInfoHidden = '<input type="hidden" name="firstTimeSeatInfo" value="' + result["first"] + '"/>';
+						$(".play_time_list").append(firstTurnInfoElement);
+						$("#hiddenSeatInfoFirst").append(firstTurnInfoHidden);
+
+						//1회차 좌석 정보(예매가능좌석수)
+						$(".play_time").html("1회차 " + $('input[name=pfirstStartTime]').val());
+						$('.play_seat_remain').html(result["first"] + "석");
+
+						switch (result["second"]) {
+							case 100:
+								console.log("2회차 공연이 없음");
+								$("#hiddenSeatInfoSecond").append(null);
 								break;
 							default:
-								//아이디 찾기 성공
-								console.log('회원의 아이디 : ' + result);
-								alert("아이디 찾기 성공 \n아이디는 " + result + "입니다.");
+								console.log("\n2회차 잔여좌석 : " + result["second"]);
+
+								var secondTurnInfoElement
+									= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_second" class="play_time_btn" role="option"aria-selected="true" style="margin-top:10px;"><span class="play_time">2회차 ' + $('input[name=psecondStartTime]').val() + '</span></button></li>';
+								var secondTurnInfoHidden = '<input type="hidden" name="secondTimeSeatInfo" value="' + result["second"] + '"/>';
+
+								$(".play_time_list").append(secondTurnInfoElement);
+								$("#hiddenSeatInfoSecond").append(secondTurnInfoHidden);
 								break;
 						}
 					}
