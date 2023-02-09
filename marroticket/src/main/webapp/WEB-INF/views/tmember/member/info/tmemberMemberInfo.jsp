@@ -80,7 +80,7 @@
 	
 	<tr>
 		<td colspan="2" align="center">
-			<input type="button" value="회원정보수정" onclick="location.href='/tmember/tmemberMemberModify'">
+			<input type="button" value="회원정보수정" onclick="location.href='/theater/tmemberModify'">
 		</td>
 	</tr>
 	

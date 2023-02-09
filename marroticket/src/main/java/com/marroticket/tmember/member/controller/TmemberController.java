@@ -29,12 +29,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.registe.service.RegisteService;
+import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -148,10 +150,22 @@ public class TmemberController {
 		}
 		
 		model.addAttribute("vo", vo);
-		
-		//return "mypage.umemberInfo"; // 일반 회원의 마이페이지 default 페이지
 		return "info.tmemberMemberInfo";
 	}
+	
+	//회원정보 수정  페이지
+		@RequestMapping(value="/tmemberModify" , method = RequestMethod.GET)
+		public String tmemberMemberModify(Model model) throws Exception {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	        String tId = authentication.getName();
+	        
+	        //서비스에서 아이디로 정보 불러오기
+	        TmemberVO vo = tmemberService.getTmemberByTId(tId);
+	    	
+	        model.addAttribute("vo", vo);
+			return "info.tmemberMemberModify";
+		}
+	
 	// 극단 마이페이지 끝
 	
 	// 극단 이용약관 페이지
