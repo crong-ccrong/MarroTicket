@@ -127,6 +127,7 @@ public class TmemberController {
 
 	// 극단 내 정보
 	@GetMapping("/tmembermypage")
+	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String tmemberMemberInfo(Model model) throws Exception {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -139,12 +140,16 @@ public class TmemberController {
 		System.out.println(vo.getTmemberAuthList().get(0).getTNumber());
 		
 		// 사업자 등록 구분 1:개인 2:기업
-		if (vo.getTBusinessRegistration().equals("1")) {
+		//vo.getTBusinessRegistration().equals("1")
+		if ("1".equals(vo.getTBusinessRegistration())) {
 			vo.setTBusinessRegistration("개인");
 		} else {
 			vo.setTBusinessRegistration("기업");
 		}
 		
+		model.addAttribute("vo", vo);
+		
+		//return "mypage.umemberInfo"; // 일반 회원의 마이페이지 default 페이지
 		return "info.tmemberMemberInfo";
 	}
 	// 극단 마이페이지 끝

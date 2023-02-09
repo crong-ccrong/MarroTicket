@@ -97,4 +97,54 @@ public class TmemberVO {
 	public void settOwnerEmail(String tOwnerEmail) {
 		this.tOwnerEmail = tOwnerEmail;
 	}
+
+	public String gettAddress() {
+		return tAddress;
+	}
+
+	public void settAddress(String tAddress) {
+		this.tAddress = tAddress;
+	}
+
+	public String gettOwnerName() {
+		return tOwnerName;
+	}
+
+	public void settOwnerName(String tOwnerName) {
+		this.tOwnerName = tOwnerName;
+	}
+
+	public String gettOwnerPhoneNumber() {
+		return tOwnerPhoneNumber;
+	}
+
+	public void settOwnerPhoneNumber(String tOwnerPhoneNumber) {
+		this.tOwnerPhoneNumber = tOwnerPhoneNumber;
+	}
+
+	public String gettBank() {
+		return tBank;
+	}
+
+	public void settBank(String tBank) {
+		this.tBank = tBank;
+	}
+
+	public String gettBankNumber() {
+		return tBankNumber;
+	}
+
+	public void settBankNumber(String tBankNumber) {
+		this.tBankNumber = tBankNumber;
+	}
+
+	public String gettBankOwner() {
+		return tBankOwner;
+	}
+
+	public void settBankOwner(String tBankOwner) {
+		this.tBankOwner = tBankOwner;
+	}
+
+
 }

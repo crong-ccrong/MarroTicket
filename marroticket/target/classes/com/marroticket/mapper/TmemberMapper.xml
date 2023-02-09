@@ -155,7 +155,7 @@
 			t_ownerEmail=#{tOwnerEmail},
 			t_bank=#{tBank},
 			t_bankNumber=#{tBankNumber},
-			t_bankOwner=#{tBnakOwner}
+			t_bankOwner=#{tBankOwner}
 		where t_id=#{tId}
 	</update>
 	

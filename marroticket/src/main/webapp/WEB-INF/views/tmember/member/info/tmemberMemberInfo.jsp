@@ -11,7 +11,7 @@
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
 <div class="content">
-<form:form modelAttribute="vo"> 
+<form:form modelAttribute="vo" action="/theater/tmembermypage"> 
 <table border="1">
 	<tr>
 		<th align="center" width="180">분류</th>
@@ -60,16 +60,12 @@
 		<th><form:input path="tFileName" readonly="true" /></th>
 	</tr>
 	<tr>
-		<th>설립일</th>
-		<th><form:input path="tEstablishmentDate" readonly="true" /></th>
-	</tr>
-	<tr>
 		<th>거래은행</th>
 		<th><form:input path="tBank" readonly="true" /></th>
 	</tr>
 	<tr>
 		<th>계좌번호</th>
-		<th><form:input path="tBnakNumber" readonly="true" /></th>
+		<th><form:input path="tBankNumber" readonly="true" /></th>
 	</tr>
 	<tr>
 		<th>예금주</th>
@@ -78,10 +74,6 @@
 	<tr>
 		<th>가입 승인 여부</th>
 		<th><form:input path="tAuth" readonly="true" /></th>
-	</tr>
-	<tr>
-		<th>약관 동의 여부</th>
-		<th><form:input path="tAgree" readonly="true" /></th>
 	</tr>
 	
 	<!-- 회원 정보 수정 버튼 -->
