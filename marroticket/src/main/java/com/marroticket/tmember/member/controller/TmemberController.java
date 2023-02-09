@@ -41,7 +41,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
-
 //@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
@@ -62,10 +61,14 @@ public class TmemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@GetMapping("")
+	// 극단 홈
+	//@GetMapping("")
+	@RequestMapping("")
 	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
-		return "tmemberhome";
+		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
+		return "redirect:/notice/noticeList";
+		//return "/tmemberhome";
 	}
 
 	// 연극 등록 이동
