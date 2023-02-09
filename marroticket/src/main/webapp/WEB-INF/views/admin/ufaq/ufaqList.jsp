@@ -11,7 +11,9 @@
 	<spring:message code="ufaq.header.list" />
 </h2>
 
-<a href="ufaqRegister"><spring:message code="action.new" /></a>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="ufaqRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
 
 <table border="1">
 	<tr>

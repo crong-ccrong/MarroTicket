@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.marroticket.mapper.TmemberMapper;
 import com.marroticket.tmember.member.domain.TmemberAuth;
 import com.marroticket.tmember.member.domain.TmemberVO;
+import com.marroticket.umember.member.domain.UmemberVO;
 
 @Service
 public class TmemberServiceImpl implements TmemberService {
@@ -70,4 +71,16 @@ public class TmemberServiceImpl implements TmemberService {
 	      auth.setTmemberAuth("ROLE_TMEMBER");
 	      tmembermapper.createAuth(auth);
 	   }
+	   
+	 //마이페이지 
+		//정보조회
+		 @Override
+		    public TmemberVO getTmemberByTId(String tId) throws Exception {
+		        return tmembermapper.getTmemberByTId(tId);
+		    }
+		 //정보수정
+		@Override
+		public void modify(TmemberVO vo) throws Exception {
+			tmembermapper.updateTmemberInfo(vo);
+		}
 }

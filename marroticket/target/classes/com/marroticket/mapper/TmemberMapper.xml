@@ -12,7 +12,7 @@
 		<result property="tOwnerName" column="t_ownerName" />
 		<result property="tOwnerPhoneNumber" column="t_ownerPhoneNumber" />
 		<result property="tOwnerEmail" column="t_ownerEmail" />
-		<result property="tBusinessRegistractionNumber" column="t_businessRegistractionNumber" />
+		<result property="tBusinessRegistrationNumber" column="t_businessRegistrationNumber" />
 		<result property="tEstablishmentDate" column="t_establishmentDate" />
 		<result property="tBank" column="t_bank" />
 		<result property="tBankNumber" column="t_bankNumber" />
@@ -110,7 +110,7 @@
 		#{tOwnerPhoneNumber},
 		#{tOwnerEmail},
 		#{tBusinessRegistration},
-		#{tBusinessRegistractionNumber},
+		#{tBusinessRegistrationNumber},
 		#{tEstablishmentDate},
 		#{tBank},
 		#{tBankNumber},
@@ -136,4 +136,27 @@
 			#{tmemberAuth}
 		)
 	</insert>	
+	
+	<!-- 마이페이지 회원정보 -->
+	<select id="getTmemberByTId"  resultMap="tmemberMap">
+	SELECT *
+	FROM tmember
+	WHERE t_id = #{tId}
+	</select>
+	
+	<!-- 마이페이지 회원수정 -->
+	<update id="updatetmemberInfo" >
+		update TMEMBER 
+		set t_password=#{tPassword},
+			t_name=#{tName},
+			t_address=#{tAddress},
+			t_ownerName=#{tOwnerName},
+			t_ownerPhoneNumber=#{tOwnerPhoneNumber},
+			t_ownerEmail=#{tOwnerEmail},
+			t_bank=#{tBank},
+			t_bankNumber=#{tBankNumber},
+			t_bankOwner=#{tBnakOwner}
+		where t_id=#{tId}
+	</update>
+	
 </mapper>

@@ -30,9 +30,9 @@
 
 		<tr>
 			<th>사업자/법인 등록번호</th>
-			<td><form:input path="tBusinessRegistractionNumber"
+			<td><form:input path="tBusinessRegistrationNumber"
 					placeholder="(필수)-제외 숫자만 입력" /><font color="red"> <form:errors
-						path="tBusinessRegistractionNumber" /></font></td>
+						path="tBusinessRegistrationNumber" /></font></td>
 		</tr>
 
 		<tr>

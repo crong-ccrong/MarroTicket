@@ -1,6 +1,7 @@
 package com.marroticket.mapper;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
+import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.tmember.member.domain.TmemberAuth;
 
 public interface TmemberMapper {
@@ -19,8 +20,12 @@ public interface TmemberMapper {
 
 	// 회원 create
 	public void create(TmemberVO member);
-
 	// 회원 auth create
 	public void createAuth(TmemberAuth auth);
 
+	//마이페이지 
+		//정보조회
+		public TmemberVO getTmemberByTId(String tId) throws Exception;
+		//정보수정
+		public void updateTmemberInfo(TmemberVO vo) throws Exception;
 }

@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,6 +109,7 @@ public class TmemberController {
 		return "registe.registeTemporaryComplete";
 	}
 
+	// 극단 마이페이지 시작
 	// 등록한 연극
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo() {
@@ -119,12 +122,30 @@ public class TmemberController {
 		return "info.tmemberPayment";
 	}
 
-	// 극단 정보 관리
+	// 극단 내 정보
 	@GetMapping("/tmembermypage")
-	public String theaterMemberInfo() {
+	public String tmemberMemberInfo(Model model) throws Exception {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println("극단 마이페이지 정보 조회 호출");
+		String tId = authentication.getName();
+		
+		// 서비스에서 아이디로 정보 불러오기
+		TmemberVO vo = tmemberService.getTmemberByTId(tId);
+		
+		System.out.println(vo.getTmemberAuthList().get(0).getTNumber());
+		
+		// 사업자 등록 구분 1:개인 2:기업
+		if (vo.getTBusinessRegistration().equals("1")) {
+			vo.setTBusinessRegistration("개인");
+		} else {
+			vo.setTBusinessRegistration("기업");
+		}
+		
 		return "info.tmemberMemberInfo";
 	}
-
+	// 극단 마이페이지 끝
+	
 	// 극단 이용약관 페이지
 	@GetMapping("/tmemberAgreement")
 	public String tmemberAgreement() {

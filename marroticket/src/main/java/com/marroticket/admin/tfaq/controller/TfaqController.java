@@ -56,7 +56,6 @@ public class TfaqController {
 	 */
 
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
-
 	//@PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/tfaqList", method = RequestMethod.GET)
 	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
