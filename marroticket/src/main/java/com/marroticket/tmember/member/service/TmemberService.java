@@ -1,5 +1,7 @@
 package com.marroticket.tmember.member.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
@@ -23,5 +25,5 @@ public interface TmemberService {
 		public TmemberVO getTmemberByTId(String tId) throws Exception;
 		//정보 수정
 		public void modify(TmemberVO vo) throws Exception;
-		//
+	
 }

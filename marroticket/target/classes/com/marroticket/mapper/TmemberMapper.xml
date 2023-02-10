@@ -159,4 +159,12 @@
 		where t_id=#{tId}
 	</update>
 	
+	<!-- 기타 문의 : 극단 이메일 -->
+	<select id="list" resultMap="tmemberMap">
+		<![CDATA[ SELECT *
+					FROM tmember 
+					ORDER BY t_number DESC
+		]]>
+	</select>
+	
 </mapper>

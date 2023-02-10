@@ -2,6 +2,9 @@ package com.marroticket.mapper;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 import com.marroticket.umember.member.domain.UmemberVO;
+
+import java.util.List;
+
 import com.marroticket.tmember.member.domain.TmemberAuth;
 
 public interface TmemberMapper {
@@ -28,4 +31,7 @@ public interface TmemberMapper {
 		public TmemberVO getTmemberByTId(String tId) throws Exception;
 		//정보수정
 		public void updateTmemberInfo(TmemberVO vo) throws Exception;
+
+	// 기타 문의 : 극단 이메일 목록
+	public List<TmemberVO> list() throws Exception;
 }

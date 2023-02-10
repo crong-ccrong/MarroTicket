@@ -41,7 +41,7 @@ public class UfaqController {
 	}
 
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
-	//@PreAuthorize("hasRole(두개주기)")
+	//@PreAuthorize("hasRole(두개주기)") // 비회원도 봐야함
 	@RequestMapping(value = "/ufaqList", method = RequestMethod.GET)
 	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
 

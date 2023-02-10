@@ -1,5 +1,6 @@
 package com.marroticket.umember.member.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,28 +57,5 @@ public class UmemberServiceImpl implements UmemberService {
 		//auth
 		umembermapper.deleteAuth(umember.getUmemberAuthList().get(0).getUNumber());
 		umembermapper.deleteMember(umember);
-		
-		
 	}
-	
-
-	
-
-
-	
-
-
-
-
-
-	
-
-
-
-		
-
-	
-	
-	
-	
 }

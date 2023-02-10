@@ -45,7 +45,7 @@
 		<span> 고객센터</span>
 		<div class="dropdown-content">
 			<p>
-				<a href="/ufaq/ufaqList?accept=umember">자주 묻는 질문</a>
+				<a href="/ufaq/ufaqList">자주 묻는 질문</a>
 			</p>
 			<p>
 				<a href="/otherInquiries">기타 문의</a>
