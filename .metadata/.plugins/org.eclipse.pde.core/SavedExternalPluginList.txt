@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # List of external plug-in models previously loaded. Timestamp: 1675834221471
+=======
+# List of external plug-in models previously loaded. Timestamp: 1676012283792
+>>>>>>> main
 file:/Applications/SpringToolSuite4.app/Contents/Eclipse/plugins/bcpg_1.72.0.jar
 file:/Applications/SpringToolSuite4.app/Contents/Eclipse/plugins/bcprov_1.72.0.jar
 file:/Applications/SpringToolSuite4.app/Contents/Eclipse/plugins/ch.qos.logback.classic_1.2.11.jar

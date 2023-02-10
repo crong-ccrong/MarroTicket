@@ -439,10 +439,8 @@
 															.is(":checked") == true) {
 												$("pagree").val(1);
 
-												if (!($("#pposter")
-																.val() == "" && $(
-																"#pposter")
-																.val() == null)) {
+												if (!($("#pposter").val() == "" && $(
+														"#pposter").val() == null)) {
 													formObj.submit();
 												}
 

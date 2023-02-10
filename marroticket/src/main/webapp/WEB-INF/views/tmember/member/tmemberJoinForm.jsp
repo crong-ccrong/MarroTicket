@@ -109,7 +109,7 @@
 			<td><input type="file" name="file" /></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입" id="join_submit" />
+			<td colspan="2" align="center"><input type="submit" value="회원가입" id="joinBtn" />
 				<input type="button" value="이전" id="back" /></td>
 		</tr>
 	</table>
@@ -147,11 +147,11 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 -->
 <script>
 	function tIdChk() {
-			var token = $("meta[name='_csrf']").attr("content");
-			var header = $("meta[name='_csrf_header']").attr("content");
-			$(document).ajaxSend(function(e, xhr, options) {
-			    xhr.setRequestHeader(header, token);
-			});
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+		    xhr.setRequestHeader(header, token);
+		});
 		$.ajax({
 			url : "/theater/tIdCheck",
 			type : "post",
@@ -170,7 +170,8 @@ $(document).ready(function() {
 	}
 </script>
 
-<!-- 비밀번호 확인 -->
+
+<!-- 비밀번호 재확인 체크  --> 
 <script type="text/javascript">
 
 $(function() {

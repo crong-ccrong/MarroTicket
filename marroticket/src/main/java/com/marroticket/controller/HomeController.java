@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 @Controller
 public class HomeController {
 	@GetMapping("/")
-	public String home() {
+	public String home(String modalData) {
 		return "home";
 	}
 	

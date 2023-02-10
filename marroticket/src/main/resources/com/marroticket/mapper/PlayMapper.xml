@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.marroticket.mapper.PlayMapper">
+<<<<<<< HEAD
    <resultMap id="play"
       type="com.marroticket.umember.play.domain.PlayVO">
       <id property="pnumber" column="p_number" />
@@ -47,6 +48,54 @@
    <select id="playPassList" resultMap="play">
       <![CDATA[
       SELECT 
+=======
+	<resultMap id="play"
+		type="com.marroticket.umember.play.domain.PlayVO">
+		<id property="pnumber" column="p_number" />
+		<result property="pname" column="p_name" />
+		<result property="pstartDate" column="P_STARTDATE" />
+		<result property="pcloseDate" column="P_CLOSEDATE" />
+		<result property="prunningTime" column="P_RUNNINGTIME" />
+		<result property="ptheaterName" column="P_THEATERNAME" />
+		<result property="ptheaterAddress" column="P_THEATERADDRESS" />
+		<result property="pagency" column="P_AGENCY" />
+		<result property="pratings" column="P_RATINGS" />
+		<result property="pcasting" column="P_CASTING" />
+		<result property="pticketOpenDate" column="P_TICKETOPENDATE" />
+		<result property="pplot" column="P_PLOT" />
+		<result property="pseatNumber" column="P_SEATNUMBER" />
+		<result property="pticketPrice" column="P_TICKETPRICE" />
+		<result property="pgenre" column="P_GENRE" />
+		<result property="pposterUrl" column="P_POSTERURL" />
+		<result property="pagree" column="P_AGREE" />
+		<result property="pamendmentApproved"
+			column="P_AMENDMENTAPPROVED" />
+		<result property="pregistrationApproval"
+			column="P_REGISTRATIONAPPROVAL" />
+		<result property="pfirstStartTime" column="P_FirstStartTime" />
+		<result property="psecondStartTime" column="P_SecondStartTime" />
+		<result property="tnumber" column="T_Number" />
+	</resultMap>
+
+
+	<select id="playCurrentList" resultMap="play">
+		<![CDATA[ select
+		 P_POSTERURL,
+		p_number,
+		p_name, 
+		p_theaterName, 
+		p_startDate, 
+		p_closeDate, 
+		p_runningtime 
+		from Play 
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
+		order by p_startDate ]]>
+	</select>
+
+	<select id="playPassList" resultMap="play">
+		<![CDATA[
+		SELECT 
+>>>>>>> main
 P_POSTERURL,
       p_number,
       p_name,
@@ -62,6 +111,7 @@ P_POSTERURL,
       ]]>
    </select>
 
+<<<<<<< HEAD
    <select id="playExpectedList" resultMap="play">
       <![CDATA[
       SELECT 
@@ -90,4 +140,37 @@ P_POSTERURL,
       FROM play
       WHERE p_number = #{pnumber}
    </select>
+=======
+	<select id="playExpectedList" resultMap="play">
+		<![CDATA[
+		SELECT 
+		 P_POSTERURL,
+		p_number,
+		p_name,
+		p_theaterName,
+		p_startDate,
+		p_closeDate,
+		p_runningtime
+		FROM Play
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
+		order
+		by
+		p_startDate
+		]]>
+	</select>
+	
+	<!-- 공연정보 읽기 -->
+	<select id="read" resultMap="play">
+		SELECT *
+		FROM play
+		WHERE p_number=#{pNumber}
+	</select>
+
+	<!-- 미리보기 이미지 표시 -->
+	<select id="getPposter" resultType="String">
+		SELECT p_posterUrl
+		FROM play
+		WHERE p_number = #{pnumber}
+	</select>
+>>>>>>> main
 </mapper>

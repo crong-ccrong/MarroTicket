@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.marroticket.mapper.ReservationMapper">
-
-	<resultMap type="com.marroticket.umember.reservation.domain.ReservationVO" id="reservationmap">
+	<resultMap
+		type="com.marroticket.umember.reservation.domain.ReservationVO"
+		id="reservationmap">
 		<id column="r_number" property="rnumber" />
 		<result column="r_date" property="rdate" />
 		<result column="r_payState" property="rpayState" />
@@ -20,21 +21,21 @@
 		<result column="p_name" property="pname" />
 	</resultMap>
 	
-	<!-- <resultMap type="com.marroticket.umember.reservation.domain.SeatVO" id="seatReserveList">
+	<resultMap type="com.marroticket.umember.reservation.domain.SeatVO" id="seatReserveList">
 		<result column="r_ticketfirst" property="rticketFirst" />
 		<result column="r_ticketsecond" property="rticketSecond" />
 		<result column="r_ticketthird" property="rticketThird" />
 		<result column="r_ticketforth" property="rticketFourth" />
 	</resultMap>
 	
-	<select id="read" resultMap="seatReserveList"
-		parameterType="String">
+	<select id="read" resultMap="seatReserveList" parameterType="String">
 		SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketforth
-		FROM reservation WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%' OR
-		r_ticketsecond LIKE '%'||#{ticketNum}||'%' OR r_ticketthird LIKE
-		'%'||#{ticketNum}||'%' OR r_ticketforth LIKE '%'||#{ticketNum}||'%'
-	</select> -->
-
+		FROM reservation
+		WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketforth LIKE '%'||#{ticketNum}||'%'
+	</select>
 
 	<select id="getReservationListByUNumber"
 		resultMap="reservationMap">
@@ -53,6 +54,7 @@
 		WHERE rcancelState = 1
 		AND (rticketFirst IS NOT NULL OR rticketSecond IS NOT NULL OR
 		rticketThird IS NOT NULL OR rticketFourth IS NOT NULL)
-
 	</delete>
+
+
 </mapper>
