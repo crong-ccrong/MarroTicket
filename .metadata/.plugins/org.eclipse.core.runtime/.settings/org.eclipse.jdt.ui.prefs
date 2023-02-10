@@ -3,6 +3,8 @@
 >>>>>>>=66556ed1019b6037c7c64927eb6a8d714170d0e6
 content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
 content_assist_number_of_computers=16
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
 eclipse.preferences.version=1
 markOccurrences=false
 org.eclipse.jdt.ui.formatterprofiles.version=22

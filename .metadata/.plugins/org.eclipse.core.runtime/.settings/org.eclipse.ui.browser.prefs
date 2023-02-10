@@ -1,4 +1,8 @@
 browser-choice=1
 browsers=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<web-browsers current\="3">\r\n<system/>\r\n<external location\="C\:\\Program Files\\Internet Explorer\\iexplore.exe" name\="Internet Explorer"/>\r\n<external location\="C\:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" name\="Microsoft Edge"/>\r\n<external location\="C\:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" name\="Chrome"/>\r\n</web-browsers>
 eclipse.preferences.version=1
+<<<<<<< HEAD
+internalWebBrowserHistory=file\:///C\:/SpringBootProject/marroticket/marroticket/src/main/resources/static/images/ticketing.png|*|file\:/C\:/SpringBootProject/marroticket/marroticket/src/main/resources/static/images/ticketing.png|*|file\:///C\:/SpringBootProject/marroticket/marroticket/src/main/resources/static/images/marroInfoLogo.png|*|file\:/C\:/SpringBootProject/marroticket/marroticket/src/main/resources/static/images/marroInfoLogo.png|*|
+=======
 internalWebBrowserHistory=file\:///Users/yujeong-won/Spring_STS/marroticket/marroticket/src/main/resources/static/images/marroInfoLogo.png|*|file\:/Users/yujeong-won/Spring_STS/marroticket/marroticket/src/main/resources/static/images/marroInfoLogo.png|*|
+>>>>>>> c73c73163d75e23899b274e840f41ae0972e09e7

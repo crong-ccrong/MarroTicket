@@ -68,23 +68,22 @@ public class TmemberController {
 
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
 	}
 
 	// 연극 등록 처리
 	@PostMapping("/registePlayComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile ptheaterMap = playVO.getPTheaterMap();
-		MultipartFile pposter = playVO.getPPoster();
+		MultipartFile pposter = playVO.getPposter();
 
-		String ptheaterMapUrl = uploadFile(ptheaterMap.getOriginalFilename(), ptheaterMap.getBytes());
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPTheaterMapUrl(ptheaterMapUrl);
-		playVO.setPPosterUrl(pposterUrl);
+		playVO.setPposterUrl(pposterUrl);
 
 		registeService.registePlay(playVO);
 
@@ -102,6 +101,7 @@ public class TmemberController {
 
 	// 연극 임시등록 완료페이지
 	@GetMapping("/registeTemporaryComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
 
 		return "registe.registeTemporaryComplete";

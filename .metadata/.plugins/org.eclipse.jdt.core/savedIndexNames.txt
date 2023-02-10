@@ -14,8 +14,6 @@ INDEX VERSION 1.131+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins
 4146248967.index
 284235682.index
 1769838862.index
-521434395.index
-2433846198.index
 4051928535.index
 2131210890.index
 1114530756.index
@@ -43,7 +41,6 @@ INDEX VERSION 1.131+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins
 2489769686.index
 3089832901.index
 3121638406.index
->>>>>>> won
 1578836526.index
 50988752.index
 1709638931.index
@@ -86,7 +83,6 @@ INDEX VERSION 1.131+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins
 1378451212.index
 1411640836.index
 3515692475.index
-<<<<<<< HEAD
 1151165257.index
 3900399440.index
 2076378683.index
@@ -121,4 +117,3 @@ INDEX VERSION 1.131+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins
 3752426277.index
 3119561588.index
 2168479369.index
-=======
