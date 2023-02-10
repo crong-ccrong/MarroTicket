@@ -4,15 +4,14 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
-import lombok.NonNull;
+
 import lombok.Setter;
 import lombok.ToString;
 
@@ -21,6 +20,7 @@ import lombok.ToString;
 @Setter
 public class UmemberVO {
 	
+
 	private int uNumber; //일반회원번호
 	@NotBlank(message = "아이디는 필수 입력 값입니다.")
 	private String uId; //아이디
@@ -39,7 +39,7 @@ public class UmemberVO {
 	
 	@NotBlank(message = "생일은 필수 입력 값입니다.")
 	@Pattern(regexp = "(19|20)\\d{2}\\-((10|11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 생년월일 입력해주세요.")
-	@DateTimeFormat(pattern = "YYYY-MM-dd")
+@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String uBirthday; //생년월일
 	private String uGender; //성별
 	
@@ -56,7 +56,6 @@ public class UmemberVO {
 	private Date uUnjoinDate; //탈퇴일
 	private String uGenre; //관심 장르
 	private String uAgree; //약관 동의 여부
-
 	private List<UmemberAuth> umemberAuthList; //권한
 
 
@@ -88,4 +87,57 @@ public class UmemberVO {
 	public void setuEmail(String uEmail) {
 		this.uEmail = uEmail;
 	}
+	public int getuNumber() {
+		return uNumber;
+	}
+	public void setuNumber(int uNumber) {
+		this.uNumber = uNumber;
+	}
+
+	public String getuBirthday() {
+		return uBirthday;
+	}
+	public void setuBirthday(String uBirthday) {
+		this.uBirthday = uBirthday;
+	}
+	public String getuGender() {
+		return uGender;
+	}
+	public void setuGender(String uGender) {
+		this.uGender = uGender;
+	}
+	public Date getuJoinDate() {
+		return uJoinDate;
+	}
+	public void setuJoinDate(Date uJoinDate) {
+		this.uJoinDate = uJoinDate;
+	}
+	public String getuUnjoin() {
+		return uUnjoin;
+	}
+	public void setuUnjoin(String uUnjoin) {
+		this.uUnjoin = uUnjoin;
+	}
+	public Date getuUnjoinDate() {
+		return uUnjoinDate;
+	}
+	public void setuUnjoinDate(Date uUnjoinDate) {
+		this.uUnjoinDate = uUnjoinDate;
+	}
+	public String getuGenre() {
+		return uGenre;
+	}
+	public void setuGenre(String uGenre) {
+		this.uGenre = uGenre;
+	}
+	public String getuAgree() {
+		return uAgree;
+	}
+	public void setuAgree(String uAgree) {
+		this.uAgree = uAgree;
+	}
+	
+	
+	
+	
 }

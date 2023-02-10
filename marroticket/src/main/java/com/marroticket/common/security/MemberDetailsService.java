@@ -26,8 +26,8 @@ public class MemberDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		System.out.println("MemberDetailsService");
-		
-		//DB조회
+
+		// DB조회
 		UmemberVO umember = umapper.read(userId);
 		if (umember == null) {
 			TmemberVO tmember = tmapper.readByUserId(userId);

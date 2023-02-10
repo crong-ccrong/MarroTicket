@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
+<<<<<<< HEAD:marroticket/target/classes/com/marroticket/mapper/UmemberMapper.xml
+<mapper namespace="com.marroticket.mapper.UmemberMapper">
+=======
+<mapper
+	namespace="com.marroticket.mapper.UmemberMapper">
+	<!--일반회원 아이디 찾기-->
+>>>>>>> main:.metadata/.plugins/org.eclipse.core.resources/.history/42/1036be3d4a9d001d1211ca56ffd2c54a
+=======
 <<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/42/1036be3d4a9d001d1211ca56ffd2c54a
 <mapper
 	namespace="com.marroticket.mapper.UmemberMapper">
@@ -31,19 +40,63 @@
 	
 	<!--일반회원 아이디 찾기 -->
 >>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51:marroticket/target/classes/com/marroticket/mapper/UmemberMapper.xml
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 	<select id="findId" resultType="String">
 		SELECT u_id
 		FROM umember
 		WHERE
 		u_name = #{uName} and u_phoneNumber = #{uPhoneNumber}
 	</select>
+<<<<<<< HEAD
+<<<<<<< HEAD:marroticket/target/classes/com/marroticket/mapper/UmemberMapper.xml
+
+	<select id="uIdCheck" resultType="int">
+		SELECT count(*)
+		FROM umember
+		WHERE u_id = #{uId}
+	</select>
+
+	<insert id="register"
+		parameterType="com.marroticket.umember.member.domain.UmemberVO">
+		INSERT INTO UMEMBER (
+		u_number,
+		u_id,
+		u_password,
+		u_name,
+		u_phoneNumber,
+		u_birthday,
+		u_gender,
+		u_email,
+		u_genre,
+		u_agree
+		)
+		VALUES (
+		umember_seq.nextval,
+		#{uId},
+		#{uPassword},
+		#{uName},
+		#{uPhoneNumber},
+		#{uBirthday},
+		#{uGender},
+		#{uEmail},
+		#{uGenre},
+		#{uAgree}
+		
+		)
+	</insert>
+=======
+=======
 <<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/42/1036be3d4a9d001d1211ca56ffd2c54a
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 	<!--일반회원 비밀번호 찾기-->
 	<update id="findPassword" resultType="String">
 		SELECT u_password
 		FROM umember
 		WHERE u_id = #{uId} and u_email = #{uEmail}
 	</update>
+<<<<<<< HEAD
+>>>>>>> main:.metadata/.plugins/org.eclipse.core.resources/.history/42/1036be3d4a9d001d1211ca56ffd2c54a
+=======
 ========
 	
 	<!--일반회원 비밀번호 업데이트 -->
@@ -125,4 +178,5 @@
 		)
 	</insert>	
 >>>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51:marroticket/target/classes/com/marroticket/mapper/UmemberMapper.xml
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 </mapper>

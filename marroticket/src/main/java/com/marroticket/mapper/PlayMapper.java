@@ -18,4 +18,7 @@ public interface PlayMapper {
 	public PlayVO read(Integer pNumber) throws Exception;
 
 	public String getPposter(Integer pnumber) throws Exception;
-}
+
+	/*
+	 * public List<PlayVO> quickReserve() throws Exception;
+	 */}
