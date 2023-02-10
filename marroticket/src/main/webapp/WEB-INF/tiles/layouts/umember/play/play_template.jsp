@@ -20,7 +20,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04a5be0a2b36216ee24699f0369313f4&libraries=services,clusterer,drawing"></script>
 <!-- 달력 자바스크립트 -->
-<script src="/js/calendar.js"></script>
+<script src="/js/playdetail.js"></script>
 </head>
 <body>
 	<!-- header -->
