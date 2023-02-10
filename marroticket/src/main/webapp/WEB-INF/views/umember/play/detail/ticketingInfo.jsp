@@ -80,7 +80,7 @@
 	<div class="play_reserve_seat">
 		<!-- 소제목 -->
 		<h3 class="play_reserve_heading">
-			<span class="play_reserve_title">예매가능좌석</span>
+			<span class="play_reserve_title" style="font-size:16px">예매가능좌석</span>
 		</h3>
 		<!-- 예매가능좌석(내용) -->
 		<ul class="play_seat_list">
@@ -94,15 +94,23 @@
 </div>
 <div class="closeDate_content"></div>
 
-<!-- 연극 hidden -->
-<input type="hidden" name="pnumber" value="${play.pnumber}"/>
-<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
-<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
-<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>
-<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime}"/>
-<div id="hiddenSeatInfoFirst">
-	
-</div>
-<div id="hiddenSeatInfoSecond">
-	
-</div>
+<form id="reserveInfoForm">
+	<!-- 연극 hidden -->
+	<input type="hidden" name="pnumber" value="${play.pnumber}"/>
+	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
+	<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
+	<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>
+	<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime}"/>
+	<!-- 예매잔여좌석 -->
+	<div id="hiddenSeatInfoFirst">
+		
+	</div>
+	<div id="hiddenSeatInfoSecond">
+		
+	</div>
+	<!-- 예매 날짜 -->
+	<div id="reserveDateInfoHidden">
+		
+	</div>
+</form>
+<%@include file="resereCautionModal.jsp"%>

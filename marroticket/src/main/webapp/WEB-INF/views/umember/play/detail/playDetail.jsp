@@ -10,7 +10,7 @@
 			$(".tab-ul li").removeClass("active");
 			$(this).addClass("active");
 		});
-		
+
 	});
 </script>
 <ul class="tab-ul">

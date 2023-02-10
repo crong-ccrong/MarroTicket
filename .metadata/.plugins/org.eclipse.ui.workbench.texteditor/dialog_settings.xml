@@ -6,25 +6,33 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="console.log"/>
+		<item key="selection" value="reservation"/>
 		<list key="findhistory">
-			<item value="console.log"/>
-			<item value="play_time_list"/>
-			<item value="empty"/>
-			<item value="row"/>
-			<item value="getRticketSecond()"/>
-			<item value="/"/>
-			<item value="//hre"/>
-			<item value="/schedule"/>
-			<item value="/scehdule"/>
-			<item value="#{ticketNum}||&apos;%&apos;"/>
-			<item value="#{ticketNum}||%"/>
-			<item value="relayout"/>
+			<item value="reservation"/>
+			<item value="pfirstStartTime"/>
 			<item value="today"/>
-			<item value="at12"/>
-			<item value="at"/>
+			<item value="radius"/>
+			<item value="reservation_button"/>
+			<item value="play_seat_remain"/>
+			<item value="reserveInfo"/>
+			<item value="myform"/>
+			<item value="myModal"/>
+			<item value="openModalBtn"/>
+			<item value="playinfo"/>
+			<item value="play"/>
+			<item value="reserveDate"/>
+			<item value="modal"/>
+			<item value="play_seat_title"/>
 		</list>
 		<list key="replacehistory">
+			<item value="reserveInfoForm"/>
+			<item value="reserveInfo"/>
+			<item value="reserveCautionModal"/>
+			<item value="reservation_button"/>
+			<item value="playInfoForm"/>
+			<item value="reserveA"/>
+			<item value="&lt;th&gt;&lt;/th&gt;"/>
+			<item value=""/>
 			<item value="."/>
 			<item value="&apos;%&apos;||#ticketNum#||&apos;%&apos;"/>
 			<item value="new Date()"/>
@@ -32,21 +40,13 @@
 			<item value="o"/>
 			<item value="n"/>
 			<item value="m"/>
-			<item value="l"/>
-			<item value="k"/>
-			<item value="j"/>
-			<item value="i"/>
-			<item value="h"/>
-			<item value="g"/>
-			<item value="f"/>
-			<item value="e"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1524"/>
-		<item key="DIALOG_Y_ORIGIN" value="207"/>
+		<item key="DIALOG_X_ORIGIN" value="598"/>
+		<item key="DIALOG_Y_ORIGIN" value="221"/>
 		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="425"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>
