@@ -108,8 +108,10 @@ public class Pagination {
 	}
 
 	public String makeQuery(int page) {
-		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
-				.queryParam("perPageNum", pageRequest.getSizePerPage()).build();
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", pageRequest.getSizePerPage())
+				.build();
 
 		return uriComponents.toUriString();
 	}

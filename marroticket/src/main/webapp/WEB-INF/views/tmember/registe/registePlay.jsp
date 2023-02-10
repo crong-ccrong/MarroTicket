@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-
+<sec:authentication var="principal" property="principal" />
 <h2>공연 등록 페이지</h2>
 
 
 
-<form:form method="post" modelAttribute="playVO" action="registePlay"
-	enctype="multipart/form-data">
+<form:form method="post" modelAttribute="playVO"
+	action="registePlayComplete" enctype="multipart/form-data">
 
 	<table border="1">
 		<tr>
@@ -57,11 +58,8 @@
 		</tr>
 
 		<tr>
-			<td>연극 전체 기간</td>
-		</tr>
-		<tr>
 			<td>연극 시작일(현재일 시점부터 최소 30일 이후여야 합니다.)</td>
-			<td><form:input path="pstartDate" id="pstartDate" min="today+30" /><font
+			<td><form:input path="pstartDate" id="pstartDate" /><font
 				color="red"><form:errors path="pstartDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
@@ -76,8 +74,8 @@
 
 		<tr>
 			<td>예매오픈 희망일(연극 시작일 시점부터 최소 30일 전이여야 합니다.)</td>
-			<td><form:input path="pticketOpenDate" /><font color="red"><form:errors
-						path="pticketOpenDate">
+			<td><form:input path="pticketOpenDate" id="pticketOpenDate" /><font
+				color="red"><form:errors path="pticketOpenDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
@@ -105,13 +103,6 @@
 				<font color="red"><form:errors path="ptheaterAddress" /> </font></td>
 		</tr>
 
-		<tr>
-			<td>극장 약도</td>
-			<td><input type="File" name="ptheaterMap" id="ptheaterMap"
-				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="ptheaterMapError"><spring:message
-						code="registe.file.error" /></font></td>
-		</tr>
 		<tr>
 			<td>연극포스터</td>
 			<td><input type="File" name="pposter" id="pposter"
@@ -152,7 +143,7 @@
 		</tr>
 
 		<tr>
-			<td>티켓 가격</td>
+			<td>티켓 가격(원)</td>
 			<td><form:input type="text" path="pticketPrice"
 					placeholder="티켓 가격 입력칸" /><font color="red"><form:errors
 						path="pticketPrice" /></font></td>
@@ -160,13 +151,15 @@
 
 		<tr>
 			<td>캐스팅 데이터</td>
-			<td><form:textarea path="pcasting" placeholder="캐스팅 정보 입력칸" /><font
-				color="red"><form:errors path="pcasting" /></font></td>
+			<td><form:textarea rows="10" cols="120" path="pcasting"
+					placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
+						path="pcasting" /></font></td>
 		</tr>
 		<tr>
 			<td>연극 줄거리</td>
-			<td><form:textarea path="pplot" placeholder="연극 줄거리 입력칸" /><font
-				color="red"><form:errors path="pplot" /></font></td>
+			<td><form:textarea rows="10" cols="120" path="pplot"
+					placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
+						path="pplot" /></font></td>
 		</tr>
 
 		<tr>
@@ -335,8 +328,9 @@
 		<tr>
 			<form:input path="pregistrationApproval" value="0" hidden="true" />
 			<form:input path="pamendmentApproved" hidden="true" />
-			<form:input path="pagree" id="pagee" hidden="true" />
+			<form:input path="pagree" id="pagee" value="1" hidden="true" />
 			<form:input path="tnumber" value="1" hidden="true" />
+			<form:input path="tId" hidden="true" value="${principal.tId }" />
 		</tr>
 	</table>
 </form:form>
@@ -346,6 +340,13 @@
 </div>
 
 
+<script>
+	$(document).ready(function() {
+		$("#main").on("click", function() {
+			location.href = "/theater/";
+		});
+	});
+</script>
 
 <script>
 	$(document)
@@ -421,7 +422,6 @@
 						$("#agree1Error").hide();
 						$("#agree2Error").hide();
 						$("#agree3Error").hide();
-						$("#ptheaterMapError").hide();
 						$("#pposterError").hide();
 
 						$("#registeTemporary")
@@ -439,12 +439,8 @@
 															.is(":checked") == true) {
 												$("pagree").val(1);
 
-												if (!($("#ptheaterMap").val() == "" && $(
-														"#ptheaterMap").val() == null)
-														&& !($("#pposter")
-																.val() == "" && $(
-																"#pposter")
-																.val() == null)) {
+												if (!($("#pposter").val() == "" && $(
+														"#pposter").val() == null)) {
 													formObj.submit();
 												}
 
@@ -464,11 +460,7 @@
 														.is(":checked") == false) {
 													$("#agree3Error").show();
 												}
-												if ($("#ptheaterMap").val() == "") {
-													$("#ptheaterMapError")
-															.show();
 
-												}
 												if ($("#pposter").val() == "") {
 													$("#pposterError").show();
 

@@ -22,10 +22,20 @@ public class TmemberCustom extends User {
 		super(member.gettId(), member.getTPassword(), member.getTmemberAuthList().stream()
 				.map(auth -> new SimpleGrantedAuthority(auth.getTmemberAuth())).collect(Collectors.toList()));
 
-		this.member = member;
+		this.member = member;	
 	}
 
 	public TmemberVO getMember() {
 		return member;
 	}
+	
+	public String gettId() {
+		return member.gettId();
+	}
+	
+	public String gettname() {
+		return member.gettName();
+	}
+	
+	
 }
