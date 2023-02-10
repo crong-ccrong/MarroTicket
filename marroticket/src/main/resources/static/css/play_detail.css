@@ -5,7 +5,7 @@ a {
 }
 
 ul, ol {
-    list-style: none;
+	list-style: none;
 }
 
 li {
@@ -14,26 +14,26 @@ li {
 
 input, select, textarea, button {
 	font-size: 14px;
-    letter-spacing: -0.03em;
-    color: #242428;
+	letter-spacing: -0.03em;
+	color: #242428;
 }
 
 input, select, button, img, textarea {
-    vertical-align: middle;
-    text-rendering: auto;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
+	vertical-align: middle;
+	text-rendering: auto;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
 }
 
 button {
 	cursor: pointer;
 	overflow: visible;
-    border: 0;
-    background-color: transparent;
+	border: 0;
+	background-color: transparent;
 }
 
 #content {
@@ -64,7 +64,7 @@ button {
 #content_playInfo {
 	width: 58%;
 	height: 100%;
-	padding-left : 5px;
+	padding-left: 5px;
 	float: right;
 }
 
@@ -79,162 +79,221 @@ button {
 }
 
 .content_ticketingInfo {
-    display: flex;
-    max-height: 305px;
-    border: 1px solid #878d95;
-    border-radius: 10px;
-    box-sizing: border-box;
+	display: flex;
+	height: 320px;
+	border: 1px solid #878d95;
+	border-radius: 10px;
+	box-sizing: border-box;
 }
 
 /* 날짜 선택*/
 .play_reserve_date {
 	margin: 0;
-    display: flex;
-    padding: 5px 5px 13px 23px;
-	width :35%;
+	display: flex;
+	padding: 5px 5px 13px 23px;
+	width: 35%;
 }
+
 .play_reserve_heading {
-    margin-bottom: 18px;
-    width: 100px;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: normal;
-    color: #242428;
+	margin-bottom: 18px;
+	width: 100px;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: normal;
+	color: #242428;
 }
+
 .play_reserve_step {
-    display: block;
-    margin-bottom: 4px;
-    color: #fa2828;
+	display: block;
+	margin-bottom: 4px;
+	color: #fa2828;
 }
+
 .play_reserve_title {
-    font-weight: 700;
+	font-weight: 700;
 }
+
 .datepicker {
 	display: block;
-    padding: 20px 5px 13px 4px;
-    border: 0;
-    border-radius: 0;
+	padding: 20px 5px 13px 4px;
+	border: 0;
+	border-radius: 0;
+	font-weight: bold;
 }
+
 .datepicker_triangle {
-    position: absolute;
-    left: 50px;
+	position: absolute;
+	left: 50px;
 }
+
 .datepicker_month-container {
-	    float: none;
+	float: none;
 }
-.datepicker_header {
-    border-top-right-radius: 0.3rem;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: #fff;
+
+#datepicker_header {
+	border-top-right-radius: 0.3rem;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: #fff;
 }
-.calendar_header {
-    position: relative;
-    padding-bottom: 10px;
-    text-align: center;
+
+#calendar_header {
+	position: relative;
+	padding-bottom: 10px;
+	text-align: center;
 }
-.calendar_nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 5px;
+
+#calendar_nav {
+	position: relative;
+	padding-bottom: 10px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	display: block;
 }
-.calendar_title {
-    top: 0;
-    left: 50%;
-    margin : 0 13% 5% 13%; 
-    padding-bottom : 10px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 24px;
-    text-align: center;
-    color: black;
-    transform: translateX(-50%);
-    letter-spacing: -0.03em;
+
+#calendar_title {
+	top: 0;
+	left: 50%;
+	/* margin-bottom : 5%; */
+	padding-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 24px;
+	text-align: center;
+	color: black;
+	transform: translateX(-50%);
+	letter-spacing: -0.03em;
 }
-.calendar_nav_btn_prev, .calendar_nav_btn_next {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;    
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 0;
+
+#calendar_nav_btn_prev, #calendar_nav_btn_next {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 0;
 }
-.calendar_nav_btn_prev{
-	margin-left:10%;
+
+#calendar_nav_btn_prev {
+	margin-right: 25%;
 }
-.calendar_nav_btn_next{
-	margin-right:10%;
+
+#calendar_nav_btn_next {
+	margin-left: 25%;
 }
+
 .day_names {
-	margin: 12px 0 7px;
+	margin: 3px 0 7px;
 	display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-    letter-spacing: -0.03em;
-    text-align : center;
+	justify-content: space-between;
+	white-space: nowrap;
+	letter-spacing: -0.03em;
+	text-align: center;
 }
-.day_name:first-child{
-	color: #dd6045;
+
+.day_name:first-child {
+	color: #FF0000;
 }
-.day_name:last-child{
-	color: #3d85b9;
+
+.day_name:last-child {
+	color: #0000CD;
 }
+
 .calandar_content {
 	width: 250px;
-	margin : 0;
-	text-align :center;
-	padding:0;
-	display : block;
+	margin: 0;
+	text-align: center;
+	padding: 0;
+	display: block;
 	font-size: 0.8rem;
 	color: #000;
 	letter-spacing: -0.03em;
 }
+
 .calandar_week {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 	white-space: nowrap;
 	margin: 0;
-    padding: 0;
+	padding: 0;
 }
-.calandar_day:first-child {
-	color: #dd6045;
-}
-.calandar_day:last-child {
-	color: #3d85b9;
-}
-.calandar_day {
+
+.calandar_day, .calandar_day.today, div.sat, div.sat.today, div.sun, div.sun.today
+	{
+	/*기본적인 날 css*/
 	margin: 0;
-    width: 34px;
-    height: 34px;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    background: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 32px;
-    box-sizing: border-box;
-	cursor: pointer;
+	width: 34px;
+	height: 34px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	background: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 32px;
+	box-sizing: border-box;
+	cursor: default;
 	display: inline-block;
 	text-align: center;
 	padding: 0;
 	white-space: nowrap;
 	letter-spacing: -0.03em;
+	color: lightgray;
+	font-weight: normal;
+}
+/* 토요일, 일요일 css */
+.sun, div.sun.a.event {
+	color: #FF0000;
+}
+
+.sat, div.sat.a.event {
+	color: #0000CD;
+}
+
+.calandar_day a.event {
+	/*공연이 있는 날에만 다른 css적용*/
+	cursor: pointer;
+	color: black;
+	font-weight: bold;
+}
+
+.sat a.event {
+	color: #0000CD;
+	font-weight: bold;
+}
+
+.sun a.event {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.sat.today a.event, .sun.today a.event, .calandar_day.today a.event {
+	background-color: black;
+	color: white;
+	border-radius: 50px;
+	font-weight: bold;
+}
+/* 오늘날짜에 css*/
+.calandar_day.today, div.sat.today, div.sun.today {
+	background-color: black;
+	color: white;
+	border-radius: 50px;
+	font-weight: normal;
 }
 
 .day_name {
-	margin: 0;
-    width: 34px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #242428;
-    display: inline-block;
-    white-space: nowrap;
+	margin: 10px 0 0 0;
+	width: 34px;
+	font-size: 17px;
+	line-height: 16px;
+	color: #242428;
+	display: inline-block;
+	white-space: nowrap;
 }
 
 .datepicker_content {
@@ -244,72 +303,82 @@ button {
 }
 /* 회차 선택 */
 .play_reserve_time {
-    display: flex;
-	width :35%;
-    align-items: flex-start;
-    padding: 5px 0 20px 24px;
-    border-left: 1px solid #ecedf2;
+	display: flex;
+	width: 35%;
+	align-items: flex-start;
+	padding: 5px 0 20px 24px;
+	border-left: 1px solid #ecedf2;
 }
+
 .play_time_list {
-    padding: 20px 24px 20px 24px;
-    width: 257px;
-    height: 100%;
-    overflow-y: overlay;
+	padding: 20px 24px 20px 24px;
+	width: 257px;
+	height: 100%;
+	overflow-y: overlay;
 }
+
 .play_time_item {
-    border: 0;
-    vertical-align: top;
+	border: 0;
+	vertical-align: top;
 }
+
 .play_time_btn {
-    padding: 11px 18px 11px 15px;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 6px;
-    text-align: left;
-    background-color: transparent;
+	padding: 11px 18px 11px 15px;
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 6px;
+	text-align: left;
+	background-color: transparent;
 }
+
 .play_time {
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #242428;
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 24px;
+	color: #242428;
 }
 /* 예매가능좌석 */
 .play_reserve_seat {
-    flex: 1;
-	width :35%;
-    padding: 15px 0 20px 20px;
-    border-left: 1px solid #ecedf2;
-    border-radius: 0 10px 10px 0;
-    background: #f8f9fa;
+	flex: 1;
+	width: 35%;
+	padding: 15px 0 20px 20px;
+	border-left: 1px solid #ecedf2;
+	border-radius: 0 10px 10px 0;
+	background: #f8f9fa;
 }
+
 .play_seat_list {
-    overflow-y: overlay;
-    padding-left: 5px;
-    padding-right:30px;
-    max-height: 222px;
+	overflow-y: overlay;
+	padding-left: 5px;
+	padding-right: 30px;
+	max-height: 222px;
 }
+
 .play_seat_item {
 	margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    line-height: 18px;
-    border: 0;
-    vertical-align: top;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	line-height: 18px;
+	border: 0;
+	vertical-align: top;
 }
+
 .play_seat_title {
 	color: #62676c;
-    display: inline-block;
-    padding-right : 120px;
+	display: inline-block;
+	padding-right: 120px;
 }
+
 .play_seat_remain {
 	display: inline-flex;
-	font-weight : bold;
-    color: black;
+	font-weight: bold;
+	color: black;
+	font-size: 20px;
+	height: 30px;
 }
 
 .reservation_button {
@@ -326,17 +395,16 @@ button {
 
 /* playInfo css */
 .playInfo_table {
-	width:100%;
-	padding-left : 15px;
+	width: 100%;
+	padding-left: 15px;
 	font-size: 1.1em;
 	font-family: "Poppins", sans-serif;
 }
 
-tr .first_column{
-	font-weight : bold;
-	color : rgba(97, 97, 97, 1);
+tr .first_column {
+	font-weight: bold;
+	color: rgba(97, 97, 97, 1);
 }
-
 
 /*playDetail css*/
 @import
@@ -353,7 +421,7 @@ tr .first_column{
 	overflow: hidden;
 }
 
-.tab-ul li{
+.tab-ul li {
 	float: left;
 	width: 33.3%;
 	text-align: center;
@@ -370,4 +438,130 @@ li.active {
 .tab-content {
 	border-top: 1px solid #333;
 	padding-top: 15px;
+}
+
+/* 예매 취소 정보 */
+section.cancel_notice {
+	margin-top: 0;
+	display: block;
+	font-size: 14px;
+	font-weight:bold;
+	letter-spacing: -0.03em;
+	color: #242428;
+	margin-left : 5%;
+}
+
+.cancel_toggle_btn {
+	position: relative;
+	width: 100%;
+	padding: 26px 0;
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 500;
+	color: #242428;
+	text-align: left;
+	overflow: visible;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.cancel_toggle_title {
+	margin: 40px 0 16px;
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 500;
+	color: #242428;
+}
+
+.cancel_toggle_content {
+	font-family: 'Notosans', -apple-system, BlinkMacSystemFont,
+		Apple SD Gothic Neo, 'Malgun Gothic', Arial, sans-serif;
+	font-size: 14px;
+	letter-spacing: -0.03em;
+	color: #242428;
+}
+
+.detail_info_tbl_marro {
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 5%;
+	padding: 0px;
+	margin-top: 15px !important;
+	border-collapse: collapse; 
+	border-spacing: 0;
+	font-family: 'Notosans', -apple-system, BlinkMacSystemFont,
+		Apple SD Gothic Neo, 'Malgun Gothic', Arial, sans-serif;
+	font-size: 14px;
+	letter-spacing: -0.03em;
+	color: #242428;
+	font-size: 13px;
+	color: rgb(118, 118, 118);
+	table-layout: fixed;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	width: 692px;
+	
+	letter-spacing:-1px;
+}
+.detail_info_tbl_marro th{
+	text-align: center;
+	background: rgb(242, 242, 240);
+}
+.detail_info_tbl_marro td:first-child, .detail_info_tbl_marro th:first-child{
+	width: 20%;
+	font-weight: bold;
+	background: rgb(242, 242, 240);
+}
+.detail_info_tbl_marro td{
+	padding-left : 2%;
+}
+
+/* 모달 창 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  width : 711.458px;
+  border: 10px solid #888;
+	border-radius: 10px;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+}
+.modal-content h1{
+	padding : 6px 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	padding-left : 3%;
+}
+.modal-content p{
+	padding-left : 5%;
+	padding-right : 5%;
+}
+
+.close {
+  display: block;
+  position:static;
+  float:right;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

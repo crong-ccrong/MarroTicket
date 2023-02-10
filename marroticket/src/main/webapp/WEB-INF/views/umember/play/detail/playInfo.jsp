@@ -22,8 +22,8 @@
 	</tr>
 	<tr>
 		<td class="first_column" height= 45>기간</td>
-		<td height= 50><fmt:formatDate pattern="YYYY-MM-dd (E)" value="${ play.pstartDate}" /> ~ <fmt:formatDate
-                              pattern="YYYY-MM-dd (E)" value="${ play.pcloseDate}" /></td>
+		<td height= 50><span id="pstartDate"><fmt:formatDate pattern="YYYY-MM-dd (E)" value="${ play.pstartDate}" /></span> ~ <span id="pcloseDate"><fmt:formatDate
+                              pattern="YYYY-MM-dd (E)" value="${ play.pcloseDate}" /></span></td>
 	</tr>
 	<tr>
 		<td class="first_column" height= 45>장르</td>
@@ -42,3 +42,5 @@
 		<td width="70%" height= 45>전석 ${ play.pticketPrice}원</td>
 	</tr>
 </table>
+<!-- 상연이 끝난 공연일 경우 -->
+<div id="content_close_ticketingInfo"></div>

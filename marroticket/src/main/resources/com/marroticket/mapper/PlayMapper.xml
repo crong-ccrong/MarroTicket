@@ -83,6 +83,7 @@
 	<select id="read" resultMap="playmap">
 		SELECT *
 		FROM play
+		WHERE p_number=#{pNumber}
 	</select>
 
 	<!-- 미리보기 이미지 표시 -->

@@ -30,8 +30,8 @@ public class PlayServiceImpl implements PlayService {
 	}
 
 	@Override
-	public PlayVO read() throws Exception {
-		return mapper.read();
+	public PlayVO read(Integer pNumber) throws Exception {
+		return mapper.read(pNumber);
 	}
 	
 	public String getPposter(Integer pnumber) throws Exception {

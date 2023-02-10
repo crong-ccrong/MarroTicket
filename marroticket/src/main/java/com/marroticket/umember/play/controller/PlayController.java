@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -17,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -75,8 +78,8 @@ public class PlayController {
 	}
 	// 연극 공연 정보 상세 페이지
 	@GetMapping("/playDetail")
-	public String playDetail(Model model) throws Exception{
-		PlayVO play = playService.read();
+	public String playDetail(Model model, int pNumber) throws Exception{
+		PlayVO play = playService.read(pNumber);
 		
 		//관람등급 set
 		play.setPratings(ratingSet(play));
@@ -88,6 +91,8 @@ public class PlayController {
 		model.addAttribute("play", play);
 		return "playDetail";
 	}
+
+	// 연극 공연
 
 	//관람등급 set
 	public String ratingSet(PlayVO play) {
@@ -125,7 +130,6 @@ public class PlayController {
 			return null;
 		}
 	}
-
 	// 포스터 표시
 	@ResponseBody
 	@RequestMapping("/poster")

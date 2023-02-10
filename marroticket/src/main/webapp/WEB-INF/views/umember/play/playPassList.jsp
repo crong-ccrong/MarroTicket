@@ -21,19 +21,19 @@
 					<td><table>
 							<tr>
 								<td align="center"><a
-									href="/play/playDetail?pNumber=${CurrentList.PNumber }"><img
+									href="/play/playDetail?pNumber=${CurrentList.pnumber }"><img
 										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.PName}</td>
+								<td align="center">${CurrentList.pname}</td>
 							</tr>
 							<tr>
-								<td align="center">${CurrentList.PTheaterName}</td>
+								<td align="center">${CurrentList.ptheaterName}</td>
 							</tr>
 							<tr>
 								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
-										value="${CurrentList.PStartDate}" />~<br> <fmt:formatDate
-										pattern="YYYY-MM-dd (E)" value="${CurrentList.PCloseDate }" /></td>
+										value="${CurrentList.pstartDate}" />~<br> <fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${CurrentList.pcloseDate }" /></td>
 							</tr>
 						</table></td>
 					<c:if test="${status.count%4 == 0 }">

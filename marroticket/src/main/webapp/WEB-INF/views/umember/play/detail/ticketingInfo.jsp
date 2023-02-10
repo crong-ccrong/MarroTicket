@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ticketingInfo -->
 <!-- content_ticketingInfo -->
 <div class="content_ticketingInfo">
@@ -17,10 +18,11 @@
 				<div id="datepicker_header">
 					<div id="calendar_header">
 						<div id="calendar_nav">
-							<!-- disabled 기능 사용해보기 -->
-							<button type="button" class="calendar_nav_btn_prev"><</button>
-							<strong class="calendar_title">2023.01</strong>
-							<button type="button" class="calendar_nav_btn_next">></button>
+							<button type="button" class="month-move"
+								id="calendar_nav_btn_prev" data-ym="2022-04-01"><</button>
+							<strong id="calendar_title">2023.01</strong>
+							<button type="button" class="month-move"
+								id="calendar_nav_btn_next" data-ym="2022-06-01">></button>
 						</div>
 						<div class="day_names">
 							<div class="day_name">일</div>
@@ -34,49 +36,23 @@
 					</div>
 					<div class="calandar_content">
 						<div class="calandar_week">
-							<div class="calandar_day">1</div>
+							<!-- 							<div class="sun">1</div>
 							<div class="calandar_day">2</div>
 							<div class="calandar_day">3</div>
 							<div class="calandar_day">4</div>
 							<div class="calandar_day">5</div>
 							<div class="calandar_day">6</div>
-							<div class="calandar_day">7</div>
+							<div class="sat">7</div> -->
 						</div>
+						<!-- 행 반복 -->
 						<div class="calandar_week">
-							<div class="calandar_day">8</div>
-							<div class="calandar_day">9</div>
-							<div class="calandar_day">10</div>
-							<div class="calandar_day">11</div>
-							<div class="calandar_day">12</div>
-							<div class="calandar_day">13</div>
-							<div class="calandar_day">14</div>
-						</div>
-						<div class="calandar_week">
-							<div class="calandar_day">15</div>
-							<div class="calandar_day">16</div>
-							<div class="calandar_day">17</div>
-							<div class="calandar_day">18</div>
-							<div class="calandar_day">19</div>
-							<div class="calandar_day">20</div>
-							<div class="calandar_day">21</div>
-						</div>
-						<div class="calandar_week">
-							<div class="calandar_day">22</div>
-							<div class="calandar_day">23</div>
-							<div class="calandar_day">24</div>
-							<div class="calandar_day">25</div>
-							<div class="calandar_day">26</div>
-							<div class="calandar_day">27</div>
-							<div class="calandar_day">28</div>
-						</div>
-						<div class="calandar_week">
-							<div class="calandar_day">29</div>
+							<!-- 							<div class="sun">29</div>
 							<div class="calandar_day">30</div>
 							<div class="calandar_day"></div>
 							<div class="calandar_day"></div>
 							<div class="calandar_day"></div>
 							<div class="calandar_day"></div>
-							<div class="calandar_day"></div>
+							<div class="sat"></div> -->
 						</div>
 					</div>
 				</div>
@@ -92,27 +68,49 @@
 		</h3>
 		<!-- 회차선택(내용) -->
 		<ul class="play_time_list" role="listbox">
-			<li class="play_time_item" role="none">
+<!-- 			<li class="play_time_item" role="none">
 				<button type="button" class="play_time_btn" role="option"
 					aria-selected="true">
 					<span class="play_time">00시 00분</span>
 				</button>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	<!-- 좌석 여부 -->
 	<div class="play_reserve_seat">
 		<!-- 소제목 -->
 		<h3 class="play_reserve_heading">
-			<span class="play_reserve_title">예매가능좌석</span>
+			<span class="play_reserve_title" style="font-size:16px">예매가능좌석</span>
 		</h3>
 		<!-- 예매가능좌석(내용) -->
 		<ul class="play_seat_list">
 			<li class="play_seat_item"><span class="play_seat_title">잔여</span>
-				<span class="play_seat_remain">00석</span></li>
+				<span class="play_seat_remain"></span></li>
 		</ul>
 	</div>
 </div>
 <div align="right">
 	<input type="button" class="reservation_button" value="예매하기">
 </div>
+<div class="closeDate_content"></div>
+
+<form id="reserveInfoForm">
+	<!-- 연극 hidden -->
+	<input type="hidden" name="pnumber" value="${play.pnumber}"/>
+	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
+	<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
+	<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>
+	<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime}"/>
+	<!-- 예매잔여좌석 -->
+	<div id="hiddenSeatInfoFirst">
+		
+	</div>
+	<div id="hiddenSeatInfoSecond">
+		
+	</div>
+	<!-- 예매 날짜 -->
+	<div id="reserveDateInfoHidden">
+		
+	</div>
+</form>
+<%@include file="resereCautionModal.jsp"%>

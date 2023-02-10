@@ -83,6 +83,9 @@ public class TmemberController {
 
 		playVO.setPtheaterMapUrl(ptheaterMapUrl);
 		playVO.setPposterUrl(pposterUrl);
+		
+		//좌석 정보 생성
+		
 
 		registeService.registePlay(playVO);
 

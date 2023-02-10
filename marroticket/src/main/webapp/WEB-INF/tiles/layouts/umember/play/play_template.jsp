@@ -8,10 +8,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><tiles:getAsString name="title" /></title>
+<!-- ajax 통신을 위한 meta tag -->
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 <link rel="stylesheet" type="text/css" href="/css/play_detail.css">
+<!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title><tiles:getAsString name="title" /></title>
+<!-- 카카오맵 api -->
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04a5be0a2b36216ee24699f0369313f4&libraries=services,clusterer,drawing"></script>
+<!-- 달력 자바스크립트 -->
+<script src="/js/playdetail.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -42,7 +51,6 @@
 				<tiles:insertAttribute name="content_detail" ignore="true" />
 			</div>
 		</section>
-
 	</div>
 
 	<!-- footer -->
