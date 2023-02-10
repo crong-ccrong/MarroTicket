@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<<<<<<< HEAD
+	
 <!-- 극단 회원 공지사항 목록 페이지 -->
-=======
->>>>>>> 79ab777f2a9cad4fbcbb343faff94669788c8f41
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -15,19 +13,20 @@
 <h2>
 	<spring:message code="notice.header.list" />
 </h2>
-<a href="noticeRegister"><spring:message code="action.new" /></a>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="noticeRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
+
 <table border="1">
 	<tr>
-<<<<<<< HEAD
-		<th align="center" width="80"><spring:message
-				code="notice.n_number" /></th>
-=======
+
 		<th align="center" width="80"><spring:message code="notice.no" /></th>
->>>>>>> 79ab777f2a9cad4fbcbb343faff94669788c8f41
-		<th align="center" width="320"><spring:message
-				code="notice.title" /></th>
-		<th align="center" width="180"><spring:message
-				code="notice.regdate" /></th>
+
+		<th align="center" width="320"><spring:message code="notice.title" /></th>
+		
+		<th align="center" width="180"><spring:message code="notice.regdate" /></th>
+
 	</tr>
 
 	<c:choose>

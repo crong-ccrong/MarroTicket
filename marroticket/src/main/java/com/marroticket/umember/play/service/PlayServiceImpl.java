@@ -33,8 +33,13 @@ public class PlayServiceImpl implements PlayService {
 	public PlayVO read(Integer pNumber) throws Exception {
 		return mapper.read(pNumber);
 	}
-
+	
 	public String getPposter(Integer pnumber) throws Exception {
 		return mapper.getPposter(pnumber);
 	}
+
+	/*
+	 * @Override public List<PlayVO> quickReserve() throws Exception { return
+	 * mapper.quickReserve(); }
+	 */
 }

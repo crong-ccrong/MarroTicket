@@ -10,9 +10,12 @@ public interface PlayService {
 	public List<PlayVO> playPassList() throws Exception;
 
 	public List<PlayVO> playExpectedList() throws Exception;
-	
+
 	public PlayVO read(Integer pNumber) throws Exception;
 
 	public String getPposter(Integer pnumber) throws Exception;
 
+	/*
+	 * public List<PlayVO> quickReserve() throws Exception;
+	 */
 }

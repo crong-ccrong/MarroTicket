@@ -1,5 +1,8 @@
 INDEX VERSION 1.4+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+<<<<<<< HEAD
 3427865624.index
+=======
+>>>>>>> main
 2357012513.index
 2536398460.index
 4131777164.index

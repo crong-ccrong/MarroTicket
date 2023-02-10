@@ -3,6 +3,9 @@ package com.marroticket.tmember.member.controller;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
 import java.security.SecureRandom;
 import java.util.Date;
 
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
@@ -36,10 +39,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
+
+//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
-@MapperScan(basePackages = "com.marroticket.mapper")
-//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @RequestMapping("/theater")
 @MapperScan(basePackages = "com.marroticket.mapper")
 public class TmemberController {
@@ -56,36 +59,31 @@ public class TmemberController {
 	EmailService emailService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	
 	@GetMapping("")
-
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		return "tmemberhome";
 	}
 
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
-	public String registeForm(@ModelAttribute("playVO") PlayVO playVO) throws Exception {
-
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
+	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
 	}
 
 	// 연극 등록 처리
-	@PostMapping("/registePlay")
+	@PostMapping("/registePlayComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile ptheaterMap = playVO.getPtheaterMap();
 		MultipartFile pposter = playVO.getPposter();
 
-		String ptheaterMapUrl = uploadFile(ptheaterMap.getOriginalFilename(), ptheaterMap.getBytes());
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPtheaterMapUrl(ptheaterMapUrl);
 		playVO.setPposterUrl(pposterUrl);
-		
-		//좌석 정보 생성
-		
 
 		registeService.registePlay(playVO);
 
@@ -101,11 +99,12 @@ public class TmemberController {
 		return "registe.registeTemporaryComplete";
 	}
 
-	// 상연 날짜 선택 팝업 이동
-	@GetMapping("/registeInfoCalendar")
-	public String registeInfoCalendar(PlayVO playVO, Model model) throws Exception {
+	// 연극 임시등록 완료페이지
+	@GetMapping("/registeTemporaryComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
+	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
 
-		return "tmember/registe/registeInfoCalendar";
+		return "registe.registeTemporaryComplete";
 	}
 
 	// 등록한 연극
@@ -185,22 +184,6 @@ public class TmemberController {
 	public String tmemberJoinSuccess() {
 		System.out.println("tmemberJoinSuccess호출 완료");
 		return "tMemberJoin.tmemberJoinSuccess";
-	}
-
-	// 극단 공지사항, faq
-
-	// 극단회원 FAQ
-	// 목록
-	@GetMapping("/tfaqList")
-	public String tfaqList() {
-		return "tserviceCenter.tfaqList";
-	}
-
-	// 극단회원 Notice
-	// 목록
-	@GetMapping("/noticeList")
-	public String noticeList() {
-		return "tserviceCenter.notice";
 	}
 
 	// footer
