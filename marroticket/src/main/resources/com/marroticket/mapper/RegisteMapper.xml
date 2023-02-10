@@ -3,7 +3,7 @@
 <mapper namespace="com.marroticket.mapper.RegisteMapper">
 
 	<insert id="registe"
-	parameterType="com.marroticket.umember.play.domain.PlayVO">
+		parameterType="com.marroticket.umember.play.domain.PlayVO">
 
 		insert into Play(
 		p_number ,
@@ -13,7 +13,6 @@
 		p_runningtime ,
 		p_theatername ,
 		p_theateraddress ,
-		p_theatermapUrl ,
 		p_agency ,
 		p_ratings ,
 		p_casting ,
@@ -31,19 +30,18 @@
 		t_number
 		)
 
-		values
-		(play_seq.nextval,
-		#{pname },
+		select
+		play_seq.nextval,
+		#{pname
+		},
 		#{pstartDate},
 		#{pcloseDate},
 		#{prunningTime },
 		#{ptheaterName },
 		#{ptheaterAddress },
-		#{ptheaterMapUrl },
 		#{pagency },
 		#{pratings },
-		#{pcasting
-		},
+		#{pcasting },
 		#{pticketOpenDate},
 		#{pplot },
 		#{pseatNumber },
@@ -55,9 +53,9 @@
 		#{pfirstStartTime},
 		#{psecondStartTime },
 		#{pagree} ,
-		#{tnumber}
-		)
-
+		t_number
+		from tmember
+		where t_id = #{tId}
 
 
 	</insert>

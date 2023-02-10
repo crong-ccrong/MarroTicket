@@ -73,7 +73,11 @@ public class PlayController {
 
 	// 빠른 예매 페이지
 	@GetMapping("/quickReserve")
-	public String quickReserve() {
+	public String quickReserveForm(Model model) throws Exception {
+		/*
+		 * List<PlayVO> quickReserve = new ArrayList<>(); quickReserve =
+		 * playService.quickReserve(); model.addAttribute("quickReserve", quickReserve);
+		 */
 		return "play.quickReserve";
 	}
 	// 연극 공연 정보 상세 페이지

@@ -22,4 +22,5 @@ public interface TmemberMapper {
 
 	// 회원 auth create
 	public void createAuth(TmemberAuth auth);
+
 }

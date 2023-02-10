@@ -11,7 +11,7 @@ import com.marroticket.mapper.UmemberMapper;
 public class UmemberServiceImpl implements UmemberService {
 	@Autowired
 	private UmemberMapper umembermapper;
-	
+
 	@Override
 	public String findId(UmemberVO umember) throws Exception {
 		return umembermapper.findId(umember);
@@ -20,7 +20,7 @@ public class UmemberServiceImpl implements UmemberService {
 	//임시비밀번호로 업데이트
 	public int passwordUpdate(UmemberVO umember) throws Exception{
 		return umembermapper.updatePassword(umember);
-	};
+	}
 	
 	//아이디 중복 체크
 		@Override
@@ -36,5 +36,48 @@ public class UmemberServiceImpl implements UmemberService {
 		UmemberAuth auth = new UmemberAuth();
 		auth.setUmemberAuth("ROLE_UMEMBER");
 		umembermapper.createAuth(auth);
-	};
+	}
+
+	//마이페이지 
+	//정보조회
+	 @Override
+	    public UmemberVO getUmemberByUId(String uId) throws Exception {
+	        return umembermapper.getUmemberByUId(uId);
+	    }
+	 //정보수정
+	@Override
+	public void modify(UmemberVO vo) throws Exception {
+		umembermapper.updateInfo(vo);
+	}
+	//회원탈퇴
+
+	@Override
+	public void remove(UmemberVO umember) throws Exception {
+		//auth
+		umembermapper.deleteAuth(umember.getUmemberAuthList().get(0).getUNumber());
+		umembermapper.deleteMember(umember);
+		
+		
+	}
+	
+
+	
+
+
+	
+
+
+
+
+
+	
+
+
+
+		
+
+	
+	
+	
+	
 }
