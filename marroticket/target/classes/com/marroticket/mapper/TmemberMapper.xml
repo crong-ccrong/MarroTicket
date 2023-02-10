@@ -12,7 +12,7 @@
 		<result property="tOwnerName" column="t_ownerName" />
 		<result property="tOwnerPhoneNumber" column="t_ownerPhoneNumber" />
 		<result property="tOwnerEmail" column="t_ownerEmail" />
-		<result property="tBusinessRegistractionNumber" column="t_businessRegistractionNumber" />
+		<result property="tBusinessRegistrationNumber" column="t_businessRegistrationNumber" />		
 		<result property="tEstablishmentDate" column="t_establishmentDate" />
 		<result property="tBank" column="t_bank" />
 		<result property="tBankNumber" column="t_bankNumber" />
@@ -29,7 +29,7 @@
 		<result property="tNumber" column="t_number" />
 		<result property="tmemberAuth" column="tmember_auth" />
 	</resultMap>
-	
+
 	
 	<!--극단 아이디 찾기-->
 	<select id="findId" resultType="String">
@@ -110,7 +110,7 @@
 		#{tOwnerPhoneNumber},
 		#{tOwnerEmail},
 		#{tBusinessRegistration},
-		#{tBusinessRegistractionNumber},
+		#{tBusinessRegistrationNumber},
 		#{tEstablishmentDate},
 		#{tBank},
 		#{tBankNumber},

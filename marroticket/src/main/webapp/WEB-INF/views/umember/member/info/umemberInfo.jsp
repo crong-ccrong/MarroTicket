@@ -8,7 +8,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
 <!-- content section -->
-<div class="content">
+  <div class="main_content">
+   <%@ include file="umemberSidebar.jsp" %> 
+    <div class="main_body">
 <form:form modelAttribute="vo"> 
   <table border="1">
   <tr>
@@ -48,6 +50,7 @@
 	</tr> 
 	</table>
 </form:form> 
+    </div>
 </div>
 
 
@@ -62,4 +65,27 @@
 </script>
 
 
+
+
+ <style>
+
+  .main_content {
+  width: 100%;
+  height:auto;
+ /*  background-color: green; */
+  padding: 10px;
+  }
+  
+  .main_body{
+  width: 80%;
+  float: right;
+/*   background-color: skyblue; */
+  padding: 10px;
+  }
+  
+  .footer {
+  	clear: both;
+  }
+  
+</style> 
 		

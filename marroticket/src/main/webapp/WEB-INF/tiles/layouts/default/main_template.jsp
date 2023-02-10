@@ -28,6 +28,8 @@
 	</div>
 	
 	<!-- footer -->
+	<div class="footer">
 	<tiles:insertAttribute name="footer" ignore="true" />
+	</div>
 </body>
 </html>

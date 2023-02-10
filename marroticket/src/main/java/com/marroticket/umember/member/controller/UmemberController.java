@@ -4,6 +4,7 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +35,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.member.service.UmemberService;
+import com.marroticket.umember.reservation.domain.ReservationVO;
+import com.marroticket.umember.reservation.service.ReservationService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +46,8 @@ import lombok.extern.slf4j.Slf4j;
 public class UmemberController {
 	@Autowired
 	private UmemberService umemberService;
+	@Autowired
+	private ReservationService reservationService;
 	@Autowired
 	private EmailService emailService;
 	@Autowired
@@ -196,11 +201,10 @@ public class UmemberController {
 	        vo.setuGender("여자");
 	    }
 	   
-	    //변경할 비밀번호가 빈칸도 아니고 기존 비밀번호랑도 다르면
+	    // 기존 비밀번호랑도 다르면
 	    if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
 	    	//변경한 비밀번호도 암호화
 	    vo.setUPassword(passwordEncoder.encode(changePw));
-	    
 	    //비밀번호 변경시 로그아웃
 	    HttpSession session = request.getSession(false);
 	    if(session != null) {
@@ -233,8 +237,7 @@ public class UmemberController {
             @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
 		System.out.println("탈퇴 페이지 호출");
 		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		  String uId = authentication.getName();
-		  
+		 String uId = authentication.getName();
 		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
 		
 		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
@@ -247,19 +250,74 @@ public class UmemberController {
 		return "redirect:/";
 	}
 	
-	
-	/* 2) 일반회원 예매 정보 */
+	/* 일반회원 예매 정보 */
+//    String ex = "2023-02-09";
+//    System.out.println(ex.substring(0,4));
+    
 	@GetMapping("/umemberReserveInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberReserveInfo() {
-		return "mypage.umemberReserveInfo";
+	public String reservation(Model model) throws Exception {
+		System.out.println("예약 정보 호출");
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String uId = authentication.getName();
+	    UmemberVO vo = umemberService.getUmemberByUId(uId);
+	    
+	    int uNumber = vo.getuNumber();
+	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+	    System.out.println(reservationList);
+	    model.addAttribute("reservationList", reservationList);
+	    
+	    return "mypage.umemberReservationList";
 	}
-
-	/* 3) 일반 회원 예매 취소 정보 */
-	@GetMapping("/umemberCancelInfo")
+	
+	/* 일반 회원 예매 취소 정보 */
+	@RequestMapping(value="/umemberCancelInfo" , method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberCancelInfo() {
+	public String umemberCancelInfo(Model model)throws Exception {
+		System.out.println("예매 취소 정보 호출");
+		
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String uId = authentication.getName();
+	    UmemberVO vo = umemberService.getUmemberByUId(uId);
+	    
+	    int uNumber = vo.getuNumber();
+	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+	    model.addAttribute("reservationList", reservationList);
+	    
 		return "mypage.umemberCancelInfo";
+	}
+	
+	@RequestMapping(value="/cancelReservation" , method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String cancelReservation(@RequestParam int rnumber, Model model)throws Exception {
+		System.out.println("예매 취소 호출");
+	
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		    String uId = authentication.getName();
+		    UmemberVO vo = umemberService.getUmemberByUId(uId);
+		    
+		    int uNumber = vo.getuNumber();
+		    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+		    model.addAttribute("reservationList", reservationList);
+	    
+		    reservationService.cancellationOfReservation(rnumber);
+		    
+		return "mypage.umemberCancelInfo";
+	}
+	
+	
+	//일반 회원 나의 관람 역극 내역
+	@GetMapping("/umemberViewHistory")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String umemberViewHistory() {
+		return "mypage.umemberViewHistory";
+	}
+	
+	//일반 회원 나의 맞춤 연극 리스트
+	@GetMapping("/umemberCustomPlayList")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String umemberCustomPlayList() {
+		return "mypage.umemberCustomPlayList";
 	}
 
 	// 일반회원 가입 이용약관

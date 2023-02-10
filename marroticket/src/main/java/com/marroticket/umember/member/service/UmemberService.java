@@ -19,7 +19,6 @@ public interface UmemberService {
 	public UmemberVO getUmemberByUId(String uId) throws Exception;
 	//정보 수정
 	public void modify(UmemberVO vo) throws Exception;
-	//
 	//회원탈퇴
 	public void remove(UmemberVO umember) throws Exception;
 	

@@ -49,7 +49,7 @@ public class TmemberVO {
 
 	@NotBlank(message = "사업자 등록번호는 필수 입력 값입니다.")
 	@Size(max = 10, message = "10자 이내로 작성해주세요.")
-	private String tBusinessRegistractionNumber; // 사업자 등록 번호
+	private String tBusinessRegistrationNumber; // 사업자 등록 번호
 
 	@Pattern(regexp = "(19|20)\\d{2}\\-((10|11|12)|(0?(\\d)))\\-(30|31|((0|1|2)?\\d))", message = "올바른 년월일 입력해주세요.")
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
