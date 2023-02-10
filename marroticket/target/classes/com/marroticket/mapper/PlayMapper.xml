@@ -43,8 +43,6 @@
 		p_startDate, 
 		p_closeDate, 
 		p_runningtime 
-		from Play where to_Date(p_closeDate,'YYYY/MM/DD') >= to_Date(sysdate,'YYYY/MM/DD') 
-			and to_Date(sysdate,'YYYY/MM/DD') >= to_Date(p_startDate,'YYYY/MM/DD') 
 		from Play 
 		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
 		order by p_startDate ]]>
@@ -53,9 +51,8 @@
 	<select id="playPassList"
 		resultMap="play">
 		<![CDATA[
-		SELECT p_poster,
 		SELECT 
-P_POSTERURL,
+		P_POSTERURL,
 		p_number,
 		p_name,
 		p_theaterName,
@@ -73,7 +70,6 @@ P_POSTERURL,
 	<select id="playExpectedList"
 		resultMap="play">
 		<![CDATA[
-		SELECT p_poster,
 		SELECT 
 		 P_POSTERURL,
 		p_number,
