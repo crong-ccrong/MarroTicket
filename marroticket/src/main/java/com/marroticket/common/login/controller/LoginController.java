@@ -42,7 +42,7 @@ public class LoginController { // 로그인 관련 controller
 	}
 
 	// 로그인 확인
-	@PreAuthorize("isAnonymous() or isAuthenticated()")
+	@PreAuthorize("isAnonymous()") //비로그인에게 권한
 	@PostMapping("/loginCheck")
 	public ResponseEntity<String> loginCheck(Principal principal) {
 		if (principal == null) {

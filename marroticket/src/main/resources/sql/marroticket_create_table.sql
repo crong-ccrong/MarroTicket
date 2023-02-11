@@ -127,14 +127,14 @@ R_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- ���Ź�ȣ
 R_DATE DATE default sysdate NOT NULL, -- ������
 R_PAYSTATE NUMBER(5) NOT NULL, -- ���������� ����
 R_FEE NUMBER(3) NOT NULL, -- ���� ������
-R_CANCELSTATE NUMBER(5) NOT NULL, -- ���� ���? ����
+R_CANCELSTATE NUMBER(5), -- ���� ���? ����
 R_CANCELDATE DATE, -- ���� �����?
 R_TICKETFIRST VARCHAR2(500) NOT NULL, -- Ƽ�Ϲ�ȣ1
 R_TICKETSECOND VARCHAR2(500), -- Ƽ�Ϲ�ȣ2
 R_TICKETTHIRD VARCHAR2(500), -- Ƽ�Ϲ�ȣ3
 R_TICKETFOURTH VARCHAR2(500), -- Ƽ�Ϲ�ȣ4
+R_TICKETCOUNT NUMBER(38),
 R_TOTALPAYMENT NUMBER(10) NOT NULL, -- ���� �Ѿ�
-R_SEATNUMBER VARCHAR2(150) NOT NULL, -- ���� �Ѿ�
 U_NUMBER NUMBER(38) NOT NULL, -- �Ϲ� ȸ�� ��ȣ
 P_NUMBER NUMBER(38) NOT NULL, -- ���ع�ȣ
 

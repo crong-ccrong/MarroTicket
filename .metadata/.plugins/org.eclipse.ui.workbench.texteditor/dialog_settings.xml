@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Pre"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="pre"/>
-			<item value="[re"/>
-			<item value="empty"/>
-			<item value="date"/>
-			<item value="reserveDateInfo"/>
-			<item value="fee"/>
-			<item value="수수"/>
-			<item value="수수료"/>
-			<item value="가격"/>
-			<item value="금액"/>
-			<item value="forth"/>
+			<item value=";"/>
+			<item value="step"/>
+			<item value="put"/>
+			<item value="pop"/>
+			<item value="ticket"/>
+			<item value="tiecket"/>
+			<item value="cursor"/>
 			<item value="css"/>
-			<item value="reserveDateInfoHidden"/>
-			<item value="pnumber"/>
-			<item value="reserveInfo"/>
+			<item value="reserve_btn"/>
+			<item value="disable"/>
+			<item value="find"/>
+			<item value="disa"/>
+			<item value="&quot;"/>
+			<item value="&apos;r"/>
+			<item value="count"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value=","/>
+			<item value="&quot;${r"/>
+			<item value="prdate"/>
+			<item value="&amp;nbsp;"/>
+			<item value="ticketNum"/>
+			<item value="side_bottom_area"/>
+			<item value="side_top_area"/>
 			<item value="fourth"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="8"/>
-		<item key="DIALOG_Y_ORIGIN" value="264"/>
+		<item key="DIALOG_X_ORIGIN" value="107"/>
+		<item key="DIALOG_Y_ORIGIN" value="227"/>
 		<item key="DIALOG_WIDTH" value="369"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -15,8 +15,9 @@
 		<result column="r_ticketthird" property="rticketThird" />
 		<result column="r_ticketfourth" property="rticketFourth" />
 		<result column="r_totalpayment" property="rtotalpayment" />
-		<result column="r_seatnumber" property="rseatNumber" />
+		<result column="r_ticketcount" property="rticketcount" />
 		<result column="u_number" property="unumber" />
+		<result column="u_id" property="uid" />
 		<result column="u_name" property="uname" />
 		<result column="u_phonenumber" property="uphonenumber" />		
 		<result column="p_number" property="pnumber" />
@@ -25,6 +26,7 @@
 		<result column="p_theaterAddress" property="ptheaterAddress" />
 		<result column="p_firstStartTime" property="pfirstStartTime" />
 		<result column="p_secondStartTime" property="psecondStartTime" />
+		<result column="p_date" property="pdate" />
 	</resultMap>
 	<resultMap 
 		type="com.marroticket.umember.reservation.domain.SeatVO"
@@ -37,9 +39,11 @@
 	<select id="read" resultMap="seatReserveList" parameterType="String">
 		SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketfourth
 		FROM reservation
-		WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%'
-		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
-		OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
-		OR r_ticketfourth LIKE '%'||#{ticketNum}||'%'
+		WHERE (
+			r_ticketfirst LIKE '%'||#{ticketNum}||'%'
+			OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
+			OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
+			OR r_ticketfourth LIKE '%'||#{ticketNum}||'%'
+		) AND (r_payState = 1 OR r_payState = 2)
 	</select>
 </mapper>

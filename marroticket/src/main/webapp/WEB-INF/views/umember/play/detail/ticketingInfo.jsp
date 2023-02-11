@@ -95,10 +95,13 @@
 <div class="closeDate_content"></div>
 
 <form id="reserveInfoForm">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<!-- 연극 hidden -->
 	<input type="hidden" name="pnumber" value="${play.pnumber}"/>
-	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
+	<input type="hidden" name="pname" value="${play.pname}"/>
+	<input type="hidden" name="ptheaterName" value="${play.ptheaterName}"/>
 	<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
+	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
 	<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>
 	<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime}"/>
 	<!-- 예매잔여좌석 -->
