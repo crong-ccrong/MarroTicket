@@ -1,70 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="P"/>
+		<item key="selection" value="Pre"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-<<<<<<< HEAD
-		<item key="selection" value="reservation"/>
 		<list key="findhistory">
-			<item value="reservation"/>
-			<item value="pfirstStartTime"/>
-			<item value="today"/>
-			<item value="radius"/>
-			<item value="reservation_button"/>
-			<item value="play_seat_remain"/>
+			<item value="pre"/>
+			<item value="[re"/>
+			<item value="empty"/>
+			<item value="date"/>
+			<item value="reserveDateInfo"/>
+			<item value="fee"/>
+			<item value="수수"/>
+			<item value="수수료"/>
+			<item value="가격"/>
+			<item value="금액"/>
+			<item value="forth"/>
+			<item value="css"/>
+			<item value="reserveDateInfoHidden"/>
+			<item value="pnumber"/>
 			<item value="reserveInfo"/>
-			<item value="myform"/>
-			<item value="myModal"/>
-			<item value="openModalBtn"/>
-			<item value="playinfo"/>
-			<item value="play"/>
-			<item value="reserveDate"/>
-			<item value="modal"/>
-			<item value="play_seat_title"/>
 		</list>
 		<list key="replacehistory">
-			<item value="reserveInfoForm"/>
-			<item value="reserveInfo"/>
-			<item value="reserveCautionModal"/>
-			<item value="reservation_button"/>
-			<item value="playInfoForm"/>
-			<item value="reserveA"/>
-			<item value="&lt;th&gt;&lt;/th&gt;"/>
-			<item value=""/>
-			<item value="."/>
-			<item value="&apos;%&apos;||#ticketNum#||&apos;%&apos;"/>
-			<item value="new Date()"/>
-			<item value="p"/>
-			<item value="o"/>
-			<item value="n"/>
-			<item value="m"/>
+			<item value="fourth"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="598"/>
-		<item key="DIALOG_Y_ORIGIN" value="221"/>
-=======
-		<list key="findhistory">
-			<item value="p"/>
-			<item value="지도"/>
-			<item value="p_theatermapurl"/>
-			<item value="ptheaterMapUrl"/>
-			<item value="pname"/>
-			<item value="tname"/>
-		</list>
-		<list key="replacehistory">
-		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1224"/>
-		<item key="DIALOG_Y_ORIGIN" value="280"/>
->>>>>>> main
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_X_ORIGIN" value="8"/>
+		<item key="DIALOG_Y_ORIGIN" value="264"/>
+		<item key="DIALOG_WIDTH" value="369"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

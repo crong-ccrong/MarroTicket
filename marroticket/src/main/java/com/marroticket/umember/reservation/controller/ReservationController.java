@@ -8,12 +8,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.marroticket.umember.play.domain.PlayVO;
+import com.marroticket.umember.reservation.domain.ReservationVO;
 import com.marroticket.umember.reservation.domain.SeatVO;
 import com.marroticket.umember.reservation.service.ReservationService;
 
@@ -68,6 +70,21 @@ public class ReservationController {
 		ResponseEntity<Map<String, Integer>> entity = new ResponseEntity<>(remainSeat, HttpStatus.OK);
 
 		return entity;
+	}
+
+	//@PreAuthorize("isAnonymous() or hasRole('ROLE_UMEMBER')")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	@PostMapping("/book")
+	public String book(ReservationVO vo) {
+		System.out.println("호출");
+		System.out.println("pnumber : "+vo.getPnumber());
+		System.out.println("pticketPrice : "+vo.getPticketPrice());
+		System.out.println("pfirstStartTime"+vo.getPfirstStartTime());
+		System.out.println("psecondStartTime"+vo.getPsecondStartTime());
+		System.out.println("pturn : "+vo.getPturn());
+		System.out.println("pdate  : "+vo.getPdate());
+		
+		return "redirect:/";
 	}
 
 	@PostMapping("/checkSeatAvailability")

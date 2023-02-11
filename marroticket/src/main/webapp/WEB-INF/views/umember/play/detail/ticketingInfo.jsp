@@ -112,5 +112,8 @@
 	<div id="reserveDateInfoHidden">
 		
 	</div>
+	<div id="turnInfoHidden">
+	
+	</div>
 </form>
 <%@include file="resereCautionModal.jsp"%>

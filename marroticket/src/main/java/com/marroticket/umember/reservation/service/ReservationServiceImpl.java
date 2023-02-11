@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marroticket.mapper.ReservationMapper;
-import com.marroticket.umember.reservation.domain.ReservationVO;
 import com.marroticket.umember.reservation.domain.SeatVO;
 
 @Service
