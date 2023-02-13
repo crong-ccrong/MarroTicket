@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.marroticket.common.service.CommonService;
-import com.marroticket.tmember.member.domain.TmemberVO;
 
 import lombok.extern.java.Log;
 

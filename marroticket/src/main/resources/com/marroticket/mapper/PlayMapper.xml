@@ -12,7 +12,6 @@
 		<result property="PRunningTime" column="P_RUNNINGTIME" />
 		<result property="PTheaterName" column="P_THEATERNAME" />
 		<result property="PTheaterAddress" column="P_THEATERADDRESS" />
-		<result property="PTheaterMapUrl" column="P_THEATERMAPURL" />
 		<result property="PAgency" column="P_AGENCY" />
 		<result property="PRatings" column="P_RATINGS" />
 		<result property="PCasting" column="P_CASTING" />
@@ -23,8 +22,8 @@
 		<result property="PGenre" column="P_GENRE" />
 		<result property="PPosterUrl" column="P_POSTERURL" />
 		<result property="PAgree" column="P_AGREE" />
-		<result property="PAmendmentApproved"
-			column="P_AMENDMENTAPPROVED" />
+		<result property="PModifyApproval"
+			column="P_MODIFYAPPROVAL" />
 		<result property="PRegistrationApproval"
 			column="P_REGISTRATIONAPPROVAL" />
 		<result property="TNumber" column="T_NUMBER" />

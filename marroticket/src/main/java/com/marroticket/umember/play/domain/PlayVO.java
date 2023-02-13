@@ -36,9 +36,6 @@ public class PlayVO {
 	@Size(max = 100, message = "100자 이내로 입력해주세요.")
 	private String pTheaterAddress; // 극장 주소
 
-	private MultipartFile pTheaterMap;// 극장 약도 파일
-	private String pTheaterMapUrl; // 약도url
-
 	private MultipartFile pPoster; // 연극 포스터 파일
 	private String pPosterUrl; // 포스터url
 
@@ -70,7 +67,7 @@ public class PlayVO {
 	private int pAgree;// 약관 동의 여부
 
 	private String pRegistrationApproval;// 공연 등록 승인 여부
-	private String pAmendmentApproved;// 공연 수정 승인 여부
+	private String pModifyApproval;// 공연 수정 승인 여부
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

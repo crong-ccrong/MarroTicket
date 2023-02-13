@@ -102,14 +102,6 @@
 			<td><form:input path="pTheaterAddress" id="ptheaterAddress" />
 				<font color="red"><form:errors path="pTheaterAddress" /> </font></td>
 		</tr>
-
-		<tr>
-			<td>극장 약도</td>
-			<td><input type="File" name="pTheaterMap" id="pTheaterMap"
-				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pTheaterMapError"><spring:message
-						code="registe.file.error" /></font></td>
-		</tr>
 		<tr>
 			<td>연극포스터</td>
 			<td><input type="File" name="pPoster" id="pPoster"
@@ -334,7 +326,7 @@
 
 		<tr>
 			<form:input path="pRegistrationApproval" value="0" hidden="true" />
-			<form:input path="pAmendmentApproved" hidden="true" />
+			<form:input path="pModifyApproval" value="0" hidden="true" />
 			<form:input path="pAgree" id="pagee" value="1" hidden="true" />
 			<form:input path="tNumber" value="1" hidden="true" />
 			<form:input path="tId" hidden="true" value="${principal.tId }" />
@@ -429,7 +421,6 @@
 						$("#agree1Error").hide();
 						$("#agree2Error").hide();
 						$("#agree3Error").hide();
-						$("#pTheaterMapError").hide();
 						$("#pPosterError").hide();
 
 						$("#registeTemporary")
@@ -447,9 +438,7 @@
 															.is(":checked") == true) {
 												$("pagree").val(1);
 
-												if (!($("#pTheaterMap").val() == "" && $(
-														"#pTheaterMap").val() == null)
-														&& !($("#pPoster")
+												if ( !($("#pPoster")
 																.val() == "" && $(
 																"#pPoster")
 																.val() == null)) {
@@ -472,11 +461,7 @@
 														.is(":checked") == false) {
 													$("#agree3Error").show();
 												}
-												if ($("#pTheaterMap").val() == "") {
-													$("#pTheaterMapError")
-															.show();
-
-												}
+												
 												if ($("#pPoster").val() == "") {
 													$("#pPosterError").show();
 

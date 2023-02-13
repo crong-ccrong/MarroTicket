@@ -84,13 +84,10 @@ public class TmemberController {
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile ptheaterMap = playVO.getPTheaterMap();
 		MultipartFile pposter = playVO.getPPoster();
 
-		String ptheaterMapUrl = uploadFile(ptheaterMap.getOriginalFilename(), ptheaterMap.getBytes());
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPTheaterMapUrl(ptheaterMapUrl);
 		playVO.setPPosterUrl(pposterUrl);
 
 		registeService.registePlay(playVO);

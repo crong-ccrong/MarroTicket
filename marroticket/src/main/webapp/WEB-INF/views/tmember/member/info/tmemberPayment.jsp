@@ -24,24 +24,30 @@
 		<th align="center" width="80">연극번호</th>
 	</tr>
 
+	<%--
+	아래 한글명으로 해둔거는 작성하신거에 맞춰서 변경해주세요
 	<c:choose>
-		<c:when test="${empty payList}">
+		<c:when test="${empty 정산리스트}">
 			<tr>
 				<td colspan="5"><spring:message code="common.listEmpty" /></td>
 			</tr>
 		</c:when>
-<%-- 
+
 		<c:otherwise>
-			<c:forEach items="${noticeList}" var="noticeVO">
+			<c:forEach items="${정산리스트}" var="정산VO">
 				<tr>
-					<td align="center">${noticeVO.noticeNo}</td>
-					<td align="left"><a
-						href="/notice/noticeRead?noticeNo=${noticeVO.noticeNo}"><c:out
-								value="${noticeVO.title}" /></a></td>
-					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${noticeVO.regDate}" /></td>
+					<td align="center">${정산VO.정산번호}</td>
+					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+							value="${정산VO.정산일자}" /></td>
+							
+					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+							value="${정산VO.지급일}" /></td>
+					지급일은 정산일의 다음달 20일로 일괄적용됩니다. 처리해주세요~
+							
+					<td align="right">${정산VO.금액}</td>
+					<td align="center">${정산VO.연극번호}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
- --%>	</c:choose>
+</c:choose> --%>
 </table>
