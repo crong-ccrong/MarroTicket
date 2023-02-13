@@ -28,21 +28,7 @@
 		<div id="container" class="ng-isolate-scope">
 			<div class="reserve_content">
 				<div class="reserve_left ng-isolate-scope">
-					<!-- 공연제목, 날짜, 공연장소 -->
-					<tiles:insertAttribute name="title_info" ignore="true" />
-					<div id="main_view_top" class="select_seat ng-isolate-scope">
-						<div id="main_view" class="in">
-							<tiles:insertAttribute name="content" ignore="true" />
-						</div>
-						<div class="select_seat_info ng-isolate-scope">
-							<a href="#" class="seat_header">
-								<div ng-show="!selected.isWaitingReservation">
-									<strong class="tit ng-binding ng-scope"> 예매를 진행합니다.
-										좌석을 선택해 주세요. </strong>
-								</div>
-							</a>
-						</div>
-					</div>
+					<tiles:insertAttribute name="content" ignore="true" />
 				</div>
 				<div class="reserve_right ng-isolate-scope">
 					<!-- 사이드바 -->

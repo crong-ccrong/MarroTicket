@@ -59,25 +59,4 @@ public class UmemberServiceImpl implements UmemberService {
 		
 		
 	}
-	
-
-	
-
-
-	
-
-
-
-
-
-	
-
-
-
-		
-
-	
-	
-	
-	
 }

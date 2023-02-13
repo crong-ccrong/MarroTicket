@@ -38,9 +38,10 @@ public class ReservationVO {
 	
 	//일반사용자 정보
 	private int unumber; // 일반회원번호
-	private int uid; // 일반회원번호
+	private String uid; // 일반회원번호
 	private String uname; //사용자 이름
 	private String uphonenumber; //사용자 전화번호
+	private String uemail; //사용자 전화번호
 	
 	//연극 정보
 	private int pnumber; // 연극번호

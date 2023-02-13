@@ -337,6 +337,7 @@ $(document)
 				var pnumberVal = $('input[name=pnumber]').val(); //공연번호
 				var pnameVal = $('input[name=pname]').val(); //공연명
 				var ptheaterNameVal = $('input[name=ptheaterName]').val(); //극장명
+				var ptheaterAddressVal = $('input[name=ptheaterAddress]').val(); //극장주소
 				var pticketPriceVal = $('input[name=pticketPrice]').val(); //티켓가격(낱개)
 				var pseatNumberVal = $('input[name=pseatNumber]').val(); //좌석개수
 				var pfirstStartTimeVal = $('input[name=pfirstStartTime]').val(); //1회차
@@ -346,6 +347,7 @@ $(document)
 					"pnumber": pnumberVal,
 					"pname": pnameVal,
 					"ptheaterName": ptheaterNameVal,
+					"ptheaterAddress": ptheaterAddressVal,
 					"pticketPrice": pticketPriceVal,
 					"pseatNumber": pseatNumberVal,
 					"pfirstStartTime": pfirstStartTimeVal,

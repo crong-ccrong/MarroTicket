@@ -90,8 +90,6 @@ public class PlayController {
 		//장르 정보 set
 		play.setPgenre(genreSet(play));
 		
-		System.out.println(play);
-		
 		model.addAttribute("play", play);
 		return "playDetail";
 	}

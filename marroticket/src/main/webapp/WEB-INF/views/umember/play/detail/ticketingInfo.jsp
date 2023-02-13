@@ -100,6 +100,7 @@
 	<input type="hidden" name="pnumber" value="${play.pnumber}"/>
 	<input type="hidden" name="pname" value="${play.pname}"/>
 	<input type="hidden" name="ptheaterName" value="${play.ptheaterName}"/>
+	<input type="hidden" name="ptheaterAddress" value="${play.ptheaterAddress}"/>
 	<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
 	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
 	<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>

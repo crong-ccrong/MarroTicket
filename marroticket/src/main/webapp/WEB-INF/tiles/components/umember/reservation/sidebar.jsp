@@ -39,14 +39,18 @@
 				<td id="_price_ticket">${reservation.pticketPrice } 원</td>
 			</tr>
 			<tr>
+				<th>티켓개수</th>
+				<td id="_price_count"> 0개</td>
+			</tr>
+			<tr>
 				<th>예매수수료</th>
-				<td id="_price_fee">500 원</td>
+				<td id="_price_fee" name="">500 원</td>
 			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
 				<th>총결제</th>
-				<td id="_price_amount">0원</td>
+				<td id="_price_amount" name="price_amount">0원</td>
 			</tr>
 		</tfoot>
 	</table>

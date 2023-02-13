@@ -1,6 +1,5 @@
 * {
 	/* border: 1px solid black; */
-	-webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -75,6 +74,13 @@ li {
 	text-align: -webkit-match-parent;
 	list-style: none;
 }
+body, input, select, textarea, button, pre {
+    font-family: 'Notosans', -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, 'Malgun Gothic', Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.03em;
+    color: #242428;
+}
+
 
 a {
 	text-decoration: none;
@@ -102,6 +108,9 @@ td {
 	    margin: 0;
 	    display: table-cell;
     vertical-align: inherit;
+}
+colgroup {
+    display: table-column-group;
 }
 
 .blind {
@@ -204,7 +213,7 @@ td {
 	content: '';
 }
 
-.reserve_step li::after {
+/* .reserve_step li::after {
 	display: block;
 	position: absolute;
 	right: 0;
@@ -228,11 +237,7 @@ td {
 	height: 45px;
 	background-color: black;
 	border-width: 0;
-}
-
-.reserve_step .on::after {
-	border-color: transparent black;
-}
+} */
 
 /* div.reserve_content */
 .reserve_content {
@@ -598,4 +603,296 @@ tfoot {
 #seatsTable {
 	margin : 0 auto;
 	margin-top : 10%;
+}
+
+
+/* 예매확인 */
+/* 모바일 티켓 안내 */
+.mgt0 {
+    margin-top: 0 !important;
+}
+.reserve_left .reserve_step3:first-of-type .title_box {
+    padding-top: 10px;
+}
+.reserve_left .reserve_step3 .title_box {
+    position: relative;
+    padding: 30px 0 10px;
+}
+.reserve_left .reserve_step3:first-child .title {
+    padding: 5px 0 5px;
+    margin: 0;
+    display: block;
+    font-size: 16px;
+    color: #242428;
+    line-height: 18px;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.reserve_left .white_box {
+    overflow: hidden;
+}
+.white_box {
+    border: 1px solid #ecedf2;
+    border-radius: 2px;
+    background: #fff;
+}
+.reserve_left .reserve_step3 table {
+    width: 100%;
+    background: #fff;
+    letter-spacing: 0;
+}
+.reserve_left .reserve_step3 .table2 tr:first-child th, .reserve_left .reserve_step3 .table2 tr:first-child td {
+    border-width: 0;
+}
+.reserve_left .reserve_step3 th.th {
+    text-align: left;
+    border-right: 0;
+}
+.reserve_left .reserve_step3 th:first-child {
+    border-left: 1px solid #ecedf2;
+    border-right: 1px solid #ecedf2;
+}
+.reserve_left .reserve_step3 th, .reserve_left .reserve_step3 td {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #ecedf2;
+    border-width: 1px 0;
+}
+.reserve_left .reserve_step3 .table2 tr:first-child th, .reserve_left .reserve_step3 .table2 tr:first-child td {
+    border-width: 0;
+}
+.reserve_left .reserve_step3 .table2 th, .reserve_left .reserve_step3 .table2 td {
+    padding: 15px 20px;
+    border-width: 1px 0 0;
+    font-size: 14px;
+}
+.reserve_left .reserve_step3 th, .reserve_left .reserve_step3 td {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #ecedf2;
+    border-width: 1px 0;
+}
+.radio_group {
+    font-size: 0;
+}
+.radio_box_type {
+    display: inline-block;
+    margin-left: -1px;
+}
+.radio_box_type input[type='radio'] {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin-left: 1px;
+    clip: rect(0,0,0,0);
+}
+input{
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-rtl-ordering: logical;
+}
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    box-sizing: border-box;
+}
+.radio_box_type input:checked + label {
+    color: #242428;
+}
+.radio_box_type label {
+    display: block;
+    position: relative;
+    min-width: 120px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #dcdde1;
+    font-size: 14px;
+    color: #a7acb6;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.radio_box_type input:checked + label:after {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    border: 1px solid #242428;
+    box-sizing: border-box;
+    content: '';
+}
+
+
+.reserve_left .notice_box {
+    margin-top: 7px;
+}
+.reserve_left .notice_box .notice li {
+    padding: 0;
+    font-size: 12px;
+    color: #878d95;
+    line-height: 18px;
+}
+.reserve_left .notice li {
+    letter-spacing: -1px;
+}
+
+
+/* 주문자 정보 */
+.reserve_left .reserve_step3 .table2_v2 th .color_point {
+    color: #fa2828 !important;
+}
+.reserve_left .reserve_step3 th.th.fbold {
+    font-weight: 700;
+}
+
+.reserve_left .reserve_step3 .table2_v2 th, .reserve_left .reserve_step3 table.table2_v2 td, .reserve_left .reserve_step3 .table2_v3 th, .reserve_left .reserve_step3 table.table2_v3 td {
+    padding: 3px 0 3px 20px;
+}
+td .input_block {
+    margin: 10px 0;
+}
+.reserve_left .reserve_step3 .table2 th, .reserve_left .reserve_step3 .table2 td {
+    font-size: 14px;
+}
+.reserve_left .reserve_step3 th, .reserve_left .reserve_step3 td {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #ecedf2;
+    border-width: 1px 0;
+}
+
+input[type=text].input, input[type=password].input {
+    border: 1px solid #e8eaf1;
+    padding: 1px 10px;
+    height: 28px;
+    line-height: 100%;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+
+/* 예매자 확인 */
+.customer_check .input_block_lst {
+    margin-top: 0;
+    border: 1px solid #ecedf2;
+}
+.customer_check .input_block_lst li:first-child {
+    border-top: 0;
+}
+.customer_check .input_block_lst li {
+    position: relative;
+    margin-top: 0;
+    padding: 13px 19px 12px 45px;
+    background-color: #fff;
+}
+.customer_check .input_block_lst .checkbox {
+    top: 50%;
+    left: 19px;
+    margin-top: -8px;
+}
+.checkbox:first-child {
+    margin-left: 0;
+}
+.pop_place .contents .bx_ipt_chk label:before, .ticket_radio_item .ipt_lb_radio:before, .place_popup input[type='checkbox'], .select_box.type_zone .select_item.select_all .btn_select_all:before, .ipt_radio, .checkbox, .chk #agree, .chk #sand_sns, .radio, .linkon .review_cont .personal_check:before {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #878d95;
+    border-radius: 50%;
+    background: none;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.checkbox {
+    display: inline-block;
+    margin: -1px 4px 0 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.checkbox input {
+    display: none;
+}
+.input_block_lst label {
+    line-height: 17px;
+}
+.customer_check .input_block_lst .checkbox {
+    top: 50%;
+    left: 19px;
+    margin-top: -8px;
+}
+
+/* home button*/
+@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+.snip1535 {
+  background-color: #EB0000;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  float : right;
+  margin-right : 10px;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 0.8em;
+  outline: none;
+  padding: 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 10px;
+}
+.snip1535:before,
+.snip1535:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+  border-radius: 10px;
+}
+.snip1535:before {
+  border-color: #EB0000;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535:after {
+  border-bottom-width: 2px;
+  border-color: #EB0000;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+  background-color: #EB0000;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+  height: 100%;
+  width: 100%;
 }
