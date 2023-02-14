@@ -41,7 +41,19 @@
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${list.pStartDate}" /></td>
 							
-					<td align="center">수정버튼(등록승인상태면 불가)</td>
+					<td align="center">
+					
+						<c:choose>
+							
+							<c:when test="${list.pRegistrationApproval eq '0' }">
+								수정불가
+							</c:when>
+							<c:otherwise>
+								<a href="/modify/modifyPlay?pNumber=${list.pNumber }">수정하기</a>
+							</c:otherwise>
+						</c:choose>
+					
+					</td>
 					<td align="center">${list.pModifyApproval}</td>
 				</tr>
 				<c:if test="${status.count%4 == 0 }">

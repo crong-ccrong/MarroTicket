@@ -107,7 +107,7 @@
 					p_modifyApproval
 			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
 			WHERE p.t_number = #{tNumber}
-			ORDER BY p.t_number DESC
+			ORDER BY p_number DESC
 		]]>
 	</select>
 	
