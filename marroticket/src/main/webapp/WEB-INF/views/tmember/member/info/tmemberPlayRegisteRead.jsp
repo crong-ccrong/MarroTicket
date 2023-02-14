@@ -150,28 +150,6 @@
 	</button>
 	
 </div>
-<script>
-	$(document).ready(function() {
-	
-		var formObj = $("#playVO");
-
-		console.log(formObj);
-		
-		// 수정하기
-		$("#btnEdit").on("click", function() {
-			var pNumber = $("#pNumber");
-			var pNumberVal = pNumber.val();
-
-			self.location = "modifyPlay?pNumber=" + pNumberVal;
-		});
-
-		// 목록으로 돌아가기
-		$("#btnList").on("click", function() {
-			self.location = "/info/playRegisteInfo";
-		});
-		
-	}
-</script>
 
 <!-- 
 <script>
