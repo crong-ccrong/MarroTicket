@@ -5,6 +5,6 @@ import com.marroticket.umember.play.domain.PlayVO;
 
 public interface RegisteMapper {
 
-	public void registe(PlayVO playVO) throws Exception;
+	public void registe(PlayVO playVO);
 
 }

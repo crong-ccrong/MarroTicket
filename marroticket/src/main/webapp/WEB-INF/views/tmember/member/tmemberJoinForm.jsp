@@ -9,12 +9,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
-<form:form method="post" action="/theater/signUp" modelAttribute="tmember"
-	enctype="multipart/form-data">
+<form:form method="post" action="/theater/signUp"
+	modelAttribute="tmember" enctype="multipart/form-data">
 	<table border="1">
 		<form:hidden path="tAgree" value="1" />
 		<form:hidden path="tAuth" value="승인" />
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 		<tr>
 			<th>대표자 이름</th>
 			<td><form:input path="tOwnerName" placeholder="(필수)6자까지 입력 가능" /><font
@@ -39,7 +40,7 @@
 			<th>아이디</th>
 			<td><form:input path="tId" placeholder="(필수)영문/숫자 포함 8~20자" /><font
 				color="red"> <form:errors path="tId" /></font>
-			<button type="button" id="idCheck" onclick="tIdChk()">중복확인</button></td>
+				<button type="button" id="idCheck" onclick="tIdChk()">중복확인</button></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
@@ -106,11 +107,14 @@
 
 		<tr>
 			<th>사업자 등록증</th>
-			<td><input type="file" name="file" /></td>
+			<td><input type="file" name=tBusinessRegistrationImage
+				id="tBusinessRegistrationImage"
+				accept="image/jpeg, image/png, image/jpg" /></td>
+
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입" id="join_submit" />
-				<input type="button" value="이전" id="back" /></td>
+			<td colspan="2" align="center"><input type="submit" value="회원가입"
+				id="join_submit" /> <input type="button" value="이전" id="back" /></td>
 		</tr>
 	</table>
 </form:form>
@@ -147,11 +151,11 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 -->
 <script>
 	function tIdChk() {
-			var token = $("meta[name='_csrf']").attr("content");
-			var header = $("meta[name='_csrf_header']").attr("content");
-			$(document).ajaxSend(function(e, xhr, options) {
-			    xhr.setRequestHeader(header, token);
-			});
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
 		$.ajax({
 			url : "/theater/tIdCheck",
 			type : "post",
@@ -166,40 +170,38 @@ $(document).ready(function() {
 				}
 			}
 		});
-	
+
 	}
 </script>
 
 <!-- 비밀번호 확인 -->
 <script type="text/javascript">
-
-$(function() {
-	  $("#join_submit").click(function() {
-	    if ($("#tPasswordConfirm").val() === "") {
-	      alert("비밀번호 재확인을 해야합니다.");
-	     return false;
-	      $("#tPasswordConfirm").focus();
-	    } 
-	  });
+	$(function() {
+		$("#join_submit").click(function() {
+			if ($("#tPasswordConfirm").val() === "") {
+				alert("비밀번호 재확인을 해야합니다.");
+				return false;
+				$("#tPasswordConfirm").focus();
+			}
+		});
 	});
-
 </script>
 
 <!-- 비밀번호 확인 -->
 <script type="text/javascript">
-$(function(){
-      $('#tPasswordConfirm').blur(function(){
-         if($('#tPassword').val() != $('#tPasswordConfirm').val()){
-             if($('#tPasswordConfirm').val()!=''){
-             alert("비밀번호가 일치하지 않습니다.");
-                 $('#tPasswordConfirm').val('');
-                $('#tPasswordConfirm').focus();
-             }
-          }
-      })        
-   });
+	$(function() {
+		$('#tPasswordConfirm').blur(function() {
+			if ($('#tPassword').val() != $('#tPasswordConfirm').val()) {
+				if ($('#tPasswordConfirm').val() != '') {
+					alert("비밀번호가 일치하지 않습니다.");
+					$('#tPasswordConfirm').val('');
+					$('#tPasswordConfirm').focus();
+				}
+			}
+		})
+	});
 </script>
- 
+
 
 
 
@@ -260,27 +262,27 @@ $(function(){
 <!-- 파일 업로드 유효성 검사 -->
 
 <script type="text/javascript">
-const input = document.querySelector("input[name='file']");
+	const input = document
+			.querySelector("input[name='tBusinessRegistrationImage']");
 
-input.addEventListener("change", function() {
-  if (this.files.length === 0) {
-    alert("파일을 선택해주세요!!");
-    return;
-  }
+	input.addEventListener("change", function() {
+		if (this.files.length === 0) {
+			alert("파일을 선택해주세요!!");
+			return;
+		}
 
-  const file = this.files[0];
-  if (file.size > 10485760) {
-    alert("파일 크기가 10MB를 초과합니다. 10MB보다 용량이 작은  파일을 선택하세요.");
-    return;
-  }
+		const file = this.files[0];
+		if (file.size > 10485760) {
+			alert("파일 크기가 10MB를 초과합니다. 10MB보다 용량이 작은  파일을 선택하세요.");
+			return;
+		}
 
-  // Check for allowed file types
-  const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
-  if (!allowedTypes.includes(file.type)) {
-    alert("파일 형식이 허용되지 않습니다. JPEG, PNG 또는 PDF 파일을 선택하세요.");
-    return;
-  }
+		// Check for allowed file types
+		const allowedTypes = [ "image/jpeg", "image/png", "application/pdf" ];
+		if (!allowedTypes.includes(file.type)) {
+			alert("파일 형식이 허용되지 않습니다. JPEG, PNG 또는 PDF 파일을 선택하세요.");
+			return;
+		}
 
-});
-
+	});
 </script>

@@ -115,9 +115,4 @@ public class HomeController {
 		return "serviceCenter.otherInquiries";
 	}
 
-	//주소창에 admin 입력시(=> 관리자 로그인시) 관리자 메인 페이지로 전환
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin";
-	}
 }

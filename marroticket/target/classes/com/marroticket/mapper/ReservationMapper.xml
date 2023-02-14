@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marroticket.mapper.ReservationMapper">
+	<resultMap
+		type="com.marroticket.umember.reservation.domain.ReservationVO"
+		id="reservationmap">
+		<id column="r_number" property="rnumber" />
+		<result column="r_date" property="rdate" />
+		<result column="r_payState" property="rpayState" />
+		<result column="r_fee" property="rfee" />
+		<result column="r_cancelstate" property="rcancelState" />
+		<result column="r_canceldate" property="rcancelDate" />
+		<result column="r_ticketfirst" property="rticketFirst" />
+		<result column="r_ticketsecond" property="rticketSecond" />
+		<result column="r_ticketthird" property="rticketThird" />
+		<result column="r_ticketforth" property="rticketFourth" />
+		<result column="r_totalpayment" property="rtotalpayment" />
+		<result column="r_seatnumber" property="rseatNumber" />
+		<result column="u_number" property="unumber" />
+		<result column="p_number" property="pnumber" />
+	</resultMap>
+	<!-- <resultMap
+		type="com.marroticket.umember.reservation.domain.SeatVO"
+		id="seatReserveList">
+		<result column="r_ticketfirst" property="rticketFirst" />
+		<result column="r_ticketsecond" property="rticketSecond" />
+		<result column="r_ticketthird" property="rticketThird" />
+		<result column="r_ticketforth" property="rticketFourth" />
+	</resultMap> -->
+	<!-- <select id="read" resultMap="seatReserveList" parameterType="String">
+		SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketforth
+		FROM reservation
+		WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketforth LIKE '%'||#{ticketNum}||'%'
+	</select> -->
+	
+</mapper>

@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.marroticket.mapper.TmemberMapper">
-		<!-- TmemberVO resultmap 정의 -->
-	<resultMap type="com.marroticket.tmember.member.domain.TmemberVO" id="tmemberMap">
+<mapper namespace="com.marroticket.mapper.TmemberMapper">
+	<!-- TmemberVO resultmap 정의 -->
+	<resultMap
+		type="com.marroticket.tmember.member.domain.TmemberVO" id="tmemberMap">
 		<id property="tNumber" column="t_number" />
 		<result property="tId" column="t_id" />
 		<result property="tPassword" column="t_password" />
 		<result property="tName" column="t_name" />
 		<result property="tAddress" column="t_address" />
 		<result property="tOwnerName" column="t_ownerName" />
-		<result property="tOwnerPhoneNumber" column="t_ownerPhoneNumber" />
+		<result property="tOwnerPhoneNumber"
+			column="t_ownerPhoneNumber" />
 		<result property="tOwnerEmail" column="t_ownerEmail" />
-		<result property="tBusinessRegistractionNumber" column="t_businessRegistractionNumber" />
-		<result property="tEstablishmentDate" column="t_establishmentDate" />
+		<result property="tBusinessRegistractionNumber"
+			column="t_businessRegistractionNumber" />
+		<result property="tEstablishmentDate"
+			column="t_establishmentDate" />
 		<result property="tBank" column="t_bank" />
 		<result property="tBankNumber" column="t_bankNumber" />
 		<result property="tBankOwner" column="t_bankOwner" />
-		<result property="tBusinessRegisterationImage" column="t_businessRegisterationImage" />
-		<result property="tFileUrl" column="t_fileUrl" />
-		<result property="tFileName" column="t_fileName" />
+		<result property="tBusinessRegistrationImageUrl"
+			column="t_businessRegistrationImageurl" />
 		<result property="tAuth" column="t_auth" />
 		<result property="tAgree" column="t_agree" />
 		<collection property="tmemberAuthList" resultMap="authMap" />
 	</resultMap>
 	<!-- TmemberAuth resultmap 정의 -->
-	<resultMap type="com.marroticket.tmember.member.domain.TmemberAuth" id="authMap">
+	<resultMap
+		type="com.marroticket.tmember.member.domain.TmemberAuth" id="authMap">
 		<result property="tNumber" column="t_number" />
 		<result property="tmemberAuth" column="tmember_auth" />
 	</resultMap>
-	
-	
-	<!--극단 아이디 찾기-->
+
+
+	<!--극단 아이디 찾기 -->
 	<select id="findId" resultType="String">
 		SELECT t_id
 		FROM tmember
-		WHERE t_name = #{tName} and t_owneremail = #{tOwnerEmail}
+		WHERE
+		t_name = #{tName} and t_owneremail = #{tOwnerEmail}
 	</select>
-	<!--극단회원 비밀번호 업데이트-->
-	<update id="updatePassword" parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+	<!--극단회원 비밀번호 업데이트 -->
+	<update id="updatePassword"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
 		UPDATE tmember SET t_password = #{tPassword}
-		WHERE t_id = #{tId} and t_owneremail = #{tOwnerEmail}
+		WHERE t_id =
+		#{tId} and t_owneremail = #{tOwnerEmail}
 	</update>
-		
+
 	<!-- 아이디 읽어오기(로그인) -->
 	<select id="readByUserId" resultMap="tmemberMap">
 		SELECT mem.t_number,
@@ -59,25 +65,24 @@
 		t_bank,
 		t_banknumber,
 		t_bankowner,
-		t_businessregistrationimage,
-		t_fileurl,
-		t_filename,
+		t_businessregistrationimageUrl,
 		t_auth,
 		t_agree,
 		tmember_auth
-		FROM tmember mem LEFT OUTER JOIN tmember_auth auth ON
+		FROM tmember
+		mem LEFT OUTER JOIN tmember_auth auth ON
 		mem.t_number = auth.t_number
 		WHERE mem.t_id = #{tId}
 	</select>
-	
-	<!-- 회원가입 -->	
+
+	<!-- 회원가입 -->
 	<select id="tIdCheck" resultType="int">
 		SELECT count(*)
 		FROM tmember
 		WHERE t_id = #{tId}
 	</select>
 
-	 <insert id="create"
+	<insert id="create"
 		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
 		INSERT INTO TMEMBER (
 		t_number,
@@ -94,9 +99,7 @@
 		t_bank,
 		t_banknumber,
 		t_bankowner,
-		t_businessregistrationimage,
-		t_fileurl,
-		t_filename,
+		t_businessregistrationimageurl,
 		t_auth,
 		t_agree
 		)
@@ -115,9 +118,7 @@
 		#{tBank},
 		#{tBankNumber},
 		#{tBankOwner},
-		#{tBusinessRegisterationImage},
-		#{tFileUrl},
-		#{tFileName},
+		#{tBusinessRegistrationImageUrl},
 		#{tAuth},
 		#{tAgree}
 		)
@@ -127,13 +128,15 @@
 	<insert id="createAuth">
 		INSERT INTO tmember_auth
 		(
-			t_number,
-			tmember_auth
+		t_number,
+		tmember_auth
 		)
 		VALUES
 		(
-			tmember_seq.CURRVAL,
-			#{tmemberAuth}
+		tmember_seq.CURRVAL,
+		#{tmemberAuth}
 		)
-	</insert>	
+	</insert>
+	
+	
 </mapper>

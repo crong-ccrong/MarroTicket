@@ -1,6 +1,10 @@
 package com.marroticket.mapper;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
+
+import java.util.List;
+
+import com.marroticket.admin.payment.domain.PaymentVO;
 import com.marroticket.tmember.member.domain.TmemberAuth;
 
 public interface TmemberMapper {
@@ -22,5 +26,7 @@ public interface TmemberMapper {
 
 	// 회원 auth create
 	public void createAuth(TmemberAuth auth);
+
+	public List<PaymentVO> theaterPayment() throws Exception;
 
 }
