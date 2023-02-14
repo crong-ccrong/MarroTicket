@@ -18,6 +18,6 @@ public interface TmemberService {
 	//극단 아이디 중복 체크
 	public int tIdCheck(TmemberVO tmember) throws Exception;
 
-	public List<PaymentVO> theaterPayment() throws Exception;
+	public List<PaymentVO> theaterPayment(String tId) throws Exception;
 
 }

@@ -27,6 +27,6 @@ public interface TmemberMapper {
 	// 회원 auth create
 	public void createAuth(TmemberAuth auth);
 
-	public List<PaymentVO> theaterPayment() throws Exception;
+	public List<PaymentVO> theaterPayment(String tid) throws Exception;
 
 }

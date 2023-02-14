@@ -396,7 +396,7 @@
 	// 상연 시간 선택
 	function changeOne() {
 		var hour = Number($("#pfirstStartTimeOne").val());
-		var minit = Number($("#pfirstStartTimeTwo").val());
+		var minute = Number($("#pfirstStartTimeTwo").val());
 		var interval = Number($("#prunningTime").val());
 		if (interval > 999) {
 			alert("연극 소요시간은 999분을 넘을 수 없습니다.");
@@ -409,17 +409,17 @@
 	 	$("#psecondStartTimeOne option:eq(0)").prop("selected", true);
 	 	$("#psecondStartTimeTwo option:eq(0)").prop("selected", true);
 
-		if (minit == "00") {
+		if (minute == "00") {
 			var time = hour * 60;
 		} else {
-			var time = hour * 60 + minit;
+			var time = hour * 60 + minute;
 
 		}
 		var time = time + interval;
 		var secondTime = Math.floor(time / 60);
-		var secondMinit = Math.round((time/60 - Math.floor(time / 60))*60);
+		var secondminute = Math.round((time/60 - Math.floor(time / 60))*60);
 		
-		if ((secondTime >= 22 && secondMinit > 50) || secondTime > 22)  {
+		if ((secondTime >= 22 && secondminute > 50) || secondTime > 22)  {
 			$("#psecondStartTimeOne option:eq(0)").prop("selected", true);	
 			$("#psecondStartTimeTwo option:eq(0)").prop("selected", true);	
 		} else {
@@ -440,14 +440,14 @@
 			switch (secondTime) {
 			case 11:
 				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
 				}
 				break;
 			case 12:
 				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
 				}
 				break;
@@ -455,7 +455,7 @@
 				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
 				}
 				break;
@@ -464,7 +464,7 @@
 				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
 				}
 				break;
@@ -474,7 +474,7 @@
 				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
 				}
 				break;
@@ -485,7 +485,7 @@
 				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
 				}
 				break;
@@ -497,7 +497,7 @@
 				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
 				}
 				break;
@@ -509,7 +509,7 @@
 				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
 				}
 				break;
@@ -523,7 +523,7 @@
 				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
 				}
 				break;
@@ -538,7 +538,7 @@
 				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
 				}
 				break;
@@ -554,7 +554,7 @@
 				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="21"]').prop("disabled", true);
 				}
 				break;
@@ -571,7 +571,7 @@
 				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="21"]').prop("disabled", true);
-				if(secondMinit > 50){
+				if(secondminute > 50){
 					$('#psecondStartTimeOne [value="22"]').prop("disabled", true);
 				}
 				break;
@@ -583,17 +583,17 @@
 
 	function changeTwo() {
 		var hour = Number($("#pfirstStartTimeOne").val());
-		var minit = Number($("#pfirstStartTimeTwo").val());
+		var minute = Number($("#pfirstStartTimeTwo").val());
 		var interval = Number($("#prunningTime").val());
 		
-		if (minit == "00") {
+		if (minute == "00") {
 			var time = hour * 60;
 		} else {
-			var time = hour * 60 + minit;
+			var time = hour * 60 + minute;
 		}
 		var time = time + interval;
 		var secondTime = Math.floor(time / 60);
-		var secondMinit = Math.round((time/60 - Math.floor(time / 60))*60);
+		var secondminute = Math.round((time/60 - Math.floor(time / 60))*60);
 		
 		
 		var value = $("#psecondStartTimeOne").val();
@@ -610,79 +610,79 @@
 			if($("#psecondStartTimeOne").val() == "10"){
 				
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 				
 			} else if($("#psecondStartTimeOne").val() == "11"){
 				
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 				
 			} else if($("#psecondStartTimeOne").val() == "12"){
 
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 				
 			} else if($("#psecondStartTimeOne").val() == "13"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			} else if($("#psecondStartTimeOne").val() == "14"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			} else if($("#psecondStartTimeOne").val() == "15"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			} else if($("#psecondStartTimeOne").val() == "16"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "17"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "18"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "19"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "20"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "21"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}else if($("#psecondStartTimeOne").val() == "22"){
 			
 				if($("#psecondStartTimeOne").val() == secondTime){
-					minitComparison(secondMinit);
+					minuteComparison(secondminute);
 					}
 			
 			}
@@ -692,7 +692,7 @@
 		}
 
 	};
-	function minitComparison(m) {
+	function minuteComparison(m) {
 		
 		if(m > 50){
 			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);

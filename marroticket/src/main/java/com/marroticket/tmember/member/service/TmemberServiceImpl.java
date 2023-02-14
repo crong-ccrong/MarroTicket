@@ -49,7 +49,7 @@ public class TmemberServiceImpl implements TmemberService {
 	   }
 
 	@Override
-	public List<PaymentVO> theaterPayment() throws Exception {
-		return tmembermapper.theaterPayment();
+	public List<PaymentVO> theaterPayment(String tId) throws Exception {
+		return tmembermapper.theaterPayment(tId) ;
 	}
 }

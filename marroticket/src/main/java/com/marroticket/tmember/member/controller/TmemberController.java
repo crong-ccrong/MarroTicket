@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,7 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.registe.service.RegisteService;
+import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -119,11 +122,14 @@ public class TmemberController {
 	@GetMapping("/tmemberPayment")
 	public String theaterPayment(Model model) throws Exception {
 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String tId = authentication.getName();
+		
 		List<PaymentVO> list;
-		list = tmemberService.theaterPayment();
-		model.addAttribute("playExpectedList", list);
+		list = tmemberService.theaterPayment(tId);
+		model.addAttribute("theaterPayment", list);
 
-		return "info.tMemberPayment";
+		return "info.tmemberPayment";
 	}
 
 	// 극단 정보 관리

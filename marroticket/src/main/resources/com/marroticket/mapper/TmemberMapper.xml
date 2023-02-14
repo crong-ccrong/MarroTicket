@@ -33,6 +33,22 @@
 		<result property="tmemberAuth" column="tmember_auth" />
 	</resultMap>
 
+	<resultMap id="payment"
+		type="com.marroticket.admin.payment.domain.PaymentVO">
+		<result property="payNumber" column="pay_Number" />
+		<result property="pNumber" column="p_Number" />
+		<result property="tNumber" column="t_Number" />
+		<result property="payTheaterPayment"
+			column="pay_TheaterPayment" />
+		<result property="paySitePayment" column="pay_SitePayment" />
+		<result property="payPayment" column="pay_Payment" />
+		<result property="payPayDate" column="pay_PayDate" />
+		<result property="payCalculateDate" column="pay_Calculate" />
+		<result property="tName" column="t_Name" />
+		<result property="pName" column="p_Name" />
+		<result property="pCloseDate" column="p_CloseDate" />
+
+	</resultMap>
 
 	<!--극단 아이디 찾기 -->
 	<select id="findId" resultType="String">
@@ -137,6 +153,17 @@
 		#{tmemberAuth}
 		)
 	</insert>
-	
-	
+
+	<select id="theaterPayment" resultMap="payment">
+		<![CDATA[
+		select pay.*, 
+       play.*,t.*
+from payment pay, play play, tmember t
+where pay.p_number = play.p_number
+  and play.t_number = t.t_number and t_id = #{tId}
+  order by pay_number desc
+        
+		]]>
+	</select>
+
 </mapper>

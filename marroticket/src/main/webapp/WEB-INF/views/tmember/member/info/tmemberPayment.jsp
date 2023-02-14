@@ -24,24 +24,24 @@
 
 
 	<c:choose>
-		<c:when test="${empty 정산리스트}">
+		<c:when test="${empty theaterPayment}">
 			<tr>
 				<td colspan="5"><spring:message code="common.listEmpty" /></td>
 			</tr>
 		</c:when>
 
 		<c:otherwise>
-			<c:forEach items="${정산리스트}" var="정산VO">
+			<c:forEach items="${theaterPayment}" var="theaterPayment">
 				<tr>
-					<td align="center">${정산VO.정산번호}</td>
+					<td align="center">${theaterPayment.payNumber}</td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${정산VO.정산일자}" /></td>
+							value="${theaterPayment.payCalculateDate}" /></td>
 
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${정산VO.지급일}" /></td> 지급일은 정산일의 다음달 20일로 일괄적용됩니다. 처리해주세요~
+							value="${theaterPayment.payPayDate}" /></td>
 
-					<td align="right">${정산VO.금액}</td>
-					<td align="center">${정산VO.연극번호}</td>
+					<td align="right">${theaterPayment.payTheaterPayment}</td>
+					<td align="center">${theaterPayment.PNumber}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
