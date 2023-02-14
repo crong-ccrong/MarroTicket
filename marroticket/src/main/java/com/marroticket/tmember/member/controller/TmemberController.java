@@ -35,6 +35,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.marroticket.admin.notice.domain.NoticeVO;
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
@@ -144,19 +147,40 @@ public class TmemberController {
 		model.addAttribute("playlist", playlist);
 		return "info.tmemberPlayRegisteInfo";
 	}
-	/*
-	@GetMapping("/playRegisteInfo({tnumber}")
-	public String playRegisteInfo(@PathVariable Integer tnumber, Model model) throws Exception {
-		System.out.println("tmemberController 호출. integer tnumber");
-		System.out.println("tnumber"+tnumber);
-		
-		List<PlayVO> playlist = new ArrayList<>();
-		playlist = modifyService.playlist();
-		
-		model.addAttribute("playlist", playlist);
-		return "redirect:/info/tmemberPlayRegisteInfo";
-	}*/
+	
+	// 등록한 연극 상세 페이지
+	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
+	public String read(int pNumber, Model model) throws Exception {
+		String url = "info.tmemberPlayRegisteRead";
+		System.out.println("등록한 연극 상세");
+				
+		model.addAttribute(modifyService.read(pNumber));
+		return url;
 
+	}
+	
+	/*
+	// 등록한 연극 수정
+	@RequestMapping(value = "/modifyPlay", method = RequestMethod.GET)
+	public void modifyForm(int pNumber, Model model) throws Exception {
+		
+		// 조회한 연극 상세 정보를 뷰에 전달한다.
+		model.addAttribute(modifyService.playlist(playVO));
+		System.out.println("등록한 연극 수정");
+	}
+	
+	// 등록한 연극 수정 처리
+		@RequestMapping(value = "/modifyPlay", method = RequestMethod.POST)
+		public String modify(PlayVO playVO, RedirectAttributes rttr) throws Exception {
+			modifyService.modify(playVO);
+
+			// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
+			rttr.addFlashAttribute("msg", "SUCCESS");
+			System.out.println("공지사항 수정처리");
+
+			return "redirect:/notice/noticeList";
+		}
+*/
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
 	public String theaterPayment() throws Exception {

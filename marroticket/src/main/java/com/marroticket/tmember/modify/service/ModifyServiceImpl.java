@@ -13,11 +13,6 @@ public class ModifyServiceImpl implements ModifyService {
 
 	@Autowired
 	private PlayMapper mapper;
-
-	/*
-	 * @Override public List<PlayVO> playlist() throws Exception {
-	 * System.out.println("ModifyServiceImpl 호출"); return mapper.playlist(); }
-	 */
 	
 	// 등록한 연극 목록
 	@Override
@@ -25,5 +20,20 @@ public class ModifyServiceImpl implements ModifyService {
 		System.out.println("ModifyServiceImpl 호출");
 		return mapper.playlist(tNumber);
 	}
+	
+
+	// 등록한 연극 상세보기
+	@Override
+	public PlayVO read(int pNumber) throws Exception {
+		return mapper.read(pNumber);
+	}
+
+	// 등록한 연극 수정
+	@Override
+	public void modify(PlayVO playVO) throws Exception {
+		System.out.println("ModifyServiceImpl 호출");
+		mapper.update(playVO);
+	}
+
 
 }

@@ -42,9 +42,8 @@
 							value="${list.pStartDate}" /></td>
 							
 					<td align="center">
-					
+					<!-- 
 						<c:choose>
-							
 							<c:when test="${list.pRegistrationApproval eq '0' }">
 								수정불가
 							</c:when>
@@ -52,7 +51,12 @@
 								<a href="/modify/modifyPlay?pNumber=${list.pNumber }">수정하기</a>
 							</c:otherwise>
 						</c:choose>
-					
+					 -->
+					 <a href="/theater/playRegisteRead?pNumber=${list.pNumber }">상세보기</a>
+					 
+					 <!-- 연극 승인 처리 전까지 이 상태 유지하기 -->
+					 
+					 
 					</td>
 					<td align="center">${list.pModifyApproval}</td>
 				</tr>

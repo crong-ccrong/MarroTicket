@@ -111,5 +111,39 @@
 		]]>
 	</select>
 	
+	<!-- 극단 등록한 연극 상세보기 -->
+	<select id="read" resultMap="play">
+		<![CDATA[
+			SELECT *
+			FROM play
+			WHERE p_number = #{pNumber}
+		]]>
+	</select>
+	
+	<!-- 극단 등록한 연극 수정 -->
+	<update id="update">
+		UPDATE play
+		SET p_name=#{pName},
+			P_STARTDATE=#{pStartDate},
+			P_CLOSEDATE=#{pCloseDate}
+			P_RUNNINGTIME=#{pRunningTime}
+			P_THEATERNAME=#{pTheaterName}
+			P_THEATERADDRESS=#{pTheaterAddress}
+			P_AGENCY=#{pAgency}
+			P_RATINGS=#{pRatings}
+			P_CASTING=#{pCasting}
+			P_TICKETOPENDATE=#{pTicketOpenDate}
+			P_PLOT=#{pPlot}
+			P_SEATNUMBER=#{pSeatNumber}
+			P_TICKETPRICE=#{pTicketPrice}
+			P_GENRE=#{pGenre}
+			P_POSTERURL=#{pPosterUrl}
+			P_AGREE=#{pAgree}
+			p_MODIFYAPPROVAL=#{pModifyApproval}
+			p_REGISTRATIONAPPROVAL=#{pRegistrationApproval}
+			P_FirstStartTime=#{pFirstStartTime}
+			P_FirstStartTime=#{pSecondStartTime}
+		WHERE p_number=#{pNumber}
+	</update>
 
 </mapper>
