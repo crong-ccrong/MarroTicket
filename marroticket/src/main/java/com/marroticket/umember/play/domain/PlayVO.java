@@ -67,7 +67,7 @@ public class PlayVO {
 	private int pagree;// 약관 동의 여부
 
 	private String pregistrationApproval;// 공연 등록 승인 여부
-	private String pamendmentApproved;// 공연 수정 승인 여부
+	private String pmodifyApproval;// 공연 수정 승인 여부
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

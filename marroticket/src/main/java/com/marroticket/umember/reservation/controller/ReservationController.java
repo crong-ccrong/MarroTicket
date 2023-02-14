@@ -22,7 +22,7 @@ import com.marroticket.umember.reservation.service.ReservationService;
 public class ReservationController {
 
 	@Autowired
-	private ReservationService service;
+	private ReservationService reserveService;
 
 	// 공연 회차 정보
 	@PostMapping("/schedule")
@@ -94,7 +94,7 @@ public class ReservationController {
 
 	// 예매 리스트 생성
 	private List<SeatVO> getReserveList(String ticketNum) throws Exception {
-		List<SeatVO> reserveList = service.list(ticketNum);
+		List<SeatVO> reserveList = reserveService.list(ticketNum);
 		return reserveList;
 	}
 

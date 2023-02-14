@@ -1,5 +1,6 @@
 package com.marroticket.umember.reservation.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,23 @@ public List<ReservationVO> getReservationListByUNumber(int uNumber) throws Excep
 	return mapper.getReservationListByUNumber(uNumber);
 }
 
-@Override
-public void cancellationOfReservation(int rnumber) throws Exception {
-	mapper.deleteTicketInfo(rnumber);
-	mapper.updateCancelState(rnumber);
-}
 
 @Override
 public List<SeatVO> list(String ticketNum) throws Exception {
 	return mapper.read(ticketNum);
 }
+
+@Override
+public void cancelReservation(int rnumber) throws Exception {
+	 mapper.updateCancelState(rnumber);
+}
+
+
+@Override
+public List<ReservationVO> viewingHistory(int uNumber) throws Exception {
+	return mapper.viewingHistory(uNumber);
+}
+
+
 
 }

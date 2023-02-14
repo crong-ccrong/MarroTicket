@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-		<item key="selection" value="registeTemporary"/>
-=======
-		<item key="selection" value="P"/>
->>>>>>> main
+		<item key="selection" value="reservation.pdate"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="registeTemporary"/>
-			<item value="tId"/>
-			<item value="tBusinessRegistractionNumber"/>
-			<item value="tBusinessRegi"/>
-			<item value="role"/>
+			<item value="reservationDate"/>
+			<item value="Date"/>
+			<item value="reservation.rcancelDeadline"/>
+			<item value="datepicker"/>
+			<item value="read"/>
+			<item value="service"/>
+			<item value="rpdate"/>
+			<item value="pdate"/>
+			<item value="update"/>
+			<item value="updqte"/>
+			<item value="viewingDay"/>
+			<item value="date"/>
+			<item value="dqte"/>
+			<item value="  SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketfourth"/>
+			<item value="ticketFo"/>
 		</list>
 		<list key="replacehistory">
+			<item value="reservation.pdate"/>
 			<item value=""/>
+			<item value="reserveService"/>
+			<item value="pdate"/>
+			<item value="rpdate"/>
+			<item value="fourth"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="897"/>
-		<item key="DIALOG_Y_ORIGIN" value="238"/>
+		<item key="DIALOG_X_ORIGIN" value="649"/>
+		<item key="DIALOG_Y_ORIGIN" value="653"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="402"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
-=======
-			<item value="p"/>
-			<item value="지도"/>
-			<item value="p_theatermapurl"/>
-			<item value="ptheaterMapUrl"/>
-			<item value="pname"/>
-			<item value="tname"/>
-		</list>
-		<list key="replacehistory">
-		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1224"/>
-		<item key="DIALOG_Y_ORIGIN" value="280"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
->>>>>>> main
 	</section>
 </section>

@@ -112,8 +112,8 @@
 	<div>
 		<br>
 		<p>
-			<input type="button" value="다음 " onclick="chk()" />&nbsp;&nbsp;&nbsp;
-			<input type="button" value="메인 화면으로" onclick="nochk()" />
+			<input type="button" value="메인 화면으로" onclick="nochk()" />&nbsp;&nbsp;&nbsp;
+			<input type="button" value="다음 " onclick="chk()" />
 		</p>
 
 	</div>

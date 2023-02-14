@@ -66,13 +66,15 @@
 
 		<tr>
 			<th>관심장르</th>
-			<td><form:radiobutton path="uGenre" value="1" label="로맨스"
-					id="genre" /> <form:radiobutton path="uGenre" value="2"
-					label="드라마" /> <form:radiobutton path="uGenre" value="3"
-					label="공포" /> <form:radiobutton path="uGenre" value="4"
-					label="추리/스릴러" /> <form:radiobutton path="uGenre" value="5"
-					label="판타지" /> <form:radiobutton path="uGenre" value="6"
-					label="시대/역사" /></td>
+			<td><form:radiobutton path="uGenre" value="1" label="로맨스" id="genre" /> 
+			<form:radiobutton path="uGenre" value="2" label="코미디" /> 
+			<form:radiobutton path="uGenre" value="3" label="드라마" /> 
+			<form:radiobutton path="uGenre" value="4" label="공포" /> 
+			<form:radiobutton path="uGenre" value="5" label="추리/스릴러" /> 
+			<form:radiobutton path="uGenre" value="6" label="판타지" />
+			<form:radiobutton path="uGenre" value="7" label="시대/역사" />
+			
+			</td>
 		</tr>
 		<form:hidden path="uAgree" value="1" />
 		<tr>

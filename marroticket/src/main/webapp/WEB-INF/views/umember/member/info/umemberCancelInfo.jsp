@@ -15,10 +15,12 @@
 			<th>결제취소금액</th>
 		</tr>
 		<c:forEach var="reservation" items="${reservationList}">
+		<input type="hidden" name="rnumber" value= "${reservation.rnumber}" />
 		  <c:if test="${reservation.rcancelState == 1}">
 			<tr>
 				<td><fmt:formatDate pattern="YYYY-MM-dd" value="${reservation.rcancelDate}" /></td>
-				<td>이용일</td>
+				<td><fmt:parseDate var="reservationDate" value="${reservation.pdate}" pattern="yyyy-MM-dd HH:mm:ss" />
+				<fmt:formatDate value="${reservationDate}" pattern="yyyy-MM-dd" /></td>
 				<td>${reservation.pname}</td>
 				<td>${reservation.rticketcount}</td>
 				<td>${reservation.rtotalpayment}</td>

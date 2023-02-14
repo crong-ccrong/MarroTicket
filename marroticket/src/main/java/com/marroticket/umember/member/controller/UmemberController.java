@@ -4,7 +4,6 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +24,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -270,8 +270,18 @@ public class UmemberController {
 	    return "mypage.umemberReservationList";
 	}
 	
+	/**예 매 취 소 **/
+	@GetMapping("/cancelReservation/{rnumber}")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String cancelReservation(@PathVariable Integer rnumber)throws Exception {
+		System.out.println("취소 호출");
+		  System.out.println("rnumber : "+rnumber);
+	reservationService.cancelReservation(rnumber);
+	return "redirect:/umember/umemberCancelInfo";
+	}
+	
 	/* 일반 회원 예매 취소 정보 */
-	@RequestMapping(value="/umemberCancelInfo" , method = RequestMethod.GET)
+	@GetMapping("/umemberCancelInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String umemberCancelInfo(Model model)throws Exception {
 		System.out.println("예매 취소 정보 호출");
@@ -282,34 +292,28 @@ public class UmemberController {
 	    
 	    int uNumber = vo.getuNumber();
 	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+	    System.out.println(reservationList);
 	    model.addAttribute("reservationList", reservationList);
 	    
 		return "mypage.umemberCancelInfo";
 	}
 	
-	@RequestMapping(value="/cancelReservation" , method = RequestMethod.GET)
+	//일반 회원 나의 관람 연극 내역
+	@GetMapping("/umemberViewHistory")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String cancelReservation(@RequestParam int rnumber, Model model)throws Exception {
-		System.out.println("예매 취소 호출");
-	
+	public String umemberViewHistory(Model model) throws Exception {
+		System.out.println("관람한 연극 내역 호출");
 		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		    String uId = authentication.getName();
 		    UmemberVO vo = umemberService.getUmemberByUId(uId);
 		    
 		    int uNumber = vo.getuNumber();
-		    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+		    ReservationVO reservation = new ReservationVO();
+		    reservation.setRcancelDeadline(new Date());
+		    List<ReservationVO> reservationList = reservationService.viewingHistory(uNumber);
+		    System.out.println(reservationList);
 		    model.addAttribute("reservationList", reservationList);
-	    
-		    reservationService.cancellationOfReservation(rnumber);
 		    
-		return "mypage.umemberCancelInfo";
-	}
-	
-	
-	//일반 회원 나의 관람 역극 내역
-	@GetMapping("/umemberViewHistory")
-	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberViewHistory() {
 		return "mypage.umemberViewHistory";
 	}
 	
