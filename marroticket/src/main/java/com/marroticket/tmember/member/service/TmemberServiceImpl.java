@@ -18,6 +18,7 @@ import com.marroticket.mapper.TmemberMapper;
 import com.marroticket.tmember.member.domain.TmemberAuth;
 import com.marroticket.tmember.member.domain.TmemberVO;
 import com.marroticket.umember.member.domain.UmemberVO;
+import com.marroticket.umember.play.domain.PlayVO;
 
 @Service
 public class TmemberServiceImpl implements TmemberService {

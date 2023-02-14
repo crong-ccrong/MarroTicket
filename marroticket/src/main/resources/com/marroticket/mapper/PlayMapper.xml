@@ -6,29 +6,29 @@
 	<resultMap id="play"
 		type="com.marroticket.umember.play.domain.PlayVO">
 		<id property="PNumber" column="p_number" />
-		<result property="PName" column="p_name" />
-		<result property="PStartDate" column="P_STARTDATE" />
-		<result property="PCloseDate" column="P_CLOSEDATE" />
-		<result property="PRunningTime" column="P_RUNNINGTIME" />
-		<result property="PTheaterName" column="P_THEATERNAME" />
-		<result property="PTheaterAddress" column="P_THEATERADDRESS" />
-		<result property="PAgency" column="P_AGENCY" />
-		<result property="PRatings" column="P_RATINGS" />
-		<result property="PCasting" column="P_CASTING" />
-		<result property="PTicketOpenDate" column="P_TICKETOPENDATE" />
-		<result property="PPlot" column="P_PLOT" />
-		<result property="PSeatNumber" column="P_SEATNUMBER" />
-		<result property="PTicketPrice" column="P_TICKETPRICE" />
-		<result property="PGenre" column="P_GENRE" />
-		<result property="PPosterUrl" column="P_POSTERURL" />
-		<result property="PAgree" column="P_AGREE" />
-		<result property="PModifyApproval"
-			column="P_MODIFYAPPROVAL" />
-		<result property="PRegistrationApproval"
-			column="P_REGISTRATIONAPPROVAL" />
-		<result property="TNumber" column="T_NUMBER" />
-		<result property="PFirstStartTime" column="P_FirstStartTime" />
-		<result property="PSecondStartTime" column="P_FirstStartTime" />
+		<result property="pName" column="p_name" />
+		<result property="pStartDate" column="P_STARTDATE" />
+		<result property="pCloseDate" column="P_CLOSEDATE" />
+		<result property="pRunningTime" column="P_RUNNINGTIME" />
+		<result property="pTheaterName" column="P_THEATERNAME" />
+		<result property="pTheaterAddress" column="P_THEATERADDRESS" />
+		<result property="pAgency" column="P_AGENCY" />
+		<result property="pRatings" column="P_RATINGS" />
+		<result property="pCasting" column="P_CASTING" />
+		<result property="pTicketOpenDate" column="P_TICKETOPENDATE" />
+		<result property="pPlot" column="P_PLOT" />
+		<result property="pSeatNumber" column="P_SEATNUMBER" />
+		<result property="pTicketPrice" column="P_TICKETPRICE" />
+		<result property="pGenre" column="P_GENRE" />
+		<result property="pPosterUrl" column="P_POSTERURL" />
+		<result property="pAgree" column="P_AGREE" />
+		<result property="pModifyApproval"
+			column="p_MODIFYAPPROVAL" />
+		<result property="pRegistrationApproval"
+			column="p_REGISTRATIONAPPROVAL" />
+		<result property="tNumber" column="T_NUMBER" />
+		<result property="pFirstStartTime" column="P_FirstStartTime" />
+		<result property="pSecondStartTime" column="P_FirstStartTime" />
 	</resultMap>
 
 
@@ -96,5 +96,20 @@
 		WHERE p_number = #{PNumber}
 	</select>
 
+	<!-- 극단 등록한 연극 목록 -->
+	<select id="playlist" resultMap="play">
+		<![CDATA[
+			SELECT 	p_number,
+					p_name,
+					p_registrationApproval,
+					p_ticketOpenDate,
+					p_startDate,
+					p_modifyApproval
+			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
+			WHERE p.t_number = #{tNumber}
+			ORDER BY p.t_number DESC
+		]]>
+	</select>
+	
 
 </mapper>

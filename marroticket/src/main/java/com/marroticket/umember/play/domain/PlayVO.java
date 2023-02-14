@@ -86,7 +86,117 @@ public class PlayVO {
 
 	private String pSecondStartTime;// 2회차 상연 시작 시각
 
-	private String tId;
+	//
+	public int getTNumber() {
+		return tNumber;
+	}
 	
+	public int gettNumber() {
+		return tNumber;
+	}
+
+	public void setTNumber(Integer tNumber) {
+		this.tNumber = tNumber;
+	}
+	
+	public void settNumber(int tNumber) {
+		this.tNumber = tNumber;
+	}
+
+	public int getPNumber() {
+		return pNumber;
+	}
+	
+	public int getpNumber() {
+		return pNumber;
+	}
+
+	public void setPNumber(int pNumber) {
+		this.pNumber = pNumber;
+	}
+	
+	public void setpNumber(int pNumber) {
+		this.pNumber = pNumber;
+	}
+
+	public String getPName() {
+		return pName;
+	}
+	
+	public String getpName() {
+		return pName;
+	}
+
+	public void setPName(String pName) {
+		this.pName = pName;
+	}
+	
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	public String getPRegistrationApproval() {
+		return pRegistrationApproval;
+	}
+	
+	public String getpRegistrationApproval() {
+		return pRegistrationApproval;
+	}
+
+	public void setPRegistrationApproval(String pRegistrationApproval) {
+		this.pRegistrationApproval = pRegistrationApproval;
+	}
+	
+	public void setpRegistrationApproval(String pRegistrationApproval) {
+		this.pRegistrationApproval = pRegistrationApproval;
+	}
+
+	public String getPModifyApproval() {
+		return pModifyApproval;
+	}
+	
+	public String getpModifyApproval() {
+		return pModifyApproval;
+	}
+
+	public void setPModifyApproval(String pModifyApproval) {
+		this.pModifyApproval = pModifyApproval;
+	}
+	
+	public void setpModifyApproval(String pModifyApproval) {
+		this.pModifyApproval = pModifyApproval;
+	}
+
+	public Date getPStartDate() {
+		return pStartDate;
+	}
+	
+	public Date getpStartDate() {
+		return pStartDate;
+	}
+
+	public void setPStartDate(Date pStartDate) {
+		this.pStartDate = pStartDate;
+	}
+	
+	public void setpStartDate(Date pStartDate) {
+		this.pStartDate = pStartDate;
+	}
+
+	public Date getPTicketOpenDate() {
+		return pTicketOpenDate;
+	}
+	
+	public Date getpTicketOpenDate() {
+		return pTicketOpenDate;
+	}
+
+	public void setPTicketOpenDate(Date pTicketOpenDate) {
+		this.pTicketOpenDate = pTicketOpenDate;
+	}
+	
+	public void setpTicketOpenDate(Date pTicketOpenDate) {
+		this.pTicketOpenDate = pTicketOpenDate;
+	}
 
 }

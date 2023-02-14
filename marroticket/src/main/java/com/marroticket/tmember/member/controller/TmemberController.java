@@ -6,7 +6,9 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.security.Principal;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -26,6 +28,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +38,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
+import com.marroticket.tmember.modify.service.ModifyService;
 import com.marroticket.tmember.registe.service.RegisteService;
-import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -58,8 +61,13 @@ public class TmemberController {
 
 	@Autowired
 	TmemberService tmemberService;
+	
+	@Autowired
+	ModifyService modifyService;
+	
 	@Autowired
 	EmailService emailService;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -73,7 +81,7 @@ public class TmemberController {
 		//return "/tmemberhome";
 	}
 
-	// 연극 등록 이동
+	// 연극 등록 이동	
 	@GetMapping("/registePlay")
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
@@ -113,14 +121,45 @@ public class TmemberController {
 
 	// 극단 마이페이지 시작
 	// 등록한 연극
+	
 	@GetMapping("/playRegisteInfo")
-	public String playRegisteInfo() {
+	public String playRegisteInfo(Principal principal, Model model, PlayVO pvo) throws Exception {
+		System.out.println("tmemberController 호출");
+		
+		// tmember tId로 play tId 정보 가져오기
+		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		pvo.settNumber(tvo.getTNumber());
+		
+		int tNumber = pvo.gettNumber();
+		System.out.println("극단 회원 번호" + tNumber);
+		
+		System.out.println("극단 회원 등록한 연극 정보" + pvo);
+		
+		// 등록한 연극 배열 목록 가져오기
+		List<PlayVO> playlist = new ArrayList<>();
+		playlist = modifyService.playlist(tNumber);
+		
+		System.out.println("극단 회원 등록한 연극 List" + playlist);
+		
+		model.addAttribute("playlist", playlist);
 		return "info.tmemberPlayRegisteInfo";
 	}
+	/*
+	@GetMapping("/playRegisteInfo({tnumber}")
+	public String playRegisteInfo(@PathVariable Integer tnumber, Model model) throws Exception {
+		System.out.println("tmemberController 호출. integer tnumber");
+		System.out.println("tnumber"+tnumber);
+		
+		List<PlayVO> playlist = new ArrayList<>();
+		playlist = modifyService.playlist();
+		
+		model.addAttribute("playlist", playlist);
+		return "redirect:/info/tmemberPlayRegisteInfo";
+	}*/
 
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
-	public String theaterPayment() {
+	public String theaterPayment() throws Exception {
 		return "info.tmemberPayment";
 	}
 

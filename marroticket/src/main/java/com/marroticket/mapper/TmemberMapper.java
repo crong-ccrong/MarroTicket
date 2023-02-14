@@ -2,6 +2,7 @@ package com.marroticket.mapper;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 import com.marroticket.umember.member.domain.UmemberVO;
+import com.marroticket.umember.play.domain.PlayVO;
 
 import java.util.List;
 
