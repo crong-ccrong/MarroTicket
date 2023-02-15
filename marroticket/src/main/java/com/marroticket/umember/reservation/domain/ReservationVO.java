@@ -1,10 +1,6 @@
 package com.marroticket.umember.reservation.domain;
 
 import java.util.Date;
-<<<<<<< HEAD
-=======
-import java.util.Map;
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 import java.util.List;
 
 import lombok.Getter;
@@ -23,7 +19,6 @@ public class ReservationVO {
 	private Date rcancelDate; // 예매취소일
 
 	// 예매일 + p_number + 공연회차 + 좌석
-<<<<<<< HEAD
 	private String rticketFirst; // 티켓1 번호
 	private String rticketSecond; // 티켓2 번호
 	private String rticketThird; // 티켓3 번호
@@ -53,15 +48,3 @@ public class ReservationVO {
 	private String psecondStartTime; // 2회차 시작 시간
 	private String pticketPrice; // 티켓 가격(낱개)
 }
-=======
-	private String rticketFirst; // 티켓1 번호 
-	private String rticketSecond; //티켓2 번호
-	private String rticketThird; // 티켓3 번호 
-	private String rticketFourth; //티켓4 번호
-
-	private int rtotalpayment; // 결제총액
-	private String rseatNumber; // 좌석정보(번호)
-	private int unumber; // 일반회원번호
-	private int pnumber; // 연극번호
-}
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2

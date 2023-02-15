@@ -115,32 +115,34 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/umember/play/{1}.jsp" />
 	</definition>
-<<<<<<< HEAD
 
-
-=======
-	
 	<!-- play : 상세페이지 탐플렛 -->
-	<definition name="play-template" template="/WEB-INF/tiles/layouts/umember/play/play_template.jsp">
+	<definition name="play-template"
+		template="/WEB-INF/tiles/layouts/umember/play/play_template.jsp">
 		<put-attribute name="title" value="연극 공연 상세페이지" />
-		<put-attribute name="header" value="/WEB-INF/tiles/components/main/header.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/tiles/components/main/menu.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/tiles/components/main/footer.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/tiles/components/main/header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/tiles/components/main/menu.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/tiles/components/main/footer.jsp" />
 	</definition>
 	<!-- 연극 공연 상세 페이지 -->
 	<definition name="playDetail" extends="play-template">
-		<put-attribute name="content_poster" value="/WEB-INF/views/umember/play/detail/poster.jsp" />
-		<put-attribute name="content_playInfo" value="/WEB-INF/views/umember/play/detail/playInfo.jsp" />
-		<put-attribute name="content_ticketingInfo" value="/WEB-INF/views/umember/play/detail/ticketingInfo.jsp" />
-		<put-attribute name="content_detail" value="/WEB-INF/views/umember/play/detail/playDetail.jsp" />
+		<put-attribute name="content_poster"
+			value="/WEB-INF/views/umember/play/detail/poster.jsp" />
+		<put-attribute name="content_playInfo"
+			value="/WEB-INF/views/umember/play/detail/playInfo.jsp" />
+		<put-attribute name="content_ticketingInfo"
+			value="/WEB-INF/views/umember/play/detail/ticketingInfo.jsp" />
+		<put-attribute name="content_detail"
+			value="/WEB-INF/views/umember/play/detail/playDetail.jsp" />
 	</definition>
-	
-	
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
+
+
 	<!-- 극단 -->
 	<!-- theater_template을 따르는 레이아웃들 -->
 	<!-- theater home -->
-<<<<<<< HEAD
 	<definition name="tmember-template"
 		template="/WEB-INF/tiles/layouts/tmember/tmember_template.jsp">
 		<put-attribute name="title" value="마로티켓 가맹극단" />
@@ -150,137 +152,131 @@
 			value="/WEB-INF/tiles/components/tmember/menu.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/tiles/components/tmember/footer.jsp" />
-=======
-	<definition name="tmember-template" template="/WEB-INF/tiles/layouts/tmember/tmember_template.jsp">
-		<put-attribute name="title" value="연극 공연 상세 페이지" />
-		<put-attribute name="header" value="/WEB-INF/tiles/components/tmember/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/tiles/components/tmember/menu.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/tiles/components/tmember/footer.jsp"/>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
-	</definition>
-	<!-- 극단 홈 -->
-	<definition name="tmemberhome" extends="tmember-template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/tmember/tmemberhome.jsp" />
-	</definition>
+		</definition>
+		
+		<!-- 극단 홈 -->
+		<definition name="tmemberhome" extends="tmember-template">
+			<put-attribute name="content"
+				value="/WEB-INF/views/tmember/tmemberhome.jsp" />
+		</definition>
 
-	<!-- 연극 등록 페이지 -->
-	<definition name="registe.*" extends="tmember-template">
-		<put-attribute name="title" value="연극 등록" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/tmember/registe/{1}.jsp" />
-	</definition>
+		<!-- 연극 등록 페이지 -->
+		<definition name="registe.*" extends="tmember-template">
+			<put-attribute name="title" value="연극 등록" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/tmember/registe/{1}.jsp" />
+		</definition>
 
-	<!-- 극단 마이 페이지 -->
-	<definition name="info.*" extends="tmember-template">
-		<put-attribute name="title" value="극단 마이페이지" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/tmember/member/info/{1}.jsp" />
-	</definition>
+		<!-- 극단 마이 페이지 -->
+		<definition name="info.*" extends="tmember-template">
+			<put-attribute name="title" value="극단 마이페이지" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/tmember/member/info/{1}.jsp" />
+		</definition>
 
-	<!-- 고객센터 페이지 -->
-	<definition name="notice.*" extends="tmember-template">
-		<put-attribute name="title" value="마로티켓 극단 notice" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/notice/{1}.jsp" />
-	</definition>
+		<!-- 고객센터 페이지 -->
+		<definition name="notice.*" extends="tmember-template">
+			<put-attribute name="title" value="마로티켓 극단 notice" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/notice/{1}.jsp" />
+		</definition>
 
-	<definition name="tfaq.*" extends="tmember-template">
-		<put-attribute name="title" value="마로티켓 극단 faq" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
-	</definition>
+		<definition name="tfaq.*" extends="tmember-template">
+			<put-attribute name="title" value="마로티켓 극단 faq" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
+		</definition>
 
-	<!-- 연극 공연 정보 페이지 -->
-	<definition name="play.*" extends="main-template">
-		<put-attribute name="title" value="마로티켓 연극공연정보" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/play/{1}.jsp" />
-	</definition>
+		<!-- 연극 공연 정보 페이지 -->
+		<definition name="play.*" extends="main-template">
+			<put-attribute name="title" value="마로티켓 연극공연정보" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/umember/play/{1}.jsp" />
+		</definition>
 
-	<!-- footer -->
-	<definition name="tmember.footer.*"
-		extends="tmember-template">
-		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/{1}.jsp" />
-	</definition>
+		<!-- footer -->
+		<definition name="tmember.footer.*"
+			extends="tmember-template">
+			<put-attribute name="title" value="마로티켓 {1}" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/{1}.jsp" />
+		</definition>
 
 
-	<!-- 관리자 메인 페이지 -->
-	<definition name="admin-template"
-		template="/WEB-INF/tiles/layouts/admin/admin_template.jsp">
-		<put-attribute name="title" value="마로티켓 관리자" />
-		<put-attribute name="header"
-			value="/WEB-INF/tiles/components/admin/header.jsp" />
-		<put-attribute name="menu"
-			value="/WEB-INF/tiles/components/admin/menu.jsp" />
-	</definition>
+		<!-- 관리자 메인 페이지 -->
+		<definition name="admin-template"
+			template="/WEB-INF/tiles/layouts/admin/admin_template.jsp">
+			<put-attribute name="title" value="마로티켓 관리자" />
+			<put-attribute name="header"
+				value="/WEB-INF/tiles/components/admin/header.jsp" />
+			<put-attribute name="menu"
+				value="/WEB-INF/tiles/components/admin/menu.jsp" />
+		</definition>
 
-	<definition name="admin" extends="admin-template">
-		<put-attribute name="title" value="마로티켓 관리자페이지" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/adminhome.jsp" />
-	</definition>
+		<definition name="admin" extends="admin-template">
+			<put-attribute name="title" value="마로티켓 관리자페이지" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/adminhome.jsp" />
+		</definition>
 
-	<!-- 관리자의 공지사항, faq -->
-	<definition name="admin.*.*" extends="admin-template">
-		<put-attribute name="title" value="마로티켓 {1}" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/{1}/{2}.jsp" />
-	</definition>
+		<!-- 관리자의 공지사항, faq -->
+		<definition name="admin.*.*" extends="admin-template">
+			<put-attribute name="title" value="마로티켓 {1}" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/{1}/{2}.jsp" />
+		</definition>
 
-	<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성 요소 -->
-	<definition name="notice/*" extends="admin-template">
-		<put-attribute name="title" value="공지사항" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/notice/{1}.jsp" />
-	</definition>
+		<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성 요소 -->
+		<definition name="notice/*" extends="admin-template">
+			<put-attribute name="title" value="공지사항" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/notice/{1}.jsp" />
+		</definition>
 
-	<!-- 극단FAQ 페이지에 대한 레이아웃 템플릿 구성 요소 -->
-	<definition name="tfaq/*" extends="admin-template">
-		<put-attribute name="title" value="극단 FAQ" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
-	</definition>
+		<!-- 극단FAQ 페이지에 대한 레이아웃 템플릿 구성 요소 -->
+		<definition name="tfaq/*" extends="admin-template">
+			<put-attribute name="title" value="극단 FAQ" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/tfaq/{1}.jsp" />
+		</definition>
 
-	<!-- 사용자FAQ 페이지에 대한 레이아웃 템플릿 구성 요소 -->
-	<definition name="ufaq/*" extends="admin-template">
-		<put-attribute name="title" value="사용자 FAQ" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/ufaq/{1}.jsp" />
-	</definition>
+		<!-- 사용자FAQ 페이지에 대한 레이아웃 템플릿 구성 요소 -->
+		<definition name="ufaq/*" extends="admin-template">
+			<put-attribute name="title" value="사용자 FAQ" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/ufaq/{1}.jsp" />
+		</definition>
 
-	<!-- admin play -->
-	<!-- 연극 정보 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
-	<definition name="play/*" extends="admin-template">
-		<put-attribute name="title" value="마로티켓 연극 공연 정보" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/umember/play/{1}.jsp" />
-	</definition>
+		<!-- admin play -->
+		<!-- 연극 정보 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
+		<definition name="play/*" extends="admin-template">
+			<put-attribute name="title" value="마로티켓 연극 공연 정보" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/umember/play/{1}.jsp" />
+		</definition>
 
-	<!-- 연극 등록 승인을 위한 템플릿 -->
-	<definition name="admin/*" extends="admin-template">
-		<put-attribute name="title" value="마로티켓 연극 공연 승인" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/play/{1}.jsp" />
-	</definition>
+		<!-- 연극 등록 승인을 위한 템플릿 -->
+		<definition name="admin/*" extends="admin-template">
+			<put-attribute name="title" value="마로티켓 연극 공연 승인" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/play/{1}.jsp" />
+		</definition>
 
 
-	<!-- admin member -->
-	<!-- 회원관리에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
-	<definition name="member/*" extends="admin-template">
-		<put-attribute name="title" value="회원 목록" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/member/{1}.jsp" />
-	</definition>
+		<!-- admin member -->
+		<!-- 회원관리에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
+		<definition name="member/*" extends="admin-template">
+			<put-attribute name="title" value="회원 목록" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/member/{1}.jsp" />
+		</definition>
 
-	<!-- 정산에 대한 레이아웃 템플릿 구성 요소 -->
-	<definition name="payment/*" extends="admin-template">
-		<put-attribute name="title" value="Notice" />
-		<put-attribute name="content"
-			value="/WEB-INF/views/admin/payment/{1}.jsp" />
-	</definition>
+		<!-- 정산에 대한 레이아웃 템플릿 구성 요소 -->
+		<definition name="payment/*" extends="admin-template">
+			<put-attribute name="title" value="Notice" />
+			<put-attribute name="content"
+				value="/WEB-INF/views/admin/payment/{1}.jsp" />
+		</definition>
 
 
 </tiles-definitions>

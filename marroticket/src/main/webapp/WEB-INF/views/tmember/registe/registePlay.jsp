@@ -59,56 +59,35 @@
 
 		<tr>
 			<td>연극 시작일(현재일 시점부터 최소 30일 이후여야 합니다.)</td>
-<<<<<<< HEAD
 			<td><form:input path="pstartDate" id="pstartDate"
 					readonly="true" /><font color="red"><form:errors
 						path="pstartDate">
-=======
-			<td><form:input path="pstartDate" id="pstartDate" /><font
-				color="red"><form:errors path="pstartDate">
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 		<tr>
 			<td>연극 종료일(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)</td>
-<<<<<<< HEAD
 			<td><form:input path="pcloseDate" id="pcloseDate"
 					readonly="true" /><font color="red"><form:errors
 						path="pcloseDate">
-=======
-			<td><form:input path="pcloseDate" id="pcloseDate" /><font
-				color="red"><form:errors path="pcloseDate">
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
 			<td>예매오픈 희망일(연극 시작일 시점부터 최소 30일 전이여야 합니다.)</td>
-<<<<<<< HEAD
 			<td><form:input path="pticketOpenDate" id="pticketOpenDate"
 					readonly="true" /><font color="red"><form:errors
 						path="pticketOpenDate">
-=======
-			<td><form:input path="pticketOpenDate" id="pticketOpenDate" /><font
-				color="red"><form:errors path="pticketOpenDate">
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
-<<<<<<< HEAD
 			<td>연극 소요시간(3자리까지 분단위입력)</td>
 			<td><form:input path="prunningTime" id="prunningTime"
 					placeholder="연극 소요 시간 입력칸" />분 <font color="red"><form:errors
 						path="prunningTime" /></font></td>
-=======
-			<td>연극 소요시간(분단위)</td>
-			<td><form:input path="prunningTime" placeholder="연극 소요 시간 입력칸" />
-				<font color="red"><form:errors path="prunningTime" /></font></td>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 
 		<tr>
@@ -132,12 +111,8 @@
 			<td>연극포스터</td>
 			<td><input type="File" name="pposter" id="pposter"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-<<<<<<< HEAD
 				id="pposterError" hidden="true"><spring:message
 						code="registe.file.error" /></font></td>
-=======
-				id="pposterError"><spring:message code="registe.file.error" /></font></td>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 
 		<tr>
@@ -175,11 +150,7 @@
 		<tr>
 			<td>티켓 가격(원)</td>
 			<td><form:input type="text" path="pticketPrice"
-<<<<<<< HEAD
 					placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
-=======
-					placeholder="티켓 가격 입력칸" /><font color="red"><form:errors
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 						path="pticketPrice" /></font></td>
 		</tr>
 
@@ -199,19 +170,13 @@
 		<tr>
 			<td>좌석 개수</td>
 			<td><form:input type="text" path="pseatNumber"
-<<<<<<< HEAD
 					placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
-=======
-					placeholder="좌석 개수 입력칸" /><font color="red"><form:errors
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 						path="pseatNumber" /></font></td>
 
 		</tr>
 
 		<tr>
 			<td>상연 시각</td>
-<<<<<<< HEAD
-
 			<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
 				onchange="changePFirstStartTime()">
 					<option value="10">10</option>
@@ -227,7 +192,8 @@
 					<option value="20">20</option>
 					<option value="21">21</option>
 					<option value="22">22</option>
-			</select>: <select id="pfirstStartTimeMinute" onchange="changePFirstStartTime()">
+			</select>: <select id="pfirstStartTimeMinute"
+				onchange="changePFirstStartTime()">
 					<option value="00">00</option>
 					<option value="10">10</option>
 					<option value="20">20</option>
@@ -265,173 +231,12 @@
 			</select> <form:input path="psecondStartTime" id="psecondStartTime"
 					hidden="true" /><font color="red"><form:errors
 						path="psecondStartTime" /></font></td>
-
-=======
-			<td>1회차 상연 시간 선택 <form:select path="pfirstStartTime">
-					<option value="10:00">10:00</option>
-					<option value="10:10">10:10</option>
-					<option value="10:20">10:20</option>
-					<option value="10:30">10:30</option>
-					<option value="10:40">10:40</option>
-					<option value="10:50">10:50</option>
-					<option value="11:00">11:00</option>
-					<option value="11:10">11:10</option>
-					<option value="11:20">11:20</option>
-					<option value="11:30">11:30</option>
-					<option value="11:40">11:40</option>
-					<option value="11:50">11:50</option>
-					<option value="12:00">12:00</option>
-					<option value="12:10">12:10</option>
-					<option value="12:20">12:20</option>
-					<option value="12:30">12:30</option>
-					<option value="12:40">12:40</option>
-					<option value="12:50">12:50</option>
-					<option value="13:00">13:00</option>
-					<option value="13:10">13:10</option>
-					<option value="13:20">13:20</option>
-					<option value="13:30">13:30</option>
-					<option value="13:40">13:40</option>
-					<option value="13:50">13:50</option>
-					<option value="14:00">14:00</option>
-					<option value="14:10">14:10</option>
-					<option value="14:20">14:20</option>
-					<option value="14:30">14:30</option>
-					<option value="14:40">14:40</option>
-					<option value="14:50">14:50</option>
-					<option value="15:00">15:00</option>
-					<option value="15:10">15:10</option>
-					<option value="15:20">15:20</option>
-					<option value="15:30">15:30</option>
-					<option value="15:40">15:40</option>
-					<option value="15:50">15:50</option>
-					<option value="16:00">16:00</option>
-					<option value="16:10">16:10</option>
-					<option value="16:20">16:20</option>
-					<option value="16:30">16:30</option>
-					<option value="16:40">16:40</option>
-					<option value="16:50">16:50</option>
-					<option value="17:00">17:00</option>
-					<option value="17:10">17:10</option>
-					<option value="17:20">17:20</option>
-					<option value="17:30">17:30</option>
-					<option value="17:40">17:40</option>
-					<option value="17:50">17:50</option>
-					<option value="18:00">18:00</option>
-					<option value="18:10">18:10</option>
-					<option value="18:20">18:20</option>
-					<option value="18:30">18:30</option>
-					<option value="18:40">18:40</option>
-					<option value="18:50">18:50</option>
-					<option value="19:00">19:00</option>
-					<option value="19:10">19:10</option>
-					<option value="19:20">19:20</option>
-					<option value="19:30">19:30</option>
-					<option value="19:40">19:40</option>
-					<option value="19:50">19:50</option>
-					<option value="20:00">20:00</option>
-					<option value="20:10">20:10</option>
-					<option value="20:20">20:20</option>
-					<option value="20:30">20:30</option>
-					<option value="20:40">20:40</option>
-					<option value="20:50">20:50</option>
-					<option value="21:00">21:00</option>
-					<option value="21:10">21:10</option>
-					<option value="21:20">21:20</option>
-					<option value="21:30">21:30</option>
-					<option value="21:40">21:40</option>
-					<option value="21:50">21:50</option>
-					<option value="22:00">22:00</option>
-				</form:select><font color="red"><form:errors path="pfirstStartTime" /></font></td>
-			<td>2회차 상영시간 선택 <form:select path="psecondStartTime">
-					<option value="없음">없음</option>
-					<option value="10:00">10:00</option>
-					<option value="10:10">10:10</option>
-					<option value="10:20">10:20</option>
-					<option value="10:30">10:30</option>
-					<option value="10:40">10:40</option>
-					<option value="10:50">10:50</option>
-					<option value="11:00">11:00</option>
-					<option value="11:10">11:10</option>
-					<option value="11:20">11:20</option>
-					<option value="11:30">11:30</option>
-					<option value="11:40">11:40</option>
-					<option value="11:50">11:50</option>
-					<option value="12:00">12:00</option>
-					<option value="12:10">12:10</option>
-					<option value="12:20">12:20</option>
-					<option value="12:30">12:30</option>
-					<option value="12:40">12:40</option>
-					<option value="12:50">12:50</option>
-					<option value="13:00">13:00</option>
-					<option value="13:10">13:10</option>
-					<option value="13:20">13:20</option>
-					<option value="13:30">13:30</option>
-					<option value="13:40">13:40</option>
-					<option value="13:50">13:50</option>
-					<option value="14:00">14:00</option>
-					<option value="14:10">14:10</option>
-					<option value="14:20">14:20</option>
-					<option value="14:30">14:30</option>
-					<option value="14:40">14:40</option>
-					<option value="14:50">14:50</option>
-					<option value="15:00">15:00</option>
-					<option value="15:10">15:10</option>
-					<option value="15:20">15:20</option>
-					<option value="15:30">15:30</option>
-					<option value="15:40">15:40</option>
-					<option value="15:50">15:50</option>
-					<option value="16:00">16:00</option>
-					<option value="16:10">16:10</option>
-					<option value="16:20">16:20</option>
-					<option value="16:30">16:30</option>
-					<option value="16:40">16:40</option>
-					<option value="16:50">16:50</option>
-					<option value="17:00">17:00</option>
-					<option value="17:10">17:10</option>
-					<option value="17:20">17:20</option>
-					<option value="17:30">17:30</option>
-					<option value="17:40">17:40</option>
-					<option value="17:50">17:50</option>
-					<option value="18:00">18:00</option>
-					<option value="18:10">18:10</option>
-					<option value="18:20">18:20</option>
-					<option value="18:30">18:30</option>
-					<option value="18:40">18:40</option>
-					<option value="18:50">18:50</option>
-					<option value="19:00">19:00</option>
-					<option value="19:10">19:10</option>
-					<option value="19:20">19:20</option>
-					<option value="19:30">19:30</option>
-					<option value="19:40">19:40</option>
-					<option value="19:50">19:50</option>
-					<option value="20:00">20:00</option>
-					<option value="20:10">20:10</option>
-					<option value="20:20">20:20</option>
-					<option value="20:30">20:30</option>
-					<option value="20:40">20:40</option>
-					<option value="20:50">20:50</option>
-					<option value="21:00">21:00</option>
-					<option value="21:10">21:10</option>
-					<option value="21:20">21:20</option>
-					<option value="21:30">21:30</option>
-					<option value="21:40">21:40</option>
-					<option value="21:50">21:50</option>
-					<option value="22:00">22:00</option>
-				</form:select></td>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 
 		<tr>
 			<form:input path="pregistrationApproval" value="0" hidden="true" />
-<<<<<<< HEAD
 			<form:input path="pmodifyApproval" hidden="true" />
 			<form:input path="pagree" id="pagree" hidden="true" />
-=======
-			<form:input path="pamendmentApproved" hidden="true" />
-			<form:input path="pagree" id="pagee" value="1" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
-			<form:input path="tId" hidden="true" value="${principal.tId }" />
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 	</table>
 </form:form>
@@ -520,14 +325,6 @@
 													ticketDate);
 										});
 
-<<<<<<< HEAD
-=======
-						$("#agree1Error").hide();
-						$("#agree2Error").hide();
-						$("#agree3Error").hide();
-						$("#pposterError").hide();
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
-
 						$("#registeTemporary")
 								.on(
 										"click",
@@ -536,7 +333,7 @@
 											$("#agree2Error").hide();
 											$("#agree3Error").hide();
 											$("#pposterError").hide();
-											
+
 											if ($(
 													'input:checkbox[name="agree1"]')
 													.is(":checked") == true
@@ -548,39 +345,55 @@
 															.is(":checked") == true) {
 												$("#pagree").val(1);
 
-<<<<<<< HEAD
 												if (!$("#pposter").val() == "") {
-													
-													$("#pfirstStartTime").val(
-																	$("#pfirstStartTimeHour").val()
+
+													$("#pfirstStartTime")
+															.val(
+																	$(
+																			"#pfirstStartTimeHour")
+																			.val()
 																			+ ":"
-																			+ $("#pfirstStartTimeMinute").val());
-													
-													if (psecondStartTimeHour == "" || $("#psecondStartTimeHour").val() == null ) {
-														
-															$("#psecondStartTime").val("없음");
-															formObj.submit();
-														
-														
+																			+ $(
+																					"#pfirstStartTimeMinute")
+																					.val());
+
+													if (psecondStartTimeHour == ""
+															|| $(
+																	"#psecondStartTimeHour")
+																	.val() == null) {
+
+														$("#psecondStartTime")
+																.val("없음");
+														formObj.submit();
+
 													} else {
-														if ($("#psecondStartTimeMinute").val() == "" || $("#psecondStartTimeMinute").val() == null ) {
+														if ($(
+																"#psecondStartTimeMinute")
+																.val() == ""
+																|| $(
+																		"#psecondStartTimeMinute")
+																		.val() == null) {
 															alert("2회차 시작 시간을 정확히 선택해주세요");
-															 document.getElementById("psecondStartTimeMinute").focus();
-														} else{
-															$("#psecondStartTime").val(
-																	$("#psecondStartTimeHour").val()
-																			+ ":"
-																			+ $("#psecondStartTimeMinute").val());
-=======
-												if (!($("#pposter").val() == "" && $(
-														"#pposter").val() == null)) {
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
-													formObj.submit();
+															document
+																	.getElementById(
+																			"psecondStartTimeMinute")
+																	.focus();
+														} else {
+															$(
+																	"#psecondStartTime")
+																	.val(
+																			$(
+																					"#psecondStartTimeHour")
+																					.val()
+																					+ ":"
+																					+ $(
+																							"#psecondStartTimeMinute")
+																							.val());
+															formObj.submit();
 														}
-														
+
 													}
-													} 
-												
+												}
 
 											} else {
 												if ($(
@@ -609,7 +422,7 @@
 										});
 
 					});
-	
+
 	// 상연 시간 선택
 	function changePFirstStartTime() {
 		//1회차 입력 시
@@ -618,25 +431,25 @@
 		var minute = Number($("#pfirstStartTimeMinute").val());
 		//러닝타임
 		var interval = Number($("#prunningTime").val());
-		
+
 		//러닝타임 미입력시 
-		if (interval > 999 || interval == ""|| interval < 0) {
+		if (interval > 999 || interval == "" || interval < 0) {
 			alert("정확한 연극 소요시간을 입력해주세요.");
 			//러닝타임에 커서이동
 			document.getElementById("prunningTime").focus();
 			//1회차 시간 select를 첫번째 값으로 변경
-			 $("#pfirstStartTimeHour option:eq(0)").prop("selected", true);	
-			 $("#pfirstStartTimeMinute option:eq(0)").prop("selected", true);	
+			$("#pfirstStartTimeHour option:eq(0)").prop("selected", true);
+			$("#pfirstStartTimeMinute option:eq(0)").prop("selected", true);
 		}
-		
+
 		//2회차 선택 select를 비활성화 
 		$("#psecondStartTimeHour").attr("disabled", true);
 		$("#psecondStartTimeMinute").attr("disabled", true);
 		//2회차 시간 select를 첫번째 값으로 변경
-	 	$("#psecondStartTimeHour option:eq(0)").prop("selected", true);
-	 	$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);
+		$("#psecondStartTimeHour option:eq(0)").prop("selected", true);
+		$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);
 
-	 	//1회차 입력 분의 값이 00이라면
+		//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
 			//1회차 시간(분단위) = 1회차 입력 시 * 60
 			var time = hour * 60;
@@ -645,18 +458,18 @@
 			var time = hour * 60 + minute;
 
 		}
-	 	//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
+		//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
 		var time = time + interval;
-	 	//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
+		//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
 		var secondTime = Math.floor(time / 60);
-	 	//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
-		var secondMinute = Math.round((time/60 - secondTime)*60);
-		
-	 	//(2회차 선택 가능 시각 >= 22 그리고 2회차 선택 가능 분) 또는 2회차 선택 가능 시각 >22 라면
-		if ((secondTime >= 22 && secondMinute > 50) || secondTime > 22)  {
+		//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
+		var secondMinute = Math.round((time / 60 - secondTime) * 60);
+
+		//(2회차 선택 가능 시각 >= 22 그리고 2회차 선택 가능 분) 또는 2회차 선택 가능 시각 >22 라면
+		if ((secondTime >= 22 && secondMinute > 50) || secondTime > 22) {
 			//2회차 상영시간 선택 select를 첫번째 값으로 변경
-			$("#psecondStartTimeHour option:eq(0)").prop("selected", true);	
-			$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);	
+			$("#psecondStartTimeHour option:eq(0)").prop("selected", true);
+			$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);
 		} else {
 			//2회차 시각 select 활성화
 			$("#psecondStartTimeHour").attr("disabled", false);
@@ -673,30 +486,33 @@
 			$('#psecondStartTimeHour [value="19"]').prop("disabled", false);
 			$('#psecondStartTimeHour [value="20"]').prop("disabled", false);
 			$('#psecondStartTimeHour [value="21"]').prop("disabled", false);
-			
+
 			//2회차 선택 가능 시각의 값에 따라 2회차 선택 시간 select의 값을 비활성화
 			switch (secondTime) {
 			case 11:
 				//현재 시각보다 빠른 시간을 비활성화
 				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
 				//2회차 선택 가능 분이 50보다 높다면 2회차 선택 가능 시각과 같은 값도 비활성화
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="11"]').prop("disabled",
+							true);
 				}
 				break;
 			case 12:
 				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="12"]').prop("disabled",
+							true);
 				}
 				break;
 			case 13:
 				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="13"]').prop("disabled",
+							true);
 				}
 				break;
 			case 14:
@@ -704,8 +520,9 @@
 				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="14"]').prop("disabled",
+							true);
 				}
 				break;
 			case 15:
@@ -714,8 +531,9 @@
 				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="15"]').prop("disabled",
+							true);
 				}
 				break;
 			case 16:
@@ -725,8 +543,9 @@
 				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="16"]').prop("disabled",
+							true);
 				}
 				break;
 			case 17:
@@ -737,8 +556,9 @@
 				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="17"]').prop("disabled",
+							true);
 				}
 				break;
 			case 18:
@@ -750,8 +570,9 @@
 				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="18"]').prop("disabled",
+							true);
 				}
 				break;
 			case 19:
@@ -764,8 +585,9 @@
 				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="19"]').prop("disabled",
+							true);
 				}
 				break;
 			case 20:
@@ -779,8 +601,9 @@
 				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="20"]').prop("disabled",
+							true);
 				}
 				break;
 			case 21:
@@ -795,8 +618,9 @@
 				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="21"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="21"]').prop("disabled",
+							true);
 				}
 				break;
 			case 22:
@@ -812,16 +636,17 @@
 				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
 				$('#psecondStartTimeHour [value="21"]').prop("disabled", true);
-				if(secondMinute > 50){
-					$('#psecondStartTimeHour [value="22"]').prop("disabled", true);
+				if (secondMinute > 50) {
+					$('#psecondStartTimeHour [value="22"]').prop("disabled",
+							true);
 				}
 				break;
 			}
-			
-		} 
+
+		}
 
 	};
-	
+
 	//2회차 상영 시간 선택
 	function changePSecondStartTime() {
 		//1회차 입력 시
@@ -830,7 +655,7 @@
 		var minute = Number($("#pfirstStartTimeMinute").val());
 		//러닝타임
 		var interval = Number($("#prunningTime").val());
-		
+
 		//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
 			//1회차 시간(분단위) = 1회차 입력 시 * 60
@@ -840,16 +665,16 @@
 			var time = hour * 60 + minute;
 
 		}
-	 	//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
+		//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
 		var time = time + interval;
-	 	//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
+		//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
 		var secondTime = Math.floor(time / 60);
-	 	//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
-		var secondMinute = Math.round((time/60 - secondTime)*60);
-		
+		//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
+		var secondMinute = Math.round((time / 60 - secondTime) * 60);
+
 		// 2회차 선택 시각 값
 		var psecondStartTimeHour = $("#psecondStartTimeHour").val();
-		
+
 		// !(2회차 선택 시작 값 == 없음) 이라면
 		if (!(psecondStartTimeHour == "없음")) {
 			//2회차 분 선택 select 활성화
@@ -861,101 +686,101 @@
 			$('#psecondStartTimeMinute [value="30"]').prop("disabled", false);
 			$('#psecondStartTimeMinute [value="40"]').prop("disabled", false);
 			$('#psecondStartTimeMinute [value="50"]').prop("disabled", false);
-			
+
 			// 2회차 선택 시작 값 == 10 이라면
-			if(psecondStartTimeHour == "10"){
-				
+			if (psecondStartTimeHour == "10") {
+
 				// 2회차 선택 시작값 == 2회차 선택 가능 시각값
-				if(psecondStartTimeHour == secondTime){
+				if (psecondStartTimeHour == secondTime) {
 					// 분 비교(2회차 선택 가능 분) 함수 호출
 					minuteComparison(secondMinute);
-					}
-				
-			} else if(psecondStartTimeHour == "11"){
-				
-				if(psecondStartTimeHour == secondTime){
-					minuteComparison(secondMinute);
-					}
-				
-			} else if(psecondStartTimeHour == "12"){
+				}
 
-				if(psecondStartTimeHour == secondTime){
+			} else if (psecondStartTimeHour == "11") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-				
-			} else if(psecondStartTimeHour == "13"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "12") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			} else if(psecondStartTimeHour == "14"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "13") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			} else if(psecondStartTimeHour == "15"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "14") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			} else if(psecondStartTimeHour == "16"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "15") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "17"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "16") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "18"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "17") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "19"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "18") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "20"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "19") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "21"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "20") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
-			}else if(psecondStartTimeHour == "22"){
-			
-				if(psecondStartTimeHour == secondTime){
+				}
+
+			} else if (psecondStartTimeHour == "21") {
+
+				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
-					}
-			
+				}
+
+			} else if (psecondStartTimeHour == "22") {
+
+				if (psecondStartTimeHour == secondTime) {
+					minuteComparison(secondMinute);
+				}
+
 			}
 		} else {
 			//2회차 분 선택 select 비활성화
 			$("#psecondStartTimeMinute").attr("disabled", true);
-			
+
 		}
 
 	};
-	
+
 	// m에 입력된 2회차 선택 가능 분을 비교
 	function minuteComparison(m) {
 		//m이 50보다 크다면 2회차 분 선택 select에서 50보다 낮은 값을 비활성화 
-		if(m > 50){
+		if (m > 50) {
 			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
 			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
 			$('#psecondStartTimeMinute [value="20"]').prop("disabled", true);

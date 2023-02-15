@@ -68,11 +68,7 @@ public class PlayVO {
 	private int pagree;// 약관 동의 여부
 
 	private String pregistrationApproval;// 공연 등록 승인 여부
-<<<<<<< HEAD
 	private String pmodifyApproval ;// 공연 수정 승인 여부
-=======
-	private String pamendmentApproved;// 공연 수정 승인 여부
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -90,9 +86,5 @@ public class PlayVO {
 	private String pfirstStartTime;// 1회차 상연 시작 시각
 
 	private String psecondStartTime;// 2회차 상연 시작 시각
-<<<<<<< HEAD
-=======
-	private String tId;
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 
 }

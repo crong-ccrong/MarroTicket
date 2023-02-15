@@ -13,12 +13,8 @@
 		p_runningtime ,
 		p_theatername ,
 		p_theateraddress ,
-<<<<<<< HEAD
 		p_agency
 		,
-=======
-		p_agency ,
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		p_ratings ,
 		p_casting ,
 		p_ticketopendate ,
@@ -49,32 +45,17 @@
 		#{pcasting },
 		#{pticketOpenDate},
 		#{pplot },
-<<<<<<< HEAD
 		#{pseatNumber
 		},
 		#{pticketPrice},
 		#{pgenre },
 		#{pposterUrl },
 		#{pmodifyApproval },
-=======
-		#{pseatNumber },
-		#{pticketPrice},
-		#{pgenre },
-		#{pposterUrl },
-		#{pamendmentApproved},
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		#{pregistrationApproval },
 		#{pfirstStartTime},
 		#{psecondStartTime },
 		#{pagree} ,
-<<<<<<< HEAD
 		#{tnumber})
-=======
-		t_number
-		from tmember
-		where t_id = #{tId}
-
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 
 	</insert>
 	<select id="find" resultType="Integer">
