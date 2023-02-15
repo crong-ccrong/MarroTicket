@@ -19,21 +19,34 @@
 		<result column="u_number" property="unumber" />
 		<result column="p_number" property="pnumber" />
 	</resultMap>
+<<<<<<< HEAD
 	<!-- <resultMap
+=======
+	<resultMap
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		type="com.marroticket.umember.reservation.domain.SeatVO"
 		id="seatReserveList">
 		<result column="r_ticketfirst" property="rticketFirst" />
 		<result column="r_ticketsecond" property="rticketSecond" />
 		<result column="r_ticketthird" property="rticketThird" />
 		<result column="r_ticketforth" property="rticketFourth" />
+<<<<<<< HEAD
 	</resultMap> -->
 	<!-- <select id="read" resultMap="seatReserveList" parameterType="String">
+=======
+	</resultMap>
+	<select id="read" resultMap="seatReserveList" parameterType="String">
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketforth
 		FROM reservation
 		WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%'
 		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
 		OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
 		OR r_ticketforth LIKE '%'||#{ticketNum}||'%'
+<<<<<<< HEAD
 	</select> -->
 	
+=======
+	</select>
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 </mapper>

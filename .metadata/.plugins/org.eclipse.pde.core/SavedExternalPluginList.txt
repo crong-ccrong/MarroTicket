@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 # List of external plug-in models previously loaded. Timestamp: 1675831213576
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/dropins/JavaORMPlugin_1.0.0.201411180016%20.jar
+=======
+# List of external plug-in models previously loaded. Timestamp: 1675995880223
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/dropins/JavaORMPlugin_1.0.0.201411180016.jar
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/bcpg_1.72.0.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/bcprov_1.72.0.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/ch.qos.logback.classic_1.2.11.jar

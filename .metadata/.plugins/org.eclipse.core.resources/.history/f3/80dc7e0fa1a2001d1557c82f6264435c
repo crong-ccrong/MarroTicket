@@ -1,4 +1,0 @@
-#공연등록 에러메시지
-registe.size.error = 표기된 글자수 이내로 입력해주세요.
-registe.necessary.error = 필수 입력 값입니다.
-registe.date.error = 정확한 값을 입력해주세요.

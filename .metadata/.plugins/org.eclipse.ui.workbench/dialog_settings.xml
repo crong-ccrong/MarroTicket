@@ -5,6 +5,7 @@
 		<item key="internalFilter" value="true"/>
 		<item key="uncategorizedFilter" value="true"/>
 	</section>
+<<<<<<< HEAD
 	<section name="NewWizardAction">
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
@@ -14,4 +15,6 @@
 			<item value="org.eclipse.wst.XMLCategory"/>
 		</list>
 	</section>
+=======
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 </section>

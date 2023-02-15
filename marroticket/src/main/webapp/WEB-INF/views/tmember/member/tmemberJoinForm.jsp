@@ -113,8 +113,13 @@
 
 		</tr>
 		<tr>
+<<<<<<< HEAD
 			<td colspan="2" align="center"><input type="submit" value="회원가입"
 				id="join_submit" /> <input type="button" value="이전" id="back" /></td>
+=======
+			<td colspan="2" align="center"><input type="submit" value="회원가입" id="joinBtn" />
+				<input type="button" value="이전" id="back" /></td>
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 	</table>
 </form:form>
@@ -154,7 +159,11 @@ $(document).ready(function() {
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");
 		$(document).ajaxSend(function(e, xhr, options) {
+<<<<<<< HEAD
 			xhr.setRequestHeader(header, token);
+=======
+		    xhr.setRequestHeader(header, token);
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		});
 		$.ajax({
 			url : "/theater/tIdCheck",
@@ -174,7 +183,8 @@ $(document).ready(function() {
 	}
 </script>
 
-<!-- 비밀번호 확인 -->
+
+<!-- 비밀번호 재확인 체크  --> 
 <script type="text/javascript">
 	$(function() {
 		$("#join_submit").click(function() {

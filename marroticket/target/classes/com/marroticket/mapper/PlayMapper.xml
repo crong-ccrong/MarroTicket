@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.marroticket.mapper.PlayMapper">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 	<resultMap id="play"
 		type="com.marroticket.umember.play.domain.PlayVO">
 		<id property="pnumber" column="p_number" />
@@ -21,8 +24,13 @@
 		<result property="pgenre" column="P_GENRE" />
 		<result property="pposterUrl" column="P_POSTERURL" />
 		<result property="pagree" column="P_AGREE" />
+<<<<<<< HEAD
 		<result property="pmodifyApproval" column="P_modifyapproval" />
 
+=======
+		<result property="pamendmentApproved"
+			column="P_AMENDMENTAPPROVED" />
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		<result property="pregistrationApproval"
 			column="P_REGISTRATIONAPPROVAL" />
 		<result property="pfirstStartTime" column="P_FirstStartTime" />
@@ -80,10 +88,13 @@ P_POSTERURL,
 		p_startDate
 		]]>
 	</select>
-
-	<!-- <select id="quickReserve" resultType="com.marroticket.umember.play.domain.PlayVO"> 
-		<![CDATA[ SELECT P_NAME, P_FIRSTSTARTTIME, P_SECONDSTARTTIME FROM PLAY WHERE 
-		p_startDate <= sysdate and sysdate <= p_closeDate order by p_name]]> </select> -->
+	
+	<!-- 공연정보 읽기 -->
+	<select id="read" resultMap="play">
+		SELECT *
+		FROM play
+		WHERE p_number=#{pNumber}
+	</select>
 
 	<!-- 미리보기 이미지 표시 -->
 	<select id="getPposter" resultType="String">
@@ -91,6 +102,4 @@ P_POSTERURL,
 		FROM play
 		WHERE p_number = #{pnumber}
 	</select>
-
-
 </mapper>

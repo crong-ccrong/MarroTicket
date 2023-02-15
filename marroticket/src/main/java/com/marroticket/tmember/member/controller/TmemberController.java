@@ -74,16 +74,32 @@ public class TmemberController {
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
+<<<<<<< HEAD
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO) throws Exception {
+=======
+	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		return "registe.registePlay";
 	}
 
 	// 연극 등록 처리
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	@PostMapping("/registePlayComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
+<<<<<<< HEAD
+=======
+		MultipartFile pposter = playVO.getPposter();
+
+		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
+
+		playVO.setPposterUrl(pposterUrl);
+
+		registeService.registePlay(playVO);
+
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		if (result.hasErrors()) {
 			List<ObjectError> list = result.getAllErrors();
 			for (ObjectError error : list) {
@@ -110,7 +126,11 @@ public class TmemberController {
 	// 연극 임시등록 완료페이지
 	@GetMapping("/registeTemporaryComplete")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
+<<<<<<< HEAD
 	public String registeTemporaryComplete() throws Exception {
+=======
+	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 
 		return "registe.registeTemporaryComplete";
 	}
@@ -330,6 +350,7 @@ public class TmemberController {
 		return createdFileName;
 	}
 
+<<<<<<< HEAD
 	// 사업자등록증 사본 이미지 업로드
 	private String uploadImage(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
@@ -340,3 +361,6 @@ public class TmemberController {
 	}
 
 }
+=======
+}
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2

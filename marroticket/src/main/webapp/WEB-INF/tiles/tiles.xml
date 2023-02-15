@@ -115,11 +115,32 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/umember/play/{1}.jsp" />
 	</definition>
+<<<<<<< HEAD
 
 
+=======
+	
+	<!-- play : 상세페이지 탐플렛 -->
+	<definition name="play-template" template="/WEB-INF/tiles/layouts/umember/play/play_template.jsp">
+		<put-attribute name="title" value="연극 공연 상세페이지" />
+		<put-attribute name="header" value="/WEB-INF/tiles/components/main/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/components/main/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/components/main/footer.jsp" />
+	</definition>
+	<!-- 연극 공연 상세 페이지 -->
+	<definition name="playDetail" extends="play-template">
+		<put-attribute name="content_poster" value="/WEB-INF/views/umember/play/detail/poster.jsp" />
+		<put-attribute name="content_playInfo" value="/WEB-INF/views/umember/play/detail/playInfo.jsp" />
+		<put-attribute name="content_ticketingInfo" value="/WEB-INF/views/umember/play/detail/ticketingInfo.jsp" />
+		<put-attribute name="content_detail" value="/WEB-INF/views/umember/play/detail/playDetail.jsp" />
+	</definition>
+	
+	
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 	<!-- 극단 -->
 	<!-- theater_template을 따르는 레이아웃들 -->
 	<!-- theater home -->
+<<<<<<< HEAD
 	<definition name="tmember-template"
 		template="/WEB-INF/tiles/layouts/tmember/tmember_template.jsp">
 		<put-attribute name="title" value="마로티켓 가맹극단" />
@@ -129,6 +150,13 @@
 			value="/WEB-INF/tiles/components/tmember/menu.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/tiles/components/tmember/footer.jsp" />
+=======
+	<definition name="tmember-template" template="/WEB-INF/tiles/layouts/tmember/tmember_template.jsp">
+		<put-attribute name="title" value="연극 공연 상세 페이지" />
+		<put-attribute name="header" value="/WEB-INF/tiles/components/tmember/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/tiles/components/tmember/menu.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/tiles/components/tmember/footer.jsp"/>
+>>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 	</definition>
 	<!-- 극단 홈 -->
 	<definition name="tmemberhome" extends="tmember-template">
