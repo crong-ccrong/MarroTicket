@@ -78,8 +78,9 @@
 		</tr>
 		<form:hidden path="uAgree" value="1" />
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입"  id="joinBtn"/>
-				<input type="button" value="이전" id="back" /></td>
+			<td colspan="2" align="center"><input type="button" value="이전" id="back" />
+			<input type="submit" value="회원가입"  id="joinBtn"/>
+				</td>
 		</tr>
 	</table>
 	</form:form>
@@ -99,30 +100,39 @@
 	});
 </script>
 
-<!-- 중복아이디 체크 (절대 지우지마) -->
+<!-- 중복아이디 체크  -->
 <script>
-	function uIdChk() {
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
-		$(document).ajaxSend(function(e, xhr, options) {
-			xhr.setRequestHeader(header, token);
-		});
-		$.ajax({
-			url : "/umember/uIdCheck",
-			type : "post",
-			data : {
-				"uId" : $("#uId").val()
-			},
-			success : function(data) {
-				if (data == "overlap") {
-					alert("중복된 아이디 입니다.");
-				} else {
-					alert("사용가능한 아이디입니다.");
-				}
+function uIdChk() {
+	var uIdValue = $("#uId").val();
+	  if (uIdValue === '') {
+	    alert("ID를 입력해주세요!!");
+	    return;
+	  }
+	
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
+	});
+	
+	$.ajax({
+		url : "/umember/uIdCheck",
+		type : "post",
+		data : {
+			"uId" : $("#uId").val()
+		},
+		success : function(data) {
+			if (data == "overlap") {
+				alert("중복된 아이디 입니다.");
+				 $("#uId").val(''); //입력값 재설정
+			} else {
+				alert("사용가능한 아이디입니다.");
 			}
-		});
+		}
+	});
 
-	}
+}
+
 </script>
 
 <!-- 비밀번호 재확인 여부-->

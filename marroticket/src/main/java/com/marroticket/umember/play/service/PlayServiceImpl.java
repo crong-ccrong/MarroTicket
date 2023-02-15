@@ -38,8 +38,24 @@ public class PlayServiceImpl implements PlayService {
 		return mapper.getPposter(pnumber);
 	}
 
+//	@Override
+//	public List<PlayVO> playCurrentList(String getuGenre) throws Exception {
+//		return mapper.playCurrentList(getuGenre);
+//	}
+//
+//	@Override
+//	public List<PlayVO> playExpectedList(String getuGenre) throws Exception {
+//		return mapper.playExpectedList(getuGenre);
+//	}
+
+	
+
 	/*
 	 * @Override public List<PlayVO> quickReserve() throws Exception { return
 	 * mapper.quickReserve(); }
 	 */
+	
+	
+	
+	
 }

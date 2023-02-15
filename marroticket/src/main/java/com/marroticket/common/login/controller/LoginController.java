@@ -11,6 +11,7 @@ public class LoginController { // 로그인 관련 controller
 	// 일반회원로그인
 	@RequestMapping("/memberlogin")
 	public String loginForm(String error, String logout, Model model) {
+		
 		if (error != null) {
 			System.out.println("com.marroticket.common.login.controller.LoginController : /login : 에러");
 			model.addAttribute("error", "error");

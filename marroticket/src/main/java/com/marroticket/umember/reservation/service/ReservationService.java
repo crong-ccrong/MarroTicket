@@ -14,5 +14,5 @@ public interface ReservationService {
 
 	public void cancelReservation(int rnumber ) throws Exception;
 	
-	List<ReservationVO> viewingHistory(int uNumber) throws Exception;
+	List<ReservationVO> viewingHistory(int uNumber) throws Exception; 
 }

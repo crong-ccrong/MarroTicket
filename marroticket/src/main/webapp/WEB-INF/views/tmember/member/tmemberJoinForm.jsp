@@ -30,9 +30,9 @@
 
       <tr>
          <th>사업자/법인 등록번호</th>
-         <td><form:input path="tBusinessRegistractionNumber"
+         <td><form:input path="tBusinessRegistrationNumber"
                placeholder="(필수)-제외 숫자만 입력" /><font color="red"> <form:errors
-                  path="tBusinessRegistractionNumber" /></font></td>
+                  path="tBusinessRegistrationNumber" /></font></td>
       </tr>
 
       <tr>
@@ -110,8 +110,10 @@
          
       </tr>
       <tr>
-         <td colspan="2" align="center"><input type="submit" value="회원가입" id="join_submit" />
-            <input type="button" value="이전" id="back" /></td>
+         <td colspan="2" align="center">
+         <input type="button" value="이전" id="back" />
+         <input type="submit" value="회원가입" id="join_submit" />
+            </td>
       </tr>
    </table>
 </form:form>
@@ -148,27 +150,52 @@ $(document).ready(function() {
 <!-- 중복아이디 체크 -->
 <script>
    function tIdChk() {
-         var token = $("meta[name='_csrf']").attr("content");
-         var header = $("meta[name='_csrf_header']").attr("content");
-         $(document).ajaxSend(function(e, xhr, options) {
-             xhr.setRequestHeader(header, token);
-         });
-      $.ajax({
-         url : "/theater/tIdCheck",
-         type : "post",
-         data : {
-            "tId" : $("#tId").val()
-         },
-         success : function(data) {
-            if (data == 'overlap') {
-               alert("중복된 아이디 입니다.");
-            } else {
-               alert("사용가능한 아이디입니다.");
-            }
-         }
-      });
-   
-   }
+	   var tIdValue = $("#tId").val();
+	   if (tIdValue === '') {
+	     alert("아이디를 입력해주세요!!");
+	     return;
+	   }
+
+	   var token = $("meta[name='_csrf']").attr("content");
+	   var header = $("meta[name='_csrf_header']").attr("content");
+	   $(document).ajaxSend(function(e, xhr, options) {
+	     xhr.setRequestHeader(header, token);
+	   });
+	   $.ajax({
+		     url: "/umember/uIdCheck",
+		     type: "post",
+		     data: {
+		       "uId" : tIdValue
+		     },
+		     success : function(data) {
+		       if (data == "overlap") {
+		    	   alert("중복된 아이디 입니다.")
+		         $("#tId").val(''); // 입력값 재설정
+		    	   return;
+		       }else{
+		    	   $.ajax({
+		    		     url: "/theater/tIdCheck",
+		    		     type: "post",
+		    		     data: {
+		    		       "tId" : tIdValue
+		    		     },
+		    		     success : function(data) {
+		    		       if (data == "overlap") {
+		    		         alert("중복된 아이디 입니다. ");
+		    		         $("#tId").val(''); // 입력값 재설정
+		    		       } else {
+		    		         alert("사용가능한 아이디 입니다.");
+		    		       }
+		    		     }
+		    		   });
+		       }
+		     }
+		   });
+	   
+	 
+
+	  
+	 }
 </script>
 
 <!-- 비밀번호 확인 -->

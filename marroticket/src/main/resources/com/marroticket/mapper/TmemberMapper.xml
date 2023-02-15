@@ -13,7 +13,7 @@
       <result property="tOwnerPhoneNumber"
          column="t_ownerPhoneNumber" />
       <result property="tOwnerEmail" column="t_ownerEmail" />
-      <result property="tBusinessRegistrationNumberr"
+      <result property="tBusinessRegistrationNumber"
          column="t_businessRegistractionNumber" />
       <result property="tEstablishmentDate"
          column="t_establishmentDate" />
@@ -113,7 +113,7 @@
       #{tOwnerPhoneNumber},
       #{tOwnerEmail},
       #{tBusinessRegistration},
-      #{tBusinessRegistrationNumberr},
+      #{tBusinessRegistrationNumber},
       #{tEstablishmentDate},
       #{tBank},
       #{tBankNumber},

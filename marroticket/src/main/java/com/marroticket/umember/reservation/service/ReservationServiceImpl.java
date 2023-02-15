@@ -27,12 +27,14 @@ public List<SeatVO> list(String ticketNum) throws Exception {
 	return mapper.read(ticketNum);
 }
 
+//예매 취소
 @Override
 public void cancelReservation(int rnumber) throws Exception {
 	 mapper.updateCancelState(rnumber);
 }
 
 
+//관람내역
 @Override
 public List<ReservationVO> viewingHistory(int uNumber) throws Exception {
 	return mapper.viewingHistory(uNumber);

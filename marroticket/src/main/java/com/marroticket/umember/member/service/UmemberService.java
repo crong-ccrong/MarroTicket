@@ -1,6 +1,7 @@
 package com.marroticket.umember.member.service;
 
 
+
 import com.marroticket.umember.member.domain.UmemberVO;
 
 public interface UmemberService {
@@ -12,7 +13,6 @@ public interface UmemberService {
 	public int uIdCheck(UmemberVO umember) throws Exception;
 	//회원가입
 	public void register(UmemberVO umember) throws Exception;
-	
 	
 	//마이페이지 
 	//정보 조회
