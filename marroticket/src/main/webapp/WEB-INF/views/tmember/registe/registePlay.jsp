@@ -29,7 +29,7 @@
 		<tr>
 			<td>정산관련 약관 내용</td>
 			<td><input type="checkbox" name="agree1" /><font color="red"
-				id="agree1Error"><spring:message
+				id="agree1Error" hidden="true"><spring:message
 						code="registe.checkbox.error" /></font></td>
 		</tr>
 		<tr>
@@ -38,7 +38,7 @@
 		<tr>
 			<td>연극등록 약관 내용</td>
 			<td><input type="checkbox" name="agree2" /><font color="red"
-				id="agree2Error"><spring:message
+				id="agree2Error" hidden="true"><spring:message
 						code="registe.checkbox.error" /></font></td>
 		</tr>
 		<tr>
@@ -47,7 +47,7 @@
 		<tr>
 			<td>예매 좌석 제한 고지</td>
 			<td><input type="checkbox" name="agree3" /><font color="red"
-				id="agree3Error"><spring:message
+				id="agree3Error" hidden="true"><spring:message
 						code="registe.checkbox.error" /></font></td>
 		</tr>
 
@@ -111,7 +111,8 @@
 			<td>연극포스터</td>
 			<td><input type="File" name="pposter" id="pposter"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pposterError"><spring:message code="registe.file.error" /></font></td>
+				id="pposterError" hidden="true"><spring:message
+						code="registe.file.error" /></font></td>
 		</tr>
 
 		<tr>
@@ -177,8 +178,8 @@
 		<tr>
 			<td>상연 시각</td>
 
-			<td>1회차 상연 시간 선택 <select id="pfirstStartTimeOne"
-				onchange="changeOne()">
+			<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
+				onchange="changePFirstStartTime()">
 					<option value="10">10</option>
 					<option value="11">11</option>
 					<option value="12">12</option>
@@ -192,7 +193,7 @@
 					<option value="20">20</option>
 					<option value="21">21</option>
 					<option value="22">22</option>
-			</select>: <select id="pfirstStartTimeTwo" onchange="changeOne()">
+			</select>: <select id="pfirstStartTimeMinute" onchange="changePFirstStartTime()">
 					<option value="00">00</option>
 					<option value="10">10</option>
 					<option value="20">20</option>
@@ -203,8 +204,8 @@
 					hidden="true" /><font color="red"><form:errors
 						path="pfirstStartTime" /></font></td>
 
-			<td>2회차 상연 시간 선택 <select id="psecondStartTimeOne"
-				onchange="changeTwo()" disabled="disabled">
+			<td>2회차 상연 시간 선택 <select id="psecondStartTimeHour"
+				onchange="changePSecondStartTime()" disabled="disabled">
 					<option value="">선택</option>
 					<option value="10">10</option>
 					<option value="11">11</option>
@@ -219,7 +220,7 @@
 					<option value="20">20</option>
 					<option value="21">21</option>
 					<option value="22">22</option>
-			</select>: <select id="psecondStartTimeTwo" disabled="disabled">
+			</select>: <select id="psecondStartTimeMinute" disabled="disabled">
 					<option value="">선택</option>
 					<option value="00">00</option>
 					<option value="10">10</option>
@@ -325,15 +326,16 @@
 													ticketDate);
 										});
 
-						$("#agree1Error").hide();
-						$("#agree2Error").hide();
-						$("#agree3Error").hide();
-						$("#pposterError").hide();
 
 						$("#registeTemporary")
 								.on(
 										"click",
 										function() {
+											$("#agree1Error").hide();
+											$("#agree2Error").hide();
+											$("#agree3Error").hide();
+											$("#pposterError").hide();
+											
 											if ($(
 													'input:checkbox[name="agree1"]')
 													.is(":checked") == true
@@ -348,28 +350,31 @@
 												if (!$("#pposter").val() == "") {
 													
 													$("#pfirstStartTime").val(
-																	$("#pfirstStartTimeOne").val()
+																	$("#pfirstStartTimeHour").val()
 																			+ ":"
-																			+ $("#pfirstStartTimeTwo").val());
-													if ($("#psecondStartTimeTwo").val() == "" || $("#psecondStartTimeTwo").val() == null ) {
+																			+ $("#pfirstStartTimeMinute").val());
 													
-														alert("2회차 시작 시간을 선택해주세요");
-														 document.getElementById("psecondStartTimeTwo").focus();
-
-													} else{
-														if ($("#psecondStartTimeOne").val() == "" || $("#psecondStartTimeOne").val() == null ) {
+													if (psecondStartTimeHour == "" || $("#psecondStartTimeHour").val() == null ) {
+														
 															$("#psecondStartTime").val("없음");
 															formObj.submit();
-														} else {
+														
+														
+													} else {
+														if ($("#psecondStartTimeMinute").val() == "" || $("#psecondStartTimeMinute").val() == null ) {
+															alert("2회차 시작 시간을 정확히 선택해주세요");
+															 document.getElementById("psecondStartTimeMinute").focus();
+														} else{
 															$("#psecondStartTime").val(
-																			$("#psecondStartTimeOne").val()
-																					+ ":"
-																					+ $("#psecondStartTimeTwo").val());
-															formObj.submit();
+																	$("#psecondStartTimeHour").val()
+																			+ ":"
+																			+ $("#psecondStartTimeMinute").val());
+													formObj.submit();
 														}
 														
 													}
-												}
+													} 
+												
 
 											} else {
 												if ($(
@@ -400,186 +405,209 @@
 					});
 	
 	// 상연 시간 선택
-	function changeOne() {
-		var hour = Number($("#pfirstStartTimeOne").val());
-		var minute = Number($("#pfirstStartTimeTwo").val());
+	function changePFirstStartTime() {
+		//1회차 입력 시
+		var hour = Number($("#pfirstStartTimeHour").val());
+		//1회차 입력 분
+		var minute = Number($("#pfirstStartTimeMinute").val());
+		//러닝타임
 		var interval = Number($("#prunningTime").val());
+		
+		//러닝타임 미입력시 
 		if (interval > 999 || interval == ""|| interval < 0) {
 			alert("정확한 연극 소요시간을 입력해주세요.");
-			 document.getElementById("prunningTime").focus();
-			 $("#pfirstStartTimeOne option:eq(0)").prop("selected", true);	
-			 $("#pfirstStartTimeTwo option:eq(0)").prop("selected", true);	
+			//러닝타임에 커서이동
+			document.getElementById("prunningTime").focus();
+			//1회차 시간 select를 첫번째 값으로 변경
+			 $("#pfirstStartTimeHour option:eq(0)").prop("selected", true);	
+			 $("#pfirstStartTimeMinute option:eq(0)").prop("selected", true);	
 		}
-		$("#psecondStartTimeOne").attr("disabled", true);
-		$("#psecondStartTimeTwo").attr("disabled", true);
-	 	$("#psecondStartTimeOne option:eq(0)").prop("selected", true);
-	 	$("#psecondStartTimeTwo option:eq(0)").prop("selected", true);
+		
+		//2회차 선택 select를 비활성화 
+		$("#psecondStartTimeHour").attr("disabled", true);
+		$("#psecondStartTimeMinute").attr("disabled", true);
+		//2회차 시간 select를 첫번째 값으로 변경
+	 	$("#psecondStartTimeHour option:eq(0)").prop("selected", true);
+	 	$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);
 
+	 	//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
+			//1회차 시간(분단위) = 1회차 입력 시 * 60
 			var time = hour * 60;
 		} else {
+			//1회차 시간(분단위) = 1회차 입력 시 * 60 + 1회차 입력 분
 			var time = hour * 60 + minute;
 
 		}
+	 	//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
 		var time = time + interval;
+	 	//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
 		var secondTime = Math.floor(time / 60);
-		var secondminute = Math.round((time/60 - Math.floor(time / 60))*60);
+	 	//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
+		var secondMinute = Math.round((time/60 - secondTime)*60);
 		
-		if ((secondTime >= 22 && secondminute > 50) || secondTime > 22)  {
-			$("#psecondStartTimeOne option:eq(0)").prop("selected", true);	
-			$("#psecondStartTimeTwo option:eq(0)").prop("selected", true);	
+	 	//(2회차 선택 가능 시각 >= 22 그리고 2회차 선택 가능 분) 또는 2회차 선택 가능 시각 >22 라면
+		if ((secondTime >= 22 && secondMinute > 50) || secondTime > 22)  {
+			//2회차 상영시간 선택 select를 첫번째 값으로 변경
+			$("#psecondStartTimeHour option:eq(0)").prop("selected", true);	
+			$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);	
 		} else {
-			$("#psecondStartTimeOne").attr("disabled", false);
-			$('#psecondStartTimeOne [value="10"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="11"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="12"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="13"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="14"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="15"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="16"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="17"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="18"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="19"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="20"]').prop("disabled", false);
-			$('#psecondStartTimeOne [value="21"]').prop("disabled", false);
+			//2회차 시각 select 활성화
+			$("#psecondStartTimeHour").attr("disabled", false);
+			//2회차 시각 select의 값을 선택할 수 있게 활성화
+			$('#psecondStartTimeHour [value="10"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="11"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="12"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="13"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="14"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="15"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="16"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="17"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="18"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="19"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="20"]').prop("disabled", false);
+			$('#psecondStartTimeHour [value="21"]').prop("disabled", false);
 			
+			//2회차 선택 가능 시각의 값에 따라 2회차 선택 시간 select의 값을 비활성화
 			switch (secondTime) {
 			case 11:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
+				//현재 시각보다 빠른 시간을 비활성화
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				//2회차 선택 가능 분이 50보다 높다면 2회차 선택 가능 시각과 같은 값도 비활성화
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
 				}
 				break;
 			case 12:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
 				}
 				break;
 			case 13:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
 				}
 				break;
 			case 14:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
 				}
 				break;
 			case 15:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
 				}
 				break;
 			case 16:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
 				}
 				break;
 			case 17:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
 				}
 				break;
 			case 18:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
 				}
 				break;
 			case 19:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
 				}
 				break;
 			case 20:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
 				}
 				break;
 			case 21:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="21"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="21"]').prop("disabled", true);
 				}
 				break;
 			case 22:
-				$('#psecondStartTimeOne [value="10"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="11"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="18"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="19"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="20"]').prop("disabled", true);
-				$('#psecondStartTimeOne [value="21"]').prop("disabled", true);
-				if(secondminute > 50){
-					$('#psecondStartTimeOne [value="22"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="10"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="11"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="12"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="13"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="15"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="16"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="17"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="18"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="19"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="20"]').prop("disabled", true);
+				$('#psecondStartTimeHour [value="21"]').prop("disabled", true);
+				if(secondMinute > 50){
+					$('#psecondStartTimeHour [value="22"]').prop("disabled", true);
 				}
 				break;
 			}
@@ -587,147 +615,167 @@
 		} 
 
 	};
-
-	function changeTwo() {
-		var hour = Number($("#pfirstStartTimeOne").val());
-		var minute = Number($("#pfirstStartTimeTwo").val());
+	
+	//2회차 상영 시간 선택
+	function changePSecondStartTime() {
+		//1회차 입력 시
+		var hour = Number($("#pfirstStartTimeHour").val());
+		//1회차 입력 분
+		var minute = Number($("#pfirstStartTimeMinute").val());
+		//러닝타임
 		var interval = Number($("#prunningTime").val());
 		
+		//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
+			//1회차 시간(분단위) = 1회차 입력 시 * 60
 			var time = hour * 60;
 		} else {
+			//1회차 시간(분단위) = 1회차 입력 시 * 60 + 1회차 입력 분
 			var time = hour * 60 + minute;
-		}
-		var time = time + interval;
-		var secondTime = Math.floor(time / 60);
-		var secondminute = Math.round((time/60 - Math.floor(time / 60))*60);
-		
-		
-		var value = $("#psecondStartTimeOne").val();
-		if (!(value == "없음")) {
-			$("#psecondStartTimeTwo").attr("disabled", false);
-			
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", false);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", false);
-			$('#psecondStartTimeTwo [value="20"]').prop("disabled", false);
-			$('#psecondStartTimeTwo [value="30"]').prop("disabled", false);
-			$('#psecondStartTimeTwo [value="40"]').prop("disabled", false);
-			$('#psecondStartTimeTwo [value="50"]').prop("disabled", false);
-			
-			if($("#psecondStartTimeOne").val() == "10"){
-				
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
-					}
-				
-			} else if($("#psecondStartTimeOne").val() == "11"){
-				
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
-					}
-				
-			} else if($("#psecondStartTimeOne").val() == "12"){
 
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+		}
+	 	//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
+		var time = time + interval;
+	 	//2회차 선택 가능 시각 = 1회차 시간(분단위) / 60 ..소수점버림
+		var secondTime = Math.floor(time / 60);
+	 	//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
+		var secondMinute = Math.round((time/60 - secondTime)*60);
+		
+		// 2회차 선택 시각 값
+		var psecondStartTimeHour = $("#psecondStartTimeHour").val();
+		
+		// !(2회차 선택 시작 값 == 없음) 이라면
+		if (!(psecondStartTimeHour == "없음")) {
+			//2회차 분 선택 select 활성화
+			$("#psecondStartTimeMinute").attr("disabled", false);
+			//2회차 분 선택 select의 값 활성화
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", false);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", false);
+			$('#psecondStartTimeMinute [value="20"]').prop("disabled", false);
+			$('#psecondStartTimeMinute [value="30"]').prop("disabled", false);
+			$('#psecondStartTimeMinute [value="40"]').prop("disabled", false);
+			$('#psecondStartTimeMinute [value="50"]').prop("disabled", false);
+			
+			// 2회차 선택 시작 값 == 10 이라면
+			if(psecondStartTimeHour == "10"){
+				
+				// 2회차 선택 시작값 == 2회차 선택 가능 시각값
+				if(psecondStartTimeHour == secondTime){
+					// 분 비교(2회차 선택 가능 분) 함수 호출
+					minuteComparison(secondMinute);
 					}
 				
-			} else if($("#psecondStartTimeOne").val() == "13"){
+			} else if(psecondStartTimeHour == "11"){
+				
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
+					}
+				
+			} else if(psecondStartTimeHour == "12"){
+
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
+					}
+				
+			} else if(psecondStartTimeHour == "13"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			} else if($("#psecondStartTimeOne").val() == "14"){
+			} else if(psecondStartTimeHour == "14"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			} else if($("#psecondStartTimeOne").val() == "15"){
+			} else if(psecondStartTimeHour == "15"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			} else if($("#psecondStartTimeOne").val() == "16"){
+			} else if(psecondStartTimeHour == "16"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "17"){
+			}else if(psecondStartTimeHour == "17"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "18"){
+			}else if(psecondStartTimeHour == "18"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "19"){
+			}else if(psecondStartTimeHour == "19"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "20"){
+			}else if(psecondStartTimeHour == "20"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "21"){
+			}else if(psecondStartTimeHour == "21"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
-			}else if($("#psecondStartTimeOne").val() == "22"){
+			}else if(psecondStartTimeHour == "22"){
 			
-				if($("#psecondStartTimeOne").val() == secondTime){
-					minuteComparison(secondminute);
+				if(psecondStartTimeHour == secondTime){
+					minuteComparison(secondMinute);
 					}
 			
 			}
 		} else {
-			$("#psecondStartTimeTwo").attr("disabled", true);
+			//2회차 분 선택 select 비활성화
+			$("#psecondStartTimeMinute").attr("disabled", true);
 			
 		}
 
 	};
+	
+	// m에 입력된 2회차 선택 가능 분을 비교
 	function minuteComparison(m) {
-		
+		//m이 50보다 크다면 2회차 분 선택 select에서 50보다 낮은 값을 비활성화 
 		if(m > 50){
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="20"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="30"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="40"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="50"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="20"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="30"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="40"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="50"]').prop("disabled", true);
 		} else if (m > 40) {
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="20"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="30"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="40"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="20"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="30"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="40"]').prop("disabled", true);
 		} else if (m > 30) {
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="20"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="30"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="20"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="30"]').prop("disabled", true);
 		} else if (m > 20) {
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="20"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="20"]').prop("disabled", true);
 		} else if (m > 10) {
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
-			$('#psecondStartTimeTwo [value="10"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="10"]').prop("disabled", true);
 		} else {
-			$('#psecondStartTimeTwo [value="00"]').prop("disabled", true);
+			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
 
 		}
 

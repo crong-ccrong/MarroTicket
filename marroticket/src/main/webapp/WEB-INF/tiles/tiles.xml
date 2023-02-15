@@ -247,7 +247,7 @@
 			value="/WEB-INF/views/admin/member/{1}.jsp" />
 	</definition>
 
-	<!-- 공지사항 페이지에 대한 레이아웃 템플릿 구성 요소 -->
+	<!-- 정산에 대한 레이아웃 템플릿 구성 요소 -->
 	<definition name="payment/*" extends="admin-template">
 		<put-attribute name="title" value="Notice" />
 		<put-attribute name="content"

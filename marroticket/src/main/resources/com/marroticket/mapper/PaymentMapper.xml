@@ -118,14 +118,13 @@
 			from play p
 			left join tmember t
 			on t.t_number = p.t_number
-			WHERE p_number > 0 and p_closeDate > sysdate 
+			WHERE p_number > 0 and p_closeDate < sysdate and P_REGISTRATIONAPPROVAL= 1
 			order by p.p_closeDate
 			) P
 	)where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
   
         
 		]]>
-<!-- and P_REGISTRATIONAPPROVAL= 1 -->
 	</select>
 
 	<!-- 정산 내역 조회 -->

@@ -29,7 +29,7 @@ public class TmemberServiceImpl implements TmemberService {
 	// 아이디 중복체크
 	@Override
 	public int tIdCheck(TmemberVO tmember) throws Exception {
-		return tmembermapper.tIdCheck(tmember);
+		return tmembermapper.tIdCheck(tmember)+tmembermapper.tIdCheck(tmember);
 	}
 
 

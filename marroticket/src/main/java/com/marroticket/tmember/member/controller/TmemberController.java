@@ -266,7 +266,6 @@ public class TmemberController {
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = tmemberService.passwordUpdate(tmember);
-
 		if (success != 0) { // 업데이트 성공
 			sendEmail(temporaryPassword, tmember.gettOwnerEmail()); // 임시비밀번호 발송
 			entity = new ResponseEntity<String>("send", HttpStatus.OK);

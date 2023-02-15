@@ -12,6 +12,6 @@ public class EmailVO {
 	private String title;
 	private String password;
 	private String id;
-	private final String umemberLoginUrl ="http://localhost:8080/login/umemberlogin";
-	private final String tmemberLoginUrl ="http://localhost:8080/login/tmemberlogin";
+	private final String umemberLoginUrl ="http://localhost:8080/auth/memberlogin";
+	private final String tmemberLoginUrl ="http://localhost:8080/auth/memberlogin";
 }

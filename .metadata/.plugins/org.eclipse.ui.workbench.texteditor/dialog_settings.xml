@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="file"/>
+		<item key="selection" value="tartTimeHour&quot;).val()"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="file"/>
+			<item value="$(&quot;#psecondStartTimeHour&quot;).val()"/>
+			<item value="secondminute"/>
+			<item value="changeMinute"/>
+			<item value="changeHour"/>
 			<item value="change"/>
+			<item value="Two"/>
+			<item value="One"/>
+			<item value="second"/>
+			<item value="grantedau"/>
+			<item value="t^inVKtgSeW6MCn"/>
+			<item value="승인"/>
+			<item value="file"/>
 			<item value="minit"/>
 			<item value="vali"/>
 			<item value="registeTempo"/>
-			<item value="c"/>
-			<item value="pcloseDate"/>
-			<item value="p"/>
-			<item value="pstartDate"/>
-			<item value="approval"/>
-			<item value="tAddress"/>
-			<item value="{2}"/>
-			<item value="image"/>
-			<item value="pposter"/>
-			<item value="upload"/>
 		</list>
 		<list key="replacehistory">
+			<item value="psecondStartTimeHour"/>
+			<item value="secondMinute"/>
+			<item value="secondminute"/>
+			<item value="changePSecondStartTime"/>
+			<item value="changePFirstStartTime"/>
+			<item value="Minute"/>
+			<item value="Two"/>
+			<item value="Hour"/>
 			<item value="minute"/>
 			<item value="startDate"/>
 			<item value=""/>
