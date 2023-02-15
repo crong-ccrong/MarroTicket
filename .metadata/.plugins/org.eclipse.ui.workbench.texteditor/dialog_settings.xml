@@ -1,66 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-		<item key="selection" value="tartTimeHour&quot;).val()"/>
-=======
-		<item key="selection" value="P"/>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="마로티켓 서비스"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="$(&quot;#psecondStartTimeHour&quot;).val()"/>
-			<item value="secondminute"/>
-			<item value="changeMinute"/>
-			<item value="changeHour"/>
-			<item value="change"/>
-			<item value="Two"/>
-			<item value="One"/>
-			<item value="second"/>
-			<item value="grantedau"/>
-			<item value="t^inVKtgSeW6MCn"/>
-			<item value="승인"/>
-			<item value="file"/>
-			<item value="minit"/>
-			<item value="vali"/>
-			<item value="registeTempo"/>
+			<item value="마로티켓 서비스"/>
+			<item value="비밀"/>
+			<item value="이용자"/>
+			<item value="정산대상자"/>
+			<item value="대행업무"/>
+			<item value="스타칩"/>
+			<item value="SKP"/>
 		</list>
 		<list key="replacehistory">
-			<item value="psecondStartTimeHour"/>
-			<item value="secondMinute"/>
-			<item value="secondminute"/>
-			<item value="changePSecondStartTime"/>
-			<item value="changePFirstStartTime"/>
-			<item value="Minute"/>
-			<item value="Two"/>
-			<item value="Hour"/>
-			<item value="minute"/>
-			<item value="startDate"/>
-			<item value=""/>
+			<item value="마로티켓 연극 등록 서비스"/>
+			<item value="정산업무"/>
+			<item value="마로티켓"/>
+			<item value="회사"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1562"/>
-		<item key="DIALOG_Y_ORIGIN" value="84"/>
-=======
-			<item value="p"/>
-			<item value="지도"/>
-			<item value="p_theatermapurl"/>
-			<item value="ptheaterMapUrl"/>
-			<item value="pname"/>
-			<item value="tname"/>
-		</list>
-		<list key="replacehistory">
-		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1224"/>
-		<item key="DIALOG_Y_ORIGIN" value="280"/>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
+		<item key="DIALOG_X_ORIGIN" value="1032"/>
+		<item key="DIALOG_Y_ORIGIN" value="224"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
