@@ -34,8 +34,8 @@
 		<result property="tOwnerPhoneNumber"
 			column="t_ownerPhoneNumber" />
 		<result property="tOwnerEmail" column="t_ownerEmail" />
-		<result property="tBusinessRegistractionNumber"
-			column="t_businessRegistractionNumber" />
+		<result property="tBusinessRegistrationNumber"
+			column="t_businessRegistrationNumber" />
 		<result property="tEstablishmentDate"
 			column="t_establishmentDate" />
 		<result property="tBank" column="t_bank" />
