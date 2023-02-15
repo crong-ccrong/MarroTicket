@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.marroticket.umember.reservation.service.ReservationService"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.marroticket.mapper.ReservationMapper"/>
     <fullyQualifiedTypeName name="com.marroticket.umember.reservation.domain.ReservationVO"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
@@ -20,4 +19,5 @@
     <fullyQualifiedTypeName name="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"/>
     <fullyQualifiedTypeName name="com.marroticket.umember.play.domain.PlayVO"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+    <fullyQualifiedTypeName name="com.marroticket.mapper.ReservationMapper"/>
 </qualifiedTypeNameHistroy>
