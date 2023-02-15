@@ -85,6 +85,5 @@ public class PlayVO {
 	private String pfirstStartTime;// 1회차 상연 시작 시각
 
 	private String psecondStartTime;// 2회차 상연 시작 시각
-	private String tId;
 
 }

@@ -84,14 +84,6 @@ public class TmemberController {
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile pposter = playVO.getPposter();
-
-		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
-
-		playVO.setPposterUrl(pposterUrl);
-
-		registeService.registePlay(playVO);
-
 		if (result.hasErrors()) {
 			List<ObjectError> list = result.getAllErrors();
 			for (ObjectError error : list) {
@@ -99,6 +91,17 @@ public class TmemberController {
 			}
 			return "registe.registePlay";
 		}
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String tId = authentication.getName();
+		Integer tnumber = registeService.tnumberFind(tId);
+		playVO.setTnumber(tnumber);
+
+		MultipartFile pposter = playVO.getPposter();
+		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
+		playVO.setPposterUrl(pposterUrl);
+
+		registeService.registePlay(playVO);
 
 		log.info(playVO.toString());
 		return "registe.registeTemporaryComplete";
@@ -123,8 +126,8 @@ public class TmemberController {
 	public String theaterPayment(Model model) throws Exception {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String tId = authentication.getName();
-		
+		String tId = authentication.getName();
+
 		List<PaymentVO> list;
 		list = tmemberService.theaterPayment(tId);
 		model.addAttribute("theaterPayment", list);
@@ -173,13 +176,6 @@ public class TmemberController {
 			throws Exception {
 		log.info("signUp 호출");
 
-		MultipartFile tBusinessRegistrationImage = tmember.getTBusinessRegistrationImage();
-
-		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegistrationImage.getOriginalFilename(),
-				tBusinessRegistrationImage.getBytes());
-
-		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
-
 		// 극단 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {
 			List<ObjectError> list = result.getAllErrors();
@@ -188,6 +184,13 @@ public class TmemberController {
 			}
 			return "tMemberJoin.tmemberJoinForm";
 		}
+
+		MultipartFile tBusinessRegistrationImage = tmember.getTBusinessRegistrationImage();
+
+		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegistrationImage.getOriginalFilename(),
+				tBusinessRegistrationImage.getBytes());
+
+		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
 
 		// 비밀번호 암호화
 		String inputPassword = tmember.getTPassword();

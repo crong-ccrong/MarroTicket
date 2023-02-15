@@ -31,7 +31,7 @@
 		t_number
 		)
 
-		select
+		values(
 		play_seq.nextval,
 		#{pname
 		},
@@ -55,11 +55,14 @@
 		#{pfirstStartTime},
 		#{psecondStartTime },
 		#{pagree} ,
-		t_number
-		from tmember
-		where t_id = #{tId}
-
+		#{tnumber})
 
 	</insert>
+	<select id="find" resultType="Integer">
+		SELECT t_number
+		FROM tmember
+		WHERE
+		t_Id = #{tId}
+	</select>
 
 </mapper>

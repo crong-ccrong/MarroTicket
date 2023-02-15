@@ -17,4 +17,11 @@ public class RegisteServiceImpl implements RegisteService {
 	public void registePlay(PlayVO playVO) throws Exception {
 		mapper.registe(playVO);
 	}
+
+
+	@Override
+	public Integer tnumberFind(String tId) throws Exception {
+		return mapper.find(tId);
+		
+	}
 }

@@ -237,8 +237,6 @@
 			<form:input path="pregistrationApproval" value="0" hidden="true" />
 			<form:input path="pmodifyApproval" hidden="true" />
 			<form:input path="pagree" id="pagree" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
-			<form:input path="tId" hidden="true" value="${principal.tId }" />
 		</tr>
 	</table>
 </form:form>
@@ -347,22 +345,30 @@
 															.is(":checked") == true) {
 												$("#pagree").val(1);
 
-												if (!($("#pposter").val() == "" && $(
-														"#pposter").val() == null)) {
+												if (!$("#pposter").val() == "") {
+													
 													$("#pfirstStartTime").val(
 																	$("#pfirstStartTimeOne").val()
 																			+ ":"
 																			+ $("#pfirstStartTimeTwo").val());
-													if ($("#psecondStartTimeOne").val() == "" || $("#psecondStartTimeOne").val() == null ) {
-														$("#psecondStartTime").val("없음");
-													} else {
-														$("#psecondStartTime").val(
-																		$("#psecondStartTimeOne").val()
-																				+ ":"
-																				+ $("#psecondStartTimeTwo").val());
-													}
+													if ($("#psecondStartTimeTwo").val() == "" || $("#psecondStartTimeTwo").val() == null ) {
+													
+														alert("2회차 시작 시간을 선택해주세요");
+														 document.getElementById("psecondStartTimeTwo").focus();
 
-													formObj.submit();
+													} else{
+														if ($("#psecondStartTimeOne").val() == "" || $("#psecondStartTimeOne").val() == null ) {
+															$("#psecondStartTime").val("없음");
+															formObj.submit();
+														} else {
+															$("#psecondStartTime").val(
+																			$("#psecondStartTimeOne").val()
+																					+ ":"
+																					+ $("#psecondStartTimeTwo").val());
+															formObj.submit();
+														}
+														
+													}
 												}
 
 											} else {
@@ -398,8 +404,8 @@
 		var hour = Number($("#pfirstStartTimeOne").val());
 		var minute = Number($("#pfirstStartTimeTwo").val());
 		var interval = Number($("#prunningTime").val());
-		if (interval > 999) {
-			alert("연극 소요시간은 999분을 넘을 수 없습니다.");
+		if (interval > 999 || interval == ""|| interval < 0) {
+			alert("정확한 연극 소요시간을 입력해주세요.");
 			 document.getElementById("prunningTime").focus();
 			 $("#pfirstStartTimeOne option:eq(0)").prop("selected", true);	
 			 $("#pfirstStartTimeTwo option:eq(0)").prop("selected", true);	
@@ -507,6 +513,7 @@
 				$('#psecondStartTimeOne [value="12"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="13"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="14"]').prop("disabled", true);
+				$('#psecondStartTimeOne [value="15"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="16"]').prop("disabled", true);
 				$('#psecondStartTimeOne [value="17"]').prop("disabled", true);
 				if(secondminute > 50){
