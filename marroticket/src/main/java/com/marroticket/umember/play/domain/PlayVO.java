@@ -85,6 +85,8 @@ public class PlayVO {
 	private String pFirstStartTime;// 1회차 상연 시작 시각
 
 	private String pSecondStartTime;// 2회차 상연 시작 시각
+	
+	private String tId;
 
 	//
 	public int getTNumber() {
@@ -197,6 +199,22 @@ public class PlayVO {
 	
 	public void setpTicketOpenDate(Date pTicketOpenDate) {
 		this.pTicketOpenDate = pTicketOpenDate;
+	}
+
+	public String getpSecondStartTime() {
+		return pSecondStartTime;
+	}
+	
+	public String getPSecondStartTime() {
+		return pSecondStartTime;
+	}
+
+	public void setpSecondStartTime(String pSecondStartTime) {
+		this.pSecondStartTime = pSecondStartTime;
+	}
+	
+	public void setPSecondStartTime(String pSecondStartTime) {
+		this.pSecondStartTime = pSecondStartTime;
 	}
 
 }

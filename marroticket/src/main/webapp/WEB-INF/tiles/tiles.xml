@@ -131,6 +131,12 @@
 		<put-attribute name="content" value="/WEB-INF/views/tmember/member/info/{1}.jsp" />
 	</definition>
 	
+	<!-- 연극 수정 페이지 -->
+	<definition name="modify.*"  extends="tmember-template">
+		<put-attribute name="title" value="연극 수정" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/modify/{1}.jsp" />
+	</definition>
+	
 	<!-- 고객센터 페이지 -->
 	<definition name="notice.*" extends="tmember-template">
 		<put-attribute name="title" value="마로티켓 극단 notice" />

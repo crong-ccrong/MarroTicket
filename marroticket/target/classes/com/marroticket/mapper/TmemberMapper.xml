@@ -145,7 +145,7 @@
 	</select>
 	
 	<!-- 마이페이지 회원수정 -->
-	<update id="updatetmemberInfo" >
+	<update id="updateInfo" >
 		update TMEMBER 
 		set t_password=#{tPassword},
 			t_name=#{tName},

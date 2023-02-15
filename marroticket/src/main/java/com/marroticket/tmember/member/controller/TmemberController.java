@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.security.Principal;
 import java.security.SecureRandom;
@@ -43,6 +44,7 @@ import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.modify.service.ModifyService;
 import com.marroticket.tmember.registe.service.RegisteService;
+import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -64,27 +66,27 @@ public class TmemberController {
 
 	@Autowired
 	TmemberService tmemberService;
-	
+
 	@Autowired
 	ModifyService modifyService;
-	
+
 	@Autowired
 	EmailService emailService;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	// 극단 홈
-	//@GetMapping("")
+	// @GetMapping("")
 	@RequestMapping("")
-	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
+	// @PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
 		return "redirect:/notice/noticeList";
-		//return "/tmemberhome";
+		// return "/tmemberhome";
 	}
 
-	// 연극 등록 이동	
+	// 연극 등록 이동
 	@GetMapping("/registePlay")
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
@@ -124,63 +126,114 @@ public class TmemberController {
 
 	// 극단 마이페이지 시작
 	// 등록한 연극
-	
+
+	/*
+	 * // 연극 등록 승인 상태 0:미승인 1:승인 2:반려
+	 * 
+	 * if ("0".equals(pvo.getpRegistrationApproval())) {
+	 * pvo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다"); } else if
+	 * ("1".equals(pvo.getpRegistrationApproval())) {
+	 * pvo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다"); } else {
+	 * pvo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요"); }
+	 * 
+	 * 
+	 * // 연극 변경 승인 상태 0:변경가능 1:변경불가 //vo.getTBusinessRegistration().equals("1") if
+	 * ("0".equals(pvo.getpModifyApproval())) {
+	 * pvo.setpModifyApproval("연극 정상 등록(변경 완료 / 변경 가능) 상태"); } else {
+	 * pvo.setpModifyApproval("변경 내용 관리자 확인 중에 있습니다"); }
+	 */
+
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo(Principal principal, Model model, PlayVO pvo) throws Exception {
 		System.out.println("tmemberController 호출");
-		
+
+		// tmember tId로 play tId 정보 가져오기
+		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		pvo.settNumber(tvo.getTNumber());
+
+		int tNumber = pvo.gettNumber();
+		System.out.println("극단 회원 번호" + tNumber);
+
+		System.out.println("극단 회원 등록한 연극 정보" + pvo);
+
+		// 등록한 연극 배열 목록 가져오기
+		List<PlayVO> playlist = new ArrayList<>();
+		playlist = modifyService.playlist(tNumber);
+
+		System.out.println("극단 회원 등록한 연극 List" + playlist);
+
+		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
+
+		model.addAttribute("playlist", playlist);
+		return "info.tmemberPlayRegisteInfo";
+	}
+
+	// 등록한 연극 상세 페이지
+	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
+	public String read(int pNumber, Model model, Principal principal, PlayVO pvo) throws Exception {
+
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		pvo.settNumber(tvo.getTNumber());
 		
-		int tNumber = pvo.gettNumber();
-		System.out.println("극단 회원 번호" + tNumber);
-		
-		System.out.println("극단 회원 등록한 연극 정보" + pvo);
-		
-		// 등록한 연극 배열 목록 가져오기
-		List<PlayVO> playlist = new ArrayList<>();
-		playlist = modifyService.playlist(tNumber);
-		
-		System.out.println("극단 회원 등록한 연극 List" + playlist);
-		
-		model.addAttribute("playlist", playlist);
-		return "info.tmemberPlayRegisteInfo";
-	}
-	
-	// 등록한 연극 상세 페이지
-	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
-	public String read(int pNumber, Model model) throws Exception {
-		String url = "info.tmemberPlayRegisteRead";
-		System.out.println("등록한 연극 상세");
-				
+		System.out.println(pNumber);
+
 		model.addAttribute(modifyService.read(pNumber));
-		return url;
+		System.out.println("등록한 연극 상세");
+		System.out.println("등록된 연극 정보 : " + pvo);
 
-	}
-	
-	/*
-	// 등록한 연극 수정
-	@RequestMapping(value = "/modifyPlay", method = RequestMethod.GET)
-	public void modifyForm(int pNumber, Model model) throws Exception {
+		log.info(pvo.toString());
 		
-		// 조회한 연극 상세 정보를 뷰에 전달한다.
-		model.addAttribute(modifyService.playlist(playVO));
-		System.out.println("등록한 연극 수정");
-	}
-	
-	// 등록한 연극 수정 처리
-		@RequestMapping(value = "/modifyPlay", method = RequestMethod.POST)
-		public String modify(PlayVO playVO, RedirectAttributes rttr) throws Exception {
-			modifyService.modify(playVO);
+		return "info.tmemberPlayRegisteRead";
 
+	}
+
+	// 연극 수정 페이지
+	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
+	public String modifyPlay(Principal principal, Model model, PlayVO pvo) throws Exception {
+		
+		/*
+		// tmember tId로 play tId 정보 가져오기
+		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		pvo.settNumber(tvo.getTNumber());
+				
+		System.out.println(pNumber);
+
+		model.addAttribute(modifyService.read(pNumber));
+		*/
+		
+		// 데이터 값이 null로 들어감
+		 TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		 pvo.settNumber(tvo.getTNumber());
+		 
+		 int pNumber = pvo.getpNumber(); System.out.println(pNumber);
+		 
+		
+		return "modify.tmemberPlayModify";
+	}
+
+		// 공지사항 수정 처리
+		
+		@RequestMapping(value = "/noticeModify", method = RequestMethod.POST)
+		public String modify(PlayVO pvo, RedirectAttributes rttr) throws Exception {
+			modifyService.modify(pvo);
+			
 			// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
 			rttr.addFlashAttribute("msg", "SUCCESS");
-			System.out.println("공지사항 수정처리");
+			System.out.println("등록한 연극 수정처리");
 
-			return "redirect:/notice/noticeList";
+			return "redirect:/info/tmemberPlayRegisteInfo";
 		}
-*/
+	
+	
+
+	// 연극 임시등록 완료페이지
+	@GetMapping("/modifyTemporaryComplete")
+	public String modifyTemporaryComplete(PlayVO playVO, Model model) throws Exception {
+
+		return "modify.modifyTemporaryComplete";
+	}
+
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
 	public String theaterPayment() throws Exception {
@@ -189,45 +242,94 @@ public class TmemberController {
 
 	// 극단 내 정보
 	@GetMapping("/tmembermypage")
-	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
+	// @PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String tmemberMemberInfo(Model model) throws Exception {
-		
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("극단 마이페이지 정보 조회 호출");
 		String tId = authentication.getName();
-		
+
 		// 서비스에서 아이디로 정보 불러오기
 		TmemberVO vo = tmemberService.getTmemberByTId(tId);
-		
+
 		System.out.println(vo.getTmemberAuthList().get(0).getTNumber());
-		
+
 		// 사업자 등록 구분 1:개인 2:기업
-		//vo.getTBusinessRegistration().equals("1")
+		// vo.getTBusinessRegistration().equals("1")
 		if ("1".equals(vo.getTBusinessRegistration())) {
 			vo.setTBusinessRegistration("개인");
 		} else {
 			vo.setTBusinessRegistration("기업");
 		}
-		
+
 		model.addAttribute("vo", vo);
 		return "info.tmemberMemberInfo";
 	}
-	
-	//회원정보 수정  페이지
-		@RequestMapping(value="/tmemberModify" , method = RequestMethod.GET)
-		public String tmemberMemberModify(Model model) throws Exception {
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	        String tId = authentication.getName();
-	        
-	        //서비스에서 아이디로 정보 불러오기
-	        TmemberVO vo = tmemberService.getTmemberByTId(tId);
-	    	
-	        model.addAttribute("vo", vo);
-			return "info.tmemberMemberModify";
+
+	// 회원정보 수정 페이지
+	@RequestMapping(value = "/tmemberModify", method = RequestMethod.GET)
+	public String tmemberMemberModify(Model model) throws Exception {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String tId = authentication.getName();
+
+		// 서비스에서 아이디로 정보 불러오기
+		TmemberVO vo = tmemberService.getTmemberByTId(tId);
+
+		model.addAttribute("vo", vo);
+		return "info.tmemberMemberModify";
+	}
+
+	@RequestMapping(value = "/tmemberModify", method = RequestMethod.POST)
+	public String updateMyPage(@ModelAttribute("vo") TmemberVO vo, HttpServletRequest request,
+			@RequestParam("tPassword") String tPassword, @RequestParam("changePw") String changePw,
+			@RequestParam("confirmPw") String confirmPw, RedirectAttributes rttr) throws Exception {
+		System.out.println("수정 호출");
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String tId = authentication.getName();
+
+		// 비밀번호 암호화
+		String inputPassword = tPassword;
+		vo.setTPassword(passwordEncoder.encode(inputPassword));
+
+		TmemberVO originalVO = tmemberService.getTmemberByTId(tId);
+
+		// 1. 로그인한 비밀번호 확인
+		if (!passwordEncoder.matches(inputPassword, originalVO.getTPassword())) {
+			System.out.println("에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+			rttr.addFlashAttribute("msg", "에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+			return "redirect:/theater/tmemberModify";
 		}
-	
+
+		// 2. 변경할 비밀번호와 로그인한 비밀번호가 일치하면 오류
+		if (passwordEncoder.matches(changePw, originalVO.getTPassword())) {
+			System.out.println("에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+			rttr.addFlashAttribute("emsg", "에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+			return "redirect:/theater/tmemberModify";
+		}
+
+		// 변경할 비밀번호가 빈칸도 아니고 기존 비밀번호랑도 다르면
+		if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
+			// 변경한 비밀번호도 암호화
+			vo.setTPassword(passwordEncoder.encode(changePw));
+
+			// 비밀번호 변경시 로그아웃
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				session.invalidate();
+			}
+		}
+		tmemberService.modify(vo);
+
+		// 업데이트된 사용자 정보 가져오기
+		TmemberVO updatedVO = tmemberService.getTmemberByTId(tId);
+
+		// 비밀번호 변경 없이 다른 정보들을 수정할 경우 마이페이지상태로 돌아감
+		return "redirect:/theater/tmembermypage";
+	}
+
 	// 극단 마이페이지 끝
-	
+
 	// 극단 이용약관 페이지
 	@GetMapping("/tmemberAgreement")
 	public String tmemberAgreement() {

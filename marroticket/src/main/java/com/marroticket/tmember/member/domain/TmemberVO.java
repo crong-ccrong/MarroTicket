@@ -77,8 +77,16 @@ public class TmemberVO {
 	public String gettId() {
 		return tId;
 	}
+	
+	public String getTId() {
+		return tId;
+	}
 
 	public void settId(String tId) {
+		this.tId = tId;
+	}
+	
+	public void setTId(String tId) {
 		this.tId = tId;
 	}
 

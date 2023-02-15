@@ -6,7 +6,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<form:form modelAttribute="vo" action="/tmember/modify/tmemberPlayModify">
+<form:form modelAttribute="vo" action="/theater/modify/tmemberPlayModify"> 
+
 <h2>
 	등록한 연극 상세보기
 </h2>
@@ -22,86 +23,103 @@
 
 		<tr>
 			<td>연극명</td>
-			<td><form:input path="pName" readonly="true"/></td>
+			<td><form:input path="pName"/></td>
 			<td><font color="red"><form:errors path="pName" /></font></td>
 			
 		</tr>
 		
 		<tr>
 			<td>연극 시작일</td>
-			<td><form:input path='pStartDate' type='date' readonly="true"/><font
+			<td><form:input path='pStartDate' type='date' /><font
 				color="red"> <form:errors path="pStartDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>연극 종료일</td>
-			<td><form:input path='pCloseDate' type='date' readonly="true"/><font
+			<td><form:input path='pCloseDate' type='date' /><font
 				color="red"> <form:errors path="pCloseDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>연극 소요 시간(분단위)</td>
-			<td><form:input path="pRunningTime" readonly="true"/></td>
+			<td><form:input path="pRunningTime" /></td>
 			<td><font color="red"><form:errors path="pRunningTime" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>극장 이름</td>
-			<td><form:input path="pTheaterName" readonly="true"/></td>
+			<td><form:input path="pTheaterName" /></td>
 			<td><font color="red"><form:errors path="pTheaterName" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>극장 주소</td>
-			<td><form:input path="pTheaterAddress" id="ptheaterAddress" readonly="true"/>
+			<td><form:input path="pTheaterAddress" id="ptheaterAddress" />
 				<font color="red"><form:errors path="pTheaterAddress" /> </font></td>
 		</tr>
-					
+		<tr>
+			<td></td>
+			<td><input type="button" onclick="sample6_execDaumPostcode()"
+				value="주소 찾기" /></td>
+		</tr>
+			
 		<tr>
 			<td>기획사 정보</td>
-			<td><form:input path="pAgency" readonly="true"/></td>
+			<td><form:input path="pAgency" /></td>
 			<td><font color="red"><form:errors path="pAgency" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>관람 등급</td>
-			<td><form:input path="pRatings" readonly="true" />
-					<font color="red"><form:errors path="pRatings" /></font></td>
+			<td><form:select path="pRatings">
+					<option value="1">전체 이용가</option>
+					<option value="2">12세 이상</option>
+					<option value="3">15세 이상</option>
+					<option value="4">18세 이상</option>
+				</form:select><font color="red"><form:errors path="pRatings" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>캐스팅</td>
-			<td><form:input path="pCasting" readonly="true"/></td>
+			<td><form:input path="pCasting" /></td>
 			<td><font color="red"><form:errors path="pCasting" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>예매 오픈 희망일</td>
-			<td><form:input path="pTicketOpenDate" type='date' readonly="true"/></td>
+			<td><form:input path="pTicketOpenDate" type='date' /></td>
 		 	<td><font color="red"><form:errors path="pTicketOpenDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>줄거리</td>
-			<td><form:input path="pPlot" readonly="true"/></td>
+			<td><form:input path="pPlot" /></td>
 			<td><font color="red"><form:errors path="pPlot" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>좌석 개수</td>
-			<td><form:input path="pSeatNumber" readonly="true"/></td>
+			<td><form:input path="pSeatNumber" /></td>
 			<td><font color="red"><form:errors path="pSeatNumber" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>티켓 가격(원)</td>
-			<td><form:input path="pTicketPrice" readonly="true"/></td>
+			<td><form:input path="pTicketPrice" /></td>
 			<td><font color="red"><form:errors path="pTicketPrice" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>장르 정보</td>
-			<td><form:input path="pGenre" readonly="true" /><font color="red"><form:errors path="pGenre" /></font></td>
+			<td><form:select path="pGenre">
+					<option value="1">로맨스극</option>
+					<option value="2">코미디극</option>
+					<option value="3">드라마극</option>
+					<option value="4">공포극</option>
+					<option value="5">추리스릴러극</option>
+					<option value="6">판타지극</option>
+					<option value="7">시대/역사극</option>
+				</form:select><font color="red"><form:errors path="pGenre" /></font></td>
 		</tr>
 		
 		<!-- 연극 포스터 미리보기 및 변경 구현하기
@@ -141,7 +159,7 @@
 
 <!-- 수정 등록 구현 -->
 <div>
-	<input type="submit" value="수정하기" onclick="location.href='/theater/playModify'">
+	<input type="submit" value="수정하기" id="mBtn">
 	<input type="button" value="목록으로 돌아가기" onclick="location.href='/theater/playRegisteInfo'">
 	</button>
 	
@@ -297,27 +315,28 @@
 
 											} else {
 												if ($(
-												'input:checkbox[name="agree1"]')
-												.is(":checked") == false) {
-											$("#agree1Error").show();
-										}
-										if ($(
-												'input:checkbox[name="agree2"]')
-												.is(":checked") == false) {
-											$("#agree2Error").show();
-										}
-										if ($(
-												'input:checkbox[name="agree3"]')
-												.is(":checked") == false) {
-											$("#agree3Error").show();
-										}
-										
-										if ($("#pPoster").val() == "") {
-											$("#pPosterError").show();
+														'input:checkbox[name="agree1"]')
+														.is(":checked") == false) {
+													$("#agree1Error").show();
+												}
+												if ($(
+														'input:checkbox[name="agree2"]')
+														.is(":checked") == false) {
+													$("#agree2Error").show();
+												}
+												if ($(
+														'input:checkbox[name="agree3"]')
+														.is(":checked") == false) {
+													$("#agree3Error").show();
+												}
+												
+												if ($("#pPoster").val() == "") {
+													$("#pPosterError").show();
 
-										}
+												}
 
-									}
+											}
+
 										});
 
 					});

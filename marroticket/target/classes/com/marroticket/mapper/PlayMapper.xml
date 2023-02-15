@@ -43,7 +43,7 @@
 		p_closeDate, 
 		p_runningtime 
 		from Play 
-		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '0'
 		order by p_startDate ]]>
 	</select>
 
@@ -59,7 +59,7 @@
 		p_closeDate,
 		p_runningtime
 		FROM Play
-		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '1'
+		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '0'
 		order
 		by
 		p_startDate
@@ -78,7 +78,7 @@
 		p_closeDate,
 		p_runningtime
 		FROM Play
-		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '0'
 		order
 		by
 		p_startDate
@@ -99,12 +99,7 @@
 	<!-- 극단 등록한 연극 목록 -->
 	<select id="playlist" resultMap="play">
 		<![CDATA[
-			SELECT 	p_number,
-					p_name,
-					p_registrationApproval,
-					p_ticketOpenDate,
-					p_startDate,
-					p_modifyApproval
+			SELECT 	*
 			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
 			WHERE p.t_number = #{tNumber}
 			ORDER BY p_number DESC
@@ -121,7 +116,7 @@
 	</select>
 	
 	<!-- 극단 등록한 연극 수정 -->
-	<update id="update">
+	<update id="modify">
 		UPDATE play
 		SET p_name=#{pName},
 			P_STARTDATE=#{pStartDate},
@@ -137,12 +132,8 @@
 			P_SEATNUMBER=#{pSeatNumber}
 			P_TICKETPRICE=#{pTicketPrice}
 			P_GENRE=#{pGenre}
-			P_POSTERURL=#{pPosterUrl}
-			P_AGREE=#{pAgree}
 			p_MODIFYAPPROVAL=#{pModifyApproval}
 			p_REGISTRATIONAPPROVAL=#{pRegistrationApproval}
-			P_FirstStartTime=#{pFirstStartTime}
-			P_FirstStartTime=#{pSecondStartTime}
 		WHERE p_number=#{pNumber}
 	</update>
 

@@ -25,7 +25,7 @@ public interface PlayMapper {
 	public PlayVO read(int pNumber) throws Exception;
 	
 	// 등록한 연극 수정
-	public void update(PlayVO playVO) throws Exception;
+	public void modify(PlayVO playVO) throws Exception;
 
 
 	

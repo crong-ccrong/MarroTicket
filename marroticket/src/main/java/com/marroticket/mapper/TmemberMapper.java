@@ -31,7 +31,7 @@ public interface TmemberMapper {
 		//정보조회
 		public TmemberVO getTmemberByTId(String tId) throws Exception;
 		//정보수정
-		public void updateTmemberInfo(TmemberVO vo) throws Exception;
+		public void updateInfo(TmemberVO vo) throws Exception;
 
 	// 기타 문의 : 극단 이메일 목록
 	public List<TmemberVO> list() throws Exception;

@@ -83,6 +83,6 @@ public class TmemberServiceImpl implements TmemberService {
 		 //정보수정
 		@Override
 		public void modify(TmemberVO vo) throws Exception {
-			tmembermapper.updateTmemberInfo(vo);
+			tmembermapper.updateInfo(vo);
 		}
 }
