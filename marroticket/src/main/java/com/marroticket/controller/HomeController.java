@@ -106,7 +106,6 @@ public class HomeController {
 	}
 	
 
-
 	// 일반회원 문의 사항
 	@GetMapping("/otherInquiries")
 	public String otherInquiries() {

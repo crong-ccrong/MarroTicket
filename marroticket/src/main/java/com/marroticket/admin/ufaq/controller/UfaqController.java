@@ -2,6 +2,7 @@ package com.marroticket.admin.ufaq.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import com.marroticket.admin.ufaq.service.UfaqService;
 import com.marroticket.common.domain.PageRequest;
 import com.marroticket.common.domain.Pagination;
 
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @Controller
 @RequestMapping("/ufaq")
 @MapperScan(basePackages = "com.marroticket.mapper")
@@ -94,7 +96,7 @@ public class UfaqController {
 		rttr.addAttribute("page", pageRequest.getPage());
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+
 		return "redirect:/ufaq/ufaqList";
 
 	}

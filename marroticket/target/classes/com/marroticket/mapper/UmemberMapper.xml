@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.marroticket.mapper.UmemberMapper">	
+<mapper namespace="com.marroticket.mapper.UmemberMapper">
 	<!-- UmemberVO resultmap 정의 -->
-	<resultMap type="com.marroticket.umember.member.domain.UmemberVO" id="umemberMap">
+	<resultMap
+		type="com.marroticket.umember.member.domain.UmemberVO" id="umemberMap">
 		<id property="uNumber" column="u_number" />
 		<result property="uId" column="u_id" />
 		<result property="uPassword" column="u_password" />
@@ -19,11 +20,12 @@
 		<collection property="umemberAuthList" resultMap="authMap" />
 	</resultMap>
 	<!-- UmemberAuth resultmap 정의 -->
-	<resultMap type="com.marroticket.umember.member.domain.UmemberAuth" id="authMap">
+	<resultMap
+		type="com.marroticket.umember.member.domain.UmemberAuth" id="authMap">
 		<result property="uNumber" column="u_number" />
 		<result property="umemberAuth" column="umember_auth" />
 	</resultMap>
-	
+
 	<!--일반회원 아이디 찾기 -->
 
 	<select id="findId" resultType="String">
@@ -32,7 +34,7 @@
 		WHERE
 		u_name = #{uName} and u_phoneNumber = #{uPhoneNumber}
 	</select>
-	
+
 	<!--일반회원 비밀번호 업데이트 -->
 	<update id="updatePassword"
 		parameterType="com.marroticket.umember.member.domain.UmemberVO">
@@ -40,7 +42,7 @@
 		WHERE u_id =
 		#{uId} and u_email = #{uEmail}
 	</update>
-	
+
 	<!-- 아이디 읽어오기(로그인) -->
 	<select id="read" resultMap="umemberMap">
 		SELECT mem.u_number,
@@ -57,18 +59,20 @@
 		u_genre,
 		u_agree,
 		umember_auth
-		FROM umember mem LEFT OUTER JOIN umember_auth auth ON
-		mem.u_number = auth.u_number
+		FROM
+		umember mem LEFT OUTER JOIN umember_auth auth ON
+		mem.u_number =
+		auth.u_number
 		WHERE mem.u_id = #{uId}
 	</select>
-	
+
 	<!-- 아이디 중복 체크 -->
 	<select id="uIdCheck" resultType="int">
 		SELECT count(*)
 		FROM umember
 		WHERE u_id = #{uId}
 	</select>
-	
+
 	<!-- 회원가입 -->
 	<insert id="create"
 		parameterType="com.marroticket.umember.member.domain.UmemberVO">
@@ -95,7 +99,7 @@
 		#{uEmail},
 		#{uGenre},
 		#{uAgree}
-		
+
 		)
 	</insert>
 
@@ -103,25 +107,25 @@
 	<insert id="createAuth">
 		INSERT INTO umember_auth
 		(
-			u_number,
-			umember_auth
+		u_number,
+		umember_auth
 		)
 		VALUES
 		(
-			umember_seq.CURRVAL,
-			#{umemberAuth}
+		umember_seq.CURRVAL,
+		#{umemberAuth}
 		)
-	</insert>	
-	
+	</insert>
+
 	<!-- 마이페이지 회원정보 -->
-	<select id="getUmemberByUId"  resultMap="umemberMap">
-	SELECT *
-	FROM umember 
-	WHERE u_id = #{uId}
+	<select id="getUmemberByUId" resultMap="umemberMap">
+		SELECT *
+		FROM umember
+		WHERE u_id = #{uId}
 	</select>
 	<!-- 마이페이지 회원수정 -->
-	<update id="updateInfo" >
-		update UMEMBER 
+	<update id="updateInfo">
+		update UMEMBER
 		set u_password=#{uPassword},
 		u_phoneNumber=#{uPhoneNumber},
 		u_email=#{uEmail},
@@ -130,12 +134,48 @@
 	</update>
 	<!-- 회원 탈퇴 -->
 	<delete id="deleteAuth" parameterType="int">
-	  DELETE FROM UMEMBER_AUTH 
-	  WHERE u_number  = #{uNumber}
+		DELETE FROM UMEMBER_AUTH
+		WHERE u_number = #{uNumber}
 	</delete>
 	<delete id="deleteMember">
-	DELETE FROM UMEMBER 
-	WHERE u_id = #{uId}
+		DELETE FROM UMEMBER
+		WHERE u_id = #{uId}
 	</delete>
-	
+
+
+
+	<!-- 관리자 추가 -->
+	<!-- 목록 조회 -->
+
+	<select id="list" resultMap="umemberMap">
+<![CDATA[
+	SELECT u_number,
+			u_id,
+			u_name,
+			u_joinDate
+	FROM (select u_number,
+				u_id,
+				u_name,
+				u_joinDate,
+				rownum as rnum
+			from (select u_number,
+						u_id,
+						u_name,
+						u_joinDate
+					from umember
+					order by u_joinDate desc, u_number desc
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
+]]>
+	</select>
+
+	<!-- 전체 인원수를 조회한다. -->
+	<select id="count" resultType="int">
+<![CDATA[
+SELECT count(u_number)
+ FROM umember
+WHERE u_number > 0
+]]>
+	</select>
+
 </mapper>

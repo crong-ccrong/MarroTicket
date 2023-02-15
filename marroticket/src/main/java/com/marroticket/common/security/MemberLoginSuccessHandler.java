@@ -71,6 +71,10 @@ public class MemberLoginSuccessHandler implements AuthenticationSuccessHandler {
 			if (roleNames.contains("ROLE_TMEMBER")) {
 				targetUrl = "/theater";
 			}
+			//극단 회원 가입 관리자의 승인전까지는 권한이 없어서 들어가지 못함
+			if(roleNames.contains("ROLE_GUEST")) {
+				targetUrl = "/";
+			}
 			redirectStrategy.sendRedirect(request, response, targetUrl);
 			return;
 		}

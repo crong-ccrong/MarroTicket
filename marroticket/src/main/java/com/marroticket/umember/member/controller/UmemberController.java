@@ -50,7 +50,6 @@ public class UmemberController {
 
 // 아이디 찾기
 	@PostMapping("/findId")
-
 	public ResponseEntity<String> findId(@RequestBody UmemberVO umember) throws Exception {
 		System.out.println("아이디 찾기 메서드 호출");
 

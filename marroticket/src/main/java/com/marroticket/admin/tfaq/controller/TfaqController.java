@@ -19,6 +19,8 @@ import com.marroticket.admin.tfaq.service.TfaqService;
 import com.marroticket.common.domain.PageRequest;
 import com.marroticket.common.domain.Pagination;
 
+@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 @Controller
 @RequestMapping("/tfaq")
 @MapperScan(basePackages = "com.marroticket.mapper")
@@ -45,42 +47,20 @@ public class TfaqController {
 
 	// 극단 FAQ 목록 페이지
 
-	/*
-	 * @RequestMapping(value = "/tfaqList", method = RequestMethod.GET) public
-	 * String list(Model model) throws Exception {
-	 * 
-	 * List<TfaqVO> list = service.list(); System.out.println(list.toString());
-	 * 
-	 * model.addAttribute("tfaqList", service.list());
-	 * System.out.println("극단 FAQ 목록"); return "admin.tfaq.tfaqList"; }
-	 */
-
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
-
-	//@PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/tfaqList", method = RequestMethod.GET)
-	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
+	public String list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
 
-		String url = "tfaq.tfaqList";
-		System.out.println("극단회원 FAQ 목록");
-		
-		if ("admin".equals(accept)) {
-			// model.addAttribute("accept","tmember");
-			//url = "tfaq.tfaqList";
-			url = "admin.tfaq.tfaqList";
-		}
-		
+		// 뷰에 페이징 처리를 한 게시글 목록을 전달한다.
+		model.addAttribute("tfaqList", service.list(pageRequest));
+
 		// 페이징 네비게이션 정보를 뷰에 전달한다.
 		Pagination pagination = new Pagination();
 		pagination.setPageRequest(pageRequest);
 		pagination.setTotalCount(service.count());
 		model.addAttribute("pagination", pagination);
-		//}
-	
-		// 뷰에 페이징 처리를 한 게시글 목록을 전달한다.
-		model.addAttribute("tfaqList", service.list(pageRequest));
-		
-		return url;
+		System.out.println("극단회원 FAQ 목록");
+		return "admin.tfaq.tfaqList";
 	}
 
 	// 게시글 상세 페이지, 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
@@ -112,7 +92,6 @@ public class TfaqController {
 		return "redirect:/tfaq/tfaqList";
 	}
 
-	/*
 	// 게시글 삭제 처리, 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(int tfaqNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
@@ -123,6 +102,7 @@ public class TfaqController {
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/tfaq/tfaqList";
+
 	}
-	*/
+
 }

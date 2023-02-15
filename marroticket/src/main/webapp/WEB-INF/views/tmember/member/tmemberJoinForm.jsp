@@ -31,9 +31,9 @@
 
 		<tr>
 			<th>사업자/법인 등록번호</th>
-			<td><form:input path="tBusinessRegistractionNumber"
+			<td><form:input path="tBusinessRegistrationNumber"
 					placeholder="(필수)-제외 숫자만 입력" /><font color="red"> <form:errors
-						path="tBusinessRegistractionNumber" /></font></td>
+						path="tBusinessRegistrationNumber" /></font></td>
 		</tr>
 
 		<tr>
@@ -113,13 +113,8 @@
 
 		</tr>
 		<tr>
-<<<<<<< HEAD
 			<td colspan="2" align="center"><input type="submit" value="회원가입"
 				id="join_submit" /> <input type="button" value="이전" id="back" /></td>
-=======
-			<td colspan="2" align="center"><input type="submit" value="회원가입" id="joinBtn" />
-				<input type="button" value="이전" id="back" /></td>
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		</tr>
 	</table>
 </form:form>
@@ -159,11 +154,7 @@ $(document).ready(function() {
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");
 		$(document).ajaxSend(function(e, xhr, options) {
-<<<<<<< HEAD
 			xhr.setRequestHeader(header, token);
-=======
-		    xhr.setRequestHeader(header, token);
->>>>>>> 8757f9f999b7f83790376406ab7856465c7eb4e2
 		});
 		$.ajax({
 			url : "/theater/tIdCheck",

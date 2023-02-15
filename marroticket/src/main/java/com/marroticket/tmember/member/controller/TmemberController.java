@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.Date;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -35,14 +34,12 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.registe.service.RegisteService;
-import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
-//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
 @RequestMapping("/theater")

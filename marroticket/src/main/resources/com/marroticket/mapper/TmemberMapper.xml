@@ -13,8 +13,8 @@
 		<result property="tOwnerPhoneNumber"
 			column="t_ownerPhoneNumber" />
 		<result property="tOwnerEmail" column="t_ownerEmail" />
-		<result property="tBusinessRegistractionNumber"
-			column="t_businessRegistractionNumber" />
+		<result property="tBusinessRegistrationNumber"
+			column="t_businessRegistrationNumber" />
 		<result property="tEstablishmentDate"
 			column="t_establishmentDate" />
 		<result property="tBank" column="t_bank" />
@@ -129,13 +129,13 @@
 		#{tOwnerPhoneNumber},
 		#{tOwnerEmail},
 		#{tBusinessRegistration},
-		#{tBusinessRegistractionNumber},
+		#{tBusinessRegistrationNumber},
 		#{tEstablishmentDate},
 		#{tBank},
 		#{tBankNumber},
 		#{tBankOwner},
 		#{tBusinessRegistrationImageUrl},
-		#{tAuth},
+		'0', <!-- 권한 -->
 		#{tAgree}
 		)
 	</insert>
@@ -165,5 +165,109 @@ where pay.p_number = play.p_number
         
 		]]>
 	</select>
+
+
+	<!--관리자 -->
+	<!--극단회원 목록 조회 -->
+
+	<select id="list" resultMap="tmemberMap">
+<![CDATA[
+	 		SELECT t_number,
+					t_businessRegistrationNumber,
+					t_ownerName,
+					t_name,
+					t_ownerEmail,
+					t_ownerPhoneNumber,
+					t_BusinessRegistrationImageUrl,
+					t_auth
+	FROM (select t_number,
+					t_businessRegistrationNumber,
+					t_ownerName,
+					t_name,
+					t_ownerEmail,
+					t_ownerPhoneNumber,
+					t_BusinessRegistrationImageUrl,
+					t_auth,
+				rownum as rnum
+			from (SELECT t_number,
+							t_businessRegistrationNumber,
+							t_ownerName,
+							t_name,
+							t_ownerEmail,
+							t_ownerPhoneNumber,
+							t_BusinessRegistrationImageUrl,
+							t_auth
+					from tmember
+					order by t_number desc
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
+]]>
+	</select>
+
+	<!-- 전체 인원수를 조회한다. -->
+	<select id="count" resultType="int">
+<![CDATA[
+SELECT count(t_number)
+ FROM tmember
+WHERE t_number > 0
+]]>
+	</select>
+
+	<!--극단회원 상세 조회 -->
+	<select id="read" resultMap="tmemberMap">
+		SELECT t_number,
+		t_businessRegistrationNumber,
+		t_ownerName,
+		t_name,
+		t_ownerEmail,
+		t_ownerPhoneNumber,
+		t_BusinessRegistrationImageUrl,
+		t_auth
+		FROM tmember
+		WHERE t_number = #{TNumber}
+	</select>
+
+	<!-- 사업자등록증 이미지 표시 -->
+	<select id="BusinessRegistration" resultType="String">
+		SELECT
+		t_BusinessRegistrationImageUrl
+		FROM tmember
+		WHERE t_number = #{TNumber}
+	</select>
+
+
+	<!-- 극단회원 가입 승인 -->
+	<update id="tmemberApprove"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember
+		SET t_Auth = 1
+		WHERE t_number = #{TNumber}
+	</update>
+
+
+	<!-- 극단회원가입 승인후 권한 업그레이드 -->
+	<update id="tmemberAuthUpgrade"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember_auth
+		SET tmember_auth = 'ROLE_TMEMBER'
+		WHERE t_number = #{TNumber}
+	</update>
+
+	<!-- 극단회원 계약 만료 처리 -->
+	<update id="tmemberExpiration"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember
+		SET t_Auth = 2
+		WHERE t_number = #{TNumber}
+	</update>
+
+	<!-- 계약만료에 따른 극단회원 권한 다운 그레이드 -->
+	<update id="tmemberAuthDowngrade"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember_auth
+		SET tmember_auth = 'ROLE_GUEST'
+		WHERE
+		t_number = #{TNumber}
+	</update>
 
 </mapper>

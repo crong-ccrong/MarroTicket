@@ -1,10 +1,13 @@
 package com.marroticket.umember.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marroticket.umember.member.domain.UmemberAuth;
 import com.marroticket.umember.member.domain.UmemberVO;
+import com.marroticket.common.domain.PageRequest;
 import com.marroticket.mapper.UmemberMapper;
 
 @Service
@@ -61,10 +64,20 @@ public class UmemberServiceImpl implements UmemberService {
 	}
 	
 
-	
 
+	//**************************관리자 추가************************//
+		//회원 목록 페이지
+		@Override
+		public List<UmemberVO> list(PageRequest pageRequest) throws Exception {
+			return umembermapper.list(pageRequest);
+		}
 
-	
+		//가입자 전체 인원 수 반환
+		@Override
+		public int count() throws Exception {
+			// TODO Auto-generated method stub
+			return umembermapper.count();
+		}
 
 
 

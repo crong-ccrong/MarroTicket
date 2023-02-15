@@ -1,6 +1,9 @@
 package com.marroticket.umember.member.service;
 
 
+import java.util.List;
+
+import com.marroticket.common.domain.PageRequest;
 import com.marroticket.umember.member.domain.UmemberVO;
 
 public interface UmemberService {
@@ -19,8 +22,15 @@ public interface UmemberService {
 	public UmemberVO getUmemberByUId(String uId) throws Exception;
 	//정보 수정
 	public void modify(UmemberVO vo) throws Exception;
-	//
 	//회원탈퇴
 	public void remove(UmemberVO umember) throws Exception;
+	
+	// ************************* 관리자 추가*********************//
+	// 회원목록 리스트
+	public List<UmemberVO> list(PageRequest pageRequest) throws Exception;
+
+	// 가입자 전체 인원 수 반환(페이징)
+	public int count() throws Exception;
+
 	
 }

@@ -11,9 +11,8 @@
 <h2>
 	<spring:message code="tfaq.header.list" />
 </h2>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<a href="tfaqRegister"><spring:message code="action.new" /></a>
-</sec:authorize>
+
+<a href="tfaqRegister"><spring:message code="action.new" /></a>
 
 <table border="1">
 	<tr>
@@ -29,14 +28,14 @@
 				<td colspan="4"><spring:message code="common.listEmpty" /></td>
 			</tr>
 		</c:when>
-
 		<c:otherwise>
 			<c:forEach items="${tfaqList }" var="tfaqVO">
 				<tr>
 					<td align="center">${tfaqVO.tfaqNo}</td>
 					<!-- 게시글 상세보기할 때 페이징 요청 정보를 매개변수로 전달한다. -->
 					<td align="left"><a
-						href="/tfaq/tfaqRead${pagination.makeQuery(pagination.pageRequest.page)}&tfaqNo=${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
+						href="/tfaq/tfaqRead${pagination.makeQuery(pagination.pageRequest.page)}&tfaqNo=
+${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
 					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${tfaqVO.regDate}" /></td>
 				</tr>
@@ -44,38 +43,22 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+
 <!-- 페이징 네비게이션 -->
 <div>
 	<c:if test="${pagination.prev}">
 		<a href="${pagination.startPage - 1}">&laquo;</a>
 	</c:if>
-
-	<!-- 관리자 네비게이션
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<c:forEach begin="${pagination.startPage }"
-			end="${pagination.endPage }" var="idx">
-
-			<a href="/tfaq/tfaqList${pagination.makeQuery(idx)}">${idx}</a>
-		</c:forEach>
-	</sec:authorize> -->
-
-
-	<!-- 극단 네비게이션
-	<sec:authorize access="hasRole('ROLE_TMEMBER')"></sec:authorize> -->
-
-
+	
 	<c:forEach begin="${pagination.startPage }"
 		end="${pagination.endPage }" var="idx">
-
+		
 		<a href="/tfaq/tfaqList${pagination.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
-
-
+	
 	<c:if test="${pagination.next && pagination.endPage > 0}">
 		<a href="${pagination.endPage +1}">&raquo;</a>
 	</c:if>
-
-
 </div>
 
 <script>
