@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- ajax 통신을 위한 meta tag -->
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 <title><tiles:getAsString name="title" /></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -28,6 +31,8 @@
 	</div>
 	
 	<!-- footer -->
+	<div class="footer">
 	<tiles:insertAttribute name="footer" ignore="true" />
+	</div>
 </body>
 </html>

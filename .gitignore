@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 /.metadata/
-=======
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-/.metadata/
-=======
-=======
->>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
->>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
 ### Java template
 # Compiled class file
 *.class
@@ -40,11 +29,7 @@ replay_pid*
 .metadata
 bin/
 tmp/
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
 *.tmp
 *.bak
 *.swp
@@ -106,18 +91,16 @@ application-aws.properties
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 .DS_Store
+<<<<<<< HEAD
+/.metadata/
 =======
->>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
->>>>>>> main
-=======
->>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
-=======
->>>>>>> 626259cd693923a4167161f08f51a4d5ec12ef51
+<<<<<<< HEAD
+
+/.metadata/
+
 =======
 /.metadata/
->>>>>>> crong
->>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
+>>>>>>> main
+>>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2

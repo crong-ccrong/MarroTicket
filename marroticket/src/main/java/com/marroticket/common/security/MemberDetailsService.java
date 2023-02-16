@@ -38,5 +38,4 @@ public class MemberDetailsService implements UserDetailsService {
 			return umember == null ? null : new UmemberCustom(umember);
 		}
 	}
-
 }

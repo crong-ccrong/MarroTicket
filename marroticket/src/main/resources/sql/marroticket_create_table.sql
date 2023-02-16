@@ -1,12 +1,4 @@
-select * from umember;
-select * from tmember_auth order by t_number;
-
-update umember_auth set umember_auth='ROLE_ADMIN' where u_number=1;
-
-commit;
-
-
---»èÁ¦´Â ´ÙÀ½ ¼ø¼­¿¡ µû¸£¸é µÊ
+--ì‚­ì œëŠ” ë‹¤ìŒ ìˆœì„œì— ë”°ë¥´ë©´ ë¨
 drop table payment purge;
 drop table reservation purge;
 drop table play purge;
@@ -15,12 +7,12 @@ drop table tmember_auth purge;
 drop table umember purge;
 drop table tmember purge;
 
---¼ø¼­¿¡ »ó°ü ¾ø´Â Å×ÀÌºíµé
+--ìˆœì„œì— ìƒê´€ ì—†ëŠ” í…Œì´ë¸”ë“¤
 drop table tfaq purge;
 drop table ufaq purge;
 drop table notice purge;
 
---½ÃÄö½º »èÁ¦
+--ì‹œí€€ìŠ¤ ì‚­ì œ
 drop sequence notice_seq;
 drop sequence tfaq_seq;
 drop sequence ufaq_seq;
@@ -30,363 +22,203 @@ drop sequence reservation_seq;
 drop sequence tmember_seq;
 drop sequence umember_seq;
 
---ÀÏ¹İ È¸¿ø Å×ÀÌºí
+--ì¼ë°˜ íšŒì› í…Œì´ë¸”
 create table UMEMBER(
-u_number number(38)NOT NULL primary KEY ,--ÀÏ¹İ È¸¿ø ¹øÈ£
-u_id VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµğ
-u_password VARCHAR2(100) NOT NULL,--ºñ¹Ğ¹øÈ£
-u_name VARCHAR2(20) NOT NULL ,--ÀÌ¸§
-u_phoneNumber VARCHAR2(11) NOT NULL,-- ÀÏ¹İ »ç¿ëÀÚ ÈŞ´ëÀüÈ­ ¹øÈ£
-u_birthday VARCHAR2(10) NOT NULL,--»ı³â¿ùÀÏ
-u_gender VARCHAR2(10) NOT NULL,--¼ºº°
-u_email VARCHAR2(50) NOT NULL,--ÀÌ¸ŞÀÏ
-u_joinDate date DEFAULT sysdate NOT NULL,--°¡ÀÔÀÏ
-u_unjoin VARCHAR2(10),--Å»Åğ¿©ºÎ
-u_unjoinDate date DEFAULT sysdate,--Å»ÅğÀÏ
-u_genre VARCHAR2(1) NOT NULL,--°ü½É Àå¸£
-u_agree VARCHAR2(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
+u_number number(38)NOT NULL primary KEY ,--ì¼ë°˜ íšŒì› ë²ˆí˜¸
+u_id VARCHAR2(20) UNIQUE NOT NULL,--ì•„ì´ë””
+u_password VARCHAR2(100) NOT NULL,--ë¹„ë°€ë²ˆí˜¸
+u_name VARCHAR2(20) NOT NULL ,--ì´ë¦„
+u_phoneNumber VARCHAR2(11) NOT NULL,-- ì¼ë°˜ ì‚¬ìš©ì íœ´ëŒ€ì „í™” ë²ˆí˜¸
+u_birthday VARCHAR2(10) NOT NULL,--ìƒë…„ì›”ì¼
+u_gender VARCHAR2(10) NOT NULL,--ì„±ë³„
+u_email VARCHAR2(50) NOT NULL,--ì´ë©”ì¼
+u_joinDate date DEFAULT sysdate NOT NULL,--ê°€ì…ì¼
+u_unjoin VARCHAR2(10),--íƒˆí‡´ì—¬ë¶€
+u_unjoinDate date DEFAULT sysdate,--íƒˆí‡´ì¼
+u_genre VARCHAR2(1) NOT NULL,--ê´€ì‹¬ ì¥ë¥´
+u_agree VARCHAR2(1) NOT NULL--ì•½ê´€ ë™ì˜ì—¬ë¶€
 );
 
---ÀÏ¹İ È¸¿ø ½ÃÄö½º »ı¼º 
+--ì¼ë°˜ íšŒì› ì‹œí€€ìŠ¤ ìƒì„± 
 create sequence UMEMBER_seq
 start with 1
 increment by 1;
 
---ÀÏ¹İ È¸¿ø ±ÇÇÑ Å×ÀÌºí
+--ì¼ë°˜ íšŒì› ê¶Œí•œ í…Œì´ë¸”
 CREATE TABLE umember_auth (
 u_number NUMBER(38) NOT NULL,
 umember_auth VARCHAR2(50) NOT NULL,
 FOREIGN KEY ( u_number ) REFERENCES umember ( u_number )
 );
 
---±Ø´Ü È¸¿ø Å×ÀÌºí
+--ê·¹ë‹¨ íšŒì› í…Œì´ë¸”
 create table TMEMBER(
-t_number number(38)NOT NULL primary KEY,--±Ø´Ü È¸¿ø ¹øÈ£
-t_id VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµğ
-t_password VARCHAR2(100) NOT NULL,--ºñ¹Ğ¹ø´ÜÈ£
-t_name VARCHAR2(50) NOT NULL ,--±Ø´Ü¸í
-t_address VARCHAR2(100) NOT NULL,--±Ø´ÜÁÖ¼Ò
-t_ownerName VARCHAR2(20) NOT NULL,--´ëÇ¥ÀÚ¸í
-t_ownerPhoneNumber VARCHAR2(11) NOT NULL,--´ëÇ¥ÀÚ ÈŞ´ëÀüÈ­¹øÈ£
-t_ownerEmail VARCHAR2(50) NOT NULL,--´ëÇ¥ÀÚ ÀÌ¸ŞÀÏ
-t_businessRegistration VARCHAR2(1) NOT NULL,--»ç¾÷ÀÚ µî·Ï ±¸ºĞ (°³ÀÎ/±â¾÷)
-t_businessRegistrationNumber VARCHAR2(10) NOT NULL,--»ç¾÷ÀÚ µî·Ï¹øÈ£
-t_establishmentDate date DEFAULT sysdate NOT NULL,--¼³¸³ÀÏ
-t_bank VARCHAR2(50) NOT NULL,--°Å·¡ ÀºÇà
-t_bankNumber VARCHAR2(50) NOT NULL,--°èÁÂ¹øÈ£
-t_bankOwner VARCHAR2(50) NOT NULL,--¿¹±İÁÖ
-t_businessRegistrationImage VARCHAR2(100) NOT NULL,--»ç¾÷ÀÚµî·ÏÁõ »çº»
+t_number number(38)NOT NULL primary KEY,--ê·¹ë‹¨ íšŒì› ë²ˆí˜¸
+t_id VARCHAR2(20) UNIQUE NOT NULL,--ì•„ì´ë””
+t_password VARCHAR2(100) NOT NULL,--ë¹„ë°€ë²ˆë‹¨í˜¸
+t_name VARCHAR2(50) NOT NULL ,--ê·¹ë‹¨ëª…
+t_address VARCHAR2(100) NOT NULL,--ê·¹ë‹¨ì£¼ì†Œ
+t_ownerName VARCHAR2(20) NOT NULL,--ëŒ€í‘œìëª…
+t_ownerPhoneNumber VARCHAR2(11) NOT NULL,--ëŒ€í‘œì íœ´ëŒ€ì „í™”ë²ˆí˜¸
+t_ownerEmail VARCHAR2(50) NOT NULL,--ëŒ€í‘œì ì´ë©”ì¼
+t_businessRegistration VARCHAR2(1) NOT NULL,--ì‚¬ì—…ì ë“±ë¡ êµ¬ë¶„ (ê°œì¸/ê¸°ì—…)
+t_businessRegistrationNumber VARCHAR2(10) NOT NULL,--ì‚¬ì—…ì ë“±ë¡ë²ˆí˜¸
+t_establishmentDate date DEFAULT sysdate NOT NULL,--ì„¤ë¦½ì¼
+t_bank VARCHAR2(50) NOT NULL,--ê±°ë˜ ì€í–‰
+t_bankNumber VARCHAR2(50) NOT NULL,--ê³„ì¢Œë²ˆí˜¸
+t_bankOwner VARCHAR2(50) NOT NULL,--ì˜ˆê¸ˆì£¼
+t_businessRegistrationImage VARCHAR2(100) NOT NULL,--ì‚¬ì—…ìë“±ë¡ì¦ ì‚¬ë³¸
 t_fileurl VARCHAR2(100) NOT NULL ,
 t_filename VARCHAR2(100) NOT NULL,
-t_auth  VARCHAR2(10) NOT NULL,--±Ø´Ü È¸¿ø »óÅÂ(°¡ÀÔ½ÂÀÎ¿¹Á¤/°¡ÀÔ½ÂÀÎ¿Ï·á/°è¾àÁ¾·á
-t_agree VARCHAR2(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
+t_auth  VARCHAR2(10) NOT NULL,--ê·¹ë‹¨ íšŒì› ìƒíƒœ(ê°€ì…ìŠ¹ì¸ì˜ˆì •/ê°€ì…ìŠ¹ì¸ì™„ë£Œ/ê³„ì•½ì¢…ë£Œ
+t_agree VARCHAR2(1) NOT NULL--ì•½ê´€ ë™ì˜ì—¬ë¶€
 );
--- ±Ø´Ü È¸¿ø ½ÃÄö½º »ı¼º 
+-- ê·¹ë‹¨ íšŒì› ì‹œí€€ìŠ¤ ìƒì„± 
 create sequence TMEMBER_seq
 start with 1
 increment by 1;
 
 
---±Ø´Ü È¸¿ø ±ÇÇÑ Å×ÀÌºí
+--ê·¹ë‹¨ íšŒì› ê¶Œí•œ í…Œì´ë¸”
 CREATE TABLE tmember_auth (
 t_number NUMBER(38) NOT NULL,
 tmember_auth VARCHAR2(50) NOT NULL,
 FOREIGN KEY ( t_number ) REFERENCES tmember ( t_number )
 );
 
-
---PLAY(¿¬±Ø) Å×ÀÌºí
+--PLAY(ì—°ê·¹) í…Œì´ë¸”
 CREATE TABLE play (
-    p_number                     NUMBER(38) NOT NULL, --¿¬±Ø ¹øÈ£
-    p_name                       VARCHAR2(50) NOT NULL, --¿¬±Ø¸í
-    p_startdate                  DATE NOT NULL, --¿¬±Ø ½ÃÀÛÀÏ
-    p_closedate                  DATE NOT NULL, --¿¬±Ø Á¾·áÀÏ
-    p_runningtime                NUMBER(3) NOT NULL, --¿¬±Ø ¼Ò¿ä½Ã°£(·¯´×Å¸ÀÓ)
-    p_theatername                VARCHAR2(20) NOT NULL, --±ØÀå ÀÌ¸§
-    p_theateraddress             VARCHAR2(100) NOT NULL, --±ØÀå ÁÖ¼Ò
-    p_theatermap                 VARCHAR2(100) NOT NULL, --±ØÀå ¾àµµ ÀÌ¹ÌÁö
-    p_agency                     VARCHAR2(20) NOT NULL, --±âÈ¹»ç Á¤º¸
-    p_ratings                    NUMBER(1) NOT NULL, --°ü¶÷ µî±Ş
-    p_casting                    VARCHAR2(2000) NOT NULL, --Ä³½ºÆÃ µ¥ÀÌÅÍ
-    p_ticketopendate             DATE NOT NULL, --¿¹¸Å ¿ÀÇÂ Èñ¸ÁÀÏ
-    p_plot                       VARCHAR2(4000) NOT NULL, --°ø¿¬ ÁÙ°Å¸®
-    p_seattype                   VARCHAR2(10) NOT NULL, --ÁÂ¼® Á¾·ù
-    p_seatnumber                 NUMBER(20) NOT NULL, --ÁÂ¼® °³¼ö
-    p_ticketprice                NUMBER(7) NOT NULL, --Æ¼ÄÏ °¡°İ
-    p_genre                      NUMBER(1) NOT NULL, --Àå¸£ Á¤º¸
-    p_poster                     VARCHAR2(100) NOT NULL, --¿¬±Ø Æ÷½ºÅÍ
-    p_amendmentapproved          NUMBER(1), --°ø¿¬ ¼öÁ¤ ½ÂÀÎ ¿©ºÎ
-    p_registrationapproval       NUMBER(1), --°ø¿¬ µî·Ï ½ÂÀÎ ¿©ºÎ
-    p_eachdateone                DATE NOT NULL, -- »ó¿¬ ³¯Â¥ 1
-    p_eachdatetwo                DATE, -- »ó¿¬ ³¯Â¥ 2
-    p_eachdatethree              DATE, -- »ó¿¬ ³¯Â¥ 3
-    p_eachdatefour               DATE, -- »ó¿¬ ³¯Â¥ 4
-    p_eachdatefive               DATE, -- »ó¿¬ ³¯Â¥ 5
-    p_eachdatesix                DATE, -- »ó¿¬ ³¯Â¥ 6
-    p_eachdateseven              DATE, -- »ó¿¬ ³¯Â¥ 7
-    p_eachdateeight              DATE, -- »ó¿¬ ³¯Â¥ 8
-    p_eachdatenine               DATE, -- »ó¿¬ ³¯Â¥ 9
-    p_eachdateten                DATE, -- »ó¿¬ ³¯Â¥ 10
-    p_eachdateeleven             DATE, -- »ó¿¬ ³¯Â¥ 11
-    p_eachdatetwelve             DATE, -- »ó¿¬ ³¯Â¥ 12
-    p_eachdatethirteen           DATE, -- »ó¿¬ ³¯Â¥ 13
-    p_eachdatefourteen           DATE, -- »ó¿¬ ³¯Â¥ 14
-    p_eachdatefifteen            DATE, -- »ó¿¬ ³¯Â¥ 15
-    p_eachdatesixteen            DATE, -- »ó¿¬ ³¯Â¥ 16
-    p_eachdateseventeen          DATE, -- »ó¿¬ ³¯Â¥ 17
-    p_eachdateeighteen           DATE, -- »ó¿¬ ³¯Â¥ 18
-    p_eachdatenineteen           DATE, -- »ó¿¬ ³¯Â¥ 19
-    p_eachdatetwenty             DATE, -- »ó¿¬ ³¯Â¥ 20
-    p_eachdatetwentyone          DATE, -- »ó¿¬ ³¯Â¥ 21
-    p_eachdatetwentytwo          DATE, -- »ó¿¬ ³¯Â¥ 22
-    p_eachdatetwentythree        DATE, -- »ó¿¬ ³¯Â¥ 23
-    p_eachdatetwentyfour         DATE, -- »ó¿¬ ³¯Â¥ 24
-    p_eachdatetwentyfive         DATE, -- »ó¿¬ ³¯Â¥ 25
-    p_eachdatetwentysix          DATE, -- »ó¿¬ ³¯Â¥ 26
-    p_eachdatetwentyseven        DATE, -- »ó¿¬ ³¯Â¥ 27
-    p_eachdatetwentyeight        DATE, -- »ó¿¬ ³¯Â¥ 28
-    p_eachdatetwentynine         DATE, -- »ó¿¬ ³¯Â¥ 29
-    p_eachdatethirty             DATE, -- »ó¿¬ ³¯Â¥ 30
-    p_eachdatethirtyone          DATE, -- »ó¿¬ ³¯Â¥ 31
-    p_eachdatethirtytwo          DATE, -- »ó¿¬ ³¯Â¥ 32
-    p_eachdatethirtythree        DATE, -- »ó¿¬ ³¯Â¥ 33
-    p_eachdatethirtyfour         DATE, -- »ó¿¬ ³¯Â¥ 34
-    p_eachdatethirtyfive         DATE, -- »ó¿¬ ³¯Â¥ 35
-    p_eachdatethirtysix          DATE, -- »ó¿¬ ³¯Â¥ 36
-    p_eachdatethirtyseven        DATE, -- »ó¿¬ ³¯Â¥ 37
-    p_eachdatethirtyeight        DATE, -- »ó¿¬ ³¯Â¥ 38
-    p_eachdatethirtynine         DATE, -- »ó¿¬ ³¯Â¥ 39
-    p_eachdateforty              DATE, -- »ó¿¬ ³¯Â¥ 40
-    p_eachdatefortyone           DATE, -- »ó¿¬ ³¯Â¥ 41
-    p_eachdatefortytwo           DATE, -- »ó¿¬ ³¯Â¥ 42
-    p_eachdatefortythree         DATE, -- »ó¿¬ ³¯Â¥ 43
-    p_eachdatefortyfour          DATE, -- »ó¿¬ ³¯Â¥ 44
-    p_eachdatefortyfive          DATE, -- »ó¿¬ ³¯Â¥ 45
-    p_eachdatefortysix           DATE, -- »ó¿¬ ³¯Â¥ 46
-    p_eachdatefortyseven         DATE, -- »ó¿¬ ³¯Â¥ 47
-    p_eachdatefortyeight         DATE, -- »ó¿¬ ³¯Â¥ 48
-    p_eachdatefortynine          DATE, -- »ó¿¬ ³¯Â¥ 49
-    p_eachdatefifty              DATE, -- »ó¿¬ ³¯Â¥ 50
-    p_eachdatefiftyone           DATE, -- »ó¿¬ ³¯Â¥ 51
-    p_eachdatefiftytwo           DATE, -- »ó¿¬ ³¯Â¥ 52
-    p_eachdatefiftythree         DATE, -- »ó¿¬ ³¯Â¥ 53
-    p_eachdatefiftyfour          DATE, -- »ó¿¬ ³¯Â¥ 54
-    p_eachdatefiftyfive          DATE, -- »ó¿¬ ³¯Â¥ 55
-    p_eachdatefiftysix           DATE, -- »ó¿¬ ³¯Â¥ 56
-    p_eachdatefiftyseven         DATE, -- »ó¿¬ ³¯Â¥ 57
-    p_eachdatefiftyeight         DATE, -- »ó¿¬ ³¯Â¥ 58
-    p_eachdatefiftynine          DATE, -- »ó¿¬ ³¯Â¥ 59
-    p_eachdatesixty              DATE, -- »ó¿¬ ³¯Â¥ 60
-
-    p_firststarttimeone          VARCHAR2(10) NOT NULL, -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 1
-    p_firststarttimetwo          VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 2
-    p_firststarttimethree        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 3
-    p_firststarttimefour         VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 4
-    p_firststarttimefive         VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 5
-    p_firststarttimesix          VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 6
-    p_firststarttimeseven        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 7
-    p_firststarttimeeight        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 8
-    p_firststarttimenine         VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 9
-    p_firststarttimeten          VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 10
-    p_firststarttimeeleven       VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 11
-    p_firststarttimetwelve       VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 12
-    p_firststarttimethirteen     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 13
-    p_firststarttimefourteen     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 14
-    p_firststarttimefifteen      VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 15
-    p_firststarttimesixteen      VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 16
-    p_firststarttimeseventeen    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 17
-    p_firststarttimeeighteen     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 18
-    p_firststarttimenineteen     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 19
-    p_firststarttimetwenty       VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 20
-    p_firststarttimetwentyone    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 21
-    p_firststarttimetwentytwo    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 22
-    p_firststarttimetwentythree  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 23
-    p_firststarttimetwentyfour   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 24
-    p_firststarttimetwentyfive   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 25
-    p_firststarttimetwentysix    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 26
-    p_firststarttimetwentyseven  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 27
-    p_firststarttimetwentyeight  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 28
-    p_firststarttimetwentynine   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 29
-    p_firststarttimethirty       VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 30
-    p_firststarttimethirtyone    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 31
-    p_firststarttimethirtytwo    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 32
-    p_firststarttimethirtythree  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 33
-    p_firststarttimethirtyfour   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 34
-    p_firststarttimethirtyfive   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 35
-    p_firststarttimethirtysix    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 36
-    p_firststarttimethirtyseven  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 37
-    p_firststarttimethirtyeight  VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 38
-    p_firststarttimethirtynine   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 39
-    p_firststarttimeforty        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 40
-    p_firststarttimefortyone     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 41
-    p_firststarttimefortytwo     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 42
-    p_firststarttimefortythree   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 43
-    p_firststarttimefortyfour    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 44
-    p_firststarttimefortyfive    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 45
-    p_firststarttimefortysix     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 46
-    p_firststarttimefortyseven   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 47
-    p_firststarttimefortyeight   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 48
-    p_firststarttimefortynine    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 49
-    p_firststarttimefifty        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 50
-    p_firststarttimefiftyone     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 51
-    p_firststarttimefiftytwo     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 52
-    p_firststarttimefiftythree   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 53
-    p_firststarttimefiftyfour    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 54
-    p_firststarttimefiftyfive    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 55
-    p_firststarttimefiftysix     VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 56
-    p_firststarttimefiftyseven   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 57
-    p_firststarttimefiftyeight   VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 58
-    p_firststarttimefiftynine    VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 59
-    p_firststarttimesixty        VARCHAR2(10), -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 60
-    p_secondstarttimeone         VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 1
-    p_secondstarttimetwo         VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 2
-    p_secondstarttimethree       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 3
-    p_secondstarttimefour        VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 4
-    p_secondstarttimefive        VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 5
-    p_secondstarttimesix         VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 6
-    p_secondstarttimeseven       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 7
-    p_secondstarttimeeight       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 8
-    p_secondstarttimenine        VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 9
-    p_secondstarttimeten         VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 10
-    p_secondstarttimeeleven      VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 11
-    p_secondstarttimetwelve      VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 12
-    p_secondstarttimethirteen    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 13
-    p_secondstarttimefourteen    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 14
-    p_secondstarttimefifteen     VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 15
-    p_secondstarttimesixteen     VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 16
-    p_secondstarttimeseventeen   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 17
-    p_secondstarttimeeighteen    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 18
-    p_secondstarttimenineteen    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 19
-    p_secondstarttimetwenty      VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 20
-    p_secondstarttimetwentyone   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 21
-    p_secondstarttimetwentytwo   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 22
-    p_secondstarttimetwentythree VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 23
-    p_secondstarttimetwentyfour  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 24
-    p_secondstarttimetwentyfive  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 25
-    p_secondstarttimetwentysix   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 26
-    p_secondstarttimetwentyseven VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 27
-    p_secondstarttimetwentyeight VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 28
-    p_secondstarttimetwentynine  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 29
-    p_secondstarttimethirty      VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 30
-    p_secondstarttimethirtyone   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 31
-    p_secondstarttimethirtytwo   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 32
-    p_secondstarttimethirtythree VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 33
-    p_secondstarttimethirtyfour  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 34
-    p_secondstarttimethirtyfive  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 35
-    p_secondstarttimethirtysix   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 36
-    p_secondstarttimethirtyseven VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 37
-    p_secondstarttimethirtyeight VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 38
-    p_secondstarttimethirtynine  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 39
-    p_secondstarttimeforty       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 40
-    p_secondstarttimefortyone    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 41
-    p_secondstarttimefortytwo    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 42
-    p_secondstarttimefortythree  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 43
-    p_secondstarttimefortyfour   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 44
-    p_secondstarttimefortyfive   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 45
-    p_secondstarttimefortysix    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 46
-    p_secondstarttimefortyseven  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 47
-    p_secondstarttimefortyeight  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 48
-    p_secondstarttimefortynine   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 49
-    p_secondstarttimefifty       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 50
-    p_secondstarttimefiftyone    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 51
-    p_secondstarttimefiftytwo    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 52
-    p_secondstarttimefiftythree  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 53
-    p_secondstarttimefiftyfour   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 54
-    p_secondstarttimefiftyfive   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 55
-    p_secondstarttimefiftysix    VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 56
-    p_secondstarttimefiftyseven  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 57
-    p_secondstarttimefiftyeight  VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 58
-    p_secondstarttimefiftynine   VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 59
-    p_secondstarttimesixty       VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 60
-    p_seatcolumn                 NUMBER(2), --ÁÂ¼® ¼¼·Î¿­
-    p_seatrow                    NUMBER(2), --ÁÂ¼® °¡·ÎÇà
-    p_agree                      NUMBER(1) NOT NULL, --¾à°ü µ¿ÀÇ ¿©ºÎ
-    t_number                     NUMBER(38) NOT NULL, --±Ø´Ü È¸¿ø ¹øÈ£
+    p_number                 NUMBER(38) NOT NULL, --ì—°ê·¹ ë²ˆí˜¸
+    p_name                   VARCHAR2(50) NOT NULL, --ì—°ê·¹ëª…
+    p_startdate              DATE NOT NULL, --ì—°ê·¹ ì‹œì‘ì¼
+    p_closedate              DATE NOT NULL, --ì—°ê·¹ ì¢…ë£Œì¼
+    p_runningtime            VARCHAR2(3) NOT NULL, --ì—°ê·¹ ì†Œìš”ì‹œê°„(ëŸ¬ë‹íƒ€ì„)
+    p_theatername            VARCHAR2(20) NOT NULL, --ê·¹ì¥ ì´ë¦„
+    p_theateraddress         VARCHAR2(100) NOT NULL, --ê·¹ì¥ ì£¼ì†Œ
+    p_theatermapurl     VARCHAR2(100) NOT NULL,--ê·¹ì¥ ì•½ë„ url
+    p_agency                 VARCHAR2(20) NOT NULL, --ê¸°íšì‚¬ ì •ë³´
+    p_ratings                VARCHAR2(1) NOT NULL, --ê´€ëŒ ë“±ê¸‰
+    p_casting                VARCHAR2(2000) NOT NULL, --ìºìŠ¤íŒ… ë°ì´í„°
+    p_ticketopendate         DATE NOT NULL, --ì˜ˆë§¤ ì˜¤í”ˆ í¬ë§ì¼
+    p_plot                   VARCHAR2(4000) NOT NULL, --ê³µì—° ì¤„ê±°ë¦¬
+    p_seatnumber             NUMBER(20) NOT NULL, --ì¢Œì„ ê°œìˆ˜
+    p_ticketprice            NUMBER(7) NOT NULL, --í‹°ì¼“ ê°€ê²©
+    p_genre                  VARCHAR2(1) NOT NULL, --ì¥ë¥´ ì •ë³´
+    p_posterurl         VARCHAR2(100) NOT NULL, --ì—°ê·¹ í¬ìŠ¤í„° url
+    p_amendmentapproved      VARCHAR2(1), --ê³µì—° ìˆ˜ì • ìŠ¹ì¸ ì—¬ë¶€
+    p_registrationapproval   VARCHAR2(1), --ê³µì—° ë“±ë¡ ìŠ¹ì¸ ì—¬ë¶€
+    p_firststarttime         VARCHAR2(10) NOT NULL, -- 1íšŒì°¨ ìƒì—° ì‹œì‘ ì‹œê° 
+    p_secondstarttime        VARCHAR2(10), -- 2íšŒì°¨ ìƒì—° ì‹œì‘ ì‹œê° 
+    p_agree                  VARCHAR2(1) NOT NULL, --ì•½ê´€ ë™ì˜ ì—¬ë¶€
+    t_number                 NUMBER(38) NOT NULL, --ê·¹ë‹¨ íšŒì› ë²ˆí˜¸
     PRIMARY KEY ( p_number ),
-    FOREIGN KEY ( t_number ) REFERENCES tmember ( t_number )
+    FOREIGN KEY ( t_number )
+        REFERENCES tmember ( t_number )
 );
 
---¿¬±Ø ½ÃÄö½º »ı¼º 
+
+--ì—°ê·¹ ì‹œí€€ìŠ¤ ìƒì„± 
 CREATE SEQUENCE play_seq START WITH 1 INCREMENT BY 1;
 
 
---¿¹¸Å Å×ÀÌºí »ı¼º
+--ì˜ˆë§¤ í…Œì´ë¸” ìƒì„±
 CREATE TABLE RESERVATION (
-R_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- ¿¹¸Å¹øÈ£
-R_DATE DATE default sysdate NOT NULL, -- ¿¹¸ÅÀÏ
-R_PAYSTATE VARCHAR2(10) NOT NULL, -- ¿¹¸ÅÁøÇàÁß ¿©ºÎ
-R_FEE NUMBER(3) NOT NULL, -- ¿¹¸Å ¼ö¼ö·á
-R_CANCELSTATE VARCHAR2(10) NOT NULL, -- ¿¹¸Å Ãë¼Ò ¿©ºÎ
-R_CANCELDATE DATE, -- ¿¹¸Å Ãë¼ÒÀÏ
-R_TICKETFIRST VARCHAR2(10) NOT NULL, -- Æ¼ÄÏ¹øÈ£1
-R_TICKETSECOND VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£2
-R_TICKETTHIRD VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£3
-R_TICKETFORTH VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£4
-R_TOTALPAYMENT NUMBER(38) NOT NULL, -- °áÁ¦ ÃÑ¾×
-U_NUMBER NUMBER(38) NOT NULL, -- ÀÏ¹İ È¸¿ø ¹øÈ£
-P_NUMBER NUMBER(38) NOT NULL, -- ¿¬±Ø¹øÈ£
+R_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- ì˜ˆë§¤ë²ˆí˜¸
+R_DATE DATE default sysdate NOT NULL, -- ì˜ˆë§¤ì¼
+R_PAYSTATE NUMBER(5) NOT NULL, -- ì˜ˆë§¤ì§„í–‰ì¤‘ ì—¬ë¶€
+R_FEE NUMBER(3) NOT NULL, -- ì˜ˆë§¤ ìˆ˜ìˆ˜ë£Œ
+R_CANCELSTATE NUMBER(5) NOT NULL, -- ì˜ˆë§¤ ì·¨ì†Œ ì—¬ë¶€
+R_CANCELDATE DATE DEFAULT sysdate, -- ì˜ˆë§¤ ì·¨ì†Œì¼
+R_TICKETFIRST VARCHAR2(38) NOT NULL, -- í‹°ì¼“ë²ˆí˜¸1
+R_TICKETSECOND VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸2
+R_TICKETTHIRD VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸3
+R_TICKETFOURTH VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸4
+R_TICKETCOUNT NUMBER(38), -- í‹°ì¼“ê°œìˆ˜
+R_TOTALPAYMENT NUMBER(10) NOT NULL, -- ê²°ì œ ì´ì•¡
+U_NUMBER NUMBER(38) NOT NULL, -- ì¼ë°˜ íšŒì› ë²ˆí˜¸
+P_NUMBER NUMBER(38) NOT NULL, -- ì—°ê·¹ë²ˆí˜¸
 
-FOREIGN KEY(U_NUMBER) REFERENCES UMEMBER(U_NUMBER), -- ÀÏ¹İ È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER) -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
+FOREIGN KEY(U_NUMBER) REFERENCES UMEMBER(U_NUMBER), -- ì¼ë°˜ íšŒì› ë²ˆí˜¸ ì™¸ë˜í‚¤ ì„¤ì •
+FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER) -- ì—°ê·¹ ë²ˆí˜¸ ì™¸ë˜í‚¤ ì„¤ì •
 );
--- ¿¹¸Å ½ÃÄö½º »ı¼º
+
+-- ì˜ˆë§¤ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE RESERVATION_SEQ
 START WITH 1 INCREMENT BY 1;
 
---Á¤»ê Å×ÀÌºí »ı¼º
-CREATE TABLE PAYMENT (
-PAY_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- Á¤»ê ¹øÈ£
-PAY_CALCULATE DATE DEFAULT sysDate NOT NULL, -- Á¤»ê ÀÏÀÚ
-PAY_PAYDATE DATE NOT NULL, -- Áö±ŞÀÏ
-PAY_PAYMENT NUMBER(20) NOT NULL, -- ±İ¾×
-P_NUMBER NUMBER(38) NOT NULL, -- ¿¬±Ø ¹øÈ£
-R_NUMBER NUMBER(38) NOT NULL, -- ¿¹¸Å ¹øÈ£
-T_NUMBER NUMBER(38) NOT NULL, -- ±Ø´Ü È¸¿ø ¹øÈ£
+insert into RESERVATION
+VALUES(reservation_seq.nextval,sysdate,1,500,0,null,'2023020931a1','2023020931a2',null,null,2,12000,1,2);
+--marroticket
+-->2023ë…„ 2ì›” 9ì¼ ê³µì—°/ê³µì—°ë²ˆí˜¸3ë²ˆ/1íšŒì°¨/a1ì¢Œì„
+insert into RESERVATION
+VALUES(reservation_seq.nextval,sysdate,1,500,0,null,'2023020931a1','2023020931a2','2023020931a3',null,2,12000,1,3);
+insert into RESERVATION
+VALUES(reservation_seq.nextval,sysdate,1,500,0,null,'2023020931a1','2023020931a2','2023020931a3','2023020931a4',2,12000,1,2);
 
-FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER), -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(R_NUMBER) REFERENCES RESERVATION(R_NUMBER), -- ¿¹¸Å ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(T_NUMBER) REFERENCES TMEMBER(T_NUMBER) -- ±Ø´Ü È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
+insert into RESERVATION
+VALUES(reservation_seq.nextval,sysdate,1,500,1,null,'2023020931a4',null,null,null,1,18000,1,3);
+
+UPDATE RESERVATION SET R_CANCELSTATE = 1
+WHERE R_NUMBER =7 AND U_NUMBER =1;
+  
+commit;
+select * from RESERVATION;
+
+
+--ì •ì‚° í…Œì´ë¸” ìƒì„±
+CREATE TABLE PAYMENT (
+PAY_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- ì •ì‚° ë²ˆí˜¸
+PAY_CALCULATE DATE DEFAULT sysDate NOT NULL, -- ì •ì‚° ì¼ì
+PAY_PAYDATE DATE NOT NULL, -- ì§€ê¸‰ì¼
+PAY_PAYMENT NUMBER(20) NOT NULL, -- ê¸ˆì•¡
+P_NUMBER NUMBER(38) NOT NULL, -- ì—°ê·¹ ë²ˆí˜¸
+R_NUMBER NUMBER(38) NOT NULL, -- ì˜ˆë§¤ ë²ˆí˜¸
+T_NUMBER NUMBER(38) NOT NULL, -- ê·¹ë‹¨ íšŒì› ë²ˆí˜¸
+
+FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER), -- ì—°ê·¹ ë²ˆí˜¸ ì™¸ë˜í‚¤ ì„¤ì •
+FOREIGN KEY(R_NUMBER) REFERENCES RESERVATION(R_NUMBER), -- ì˜ˆë§¤ ë²ˆí˜¸ ì™¸ë˜í‚¤ ì„¤ì •
+FOREIGN KEY(T_NUMBER) REFERENCES TMEMBER(T_NUMBER) -- ê·¹ë‹¨ íšŒì› ë²ˆí˜¸ ì™¸ë˜í‚¤ ì„¤ì •
 );
 
--- Á¤»ê ½ÃÄö½º »ı¼º
+-- ì •ì‚° ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE PAY_SEQ
 START WITH 1 INCREMENT BY 1;
 
---ÀÏ¹İÈ¸¿ø FAQ Å×ÀÌºí »ı¼º
+--ì¼ë°˜íšŒì› FAQ í…Œì´ë¸” ìƒì„±
 CREATE TABLE UFAQ(
-UF_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-UF_title varchar2(100) not null, -- ±Û Á¦¸ñ
-UF_content varchar2(4000) not null, -- ±Û ³»¿ë
-UF_date Date DEFAULT sysdate  not null, -- µî·ÏÀÏ
+UF_number number(38) not null, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+UF_title varchar2(100) not null, -- ê¸€ ì œëª©
+UF_content varchar2(4000) not null, -- ê¸€ ë‚´ìš©
+UF_date Date DEFAULT sysdate  not null, -- ë“±ë¡ì¼
 primary key(UF_number)
 );
---ÀÏ¹İÈ¸¿ø FAQ ½ÃÄö½º »ı¼º
+--ì¼ë°˜íšŒì› FAQ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE ufaq_seq START WITH 1 INCREMENT BY 1;
 
 
---±Ø´ÜÈ¸¿ø FAQ Å×ÀÌºí »ı¼º
+--ê·¹ë‹¨íšŒì› FAQ í…Œì´ë¸” ìƒì„±
 CREATE TABLE TFAQ(
-TF_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-TF_title varchar2(100) not null, -- ±Û Á¦¸ñ
-TF_content varchar2(4000) not null, -- ±Û ³»¿ë
-TF_date Date DEFAULT sysdate not null, -- µî·ÏÀÏ
+TF_number number(38) not null, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+TF_title varchar2(100) not null, -- ê¸€ ì œëª©
+TF_content varchar2(4000) not null, -- ê¸€ ë‚´ìš©
+TF_date Date DEFAULT sysdate not null, -- ë“±ë¡ì¼
 primary key(TF_number)
 );
---±Ø´ÜÈ¸¿ø FAQ ½ÃÄö½º »ı¼º
+--ê·¹ë‹¨íšŒì› FAQ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE tfaq_seq START WITH 1 INCREMENT BY 1;
 
---°øÁö»çÇ× Å×ÀÌºí »ı¼º
+--ê³µì§€ì‚¬í•­ í…Œì´ë¸” ìƒì„±
 CREATE TABLE NOTICE(
-N_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-N_title varchar2(100) not null, -- ±Û Á¦¸ñ
-N_content varchar2(4000) not null, -- ±Û ³»¿ë
-N_date Date DEFAULT sysdate not null, -- µî·ÏÀÏ
+N_number number(38) not null, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+N_title varchar2(100) not null, -- ê¸€ ì œëª©
+N_content varchar2(4000) not null, -- ê¸€ ë‚´ìš©
+N_date Date DEFAULT sysdate not null, -- ë“±ë¡ì¼
 primary key(N_number)
 );
---°øÁö»çÇ× ½ÃÄö½º »ı¼º
+--ê³µì§€ì‚¬í•­ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1;
 
---ÄíÅ° ÀúÀå Å×ÀÌºí
+--ì¿ í‚¤ ì €ì¥ í…Œì´ë¸”
 CREATE TABLE persistent_logins (
 username VARCHAR2(64) NOT NULL,
 series VARCHAR2(64) NOT NULL,
@@ -394,3 +226,13 @@ token VARCHAR2(64) NOT NULL,
 last_used DATE NOT NULL,
 PRIMARY KEY (series)
 );
+
+-- ì‹œí€€ìŠ¤ ë²ˆí˜¸ ë„˜ì–´ê°€ëŠ” ì˜¤ë¥˜ ë°©ì§€
+alter sequence notice_seq nocache;
+alter sequence tfaq_seq nocache;
+alter sequence ufaq_seq nocache;
+alter sequence pay_seq nocache;
+alter sequence play_seq nocache;
+alter sequence reservation_seq nocache;
+alter sequence tmember_seq nocache;
+alter sequence umember_seq nocache;

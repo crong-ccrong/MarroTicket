@@ -6,12 +6,16 @@ import org.springframework.stereotype.Service;
 
 import com.marroticket.umember.member.domain.UmemberAuth;
 import com.marroticket.umember.member.domain.UmemberVO;
+import com.marroticket.mapper.ReservationMapper;
 import com.marroticket.mapper.UmemberMapper;
 
 @Service
 public class UmemberServiceImpl implements UmemberService {
 	@Autowired
 	private UmemberMapper umembermapper;
+	@Autowired
+	private ReservationMapper  reservationmapper;
+	
 
 	@Override
 	public String findId(UmemberVO umember) throws Exception {
@@ -54,7 +58,8 @@ public class UmemberServiceImpl implements UmemberService {
 
 	@Override
 	public void remove(UmemberVO umember) throws Exception {
-		//auth
+		//순서 : 예매 내역 정리 - auth 권한 - 멤버삭제 
+		reservationmapper.withdrawalStatus(umember.getuNumber());
 		umembermapper.deleteAuth(umember.getUmemberAuthList().get(0).getUNumber());
 		umembermapper.deleteMember(umember);
 	}

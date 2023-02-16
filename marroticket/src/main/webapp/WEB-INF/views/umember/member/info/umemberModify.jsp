@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ include file="umemberSidebar.jsp" %> 
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -48,11 +49,13 @@
 		<tr>
 			<td>선호하는 장르</td>
 			 <td><form:radiobutton path="uGenre" value="1" label="로맨스" id="genre" /> 
-			 <form:radiobutton path="uGenre" value="2" label="드라마" /> 
-			 <form:radiobutton path="uGenre" value="3" label="공포" /> 
-			 <form:radiobutton path="uGenre" value="4" label="추리/스릴러" /> 
-			 <form:radiobutton path="uGenre" value="5" label="판타지" /> 
-			 <form:radiobutton path="uGenre" value="6" label="시대/역사" /></td> 
+			 <form:radiobutton path="uGenre" value="2" label="코미디" /> 
+			 <form:radiobutton path="uGenre" value="3" label="드라마" /> 
+			 <form:radiobutton path="uGenre" value="4" label="공포" /> 
+			 <form:radiobutton path="uGenre" value="5" label="추리/스릴러" /> 
+			 <form:radiobutton path="uGenre" value="6" label="판타지" />
+			 <form:radiobutton path="uGenre" value="7" label="시대/역사" />
+			 </td> 
 		</tr> 
 		<tr>
 		<td colspan="2" align="center">
@@ -101,10 +104,10 @@ $(function() {
 	    }
 	  });
 	});
-</script> -->
+</script> 
 
 <!--변경할 비밀번호 재확인 -->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(function(){
       $('#confirmPw').blur(function(){
          if($('#changePw').val() != $('#confirmPw').val()){
@@ -117,7 +120,7 @@ $(function(){
       })        
    });
 </script>
- -->
+ 
  
 <!-- ======유효성 검사 ====== -->
 <!-- 비밀번호  -->
@@ -135,16 +138,9 @@ $(function(){
 		      $("#confirmPw").focus();
 		      return false;
 		    }
-		  <!--변경할 비밀번호 재확인 -->
-		  if (changePw !== confirmPw) {
-			  alert("변경할 비밀번호와 일치하지 않습니다.");
-			  $('#confirmPw').val('');
-              $('#confirmPw').focus();
-              return false;
-		}
 		  <!--변경할 비밀번호 유효성 검사 -->
 		 var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.{8,20})/; <!-- 정규식 선언 -->
-		 if (!reg.test(changePw)) {
+		 if (changePw !== "" && !reg.test(changePw)) {
 			alert("비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.");
 			  $("#changePw").focus();
 			    return false;

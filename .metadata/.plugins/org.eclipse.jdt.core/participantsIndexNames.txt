@@ -1,4 +1,5 @@
 INDEX VERSION 1.131
+<<<<<<< HEAD
 C:\springbootproject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3626986820.index
 \marroticket\src\main\java
 C:\Users\java8\Desktop\02-13 ¿¬±Øµî·Ï µÊ. ¿¬±Ø ¸ñ·Ï+¼öÁ¤ ±¸ÇöÇÏ±â\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2005111262.index
@@ -92,4 +93,21 @@ C:\Users\java8\Desktop\02-13 ¿¬±Øµî·Ï µÊ. ¿¬±Ø ¸ñ·Ï+¼öÁ¤ ±¸ÇöÇÏ±â\marroticket\.m
 C:\Users\java8\Desktop\02-13 ¿¬±Øµî·Ï µÊ. ¿¬±Ø ¸ñ·Ï+¼öÁ¤ ±¸ÇöÇÏ±â\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\911201073.index
 \marroticket\src\main\java
 C:\springbootproject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3067786965.index
+=======
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1978390067.index
+\marroticket\src\main\java
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3935072424.index
+\marroticket\src\main\java
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4053335348.index
+\marroticket\src\main\java
+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3360539720.index
+/marroticket/src/main/java
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1631073933.index
+\marroticket\src\main\java
+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3579475350.index
+/marroticket/src/main/java
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1336245564.index
+\marroticket\src\main\java
+C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2005111262.index
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 \marroticket\src\main\java

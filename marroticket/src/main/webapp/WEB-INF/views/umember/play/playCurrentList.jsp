@@ -23,20 +23,21 @@
 
 					<td><table>
 							<tr>
-								<td align="center"><a
-									href="/play/playDetail?PNumber=${list.pNumber }"><img
-										alt="..." src="poster?pnumber=${list.pNumber }"></a></td>
+
+								<td align="center">
+								<a href="/play/playDetail?pNumber=${list.pnumber }">
+								<img alt="..." src="poster?pnumber=${list.pnumber }"></a></td>
 							</tr>
 							<tr>
-								<td align="center">${list.pName}</td>
+								<td align="center">${list.pname}</td>
 							</tr>
 							<tr>
-								<td align="center">${list.pTheaterName}</td>
+								<td align="center">${list.ptheaterName}</td>
 							</tr>
 							<tr>
 								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
-										value="${list.pStartDate}" />~<br> <fmt:formatDate
-										pattern="YYYY-MM-dd (E)" value="${list.pCloseDate }" /></td>
+										value="${list.pstartDate}" />~<br> <fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${list.pcloseDate }" /></td>
 							</tr>
 
 						</table></td>

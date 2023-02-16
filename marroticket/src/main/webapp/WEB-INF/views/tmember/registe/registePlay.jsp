@@ -10,7 +10,7 @@
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -53,43 +53,43 @@
 
 		<tr>
 			<td>연극명</td>
-			<td><form:input path="pName" placeholder="연극명 입력칸" /><font
-				color="red"><form:errors path="pName" /></font></td>
+			<td><form:input path="pname" placeholder="연극명 입력칸" /><font
+				color="red"><form:errors path="pname" /></font></td>
 		</tr>
 
 		<tr>
 			<td>연극 시작일(현재일 시점부터 최소 30일 이후여야 합니다.)</td>
-			<td><form:input path="pStartDate" id="pstartDate" /><font
-				color="red"><form:errors path="pStartDate">
+			<td><form:input path="pstartDate" id="pstartDate" /><font
+				color="red"><form:errors path="pstartDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 		<tr>
 			<td>연극 종료일(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)</td>
-			<td><form:input path="pCloseDate" id="pcloseDate" /><font
-				color="red"><form:errors path="pCloseDate">
+			<td><form:input path="pcloseDate" id="pcloseDate" /><font
+				color="red"><form:errors path="pcloseDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
 			<td>예매오픈 희망일(연극 시작일 시점부터 최소 30일 전이여야 합니다.)</td>
-			<td><form:input path="pTicketOpenDate" id="pticketOpenDate" /><font color="red"><form:errors
-						path="pTicketOpenDate">
+			<td><form:input path="pticketOpenDate" id="pticketOpenDate" /><font
+				color="red"><form:errors path="pticketOpenDate">
 						<spring:message code="registe.date.error" />
 					</form:errors></font></td>
 		</tr>
 
 		<tr>
 			<td>연극 소요시간(분단위)</td>
-			<td><form:input path="pRunningTime" placeholder="연극 소요 시간 입력칸" />
-				<font color="red"><form:errors path="pRunningTime" /></font></td>
+			<td><form:input path="prunningTime" placeholder="연극 소요 시간 입력칸" />
+				<font color="red"><form:errors path="prunningTime" /></font></td>
 		</tr>
 
 		<tr>
 			<td>극장명</td>
-			<td><form:input path="pTheaterName" placeholder="극장명 입력칸" /> <font
-				color="red"><form:errors path="pTheaterName" /> </font></td>
+			<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
+				color="red"><form:errors path="ptheaterName" /> </font></td>
 		</tr>
 
 		<tr>
@@ -99,28 +99,29 @@
 		</tr>
 
 		<tr>
-			<td><form:input path="pTheaterAddress" id="ptheaterAddress" />
-				<font color="red"><form:errors path="pTheaterAddress" /> </font></td>
+			<td><form:input path="ptheaterAddress" id="ptheaterAddress" />
+				<font color="red"><form:errors path="ptheaterAddress" /> </font></td>
 		</tr>
+
 		<tr>
 			<td>연극포스터</td>
-			<td><input type="File" name="pPoster" id="pPoster"
+			<td><input type="File" name="pposter" id="pposter"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pPosterError"><spring:message code="registe.file.error" /></font></td>
+				id="pposterError"><spring:message code="registe.file.error" /></font></td>
 		</tr>
 
 		<tr>
 			<td>기획사 정보</td>
-			<td><form:input path="pAgency" placeholder="기획사 정보 입력칸"
+			<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
 					value="마로기획" /><font color="red"><form:errors
-						path="pAgency" /></font></td>
+						path="pagency" /></font></td>
 		</tr>
 
 
 
 		<tr>
 			<td>장르 정보</td>
-			<td><form:select path="pGenre">
+			<td><form:select path="pgenre">
 					<option value="1">로맨스극</option>
 					<option value="2">코미디극</option>
 					<option value="3">드라마극</option>
@@ -128,50 +129,50 @@
 					<option value="5">추리스릴러극</option>
 					<option value="6">판타지극</option>
 					<option value="7">시대/역사극</option>
-				</form:select><font color="red"><form:errors path="pGenre" /></font></td>
+				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 		</tr>
 
 		<tr>
 			<td>관람 등급</td>
-			<td><form:select path="pRatings">
+			<td><form:select path="pratings">
 					<option value="1">전체 이용가</option>
 					<option value="2">12세 이상</option>
 					<option value="3">15세 이상</option>
 					<option value="4">18세 이상</option>
-				</form:select><font color="red"><form:errors path="pRatings" /></font></td>
+				</form:select><font color="red"><form:errors path="pratings" /></font></td>
 		</tr>
 
 		<tr>
 			<td>티켓 가격(원)</td>
-			<td><form:input type="text" path="pTicketPrice"
+			<td><form:input type="text" path="pticketPrice"
 					placeholder="티켓 가격 입력칸" /><font color="red"><form:errors
-						path="pTicketPrice" /></font></td>
+						path="pticketPrice" /></font></td>
 		</tr>
 
 		<tr>
 			<td>캐스팅 데이터</td>
-			<td><form:textarea rows="10" cols="120" path="pCasting"
+			<td><form:textarea rows="10" cols="120" path="pcasting"
 					placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
-						path="pCasting" /></font></td>
+						path="pcasting" /></font></td>
 		</tr>
 		<tr>
 			<td>연극 줄거리</td>
-			<td><form:textarea rows="10" cols="120" path="pPlot"
+			<td><form:textarea rows="10" cols="120" path="pplot"
 					placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
-						path="pPlot" /></font></td>
+						path="pplot" /></font></td>
 		</tr>
 
 		<tr>
 			<td>좌석 개수</td>
-			<td><form:input type="text" path="pSeatNumber"
+			<td><form:input type="text" path="pseatNumber"
 					placeholder="좌석 개수 입력칸" /><font color="red"><form:errors
-						path="pSeatNumber" /></font></td>
+						path="pseatNumber" /></font></td>
 
 		</tr>
 
 		<tr>
 			<td>상연 시각</td>
-			<td>1회차 상연 시간 선택 <form:select path="pFirstStartTime">
+			<td>1회차 상연 시간 선택 <form:select path="pfirstStartTime">
 					<option value="10:00">10:00</option>
 					<option value="10:10">10:10</option>
 					<option value="10:20">10:20</option>
@@ -245,8 +246,8 @@
 					<option value="21:40">21:40</option>
 					<option value="21:50">21:50</option>
 					<option value="22:00">22:00</option>
-				</form:select><font color="red"><form:errors path="pFirstStartTime" /></font></td>
-			<td>2회차 상영시간 선택 <form:select path="pSecondStartTime">
+				</form:select><font color="red"><form:errors path="pfirstStartTime" /></font></td>
+			<td>2회차 상영시간 선택 <form:select path="psecondStartTime">
 					<option value="없음">없음</option>
 					<option value="10:00">10:00</option>
 					<option value="10:10">10:10</option>
@@ -325,9 +326,10 @@
 		</tr>
 
 		<tr>
-			<form:input path="pRegistrationApproval" value="0" hidden="true" />
-			<form:input path="pModifyApproval" value="0" hidden="true" />
-			<form:input path="pAgree" id="pagee" value="1" hidden="true" />
+			<form:input path="pregistrationApproval" value="0" hidden="true" />
+			<form:input path="pmodifyApproval" value="0" hidden="true" />
+			<form:input path="pagree" id="pagee" value="1" hidden="true" />
+			
 			<form:input path="tId" hidden="true" value="${principal.tId }" />
 		</tr>
 	</table>
@@ -351,7 +353,7 @@
 			.ready(
 					function() {
 						var formObj = $("#playVO");
-						
+
 						$.datepicker
 								.setDefaults({
 									dateFormat : 'yy-mm-dd',
@@ -416,7 +418,7 @@
 						$("#agree1Error").hide();
 						$("#agree2Error").hide();
 						$("#agree3Error").hide();
-						$("#pPosterError").hide();
+						$("#pposterError").hide();
 						$("#registeTemporary")
 								.on(
 										"click",
@@ -431,10 +433,10 @@
 															'input:checkbox[name="agree3"]')
 															.is(":checked") == true) {
 												$("pagree").val(1);
-												if ( !($("#pPoster")
-																.val() == "" && $(
-																"#pPoster")
-																.val() == null)) {
+
+
+												if (!($("#pposter").val() == "" && $(
+														"#pposter").val() == null)) {
 													formObj.submit();
 												}
 											} else {
@@ -453,9 +455,10 @@
 														.is(":checked") == false) {
 													$("#agree3Error").show();
 												}
-												
-												if ($("#pPoster").val() == "") {
-													$("#pPosterError").show();
+
+												if ($("#pposter").val() == "") {
+													$("#pposterError").show();
+
 												}
 											}
 										});

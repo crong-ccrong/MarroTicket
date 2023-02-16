@@ -48,7 +48,7 @@
 							value="${list.pstartDate}" /></td>
 							
 					<td align="center">
-											 					<a href="/theater/playModify?pnumber=${list.pnumber }">수정임시버튼</a>
+						<%-- <a href="/theater/playModify?pnumber=${list.pnumber }">수정임시버튼</a> --%>
 						<c:choose>
 							<c:when test="${list.pregistrationApproval eq '0' }">
 								수정불가

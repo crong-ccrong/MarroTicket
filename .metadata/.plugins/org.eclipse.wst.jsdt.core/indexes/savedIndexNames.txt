@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Users\java8\Desktop\02-13 ¿¬±Øµî·Ï µÊ. ¿¬±Ø ¸ñ·Ï+¼öÁ¤ ±¸ÇöÇÏ±â\marroticket\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3542748988.index
 3537882024.index
 4153516497.index
 2033575081.index
+=======
+INDEX VERSION 1.4+/Users/yujeong-won/Spring_STS/marroticket/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3752426277.index
+3360539720.index
+2172193241.index
+2375610468.index
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef

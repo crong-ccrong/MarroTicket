@@ -16,6 +16,9 @@ public interface PlayMapper {
 
 	public List<PlayVO> playExpectedList() throws Exception;
 
+	/*
+	 * public PlayVO read(Integer pNumber) throws Exception;
+	 */
 	public String getPposter(Integer pnumber) throws Exception;
 
 	// 등록한 연극 목록
@@ -27,9 +30,9 @@ public interface PlayMapper {
 	// 등록한 연극 수정
 	public void modify(PlayVO playVO) throws Exception;
 
-
 	
 	/*
 	 * public List<PlayVO> quickReserve() throws Exception;
 	 */
+
 }

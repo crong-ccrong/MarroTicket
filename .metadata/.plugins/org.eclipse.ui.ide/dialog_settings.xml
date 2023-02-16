@@ -3,7 +3,10 @@
 	<list key="installedFeatures">
 		<item value="org.eclipse.buildship:3.1.6.v20220511-1359"/>
 		<item value="org.eclipse.eclemma.feature:3.1.6.202206011447"/>
+<<<<<<< HEAD
 		<item value="org.eclipse.egit.gitflow.feature:6.4.0.202211300538-r"/>
+=======
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 		<item value="org.eclipse.egit:6.4.0.202211300538-r"/>
 		<item value="org.eclipse.emf.common:2.28.0.v20221121-1400"/>
 		<item value="org.eclipse.emf.ecore:2.30.0.v20221121-1400"/>
@@ -44,12 +47,17 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+<<<<<<< HEAD
 			<item value="C:\springbootproject\marroticket\marroticket"/>
+=======
+			<item value="/Users/yujeong-won/Spring_STS/marroticket"/>
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
 	</section>
+<<<<<<< HEAD
 	<section name="ChooseWorkspaceDialogSettings">
 		<item key="DIALOG_X_ORIGIN" value="647"/>
 		<item key="DIALOG_Y_ORIGIN" value="341"/>
@@ -57,5 +65,20 @@
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
 		</list>
+=======
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode/&gt;&#x0A;&lt;/History&gt;"/>
+		<item key="ShowDerived" value="false"/>
+		<item key="FilterByLocation" value="false"/>
+		<item key="WorkingSet" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="980"/>
+			<item key="DIALOG_Y_ORIGIN" value="375"/>
+			<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+		</section>
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 	</section>
 </section>

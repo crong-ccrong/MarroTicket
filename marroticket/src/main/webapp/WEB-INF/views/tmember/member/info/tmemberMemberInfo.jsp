@@ -56,8 +56,6 @@
 	</tr>
 	<tr>
 		<!-- 이미지로 보여주기 -->
-		<th>사업자 등록증 사본</th>
-		<th><form:input path="tFileName" readonly="true" /></th>
 	</tr>
 	<tr>
 		<th>거래은행</th>

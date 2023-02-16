@@ -29,22 +29,21 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.marroticket.admin.notice.domain.NoticeVO;
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.modify.service.ModifyService;
 import com.marroticket.tmember.registe.service.RegisteService;
-import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.play.domain.PlayVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -64,6 +63,9 @@ public class TmemberController {
 	@Value("${upload.path}")
 	private String uploadPath;
 
+	@Value("${file.dir}") // 맥용으로 설정했으니 윈도우일땐 프로퍼티에서 설정 바꾸기
+	private String uploadDir;
+
 	@Autowired
 	TmemberService tmemberService;
 
@@ -76,10 +78,11 @@ public class TmemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+
 	// 극단 홈
-	// @GetMapping("")
-	@RequestMapping("")
-	// @PreAuthorize("hasRole('ROLE_TMEMBER')")
+	//@RequestMapping("")
+	@GetMapping("")
+	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
 		return "redirect:/notice/noticeList";
@@ -88,12 +91,14 @@ public class TmemberController {
 
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
 		return "registe.registePlay";
 	}
 
 	// 연극 등록 처리
 	@PostMapping("/registePlayComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
@@ -119,6 +124,7 @@ public class TmemberController {
 
 	// 연극 임시등록 완료페이지
 	@GetMapping("/registeTemporaryComplete")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
 
 		return "registe.registeTemporaryComplete";
@@ -398,9 +404,16 @@ public class TmemberController {
 
 	// 극단 회원 가입
 	@PostMapping("/signUp")
-	public String signUp(@ModelAttribute("tmember") @Validated TmemberVO tmember, BindingResult result,
-			@RequestParam(value = "file", required = false) MultipartFile file) throws Exception {
+	public String signUp(@ModelAttribute("tmember") @Validated TmemberVO tmember, BindingResult result)
+			throws Exception {
 		log.info("signUp 호출");
+
+		MultipartFile tBusinessRegistrationImage = tmember.getTBusinessRegistrationImage();
+
+		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegistrationImage.getOriginalFilename(),
+				tBusinessRegistrationImage.getBytes());
+
+		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
 
 		// 극단 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {
@@ -416,7 +429,7 @@ public class TmemberController {
 		tmember.setTPassword(passwordEncoder.encode(inputPassword));
 
 		// 가입 성공시 등록 성공 페이지로 이동
-		tmemberService.register(tmember, file);
+		tmemberService.register(tmember);
 		System.out.println("등록성공" + tmember.toString());
 		return "tMemberJoin.tmemberJoinSuccess";
 	}
@@ -541,7 +554,7 @@ public class TmemberController {
 		return sb.toString();
 	}
 
-	// 상품 이미지 업로드
+	// 포스터 이미지 업로드
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
 		String createdFileName = uid.toString() + "_" + originalName;
@@ -549,4 +562,15 @@ public class TmemberController {
 		FileCopyUtils.copy(fileData, target);
 		return createdFileName;
 	}
+
+
+	// 사업자등록증 사본 이미지 업로드
+	private String uploadImage(String originalName, byte[] fileData) throws Exception {
+		UUID uid = UUID.randomUUID();
+		String createdFileName = uid.toString() + "_" + originalName;
+		File target = new File(uploadDir, createdFileName);
+		FileCopyUtils.copy(fileData, target);
+		return createdFileName;
+	}
+
 }
