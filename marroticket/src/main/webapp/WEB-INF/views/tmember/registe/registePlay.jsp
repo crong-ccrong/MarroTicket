@@ -327,7 +327,11 @@
 
 		<tr>
 			<form:input path="pregistrationApproval" value="0" hidden="true" />
+<<<<<<< HEAD
 			<form:input path="pamendmentApproved" hidden="true" />
+=======
+			<form:input path="pmodifyApproval" hidden="true" />
+>>>>>>> soobin
 			<form:input path="pagree" id="pagee" value="1" hidden="true" />
 			<form:input path="tnumber" value="1" hidden="true" />
 			<form:input path="tId" hidden="true" value="${principal.tId }" />

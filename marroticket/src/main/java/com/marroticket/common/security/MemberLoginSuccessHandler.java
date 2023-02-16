@@ -47,6 +47,8 @@ public class MemberLoginSuccessHandler implements AuthenticationSuccessHandler {
 		if (savedRequest != null) {
 			// 권한을 묻는 페이지로 인해 로그인이 될 경우, 로그인 성공 후 해당 페이지(이전 페이지)로 이동
 			String targetUrl = savedRequest.getRedirectUrl();
+
+			System.out.println("targetUrl : " + targetUrl);
 			redirectStrategy.sendRedirect(request, response, targetUrl);
 			return;
 		}
@@ -61,15 +63,18 @@ public class MemberLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 			System.out.println(roleNames.isEmpty());
 			System.out.println(roleNames.toString());
-
-			if (roleNames.contains("ROLE_ADMIN")) {
-				targetUrl = "/admin";
-			}
-			if (roleNames.contains("ROLE_UMEMBER")) {
-				targetUrl = "/";
-			}
-			if (roleNames.contains("ROLE_TMEMBER")) {
-				targetUrl = "/theater";
+			if (request.getSession().getAttribute("returnTo") != null) {
+				targetUrl = (String) request.getSession().getAttribute("returnTo");
+			} else {
+				if (roleNames.contains("ROLE_ADMIN")) {
+					targetUrl = "/admin";
+				}
+				if (roleNames.contains("ROLE_UMEMBER")) {
+					targetUrl = "/";
+				}
+				if (roleNames.contains("ROLE_TMEMBER")) {
+					targetUrl = "/theater";
+				}
 			}
 			redirectStrategy.sendRedirect(request, response, targetUrl);
 			return;

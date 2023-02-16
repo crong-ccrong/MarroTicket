@@ -119,6 +119,7 @@
 	FROM umember 
 	WHERE u_id = #{uId}
 	</select>
+	
 	<!-- 마이페이지 회원수정 -->
 	<update id="updateInfo" >
 		update UMEMBER 
@@ -134,7 +135,7 @@
 	  WHERE u_number  = #{uNumber}
 	</delete>
 	<delete id="deleteMember">
-	DELETE FROM UMEMBER 
+	DELETE  FROM UMEMBER 
 	WHERE u_id = #{uId}
 	</delete>
 	

@@ -13,9 +13,9 @@
 		<span class="theater_address">주소 : ${ play.ptheaterAddress }</span>
 		<!-- 대표번호-->
 	</div>
-	<!-- <div id="map" style="width: 100%; height: 500px; margin-top: 3%;"></div> -->
+	<div id="map" style="width: 100%; height: 500px; margin-top: 3%;"></div> 
 </section>
-<!-- <script>
+<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 
 	mapOption = {
@@ -74,4 +74,4 @@
 						});
 
 	}
-</script> -->
+</script>

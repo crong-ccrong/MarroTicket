@@ -2,7 +2,6 @@ package com.marroticket.umember.play.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -36,7 +35,6 @@ public class PlayVO {
 	@NotBlank(message = "극장 주소는 필수 입력 값입니다.")
 	@Size(max = 100, message = "100자 이내로 입력해주세요.")
 	private String ptheaterAddress; // 극장 주소
-
 	private MultipartFile pposter; // 연극 포스터 파일
 	private String pposterUrl; // 포스터url
 
@@ -68,7 +66,7 @@ public class PlayVO {
 	private int pagree;// 약관 동의 여부
 
 	private String pregistrationApproval;// 공연 등록 승인 여부
-	private String pamendmentApproved;// 공연 수정 승인 여부
+	private String pmodifyApproval;// 공연 수정 승인 여부
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

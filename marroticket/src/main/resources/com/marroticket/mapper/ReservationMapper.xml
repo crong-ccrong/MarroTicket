@@ -13,11 +13,20 @@
 		<result column="r_ticketfirst" property="rticketFirst" />
 		<result column="r_ticketsecond" property="rticketSecond" />
 		<result column="r_ticketthird" property="rticketThird" />
-		<result column="r_ticketforth" property="rticketFourth" />
+		<result column="r_ticketfourth" property="rticketFourth" />
 		<result column="r_totalpayment" property="rtotalpayment" />
-		<result column="r_seatnumber" property="rseatNumber" />
+		<result column="r_ticketcount" property="rticketcount" />
 		<result column="u_number" property="unumber" />
+		<result column="u_id" property="uid" />
+		<result column="u_name" property="uname" />
+		<result column="u_phonenumber" property="uphonenumber" />
 		<result column="p_number" property="pnumber" />
+		<result column="p_name" property="pname" />
+		<result column="p_theaterName" property="ptheaterName" />
+		<result column="p_theaterAddress" property="ptheaterAddress" />
+		<result column="p_firstStartTime" property="pfirstStartTime" />
+		<result column="p_secondStartTime" property="psecondStartTime" />
+		<result column="p_date" property="pdate" />
 	</resultMap>
 	<resultMap
 		type="com.marroticket.umember.reservation.domain.SeatVO"
@@ -25,14 +34,179 @@
 		<result column="r_ticketfirst" property="rticketFirst" />
 		<result column="r_ticketsecond" property="rticketSecond" />
 		<result column="r_ticketthird" property="rticketThird" />
-		<result column="r_ticketforth" property="rticketFourth" />
+		<result column="r_ticketfourth" property="rticketFourth" />
 	</resultMap>
-	<select id="read" resultMap="seatReserveList" parameterType="String">
-		SELECT r_number, r_ticketfirst, r_ticketsecond, r_ticketthird, r_ticketforth
+
+	<!-- 예매 확인 -->
+	<select id="read" resultMap="seatReserveList"
+		parameterType="String">
+		SELECT r_number, r_ticketfirst, r_ticketsecond,
+		r_ticketthird, r_ticketfourth
 		FROM reservation
-		WHERE r_ticketfirst LIKE '%'||#{ticketNum}||'%'
+		WHERE (
+		r_ticketfirst LIKE
+		'%'||#{ticketNum}||'%'
 		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
-		OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
-		OR r_ticketforth LIKE '%'||#{ticketNum}||'%'
+		OR
+		r_ticketthird LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketfourth LIKE
+		'%'||#{ticketNum}||'%'
+		) AND (r_payState = 2)
 	</select>
+
+	<!-- 예매 진행중 확인 -->
+	<select id="readReserving" resultMap="seatReserveList"
+		parameterType="String">
+		SELECT r_number, r_ticketfirst, r_ticketsecond,
+		r_ticketthird, r_ticketfourth
+		FROM reservation
+		WHERE (
+		r_ticketfirst LIKE
+		'%'||#{ticketNum}||'%'
+		OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
+		OR
+		r_ticketthird LIKE '%'||#{ticketNum}||'%'
+		OR r_ticketfourth LIKE
+		'%'||#{ticketNum}||'%'
+		) AND (r_payState = 1 OR
+		r_payState = 2)
+	</select>
+
+	<!-- 예매진행중으로 업데이트 -->
+	<update id="advanceReserve" parameterType="map">
+		INSERT INTO reservation
+		(
+		r_number, r_paystate, p_date,
+		r_cancelstate,
+		r_ticketfirst, r_ticketcount, r_totalpayment, 
+		r_prereserveValidTime,
+		u_number, p_number
+		)
+		VALUES
+		(
+		reservation_seq.nextval, 1, #{reservation.pdate},
+		0,
+		#{reservation.rticketFirst}, #{reservation.rticketcount}, #{reservation.rtotalpayment}, 
+		#{reservationHoldingTime},
+		#{reservation.unumber}, #{reservation.pnumber}
+		)
+	</update>
+	<!-- 예매진행중에서 예매중 취소로 업데이트(체크한 것만 지운다) -->
+	<delete id="delete">
+		DELETE reservation
+		WHERE
+		r_ticketFirst =
+		#{rticketFirst} AND
+		u_number = #{unumber} AND
+		p_number = #{pnumber}
+	</delete>
+	<!-- 예매진행중, refresh 또는 페이지 벗어남으로 예매중 취소로 업데이트(해당 unumber의 모든 선택좌석 이력을 지운다) -->
+	<delete id="deleteHistory">
+		DELETE reservation
+		WHERE
+		u_number = #{unumber} AND
+		p_number = #{pnumber} AND
+		r_paystate = 1
+	</delete>
+	<!-- 선택한 좌석이 예매진행중에서 n분이 경과한 후라면 delete -->
+	<delete id="deleteDataAfterTime" parameterType="map">
+		<![CDATA[
+			DELETE FROM reservation 
+			WHERE 
+				(
+					r_ticketfirst LIKE '%'||#{ticketNum}||'%'
+					OR r_ticketsecond LIKE '%'||#{ticketNum}||'%'
+					OR r_ticketthird LIKE '%'||#{ticketNum}||'%'
+					OR r_ticketfourth LIKE '%'||#{ticketNum}||'%'
+				)
+				AND	r_prereserveValidTime <= #{currentTime}
+				AND p_number = #{reservation.pnumber}
+				AND r_payState = 1
+		]]>
+	</delete>
+
+
+	<!-- 예매완료(insert & selectkey) -->
+	<insert id="create"
+		parameterType="com.marroticket.umember.reservation.domain.ReservationVO">
+		INSERT INTO reservation(
+		r_number, r_paystate, p_date,
+		r_ticketfirst,
+		r_ticketsecond, r_ticketthird, r_ticketfourth,
+		r_ticketcount,
+		r_totalpayment, u_number, p_number
+		)
+		VALUES(
+		reservation_seq.nextval, 2,
+		#{pdate},
+		#{rticketFirst}, #{rticketSecond}, #{rticketThird},
+		#{rticketFourth},
+		#{rticketcount}, #{rtotalpayment}, #{unumber},
+		#{pnumber}
+		)
+		<selectKey keyProperty="rnumber" resultType="int"
+			order="AFTER">
+			SELECT reservation_seq.currval FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 예매완료정보를 가져옴 -->
+	<select id="getReservationById" parameterType="int"
+		resultType="com.marroticket.umember.reservation.domain.ReservationVO">
+			SELECT 
+				r.*,
+				u.u_id, u.u_name, p.p_name, p.p_theaterName, p.p_theaterAddress,
+				p.p_firstStartTime, p.p_secondStartTime
+			FROM 
+				umember u
+				JOIN reservation r ON u.u_number = r.u_number
+				JOIN play p ON r.p_number = p.p_number
+			WHERE r_number = #{rnumber}
+	</select>
+
+	<select id="getReservationListByUNumber"
+		resultMap="reservationmap">
+		SELECT R.*, P.*
+		FROM RESERVATION R LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER
+		WHERE R.U_NUMBER = #{unumber}
+	</select>
+	
+	<!-- 나중에 role admin 확인 (추가할것 /값 이전을 명확하게 하기 위해서) -->
+  <update id="withdrawalStatus">
+	UPDATE RESERVATION
+	SET R_CANCELSTATE = 1,
+	    R_TICKETFIRST = 0,
+	    R_TICKETSECOND = 0,
+	    R_TICKETTHIRD = 0,
+	    R_TICKETFOURTH = 0,
+	    u_number = 1
+	WHERE U_NUMBER = #{uNumber}
+</update>  
+	
+	<!-- 예매 내역 업데이트 -->
+	   <update id="updateCancelState">
+	UPDATE RESERVATION
+	SET R_CANCELSTATE = 1,
+	    R_TICKETFIRST = 0,
+	    R_TICKETSECOND = 0,
+	    R_TICKETTHIRD = 0,
+	    R_TICKETFOURTH = 0,
+	     R_CANCELDATE = SYSDATE
+	WHERE R_NUMBER = #{rnumber}
+</update>
+
+
+
+
+
+
+<select id="viewingHistory" resultMap="reservationmap">
+	SELECT R.*, P.* 
+FROM RESERVATION R 
+LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER 
+WHERE R.U_NUMBER = #{unumber} AND  sysdate > R.P_DATE 
+
+</select>
+
+
 </mapper>

@@ -42,7 +42,7 @@
 	</div>
 	<br>
 
-	<textarea rows="10" cols="120">
+	<textarea rows="10" cols="120" readonly="readonly">
 제1장 총칙
 제 1조 (목적)
 이 약관은 마로티켓이 운영하는 웹사이트에서 제공하는 온라인티켓예매 및 기타 서비스에 관한 마로티켓 및 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -68,7 +68,7 @@
 	</div>
 	<br>
 
-	<textarea rows="20" cols="120">
+	<textarea rows="20" cols="120" readonly="readonly">
 	제1장 총칙
 제1조 (목적)
 ㈜ 마로티켓 (이하, ‘회사’)의 판매 회원이신 극단장님께 감사드립니다. 본 약관은 회사가 제공하는 마로티켓 서비스 및 이를 지원하기 위한 기타 서비스 (이하, ‘서비스’)에 대해 회사와 극단장님 사이의 권리와 의무를 규정하는 것을 목적으로 합니다. 본 약관은 극단장님께서 서비스를 이용하시는 데 필요한 사항을 담고 있기 때문에 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다.
@@ -112,8 +112,9 @@
 	<div>
 		<br>
 		<p>
-			<input type="button" value="다음 " onclick="chk()" />&nbsp;&nbsp;&nbsp;
 			<input type="button" value="메인 화면으로" onclick="nochk()" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="다음 " onclick="chk()" />
 		</p>
 
 	</div>
