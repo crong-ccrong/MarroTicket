@@ -61,6 +61,7 @@ public class TmemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	//극단 홈
 	@GetMapping("")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
@@ -161,12 +162,12 @@ public class TmemberController {
 			throws Exception {
 		log.info("signUp 호출");
 
-		MultipartFile tBusinessRegisterationImage = tmember.getTBusinessRegisterationImage();
+		MultipartFile tBusinessRegisterationImage = tmember.getTBusinessRegistrationImage();
 
-		String tBusinessRegisterationImageUrl = uploadImage(tBusinessRegisterationImage.getOriginalFilename(),
+		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegisterationImage.getOriginalFilename(),
 				tBusinessRegisterationImage.getBytes());
 
-		tmember.setTBusinessRegisterationImageUrl(tBusinessRegisterationImageUrl);
+		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
 
 		// 극단 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {

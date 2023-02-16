@@ -24,7 +24,7 @@ public class TmemberVO {
    private String tId; // 아이디
 
    @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
-   @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
+   @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*\\W)(?=\\S+$).{8,20}", message = "비밀번호는 영문 소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
    private String tPassword; // 비밀번호
 
    @NotBlank(message = "극단명은 필수 입력 값입니다.")
@@ -61,8 +61,8 @@ public class TmemberVO {
    @NotBlank(message = "예금주 성명 입력은 필수입니다.")
    private String tBankOwner; // 예금주
 
-   private MultipartFile tBusinessRegisterationImage;// 사업자등록증 사본 파일
-   private String tBusinessRegisterationImageUrl; // 사업자등록증
+   private MultipartFile tBusinessRegistrationImage;// 사업자등록증 사본 파일
+   private String tBusinessRegistrationImageUrl; // 사업자등록증
 
    private String tAuth;// 극단 가입 승인 여부
    private String tAgree; // 약관 동의 여부

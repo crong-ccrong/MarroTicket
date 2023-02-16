@@ -29,9 +29,6 @@ public class TmemberServiceImpl implements TmemberService {
       return tmembermapper.tIdCheck(tmember);
    }
 
-
-   
-
       //회원 등록
       @Override
       public void register(TmemberVO tmember) throws Exception {

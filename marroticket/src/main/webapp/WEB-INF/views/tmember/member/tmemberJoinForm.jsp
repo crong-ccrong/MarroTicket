@@ -106,7 +106,7 @@
 
       <tr>
          <th class="joinWindow">사업자 등록증</th>
-         <td class="joinInput"><input type="file" name=tBusinessRegisterationImage id="tBusinessRegisterationImage" accept="image/jpeg, image/png, image/jpg" /></td>
+         <td class="joinInput"><input type="file" name=tBusinessRegistrationImage id="tBusinessRegistrationImage" accept="image/jpeg, image/png, image/jpg" /></td>
          
       </tr>
       <tr>

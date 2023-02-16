@@ -259,50 +259,7 @@ public class UmemberController {
 		return "redirect:/";
 	}
 	
-//	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.POST)
-//	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,  
-//            @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
-//		System.out.println("탈퇴 페이지 호출");
-//		
-//		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		 String uId = authentication.getName();
-//		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
-//		
-//		 List<ReservationVO> reservations = reservationService.getReservationListByUNumber(originalVO.getuNumber());
-//		 boolean reservationDetails = false;
-//		 boolean hasViewingsOnSameDay = false;
-//		 for (ReservationVO reservation : reservations) {
-//		        if (reservation.getRcancelState()==0) {
-//		        	reservationDetails = true;
-//		            break;
-//		        }if (reservation.getPdate().equals(reservation.getPdate())) {
-//		            hasViewingsOnSameDay = true;
-//		            break;
-//		        }
-//		    }
-//		 if (reservationDetails || hasViewingsOnSameDay) {
-//		        model.addAttribute("eMessage", "에러메시지 ");
-//		        return "mypage.umemberSecession";
-//		    }
-//		 
-//		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
-//			System.out.println("비밀번호 틀림");
-//			model.addAttribute("passwordError","에러메시지");
-//			 return "mypage.umemberSecession";
-//		}
-//		
-//		 try {
-//		        umemberService.remove(originalVO);
-//		    } catch (Exception e) {
-//		        model.addAttribute("Message", "에러메시지");
-//		        return "mypage.umemberSecession";
-//		    }
-//
-//		    session.invalidate();
-//		    return "redirect:/";
-//		}
-		
-	
+
 	
 	/* 일반회원 예매 정보 */
 //    String ex = "2023-02-09";
