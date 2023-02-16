@@ -97,11 +97,11 @@ public class TmemberController {
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile pposter = playVO.getPPoster();
+		MultipartFile pposter = playVO.getPposter();
 
 		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
 
-		playVO.setPPosterUrl(pposterUrl);
+		playVO.setPposterUrl(pposterUrl);
 
 		registeService.registePlay(playVO);
 
@@ -132,9 +132,9 @@ public class TmemberController {
 		
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		playVO.settNumber(tvo.getTNumber());
+		playVO.setTnumber(tvo.getTNumber());
 
-		int tNumber = playVO.gettNumber();
+		int tNumber = playVO.getTnumber();
 		System.out.println("극단 회원 번호" + tNumber);
 
 		System.out.println("극단 회원 등록한 연극 정보" + playVO);
@@ -151,31 +151,53 @@ public class TmemberController {
 
 	// 등록한 연극 상세 페이지
 	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
-	public String read(int pNumber, Model model, Principal principal) throws Exception {
+	public String read(int pnumber, Model model, Principal principal) throws Exception {
 
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		System.out.println(pNumber);
+		System.out.println(pnumber);
 		
-		PlayVO vo = modifyService.read(pNumber);
-		vo.settNumber(tvo.getTNumber());
+		PlayVO vo = modifyService.read(pnumber);
+		vo.setTnumber(tvo.getTNumber());
 
 		System.out.println("등록한 연극 상세");
 		
+		//장르표시
+        switch (vo.getPgenre()) {
+        case "1":
+            vo.setPgenre("로맨스");
+            break;
+        case "2":
+            vo.setPgenre("드라마");
+            break;
+        case "3":
+            vo.setPgenre("공포");
+            break;
+        case "4":
+            vo.setPgenre("추리/스릴러");
+            break;
+        case "5":
+            vo.setPgenre("판타지");
+            break;
+        case "6":
+            vo.setPgenre("시대/역사");
+            break;
+    }
+		
 		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-				if ("0".equals(vo.getpRegistrationApproval())) {
-					vo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다");
-				} else if ("1".equals(vo.getpRegistrationApproval())) {
-					vo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다");
+				if ("0".equals(vo.getPregistrationApproval())) {
+					vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
+				} else if ("1".equals(vo.getPregistrationApproval())) {
+					vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
 				} else {
-					vo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
+					vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
 				}
 				
 		// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
-				if ("0".equals(vo.getpModifyApproval())) {
-					vo.setpModifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
+				if ("0".equals(vo.getPmodifyApproval())) {
+					vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
 				} else {
-					vo.setpModifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
+					vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
 				}
 				
 				model.addAttribute("playVO", vo);
@@ -186,50 +208,51 @@ public class TmemberController {
 
 	// 연극 수정 페이지
 	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
-	public String modifyPlay(int pNumber, Model model, Principal principal) throws Exception {
+	public String modifyPlay(int pnumber, Model model, Principal principal) throws Exception {
 		
 		// tmember tId로 play tId 정보 가져오기
 				TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-				System.out.println(pNumber);
+				System.out.println(pnumber);
 				
-				PlayVO vo = modifyService.read(pNumber);
-				vo.settNumber(tvo.getTNumber());
+				PlayVO vo = modifyService.read(pnumber);
+				vo.setTnumber(tvo.getTNumber());
 
 				System.out.println("등록한 연극 상세");
 				
+				/* 수정 시 String으로 값이 변해서 주석 처리하고 jsp에서 변경함
 				// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-						if ("0".equals(vo.getpRegistrationApproval())) {
-							vo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다");
-						} else if ("1".equals(vo.getpRegistrationApproval())) {
-							vo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다");
+						if ("0".equals(vo.getPregistrationApproval())) {
+							vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
+						} else if ("1".equals(vo.getPregistrationApproval())) {
+							vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
 						} else {
-							vo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
+							vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
 						}
 						
 				// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
-						if ("0".equals(vo.getpModifyApproval())) {
-							vo.setpModifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
+						if ("0".equals(vo.getPmodifyApproval())) {
+							vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
 						} else {
-							vo.setpModifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
+							vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
 						}
-						
-						model.addAttribute("playVO", vo);
+				*/		
+				model.addAttribute("playVO", vo);
 		
 		return "modify.tmemberPlayModify";
 	}
 
 		// 연극 수정 처리
 		@RequestMapping(value = "/playModify", method = RequestMethod.POST)
-		public String modify(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request, RedirectAttributes rttr, Principal principal, Model model, int pNumber) throws Exception {
+		public String modify(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request, RedirectAttributes rttr, Principal principal, Model model, int pnumber) throws Exception {
 			
 			System.out.println("수정 처리 Controller 호출");
-			System.out.println(pNumber);
+			System.out.println(pnumber);
 			
 			// 수정 처리
 			modifyService.modify(playVO);
 			
 			// 업데이트 된 연극 정보 가져오기
-			PlayVO updatedVO = modifyService.read(pNumber);
+			PlayVO updatedVO = modifyService.read(pnumber);
 			
 			// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
 			rttr.addFlashAttribute("msg", "SUCCESS");

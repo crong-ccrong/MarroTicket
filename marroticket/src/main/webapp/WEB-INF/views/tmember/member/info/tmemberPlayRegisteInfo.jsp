@@ -33,28 +33,28 @@
 		<c:otherwise>
 			<c:forEach items="${playlist}" var="list" varStatus="status">
 				<tr>
-					<td align="center">${list.pNumber}</td>
-					<td align="center"><a href="/theater/playRegisteRead?pNumber=${list.pNumber }">${list.pName}</td>
+					<td align="center">${list.pnumber}</td>
+					<td align="center"><a href="/theater/playRegisteRead?pnumber=${list.pnumber }">${list.pname}</td>
 					<td align="center">
 						<c:choose>
-							<c:when test="${list.pRegistrationApproval eq '0'}">미승인</c:when>
-							<c:when test="${list.pRegistrationApproval eq '1'}">승인</c:when>
+							<c:when test="${list.pregistrationApproval eq '0'}">미승인</c:when>
+							<c:when test="${list.pregistrationApproval eq '1'}">승인</c:when>
 							<c:otherwise>반려</c:otherwise>
 						</c:choose>
 					</td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${list.pTicketOpenDate}" /></td>
+							value="${list.pticketOpenDate}" /></td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${list.pStartDate}" /></td>
+							value="${list.pstartDate}" /></td>
 							
 					<td align="center">
-<%-- 					<a href="/theater/playModify?pNumber=${list.pNumber }">수정임시버튼</a> --%>
+											 					<a href="/theater/playModify?pnumber=${list.pnumber }">수정임시버튼</a>
 						<c:choose>
-							<c:when test="${list.pRegistrationApproval eq '0' }">
+							<c:when test="${list.pregistrationApproval eq '0' }">
 								수정불가
 							</c:when>
 							<c:otherwise>
-								<a href="/theater/playModify?pNumber=${list.pNumber }">수정하기</a>
+								<a href="/theater/playModify?pnumber=${list.pnumber }">수정하기</a>
 							</c:otherwise>
 						</c:choose>
 					 
@@ -66,7 +66,7 @@
 					</td>
 					<td align="center">
 						<c:choose>
-							<c:when test="${list.pModifyApproval eq '0'}">수정 없음/완료</c:when>
+							<c:when test="${list.pmodifyApproval eq '0'}">수정 없음/완료</c:when>
 							<c:otherwise>수정 검토 중</c:otherwise>
 						</c:choose>
 					

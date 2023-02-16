@@ -11,49 +11,49 @@
 </h2>
 
 <form:form modelAttribute="playVO" action="/theater/playModify" method="post">
-	<form:hidden path="pNumber" />
+	<form:hidden path="pnumber" />
 	<table>
 		<tr>
 			<td>연극 번호</td>
-			<td><form:input path="pNumber" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pNumber" /></font></td>
+			<td><form:input path="pnumber" readonly="true" /></td>
+			<td><font color="red"><form:errors path="pnumber" /></font></td>
 		</tr>
 
 		<tr>
 			<td>연극명</td>
-			<td><form:input path="pName"/></td>
-			<td><font color="red"><form:errors path="pName" /></font></td>
+			<td><form:input path="pname"/></td>
+			<td><font color="red"><form:errors path="pname" /></font></td>
 			
 		</tr>
 		
 		<tr>
 			<td>연극 시작일</td>
-			<td><form:input path='pStartDate' type='date' /><font
-				color="red"> <form:errors path="pStartDate" /></font></td>
+			<td><form:input path='pstartDate' type='date' /><font
+				color="red"> <form:errors path="pstartDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>연극 종료일</td>
-			<td><form:input path='pCloseDate' type='date' /><font
-				color="red"> <form:errors path="pCloseDate" /></font></td>
+			<td><form:input path='pcloseDate' type='date' /><font
+				color="red"> <form:errors path="pcloseDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>연극 소요 시간(분단위)</td>
-			<td><form:input path="pRunningTime" /></td>
-			<td><font color="red"><form:errors path="pRunningTime" /></font></td>
+			<td><form:input path="prunningTime" /></td>
+			<td><font color="red"><form:errors path="prunningTime" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>극장 이름</td>
-			<td><form:input path="pTheaterName" /></td>
-			<td><font color="red"><form:errors path="pTheaterName" /></font></td>
+			<td><form:input path="ptheaterName" /></td>
+			<td><font color="red"><form:errors path="ptheaterName" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>극장 주소</td>
-			<td><form:input path="pTheaterAddress" id="ptheaterAddress" />
-				<font color="red"><form:errors path="pTheaterAddress" /> </font></td>
+			<td><form:input path="ptheaterAddress" id="ptheaterAddress" />
+				<font color="red"><form:errors path="ptheaterAddress" /> </font></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -63,53 +63,53 @@
 			
 		<tr>
 			<td>기획사 정보</td>
-			<td><form:input path="pAgency" /></td>
-			<td><font color="red"><form:errors path="pAgency" /></font></td>
+			<td><form:input path="pagency" /></td>
+			<td><font color="red"><form:errors path="pagency" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>관람 등급</td>
-			<td><form:select path="pRatings">
+			<td><form:select path="pratings">
 					<option value="1">전체 이용가</option>
 					<option value="2">12세 이상</option>
 					<option value="3">15세 이상</option>
 					<option value="4">18세 이상</option>
-				</form:select><font color="red"><form:errors path="pRatings" /></font></td>
+				</form:select><font color="red"><form:errors path="pratings" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>캐스팅</td>
-			<td><form:input path="pCasting" /></td>
-			<td><font color="red"><form:errors path="pCasting" /></font></td>
+			<td><form:input path="pcasting" /></td>
+			<td><font color="red"><form:errors path="pcasting" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>예매 오픈 희망일</td>
-			<td><form:input path="pTicketOpenDate" type='date' /></td>
-		 	<td><font color="red"><form:errors path="pTicketOpenDate" /></font></td>
+			<td><form:input path="pticketOpenDate" type='date' /></td>
+		 	<td><font color="red"><form:errors path="pticketOpenDate" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>줄거리</td>
-			<td><form:input path="pPlot" /></td>
-			<td><font color="red"><form:errors path="pPlot" /></font></td>
+			<td><form:input path="pplot" /></td>
+			<td><font color="red"><form:errors path="pplot" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>좌석 개수</td>
-			<td><form:input path="pSeatNumber" /></td>
-			<td><font color="red"><form:errors path="pSeatNumber" /></font></td>
+			<td><form:input path="pseatNumber" /></td>
+			<td><font color="red"><form:errors path="pseatNumber" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>티켓 가격(원)</td>
-			<td><form:input path="pTicketPrice" /></td>
-			<td><font color="red"><form:errors path="pTicketPrice" /></font></td>
+			<td><form:input path="pticketPrice" /></td>
+			<td><font color="red"><form:errors path="pticketPrice" /></font></td>
 		</tr>
 		
 		<tr>
 			<td>장르 정보</td>
-			<td><form:select path="pGenre">
+			<td><form:select path="pgenre">
 					<option value="1">로맨스극</option>
 					<option value="2">코미디극</option>
 					<option value="3">드라마극</option>
@@ -117,48 +117,31 @@
 					<option value="5">추리스릴러극</option>
 					<option value="6">판타지극</option>
 					<option value="7">시대/역사극</option>
-				</form:select><font color="red"><form:errors path="pGenre" /></font></td>
+				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 		</tr>
 		
 		<!-- 연극 포스터 미리보기 및 변경 구현하기
 		<tr>
 			<td>연극 포스터 미리보기 및 변경 구현하기</td>
-			<td><input type="File" name="pPoster" id="pPoster"
+			<td><input type="File" name="pPoster" id="pposter"
 				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pPosterError"><spring:message code="registe.file.error" /></font></td>
+				id="pposterError"><spring:message code="registe.file.error" /></font></td>
 		</tr> -->
 		<!-- 
 		<tr>
 			<td>동의 여부</td>
-			<td><form:textarea path="pAgree" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pAgree" /></font></td>
+			<td><form:textarea path="pagree" readonly="true" /></td>
+			<td><font color="red"><form:errors path="pagree" /></font></td>
 		</tr>
 		 -->
-		 
-		 <tr>
-			<td>연극 등록 승인 상태</td>
-			<td><form:textarea path="pRegistrationApproval" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pRegistrationApproval" /></font></td>
-		</tr>
-		
-		<tr>
-			<td>연극 수정 승인 상태</td>
-				<td><form:textarea path="pModifyApproval" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pModifyApproval" /></font></td>
-		</tr>
-	
-		
-		<tr>
-			<!--  수정 신청 시 modifyApproval 변경 -->
-<%-- 			<form:input path="pModifyApproval" value="1" hidden="true" /> --%>
-		</tr>
+
 	</table>
 
 
 <!-- 수정 등록 구현 -->
 <div>
 	<input type="submit" value="수정하기">
-	<!-- <input type="button" onclick="location.href='/theater/playRegisteInfo'" value="목록으로 돌아가기" > -->
+	<input type="button" onclick="location.href='/theater/playRegisteInfo'" value="목록으로 돌아가기" >
 </div>
 </form:form>
 
@@ -370,7 +353,4 @@
 		});
 	});
 </script>
-
-http://localhost:8080/theater/playRegisteRead?pNumber=5
-http://localhost:8080/theater/playReigsteRead?pNumber=5
  -->

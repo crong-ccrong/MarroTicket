@@ -5,30 +5,28 @@
 
 	<resultMap id="play"
 		type="com.marroticket.umember.play.domain.PlayVO">
-		<id property="PNumber" column="p_number" />
-		<result property="pName" column="p_name" />
-		<result property="pStartDate" column="P_STARTDATE" />
-		<result property="pCloseDate" column="P_CLOSEDATE" />
-		<result property="pRunningTime" column="P_RUNNINGTIME" />
-		<result property="pTheaterName" column="P_THEATERNAME" />
-		<result property="pTheaterAddress" column="P_THEATERADDRESS" />
-		<result property="pAgency" column="P_AGENCY" />
-		<result property="pRatings" column="P_RATINGS" />
-		<result property="pCasting" column="P_CASTING" />
-		<result property="pTicketOpenDate" column="P_TICKETOPENDATE" />
-		<result property="pPlot" column="P_PLOT" />
-		<result property="pSeatNumber" column="P_SEATNUMBER" />
-		<result property="pTicketPrice" column="P_TICKETPRICE" />
-		<result property="pGenre" column="P_GENRE" />
-		<result property="pPosterUrl" column="P_POSTERURL" />
-		<result property="pAgree" column="P_AGREE" />
-		<result property="pModifyApproval"
-			column="p_MODIFYAPPROVAL" />
-		<result property="pRegistrationApproval"
-			column="p_REGISTRATIONAPPROVAL" />
-		<result property="tNumber" column="T_NUMBER" />
-		<result property="pFirstStartTime" column="P_FirstStartTime" />
-		<result property="pSecondStartTime" column="P_FirstStartTime" />
+		<id property="pnumber" column="p_number" />
+		<result property="pname" column="p_name" />
+		<result property="pstartDate" column="P_STARTDATE" />
+		<result property="pcloseDate" column="P_CLOSEDATE" />
+		<result property="prunningTime" column="P_RUNNINGTIME" />
+		<result property="ptheaterName" column="P_THEATERNAME" />
+		<result property="ptheaterAddress" column="P_THEATERADDRESS" />
+		<result property="pagency" column="P_AGENCY" />
+		<result property="pratings" column="P_RATINGS" />
+		<result property="pcasting" column="P_CASTING" />
+		<result property="pticketOpenDate" column="P_TICKETOPENDATE" />
+		<result property="pplot" column="P_PLOT" />
+		<result property="pseatNumber" column="P_SEATNUMBER" />
+		<result property="pticketPrice" column="P_TICKETPRICE" />
+		<result property="pgenre" column="P_GENRE" />
+		<result property="pposterUrl" column="P_POSTERURL" />
+		<result property="pagree" column="P_AGREE" />
+		<result property="pmodifyApproval" column="P_modifyapproval" />
+		<result property="pregistrationApproval" column="P_REGISTRATIONAPPROVAL" />
+		<result property="pfirstStartTime" column="P_FirstStartTime" />
+		<result property="psecondStartTime" column="P_SecondStartTime" />
+		<result property="tnumber" column="T_Number" />
 	</resultMap>
 
 
@@ -93,7 +91,7 @@
 	<select id="getPposter" resultType="String">
 		SELECT p_posterUrl
 		FROM play
-		WHERE p_number = #{PNumber}
+		WHERE p_number = #{pnumber}
 	</select>
 
 	<!-- 극단 등록한 연극 목록 -->
@@ -101,7 +99,7 @@
 		<![CDATA[
 			SELECT 	*
 			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
-			WHERE p.t_number = #{tNumber}
+			WHERE p.t_number = #{tyumber}
 			ORDER BY p_number DESC
 		]]>
 	</select>
@@ -111,30 +109,29 @@
 		<![CDATA[
 			SELECT *
 			FROM play
-			WHERE p_number = #{pNumber}
+			WHERE p_number = #{pnumber}
 		]]>
 	</select>
 	
 	<!-- 극단 등록한 연극 수정 -->
 	<update id="modify">
 		UPDATE play
-		SET p_name=#{pName},
-			P_STARTDATE=#{pStartDate},
-			P_CLOSEDATE=#{pCloseDate},
-			P_RUNNINGTIME=#{pRunningTime},
-			P_THEATERNAME=#{pTheaterName},
-			P_THEATERADDRESS=#{pTheaterAddress},
-			P_AGENCY=#{pAgency},
-			P_RATINGS=#{pRatings},
-			P_CASTING=#{pCasting},
-			P_TICKETOPENDATE=#{pTicketOpenDate},
-			P_PLOT=#{pPlot},
-			P_SEATNUMBER=#{pSeatNumber},
-			P_TICKETPRICE=#{pTicketPrice},
-			P_GENRE=#{pGenre},
-			p_MODIFYAPPROVAL='1',
-			p_REGISTRATIONAPPROVAL=#{pRegistrationApproval}
-		WHERE p_number=#{pNumber}
+		SET p_name = #{pname},
+			P_STARTDATE = #{pstartDate},
+			P_CLOSEDATE = #{pcloseDate},
+			P_RUNNINGTIME = #{prunningTime},
+			P_THEATERNAME = #{ptheaterName},
+			P_THEATERADDRESS = #{ptheaterAddress},
+			P_AGENCY = #{pagency},
+			P_RATINGS = #{pratings},
+			P_CASTING = #{pcasting},
+			P_TICKETOPENDATE = #{pticketOpenDate},
+			P_PLOT = #{pplot},
+			P_SEATNUMBER = #{pseatNumber},
+			P_TICKETPRICE = #{pticketPrice},
+			P_GENRE = #{pgenre},
+			p_MODIFYAPPROVAL = '1'
+		WHERE p_number = #{pnumber}
 	</update>
 
 </mapper>
