@@ -33,27 +33,57 @@
     
     
   <style>
- ul{
-   list-style:none;
-   } 
-      
-  .main_aside {
-  float: left;
-  width: 15%;
-  /* background-color: #f1f1f1; */
-  padding: 10px;
-  }
   
-  .submenu_title{
+.footer {
+  clear: both;
+}
+/* Side menu container */
+.main_aside {
+  position: fixed;
+  left: 0;
+  top: 60px; /* adjust as needed */
+  bottom: 60px; /* adjust as needed */
+  background-color: #f0f0f0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Side menu header */
+.submenu_title {
   display: block;
-   font-size: 20px;
-  }
-  
-  .submenu_info .submenu_rInfo .submenu_cInfo .submenu_history .submenu_custom
-  {
-  
-   
-  }
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submenu_info,
+.submenu_rInfo,
+.submenu_cInfo,
+.submenu_history,
+.submenu_custom {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.submenu_info:hover,
+.submenu_rInfo:hover,
+.submenu_cInfo:hover,
+.submenu_history:hover,
+.submenu_custom:hover {
+  background-color: #ddd;
+}
+
   
 
 </style>

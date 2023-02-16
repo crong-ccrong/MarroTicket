@@ -2,70 +2,71 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- 일반회원 회원가입 페이지 -->
-
-
-<h3>마로 티켓 일반 회원 가입 페이지</h3>
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<h3 class="joinheader">마로 티켓 일반 회원 가입 페이지</h3>
+
 <form:form modelAttribute="umember" action="register"> 
-	<table border="1">
+	<table border="1" class="umemberJoinForm">
 		<tr>
-			<th>이름</th>
-			<td><form:input path="uName" placeholder="(필수)6자까지 입력 가능" /><font
+			<th class="joinWindow">이름</th>
+			<td  ><form:input path="uName" placeholder="(필수)6자까지 입력 가능" /><font
 				color="red"> <form:errors path="uName" /></font></td>
 		</tr>
 
 		<tr>
-			<th>아이디</th>
-			<td><form:input path="uId" placeholder="(필수)영문/숫자 포함 8~20자"
+			<th class="joinWindow">아이디</th>
+			<td  ><form:input path="uId" placeholder="(필수)영문/숫자 포함 8~20자"
 					id="uId" /><font color="red"> <form:errors path="uId" /></font>
 				<button type="button" id="idCheck" onclick="uIdChk()">중복확인</button></td>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
-			<td><form:input path="uPassword"
-					placeholder="(필수)영문/숫자 포함 8~20자" /><font color="red"> <form:errors
+			<th class="joinWindow">비밀번호</th>
+			<td  > <form:input path="uPassword"
+					placeholder="(필수)영문/숫자 포함 8~20자" class="joinError" /><font color="red"> <form:errors
 						path="uPassword" /></font></td>
 		</tr>
 
 		<tr>
-			<th>비밀번호 재확인</th>
-			<td><input type="Password" id="uPasswordConfirm"
+			<th class="joinWindow">비밀번호 재확인</th>
+			<td  ><input type="Password" id="uPasswordConfirm"
 				placeholder="(필수)비밀번호 재입력" /></td>
 		</tr>
 
 
 		<tr>
-			<th>생년월일</th>
-			<td><input type='date' name="uBirthday" /> <!-- form:input path="uBirthday"  placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /-->
+			<th class="joinWindow">생년월일</th>
+			<td  ><input type='date' name="uBirthday" /> <!-- form:input path="uBirthday"  placeholder="(필수) 생년월일을 입력하세요(ex. 1992-01-01) " /-->
 				<font color="red"> <form:errors path="uBirthday" /></font></td>
 		</tr>
 
 		<tr>
-			<th>성별</th>
-			<td><form:radiobutton path="uGender" value="1" label="남자"
+			<th class="joinWindow">성별</th>
+			<td  ><form:radiobutton path="uGender" value="1" label="남자"
 					id="gender" /> <form:radiobutton path="uGender" value="2"
 					label="여자" />
 		</tr>
 
 		<tr>
-			<th>이메일</th>
-			<td><form:input path="uEmail"
+			<th class="joinWindow">이메일</th>
+			<td  ><form:input path="uEmail"
 					placeholder="(필수)@ 포함 영문/숫자 10~15자" /><font color="red"> <form:errors
 						path="uEmail" /></font></td>
 		</tr>
 
 		<tr>
-			<th>휴대폰번호</th>
-			<td><form:input path="uPhoneNumber"
+			<th class="joinWindow">휴대폰번호</th>
+			<td  ><form:input path="uPhoneNumber"
 					placeholder="(필수)-제외 숫자만 입력 ,11자" /><font color="red"> <form:errors
 						path="uPhoneNumber" /></font></td>
 		</tr>
 
 		<tr>
-			<th>관심장르</th>
+			<th class="joinWindow">관심장르</th>
 			<td><form:radiobutton path="uGenre" value="1" label="로맨스" id="genre" /> 
 			<form:radiobutton path="uGenre" value="2" label="코미디" /> 
 			<form:radiobutton path="uGenre" value="3" label="드라마" /> 
@@ -79,7 +80,8 @@
 		<form:hidden path="uAgree" value="1" />
 		<tr>
 			<td colspan="2" align="center"><input type="button" value="이전" id="back" />
-			<input type="submit" value="회원가입"  id="joinBtn"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input  type="submit" value="회원가입"  id="joinBtn"/>
 				</td>
 		</tr>
 	</table>
@@ -165,6 +167,93 @@ $(function(){
    });
 </script>
  
+  <style>
+/* 양식 헤더 스타일 지정 */
+.joinheader {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
 
+.umemberJoinForm {
+  margin: 0 auto;
+  width: 60%;
+}
+
+/* 양식 레이블 스타일 지정 */
+.joinWindow {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+/* 양식 입력 필드의 스타일 지정 */
+.joinInput {
+  padding-left: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* 오류 메시지 스타일 */
+form .errors {
+  font-size: 14px;
+  color: red;
+  margin-top: 5px;
+}
+
+/* 중복 확인 버튼 스타일 지정 */
+#idCheck {
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#idCheck:hover {
+  background-color: #ff3333;
+}
+
+/* 양식 버튼 스타일 지정 */
+input[type="submit"], input[type="button"] {
+  background-color: #ff6666; /* light red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+  background-color: #ff3333; /* dark red */
+}
+
+input[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+</style> 
 
 
