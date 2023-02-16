@@ -25,21 +25,19 @@ public class ReservationVO {
    private String rticketFourth; //티켓4 번호
 
    private int rtotalpayment; // 결제총액
-   private String rseatNumber; // 좌석정보(번호)
+   private int rticketcount;//티켓 매수
    private String pdate; //공연 일시(관람일시 또는 이용일에 해당)
    
    //VO에만 있는 데이터
-  
-   private List<String> rseatInfo; // 좌석정보(좌석1, 2, 3, 4)
-   private int pturn; // 회차
-   private int rticketcount;//티켓 매수
    private Date rcancelDeadline = new Date();//취소기한을 위한 오늘날짜
-   
+   private int pturn; // 회차
+      
    //일반사용자 정보
    private int unumber; // 일반회원번호
    private String uid; //일반회원아이디
    private String uname; //사용자 이름
    private String uphonenumber; //사용자 전화번호
+   private String uemail;// 사용자 이메일
    
    //연극 정보
    private int pnumber; // 연극번호
@@ -49,4 +47,5 @@ public class ReservationVO {
    private String pfirstStartTime; // 1회차 시작 시간
    private String psecondStartTime; // 2회차 시작 시간
    private String pticketPrice; // 티켓 가격(낱개)
+   private String pseatNumber;//좌석수
 }

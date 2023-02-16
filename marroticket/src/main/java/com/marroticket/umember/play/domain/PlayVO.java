@@ -86,5 +86,6 @@ public class PlayVO {
 
 	private String psecondStartTime;// 2회차 상연 시작 시각
 	private String tId;
+	
 
 }
