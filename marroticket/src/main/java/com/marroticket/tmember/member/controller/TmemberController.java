@@ -126,27 +126,10 @@ public class TmemberController {
 
 	// 극단 마이페이지 시작
 	// 등록한 연극
-
-	/*
-	 * // 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-	 * 
-	 * if ("0".equals(pvo.getpRegistrationApproval())) {
-	 * pvo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다"); } else if
-	 * ("1".equals(pvo.getpRegistrationApproval())) {
-	 * pvo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다"); } else {
-	 * pvo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요"); }
-	 * 
-	 * 
-	 * // 연극 변경 승인 상태 0:변경가능 1:변경불가 //vo.getTBusinessRegistration().equals("1") if
-	 * ("0".equals(pvo.getpModifyApproval())) {
-	 * pvo.setpModifyApproval("연극 정상 등록(변경 완료 / 변경 가능) 상태"); } else {
-	 * pvo.setpModifyApproval("변경 내용 관리자 확인 중에 있습니다"); }
-	 */
-
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo(Principal principal, Model model, PlayVO playVO) throws Exception {
 		System.out.println("tmemberController 호출");
-
+		
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		playVO.settNumber(tvo.getTNumber());
@@ -161,37 +144,41 @@ public class TmemberController {
 		playlist = modifyService.playlist(tNumber);
 
 		System.out.println("극단 회원 등록한 연극 List" + playlist);
-
-		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
 		
-		/*
-		 * // 사업자 등록 구분 1:개인 2:기업 // vo.getTBusinessRegistration().equals("1") if
-		 * ("1".equals(vo.getTBusinessRegistration())) {
-		 * vo.setTBusinessRegistration("개인"); } else {
-		 * vo.setTBusinessRegistration("기업"); }
-		 * 
-		 * 
-		 */
-
 		model.addAttribute("playlist", playlist);
 		return "info.tmemberPlayRegisteInfo";
 	}
 
 	// 등록한 연극 상세 페이지
 	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
-	public String read(int pNumber, Model model, Principal principal, PlayVO playVO) throws Exception {
+	public String read(int pNumber, Model model, Principal principal) throws Exception {
 
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		playVO.settNumber(tvo.getTNumber());
-		
 		System.out.println(pNumber);
+		
+		PlayVO vo = modifyService.read(pNumber);
+		vo.settNumber(tvo.getTNumber());
 
-		model.addAttribute(modifyService.read(pNumber));
 		System.out.println("등록한 연극 상세");
-		System.out.println("등록된 연극 정보 : " + playVO);
-
-		log.info(playVO.toString());
+		
+		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
+				if ("0".equals(vo.getpRegistrationApproval())) {
+					vo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다");
+				} else if ("1".equals(vo.getpRegistrationApproval())) {
+					vo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다");
+				} else {
+					vo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
+				}
+				
+		// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
+				if ("0".equals(vo.getpModifyApproval())) {
+					vo.setpModifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
+				} else {
+					vo.setpModifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
+				}
+				
+				model.addAttribute("playVO", vo);
 		
 		return "info.tmemberPlayRegisteRead";
 
@@ -199,17 +186,34 @@ public class TmemberController {
 
 	// 연극 수정 페이지
 	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
-	public String modifyPlay(int pNumber, Model model, Principal principal, PlayVO playVO) throws Exception {
+	public String modifyPlay(int pNumber, Model model, Principal principal) throws Exception {
 		
 		// tmember tId로 play tId 정보 가져오기
-		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		playVO.settNumber(tvo.getTNumber());
+				TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+				System.out.println(pNumber);
 				
-		model.addAttribute(modifyService.read(pNumber));
-		log.info(playVO.toString());
-		
-		System.out.println("수정 페이지 Controller 호출");
-		System.out.println(pNumber);
+				PlayVO vo = modifyService.read(pNumber);
+				vo.settNumber(tvo.getTNumber());
+
+				System.out.println("등록한 연극 상세");
+				
+				// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
+						if ("0".equals(vo.getpRegistrationApproval())) {
+							vo.setpRegistrationApproval("미승인 : 관리자 승인 중에 있습니다");
+						} else if ("1".equals(vo.getpRegistrationApproval())) {
+							vo.setpRegistrationApproval("승인 : 연극이 정상등록 되었습니다");
+						} else {
+							vo.setpRegistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
+						}
+						
+				// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
+						if ("0".equals(vo.getpModifyApproval())) {
+							vo.setpModifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
+						} else {
+							vo.setpModifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
+						}
+						
+						model.addAttribute("playVO", vo);
 		
 		return "modify.tmemberPlayModify";
 	}

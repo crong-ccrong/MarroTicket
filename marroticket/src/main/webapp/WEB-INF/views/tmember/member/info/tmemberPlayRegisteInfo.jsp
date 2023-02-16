@@ -35,14 +35,20 @@
 				<tr>
 					<td align="center">${list.pNumber}</td>
 					<td align="center"><a href="/theater/playRegisteRead?pNumber=${list.pNumber }">${list.pName}</td>
-					<td align="center">${list.pRegistrationApproval}</td>
+					<td align="center">
+						<c:choose>
+							<c:when test="${list.pRegistrationApproval eq '0'}">미승인</c:when>
+							<c:when test="${list.pRegistrationApproval eq '1'}">승인</c:when>
+							<c:otherwise>반려</c:otherwise>
+						</c:choose>
+					</td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${list.pTicketOpenDate}" /></td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${list.pStartDate}" /></td>
 							
 					<td align="center">
-					<a href="/theater/playModify?pNumber=${list.pNumber }">수정임시버튼~~</a> <!-- 연극승인 완료되면 지우기 -->
+<%-- 					<a href="/theater/playModify?pNumber=${list.pNumber }">수정임시버튼</a> --%>
 						<c:choose>
 							<c:when test="${list.pRegistrationApproval eq '0' }">
 								수정불가
@@ -58,7 +64,13 @@
 					 
 					 
 					</td>
-					<td align="center">${list.pModifyApproval}</td>
+					<td align="center">
+						<c:choose>
+							<c:when test="${list.pModifyApproval eq '0'}">수정 없음/완료</c:when>
+							<c:otherwise>수정 검토 중</c:otherwise>
+						</c:choose>
+					
+					</td>
 				</tr>
 				<c:if test="${status.count%4 == 0 }">
 						<tr></tr>
