@@ -289,6 +289,8 @@ $(document)
 						});
 			});
 			$(document).on("click", "#play_time_btn_first", function() {
+				$('#turnInfoHidden').empty();
+				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=1 />");
 				$('#play_time_btn_first').css({
 					'background-color': 'red',
 					'color': 'white'
@@ -301,6 +303,8 @@ $(document)
 				$('.play_seat_remain').html($('input[name=firstTimeSeatInfo]').val());
 			});
 			$(document).on("click", "#play_time_btn_second", function() {
+				$('#turnInfoHidden').empty();
+				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=2 />");
 				$('#play_time_btn_second').css({
 					'background-color': 'red',
 					'color': 'white',
@@ -328,16 +332,23 @@ $(document)
 
 
 				$('#reserveDateInfoHidden').empty();
-				$("#reserveDateInfoHidden").append('<input type="hidden" name="reserveDateInfo value="' + href.slice(-8) + '">');
-				console.log(href.slice(-8));
+				$("#reserveDateInfoHidden").append('<input type="hidden" name="reserveDateInfo" value="' + href.slice(-8) + '">');
 
 				var pnumberVal = $('input[name=pnumber]').val(); //공연번호
+				var pnameVal = $('input[name=pname]').val(); //공연명
+				var ptheaterNameVal = $('input[name=ptheaterName]').val(); //극장명
+				var ptheaterAddressVal = $('input[name=ptheaterAddress]').val(); //극장주소
+				var pticketPriceVal = $('input[name=pticketPrice]').val(); //티켓가격(낱개)
 				var pseatNumberVal = $('input[name=pseatNumber]').val(); //좌석개수
 				var pfirstStartTimeVal = $('input[name=pfirstStartTime]').val(); //1회차
 				var psecondStartTimeVal = $('input[name=psecondStartTime]').val();//2회차
 
 				var playInfoJSON = {
 					"pnumber": pnumberVal,
+					"pname": pnameVal,
+					"ptheaterName": ptheaterNameVal,
+					"ptheaterAddress": ptheaterAddressVal,
+					"pticketPrice": pticketPriceVal,
 					"pseatNumber": pseatNumberVal,
 					"pfirstStartTime": pfirstStartTimeVal,
 					"psecondStartTime": psecondStartTimeVal
@@ -349,7 +360,6 @@ $(document)
 					type: "post",
 					url: href,
 					data: playInfoJSONStr,
-					traditional: true,
 					contentType: "application/json; charset=utf-8",
 					success: function(result) {
 						console.log("1회차 잔여좌석 : " + result["first"]);
@@ -364,6 +374,7 @@ $(document)
 						var firstTurnInfoHidden = '<input type="hidden" name="firstTimeSeatInfo" value="' + result["first"] + '"/>';
 						$(".play_time_list").append(firstTurnInfoElement);
 						$("#hiddenSeatInfoFirst").append(firstTurnInfoHidden);
+						$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=1 />");
 
 						//1회차 좌석 정보(예매가능좌석수)
 						$(".play_time").html("1회차 " + $('input[name=pfirstStartTime]').val());
@@ -390,30 +401,68 @@ $(document)
 			});
 
 			//예매하기
-
 			$(".reservation_button").click(function() {
-				if($('input[name=firstTimeSeatInfo]').val()==undefined){
+				if ($('input[name=firstTimeSeatInfo]').val() == undefined) {
 					alert('회차를 선택해주세요!');
 					return;
 				}
-				$("#reserveCautionModal").show();
+				// ajax 통신을 위한 csrf 설정
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+				$(document).ajaxSend(function(e, xhr, options) {
+					xhr.setRequestHeader(header, token);
+				});
+				$.ajax({
+					type: "POST",
+					url: "/auth/loginCheck",
+					success: function(data) {
+						if (data == 'loginStatusNull') {
+							if (confirm("로그인이 필요합니다")) {
+								window.location.href = "/auth/memberlogin?return_to=" + encodeURIComponent(window.location.href);
+							}
+						} else {
+							$("#reserveCautionModal").show();
+						}
+					}
+				});
 			});
 
 			$(".close").click(function() {
 				$("#reserveCautionModal").hide();
+				//임시 start
+				var url = "/reserve/book?pdate=" + $('input[name=reserveDateInfo]').val() + "&pturn=" + $('input[name=turnInfo]').val();
+				$("#reserveInfoForm").attr("action", url);
+				$("#reserveInfoForm").attr("method", "POST"); //임시 end
 				$("#reserveInfoForm").submit();
 			});
-
+/* 팝업창을 위해서 나중에 복구
 			$("#reserveInfoForm").submit(function(e) {
 				e.preventDefault();
 				
+				// ajax 통신을 위한 csrf 설정
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+				$(document).ajaxSend(function(e, xhr, options) {
+					xhr.setRequestHeader(header, token);
+				});
+
+				var url = "/reserve/book?pdate=" + $('input[name=reserveDateInfo]').val() + "&pturn=" + $('input[name=turnInfo]').val();
 				var formData = $("#reserveInfoForm").serialize();
+				
 				$.ajax({
 					type: "POST",
-					url: "/reserve/book",
-					data: formData/* ,
-	    success: function(response){
-	    } */
+					url: url,
+					data: formData,
+					success: function(data) {
+						var popup = window.open("", "Popup Window", "width=1020,height=890");
+						popup.document.open();
+						popup.document.write(data);
+						popup.document.close();
+						popup.onunload = function() { //새로고침!
+							location.reload();
+						};
+						//location.href = "/reserve/book";
+					},
 				});
-			});
+			});*/
 		});

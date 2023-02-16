@@ -191,4 +191,28 @@
 		<put-attribute name="title" value="Notice" />
 		<put-attribute name="content" value="/WEB-INF/views/admin/notice/{1}.jsp" />
 	</definition>
+	
+	<!-- 예매 과정 레이아웃 -->
+	<!-- reserve-select-template -->
+	<definition name="reserve-select-template" template="/WEB-INF/tiles/layouts/umember/reservation/reserve_select_template.jsp">
+		<put-attribute name="title" value="마로티켓 예매" />
+		<put-attribute name="logo" value="/WEB-INF/tiles/components/umember/reservation/logo.jsp" />
+		<put-attribute name="step" value="/WEB-INF/tiles/components/umember/reservation/step.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/tiles/components/umember/reservation/sidebar.jsp" />
+		<put-attribute name="reserve_btn" value="/WEB-INF/tiles/components/umember/reservation/sidebar_button.jsp" />
+		<put-attribute name="bottom" value="/WEB-INF/tiles/components/umember/reservation/bottom.jsp" />
+	</definition>
+	<definition name="reserve.*" extends="reserve-select-template">
+		<put-attribute name="content" value="/WEB-INF/views/umember/reservation/{1}.jsp" />
+	</definition>
+	
+	<!-- 예매 성공 레이아웃 -->
+		<!-- 예매 레이아웃 -->
+	<!-- reserve-select-template -->
+	<definition name="reserveDetails" template="/WEB-INF/tiles/layouts/umember/reservation/reserve_complete_template.jsp">
+		<put-attribute name="title" value="마로티켓 예매" />
+		<put-attribute name="logo" value="/WEB-INF/tiles/components/umember/reservation/logo.jsp" />
+		<put-attribute name="step" value="/WEB-INF/tiles/components/umember/reservation/step.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/umember/reservation/reserveDetails.jsp" />
+	</definition>
 </tiles-definitions>

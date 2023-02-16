@@ -10,9 +10,6 @@ public interface UmemberMapper {
 	public String findId(UmemberVO umember) throws Exception;
 	
 	public int updatePassword(UmemberVO umember) throws Exception;
-
-	// 아이디를 읽어오기
-	public UmemberVO read(String userId);
 	
 	//아이디 중복 체크
 	public  int uIdCheck (UmemberVO umember) throws Exception;
@@ -33,5 +30,7 @@ public interface UmemberMapper {
 	public void deleteAuth(@Param("uNumber") Integer uNumber) throws Exception;
 	//회원탈퇴
 	public void deleteMember (UmemberVO umember) throws Exception;
+
+	public UmemberVO read(String userId);
 	
 }

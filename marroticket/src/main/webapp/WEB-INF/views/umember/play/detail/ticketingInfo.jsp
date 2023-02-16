@@ -19,7 +19,7 @@
 					<div id="calendar_header">
 						<div id="calendar_nav">
 							<button type="button" class="month-move"
-								id="calendar_nav_btn_prev" data-ym="2022-04-01"><</button>
+								id="calendar_nav_btn_prev" data-ym="2022-04-01"></button>
 							<strong id="calendar_title">2023.01</strong>
 							<button type="button" class="month-move"
 								id="calendar_nav_btn_next" data-ym="2022-06-01">></button>
@@ -95,10 +95,14 @@
 <div class="closeDate_content"></div>
 
 <form id="reserveInfoForm">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<!-- 연극 hidden -->
 	<input type="hidden" name="pnumber" value="${play.pnumber}"/>
-	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
+	<input type="hidden" name="pname" value="${play.pname}"/>
+	<input type="hidden" name="ptheaterName" value="${play.ptheaterName}"/>
+	<input type="hidden" name="ptheaterAddress" value="${play.ptheaterAddress}"/>
 	<input type="hidden" name="pticketPrice" value="${play.pticketPrice}"/>
+	<input type="hidden" name="pseatNumber" value="${play.pseatNumber}"/>
 	<input type="hidden" name="pfirstStartTime" value="${play.pfirstStartTime}"/>
 	<input type="hidden" name="psecondStartTime" value="${play.psecondStartTime}"/>
 	<!-- 예매잔여좌석 -->
@@ -111,6 +115,9 @@
 	<!-- 예매 날짜 -->
 	<div id="reserveDateInfoHidden">
 		
+	</div>
+	<div id="turnInfoHidden">
+	
 	</div>
 </form>
 <%@include file="resereCautionModal.jsp"%>

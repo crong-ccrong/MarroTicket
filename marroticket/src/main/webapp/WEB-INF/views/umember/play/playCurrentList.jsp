@@ -23,9 +23,9 @@
 
 					<td><table>
 							<tr>
-								<td align="center"><a
-									href="/play/playDetail?pNumber=${CurrentList.pnumber }"><img
-										alt="..." src="poster?pnumber=${CurrentList.pnumber }"></a></td>
+								<td align="center">
+								<a href="/play/playDetail?pNumber=${list.pnumber }">
+								<img alt="..." src="poster?pnumber=${list.pnumber }"></a></td>
 							</tr>
 							<tr>
 								<td align="center">${list.pname}</td>

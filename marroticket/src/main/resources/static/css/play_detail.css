@@ -565,3 +565,144 @@ section.cancel_notice {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* 상세정보 탭 css */
+
+.common_container {
+    flex: 1;
+    padding-bottom: 160px;
+}
+.common_section.section_product_content {
+	width : 96%
+}
+main {
+    display: block;
+}
+.section_product_info {
+    display: flex;
+    position: relative;
+    margin-top: 64px;
+    padding-bottom: 40px;
+}
+.common_section {
+    margin: 0 auto;
+    width: 1120px;
+}
+section {
+    display: block;
+}
+.section_product_tabcont:first-child {
+    margin-top: 0;
+}
+.section_product_tabcont {
+    padding-top: 40px;
+}
+.product_content_subtit:first-of-type {
+    margin-top: 0;
+}
+.product_content_subtit {
+    margin: 40px 0 12px;
+    line-height: 28px;
+    color: #242428;
+}
+h3 {
+	padding : 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.product_editor {
+    font-size: 15px;
+    line-height: 22px;
+    color: #62676c;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+b {
+    font-weight: bold;
+}
+.section_product_tabcont .product_banner {
+    margin-bottom: 12px;
+}
+.product_banner .product_banner_img {
+    width: 100%;
+    vertical-align: top;
+}
+.product_detail_tabcontent img {
+    max-width: 100%;
+}
+img {
+    border: 0;
+    vertical-align: top;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.product_detail_tabcontent img {
+    max-width: 100%;
+}
+.product_info_table {
+    border-top: 1px solid #cfd0d7;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left;
+}
+.product_info_table table {
+    width: 100%;
+    color: #242428;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+}
+caption {
+    font-style: normal;
+}
+caption {
+    visibility: hidden;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+caption {
+    display: table-caption;
+    text-align: -webkit-center;
+    visibility: hidden;
+}
+caption span {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.product_info_table th {
+    background: #f8f9fa;
+    font-weight: 400;
+}
+.product_info_table th, .product_info_table td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #ecedf2;
+}
