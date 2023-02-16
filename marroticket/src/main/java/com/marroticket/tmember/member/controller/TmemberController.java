@@ -144,17 +144,17 @@ public class TmemberController {
 	 */
 
 	@GetMapping("/playRegisteInfo")
-	public String playRegisteInfo(Principal principal, Model model, PlayVO pvo) throws Exception {
+	public String playRegisteInfo(Principal principal, Model model, PlayVO playVO) throws Exception {
 		System.out.println("tmemberController 호출");
 
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		pvo.settNumber(tvo.getTNumber());
+		playVO.settNumber(tvo.getTNumber());
 
-		int tNumber = pvo.gettNumber();
+		int tNumber = playVO.gettNumber();
 		System.out.println("극단 회원 번호" + tNumber);
 
-		System.out.println("극단 회원 등록한 연극 정보" + pvo);
+		System.out.println("극단 회원 등록한 연극 정보" + playVO);
 
 		// 등록한 연극 배열 목록 가져오기
 		List<PlayVO> playlist = new ArrayList<>();
@@ -170,19 +170,19 @@ public class TmemberController {
 
 	// 등록한 연극 상세 페이지
 	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
-	public String read(int pNumber, Model model, Principal principal, PlayVO pvo) throws Exception {
+	public String read(int pNumber, Model model, Principal principal, PlayVO playVO) throws Exception {
 
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		pvo.settNumber(tvo.getTNumber());
+		playVO.settNumber(tvo.getTNumber());
 		
 		System.out.println(pNumber);
 
 		model.addAttribute(modifyService.read(pNumber));
 		System.out.println("등록한 연극 상세");
-		System.out.println("등록된 연극 정보 : " + pvo);
+		System.out.println("등록된 연극 정보 : " + playVO);
 
-		log.info(pvo.toString());
+		log.info(playVO.toString());
 		
 		return "info.tmemberPlayRegisteRead";
 
@@ -190,39 +190,39 @@ public class TmemberController {
 
 	// 연극 수정 페이지
 	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
-	public String modifyPlay(Principal principal, Model model, PlayVO pvo) throws Exception {
+	public String modifyPlay(int pNumber, Model model, Principal principal, PlayVO playVO) throws Exception {
 		
-		/*
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		pvo.settNumber(tvo.getTNumber());
+		playVO.settNumber(tvo.getTNumber());
 				
-		System.out.println(pNumber);
-
 		model.addAttribute(modifyService.read(pNumber));
-		*/
+		log.info(playVO.toString());
 		
-		// 데이터 값이 null로 들어감
-		 TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-		 pvo.settNumber(tvo.getTNumber());
-		 
-		 int pNumber = pvo.getpNumber(); System.out.println(pNumber);
-		 
+		System.out.println("수정 페이지 Controller 호출");
+		System.out.println(pNumber);
 		
 		return "modify.tmemberPlayModify";
 	}
 
-		// 공지사항 수정 처리
-		
-		@RequestMapping(value = "/noticeModify", method = RequestMethod.POST)
-		public String modify(PlayVO pvo, RedirectAttributes rttr) throws Exception {
-			modifyService.modify(pvo);
+		// 연극 수정 처리
+		@RequestMapping(value = "/playModify", method = RequestMethod.POST)
+		public String modify(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request, RedirectAttributes rttr, Principal principal, Model model, int pNumber) throws Exception {
+			
+			System.out.println("수정 처리 Controller 호출");
+			System.out.println(pNumber);
+			
+			// 수정 처리
+			modifyService.modify(playVO);
+			
+			// 업데이트 된 연극 정보 가져오기
+			PlayVO updatedVO = modifyService.read(pNumber);
 			
 			// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
 			rttr.addFlashAttribute("msg", "SUCCESS");
 			System.out.println("등록한 연극 수정처리");
 
-			return "redirect:/info/tmemberPlayRegisteInfo";
+			return "redirect:/theater/modifyTemporaryComplete";
 		}
 	
 	

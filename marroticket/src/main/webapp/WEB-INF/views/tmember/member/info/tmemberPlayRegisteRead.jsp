@@ -6,12 +6,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<form:form modelAttribute="vo" action="/tmember/modify/tmemberPlayModify">
 <h2>
 	등록한 연극 상세보기
 </h2>
 
 <form:form modelAttribute="playVO">
+
 	<form:hidden path="pNumber" />
 	<table>
 		<tr>
@@ -137,16 +137,13 @@
 			<form:input path="pModifyApproval" value="1" hidden="true" />
 		</tr>	 -->	
 	</table>
-</form:form>
+<%-- </form:form> --%>
 
 <!-- 수정 등록 구현 -->
 <div>
-	<input type="submit" value="수정하기" onclick="location.href='/theater/playModify'">
 	<input type="button" value="목록으로 돌아가기" onclick="location.href='/theater/playRegisteInfo'">
-	</button>
-	
 </div>
-
+</form:form>
 
 
 <!-- 극단 주소 -->
@@ -322,7 +319,8 @@
 
 					});
 </script>
-</form:form>
+
+<%-- </form:form> --%>
 <!--  -->
 
 <!-- 

@@ -25,6 +25,7 @@ public class ModifyServiceImpl implements ModifyService {
 	// 등록한 연극 상세보기
 	@Override
 	public PlayVO read(int pNumber) throws Exception {
+		System.out.println("ModifyServiceImpl 호출");
 		return mapper.read(pNumber);
 	}
 
