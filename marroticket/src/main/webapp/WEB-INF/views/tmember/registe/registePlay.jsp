@@ -26,9 +26,9 @@
 	<div class="content">
 		<table class="agree">
 			<tr>
-				<td  colspan="2">정산 관련 동의(필수) <input
-					type="checkbox" name="agree1" /><font color="red" id="agree1Error"
-					hidden="true"><spring:message code="registe.checkbox.error" /></font></td>
+				<td colspan="2">정산 관련 동의(필수) <input type="checkbox"
+					name="agree1" /><font color="red" id="agree1Error" hidden="true"><spring:message
+							code="registe.checkbox.error" /></font></td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2"><textarea rows="10" cols="120"
@@ -86,8 +86,8 @@
 	</textarea></td>
 			</tr>
 			<tr>
-				<td  colspan="2">연극등록 약관(필수)<input type="checkbox"
-					name="agree2" /><font color="red" id="agree2Error" hidden="true"><spring:message
+				<td colspan="2">연극등록 약관(필수)<input type="checkbox" name="agree2" /><font
+					color="red" id="agree2Error" hidden="true"><spring:message
 							code="registe.checkbox.error" /></font></td>
 			</tr>
 
@@ -134,9 +134,9 @@
 
 
 			<tr>
-				<td  colspan="2">예매 좌석 제한 관련 동의(필수)<input
-					type="checkbox" name="agree3" /><font color="red" id="agree3Error"
-					hidden="true"><spring:message code="registe.checkbox.error" /></font></td>
+				<td colspan="2">예매 좌석 제한 관련 동의(필수)<input type="checkbox"
+					name="agree3" /><font color="red" id="agree3Error" hidden="true"><spring:message
+							code="registe.checkbox.error" /></font></td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2"><textarea rows="10" cols="120"
@@ -181,13 +181,13 @@
 			</tr>
 		</table>
 		<table class="information" border="1">
-			<tr >
+			<tr>
 				<td>연극명</td>
 				<td><form:input path="pname" placeholder="연극명 입력칸" /><font
 					color="red"><form:errors path="pname" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
 				</td>
 				<td><form:input path="pstartDate" id="pstartDate"
@@ -196,7 +196,7 @@
 							<spring:message code="registe.date.error" />
 						</form:errors></font></td>
 			</tr>
-			<tr >
+			<tr>
 				<td>연극 종료일<br>(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)
 				</td>
 				<td><form:input path="pcloseDate" id="pcloseDate"
@@ -206,7 +206,7 @@
 						</form:errors></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>예매오픈 희망일<br>(연극 시작일 시점부터 최소 30일 전이여야 합니다.)
 				</td>
 				<td><form:input path="pticketOpenDate" id="pticketOpenDate"
@@ -216,14 +216,14 @@
 						</form:errors></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>연극 소요시간(3자리까지 분단위입력)</td>
 				<td><form:input path="prunningTime" id="prunningTime"
 						placeholder="연극 소요 시간 입력칸" />분 <font color="red"><form:errors
 							path="prunningTime" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>극장명</td>
 				<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
 					color="red"><form:errors path="ptheaterName" /> </font></td>
@@ -235,13 +235,13 @@
 					value="주소 찾기" /></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td colspan="2"><form:input path="ptheaterAddress"
 						id="ptheaterAddress" /> <font color="red"><form:errors
 							path="ptheaterAddress" /> </font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>연극포스터</td>
 				<td><input type="File" name="pposter" id="pposter"
 					accept="image/jpeg, image/png, image/jpg" /><font color="red"
@@ -249,7 +249,7 @@
 							code="registe.file.error" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>기획사 정보</td>
 				<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
 						value="마로기획" /><font color="red"><form:errors
@@ -258,7 +258,7 @@
 
 
 
-			<tr >
+			<tr>
 				<td>장르 정보</td>
 				<td><form:select path="pgenre">
 						<option value="1">로맨스극</option>
@@ -271,7 +271,7 @@
 					</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>관람 등급</td>
 				<td><form:select path="pratings">
 						<option value="1">전체 이용가</option>
@@ -281,27 +281,27 @@
 					</form:select><font color="red"><form:errors path="pratings" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>티켓 가격(원)</td>
 				<td><form:input type="text" path="pticketPrice"
 						placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
 							path="pticketPrice" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>캐스팅 데이터</td>
 				<td><form:textarea rows="10" cols="50" path="pcasting"
 						placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
 							path="pcasting" /></font></td>
 			</tr>
-			<tr >
+			<tr>
 				<td>연극 줄거리</td>
 				<td><form:textarea rows="10" cols="50" path="pplot"
 						placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
 							path="pplot" /></font></td>
 			</tr>
 
-			<tr >
+			<tr>
 				<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
 				<td><form:input type="text" path="pseatNumber"
 						placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
@@ -309,7 +309,7 @@
 
 			</tr>
 
-			<tr >
+			<tr>
 				<td>상연 시각</td>
 				<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
 					onchange="changePFirstStartTime()">
@@ -418,13 +418,11 @@
 									showMonthAfterYear : true,
 									yearSuffix : '년'
 								});
-
 						$('#pstartDate').datepicker();
 						$('#pcloseDate').datepicker();
 						$("#pticketOpenDate").datepicker();
 						$("#pticketOpenDate")
 								.datepicker("option", "minDate", 0);
-
 						$('#pstartDate')
 								.datepicker("option", "minDate", "+30d");
 						$('#pstartDate').datepicker("option", "maxDate",
@@ -447,7 +445,6 @@
 											$("#pcloseDate").datepicker(
 													"option", "maxDate",
 													endDate);
-
 											var ticketMaxDate = new Date(
 													selectedDate);
 											ticketMaxDate.setDate(ticketMaxDate
@@ -462,7 +459,6 @@
 													"option", "maxDate",
 													ticketDate);
 										});
-
 						$("#registeTemporary")
 								.on(
 										"click",
@@ -532,7 +528,6 @@
 
 													}
 												}
-
 											} else {
 												if ($(
 														'input:checkbox[name="agree1"]')
@@ -554,11 +549,8 @@
 													$("#pposterError").show();
 
 												}
-
 											}
-
 										});
-
 					});
 
 	// 상연 시간 선택
@@ -959,19 +951,16 @@
 		new daum.Postcode({
 			oncomplete : function(data) {
 				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
 				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 				var addr = ''; // 주소 변수
 				var extraAddr = ''; // 참고항목 변수
-
 				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 					addr = data.roadAddress;
 				} else { // 사용자가 지번 주소를 선택했을 경우(J)
 					addr = data.jibunAddress;
 				}
-
 				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
 				if (data.userSelectedType === 'R') {
 					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -989,11 +978,9 @@
 						extraAddr = ' (' + extraAddr + ')';
 					}
 					// 조합된 참고항목을 해당 필드에 넣는다.
-
 				} else {
 					document.getElementById("sample6_extraAddress").value = '';
 				}
-
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				document.getElementById("ptheaterAddress").value = addr;
 				// 커서를 상세주소 필드로 이동한다.

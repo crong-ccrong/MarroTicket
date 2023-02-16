@@ -4,14 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
-
 @Controller
 public class HomeController {
 	@GetMapping("/")
 	public String home(String modalData) {
 		return "home";
 	}
-	
 
 	// 회원가입
 	@GetMapping("/join")
@@ -80,6 +78,7 @@ public class HomeController {
 	public String privacy() {
 		return "footer.privacy";
 	}
+
 	@GetMapping("/companyinfo")
 	public String companyinfo() {
 		return "footer.companyinfo";
@@ -87,13 +86,13 @@ public class HomeController {
 
 	@GetMapping("/umembertermsofuse")
 	public String umembertermsofuse(Model model) {
-		model.addAttribute("umember","umember");
+		model.addAttribute("umember", "umember");
 		return "footer.umembertermsofuse";
 	}
-	
+
 	@GetMapping("/tmembertermsofuse")
 	public String tmembertermsofuse(Model model) {
-		model.addAttribute("umember","umember");
+		model.addAttribute("umember", "umember");
 		return "footer.tmembertermsofuse";
 	}
 
@@ -104,12 +103,10 @@ public class HomeController {
 	public String ufaqList() {
 		return "serviceCenter.ufaqList";
 	}
-	
 
 	// 일반회원 문의 사항
-	@GetMapping("/otherInquiries")
+	@GetMapping("/serviceCenter/otherInquiries")
 	public String otherInquiries() {
 		return "serviceCenter.otherInquiries";
 	}
-
 }

@@ -9,11 +9,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <h2>
+
 	<spring:message code="tfaq.header.list" />
 </h2>
-
-<a href="tfaqRegister"><spring:message code="action.new" /></a>
-
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="tfaqRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
 <table border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="tfaq.no" /></th>
@@ -49,13 +50,13 @@ ${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
 	<c:if test="${pagination.prev}">
 		<a href="${pagination.startPage - 1}">&laquo;</a>
 	</c:if>
-	
+
 	<c:forEach begin="${pagination.startPage }"
 		end="${pagination.endPage }" var="idx">
-		
+
 		<a href="/tfaq/tfaqList${pagination.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
-	
+
 	<c:if test="${pagination.next && pagination.endPage > 0}">
 		<a href="${pagination.endPage +1}">&raquo;</a>
 	</c:if>

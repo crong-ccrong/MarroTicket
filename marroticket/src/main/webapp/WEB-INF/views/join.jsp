@@ -5,11 +5,9 @@
 		$("#umemberJoin").on("click", function() {
 			location.href = "/umember/umemberAgreement";
 		});
-
 		$("#tmemberJoin").on("click", function() {
 			location.href = "/theater/tmemberAgreement";
-		}); 
-
+		});
 	});
 </script>
 <table>

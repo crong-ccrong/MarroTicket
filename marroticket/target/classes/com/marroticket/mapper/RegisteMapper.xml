@@ -23,7 +23,7 @@
 		p_ticketprice ,
 		p_genre ,
 		p_posterUrl ,
-		p_modifyapproval ,
+		p_modifyApproval,
 		p_registrationapproval ,
 		p_firststarttime ,
 		p_secondstarttime ,
@@ -33,8 +33,7 @@
 
 		values(
 		play_seq.nextval,
-		#{pname
-		},
+		#{pname},
 		#{pstartDate},
 		#{pcloseDate},
 		#{prunningTime },
@@ -50,7 +49,7 @@
 		#{pticketPrice},
 		#{pgenre },
 		#{pposterUrl },
-		#{pmodifyApproval },
+		#{pmodifyApproval},
 		#{pregistrationApproval },
 		#{pfirstStartTime},
 		#{psecondStartTime },

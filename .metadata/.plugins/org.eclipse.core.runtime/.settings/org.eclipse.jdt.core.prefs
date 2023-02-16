@@ -1,19 +1,20 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
-<<<<<<< HEAD
->>>>>>>=79ab777f2a9cad4fbcbb343faff94669788c8f41
-eclipse.preferences.version=1
-org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
-org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/xpsxm/.m2/repository
-=======
->>>>>>>=66556ed1019b6037c7c64927eb6a8d714170d0e6
+>>>>>>>=c73c73163d75e23899b274e840f41ae0972e09e7
 eclipse.preferences.version=1
 org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
 org.eclipse.jdt.core.classpathVariable.JRE_LIB=/Applications/SpringToolSuite4.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.aarch64_17.0.5.v20221102-0933/jre/lib/jrt-fs.jar
 org.eclipse.jdt.core.classpathVariable.JRE_SRC=/Applications/SpringToolSuite4.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.aarch64_17.0.5.v20221102-0933/jre/lib/src.zip
 org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
-org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/java1/.m2/repository
->>>>>>> c73c73163d75e23899b274e840f41ae0972e09e7
+<<<<<<< HEAD
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/java8/.m2/repository
+=======
+<<<<<<< HEAD
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/xpsxm/.m2/repository
+=======
+org.eclipse.jdt.core.classpathVariable.M2_REPO=/Users/yujeong-won/.m2/repository
+>>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2
+>>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=17

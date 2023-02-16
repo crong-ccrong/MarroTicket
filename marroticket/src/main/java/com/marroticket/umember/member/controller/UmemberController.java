@@ -4,8 +4,10 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +37,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.marroticket.umember.member.domain.UmemberVO;
 import com.marroticket.umember.member.service.UmemberService;
+import com.marroticket.umember.play.domain.PlayVO;
+import com.marroticket.umember.play.service.PlayService;
+import com.marroticket.umember.reservation.domain.ReservationVO;
+import com.marroticket.umember.reservation.service.ReservationService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +50,10 @@ import lombok.extern.slf4j.Slf4j;
 public class UmemberController {
 	@Autowired
 	private UmemberService umemberService;
+	@Autowired
+	private ReservationService reservationService;
+	@Autowired
+	private PlayService playService;
 	@Autowired
 	private EmailService emailService;
 	@Autowired
@@ -119,18 +130,21 @@ public class UmemberController {
             vo.setuGenre("로맨스");
             break;
         case "2":
-            vo.setuGenre("드라마");
+            vo.setuGenre("코미디");
             break;
         case "3":
-            vo.setuGenre("공포");
+            vo.setuGenre("드라마");
             break;
         case "4":
-            vo.setuGenre("추리/스릴러");
+            vo.setuGenre("공포");
             break;
         case "5":
-            vo.setuGenre("판타지");
+            vo.setuGenre("추리/스릴러");
             break;
         case "6":
+            vo.setuGenre("판타지");
+            break;
+        case "7":
             vo.setuGenre("시대/역사");
             break;
     }
@@ -195,11 +209,10 @@ public class UmemberController {
 	        vo.setuGender("여자");
 	    }
 	   
-	    //변경할 비밀번호가 빈칸도 아니고 기존 비밀번호랑도 다르면
+	    // 기존 비밀번호랑도 다르면
 	    if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
 	    	//변경한 비밀번호도 암호화
 	    vo.setUPassword(passwordEncoder.encode(changePw));
-	    
 	    //비밀번호 변경시 로그아웃
 	    HttpSession session = request.getSession(false);
 	    if(session != null) {
@@ -232,8 +245,7 @@ public class UmemberController {
             @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
 		System.out.println("탈퇴 페이지 호출");
 		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		  String uId = authentication.getName();
-		  
+		 String uId = authentication.getName();
 		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
 		
 		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
@@ -246,20 +258,165 @@ public class UmemberController {
 		return "redirect:/";
 	}
 	
+//	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.POST)
+//	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,  
+//            @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
+//		System.out.println("탈퇴 페이지 호출");
+//		
+//		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		 String uId = authentication.getName();
+//		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
+//		
+//		 List<ReservationVO> reservations = reservationService.getReservationListByUNumber(originalVO.getuNumber());
+//		 boolean reservationDetails = false;
+//		 boolean hasViewingsOnSameDay = false;
+//		 for (ReservationVO reservation : reservations) {
+//		        if (reservation.getRcancelState()==0) {
+//		        	reservationDetails = true;
+//		            break;
+//		        }if (reservation.getPdate().equals(reservation.getPdate())) {
+//		            hasViewingsOnSameDay = true;
+//		            break;
+//		        }
+//		    }
+//		 if (reservationDetails || hasViewingsOnSameDay) {
+//		        model.addAttribute("eMessage", "에러메시지 ");
+//		        return "mypage.umemberSecession";
+//		    }
+//		 
+//		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
+//			System.out.println("비밀번호 틀림");
+//			model.addAttribute("passwordError","에러메시지");
+//			 return "mypage.umemberSecession";
+//		}
+//		
+//		 try {
+//		        umemberService.remove(originalVO);
+//		    } catch (Exception e) {
+//		        model.addAttribute("Message", "에러메시지");
+//		        return "mypage.umemberSecession";
+//		    }
+//
+//		    session.invalidate();
+//		    return "redirect:/";
+//		}
+		
 	
-	/* 2) 일반회원 예매 정보 */
+	
+	/* 일반회원 예매 정보 */
+//    String ex = "2023-02-09";
+//    System.out.println(ex.substring(0,4));
+    
 	@GetMapping("/umemberReserveInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberReserveInfo() {
-		return "mypage.umemberReserveInfo";
+	public String reservation(Model model) throws Exception {
+		System.out.println("예약 정보 호출");
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String uId = authentication.getName();
+	    UmemberVO vo = umemberService.getUmemberByUId(uId);
+	    
+	    int uNumber = vo.getuNumber();
+	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+	    System.out.println(reservationList);
+	    model.addAttribute("reservationList", reservationList);
+	    
+	    return "mypage.umemberReservationList";
 	}
-
-	/* 3) 일반 회원 예매 취소 정보 */
+	
+	/**예 매 취 소 **/
+	@GetMapping("/cancelReservation/{rnumber}")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String cancelReservation(@PathVariable Integer rnumber)throws Exception {
+		System.out.println("취소 호출");
+		  System.out.println("rnumber : "+rnumber);
+	reservationService.cancelReservation(rnumber);
+	return "redirect:/umember/umemberCancelInfo";
+	}
+	
+	/* 일반 회원 예매 취소 정보 */
 	@GetMapping("/umemberCancelInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberCancelInfo() {
+	public String umemberCancelInfo(Model model)throws Exception {
+		System.out.println("예매 취소 정보 호출");
+		
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String uId = authentication.getName();
+	    UmemberVO vo = umemberService.getUmemberByUId(uId);
+	    
+	    int uNumber = vo.getuNumber();
+	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+	    System.out.println(reservationList);
+	    model.addAttribute("reservationList", reservationList);
+	    
 		return "mypage.umemberCancelInfo";
 	}
+	
+	//일반 회원 나의 관람 연극 내역
+	@GetMapping("/umemberViewHistory")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String umemberViewHistory(Model model) throws Exception {
+		System.out.println("관람한 연극 내역 호출");
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		    String uId = authentication.getName();
+		    UmemberVO vo = umemberService.getUmemberByUId(uId);
+		    
+		    int uNumber = vo.getuNumber();
+		    ReservationVO reservation = new ReservationVO();
+		    reservation.setRcancelDeadline(new Date());
+		    List<ReservationVO> reservationList = reservationService.viewingHistory(uNumber);
+		    System.out.println(reservationList);
+		    model.addAttribute("reservationList", reservationList);
+		    
+		return "mypage.umemberViewHistory";
+	}
+	
+	//일반 회원 나의 맞춤 연극 리스트
+	@GetMapping("/umemberCustomPlayList")
+	@PreAuthorize("hasRole('ROLE_UMEMBER')")
+	public String umemberCustomPlayList(Model model) throws Exception {
+		System.out.println("맞춤 연극 호출");
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		    String uId = authentication.getName();
+		    UmemberVO umemberVO = umemberService.getUmemberByUId(uId);
+		    
+		    List<PlayVO> playList = playService.playCurrentList();
+		    playList.addAll(playService.playExpectedList());
+		    
+		    System.out.println(playList);
+		    
+		    //사용자가 선호하는 장르에 따라  목록 필터링
+		    List<PlayVO> filteredPlayList = playList.stream()
+		            .filter(play -> play.getPgenre().equals(umemberVO.getuGenre()))
+		            .sorted(Comparator.comparing(PlayVO::getPfirstStartTime))
+		            .collect(Collectors.toList());
+		    
+		    model.addAttribute("playList", filteredPlayList);
+		    model.addAttribute("uName", umemberVO.getuName());
+		    model.addAttribute("uGenre", GenreName(umemberVO.getuGenre()));
+		    
+		    return "mypage.umemberCustomPlayList";
+	}
+	
+		    private String GenreName(String genreCode) {
+		        switch (genreCode) {
+		            case "1":
+		                return "로맨스";
+		            case "2":
+		                return "코미디";
+		            case "3":
+		                return "드라마";
+		            case "4":
+		                return "공포";
+		            case "5":
+		                return "추리/스릴러";
+		            case "6":
+		                return "판타지";
+		            case "7":
+		                return "시대/역사";
+		            default:
+		            	 return "";
+		        }
+		    }
 
 	// 일반회원 가입 이용약관
 	@GetMapping("/umemberAgreement")
@@ -360,11 +517,4 @@ public class UmemberController {
 		// console 확인
 		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
-	
-
-	
-		
-
-	
-	
-	}
+}

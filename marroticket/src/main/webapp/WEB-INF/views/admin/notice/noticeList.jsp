@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -11,7 +10,9 @@
 <h2>
 	<spring:message code="notice.header.list" />
 </h2>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="noticeRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
 <table border="1">
 	<tr>
 

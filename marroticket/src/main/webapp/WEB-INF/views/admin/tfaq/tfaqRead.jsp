@@ -24,17 +24,19 @@
 	</table>
 </form:form>
 <div>
-	<button type="submit" id="btnEdit">
-		<spring:message code="action.edit" />
-	</button>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<button type="submit" id="btnEdit">
+			<spring:message code="action.edit" />
+		</button>
 
-	<button type="submit" id="btnRemove">
-		<spring:message code="action.remove" />
-	</button>
+		<button type="submit" id="btnRemove">
+			<spring:message code="action.remove" />
+		</button>
 
-	<button type="submit" id="btnList">
-		<spring:message code="action.list" />
-	</button>
+		<button type="submit" id="btnList">
+			<spring:message code="action.list" />
+		</button>
+	</sec:authorize>
 </div>
 <script>
 	$(document).ready(function() {

@@ -1,329 +1,219 @@
-<<<<<<< HEAD
---ÀÏ¹Ý È¸¿ø Å×ÀÌºí
-create table UMEMBER(
-u_number number(38)NOT NULL primary KEY ,--ÀÏ¹Ý È¸¿ø ¹øÈ£
-u_id VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµð
-u_password VARCHAR2(20) NOT NULL,--ºñ¹Ð¹øÈ£
-u_name VARCHAR2(6) NOT NULL ,--ÀÌ¸§
-u_phoneNumber VARCHAR2(11) NOT NULL,-- ÀÏ¹Ý »ç¿ëÀÚ ÈÞ´ëÀüÈ­ ¹øÈ£
-u_birthday VARCHAR2(8) NOT NULL,--»ý³â¿ùÀÏ
-u_gender VARCHAR2(10) NOT NULL,--¼ºº°
-u_email VARCHAR2(50) NOT NULL,--ÀÌ¸ÞÀÏ
-u_joinDate date DEFAULT sysdate NOT NULL,--°¡ÀÔÀÏ
-u_unjoin VARCHAR2(10),--Å»Åð¿©ºÎ
-u_unjoinDate date DEFAULT sysdate,--Å»ÅðÀÏ
-u_genre number(1) NOT NULL,--°ü½É Àå¸£
-u_agree number(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
-);
+--ì‚­ì œëŠ” ë‹¤ìŒ ìˆœì„œì— ë”°ë¥´ë©´ ë¨
+DROP TABLE payment PURGE;
+DROP TABLE reservation PURGE;
+DROP TABLE play PURGE;
+DROP TABLE umember_auth PURGE;
+DROP TABLE tmember_auth PURGE;
+DROP TABLE umember PURGE;
+DROP TABLE tmember PURGE;
 
---ÀÏ¹Ý È¸¿ø ½ÃÄö½º »ý¼º 
-create sequence u_number
-start with 1
-increment by 1;
+--ìˆœì„œì— ìƒê´€ ì—†ëŠ” í…Œì´ë¸”ë“¤
+DROP TABLE tfaq PURGE;
+DROP TABLE ufaq PURGE;
+DROP TABLE notice PURGE;
 
---±Ø´Ü È¸¿ø Å×ÀÌºí
-create table TMEMBER(
-t_number number(38)NOT NULL primary KEY,--±Ø´Ü È¸¿ø ¹øÈ£
-t_id VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµð
-t_password VARCHAR2(20) NOT NULL,--ºñ¹Ð¹ø´ÜÈ£
-t_name VARCHAR2(50) NOT NULL ,--±Ø´Ü¸í
-t_address VARCHAR2(100) NOT NULL,--±Ø´ÜÁÖ¼Ò
-t_ownerName VARCHAR2(6) NOT NULL,--´ëÇ¥ÀÚ¸í
-t_ownerPhoneNumber VARCHAR2(11) NOT NULL,--´ëÇ¥ÀÚ ÈÞ´ëÀüÈ­¹øÈ£
-t_ownerEmail VARCHAR2(50) NOT NULL,--´ëÇ¥ÀÚ ÀÌ¸ÞÀÏ
-t_businessRegistration number(1) NOT NULL,--»ç¾÷ÀÚ µî·Ï ±¸ºÐ (°³ÀÎ/±â¾÷)
-t_businessRegistrationNumber VARCHAR2(10) NOT NULL,--»ç¾÷ÀÚ µî·Ï¹øÈ£
-t_establishmentDate date DEFAULT sysdate NOT NULL,--¼³¸³ÀÏ
-t_bank VARCHAR2(50) NOT NULL,--°Å·¡ ÀºÇà
-t_bankNumber VARCHAR2(50) NOT NULL,--°èÁÂ¹øÈ£
-t_bankOwner VARCHAR2(50) NOT NULL,--¿¹±ÝÁÖ
-t_businessRegistrationImage VARCHAR2(100) NOT NULL,--»ç¾÷ÀÚµî·ÏÁõ »çº»
-t_agree number(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
-);
--- ±Ø´Ü È¸¿ø ½ÃÄö½º »ý¼º 
-create sequence t_number 
-start with 1
-increment by 1;
+--ì‹œí€€ìŠ¤ ì‚­ì œ
+DROP SEQUENCE notice_seq;
+DROP SEQUENCE tfaq_seq;
+DROP SEQUENCE ufaq_seq;
+DROP SEQUENCE pay_seq;
+DROP SEQUENCE play_seq;
+DROP SEQUENCE reservation_seq;
+DROP SEQUENCE tmember_seq;
+DROP SEQUENCE umember_seq;
 
---PLAY(¿¬±Ø) Å×ÀÌºí
-CREATE TABLE play(
-   p_number NUMBER(38) NOT NULL, --¿¬±Ø ¹øÈ£
-   p_name VARCHAR2(50) NOT NULL, --¿¬±Ø¸í
-   p_startDate DATE NOT NULL, --¿¬±Ø ½ÃÀÛÀÏ
-   p_closeDate DATE NOT NULL, --¿¬±Ø Á¾·áÀÏ
-   p_runningtime NUMBER(3) NOT NULL, --¿¬±Ø ¼Ò¿ä½Ã°£(·¯´×Å¸ÀÓ)
-   p_eachDate DATE NOT NULL, --»ó¿¬³¯Â¥
-   p_startTime VARCHAR2(5) NOT NULL, --»ó¿¬ ½ÃÀÛ ½Ã°¢
-   p_closeTime VARCHAR2(5) NOT NULL, --»ó¿¬ Á¾·á ½Ã°¢
-   p_theaterName VARCHAR2(20) NOT NULL, --±ØÀå ÀÌ¸§
-   p_theaterAddress VARCHAR2(100) NOT NULL, --±ØÀå ÁÖ¼Ò
-   p_theaterMap VARCHAR2(100) NOT NULL, --±ØÀå ¾àµµ ÀÌ¹ÌÁö
-   p_agency VARCHAR2(20) NOT NULL, --±âÈ¹»ç Á¤º¸
-   p_ratings NUMBER(1) NOT NULL, --°ü¶÷ µî±Þ
-   p_casting VARCHAR2(2000) NOT NULL, --Ä³½ºÆÃ µ¥ÀÌÅÍ
-   p_ticketOpenDate DATE NOT NULL, --¿¹¸Å ¿ÀÇÂ Èñ¸ÁÀÏ
-   p_plot VARCHAR2(4000) NOT NULL, --°ø¿¬ ÁÙ°Å¸®
-   p_seatType VARCHAR2(10) NOT NULL, --ÁÂ¼® Á¾·ù
-   p_seatNumber NUMBER(20) NOT NULL, --ÁÂ¼® °³¼ö
-   p_ticketPrice NUMBER(7) NOT NULL, --Æ¼ÄÏ °¡°Ý
-   p_genre NUMBER(1) NOT NULL, --Àå¸£ Á¤º¸
-   p_poster VARCHAR2(100) NOT NULL, --¿¬±Ø Æ÷½ºÅÍ
-   p_firstPlay NUMBER(1), --1È¸Â÷ ¿¬±Ø
-   p_secondPlay NUMBER(1), --2È¸Â÷ ¿¬±Ø
-   p_agree NUMBER(1) NOT NULL, --¾à°ü µ¿ÀÇ ¿©ºÎ
-   p_amendmentApproved NUMBER(1), --°ø¿¬ ¼öÁ¤ ½ÂÀÎ ¿©ºÎ
-   p_registrationApproval NUMBER(1), --°ø¿¬ µî·Ï ½ÂÀÎ ¿©ºÎ
-   t_number NUMBER(38) NOT NULL, --±Ø´Ü È¸¿ø ¹øÈ£
-   PRIMARY KEY(p_number),
-   FOREIGN KEY(t_number) REFERENCES tmember(t_number)
-);
-=======
---»èÁ¦´Â ´ÙÀ½ ¼ø¼­¿¡ µû¸£¸é µÊ
-drop table payment purge;
-drop table reservation purge;
-drop table play purge;
-drop table umember purge;
-drop table tmember purge;
 
---¼ø¼­¿¡ »ó°ü ¾ø´Â Å×ÀÌºíµé
-drop table notice purge;
-drop table tfaq purge;
-drop table ufaq purge;
-
---½ÃÄö½º »èÁ¦
-drop sequence notice_seq;
-drop sequence tfaq_seq;
-drop sequence ufaq_seq;
-drop sequence payment_seq;
-drop sequence play_seq;
-drop sequence reservation_seq;
-drop sequence tmember_seq;
-drop sequence umember_seq;
-
---ÀÏ¹Ý È¸¿ø Å×ÀÌºí
+--ì¼ë°˜ íšŒì› í…Œì´ë¸”
 CREATE TABLE umember (
-    u_number      NUMBER(38) NOT NULL PRIMARY KEY,--ÀÏ¹Ý È¸¿ø ¹øÈ£
-    u_id          VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµð
-    u_password    VARCHAR2(20) NOT NULL,--ºñ¹Ð¹øÈ£
-    u_name        VARCHAR2(20) NOT NULL,--ÀÌ¸§
-    u_phonenumber VARCHAR2(11) NOT NULL,-- ÀÏ¹Ý »ç¿ëÀÚ ÈÞ´ëÀüÈ­ ¹øÈ£
-    u_birthday    VARCHAR2(8) NOT NULL,--»ý³â¿ùÀÏ
-    u_gender      VARCHAR2(10) NOT NULL,--¼ºº°
-    u_email       VARCHAR2(50) NOT NULL,--ÀÌ¸ÞÀÏ
-    u_joindate    DATE DEFAULT sysdate NOT NULL,--°¡ÀÔÀÏ
-    u_unjoin      VARCHAR2(10),--Å»Åð¿©ºÎ
-    u_unjoindate  DATE DEFAULT sysdate,--Å»ÅðÀÏ
-    u_genre       NUMBER(1) NOT NULL,--°ü½É Àå¸£
-    u_agree       NUMBER(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
+    u_number      NUMBER(38) NOT NULL PRIMARY KEY,--ì¼ë°˜ íšŒì› ë²ˆí˜¸
+    u_id          VARCHAR2(20) UNIQUE NOT NULL,--ì•„ì´ë””
+    u_password    VARCHAR2(100) NOT NULL,--ë¹„ë°€ë²ˆí˜¸
+    u_name        VARCHAR2(20) NOT NULL,--ì´ë¦„
+    u_phonenumber VARCHAR2(11) NOT NULL,-- ì¼ë°˜ ì‚¬ìš©ìž íœ´ëŒ€ì „í™” ë²ˆí˜¸
+    u_birthday    VARCHAR2(10) NOT NULL,--ìƒë…„ì›”ì¼
+    u_gender      VARCHAR2(10) NOT NULL,--ì„±ë³„
+    u_email       VARCHAR2(50) NOT NULL,--ì´ë©”ì¼
+    u_joindate    DATE DEFAULT sysdate NOT NULL,--ê°€ìž…ì¼
+    u_unjoin      VARCHAR2(10),--íƒˆí‡´ì—¬ë¶€
+    u_unjoindate  DATE DEFAULT sysdate,--íƒˆí‡´ì¼
+    u_genre       VARCHAR2(1) NOT NULL,--ê´€ì‹¬ ìž¥ë¥´
+    u_agree       VARCHAR2(1) NOT NULL--ì•½ê´€ ë™ì˜ì—¬ë¶€
 );
 
---ÀÏ¹Ý È¸¿ø ½ÃÄö½º »ý¼º 
+--ì¼ë°˜ íšŒì› ì‹œí€€ìŠ¤ ìƒì„± 
 CREATE SEQUENCE umember_seq START WITH 1 INCREMENT BY 1;
 
---±Ø´Ü È¸¿ø Å×ÀÌºí
-CREATE TABLE tmember (
-    t_number                     NUMBER(38) NOT NULL PRIMARY KEY,--±Ø´Ü È¸¿ø ¹øÈ£
-    t_id                         VARCHAR2(20) UNIQUE NOT NULL,--¾ÆÀÌµð
-    t_password                   VARCHAR2(20) NOT NULL,--ºñ¹Ð¹ø´ÜÈ£
-    t_name                       VARCHAR2(50) NOT NULL,--±Ø´Ü¸í
-    t_address                    VARCHAR2(100) NOT NULL,--±Ø´ÜÁÖ¼Ò
-    t_ownername                  VARCHAR2(20) NOT NULL,--´ëÇ¥ÀÚ¸í
-    t_ownerphonenumber           VARCHAR2(11) NOT NULL,--´ëÇ¥ÀÚ ÈÞ´ëÀüÈ­¹øÈ£
-    t_owneremail                 VARCHAR2(50) NOT NULL,--´ëÇ¥ÀÚ ÀÌ¸ÞÀÏ
-    t_businessregistration       NUMBER(1) NOT NULL,--»ç¾÷ÀÚ µî·Ï ±¸ºÐ (°³ÀÎ/±â¾÷)
-    t_businessregistrationnumber VARCHAR2(10) NOT NULL,--»ç¾÷ÀÚ µî·Ï¹øÈ£
-    t_establishmentdate          DATE DEFAULT sysdate NOT NULL,--¼³¸³ÀÏ
-    t_bank                       VARCHAR2(50) NOT NULL,--°Å·¡ ÀºÇà
-    t_banknumber                 VARCHAR2(50) NOT NULL,--°èÁÂ¹øÈ£
-    t_bankowner                  VARCHAR2(50) NOT NULL,--¿¹±ÝÁÖ
-    t_businessregistrationimage  VARCHAR2(100) NOT NULL,--»ç¾÷ÀÚµî·ÏÁõ »çº»
-    t_fileurl                    VARCHAR2(100) NOT NULL, --ÆÄÀÏ °æ·Î 
-    t_filename                   VARCHAR2(100) NOT NULL, --ÆÄÀÏ ÀÌ¸§ 
-    t_auth                       VARCHAR2(10) NOT NULL, --±Ø´Ü °¡ÀÔ ½ÂÀÎ ¿©ºÎ
-    t_agree                      NUMBER(1) NOT NULL--¾à°ü µ¿ÀÇ¿©ºÎ
+--ì¼ë°˜ íšŒì› ê¶Œí•œ í…Œì´ë¸”
+CREATE TABLE umember_auth (
+    u_number     NUMBER(38) NOT NULL, --ì¼ë°˜ íšŒì› ë²ˆí˜¸
+    umember_auth VARCHAR2(50) NOT NULL, --ê¶Œí•œ ì´ë¦„
+    FOREIGN KEY ( u_number )
+        REFERENCES umember ( u_number )
 );
 
--- ±Ø´Ü È¸¿ø ½ÃÄö½º »ý¼º 
+--ê·¹ë‹¨ íšŒì› í…Œì´ë¸”
+CREATE TABLE tmember (
+    t_number                     NUMBER(38) NOT NULL PRIMARY KEY,--ê·¹ë‹¨ íšŒì› ë²ˆí˜¸
+    t_id                         VARCHAR2(20) UNIQUE NOT NULL,--ì•„ì´ë””
+    t_password                   VARCHAR2(100) NOT NULL,--ë¹„ë°€ë²ˆí˜¸
+    t_name                       VARCHAR2(50) NOT NULL,--ê·¹ë‹¨ëª…
+    t_address                    VARCHAR2(100) NOT NULL,--ê·¹ë‹¨ì£¼ì†Œ
+    t_ownername                  VARCHAR2(20) NOT NULL,--ëŒ€í‘œìžëª…
+    t_ownerphonenumber           VARCHAR2(11) NOT NULL,--ëŒ€í‘œìž íœ´ëŒ€ì „í™”ë²ˆí˜¸
+    t_owneremail                 VARCHAR2(50) NOT NULL,--ëŒ€í‘œìž ì´ë©”ì¼
+    t_businessregistration       VARCHAR2(1) NOT NULL,--ì‚¬ì—…ìž ë“±ë¡ êµ¬ë¶„ (ê°œì¸/ê¸°ì—…)
+    t_businessregistrationnumber VARCHAR2(10) NOT NULL,--ì‚¬ì—…ìž ë“±ë¡ë²ˆí˜¸
+    t_establishmentdate          DATE DEFAULT sysdate NOT NULL,--ì„¤ë¦½ì¼
+    t_bank                       VARCHAR2(50) NOT NULL,--ê±°ëž˜ ì€í–‰
+    t_banknumber                 VARCHAR2(50) NOT NULL,--ê³„ì¢Œë²ˆí˜¸
+    t_bankowner                  VARCHAR2(50) NOT NULL,--ì˜ˆê¸ˆì£¼
+    t_businessregistrationimageUrl  VARCHAR2(100) NOT NULL,--ì‚¬ì—…ìžë“±ë¡ì¦ ì‚¬ë³¸
+    t_auth                       VARCHAR2(10) NOT NULL,--ê·¹ë‹¨ íšŒì› ìƒíƒœ(ê°€ìž…ìŠ¹ì¸ì˜ˆì •/ê°€ìž…ìŠ¹ì¸ì™„ë£Œ/ê³„ì•½ì¢…ë£Œ
+    t_agree                      VARCHAR2(1) NOT NULL--ì•½ê´€ ë™ì˜ì—¬ë¶€
+);
+-- ê·¹ë‹¨ íšŒì› ì‹œí€€ìŠ¤ ìƒì„± 
 CREATE SEQUENCE tmember_seq START WITH 1 INCREMENT BY 1;
 
---PLAY(¿¬±Ø) Å×ÀÌºí
+
+--ê·¹ë‹¨ íšŒì› ê¶Œí•œ í…Œì´ë¸”
+CREATE TABLE tmember_auth (
+    t_number     NUMBER(38) NOT NULL,
+    tmember_auth VARCHAR2(50) NOT NULL,
+    FOREIGN KEY ( t_number )
+        REFERENCES tmember ( t_number )
+);
+
+--PLAY(ì—°ê·¹) í…Œì´ë¸”
 CREATE TABLE play (
-    p_number                 NUMBER(38) NOT NULL, --¿¬±Ø ¹øÈ£
-    p_name                   VARCHAR2(50) NOT NULL, --¿¬±Ø¸í
-    p_startdate              DATE NOT NULL, --¿¬±Ø ½ÃÀÛÀÏ
-    p_closedate              DATE NOT NULL, --¿¬±Ø Á¾·áÀÏ
-    p_runningtime            VARCHAR2(3) NOT NULL, --¿¬±Ø ¼Ò¿ä½Ã°£(·¯´×Å¸ÀÓ)
-    p_theatername            VARCHAR2(20) NOT NULL, --±ØÀå ÀÌ¸§
-    p_theateraddress         VARCHAR2(100) NOT NULL, --±ØÀå ÁÖ¼Ò
-    p_theatermapurl     VARCHAR2(100) NOT NULL,--±ØÀå ¾àµµ url
-    p_agency                 VARCHAR2(20) NOT NULL, --±âÈ¹»ç Á¤º¸
-    p_ratings                VARCHAR2(1) NOT NULL, --°ü¶÷ µî±Þ
-    p_casting                VARCHAR2(2000) NOT NULL, --Ä³½ºÆÃ µ¥ÀÌÅÍ
-    p_ticketopendate         DATE NOT NULL, --¿¹¸Å ¿ÀÇÂ Èñ¸ÁÀÏ
-    p_plot                   VARCHAR2(4000) NOT NULL, --°ø¿¬ ÁÙ°Å¸®
-    p_seatnumber             NUMBER(20) NOT NULL, --ÁÂ¼® °³¼ö
-    p_ticketprice            NUMBER(7) NOT NULL, --Æ¼ÄÏ °¡°Ý
-    p_genre                  VARCHAR2(1) NOT NULL, --Àå¸£ Á¤º¸
-    p_posterurl         VARCHAR2(100) NOT NULL, --¿¬±Ø Æ÷½ºÅÍ url
-    p_amendmentapproved      VARCHAR2(1), --°ø¿¬ ¼öÁ¤ ½ÂÀÎ ¿©ºÎ
-    p_registrationapproval   VARCHAR2(1), --°ø¿¬ µî·Ï ½ÂÀÎ ¿©ºÎ
-    p_firststarttime         VARCHAR2(10) NOT NULL, -- 1È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 
-    p_secondstarttime        VARCHAR2(10), -- 2È¸Â÷ »ó¿¬ ½ÃÀÛ ½Ã°¢ 
-    p_agree                  VARCHAR2(1) NOT NULL, --¾à°ü µ¿ÀÇ ¿©ºÎ
-    t_number                 NUMBER(38) NOT NULL, --±Ø´Ü È¸¿ø ¹øÈ£
+    p_number               NUMBER(38) NOT NULL, --ì—°ê·¹ ë²ˆí˜¸
+    p_name                 VARCHAR2(50) NOT NULL, --ì—°ê·¹ëª…
+    p_startdate            DATE NOT NULL, --ì—°ê·¹ ì‹œìž‘ì¼
+    p_closedate            DATE NOT NULL, --ì—°ê·¹ ì¢…ë£Œì¼
+    p_runningtime          VARCHAR2(3) NOT NULL, --ì—°ê·¹ ì†Œìš”ì‹œê°„(ëŸ¬ë‹íƒ€ìž„)
+    p_theatername          VARCHAR2(20) NOT NULL, --ê·¹ìž¥ ì´ë¦„
+    p_theateraddress       VARCHAR2(100) NOT NULL, --ê·¹ìž¥ ì£¼ì†Œ
+    p_agency               VARCHAR2(20) NOT NULL, --ê¸°íšì‚¬ ì •ë³´
+    p_ratings              VARCHAR2(1) NOT NULL, --ê´€ëžŒ ë“±ê¸‰
+    p_casting              VARCHAR2(2000) NOT NULL, --ìºìŠ¤íŒ… ë°ì´í„°
+    p_ticketopendate       DATE NOT NULL, --ì˜ˆë§¤ ì˜¤í”ˆ í¬ë§ì¼
+    p_plot                 VARCHAR2(4000) NOT NULL, --ê³µì—° ì¤„ê±°ë¦¬
+    p_seatnumber           NUMBER(20) NOT NULL, --ì¢Œì„ ê°œìˆ˜
+    p_ticketprice          NUMBER(7) NOT NULL, --í‹°ì¼“ ê°€ê²©
+    p_genre                VARCHAR2(1) NOT NULL, --ìž¥ë¥´ ì •ë³´
+    p_posterurl            VARCHAR2(100) NOT NULL, --ì—°ê·¹ í¬ìŠ¤í„° url
+    p_modifyapproval       VARCHAR2(1), --ê³µì—° ìˆ˜ì • ìŠ¹ì¸ ì—¬ë¶€
+    p_registrationapproval VARCHAR2(1), --ê³µì—° ë“±ë¡ ìŠ¹ì¸ ì—¬ë¶€
+    p_firststarttime       VARCHAR2(10) NOT NULL, -- 1íšŒì°¨ ìƒì—° ì‹œìž‘ ì‹œê° 
+    p_secondstarttime      VARCHAR2(10), -- 2íšŒì°¨ ìƒì—° ì‹œìž‘ ì‹œê° 
+    p_agree                VARCHAR2(1) NOT NULL, --ì•½ê´€ ë™ì˜ ì—¬ë¶€
+    t_number               NUMBER(38) NOT NULL, --ê·¹ë‹¨ íšŒì› ë²ˆí˜¸
     PRIMARY KEY ( p_number ),
     FOREIGN KEY ( t_number )
         REFERENCES tmember ( t_number )
 );
 
->>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
---¿¬±Ø ½ÃÄö½º »ý¼º 
+
+--ì—°ê·¹ ì‹œí€€ìŠ¤ ìƒì„± 
 CREATE SEQUENCE play_seq START WITH 1 INCREMENT BY 1;
 
---¿¹¸Å Å×ÀÌºí »ý¼º
-<<<<<<< HEAD
-CREATE TABLE RESERVATION (
-R_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- ¿¹¸Å¹øÈ£
-R_DATE DATE NOT NULL, -- ¿¹¸ÅÀÏ
-R_PAYSTATE VARCHAR2(10) NOT NULL, -- ¿¹¸ÅÁøÇàÁß ¿©ºÎ
-R_FEE NUMBER(3) NOT NULL, -- ¿¹¸Å ¼ö¼ö·á
-R_CANCELSTATE VARCHAR2(10) NOT NULL, -- ¿¹¸Å Ãë¼Ò ¿©ºÎ
-R_CANCELDATE DATE, -- ¿¹¸Å Ãë¼ÒÀÏ
-R_TICKETFIRST VARCHAR2(10) NOT NULL, -- Æ¼ÄÏ¹øÈ£1
-R_TICKETSECOND VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£2
-R_TICKETTHIRD VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£3
-R_TICKETFORTH VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£4
-R_TOTALPAYMENT NUMBER(38) NOT NULL, -- °áÁ¦ ÃÑ¾×
-U_NUMBER NUMBER(38) NOT NULL, -- ÀÏ¹Ý È¸¿ø ¹øÈ£
-P_NUMBER NUMBER(38) NOT NULL, -- ¿¬±Ø¹øÈ£
 
-FOREIGN KEY(U_NUMBER) REFERENCES UMEMBER(U_NUMBER), -- ÀÏ¹Ý È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER) -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-);
--- ¿¹¸Å ½ÃÄö½º »ý¼º
-CREATE SEQUENCE RESERVATION_SEQ
-START WITH 1 INCREMENT BY 1;
-
---Á¤»ê Å×ÀÌºí »ý¼º
-CREATE TABLE PAYMENT (
-PAY_NUMBER NUMBER(38) NOT NULL PRIMARY KEY, -- Á¤»ê ¹øÈ£
-PAY_CALCULATEDATE DATE NOT NULL, -- Á¤»ê ÀÏÀÚ
-PAY_PAYDATE DATE NOT NULL, -- Áö±ÞÀÏ
-PAY_PAYMENT NUMBER(20) NOT NULL, -- ±Ý¾×
-P_NUMBER NUMBER(38) NOT NULL, -- ¿¬±Ø ¹øÈ£
-R_NUMBER NUMBER(38) NOT NULL, -- ¿¹¸Å ¹øÈ£
-T_NUMBER NUMBER(38) NOT NULL, -- ±Ø´Ü È¸¿ø ¹øÈ£
-
-FOREIGN KEY(P_NUMBER) REFERENCES PLAY(P_NUMBER), -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(R_NUMBER) REFERENCES RESERVATION(R_NUMBER), -- ¿¹¸Å ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-FOREIGN KEY(T_NUMBER) REFERENCES TMEMBER(T_NUMBER) -- ±Ø´Ü È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-);
-
--- Á¤»ê ½ÃÄö½º »ý¼º
-CREATE SEQUENCE PLAY_SEQ
-START WITH 1 INCREMENT BY 1;
-
---ÀÏ¹ÝÈ¸¿ø FAQ Å×ÀÌºí »ý¼º
-CREATE TABLE UFAQ(
-UF_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-UF_title varchar2(100) not null, -- ±Û Á¦¸ñ
-UF_content varchar2(4000) not null, -- ±Û ³»¿ë
-UF_date Date  not null, -- µî·ÏÀÏ
-primary key(UF_number)
-=======
+--ì˜ˆë§¤ í…Œì´ë¸” ìƒì„±
 CREATE TABLE reservation (
-    r_number       NUMBER(38) NOT NULL PRIMARY KEY, -- ¿¹¸Å¹øÈ£
-    r_date         DATE NOT NULL, -- ¿¹¸ÅÀÏ
-    r_paystate     VARCHAR2(10) NOT NULL, -- ¿¹¸ÅÁøÇàÁß ¿©ºÎ
-    r_fee          NUMBER(3) NOT NULL, -- ¿¹¸Å ¼ö¼ö·á
-    r_cancelstate  VARCHAR2(10) NOT NULL, -- ¿¹¸Å Ãë¼Ò ¿©ºÎ
-    r_canceldate   DATE, -- ¿¹¸Å Ãë¼ÒÀÏ
-    r_ticketfirst  VARCHAR2(10) NOT NULL, -- Æ¼ÄÏ¹øÈ£1
-    r_ticketsecond VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£2
-    r_ticketthird  VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£3
-    r_ticketforth  VARCHAR2(10), -- Æ¼ÄÏ¹øÈ£4
-    r_totalpayment NUMBER(38) NOT NULL, -- °áÁ¦ ÃÑ¾×
-    u_number       NUMBER(38) NOT NULL, -- ÀÏ¹Ý È¸¿ø ¹øÈ£
-    p_number       NUMBER(38) NOT NULL, -- ¿¬±Ø¹øÈ£
+    r_number       NUMBER(38) NOT NULL PRIMARY KEY, -- ì˜ˆë§¤ë²ˆí˜¸
+    r_date         DATE DEFAULT sysdate NOT NULL, -- ì˜ˆë§¤ì¼
+    r_paystate     NUMBER(5) DEFAULT 0 NOT NULL, -- ì˜ˆë§¤ì§„í–‰ì¤‘ ì—¬ë¶€
+    r_fee          NUMBER(3) DEFAULT 500 NOT NULL, -- ì˜ˆë§¤ ìˆ˜ìˆ˜ë£Œ
+    p_date         DATE NOT NULL,--ì‚¬ìš©ìžê°€ ì„ íƒí•œ ê´€ëžŒì¼
+    r_cancelstate  NUMBER(5) DEFAULT 0 NOT NULL, -- ì˜ˆë§¤ ì·¨ì†Œ ì—¬ë¶€
+    r_canceldate   DATE, -- ì˜ˆë§¤ ì·¨ì†Œì¼
+    r_ticketfirst  VARCHAR2(38) NOT NULL, -- í‹°ì¼“ë²ˆí˜¸1
+    r_ticketsecond VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸2
+    r_ticketthird  VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸3
+    r_ticketfourth VARCHAR2(38), -- í‹°ì¼“ë²ˆí˜¸4
+    r_ticketcount  NUMBER(38) NOT NULL, -- í‹°ì¼“ê°œìˆ˜
+    r_totalpayment NUMBER(10) NOT NULL, -- ê²°ì œ ì´ì•¡
+    r_prereservevalidtime NUMBER(15), --ì„ íƒì¢Œì„ ê²°ì œ ì „ê¹Œì§€ì˜ ìœ íš¨ì‹œê°   
+    u_number       NUMBER(38) NOT NULL, -- ì¼ë°˜ íšŒì› ë²ˆí˜¸
+    p_number       NUMBER(38) NOT NULL, -- ì—°ê·¹ë²ˆí˜¸
 
     FOREIGN KEY ( u_number )
-        REFERENCES umember ( u_number ), -- ÀÏ¹Ý È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
+        REFERENCES umember ( u_number ), -- ì¼ë°˜ íšŒì› ë²ˆí˜¸ ì™¸ëž˜í‚¤ ì„¤ì •
     FOREIGN KEY ( p_number )
-        REFERENCES play ( p_number ) -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
+        REFERENCES play ( p_number ) -- ì—°ê·¹ ë²ˆí˜¸ ì™¸ëž˜í‚¤ ì„¤ì •
 );
--- ¿¹¸Å ½ÃÄö½º »ý¼º
+
+-- ì˜ˆë§¤ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE reservation_seq START WITH 1 INCREMENT BY 1;
 
---Á¤»ê Å×ÀÌºí »ý¼º
+
+
+--ì •ì‚° í…Œì´ë¸” ìƒì„±
 CREATE TABLE payment (
-    pay_number        NUMBER(38) NOT NULL PRIMARY KEY, -- Á¤»ê ¹øÈ£
-    pay_calculatedate DATE NOT NULL, -- Á¤»ê ÀÏÀÚ
-    pay_paydate       DATE NOT NULL, -- Áö±ÞÀÏ
-    pay_payment       NUMBER(20) NOT NULL, -- ±Ý¾×
-    p_number          NUMBER(38) NOT NULL, -- ¿¬±Ø ¹øÈ£
-    r_number          NUMBER(38) NOT NULL, -- ¿¹¸Å ¹øÈ£
-    t_number          NUMBER(38) NOT NULL, -- ±Ø´Ü È¸¿ø ¹øÈ£
+    pay_number         NUMBER(38) NOT NULL PRIMARY KEY, -- ì •ì‚° ë²ˆí˜¸
+    pay_calculate      DATE DEFAULT sysdate NOT NULL, -- ì •ì‚° ì¼ìž
+    pay_paydate        DATE NOT NULL, -- ì§€ê¸‰ì¼
+    pay_payment        NUMBER(20) NOT NULL, -- ì´ ì •ì‚° ê¸ˆì•¡
+    pay_theaterpayment NUMBER(20) NOT NULL, --ê·¹ë‹¨ ì •ì‚° ê¸ˆì•¡
+    pay_sitepayment    NUMBER(20) NOT NULL, --ì‚¬ì´íŠ¸ ì •ì‚° ê¸ˆì•¡
+    p_number           NUMBER(38) NOT NULL, -- ì—°ê·¹ ë²ˆí˜¸
 
     FOREIGN KEY ( p_number )
-        REFERENCES play ( p_number ), -- ¿¬±Ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-    FOREIGN KEY ( r_number )
-        REFERENCES reservation ( r_number ), -- ¿¹¸Å ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
-    FOREIGN KEY ( t_number )
-        REFERENCES tmember ( t_number ) -- ±Ø´Ü È¸¿ø ¹øÈ£ ¿Ü·¡Å° ¼³Á¤
+        REFERENCES play ( p_number ) -- ì—°ê·¹ ë²ˆí˜¸ ì™¸ëž˜í‚¤ ì„¤ì •ì™¸ëž˜í‚¤ ì„¤ì •
 );
 
--- Á¤»ê ½ÃÄö½º »ý¼º
-CREATE SEQUENCE payment_seq START WITH 1 INCREMENT BY 1;
+-- ì •ì‚° ì‹œí€€ìŠ¤ ìƒì„±
+CREATE SEQUENCE pay_seq START WITH 1 INCREMENT BY 1;
 
---ÀÏ¹ÝÈ¸¿ø FAQ Å×ÀÌºí »ý¼º
+
+--ì¼ë°˜íšŒì› FAQ í…Œì´ë¸” ìƒì„±
 CREATE TABLE ufaq (
-    uf_number  NUMBER(38) NOT NULL, --°Ô½Ã±Û ¹øÈ£/PK
-    uf_title   VARCHAR2(100) NOT NULL, -- ±Û Á¦¸ñ
-    uf_content VARCHAR2(4000) NOT NULL, -- ±Û ³»¿ë
-    uf_date    DATE DEFAULT sysdate, -- µî·ÏÀÏ
+    uf_number  NUMBER(38) NOT NULL, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+    uf_title   VARCHAR2(100) NOT NULL, -- ê¸€ ì œëª©
+    uf_content VARCHAR2(4000) NOT NULL, -- ê¸€ ë‚´ìš©
+    uf_date    DATE DEFAULT sysdate NOT NULL, -- ë“±ë¡ì¼
     PRIMARY KEY ( uf_number )
->>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 );
---ÀÏ¹ÝÈ¸¿ø FAQ ½ÃÄö½º »ý¼º
+--ì¼ë°˜íšŒì› FAQ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE ufaq_seq START WITH 1 INCREMENT BY 1;
 
 
---±Ø´ÜÈ¸¿ø FAQ Å×ÀÌºí »ý¼º
-<<<<<<< HEAD
-CREATE TABLE TFAQ(
-TF_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-TF_title varchar2(100) not null, -- ±Û Á¦¸ñ
-TF_content varchar2(4000) not null, -- ±Û ³»¿ë
-TF_date Date not null, -- µî·ÏÀÏ
-primary key(TF_number)
-=======
+--ê·¹ë‹¨íšŒì› FAQ í…Œì´ë¸” ìƒì„±
 CREATE TABLE tfaq (
-    tf_number  NUMBER(38) NOT NULL, --°Ô½Ã±Û ¹øÈ£/PK
-    tf_title   VARCHAR2(100) NOT NULL, -- ±Û Á¦¸ñ
-    tf_content VARCHAR2(4000) NOT NULL, -- ±Û ³»¿ë
-    tf_date    DATE DEFAULT sysdate, -- µî·ÏÀÏ
+    tf_number  NUMBER(38) NOT NULL, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+    tf_title   VARCHAR2(100) NOT NULL, -- ê¸€ ì œëª©
+    tf_content VARCHAR2(4000) NOT NULL, -- ê¸€ ë‚´ìš©
+    tf_date    DATE DEFAULT sysdate NOT NULL, -- ë“±ë¡ì¼
     PRIMARY KEY ( tf_number )
->>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 );
---±Ø´ÜÈ¸¿ø FAQ ½ÃÄö½º »ý¼º
+--ê·¹ë‹¨íšŒì› FAQ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE tfaq_seq START WITH 1 INCREMENT BY 1;
 
---°øÁö»çÇ× Å×ÀÌºí »ý¼º
-<<<<<<< HEAD
-CREATE TABLE NOTICE(
-N_number number(38) not null, --°Ô½Ã±Û ¹øÈ£/PK
-N_title varchar2(100) not null, -- ±Û Á¦¸ñ
-N_content varchar2(4000) not null, -- ±Û ³»¿ë
-N_date Date not null, -- µî·ÏÀÏ
-primary key(N_number)
-=======
+--ê³µì§€ì‚¬í•­ í…Œì´ë¸” ìƒì„±
 CREATE TABLE notice (
-    n_number  NUMBER(38) NOT NULL, --°Ô½Ã±Û ¹øÈ£/PK
-    n_title   VARCHAR2(100) NOT NULL, -- ±Û Á¦¸ñ
-    n_content VARCHAR2(4000) NOT NULL, -- ±Û ³»¿ë
-    n_date    DATE DEFAULT sysdate, -- µî·ÏÀÏ
+    n_number  NUMBER(38) NOT NULL, --ê²Œì‹œê¸€ ë²ˆí˜¸/PK
+    n_title   VARCHAR2(100) NOT NULL, -- ê¸€ ì œëª©
+    n_content VARCHAR2(4000) NOT NULL, -- ê¸€ ë‚´ìš©
+    n_date    DATE DEFAULT sysdate NOT NULL, -- ë“±ë¡ì¼
     PRIMARY KEY ( n_number )
->>>>>>> 47cb8d33ad98e3b2b45f3ef3745e999e5994231a
 );
---°øÁö»çÇ× ½ÃÄö½º »ý¼º
+--ê³µì§€ì‚¬í•­ ì‹œí€€ìŠ¤ ìƒì„±
 CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1;
+
+--ì¿ í‚¤ ì €ìž¥ í…Œì´ë¸”
+CREATE TABLE persistent_logins (
+    username  VARCHAR2(64) NOT NULL,
+    series    VARCHAR2(64) NOT NULL,
+    token     VARCHAR2(64) NOT NULL,
+    last_used DATE NOT NULL,
+    PRIMARY KEY ( series )
+);
+
+-- ì‹œí€€ìŠ¤ ë²ˆí˜¸ ë„˜ì–´ê°€ëŠ” ì˜¤ë¥˜ ë°©ì§€
+ALTER SEQUENCE notice_seq NOCACHE;
+ALTER SEQUENCE tfaq_seq NOCACHE;
+ALTER SEQUENCE ufaq_seq NOCACHE;
+ALTER SEQUENCE pay_seq NOCACHE;
+ALTER SEQUENCE play_seq NOCACHE;
+ALTER SEQUENCE reservation_seq NOCACHE;
+ALTER SEQUENCE tmember_seq NOCACHE;
+ALTER SEQUENCE umember_seq NOCACHE;

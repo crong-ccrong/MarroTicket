@@ -45,8 +45,6 @@ public class TmemberVO {
 	@Email(message = "이메일 형식이 올바르지 않습니다.")
 	private String tOwnerEmail; // 대표자 이메일
 
-	private String tBusinessRegistration; // 사업자 등록 구분(개인/기업)
-
 	@NotBlank(message = "사업자 등록번호는 필수 입력 값입니다.")
 	@Size(max = 10, message = "10자 이내로 작성해주세요.")
 	private String tBusinessRegistrationNumber; // 사업자 등록 번호
@@ -55,13 +53,15 @@ public class TmemberVO {
 	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private String tEstablishmentDate; // 설립일
 
+	private String tBusinessRegistration; // 사업자 등록 구분(개인/기업)
+
 	private String tBank; // 거래 은행
 	@NotBlank(message = "계좌 정보 입력은 필수입니다.")
 	private String tBankNumber; // 계좌 번호
 	@NotBlank(message = "예금주 성명 입력은 필수입니다.")
 	private String tBankOwner; // 예금주
 
-	private MultipartFile tBusinessRegistrationImage;// 사업자등록증 사본 파일
+	private MultipartFile tBusinessRegistrationImage; // 사업자등록증 사본 파일
 	private String tBusinessRegistrationImageUrl; // 사업자등록증
 
 	private String tAuth;// 극단 가입 승인 여부
@@ -86,11 +86,60 @@ public class TmemberVO {
 		this.tName = tName;
 	}
 
+	public void settOwnerEmail(String tOwnerEmail) {
+		this.tOwnerEmail = tOwnerEmail;
+	}
+
+	public String gettAddress() {
+		return tAddress;
+	}
+
+	public void settAddress(String tAddress) {
+		this.tAddress = tAddress;
+	}
+
+	public String gettOwnerName() {
+		return tOwnerName;
+	}
+
+	public void settOwnerName(String tOwnerName) {
+		this.tOwnerName = tOwnerName;
+	}
+
+	public String gettOwnerPhoneNumber() {
+		return tOwnerPhoneNumber;
+	}
+
+	public void settOwnerPhoneNumber(String tOwnerPhoneNumber) {
+		this.tOwnerPhoneNumber = tOwnerPhoneNumber;
+	}
+
+	public String gettBank() {
+		return tBank;
+	}
+
+	public void settBank(String tBank) {
+		this.tBank = tBank;
+	}
+
+	public String gettBankNumber() {
+		return tBankNumber;
+	}
+
+	public void settBankNumber(String tBankNumber) {
+		this.tBankNumber = tBankNumber;
+	}
+
+	public String gettBankOwner() {
+		return tBankOwner;
+	}
+
+	public void settBankOwner(String tBankOwner) {
+		this.tBankOwner = tBankOwner;
+	}
+
 	public String gettOwnerEmail() {
 		return tOwnerEmail;
 	}
 
-	public void settOwnerEmail(String tOwnerEmail) {
-		this.tOwnerEmail = tOwnerEmail;
-	}
 }

@@ -49,9 +49,9 @@ public class TmemberServiceImpl implements TmemberService {
 	public List<PaymentVO> theaterPayment(String tId) throws Exception {
 		return tmembermapper.theaterPayment(tId);
 	}
-		// **************************관리자 추가************************//
+	// **************************관리자 추가************************//
 
-		// 극단 회원 목록 페이지
+	// 극단 회원 목록 페이지
 	@Override
 	public List<TmemberVO> list(PageRequest pageRequest) throws Exception {
 		return tmembermapper.list(pageRequest);
@@ -99,4 +99,16 @@ public class TmemberServiceImpl implements TmemberService {
 		tmembermapper.tmemberAuthDowngrade(tmemberVO);
 	}
 
+	// 마이페이지
+	// 정보조회
+	@Override
+	public TmemberVO getTmemberByTId(String tId) throws Exception {
+		return tmembermapper.getTmemberByTId(tId);
+	}
+
+	// 정보수정
+	@Override
+	public void modify(TmemberVO vo) throws Exception {
+		tmembermapper.updateInfo(vo);
+	}
 }

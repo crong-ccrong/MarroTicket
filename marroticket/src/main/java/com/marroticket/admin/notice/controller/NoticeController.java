@@ -49,11 +49,14 @@ public class NoticeController {
 	}
 
 	// 공지사항 목록 페이지
-
+	// @PreAuthorize("hasRole(두개주기)")
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
-	public String list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+	public String list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model, String accept) throws Exception {
 
 		model.addAttribute("noticeList", service.list(pageRequest));
+
+		String url = "notice.noticeList";
+		System.out.println("공지사항 목록");
 
 		// 페이징 네비게이션 정보를 뷰에 전달한다.
 		Pagination pagination = new Pagination();
@@ -62,14 +65,32 @@ public class NoticeController {
 		model.addAttribute("pagination", pagination);
 		System.out.println("공지사항 목록");
 		return "admin.notice.noticeList";
+
+		if ("admin".equals(accept)) {
+			// model.addAttribute("accept","tmember");
+		String url = "admin.notice.noticeList";
+		return url;
+		}
+
+		return url;
 	}
 
 	// 공지사항 상세 페이지
 	@RequestMapping(value = "/noticeRead", method = RequestMethod.GET)
-	public void read(int noticeNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
-	
+	public String read(int noticeNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model, String accept)
+			throws Exception {
+
 		model.addAttribute(service.read(noticeNo));
+
+		String url = "notice.noticeRead";
 		System.out.println("공지사항 상세");
+
+		if ("admin".equals(accept)) {
+			url = "admin.notice.noticeRead";
+		}
+
+		return url;
+
 	}
 
 	// 공지사항 수정 페이지

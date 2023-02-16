@@ -4,7 +4,7 @@
 	<!-- TmemberVO resultmap 정의 -->
 	<resultMap
 		type="com.marroticket.tmember.member.domain.TmemberVO" id="tmemberMap">
-		<id property="tNumber" column="t_number" />
+		<id property="TNumber" column="t_number" />
 		<result property="tId" column="t_id" />
 		<result property="tPassword" column="t_password" />
 		<result property="tName" column="t_name" />
@@ -87,10 +87,10 @@
 		tmember_auth
 		FROM tmember
 		mem LEFT OUTER JOIN tmember_auth auth ON
-		mem.t_number = auth.t_number
+		mem.t_number =
+		auth.t_number
 		WHERE mem.t_id = #{tId}
 	</select>
-
 	<!-- 회원가입 -->
 	<select id="tIdCheck" resultType="int">
 		SELECT count(*)
@@ -139,7 +139,6 @@
 		#{tAgree}
 		)
 	</insert>
-
 	<!-- 회원가입 시 권한 부여 -->
 	<insert id="createAuth">
 		INSERT INTO tmember_auth
@@ -270,4 +269,34 @@ WHERE t_number > 0
 		t_number = #{TNumber}
 	</update>
 
+
+	<!-- 마이페이지 회원정보 -->
+	<select id="getTmemberByTId" resultMap="tmemberMap">
+		SELECT *
+		FROM tmember
+		WHERE t_id = #{tId}
+	</select>
+
+	<!-- 마이페이지 회원수정 -->
+	<update id="updateInfo">
+		update TMEMBER
+		set t_password=#{tPassword},
+		t_name=#{tName},
+		t_address=#{tAddress},
+		t_ownerName=#{tOwnerName},
+		t_ownerPhoneNumber=#{tOwnerPhoneNumber},
+		t_ownerEmail=#{tOwnerEmail},
+		t_bank=#{tBank},
+		t_bankNumber=#{tBankNumber},
+		t_bankOwner=#{tBankOwner}
+		where t_id=#{tId}
+	</update>
+
+	<!-- 기타 문의 : 극단 이메일 -->
+	<select id="emailList" resultMap="tmemberMap">
+		<![CDATA[ SELECT *
+					FROM tmember 
+					ORDER BY t_number DESC
+		]]>
+	</select>
 </mapper>

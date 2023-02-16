@@ -2,7 +2,6 @@ package com.marroticket.umember.play.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

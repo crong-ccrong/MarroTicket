@@ -28,51 +28,30 @@
 		<result property="tnumber" column="T_Number" />
 	</resultMap>
 
-
 	<select id="playCurrentList" resultMap="play">
-		<![CDATA[ select
-		 P_POSTERURL,
-		p_number,
-		p_name, 
-		p_theaterName, 
-		p_startDate, 
-		p_closeDate, 
-		p_runningtime 
+		<![CDATA[ select *
 		from Play 
-		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '0'
 		order by p_startDate ]]>
 	</select>
 
 	<select id="playPassList" resultMap="play">
 		<![CDATA[
-		SELECT 
-P_POSTERURL,
-		p_number,
-		p_name,
-		p_theaterName,
-		p_startDate,
-		p_closeDate,
-		p_runningtime
+		SELECT *
 		FROM Play
-		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '1'
+		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '0'
 		order
 		by
 		p_startDate
 		]]>
 	</select>
 
+
 	<select id="playExpectedList" resultMap="play">
 		<![CDATA[
-		SELECT 
-		 P_POSTERURL,
-		p_number,
-		p_name,
-		p_theaterName,
-		p_startDate,
-		p_closeDate,
-		p_runningtime
+		SELECT *
 		FROM Play
-		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '0'
 		order
 		by
 		p_startDate
@@ -80,12 +59,8 @@ P_POSTERURL,
 	</select>
 
 	<!-- 공연정보 읽기 -->
-	<select id="read" resultMap="play">
-		SELECT *
-		FROM play
-		WHERE
-		p_number=#{pNumber}
-	</select>
+	<!-- <select id="read" resultMap="play"> SELECT * FROM play <<<<<<< HEAD 
+		WHERE p_number=#{pNumber} </select> ======= WHERE p_number=#{pNumber} </select> -->
 
 	<!-- 미리보기 이미지 표시 -->
 	<select id="getPposter" resultType="String">
@@ -145,8 +120,9 @@ P_POSTERURL,
 	<update id="playApprove"
 		parameterType="com.marroticket.umember.play.domain.PlayVO">
 		UPDATE play
-		SET p_registrationApproval = 1 
-		WHERE p_number = #{pnumber}
+		SET p_registrationApproval = 1
+		WHERE p_number
+		= #{pnumber}
 	</update>
 
 
@@ -204,6 +180,53 @@ P_POSTERURL,
 		SET p_modifyApproval = 0
 		WHERE p_number =
 		#{pnumber}
+	</update>
+	<!-- 극단 등록한 연극 목록 -->
+	<select id="playlist" resultMap="play">
+		<![CDATA[
+			SELECT 	*
+			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
+			WHERE p.t_number = #{tyumber}
+			ORDER BY p_number DESC
+		]]>
+	</select>
+
+	<!-- 극단 등록한 연극 상세보기 -->
+	<select id="read" resultMap="play">
+		<![CDATA[
+			SELECT *
+			FROM play
+			WHERE p_number = #{pnumber}
+		]]>
+	</select>
+
+	<!-- 극단 등록한 연극 수정 -->
+	<update id="modify">
+		UPDATE play
+		SET p_name = #{pname},
+		P_STARTDATE =
+		#{pstartDate},
+		P_CLOSEDATE =
+		#{pcloseDate},
+		P_RUNNINGTIME =
+		#{prunningTime},
+		P_THEATERNAME =
+		#{ptheaterName},
+		P_THEATERADDRESS =
+		#{ptheaterAddress},
+		P_AGENCY =
+		#{pagency},
+		P_RATINGS = #{pratings},
+		P_CASTING = #{pcasting},
+		P_TICKETOPENDATE = #{pticketOpenDate},
+		P_PLOT =
+		#{pplot},
+		P_SEATNUMBER
+		= #{pseatNumber},
+		P_TICKETPRICE = #{pticketPrice},
+		P_GENRE = #{pgenre},
+		p_MODIFYAPPROVAL = '1'
+		WHERE p_number = #{pnumber}
 	</update>
 
 </mapper>

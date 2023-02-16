@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.marroticket.admin.payment.domain.PaymentVO;
 import com.marroticket.common.domain.PageRequest;
+
 import com.marroticket.tmember.member.domain.TmemberAuth;
 
 public interface TmemberMapper {
@@ -55,4 +56,13 @@ public interface TmemberMapper {
 	// 계약만료에 따른 극단회원 권한 다운 그레이드
 	public void tmemberAuthDowngrade(TmemberVO tmemberVO) throws Exception;
 
+	// 마이페이지
+	// 정보조회
+	public TmemberVO getTmemberByTId(String tId) throws Exception;
+
+	// 정보수정
+	public void updateInfo(TmemberVO vo) throws Exception;
+
+	// 기타 문의 : 극단 이메일 목록
+	public List<TmemberVO> emailList() throws Exception;
 }

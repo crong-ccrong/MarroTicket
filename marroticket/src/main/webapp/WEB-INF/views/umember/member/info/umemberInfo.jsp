@@ -6,62 +6,50 @@
 <!-- 일반회원 마이페이지의 '일반회원정보' -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
-.sidebar {
-	float: left;
-}
-</style>
-
-<!-- sidebar section -->
-<div class="sidebar">
-	<ul class="navbar-nav">
-		<li class="nav-item"><a class="nav-link" href="#">내정보</a></li>
-		<li class="nav-item"><a class="nav-link" href="#">예매확인</a></li>
-		<li class="nav-item"><a class="nav-link" href="#">나의 관람 연극</a></li>
-		<li class="nav-item"><a class="nav-link" href="#">나의 맞춤 연극</a></li>
-	</ul>
-</div>
 
 <!-- content section -->
-<div class="content">
-	<form:form modelAttribute="vo">
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td><form:input path="uId" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><form:input path="uName" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td><form:input path="uGender" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td><form:input path="uBirthday" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>휴대전화번호</td>
-				<td><form:input path="uPhoneNumber" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><form:input path="uEmail" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td>선호하는 장르</td>
-				<td><form:input path="uGenre" readonly="true" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="button"
-					value="회원탈퇴" id="deleteMember"> <input type="button"
-					value="회원정보수정" onclick="location.href='/umember/umemberModify'">
-				</td>
-			</tr>
-		</table>
-	</form:form>
+<div class="main_content">
+	<%@ include file="umemberSidebar.jsp"%>
+	<div class="main_body">
+		<form:form modelAttribute="vo">
+			<table border="1">
+				<tr>
+					<td>아이디</td>
+					<td><form:input path="uId" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><form:input path="uName" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><form:input path="uGender" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><form:input path="uBirthday" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>휴대전화번호</td>
+					<td><form:input path="uPhoneNumber" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><form:input path="uEmail" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>선호하는 장르</td>
+					<td><form:input path="uGenre" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button"
+						value="회원탈퇴" id="deleteMember"> <input type="button"
+						value="회원정보수정" onclick="location.href='/umember/umemberModify'">
+					</td>
+				</tr>
+			</table>
+		</form:form>
+	</div>
 </div>
 
 
@@ -75,5 +63,33 @@
 	});
 </script>
 
+<!-- <script>
+var Message = '${eMessage}';
+if(Message === '에러메시지') {
+    alert("아직 관람하지 않은 내역이 존재하거나 당일 관람이 존재합니다.  당일 관람이 있을 경우 취소가 불가하기 때문에 탈퇴 또한 불가합니다.");
+}
+</script> 
+ -->
 
+
+
+<style>
+.main_content {
+	width: 100%;
+	height: auto;
+	/*  background-color: green; */
+	padding: 10px;
+}
+
+.main_body {
+	width: 80%;
+	float: right;
+	/*   background-color: skyblue; */
+	padding: 10px;
+}
+
+.footer {
+	clear: both;
+}
+</style>
 
