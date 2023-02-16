@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <link href="css/registePlay.css" rel="stylesheet" type="text/css">
+<link href="/css/registePlay.css" rel="stylesheet" type="text/css">
 
 <sec:authentication var="principal" property="principal" />
 <h2>공연 등록 페이지</h2>
@@ -23,15 +23,16 @@
 
 <form:form method="post" modelAttribute="playVO"
 	action="/theater/registePlayComplete" enctype="multipart/form-data">
-<div class="content">
-	<table class="body" border="1">
-		<tr>
-			<td colspan="2">정산 관련 동의(필수) <input type="checkbox"
-				name="agree1" /><font color="red" id="agree1Error" hidden="true"><spring:message
-						code="registe.checkbox.error" /></font></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="2"><textarea rows="10" cols="120" readonly>
+	<div class="content">
+		<table class="agree">
+			<tr>
+				<td  colspan="2">정산 관련 동의(필수) <input
+					type="checkbox" name="agree1" /><font color="red" id="agree1Error"
+					hidden="true"><spring:message code="registe.checkbox.error" /></font></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><textarea rows="10" cols="120"
+						readonly>
 마로티켓 서비스 수익 및 비용 정산 약관
 
 제1조 (목적)
@@ -83,15 +84,16 @@
 
 	
 	</textarea></td>
-		</tr>
-		<tr>
-			<td colspan="2">연극등록 약관(필수)<input type="checkbox" name="agree2" /><font
-				color="red" id="agree2Error" hidden="true"><spring:message
-						code="registe.checkbox.error" /></font></td>
-		</tr>
+			</tr>
+			<tr>
+				<td  colspan="2">연극등록 약관(필수)<input type="checkbox"
+					name="agree2" /><font color="red" id="agree2Error" hidden="true"><spring:message
+							code="registe.checkbox.error" /></font></td>
+			</tr>
 
-		<tr>
-			<td align="center" colspan="2"><textarea rows="10" cols="120" readonly>
+			<tr>
+				<td align="center" colspan="2"><textarea rows="10" cols="120"
+						readonly>
 마로티켓 연극 등록 서비스 약관
 
 제1조 (목적)
@@ -128,16 +130,17 @@
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
 
 	</textarea></td>
-		</tr>
+			</tr>
 
 
-		<tr>
-			<td colspan="2">예매 좌석 제한 관련 동의(필수)<input type="checkbox"
-				name="agree3" /><font color="red" id="agree3Error" hidden="true"><spring:message
-						code="registe.checkbox.error" /></font></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="2"><textarea rows="10" cols="120" readonly>
+			<tr>
+				<td  colspan="2">예매 좌석 제한 관련 동의(필수)<input
+					type="checkbox" name="agree3" /><font color="red" id="agree3Error"
+					hidden="true"><spring:message code="registe.checkbox.error" /></font></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><textarea rows="10" cols="120"
+						readonly>
 마로티켓 예매 좌석 제한 관련 약관
 
 제1조 (목적)
@@ -174,203 +177,204 @@
 제8조 (권리∙의무의 양도 등 금지)
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
 	
-	</textarea></td>
-		</tr>
+	</textarea><br> <br></td>
+			</tr>
+		</table>
+		<table class="information" border="1">
+			<tr >
+				<td>연극명</td>
+				<td><form:input path="pname" placeholder="연극명 입력칸" /><font
+					color="red"><form:errors path="pname" /></font></td>
+			</tr>
 
-		<tr>
-			<td>연극명</td>
-			<td><form:input path="pname" placeholder="연극명 입력칸" /><font
-				color="red"><form:errors path="pname" /></font></td>
-		</tr>
+			<tr >
+				<td>연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
+				</td>
+				<td><form:input path="pstartDate" id="pstartDate"
+						readonly="true" /><font color="red"><form:errors
+							path="pstartDate">
+							<spring:message code="registe.date.error" />
+						</form:errors></font></td>
+			</tr>
+			<tr >
+				<td>연극 종료일<br>(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)
+				</td>
+				<td><form:input path="pcloseDate" id="pcloseDate"
+						readonly="true" /><font color="red"><form:errors
+							path="pcloseDate">
+							<spring:message code="registe.date.error" />
+						</form:errors></font></td>
+			</tr>
 
-		<tr>
-			<td>연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
-			</td>
-			<td><form:input path="pstartDate" id="pstartDate"
-					readonly="true" /><font color="red"><form:errors
-						path="pstartDate">
-						<spring:message code="registe.date.error" />
-					</form:errors></font></td>
-		</tr>
-		<tr>
-			<td>연극 종료일<br>(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)
-			</td>
-			<td><form:input path="pcloseDate" id="pcloseDate"
-					readonly="true" /><font color="red"><form:errors
-						path="pcloseDate">
-						<spring:message code="registe.date.error" />
-					</form:errors></font></td>
-		</tr>
+			<tr >
+				<td>예매오픈 희망일<br>(연극 시작일 시점부터 최소 30일 전이여야 합니다.)
+				</td>
+				<td><form:input path="pticketOpenDate" id="pticketOpenDate"
+						readonly="true" /><font color="red"><form:errors
+							path="pticketOpenDate">
+							<spring:message code="registe.date.error" />
+						</form:errors></font></td>
+			</tr>
 
-		<tr>
-			<td>예매오픈 희망일<br>(연극 시작일 시점부터 최소 30일 전이여야 합니다.)
-			</td>
-			<td><form:input path="pticketOpenDate" id="pticketOpenDate"
-					readonly="true" /><font color="red"><form:errors
-						path="pticketOpenDate">
-						<spring:message code="registe.date.error" />
-					</form:errors></font></td>
-		</tr>
+			<tr >
+				<td>연극 소요시간(3자리까지 분단위입력)</td>
+				<td><form:input path="prunningTime" id="prunningTime"
+						placeholder="연극 소요 시간 입력칸" />분 <font color="red"><form:errors
+							path="prunningTime" /></font></td>
+			</tr>
 
-		<tr>
-			<td>연극 소요시간(3자리까지 분단위입력)</td>
-			<td><form:input path="prunningTime" id="prunningTime"
-					placeholder="연극 소요 시간 입력칸" />분 <font color="red"><form:errors
-						path="prunningTime" /></font></td>
-		</tr>
+			<tr >
+				<td>극장명</td>
+				<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
+					color="red"><form:errors path="ptheaterName" /> </font></td>
+			</tr>
 
-		<tr>
-			<td>극장명</td>
-			<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
-				color="red"><form:errors path="ptheaterName" /> </font></td>
-		</tr>
+			<tr>
+				<td>극장 주소</td>
+				<td><input type="button" onclick="sample6_execDaumPostcode()"
+					value="주소 찾기" /></td>
+			</tr>
 
-		<tr>
-			<td>극장 주소</td>
-			<td><input type="button" onclick="sample6_execDaumPostcode()"
-				value="주소 찾기" /></td>
-		</tr>
+			<tr >
+				<td colspan="2"><form:input path="ptheaterAddress"
+						id="ptheaterAddress" /> <font color="red"><form:errors
+							path="ptheaterAddress" /> </font></td>
+			</tr>
 
-		<tr>
-			<td colspan="2"><form:input path="ptheaterAddress"
-					id="ptheaterAddress" /> <font color="red"><form:errors
-						path="ptheaterAddress" /> </font></td>
-		</tr>
+			<tr >
+				<td>연극포스터</td>
+				<td><input type="File" name="pposter" id="pposter"
+					accept="image/jpeg, image/png, image/jpg" /><font color="red"
+					id="pposterError" hidden="true"><spring:message
+							code="registe.file.error" /></font></td>
+			</tr>
 
-		<tr>
-			<td>연극포스터</td>
-			<td><input type="File" name="pposter" id="pposter"
-				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pposterError" hidden="true"><spring:message
-						code="registe.file.error" /></font></td>
-		</tr>
-
-		<tr>
-			<td>기획사 정보</td>
-			<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
-					value="마로기획" /><font color="red"><form:errors
-						path="pagency" /></font></td>
-		</tr>
+			<tr >
+				<td>기획사 정보</td>
+				<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
+						value="마로기획" /><font color="red"><form:errors
+							path="pagency" /></font></td>
+			</tr>
 
 
 
-		<tr>
-			<td>장르 정보</td>
-			<td><form:select path="pgenre">
-					<option value="1">로맨스극</option>
-					<option value="2">코미디극</option>
-					<option value="3">드라마극</option>
-					<option value="4">공포극</option>
-					<option value="5">추리스릴러극</option>
-					<option value="6">판타지극</option>
-					<option value="7">시대/역사극</option>
-				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
-		</tr>
+			<tr >
+				<td>장르 정보</td>
+				<td><form:select path="pgenre">
+						<option value="1">로맨스극</option>
+						<option value="2">코미디극</option>
+						<option value="3">드라마극</option>
+						<option value="4">공포극</option>
+						<option value="5">추리스릴러극</option>
+						<option value="6">판타지극</option>
+						<option value="7">시대/역사극</option>
+					</form:select><font color="red"><form:errors path="pgenre" /></font></td>
+			</tr>
 
-		<tr>
-			<td>관람 등급</td>
-			<td><form:select path="pratings">
-					<option value="1">전체 이용가</option>
-					<option value="2">12세 이상</option>
-					<option value="3">15세 이상</option>
-					<option value="4">18세 이상</option>
-				</form:select><font color="red"><form:errors path="pratings" /></font></td>
-		</tr>
+			<tr >
+				<td>관람 등급</td>
+				<td><form:select path="pratings">
+						<option value="1">전체 이용가</option>
+						<option value="2">12세 이상</option>
+						<option value="3">15세 이상</option>
+						<option value="4">18세 이상</option>
+					</form:select><font color="red"><form:errors path="pratings" /></font></td>
+			</tr>
 
-		<tr>
-			<td>티켓 가격(원)</td>
-			<td><form:input type="text" path="pticketPrice"
-					placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
-						path="pticketPrice" /></font></td>
-		</tr>
+			<tr >
+				<td>티켓 가격(원)</td>
+				<td><form:input type="text" path="pticketPrice"
+						placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
+							path="pticketPrice" /></font></td>
+			</tr>
 
-		<tr>
-			<td>캐스팅 데이터</td>
-			<td><form:textarea rows="10" cols="50" path="pcasting"
-					placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
-						path="pcasting" /></font></td>
-		</tr>
-		<tr>
-			<td>연극 줄거리</td>
-			<td><form:textarea rows="10" cols="50" path="pplot"
-					placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
-						path="pplot" /></font></td>
-		</tr>
+			<tr >
+				<td>캐스팅 데이터</td>
+				<td><form:textarea rows="10" cols="50" path="pcasting"
+						placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
+							path="pcasting" /></font></td>
+			</tr>
+			<tr >
+				<td>연극 줄거리</td>
+				<td><form:textarea rows="10" cols="50" path="pplot"
+						placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
+							path="pplot" /></font></td>
+			</tr>
 
-		<tr>
-			<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
-			<td><form:input type="text" path="pseatNumber"
-					placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
-						path="pseatNumber" /></font></td>
+			<tr >
+				<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
+				<td><form:input type="text" path="pseatNumber"
+						placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
+							path="pseatNumber" /></font></td>
 
-		</tr>
+			</tr>
 
-		<tr>
-			<td>상연 시각</td>
-			<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
-				onchange="changePFirstStartTime()">
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-			</select>: <select id="pfirstStartTimeMinute"
-				onchange="changePFirstStartTime()">
-					<option value="00">00</option>
-					<option value="10">10</option>
-					<option value="20">20</option>
-					<option value="30">30</option>
-					<option value="40">40</option>
-					<option value="50">50</option>
-			</select> <form:input path="pfirstStartTime" id="pfirstStartTime"
-					hidden="true" /><font color="red"><form:errors
-						path="pfirstStartTime" /></font> <br> 2회차 상연 시간 선택 <select
-				id="psecondStartTimeHour" onchange="changePSecondStartTime()"
-				disabled="disabled">
-					<option value="">선택</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-			</select>: <select id="psecondStartTimeMinute" disabled="disabled">
-					<option value="">선택</option>
-					<option value="00">00</option>
-					<option value="10">10</option>
-					<option value="20">20</option>
-					<option value="30">30</option>
-					<option value="40">40</option>
-					<option value="50">50</option>
-			</select> <form:input path="psecondStartTime" id="psecondStartTime"
-					hidden="true" /><font color="red"><form:errors
-						path="psecondStartTime" /></font>
+			<tr >
+				<td>상연 시각</td>
+				<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
+					onchange="changePFirstStartTime()">
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+				</select>: <select id="pfirstStartTimeMinute"
+					onchange="changePFirstStartTime()">
+						<option value="00">00</option>
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+						<option value="50">50</option>
+				</select> <form:input path="pfirstStartTime" id="pfirstStartTime"
+						hidden="true" /><font color="red"><form:errors
+							path="pfirstStartTime" /></font> <br> 2회차 상연 시간 선택 <select
+					id="psecondStartTimeHour" onchange="changePSecondStartTime()"
+					disabled="disabled">
+						<option value="">선택</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+				</select>: <select id="psecondStartTimeMinute" disabled="disabled">
+						<option value="">선택</option>
+						<option value="00">00</option>
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+						<option value="50">50</option>
+				</select> <form:input path="psecondStartTime" id="psecondStartTime"
+						hidden="true" /><font color="red"><form:errors
+							path="psecondStartTime" /></font>
 
-			</td>
+				</td>
 
-		</tr>
+			</tr>
 
-		<tr>
-			<form:input path="pregistrationApproval" value="0" hidden="true" />
-			<form:input path="pmodifyApproval" hidden="true" />
-			<form:input path="pagree" id="pagree" hidden="true" />
-		</tr>
-	</table>
+			<tr>
+				<form:input path="pregistrationApproval" value="0" hidden="true" />
+				<form:input path="pmodifyApproval" hidden="true" />
+				<form:input path="pagree" id="pagree" hidden="true" />
+			</tr>
+		</table>
 	</div>
 </form:form>
 <br>
@@ -501,7 +505,12 @@
 														formObj.submit();
 
 													} else {
-														if ($("#psecondStartTimeMinute").val() == ""|| $("#psecondStartTimeMinute")	.val() == null) {
+														if ($(
+																"#psecondStartTimeMinute")
+																.val() == ""
+																|| $(
+																		"#psecondStartTimeMinute")
+																		.val() == null) {
 															alert("연극 시작 시간을 선택해주세요");
 															document
 																	.getElementById(
