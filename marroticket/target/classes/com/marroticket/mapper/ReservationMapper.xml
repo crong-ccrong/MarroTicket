@@ -163,5 +163,4 @@
 				JOIN play p ON r.p_number = p.p_number
 			WHERE r_number = #{rnumber}
 	</select>
-	<!-- 예매진행완료로 업데이트 -->
 </mapper>
