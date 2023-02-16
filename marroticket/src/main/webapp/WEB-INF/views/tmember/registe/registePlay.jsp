@@ -296,7 +296,7 @@
 		</tr>
 
 		<tr>
-			<td>좌석 개수(최대 234좌석까지만 입력할 수 있습니다.)</td>
+			<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
 			<td><form:input type="text" path="pseatNumber"
 					placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
 						path="pseatNumber" /></font></td>

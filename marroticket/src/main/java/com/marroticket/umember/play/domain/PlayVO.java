@@ -53,7 +53,7 @@ public class PlayVO {
 	@Size(max = 4000, message = "4000자 이내로 입력해주세요.")
 	private String pplot; // 공연 줄거리
 
-	@Max(value = 234)
+	@Max(value = 100)
 	@Pattern(regexp = "[1-9]{1}[0-9]{0,20}", message = "좌석 개수를 정확히 입력해주세요. ")
 	private String pseatNumber; // 좌석 개수
 
