@@ -163,6 +163,15 @@ public class TmemberController {
 		System.out.println("극단 회원 등록한 연극 List" + playlist);
 
 		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
+		
+		/*
+		 * // 사업자 등록 구분 1:개인 2:기업 // vo.getTBusinessRegistration().equals("1") if
+		 * ("1".equals(vo.getTBusinessRegistration())) {
+		 * vo.setTBusinessRegistration("개인"); } else {
+		 * vo.setTBusinessRegistration("기업"); }
+		 * 
+		 * 
+		 */
 
 		model.addAttribute("playlist", playlist);
 		return "info.tmemberPlayRegisteInfo";

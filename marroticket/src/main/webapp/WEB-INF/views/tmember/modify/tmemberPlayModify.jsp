@@ -147,11 +147,11 @@
 			<td><font color="red"><form:errors path="pModifyApproval" /></font></td>
 		</tr>
 	
-		<!--
+		
 		<tr>
-			 수정 신청 시 modifyApproval 변경
-			<form:input path="pModifyApproval" value="1" hidden="true" />
-		</tr>	 -->	
+			<!--  수정 신청 시 modifyApproval 변경 -->
+<%-- 			<form:input path="pModifyApproval" value="1" hidden="true" /> --%>
+		</tr>
 	</table>
 
 

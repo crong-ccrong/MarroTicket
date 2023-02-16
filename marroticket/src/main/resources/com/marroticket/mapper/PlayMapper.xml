@@ -132,7 +132,7 @@
 			P_SEATNUMBER=#{pSeatNumber},
 			P_TICKETPRICE=#{pTicketPrice},
 			P_GENRE=#{pGenre},
-			p_MODIFYAPPROVAL=#{pModifyApproval},
+			p_MODIFYAPPROVAL='1',
 			p_REGISTRATIONAPPROVAL=#{pRegistrationApproval}
 		WHERE p_number=#{pNumber}
 	</update>
