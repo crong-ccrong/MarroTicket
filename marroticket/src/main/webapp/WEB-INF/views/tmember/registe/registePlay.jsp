@@ -296,7 +296,7 @@
 		</tr>
 
 		<tr>
-			<td>좌석 개수</td>
+			<td>좌석 개수(최대 234좌석까지만 입력할 수 있습니다.)</td>
 			<td><form:input type="text" path="pseatNumber"
 					placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
 						path="pseatNumber" /></font></td>
@@ -499,13 +499,8 @@
 														formObj.submit();
 
 													} else {
-														if ($(
-																"#psecondStartTimeMinute")
-																.val() == ""
-																|| $(
-																		"#psecondStartTimeMinute")
-																		.val() == null) {
-															alert("2회차 시작 시간을 정확히 선택해주세요");
+														if ($("#psecondStartTimeMinute").val() == ""|| $("#psecondStartTimeMinute")	.val() == null) {
+															alert("연극 시작 시간을 선택해주세요");
 															document
 																	.getElementById(
 																			"psecondStartTimeMinute")
