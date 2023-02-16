@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
@@ -38,7 +37,6 @@ import com.marroticket.umember.play.domain.PlayVO;
 import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
-
 
 //@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
@@ -53,13 +51,16 @@ public class TmemberController {
 	@Value("${upload.path}")
 	private String uploadPath;
 
+	@Value("${file.dir}") // 맥용으로 설정했으니 윈도우일땐 프로퍼티에서 설정 바꾸기
+	private String uploadDir;
+
 	@Autowired
 	TmemberService tmemberService;
 	@Autowired
 	EmailService emailService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	@GetMapping("")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
@@ -156,9 +157,16 @@ public class TmemberController {
 
 	// 극단 회원 가입
 	@PostMapping("/signUp")
-	public String signUp(@ModelAttribute("tmember") @Validated TmemberVO tmember, BindingResult result,
-			@RequestParam(value = "file", required = false) MultipartFile file) throws Exception {
+	public String signUp(@ModelAttribute("tmember") @Validated TmemberVO tmember, BindingResult result)
+			throws Exception {
 		log.info("signUp 호출");
+
+		MultipartFile tBusinessRegisterationImage = tmember.getTBusinessRegisterationImage();
+
+		String tBusinessRegisterationImageUrl = uploadImage(tBusinessRegisterationImage.getOriginalFilename(),
+				tBusinessRegisterationImage.getBytes());
+
+		tmember.setTBusinessRegisterationImageUrl(tBusinessRegisterationImageUrl);
 
 		// 극단 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {
@@ -174,7 +182,7 @@ public class TmemberController {
 		tmember.setTPassword(passwordEncoder.encode(inputPassword));
 
 		// 가입 성공시 등록 성공 페이지로 이동
-		tmemberService.register(tmember, file);
+		tmemberService.register(tmember);
 		System.out.println("등록성공" + tmember.toString());
 		return "tMemberJoin.tmemberJoinSuccess";
 	}
@@ -299,11 +307,20 @@ public class TmemberController {
 		return sb.toString();
 	}
 
-	// 상품 이미지 업로드
+	// 포스터 이미지 업로드
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
 		String createdFileName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, createdFileName);
+		FileCopyUtils.copy(fileData, target);
+		return createdFileName;
+	}
+
+	// 사업자등록증 사본 이미지 업로드
+	private String uploadImage(String originalName, byte[] fileData) throws Exception {
+		UUID uid = UUID.randomUUID();
+		String createdFileName = uid.toString() + "_" + originalName;
+		File target = new File(uploadDir, createdFileName);
 		FileCopyUtils.copy(fileData, target);
 		return createdFileName;
 	}

@@ -163,5 +163,50 @@
 				JOIN play p ON r.p_number = p.p_number
 			WHERE r_number = #{rnumber}
 	</select>
-	<!-- 예매진행완료로 업데이트 -->
+
+	<select id="getReservationListByUNumber"
+		resultMap="reservationmap">
+		SELECT R.*, P.*
+		FROM RESERVATION R LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER
+		WHERE R.U_NUMBER = #{unumber}
+	</select>
+	
+	<!-- 나중에 role admin 확인 (추가할것 /값 이전을 명확하게 하기 위해서) -->
+  <update id="withdrawalStatus">
+	UPDATE RESERVATION
+	SET R_CANCELSTATE = 1,
+	    R_TICKETFIRST = 0,
+	    R_TICKETSECOND = 0,
+	    R_TICKETTHIRD = 0,
+	    R_TICKETFOURTH = 0,
+	    u_number = 1
+	WHERE U_NUMBER = #{uNumber}
+</update>  
+	
+	<!-- 예매 내역 업데이트 -->
+	   <update id="updateCancelState">
+	UPDATE RESERVATION
+	SET R_CANCELSTATE = 1,
+	    R_TICKETFIRST = 0,
+	    R_TICKETSECOND = 0,
+	    R_TICKETTHIRD = 0,
+	    R_TICKETFOURTH = 0,
+	     R_CANCELDATE = SYSDATE
+	WHERE R_NUMBER = #{rnumber}
+</update>
+
+
+
+
+
+
+<select id="viewingHistory" resultMap="reservationmap">
+	SELECT R.*, P.* 
+FROM RESERVATION R 
+LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER 
+WHERE R.U_NUMBER = #{unumber} AND  sysdate > R.P_DATE 
+
+</select>
+
+
 </mapper>

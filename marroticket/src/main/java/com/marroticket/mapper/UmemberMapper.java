@@ -25,6 +25,7 @@ public interface UmemberMapper {
 	public UmemberVO getUmemberByUId(String uId) throws Exception;
 	//정보수정
 	public void updateInfo(UmemberVO vo) throws Exception;
+	
 	//권한 삭제
 	public void deleteAuth(@Param("uNumber") Integer uNumber) throws Exception;
 	//회원탈퇴
