@@ -14,6 +14,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <link href="css/registePlay.css" rel="stylesheet" type="text/css">
+
 <sec:authentication var="principal" property="principal" />
 <h2>공연 등록 페이지</h2>
 
@@ -21,8 +23,8 @@
 
 <form:form method="post" modelAttribute="playVO"
 	action="/theater/registePlayComplete" enctype="multipart/form-data">
-
-	<table border="1">
+<div class="content">
+	<table class="body" border="1">
 		<tr>
 			<td colspan="2">정산 관련 동의(필수) <input type="checkbox"
 				name="agree1" /><font color="red" id="agree1Error" hidden="true"><spring:message
@@ -361,7 +363,6 @@
 
 			</td>
 
-			<td></td>
 		</tr>
 
 		<tr>
@@ -370,6 +371,7 @@
 			<form:input path="pagree" id="pagree" hidden="true" />
 		</tr>
 	</table>
+	</div>
 </form:form>
 <br>
 <div>
