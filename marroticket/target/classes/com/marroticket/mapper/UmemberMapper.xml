@@ -135,7 +135,7 @@
 	  WHERE u_number  = #{uNumber}
 	</delete>
 	<delete id="deleteMember">
-	DELETE FROM UMEMBER 
+	DELETE  FROM UMEMBER 
 	WHERE u_id = #{uId}
 	</delete>
 	

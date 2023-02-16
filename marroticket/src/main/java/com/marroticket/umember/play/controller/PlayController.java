@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -18,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -89,6 +86,7 @@ public class PlayController {
 		play.setPratings(ratingSet(play));
 		//장르 정보 set
 		play.setPgenre(genreSet(play));
+		System.out.println(play);
 		
 		model.addAttribute("play", play);
 		return "playDetail";
@@ -113,7 +111,7 @@ public class PlayController {
 	}
 	//장르정보 set
 	public String genreSet(PlayVO play) {
-		switch (play.getPratings().charAt(0)) {
+		switch (play.getPgenre().charAt(0)) {
 		case '1':
 			return "로맨스극";
 		case '2':

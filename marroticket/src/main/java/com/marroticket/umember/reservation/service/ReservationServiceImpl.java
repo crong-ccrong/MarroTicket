@@ -12,8 +12,30 @@ import com.marroticket.umember.reservation.domain.SeatVO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-	@Autowired
-	private ReservationMapper mapper;
+@Autowired
+private ReservationMapper mapper;
+
+//예매 정보 조회
+@Override
+public List<ReservationVO> getReservationListByUNumber(int uNumber) throws Exception {
+	return mapper.getReservationListByUNumber(uNumber);
+}
+
+
+//예매 취소
+@Override
+public void cancelReservation(int rnumber) throws Exception {
+	 mapper.updateCancelState(rnumber);
+}
+
+
+//관람내역
+@Override
+public List<ReservationVO> viewingHistory(int uNumber) throws Exception {
+	return mapper.viewingHistory(uNumber);
+}
+
+
 
 	//예매리스트
 	@Override

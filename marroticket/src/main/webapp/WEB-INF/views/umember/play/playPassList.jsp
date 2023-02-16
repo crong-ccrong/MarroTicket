@@ -22,7 +22,7 @@
 							<tr>
 								<td align="center"><a
 									href="/play/playDetail?pNumber=${list.pnumber }"><img
-										alt="..." src="poster?pNumber=${list.pnumber }"></a></td>
+										alt="..." src="poster?pnumber=${list.pnumber }"></a></td>
 							</tr>
 							<tr>
 								<td align="center">${list.pname}</td>

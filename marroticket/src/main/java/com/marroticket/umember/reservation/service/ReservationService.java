@@ -1,5 +1,6 @@
 package com.marroticket.umember.reservation.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,4 +28,10 @@ public interface ReservationService {
 	
 	//예매 확정(예매완료)
 	public ReservationVO register(ReservationVO vo) throws Exception;
+
+	List<ReservationVO> getReservationListByUNumber(int uNumber) throws Exception;
+
+	public void cancelReservation(int rnumber ) throws Exception;
+	
+	List<ReservationVO> viewingHistory(int uNumber) throws Exception; 
 }

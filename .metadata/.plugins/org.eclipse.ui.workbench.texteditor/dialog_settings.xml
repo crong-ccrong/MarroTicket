@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+<<<<<<< HEAD
 		<item key="selection" value="Email"/>
+=======
+		<item key="selection" value=" "/>
+>>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="email"/>
 			<item value="작품"/>
 			<item value="product_content_subtit"/>
@@ -48,5 +53,41 @@
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
+=======
+			<item value="class=&quot;joinInput&quot;"/>
+			<item value="play_place_header"/>
+			<item value="play_place"/>
+			<item value="logo"/>
+			<item value="{"/>
+			<item value="("/>
+			<item value="tBusinessRegistrationNumber"/>
+			<item value="tBusinessRegistrationNumberr"/>
+			<item value="tBusinessRegistractionNumber"/>
+			<item value="taddress"/>
+			<item value="u"/>
+			<item value="tBusinessRegistractionNumbe"/>
+			<item value="reservationDate"/>
+			<item value="Date"/>
+			<item value="reservation.rcancelDeadline"/>
+		</list>
+		<list key="replacehistory">
+			<item value=" "/>
+			<item value=""/>
+			<item value="tBusinessRegistrationNumber"/>
+			<item value="p"/>
+			<item value="reservation.pdate"/>
+			<item value="reserveService"/>
+			<item value="pdate"/>
+			<item value="rpdate"/>
+			<item value="fourth"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="705"/>
+		<item key="DIALOG_Y_ORIGIN" value="145"/>
+		<item key="DIALOG_WIDTH" value="336"/>
+		<item key="DIALOG_HEIGHT" value="402"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+>>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2
 	</section>
 </section>
