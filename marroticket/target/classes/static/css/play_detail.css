@@ -262,6 +262,24 @@ button {
 	font-weight: bold;
 }
 
+.calandar_day a.event:focus, .sat a.event:focus, .sun a.event:focus, .calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover {
+	background-color: black;
+	color: lightgray;
+	border-radius: 50px;
+	font-weight: bold;
+	padding : 0;
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    line-height: 32px;
+    box-sizing: border-box;
+        display: inline-block;
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+}
+
 .sat a.event {
 	color: #0000CD;
 	font-weight: bold;
@@ -280,10 +298,11 @@ button {
 }
 /* 오늘날짜에 css*/
 .calandar_day.today, div.sat.today, div.sun.today {
-	background-color: black;
-	color: white;
+	/* background-color: black; */
+	color: lightgray;
 	border-radius: 50px;
-	font-weight: normal;
+	font-weight: bold;
+	border : 2px solid gray;
 }
 
 .day_name {

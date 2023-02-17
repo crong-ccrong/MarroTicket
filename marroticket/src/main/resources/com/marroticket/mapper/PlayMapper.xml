@@ -20,8 +20,6 @@
 		<result property="pgenre" column="P_GENRE" />
 		<result property="pposterUrl" column="P_POSTERURL" />
 		<result property="pagree" column="P_AGREE" />
-		<result property="pamendmentApproved"
-			column="P_AMENDMENTAPPROVED" />
 		<result property="pregistrationApproval"
 			column="P_REGISTRATIONAPPROVAL" />
 		<result property="pfirstStartTime" column="P_FirstStartTime" />
