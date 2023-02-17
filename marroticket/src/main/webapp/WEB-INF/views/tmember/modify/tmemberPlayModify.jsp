@@ -84,12 +84,6 @@
 		</tr>
 		
 		<tr>
-			<td>예매 오픈 희망일</td>
-			<td><form:input path="pticketOpenDate" type='date' /></td>
-		 	<td><font color="red"><form:errors path="pticketOpenDate" /></font></td>
-		</tr>
-		
-		<tr>
 			<td>줄거리</td>
 			<td><form:input path="pplot" /></td>
 			<td><font color="red"><form:errors path="pplot" /></font></td>
@@ -223,9 +217,6 @@
 
 						$('#pstartDate').datepicker();
 						$('#pcloseDate').datepicker();
-						$("#pticketOpenDate").datepicker();
-						$("#pticketOpenDate")
-								.datepicker("option", "minDate", 0);
 
 						$('#pstartDate')
 								.datepicker("option", "minDate", "+30d");
@@ -258,11 +249,6 @@
 													.toISOString();
 											ticketDate = ticketDate.substring(
 													0, 10);
-											$("#pticketOpenDate").datepicker(
-													"option", "minDate", 0);
-											$("#pticketOpenDate").datepicker(
-													"option", "maxDate",
-													ticketDate);
 										});
 
 						$("#agree1Error").hide();

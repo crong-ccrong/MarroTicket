@@ -13,7 +13,6 @@
 		<result property="pagency" column="P_AGENCY" />
 		<result property="pratings" column="P_RATINGS" />
 		<result property="pcasting" column="P_CASTING" />
-		<result property="pticketOpenDate" column="P_TICKETOPENDATE" />
 		<result property="pplot" column="P_PLOT" />
 		<result property="pseatNumber" column="P_SEATNUMBER" />
 		<result property="pticketPrice" column="P_TICKETPRICE" />
@@ -218,7 +217,6 @@
 		#{pagency},
 		P_RATINGS = #{pratings},
 		P_CASTING = #{pcasting},
-		P_TICKETOPENDATE = #{pticketOpenDate},
 		P_PLOT =
 		#{pplot},
 		P_SEATNUMBER

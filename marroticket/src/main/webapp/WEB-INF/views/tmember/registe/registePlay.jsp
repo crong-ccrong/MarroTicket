@@ -206,15 +206,6 @@
 						</form:errors></font></td>
 			</tr>
 
-			<tr>
-				<td>예매오픈 희망일<br>(연극 시작일 시점부터 최소 30일 전이여야 합니다.)
-				</td>
-				<td><form:input path="pticketOpenDate" id="pticketOpenDate"
-						readonly="true" /><font color="red"><form:errors
-							path="pticketOpenDate">
-							<spring:message code="registe.date.error" />
-						</form:errors></font></td>
-			</tr>
 
 			<tr>
 				<td>연극 소요시간(3자리까지 분단위입력)</td>
@@ -420,9 +411,6 @@
 								});
 						$('#pstartDate').datepicker();
 						$('#pcloseDate').datepicker();
-						$("#pticketOpenDate").datepicker();
-						$("#pticketOpenDate")
-								.datepicker("option", "minDate", 0);
 						$('#pstartDate')
 								.datepicker("option", "minDate", "+30d");
 						$('#pstartDate').datepicker("option", "maxDate",
@@ -453,11 +441,6 @@
 													.toISOString();
 											ticketDate = ticketDate.substring(
 													0, 10);
-											$("#pticketOpenDate").datepicker(
-													"option", "minDate", 0);
-											$("#pticketOpenDate").datepicker(
-													"option", "maxDate",
-													ticketDate);
 										});
 						$("#registeTemporary")
 								.on(

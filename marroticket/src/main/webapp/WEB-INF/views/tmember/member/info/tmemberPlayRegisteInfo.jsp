@@ -43,8 +43,6 @@
 						</c:choose>
 					</td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${list.pticketOpenDate}" /></td>
-					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${list.pstartDate}" /></td>
 							
 					<td align="center">
