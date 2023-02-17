@@ -110,7 +110,7 @@
 	</div>
 
 	<div>
-		<br>
+		<br><br>
 		<p>
 			<input type="button" value="메인 화면으로" onclick="nochk()" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -120,3 +120,19 @@
 	</div>
 
 </form>
+
+<style>
+input[type="button"] {
+  background-color: #ff6666;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #ff4d4d;
+}
+
+</style>
