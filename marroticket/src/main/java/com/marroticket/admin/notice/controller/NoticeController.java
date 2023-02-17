@@ -49,7 +49,7 @@ public class NoticeController {
 	}
 
 	// 공지사항 목록 페이지
-	// @PreAuthorize("hasRole(두개주기)")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
 	public String list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model, String accept) throws Exception {
 
@@ -64,11 +64,10 @@ public class NoticeController {
 		pagination.setTotalCount(service.count());
 		model.addAttribute("pagination", pagination);
 		System.out.println("공지사항 목록");
-		return "admin.notice.noticeList";
 
 		if ("admin".equals(accept)) {
 			// model.addAttribute("accept","tmember");
-		String url = "admin.notice.noticeList";
+		 url = "admin.notice.noticeList";
 		return url;
 		}
 

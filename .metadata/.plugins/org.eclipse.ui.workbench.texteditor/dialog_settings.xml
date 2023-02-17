@@ -1,157 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-		<item key="selection" value="tNumber"/>
-=======
-<<<<<<< HEAD
-		<item key="selection" value="장르"/>
-=======
-<<<<<<< HEAD
-		<item key="selection" value="Email"/>
-=======
-		<item key="selection" value=" "/>
->>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2
->>>>>>> f7f9d863f2d8ded37f95562f0bd031bca97072c4
->>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
->>>>>>> 7237647c87d7c5c630a3342599993bb4c7b8c8c1
+		<item key="selection" value="pn"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="class=&quot;information&quot;"/>
-			<item value="class=&quot;agree&quot;"/>
-			<item value="textarea"/>
-			<item value="h2"/>
-			<item value="display"/>
-			<item value="tBusinessRegistractionNumber"/>
-			<item value="rac"/>
-			<item value="가입"/>
-			<item value="count"/>
-			<item value="modi"/>
-			<item value="businessregistra"/>
-			<item value="businessregistrac"/>
-			<item value="ufaq"/>
-			<item value="http"/>
-			<item value="htto"/>
-=======
-<<<<<<< HEAD
-			<item value="tNumber"/>
-			<item value="playPassList"/>
-			<item value="registrac"/>
-			<item value="by"/>
-			<item value="get"/>
-			<item value="byUId"/>
-			<item value="byUid"/>
->>>>>>> 7237647c87d7c5c630a3342599993bb4c7b8c8c1
+			<item value="pn"/>
+			<item value="tow"/>
 		</list>
 		<list key="replacehistory">
-			<item value=""/>
-			<item value="textarea class=&quot;&quot;"/>
-			<item value="마로티켓 연극 등록 서비스"/>
-			<item value="정산업무"/>
-			<item value="마로티켓"/>
-			<item value="회사"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-<<<<<<< HEAD
-		<item key="DIALOG_X_ORIGIN" value="1483"/>
-		<item key="DIALOG_Y_ORIGIN" value="166"/>
-=======
-		<item key="DIALOG_X_ORIGIN" value="1200"/>
-		<item key="DIALOG_Y_ORIGIN" value="260"/>
->>>>>>> 7237647c87d7c5c630a3342599993bb4c7b8c8c1
+		<item key="DIALOG_X_ORIGIN" value="1611"/>
+		<item key="DIALOG_Y_ORIGIN" value="177"/>
 		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="390"/>
+		<item key="DIALOG_HEIGHT" value="437"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
-=======
-<<<<<<< HEAD
-			<item value="장르"/>
-			<item value="seat"/>
-=======
-<<<<<<< HEAD
-			<item value="email"/>
-			<item value="작품"/>
-			<item value="product_content_subtit"/>
-			<item value="table"/>
-			<item value="상품"/>
-			<item value="공연 시간"/>
-			<item value="공연시간"/>
-			<item value="button"/>
-			<item value="pfee"/>
-			<item value="rfee"/>
-			<item value="주소"/>
-			<item value="장소"/>
-			<item value="시간"/>
-			<item value="기획"/>
-			<item value="극단이름"/>
-		</list>
-		<list key="replacehistory">
-			<item value="EB0000"/>
-			<item value="homeButton"/>
-			<item value="preReserved"/>
-			<item value="fourth"/>
-			<item value="third"/>
-			<item value="second"/>
-			<item value="fourthT"/>
-			<item value="thirdT"/>
-			<item value="secondT"/>
-			<item value="{reservation.};"/>
-			<item value="reserveSession"/>
-			<item value="reserveService"/>
-			<item value=""/>
-			<item value=","/>
-			<item value="&quot;${r"/>
-		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="8"/>
-		<item key="DIALOG_Y_ORIGIN" value="293"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
-=======
->>>>>>> f7f9d863f2d8ded37f95562f0bd031bca97072c4
-			<item value="class=&quot;joinInput&quot;"/>
-			<item value="play_place_header"/>
-			<item value="play_place"/>
-			<item value="logo"/>
-			<item value="{"/>
-			<item value="("/>
-			<item value="tBusinessRegistrationNumber"/>
-			<item value="tBusinessRegistrationNumberr"/>
-			<item value="tBusinessRegistractionNumber"/>
-			<item value="taddress"/>
-			<item value="u"/>
-			<item value="tBusinessRegistractionNumbe"/>
-			<item value="reservationDate"/>
-		</list>
-		<list key="replacehistory">
-			<item value=" "/>
-			<item value=""/>
-			<item value="tBusinessRegistrationNumber"/>
-			<item value="p"/>
-			<item value="reservation.pdate"/>
-			<item value="reserveService"/>
-			<item value="pdate"/>
-			<item value="rpdate"/>
-			<item value="fourth"/>
-		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="705"/>
-		<item key="DIALOG_Y_ORIGIN" value="145"/>
-		<item key="DIALOG_WIDTH" value="336"/>
-		<item key="DIALOG_HEIGHT" value="402"/>
-		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
->>>>>>> e2c1ecf281ce87bdbf52974b7132e97dc0639ee2
->>>>>>> 3c016f5dc329c2e50a643248bcd503b1fd8cc1ef
 	</section>
 </section>

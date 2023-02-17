@@ -81,12 +81,12 @@ public class TmemberController {
 	private PasswordEncoder passwordEncoder;
 
 	// 극단 홈
-	// @RequestMapping("")
-	// @PreAuthorize("hasRole('ROLE_TMEMBER')")
+	@RequestMapping("")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
 		return "redirect:/notice/noticeList";
-		// return "/tmemberhome";
+		//return "tmemberhome";
 	}
 
 	// 연극 등록 이동

@@ -55,10 +55,10 @@
 				<tr>
 					<td align="center">${TmemberVO.TNumber}</td>
 					<td align="center">${TmemberVO.TBusinessRegistrationNumber}</td>
-					<td align="center">${TmemberVO.TOwnerName}</td>
+					<td align="center">${TmemberVO.tOwnerName}</td>
 					<td align="center">${TmemberVO.tName}</td>
 					<td align="center">${TmemberVO.tOwnerEmail}</td>
-					<td align="center">${TmemberVO.TOwnerPhoneNumber}</td>
+					<td align="center">${TmemberVO.tOwnerPhoneNumber}</td>
 
 					<td align="center"><img alt="..."
 						src="tmemberBusinessRegistration?TNumber=${TmemberVO.TNumber}"

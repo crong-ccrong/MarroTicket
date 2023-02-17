@@ -31,7 +31,7 @@
 	<select id="playCurrentList" resultMap="play">
 		<![CDATA[ select *
 		from Play 
-		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '0'
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
 		order by p_startDate ]]>
 	</select>
 
@@ -39,7 +39,7 @@
 		<![CDATA[
 		SELECT *
 		FROM Play
-		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '0'
+		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
@@ -51,7 +51,7 @@
 		<![CDATA[
 		SELECT *
 		FROM Play
-		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '0'
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
