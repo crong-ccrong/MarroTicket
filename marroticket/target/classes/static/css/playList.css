@@ -13,7 +13,7 @@ table.playInfo {
 	margin: auto;
 }
 
-img.playListImg {
+img.playListImg{
 	width: 259px;
 	height: 350px;
 	object-fit: cover;
@@ -21,6 +21,10 @@ img.playListImg {
 	overflow: hidden;
 	border-radius: 10px;
 	border: 1px solid gray;
+}
+img.playListImg:hover{
+	border: 2px solid #EB0000;
+	background-color: #EB0000;
 }
 
 tr.playName {

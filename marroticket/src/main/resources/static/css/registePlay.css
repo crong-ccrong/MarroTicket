@@ -1,5 +1,21 @@
 @charset "UTF-8";
+body{
+	font-family: 'Malgon Gothic';
+}
 
+div.button button,div.button input{
+	display: inline-block;
+    background: #494e56;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 600;
+    width: 150px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    vertical-align: middle;
+	
+}
 
 textarea {
 	resize: none;
@@ -16,7 +32,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 textarea::-webkit-scrollbar-thumb:hover {
-	background-color: #696969;
+	background-color: #EB0000;
 }
 
 .agree {
@@ -24,5 +40,14 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .information{
-	border-collapse : collapse;
+	border-collapse: collapse;
+	
 	}	
+.information .inputName{
+	border: 1px solid black;
+	text-align: center;
+	background-color: #D4D4D4;
+}
+.information .inputInfo{
+	border: 1px solid black;
+}
