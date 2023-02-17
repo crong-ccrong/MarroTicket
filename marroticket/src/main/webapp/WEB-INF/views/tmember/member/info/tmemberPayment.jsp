@@ -8,12 +8,10 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<h2>
-	정산
-</h2>
-<%-- <sec:authorize access="hasRole('ROLE_ADMIN')">
+<h2>정산</h2>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="noticeRegister"><spring:message code="action.new" /></a>
-</sec:authorize> --%>
+</sec:authorize>
 
 <table border="1">
 	<tr>
@@ -24,30 +22,28 @@
 		<th align="center" width="80">연극번호</th>
 	</tr>
 
-	<%--
-	아래 한글명으로 해둔거는 작성하신거에 맞춰서 변경해주세요
+
 	<c:choose>
-		<c:when test="${empty 정산리스트}">
+		<c:when test="${empty theaterPayment}">
 			<tr>
 				<td colspan="5"><spring:message code="common.listEmpty" /></td>
 			</tr>
 		</c:when>
 
 		<c:otherwise>
-			<c:forEach items="${정산리스트}" var="정산VO">
+			<c:forEach items="${theaterPayment}" var="theaterPayment">
 				<tr>
-					<td align="center">${정산VO.정산번호}</td>
+					<td align="center">${theaterPayment.payNumber}</td>
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${정산VO.정산일자}" /></td>
-							
+							value="${theaterPayment.payCalculateDate}" /></td>
+
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-							value="${정산VO.지급일}" /></td>
-					지급일은 정산일의 다음달 20일로 일괄적용됩니다. 처리해주세요~
-							
-					<td align="right">${정산VO.금액}</td>
-					<td align="center">${정산VO.연극번호}</td>
+							value="${theaterPayment.payPayDate}" /></td>
+
+					<td align="right">${theaterPayment.payTheaterPayment}</td>
+					<td align="center">${theaterPayment.PNumber}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
-</c:choose> --%>
+	</c:choose>
 </table>

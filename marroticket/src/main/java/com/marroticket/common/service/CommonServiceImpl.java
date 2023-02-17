@@ -19,6 +19,6 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public List<TmemberVO> list() throws Exception {
 		System.out.println("commonServiceImpl 호출");
-		return mapper.list();
+		return mapper.emailList();
 	}
 }

@@ -47,7 +47,6 @@ public class EmailServiceImpl implements EmailService {
 		// 메일 내용 설정 : 템플릿 프로세스
 		String html = templateEngine.process("passwordTemplate", context);
 		helper.setText(html, true);
-
 		// 메일 보내기
 		emailSender.send(message);
 	}

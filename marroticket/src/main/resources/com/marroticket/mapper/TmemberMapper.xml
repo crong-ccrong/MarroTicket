@@ -34,6 +34,24 @@
 		<result property="tNumber" column="t_number" />
 		<result property="tmemberAuth" column="tmember_auth" />
 	</resultMap>
+
+	<resultMap id="payment"
+		type="com.marroticket.admin.payment.domain.PaymentVO">
+		<result property="payNumber" column="pay_Number" />
+		<result property="pNumber" column="p_Number" />
+		<result property="tNumber" column="t_Number" />
+		<result property="payTheaterPayment"
+			column="pay_TheaterPayment" />
+		<result property="paySitePayment" column="pay_SitePayment" />
+		<result property="payPayment" column="pay_Payment" />
+		<result property="payPayDate" column="pay_PayDate" />
+		<result property="payCalculateDate" column="pay_Calculate" />
+		<result property="tName" column="t_Name" />
+		<result property="pName" column="p_Name" />
+		<result property="pCloseDate" column="p_CloseDate" />
+
+	</resultMap>
+
 	<!--극단 아이디 찾기 -->
 	<select id="findId" resultType="String">
 		SELECT t_id
@@ -48,12 +66,16 @@
 		WHERE t_id =
 		#{tId} and t_owneremail = #{tOwnerEmail}
 	</update>
+
 	<!-- 아이디 읽어오기(로그인) -->
 	<select id="readByUserId" resultMap="tmemberMap">
 		SELECT mem.t_number,
 		mem.t_id, mem.*,
 		tmember_auth
-		FROM tmember mem LEFT OUTER JOIN tmember_auth auth ON mem.t_number = auth.t_number
+		FROM tmember
+		mem LEFT OUTER JOIN tmember_auth auth ON
+		mem.t_number =
+		auth.t_number
 		WHERE mem.t_id = #{tId}
 	</select>
 	<!-- 회원가입 -->
@@ -62,6 +84,7 @@
 		FROM tmember
 		WHERE t_id = #{tId}
 	</select>
+
 	<insert id="create"
 		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
 		INSERT INTO TMEMBER (
@@ -99,7 +122,7 @@
 		#{tBankNumber},
 		#{tBankOwner},
 		#{tBusinessRegistrationImageUrl},
-		#{tAuth},
+		'0', <!-- 권한 -->
 		#{tAgree}
 		)
 	</insert>
@@ -116,31 +139,148 @@
 		#{tmemberAuth}
 		)
 	</insert>
-	
-	<!-- 마이페이지 회원정보 -->
-	<select id="getTmemberByTId"  resultMap="tmemberMap">
-	SELECT *
-	FROM tmember
-	WHERE t_id = #{tId}
+
+	<select id="theaterPayment" resultMap="payment">
+		<![CDATA[
+		select pay.*, 
+       play.*,t.*
+from payment pay, play play, tmember t
+where pay.p_number = play.p_number
+  and play.t_number = t.t_number and t_id = #{tId}
+  order by pay_number desc
+        
+		]]>
 	</select>
-	
+
+
+	<!--관리자 -->
+	<!--극단회원 목록 조회 -->
+
+	<select id="list" resultMap="tmemberMap">
+<![CDATA[
+	 		SELECT t_number,
+					t_businessRegistrationNumber,
+					t_ownerName,
+					t_name,
+					t_ownerEmail,
+					t_ownerPhoneNumber,
+					t_BusinessRegistrationImageUrl,
+					t_auth
+	FROM (select t_number,
+					t_businessRegistrationNumber,
+					t_ownerName,
+					t_name,
+					t_ownerEmail,
+					t_ownerPhoneNumber,
+					t_BusinessRegistrationImageUrl,
+					t_auth,
+				rownum as rnum
+			from (SELECT t_number,
+							t_businessRegistrationNumber,
+							t_ownerName,
+							t_name,
+							t_ownerEmail,
+							t_ownerPhoneNumber,
+							t_BusinessRegistrationImageUrl,
+							t_auth
+					from tmember
+					order by t_number desc
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
+]]>
+	</select>
+
+	<!-- 전체 인원수를 조회한다. -->
+	<select id="count" resultType="int">
+<![CDATA[
+SELECT count(t_number)
+ FROM tmember
+WHERE t_number > 0
+]]>
+	</select>
+
+	<!--극단회원 상세 조회 -->
+	<select id="read" resultMap="tmemberMap">
+		SELECT t_number,
+		t_businessRegistrationNumber,
+		t_ownerName,
+		t_name,
+		t_ownerEmail,
+		t_ownerPhoneNumber,
+		t_BusinessRegistrationImageUrl,
+		t_auth
+		FROM tmember
+		WHERE t_number = #{TNumber}
+	</select>
+
+	<!-- 사업자등록증 이미지 표시 -->
+	<select id="BusinessRegistration" resultType="String">
+		SELECT
+		t_BusinessRegistrationImageUrl
+		FROM tmember
+		WHERE t_number = #{TNumber}
+	</select>
+
+
+	<!-- 극단회원 가입 승인 -->
+	<update id="tmemberApprove"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember
+		SET t_Auth = 1
+		WHERE t_number = #{TNumber}
+	</update>
+
+
+	<!-- 극단회원가입 승인후 권한 업그레이드 -->
+	<update id="tmemberAuthUpgrade"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember_auth
+		SET tmember_auth = 'ROLE_TMEMBER'
+		WHERE t_number = #{TNumber}
+	</update>
+
+	<!-- 극단회원 계약 만료 처리 -->
+	<update id="tmemberExpiration"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember
+		SET t_Auth = 2
+		WHERE t_number = #{TNumber}
+	</update>
+
+	<!-- 계약만료에 따른 극단회원 권한 다운 그레이드 -->
+	<update id="tmemberAuthDowngrade"
+		parameterType="com.marroticket.tmember.member.domain.TmemberVO">
+		UPDATE tmember_auth
+		SET tmember_auth = 'ROLE_GUEST'
+		WHERE
+		t_number = #{TNumber}
+	</update>
+
+
+	<!-- 마이페이지 회원정보 -->
+	<select id="getTmemberByTId" resultMap="tmemberMap">
+		SELECT *
+		FROM tmember
+		WHERE t_id = #{tId}
+	</select>
+
 	<!-- 마이페이지 회원수정 -->
-	<update id="updateInfo" >
-		update TMEMBER 
+	<update id="updateInfo">
+		update TMEMBER
 		set t_password=#{tPassword},
-			t_name=#{tName},
-			t_address=#{tAddress},
-			t_ownerName=#{tOwnerName},
-			t_ownerPhoneNumber=#{tOwnerPhoneNumber},
-			t_ownerEmail=#{tOwnerEmail},
-			t_bank=#{tBank},
-			t_bankNumber=#{tBankNumber},
-			t_bankOwner=#{tBankOwner}
+		t_name=#{tName},
+		t_address=#{tAddress},
+		t_ownerName=#{tOwnerName},
+		t_ownerPhoneNumber=#{tOwnerPhoneNumber},
+		t_ownerEmail=#{tOwnerEmail},
+		t_bank=#{tBank},
+		t_bankNumber=#{tBankNumber},
+		t_bankOwner=#{tBankOwner}
 		where t_id=#{tId}
 	</update>
-	
+
 	<!-- 기타 문의 : 극단 이메일 -->
-	<select id="list" resultMap="tmemberMap">
+	<select id="emailList" resultMap="tmemberMap">
 		<![CDATA[ SELECT *
 					FROM tmember 
 					ORDER BY t_number DESC

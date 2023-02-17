@@ -32,11 +32,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.marroticket.admin.payment.domain.PaymentVO;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.marroticket.common.email.domain.EmailVO;
@@ -50,7 +52,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.marroticket.tmember.member.domain.TmemberVO;
 
-//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 @Slf4j
 @Controller
 @RequestMapping("/theater")
@@ -80,17 +81,17 @@ public class TmemberController {
 
 	// 극단 홈
 	@GetMapping("")
-	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
+	@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {
 		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
 		return "redirect:/notice/noticeList";
-		// return "/tmemberhome";
+		//return "tmemberhome";
 	}
 
 	// 연극 등록 이동
 	@GetMapping("/registePlay")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
-	public String registeForm(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request) throws Exception {
+	public String registeForm(@ModelAttribute("playVO") PlayVO playVO) throws Exception {
 		return "registe.registePlay";
 	}
 
@@ -100,14 +101,7 @@ public class TmemberController {
 	public String registePlay(@ModelAttribute("playVO") @Validated PlayVO playVO, BindingResult result)
 			throws Exception {
 
-		MultipartFile pposter = playVO.getPposter();
-
-		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
-
-		playVO.setPposterUrl(pposterUrl);
-
-		registeService.registePlay(playVO);
-
+		// 에러발생시 에러표시
 		if (result.hasErrors()) {
 			List<ObjectError> list = result.getAllErrors();
 			for (ObjectError error : list) {
@@ -116,6 +110,18 @@ public class TmemberController {
 			return "registe.registePlay";
 		}
 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String tId = authentication.getName();
+		Integer tnumber = registeService.tnumberFind(tId);
+		playVO.setTnumber(tnumber);
+
+		// db에 저장될 포스터 파일 입력
+		MultipartFile pposter = playVO.getPposter();
+		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
+		playVO.setPposterUrl(pposterUrl);
+
+		registeService.registePlay(playVO);
+
 		log.info(playVO.toString());
 		return "registe.registeTemporaryComplete";
 	}
@@ -123,7 +129,7 @@ public class TmemberController {
 	// 연극 임시등록 완료페이지
 	@GetMapping("/registeTemporaryComplete")
 	@PreAuthorize("hasRole('ROLE_TMEMBER')")
-	public String registeTemporaryComplete(PlayVO playVO, Model model) throws Exception {
+	public String registeTemporaryComplete() throws Exception {
 
 		return "registe.registeTemporaryComplete";
 	}
@@ -133,7 +139,7 @@ public class TmemberController {
 	@GetMapping("/playRegisteInfo")
 	public String playRegisteInfo(Principal principal, Model model, PlayVO playVO) throws Exception {
 		System.out.println("tmemberController 호출");
-		
+
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		playVO.setTnumber(tvo.getTNumber());
@@ -148,7 +154,7 @@ public class TmemberController {
 		playlist = modifyService.playlist(tNumber);
 
 		System.out.println("극단 회원 등록한 연극 List" + playlist);
-		
+
 		model.addAttribute("playlist", playlist);
 		return "info.tmemberPlayRegisteInfo";
 	}
@@ -160,52 +166,52 @@ public class TmemberController {
 		// tmember tId로 play tId 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		System.out.println(pnumber);
-		
+
 		PlayVO vo = modifyService.read(pnumber);
 		vo.setTnumber(tvo.getTNumber());
 
 		System.out.println("등록한 연극 상세");
-		
-		//장르표시
-        switch (vo.getPgenre()) {
-        case "1":
-            vo.setPgenre("로맨스");
-            break;
-        case "2":
-            vo.setPgenre("드라마");
-            break;
-        case "3":
-            vo.setPgenre("공포");
-            break;
-        case "4":
-            vo.setPgenre("추리/스릴러");
-            break;
-        case "5":
-            vo.setPgenre("판타지");
-            break;
-        case "6":
-            vo.setPgenre("시대/역사");
-            break;
-    }
-		
+
+		// 장르표시
+		switch (vo.getPgenre()) {
+		case "1":
+			vo.setPgenre("로맨스");
+			break;
+		case "2":
+			vo.setPgenre("드라마");
+			break;
+		case "3":
+			vo.setPgenre("공포");
+			break;
+		case "4":
+			vo.setPgenre("추리/스릴러");
+			break;
+		case "5":
+			vo.setPgenre("판타지");
+			break;
+		case "6":
+			vo.setPgenre("시대/역사");
+			break;
+		}
+
 		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-				if ("0".equals(vo.getPregistrationApproval())) {
-					vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
-				} else if ("1".equals(vo.getPregistrationApproval())) {
-					vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
-				} else {
-					vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
-				}
-				
+		if ("0".equals(vo.getPregistrationApproval())) {
+			vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
+		} else if ("1".equals(vo.getPregistrationApproval())) {
+			vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
+		} else {
+			vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
+		}
+
 		// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
-				if ("0".equals(vo.getPmodifyApproval())) {
-					vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
-				} else {
-					vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
-				}
-				
-				model.addAttribute("playVO", vo);
-		
+		if ("0".equals(vo.getPmodifyApproval())) {
+			vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
+		} else {
+			vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
+		}
+
+		model.addAttribute("playVO", vo);
+
 		return "info.tmemberPlayRegisteRead";
 
 	}
@@ -213,59 +219,53 @@ public class TmemberController {
 	// 연극 수정 페이지
 	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
 	public String modifyPlay(int pnumber, Model model, Principal principal) throws Exception {
-		
-		// tmember tId로 play tId 정보 가져오기
-				TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
-				System.out.println(pnumber);
-				
-				PlayVO vo = modifyService.read(pnumber);
-				vo.setTnumber(tvo.getTNumber());
 
-				System.out.println("등록한 연극 상세");
-				
-				/* 수정 시 String으로 값이 변해서 주석 처리하고 jsp에서 변경함
-				// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-						if ("0".equals(vo.getPregistrationApproval())) {
-							vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
-						} else if ("1".equals(vo.getPregistrationApproval())) {
-							vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
-						} else {
-							vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
-						}
-						
-				// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
-						if ("0".equals(vo.getPmodifyApproval())) {
-							vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
-						} else {
-							vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
-						}
-				*/		
-				model.addAttribute("playVO", vo);
-		
+		// tmember tId로 play tId 정보 가져오기
+		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		System.out.println(pnumber);
+
+		PlayVO vo = modifyService.read(pnumber);
+		vo.setTnumber(tvo.getTNumber());
+
+		System.out.println("등록한 연극 상세");
+
+		/*
+		 * 수정 시 String으로 값이 변해서 주석 처리하고 jsp에서 변경함 // 연극 등록 승인 상태 0:미승인 1:승인 2:반려 if
+		 * ("0".equals(vo.getPregistrationApproval())) {
+		 * vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다"); } else if
+		 * ("1".equals(vo.getPregistrationApproval())) {
+		 * vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다"); } else {
+		 * vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요"); }
+		 * 
+		 * // 연극 등록 수정 상태 0:수정 가능 1:수정 불가 if ("0".equals(vo.getPmodifyApproval())) {
+		 * vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태"); } else {
+		 * vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다"); }
+		 */
+		model.addAttribute("playVO", vo);
+
 		return "modify.tmemberPlayModify";
 	}
 
-		// 연극 수정 처리
-		@RequestMapping(value = "/playModify", method = RequestMethod.POST)
-		public String modify(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request, RedirectAttributes rttr, Principal principal, Model model, int pnumber) throws Exception {
-			
-			System.out.println("수정 처리 Controller 호출");
-			System.out.println(pnumber);
-			
-			// 수정 처리
-			modifyService.modify(playVO);
-			
-			// 업데이트 된 연극 정보 가져오기
-			PlayVO updatedVO = modifyService.read(pnumber);
-			
-			// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			System.out.println("등록한 연극 수정처리");
+	// 연극 수정 처리
+	@RequestMapping(value = "/playModify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute("playVO") PlayVO playVO, HttpServletRequest request, RedirectAttributes rttr,
+			Principal principal, Model model, int pnumber) throws Exception {
 
-			return "redirect:/theater/modifyTemporaryComplete";
-		}
-	
-	
+		System.out.println("수정 처리 Controller 호출");
+		System.out.println(pnumber);
+
+		// 수정 처리
+		modifyService.modify(playVO);
+
+		// 업데이트 된 연극 정보 가져오기
+		PlayVO updatedVO = modifyService.read(pnumber);
+
+		// RedirectAttributes 객체에 일회성 데이터를 지정하여 전달한다.
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		System.out.println("등록한 연극 수정처리");
+
+		return "redirect:/theater/modifyTemporaryComplete";
+	}
 
 	// 연극 임시등록 완료페이지
 	@GetMapping("/modifyTemporaryComplete")
@@ -276,7 +276,15 @@ public class TmemberController {
 
 	// 극단 정산
 	@GetMapping("/tmemberPayment")
-	public String theaterPayment() throws Exception {
+	public String theaterPayment(Model model) throws Exception {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String tId = authentication.getName();
+
+		List<PaymentVO> list;
+		list = tmemberService.theaterPayment(tId);
+		model.addAttribute("theaterPayment", list);
+
 		return "info.tmemberPayment";
 	}
 
@@ -408,13 +416,6 @@ public class TmemberController {
 			throws Exception {
 		log.info("signUp 호출");
 
-		MultipartFile tBusinessRegistrationImage = tmember.getTBusinessRegistrationImage();
-
-		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegistrationImage.getOriginalFilename(),
-				tBusinessRegistrationImage.getBytes());
-
-		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
-
 		// 극단 회원 가입 실패시 리스트로 나열
 		if (result.hasErrors()) {
 			List<ObjectError> list = result.getAllErrors();
@@ -423,6 +424,13 @@ public class TmemberController {
 			}
 			return "tMemberJoin.tmemberJoinForm";
 		}
+
+		MultipartFile tBusinessRegistrationImage = tmember.getTBusinessRegistrationImage();
+
+		String tBusinessRegistrationImageUrl = uploadImage(tBusinessRegistrationImage.getOriginalFilename(),
+				tBusinessRegistrationImage.getBytes());
+
+		tmember.setTBusinessRegistrationImageUrl(tBusinessRegistrationImageUrl);
 
 		// 비밀번호 암호화
 		String inputPassword = tmember.getTPassword();
@@ -498,7 +506,6 @@ public class TmemberController {
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = tmemberService.passwordUpdate(tmember);
-
 		if (success != 0) { // 업데이트 성공
 			sendEmail(temporaryPassword, tmember.gettOwnerEmail()); // 임시비밀번호 발송
 			entity = new ResponseEntity<String>("send", HttpStatus.OK);
@@ -562,7 +569,6 @@ public class TmemberController {
 		FileCopyUtils.copy(fileData, target);
 		return createdFileName;
 	}
-
 
 	// 사업자등록증 사본 이미지 업로드
 	private String uploadImage(String originalName, byte[] fileData) throws Exception {

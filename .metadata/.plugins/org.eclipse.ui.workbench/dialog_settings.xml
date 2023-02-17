@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ExternalProject"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+>>>>>>> 0020e62972b4257809a9408e802d26f2c214f7dd
 	<section name="org.eclipse.ui.preferences.keysPreferencePage">
 		<item key="actionSetFilter" value="true"/>
 		<item key="internalFilter" value="true"/>
 		<item key="uncategorizedFilter" value="true"/>
+<<<<<<< HEAD
 =======
 	<section name="NewWizardAction">
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard"/>
@@ -12,5 +22,7 @@
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 >>>>>>> cc9cca29089f94acac25031319740248109983b1
+=======
+>>>>>>> 0020e62972b4257809a9408e802d26f2c214f7dd
 	</section>
 </section>

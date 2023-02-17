@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marroticket.admin.notice.domain.NoticeVO;
+import com.marroticket.common.domain.PageRequest;
 import com.marroticket.mapper.NoticeMapper;
 
 @Service
@@ -24,9 +25,9 @@ public class NoticeServiceImpl implements NoticeService {
 	// 공지사항 목록 페이지
 
 	@Override
-	public List<NoticeVO> list() throws Exception {
+	public List<NoticeVO> list(PageRequest pageRequest) throws Exception {
 		// TODOAuto-generated method stub
-		return mapper.list();
+		return mapper.list(pageRequest);
 	}
 
 	// 공지사항 상세 페이지
@@ -50,6 +51,13 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		mapper.delete(noticeNo);
 
+	}
+
+	// 공지사항 전체 건수 반환
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.count();
 	}
 
 

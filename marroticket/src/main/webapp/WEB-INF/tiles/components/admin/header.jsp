@@ -1,49 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<div style="font-size: 12px; text-align: right">
-	<form action="/" method="get">
+<!-- 로그인을 한(인증된 사용자인) 경우 -->
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+   <div style="font-size : 12px; text-align:right"> <a href="#" onclick="document.getElementById('logout').submit();">로그아웃</a></div>
+</sec:authorize>
 
-		<button type="submit" id="backMainbtn" name="로그아웃">로그아웃</button>
-
-	</form>
-</div>
-<br>
-<br>
-
-<div style="text-align: left">
-
-	<form action="/admin" method="post">
-
-		<button type="submit" id="backHomebtn" name="홈으로 돌아가기">마로티켓</button>
-
-	</form>
-
-</div>
+<form id="logout" action="/memberlogout" method="POST">
+   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+</form>
+<br><br>
+<div style="font-size : 1.5em; text-align:left"><a href="/admin">마로티켓</a></div>
 <hr>
-
-<script>
-	$(document).ready(function() {
-
-		$("#backMainbtn").on("click", function() {
-			var result = confirm("정말 로그아웃 하시겠습니까?");
-			if (result) {
-				alert("로그아웃 되었습니다.");
-				self.location = "/";
-			} else {
-				alert("로그아웃을 취소하셨습니다.");
-				return false;
-
-			}
-		});
-	});
-
-	$(document).ready(function() {
-		$("#backHomebtn").on("click", function() {
-
-			self.location = "/admin";
-		});
-	});
-</script>
-
-

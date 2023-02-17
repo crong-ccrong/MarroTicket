@@ -10,20 +10,18 @@
 <h2>
 	<spring:message code="notice.header.list" />
 </h2>
-
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-	<a href="noticeRegister"><spring:message code="action.new" /></a>
+<a href="noticeRegister"><spring:message code="action.new" /></a>
 </sec:authorize>
-
 <table border="1">
 	<tr>
 
 		<th align="center" width="80"><spring:message code="notice.no" /></th>
 
-		<th align="center" width="320"><spring:message code="notice.title" /></th>
-		
-		<th align="center" width="180"><spring:message code="notice.regdate" /></th>
-
+		<th align="center" width="320"><spring:message
+				code="notice.title" /></th>
+		<th align="center" width="180"><spring:message
+				code="notice.regdate" /></th>
 	</tr>
 
 	<c:choose>
@@ -37,9 +35,10 @@
 			<c:forEach items="${noticeList}" var="noticeVO">
 				<tr>
 					<td align="center">${noticeVO.noticeNo}</td>
+					<!-- 게시글 상세보기할 때 페이징 요청 정보를 매개변수로 전달한다. -->
 					<td align="left"><a
-						href="/notice/noticeRead?noticeNo=${noticeVO.noticeNo}"><c:out
-								value="${noticeVO.title}" /></a></td>
+						href="/notice/noticeRead${pagination.makeQuery(pagination.pageRequest.page)}&noticeNo=
+${noticeVO.noticeNo}">${noticeVO.title}</a></td>
 					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${noticeVO.regDate}" /></td>
 				</tr>
@@ -47,6 +46,23 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+<!-- 페이징 네비게이션 -->
+<div>
+	<c:if test="${pagination.prev}">
+		<a href="${pagination.startPage - 1}">&laquo;</a>
+	</c:if>
+
+	<c:forEach begin="${pagination.startPage }"
+		end="${pagination.endPage }" var="idx">
+
+		<a href="/notice/noticeList${pagination.makeQuery(idx)}">${idx}</a>
+	</c:forEach>
+
+	<c:if test="${pagination.next && pagination.endPage > 0}">
+		<a href="${pagination.endPage +1}">&raquo;</a>
+	</c:if>
+</div>
+
 <script>
 	var result = "${msg}";
 	if (result === "SUCCESS") {

@@ -2,6 +2,7 @@ package com.marroticket.admin.ufaq.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import com.marroticket.admin.ufaq.service.UfaqService;
 import com.marroticket.common.domain.PageRequest;
 import com.marroticket.common.domain.Pagination;
 
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @Controller
 @RequestMapping("/ufaq")
 @MapperScan(basePackages = "com.marroticket.mapper")
@@ -43,6 +45,7 @@ public class UfaqController {
 	// 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
 	//@PreAuthorize("hasRole(두개주기)") // 비회원도 봐야함
 	@RequestMapping(value = "/ufaqList", method = RequestMethod.GET)
+	@PreAuthorize("isAnonymous() or hasRole('ROLE_UMEMBER') or hasRole('ROLE_ADMIN')")
 	public String list(PageRequest pageRequest, Model model, String accept) throws Exception {
 
 		String url = "ufaq.ufaqList";
@@ -65,7 +68,7 @@ public class UfaqController {
 	}
 
 	// 게시글 상세 페이지, 페이징 요청 정보를 매개변수로 받고 다시 뷰에 전달한다.
-	//@PreAuthorize("hasRole(두개주기)")
+	@PreAuthorize("isAnonymous() or hasRole('ROLE_UMEMBER') or hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/ufaqRead", method = RequestMethod.GET)
 	public String read(int ufaqNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model, String accept) throws Exception {
 		String url = "ufaq.ufaqRead";
@@ -111,7 +114,7 @@ public class UfaqController {
 		rttr.addAttribute("page", pageRequest.getPage());
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+
 		return "redirect:/ufaq/ufaqList";
 
 	}
