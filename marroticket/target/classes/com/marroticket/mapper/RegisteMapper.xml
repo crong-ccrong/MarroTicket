@@ -13,10 +13,10 @@
 		p_runningtime ,
 		p_theatername ,
 		p_theateraddress ,
-		p_agency ,
+		p_agency
+		,
 		p_ratings ,
 		p_casting ,
-		p_ticketopendate ,
 		p_plot ,
 		p_seatNumber ,
 		p_ticketprice ,
@@ -30,10 +30,9 @@
 		t_number
 		)
 
-		select
+		values(
 		play_seq.nextval,
-		#{pname
-		},
+		#{pname},
 		#{pstartDate},
 		#{pcloseDate},
 		#{prunningTime },
@@ -42,9 +41,9 @@
 		#{pagency },
 		#{pratings },
 		#{pcasting },
-		#{pticketOpenDate},
 		#{pplot },
-		#{pseatNumber },
+		#{pseatNumber
+		},
 		#{pticketPrice},
 		#{pgenre },
 		#{pposterUrl },
@@ -53,11 +52,14 @@
 		#{pfirstStartTime},
 		#{psecondStartTime },
 		#{pagree} ,
-		t_number
-		from tmember
-		where t_id = #{tId}
-
+		#{tnumber})
 
 	</insert>
+	<select id="find" resultType="Integer">
+		SELECT t_number
+		FROM tmember
+		WHERE
+		t_Id = #{tId}
+	</select>
 
 </mapper>

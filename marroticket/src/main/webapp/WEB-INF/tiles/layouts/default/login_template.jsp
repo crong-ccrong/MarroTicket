@@ -16,7 +16,6 @@
 <style type="text/css">
 * {
 	text-decoration: none;
-	margin: 0 auto;
 }
 #logo {
 	text-align : center;

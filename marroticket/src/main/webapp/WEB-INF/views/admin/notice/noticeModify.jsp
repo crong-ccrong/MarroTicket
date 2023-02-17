@@ -42,12 +42,12 @@
 			formObj.attr("method", "post");
 
 			formObj.submit();
-
 		});
 
 		$("#btnList").on("click", function() {
-			self.location = "noticeList";
-
+			//self.location = "noticeList";
+			//페이징 관련 정보를 쿼리 파라미터로 전달한다.
+			self.location = "noticeList${pgrq.toUriString()}";
 		});
 	});
 </script>

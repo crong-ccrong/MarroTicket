@@ -74,21 +74,26 @@
 
 	<!-- 예매진행중으로 업데이트 -->
 	<update id="advanceReserve" parameterType="map">
-		INSERT INTO reservation
+		INSERT INTO
+		reservation
 		(
 		r_number, r_paystate, p_date,
 		r_cancelstate,
-		r_ticketfirst, r_ticketcount, r_totalpayment, 
+		r_ticketfirst,
+		r_ticketcount, r_totalpayment,
 		r_prereserveValidTime,
 		u_number, p_number
 		)
 		VALUES
 		(
-		reservation_seq.nextval, 1, #{reservation.pdate},
+		reservation_seq.nextval, 1,
+		#{reservation.pdate},
 		0,
-		#{reservation.rticketFirst}, #{reservation.rticketcount}, #{reservation.rtotalpayment}, 
+		#{reservation.rticketFirst},
+		#{reservation.rticketcount}, #{reservation.rtotalpayment},
 		#{reservationHoldingTime},
-		#{reservation.unumber}, #{reservation.pnumber}
+		#{reservation.unumber},
+		#{reservation.pnumber}
 		)
 	</update>
 	<!-- 예매진행중에서 예매중 취소로 업데이트(체크한 것만 지운다) -->
@@ -153,60 +158,59 @@
 	<!-- 예매완료정보를 가져옴 -->
 	<select id="getReservationById" parameterType="int"
 		resultType="com.marroticket.umember.reservation.domain.ReservationVO">
-			SELECT 
-				r.*,
-				u.u_id, u.u_name, p.p_name, p.p_theaterName, p.p_theaterAddress,
-				p.p_firstStartTime, p.p_secondStartTime
-			FROM 
-				umember u
-				JOIN reservation r ON u.u_number = r.u_number
-				JOIN play p ON r.p_number = p.p_number
-			WHERE r_number = #{rnumber}
+		SELECT
+		r.*,
+		u.u_id, u.u_name, p.p_name, p.p_theaterName, p.p_theaterAddress,
+		p.p_firstStartTime, p.p_secondStartTime
+		FROM
+		umember u
+		JOIN reservation r ON u.u_number = r.u_number
+		JOIN play p ON r.p_number = p.p_number
+		WHERE r_number = #{rnumber}
 	</select>
 
 	<select id="getReservationListByUNumber"
 		resultMap="reservationmap">
 		SELECT R.*, P.*
-		FROM RESERVATION R LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER
+		FROM RESERVATION R LEFT OUTER JOIN PLAY P ON
+		R.P_NUMBER = P.P_NUMBER
 		WHERE R.U_NUMBER = #{unumber}
 	</select>
-	
+
 	<!-- 나중에 role admin 확인 (추가할것 /값 이전을 명확하게 하기 위해서) -->
-  <update id="withdrawalStatus">
-	UPDATE RESERVATION
-	SET R_CANCELSTATE = 1,
-	    R_TICKETFIRST = 0,
-	    R_TICKETSECOND = 0,
-	    R_TICKETTHIRD = 0,
-	    R_TICKETFOURTH = 0,
-	    u_number = 1
-	WHERE U_NUMBER = #{uNumber}
-</update>  
-	
+	<update id="withdrawalStatus">
+		UPDATE RESERVATION
+		SET R_CANCELSTATE = 1,
+		R_TICKETFIRST = 0,
+		R_TICKETSECOND = 0,
+		R_TICKETTHIRD = 0,
+		R_TICKETFOURTH = 0,
+		u_number = 1
+		WHERE U_NUMBER = #{uNumber}
+	</update>
+
 	<!-- 예매 내역 업데이트 -->
-	   <update id="updateCancelState">
-	UPDATE RESERVATION
-	SET R_CANCELSTATE = 1,
-	    R_TICKETFIRST = 0,
-	    R_TICKETSECOND = 0,
-	    R_TICKETTHIRD = 0,
-	    R_TICKETFOURTH = 0,
-	     R_CANCELDATE = SYSDATE
-	WHERE R_NUMBER = #{rnumber}
-</update>
+	<update id="updateCancelState">
+		UPDATE RESERVATION
+		SET R_CANCELSTATE = 1,
+		R_TICKETFIRST = 0,
+		R_TICKETSECOND = 0,
+		R_TICKETTHIRD = 0,
+		R_PAYSTATE = 0,
+		R_TICKETFOURTH = 0,
+		R_CANCELDATE = SYSDATE
+		WHERE R_NUMBER = #{rnumber}
+	</update>
 
 
 
+	<select id="viewingHistory" resultMap="reservationmap">
+		SELECT R.*, P.*
+		FROM RESERVATION R
+		LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER
+		WHERE R.U_NUMBER = #{unumber} AND sysdate > R.P_DATE
 
-
-
-<select id="viewingHistory" resultMap="reservationmap">
-	SELECT R.*, P.* 
-FROM RESERVATION R 
-LEFT OUTER JOIN PLAY P ON R.P_NUMBER = P.P_NUMBER 
-WHERE R.U_NUMBER = #{unumber} AND  sysdate > R.P_DATE 
-
-</select>
+	</select>
 
 
 </mapper>

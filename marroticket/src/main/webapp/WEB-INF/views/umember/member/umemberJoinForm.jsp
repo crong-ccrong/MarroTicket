@@ -236,7 +236,7 @@ form .errors {
 }
 
 /* 양식 버튼 스타일 지정 */
-input[type="submit"], input[type="button"] {
+input[type="submit"] {
   background-color: #ff6666; /* light red */
   color: white;
   border: none;

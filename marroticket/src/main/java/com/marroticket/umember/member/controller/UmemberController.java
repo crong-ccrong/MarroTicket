@@ -4,8 +4,6 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -63,14 +61,13 @@ public class UmemberController {
 
 // 아이디 찾기
 	@PostMapping("/findId")
-
 	public ResponseEntity<String> findId(@RequestBody UmemberVO umember) throws Exception {
 		System.out.println("아이디 찾기 메서드 호출");
 
 		// 값이 정상적으로 입력됐을 때, db조회
 		String uId = umemberService.findId(umember);
-		
-		System.out.println("아이디 찾기 : "+umember);
+
+		System.out.println("아이디 찾기 : " + umember);
 
 		// 응답
 		if (uId != null && uId.length() > 0) {
@@ -87,11 +84,11 @@ public class UmemberController {
 
 		// 임시비밀번호 생성(15자리)
 		String temporaryPassword = getRamdomPassword(15);
-		
+
 		// 비밀번호 암호화
 		umember.setUPassword(passwordEncoder.encode(temporaryPassword));
-		
-		System.out.println("비밀번호 찾기 : "+umember);
+
+		System.out.println("비밀번호 찾기 : " + umember);
 
 		// 임시비밀번호로 업데이트 : 업데이트는 where조건(id, email이 db데이터 조회 시, 부합)에 따라 성공/실패
 		int success = umemberService.passwordUpdate(umember);
@@ -111,315 +108,267 @@ public class UmemberController {
 	@GetMapping("/umembermypage")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String myPage(Model model) throws Exception {
-		
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("마이페이지 정보 조회 호출");
-        String uId = authentication.getName();
-        
-        //서비스에서 아이디로 정보 불러오기
-        UmemberVO vo = umemberService.getUmemberByUId(uId);
-        
-        System.out.println(vo.getUmemberAuthList().get(0).getUNumber());
-        
-        //성별 표시
-        if (vo.getuGender().equals("1")) {
+		String uId = authentication.getName();
+
+		// 서비스에서 아이디로 정보 불러오기
+		UmemberVO vo = umemberService.getUmemberByUId(uId);
+
+		System.out.println(vo.getUmemberAuthList().get(0).getUNumber());
+
+		// 성별 표시
+		if (vo.getuGender().equals("1")) {
 			vo.setuGender("남자");
 		} else {
 			vo.setuGender("여자");
 		}
-        //장르표시
-        switch (vo.getuGenre()) {
-        case "1":
-            vo.setuGenre("로맨스");
-            break;
-        case "2":
-            vo.setuGenre("코미디");
-            break;
-        case "3":
-            vo.setuGenre("드라마");
-            break;
-        case "4":
-            vo.setuGenre("공포");
-            break;
-        case "5":
-            vo.setuGenre("추리/스릴러");
-            break;
-        case "6":
-            vo.setuGenre("판타지");
-            break;
-        case "7":
-            vo.setuGenre("시대/역사");
-            break;
-    }
-        model.addAttribute("vo", vo);
-        
+		// 장르표시
+		switch (vo.getuGenre()) {
+		case "1":
+			vo.setuGenre("로맨스");
+			break;
+		case "2":
+			vo.setuGenre("코미디");
+			break;
+		case "3":
+			vo.setuGenre("드라마");
+			break;
+		case "4":
+			vo.setuGenre("공포");
+			break;
+		case "5":
+			vo.setuGenre("추리/스릴러");
+			break;
+		case "6":
+			vo.setuGenre("판타지");
+			break;
+		case "7":
+			vo.setuGenre("시대/역사");
+			break;
+		}
+		model.addAttribute("vo", vo);
+
 		return "mypage.umemberInfo"; // 일반 회원의 마이페이지 default 페이지
 	}
-	
-	
-	//회원정보 수정  페이지
-	@RequestMapping(value="/umemberModify" , method = RequestMethod.GET)
+
+	// 회원정보 수정 페이지
+	@RequestMapping(value = "/umemberModify", method = RequestMethod.GET)
 	public String getMyPage(Model model) throws Exception {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String uId = authentication.getName();
-        
-        //서비스에서 아이디로 정보 불러오기
-        UmemberVO vo = umemberService.getUmemberByUId(uId);
-    	
-      //성별 표시
-        if (vo.getuGender().equals("1")) {
+		String uId = authentication.getName();
+
+		// 서비스에서 아이디로 정보 불러오기
+		UmemberVO vo = umemberService.getUmemberByUId(uId);
+
+		// 성별 표시
+		if (vo.getuGender().equals("1")) {
 			vo.setuGender("남자");
 		} else {
 			vo.setuGender("여자");
 		}
-        model.addAttribute("vo", vo);
+		model.addAttribute("vo", vo);
 		return "mypage.umemberModify";
 	}
-	
-	@RequestMapping(value="/umemberModify", method = RequestMethod.POST)
-	public String updateMyPage(@ModelAttribute("vo")  UmemberVO vo,  HttpServletRequest request,
-	@RequestParam("uPassword") String uPassword, @RequestParam("changePw") String changePw,
-	@RequestParam("confirmPw") String confirmPw, RedirectAttributes rttr) throws Exception {
-	    System.out.println("수정 호출");
 
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String uId = authentication.getName();
+	@RequestMapping(value = "/umemberModify", method = RequestMethod.POST)
+	public String updateMyPage(@ModelAttribute("vo") UmemberVO vo, HttpServletRequest request,
+			@RequestParam("uPassword") String uPassword, @RequestParam("changePw") String changePw,
+			@RequestParam("confirmPw") String confirmPw, RedirectAttributes rttr) throws Exception {
+		System.out.println("수정 호출");
 
-	    //비밀번호 암호화
-	    String inputPassword = uPassword;
-	    vo.setUPassword(passwordEncoder.encode(inputPassword));
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
 
-	    UmemberVO originalVO = umemberService.getUmemberByUId(uId);
+		// 비밀번호 암호화
+		String inputPassword = uPassword;
+		vo.setUPassword(passwordEncoder.encode(inputPassword));
 
-	    // 1. 로그인한 비밀번호 확인
-	    if (!passwordEncoder.matches(inputPassword, originalVO.getUPassword())) {
-	    	System.out.println("에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
-	    	rttr.addFlashAttribute("msg","에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
-	        return "redirect:/umember/umemberModify";
-	    }
-	    
-	    // 2. 변경할 비밀번호와 로그인한 비밀번호가 일치하면 오류
-	    if (passwordEncoder.matches(changePw, originalVO.getUPassword())) {
-	    	System.out.println("에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
-	    	rttr.addFlashAttribute("emsg","에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
-	    return "redirect:/umember/umemberModify";
+		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
+
+		// 1. 로그인한 비밀번호 확인
+		if (!passwordEncoder.matches(inputPassword, originalVO.getUPassword())) {
+			System.out.println("에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+			rttr.addFlashAttribute("msg", "에러 : 기존 비밀번호에 입력된 값이 없거나 틀린 비밀번호 입니다.");
+			return "redirect:/umember/umemberModify";
+		}
+
+		// 2. 변경할 비밀번호와 로그인한 비밀번호가 일치하면 오류
+		if (passwordEncoder.matches(changePw, originalVO.getUPassword())) {
+			System.out.println("에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+			rttr.addFlashAttribute("emsg", "에러 : 기존 비밀번호와 같은 비밀번호를 사용 할 수 없습니다.");
+			return "redirect:/umember/umemberModify";
+		}
+
+		// 성별 값
+		if (vo.getuGender().equals("1")) {
+			vo.setuGender("남자");
+		} else {
+			vo.setuGender("여자");
+		}
+
+		// 기존 비밀번호랑도 다르면
+		if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
+			// 변경한 비밀번호도 암호화
+			vo.setUPassword(passwordEncoder.encode(changePw));
+			// 비밀번호 변경시 로그아웃
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				session.invalidate();
+			}
+		}
+		umemberService.modify(vo);
+
+		// 업데이트된 사용자 정보 가져오기
+		UmemberVO updatedVO = umemberService.getUmemberByUId(uId);
+
+		// 비밀번호 변경 없이 다른 정보들을 수정할 경우 마이페이지상태로 돌아감
+		return "redirect:/umember/umembermypage";
+
 	}
 
-	    // 성별 값
-	    if (vo.getuGender().equals("1")) {
-	        vo.setuGender("남자");
-	    } else {
-	        vo.setuGender("여자");
-	    }
-	   
-	    // 기존 비밀번호랑도 다르면
-	    if (!changePw.isEmpty() && !changePw.equals(inputPassword)) {
-	    	//변경한 비밀번호도 암호화
-	    vo.setUPassword(passwordEncoder.encode(changePw));
-	    //비밀번호 변경시 로그아웃
-	    HttpSession session = request.getSession(false);
-	    if(session != null) {
-	    session.invalidate();
-	    }
-	    }
-	    umemberService.modify(vo);
-	   
-	 // 업데이트된 사용자 정보 가져오기
-	    UmemberVO updatedVO = umemberService.getUmemberByUId(uId);
-	
-	    //비밀번호 변경 없이 다른 정보들을 수정할 경우 마이페이지상태로 돌아감
-	     return "redirect:/umember/umembermypage";
-	    
-	}
-	
-	//회원탈퇴
-	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.GET)
-	public String secession (Model model) throws Exception {
-		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		  String uId = authentication.getName();
+	// 회원탈퇴
+	@RequestMapping(value = "/umemberSecession", method = RequestMethod.GET)
+	public String secession(Model model) throws Exception {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
 
-		  model.addAttribute("uId", uId);
-		
+		model.addAttribute("uId", uId);
+
 		return "mypage.umemberSecession";
 	}
-	
-	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.POST)
-	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,  
-            @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
+
+	@RequestMapping(value = "/umemberSecession", method = RequestMethod.POST)
+	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,
+			@RequestParam("uPassword") String uPassword, Model model, HttpSession session) throws Exception {
 		System.out.println("탈퇴 페이지 호출");
-		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		 String uId = authentication.getName();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
 		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
-		
+
 		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
 			System.out.println("비밀번호 틀림");
-			model.addAttribute("passwordError","에러메시지");
-			 return "mypage.umemberSecession";
+			model.addAttribute("passwordError", "에러메시지");
+			return "mypage.umemberSecession";
 		}
 		umemberService.remove(originalVO);
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-//	@RequestMapping(value = "/umemberSecession" , method = RequestMethod.POST)
-//	public String deleteSecession(@ModelAttribute("umemberVo") UmemberVO umemberVo,  
-//            @RequestParam("uPassword") String uPassword,Model model, HttpSession session) throws Exception {
-//		System.out.println("탈퇴 페이지 호출");
-//		
-//		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		 String uId = authentication.getName();
-//		UmemberVO originalVO = umemberService.getUmemberByUId(uId);
-//		
-//		 List<ReservationVO> reservations = reservationService.getReservationListByUNumber(originalVO.getuNumber());
-//		 boolean reservationDetails = false;
-//		 boolean hasViewingsOnSameDay = false;
-//		 for (ReservationVO reservation : reservations) {
-//		        if (reservation.getRcancelState()==0) {
-//		        	reservationDetails = true;
-//		            break;
-//		        }if (reservation.getPdate().equals(reservation.getPdate())) {
-//		            hasViewingsOnSameDay = true;
-//		            break;
-//		        }
-//		    }
-//		 if (reservationDetails || hasViewingsOnSameDay) {
-//		        model.addAttribute("eMessage", "에러메시지 ");
-//		        return "mypage.umemberSecession";
-//		    }
-//		 
-//		if (!passwordEncoder.matches(uPassword, originalVO.getUPassword())) {
-//			System.out.println("비밀번호 틀림");
-//			model.addAttribute("passwordError","에러메시지");
-//			 return "mypage.umemberSecession";
-//		}
-//		
-//		 try {
-//		        umemberService.remove(originalVO);
-//		    } catch (Exception e) {
-//		        model.addAttribute("Message", "에러메시지");
-//		        return "mypage.umemberSecession";
-//		    }
-//
-//		    session.invalidate();
-//		    return "redirect:/";
-//		}
-		
-	
-	
+
 	/* 일반회원 예매 정보 */
 //    String ex = "2023-02-09";
 //    System.out.println(ex.substring(0,4));
-    
+
 	@GetMapping("/umemberReserveInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String reservation(Model model) throws Exception {
 		System.out.println("예약 정보 호출");
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String uId = authentication.getName();
-	    UmemberVO vo = umemberService.getUmemberByUId(uId);
-	    
-	    int uNumber = vo.getuNumber();
-	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
-	    System.out.println(reservationList);
-	    model.addAttribute("reservationList", reservationList);
-	    
-	    return "mypage.umemberReservationList";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
+		UmemberVO vo = umemberService.getUmemberByUId(uId);
+
+		int uNumber = vo.getuNumber();
+		List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+		System.out.println(reservationList);
+		model.addAttribute("reservationList", reservationList);
+
+		return "mypage.umemberReservationList";
 	}
-	
-	/**예 매 취 소 **/
+
+	/** 예 매 취 소 **/
 	@GetMapping("/cancelReservation/{rnumber}")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String cancelReservation(@PathVariable Integer rnumber)throws Exception {
+	public String cancelReservation(@PathVariable Integer rnumber) throws Exception {
 		System.out.println("취소 호출");
-		  System.out.println("rnumber : "+rnumber);
-	reservationService.cancelReservation(rnumber);
-	return "redirect:/umember/umemberCancelInfo";
+		System.out.println("rnumber : " + rnumber);
+		reservationService.cancelReservation(rnumber);
+		return "redirect:/umember/umemberCancelInfo";
 	}
-	
+
 	/* 일반 회원 예매 취소 정보 */
 	@GetMapping("/umemberCancelInfo")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
-	public String umemberCancelInfo(Model model)throws Exception {
+	public String umemberCancelInfo(Model model) throws Exception {
 		System.out.println("예매 취소 정보 호출");
-		
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String uId = authentication.getName();
-	    UmemberVO vo = umemberService.getUmemberByUId(uId);
-	    
-	    int uNumber = vo.getuNumber();
-	    List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
-	    System.out.println(reservationList);
-	    model.addAttribute("reservationList", reservationList);
-	    
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
+		UmemberVO vo = umemberService.getUmemberByUId(uId);
+
+		int uNumber = vo.getuNumber();
+		List<ReservationVO> reservationList = reservationService.getReservationListByUNumber(uNumber);
+		System.out.println(reservationList);
+		model.addAttribute("reservationList", reservationList);
+
 		return "mypage.umemberCancelInfo";
 	}
-	
-	//일반 회원 나의 관람 연극 내역
+
+	// 일반 회원 나의 관람 연극 내역
 	@GetMapping("/umemberViewHistory")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String umemberViewHistory(Model model) throws Exception {
 		System.out.println("관람한 연극 내역 호출");
-		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		    String uId = authentication.getName();
-		    UmemberVO vo = umemberService.getUmemberByUId(uId);
-		    
-		    int uNumber = vo.getuNumber();
-		    ReservationVO reservation = new ReservationVO();
-		    reservation.setRcancelDeadline(new Date());
-		    List<ReservationVO> reservationList = reservationService.viewingHistory(uNumber);
-		    System.out.println(reservationList);
-		    model.addAttribute("reservationList", reservationList);
-		    
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
+		UmemberVO vo = umemberService.getUmemberByUId(uId);
+
+		int uNumber = vo.getuNumber();
+		ReservationVO reservation = new ReservationVO();
+		reservation.setRcancelDeadline(new Date());
+		List<ReservationVO> reservationList = reservationService.viewingHistory(uNumber);
+		System.out.println(reservationList);
+		model.addAttribute("reservationList", reservationList);
+
 		return "mypage.umemberViewHistory";
 	}
-	
-	//일반 회원 나의 맞춤 연극 리스트
+
+	// 일반 회원 나의 맞춤 연극 리스트
 	@GetMapping("/umemberCustomPlayList")
 	@PreAuthorize("hasRole('ROLE_UMEMBER')")
 	public String umemberCustomPlayList(Model model) throws Exception {
 		System.out.println("맞춤 연극 호출");
-		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		    String uId = authentication.getName();
-		    UmemberVO umemberVO = umemberService.getUmemberByUId(uId);
-		    
-		    List<PlayVO> playList = playService.playCurrentList();
-		    playList.addAll(playService.playExpectedList());
-		    
-		    System.out.println(playList);
-		    
-		    //사용자가 선호하는 장르에 따라  목록 필터링
-		    List<PlayVO> filteredPlayList = playList.stream()
-		            .filter(play -> play.getPgenre().equals(umemberVO.getuGenre()))
-		            .sorted(Comparator.comparing(PlayVO::getPfirstStartTime))
-		            .collect(Collectors.toList());
-		    
-		    model.addAttribute("playList", filteredPlayList);
-		    model.addAttribute("uName", umemberVO.getuName());
-		    model.addAttribute("uGenre", GenreName(umemberVO.getuGenre()));
-		    
-		    return "mypage.umemberCustomPlayList";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String uId = authentication.getName();
+		UmemberVO umemberVO = umemberService.getUmemberByUId(uId);
+
+		List<PlayVO> playList = playService.playCurrentList();
+		playList.addAll(playService.playExpectedList());
+
+		System.out.println(playList);
+
+		// 사용자가 선호하는 장르에 따라 목록 필터링
+		List<PlayVO> filteredPlayList = playList.stream().filter(play -> play.getPgenre().equals(umemberVO.getuGenre()))
+				.sorted(Comparator.comparing(PlayVO::getPfirstStartTime)).collect(Collectors.toList());
+
+		model.addAttribute("playList", filteredPlayList);
+		model.addAttribute("uName", umemberVO.getuName());
+		model.addAttribute("uGenre", GenreName(umemberVO.getuGenre()));
+
+		return "mypage.umemberCustomPlayList";
 	}
-	
-		    private String GenreName(String genreCode) {
-		        switch (genreCode) {
-		            case "1":
-		                return "로맨스";
-		            case "2":
-		                return "코미디";
-		            case "3":
-		                return "드라마";
-		            case "4":
-		                return "공포";
-		            case "5":
-		                return "추리/스릴러";
-		            case "6":
-		                return "판타지";
-		            case "7":
-		                return "시대/역사";
-		            default:
-		            	 return "";
-		        }
-		    }
+
+	private String GenreName(String genreCode) {
+		switch (genreCode) {
+		case "1":
+			return "로맨스";
+		case "2":
+			return "코미디";
+		case "3":
+			return "드라마";
+		case "4":
+			return "공포";
+		case "5":
+			return "추리/스릴러";
+		case "6":
+			return "판타지";
+		case "7":
+			return "시대/역사";
+		default:
+			return "";
+		}
+	}
 
 	// 일반회원 가입 이용약관
 	@GetMapping("/umemberAgreement")
@@ -435,22 +384,21 @@ public class UmemberController {
 		return "uMemberJoin.umemberJoinForm";
 	}
 
-	   // 아이디 중복 체크
-	   @ResponseBody
-	   @PostMapping("/uIdCheck")
-	   public ResponseEntity<String> uIdCheck(UmemberVO umember) throws Exception {
-	      System.out.println("중복 아이디 체크 컨트롤러 불러옴\numember : " + umember.toString());
-	      int result = umemberService.uIdCheck(umember);
-	      ResponseEntity<String> entity = null;
-	      System.out.println(result);
-	      if (result == 1) {
-	         entity = new ResponseEntity<>("overlap", HttpStatus.OK);
-	      } else {
-	         entity = new ResponseEntity<>("no overlap", HttpStatus.OK);
-	      }
-	      return entity;
-	   }
-
+	// 아이디 중복 체크
+	@ResponseBody
+	@PostMapping("/uIdCheck")
+	public ResponseEntity<String> uIdCheck(UmemberVO umember) throws Exception {
+		System.out.println("중복 아이디 체크 컨트롤러 불러옴\numember : " + umember.toString());
+		int result = umemberService.uIdCheck(umember);
+		ResponseEntity<String> entity = null;
+		System.out.println(result);
+		if (result == 1) {
+			entity = new ResponseEntity<>("overlap", HttpStatus.OK);
+		} else {
+			entity = new ResponseEntity<>("no overlap", HttpStatus.OK);
+		}
+		return entity;
+	}
 
 	// 회원가입 등록
 	@PostMapping("/register")
@@ -469,7 +417,7 @@ public class UmemberController {
 		// 비밀번호 암호화
 		String inputPassword = umember.getUPassword();
 		umember.setUPassword(passwordEncoder.encode(inputPassword));
-		
+
 		// 등록 service 호출
 		umemberService.register(umember);
 		System.out.println("등록 성공" + umember.toString());
@@ -520,11 +468,4 @@ public class UmemberController {
 		// console 확인
 		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
-	
-
-	
-		
-
-	
-	
-	}
+}

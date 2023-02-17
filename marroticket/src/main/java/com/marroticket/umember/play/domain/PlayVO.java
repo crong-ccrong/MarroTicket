@@ -2,6 +2,8 @@ package com.marroticket.umember.play.domain;
 
 import java.util.Date;
 
+
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -35,6 +37,7 @@ public class PlayVO {
 	@NotBlank(message = "극장 주소는 필수 입력 값입니다.")
 	@Size(max = 100, message = "100자 이내로 입력해주세요.")
 	private String ptheaterAddress; // 극장 주소
+
 	private MultipartFile pposter; // 연극 포스터 파일
 	private String pposterUrl; // 포스터url
 
@@ -50,7 +53,8 @@ public class PlayVO {
 	@Size(max = 4000, message = "4000자 이내로 입력해주세요.")
 	private String pplot; // 공연 줄거리
 
-	@Pattern(regexp = "[1-9]{1}[0-9]{0,20}", message = "좌석 개수는 필수 입력값입니다.")
+	@Max(value = 100)
+	@Pattern(regexp = "[1-9]{1}[0-9]{0,20}", message = "좌석 개수를 정확히 입력해주세요. ")
 	private String pseatNumber; // 좌석 개수
 
 	@Pattern(regexp = "[1-9]{1}[0-9]{0,6}", message = "숫자만 입력 가능하며 최대 7자리까지 입력할 수 있습니다.")
@@ -76,14 +80,9 @@ public class PlayVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pcloseDate; // 연극 종료일
 
-	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date pticketOpenDate; // 예매 오픈 희망일
-
 	@NotNull(message = "1회차 상연 시작 시각은 필수 입력값입니다.")
 	private String pfirstStartTime;// 1회차 상연 시작 시각
 
 	private String psecondStartTime;// 2회차 상연 시작 시각
-	private String tId;
 
 }

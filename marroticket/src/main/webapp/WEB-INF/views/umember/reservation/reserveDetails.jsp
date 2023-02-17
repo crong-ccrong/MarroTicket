@@ -37,7 +37,7 @@
 </c:if>
 <!-- body시작 -->
 <br>
-<h3><span style='display:inline-block'><strong style="color: blue; font-size: 23px">${reservation.uname }</strong>님의&nbsp;&nbsp;예매확인</span><button class="snip1535" id="home_btn" >메인페이지로 돌아가기</button></h3>
+<h3><span style='display:inline-block'><strong style="color: blue; font-size: 23px">${reservation.uname }</strong>님의&nbsp;&nbsp;예매확인</span><button class="snip1535" id="home_btn" >예매확인하기</button></h3>
 <hr><br>
 <div class="reserve_step3" style="clear:both">
 	<div class="title_box" style="padding-top: 10px">
@@ -197,6 +197,6 @@
 	);
 	//click
 	$("#home_btn").on("click", function(){
-		location.href="/";
+		location.href="/umember/umemberReserveInfo";
 	});
 </script>

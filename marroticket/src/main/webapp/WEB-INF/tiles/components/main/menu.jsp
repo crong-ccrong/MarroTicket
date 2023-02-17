@@ -25,7 +25,7 @@
 </style>
 <div align="left">
 	<div class="dropdown">
-		<span>연극공연정보</span>
+		<span>연극공연정보&nbsp; | </span>
 		<div class="dropdown-content">
 			<p>
 				<a href="/play/playCurrentList">현재 상연작</a>
@@ -39,13 +39,10 @@
 		</div>
 	</div>
 	<div class="dropdown">
-		<a href="/play/quickReserve"> | 빠른 예매 |</a>
-	</div>
-	<div class="dropdown">
-		<span> 고객센터</span>
+		<span>&nbsp;&nbsp;고객센터</span>
 		<div class="dropdown-content">
 			<p>
-				<a href="/ufaqList">자주 묻는 질문</a>
+				<a href="/ufaq/ufaqList">자주 묻는 질문</a>
 			</p>
 			<p>
 				<a href="/otherInquiries">기타 문의</a>

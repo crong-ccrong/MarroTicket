@@ -2,9 +2,6 @@ package com.marroticket.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.ui.Model;
-
 import org.springframework.ui.Model;
 
 @Controller
@@ -13,7 +10,6 @@ public class HomeController {
 	public String home(String modalData) {
 		return "home";
 	}
-	
 
 	// 회원가입
 	@GetMapping("/join")
@@ -82,6 +78,7 @@ public class HomeController {
 	public String privacy() {
 		return "footer.privacy";
 	}
+
 	@GetMapping("/companyinfo")
 	public String companyinfo() {
 		return "footer.companyinfo";
@@ -89,13 +86,13 @@ public class HomeController {
 
 	@GetMapping("/umembertermsofuse")
 	public String umembertermsofuse(Model model) {
-		model.addAttribute("umember","umember");
+		model.addAttribute("umember", "umember");
 		return "footer.umembertermsofuse";
 	}
-	
+
 	@GetMapping("/tmembertermsofuse")
 	public String tmembertermsofuse(Model model) {
-		model.addAttribute("umember","umember");
+		model.addAttribute("umember", "umember");
 		return "footer.tmembertermsofuse";
 	}
 
@@ -106,18 +103,10 @@ public class HomeController {
 	public String ufaqList() {
 		return "serviceCenter.ufaqList";
 	}
-	
-
 
 	// 일반회원 문의 사항
-	@GetMapping("/otherInquiries")
+	@GetMapping("/serviceCenter/otherInquiries")
 	public String otherInquiries() {
 		return "serviceCenter.otherInquiries";
-	}
-
-	//주소창에 admin 입력시(=> 관리자 로그인시) 관리자 메인 페이지로 전환
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin";
 	}
 }

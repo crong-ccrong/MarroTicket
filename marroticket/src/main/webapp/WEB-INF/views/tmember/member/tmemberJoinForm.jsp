@@ -106,12 +106,13 @@
 
       <tr>
          <th class="joinWindow">사업자 등록증</th>
-         <td class="joinInput"><input type="file" name=tBusinessRegisterationImage id="tBusinessRegisterationImage" accept="image/jpeg, image/png, image/jpg" /></td>
+         <td class="joinInput"><input type="file" name=tBusinessRegistrationImage id="tBusinessRegistrationImage" accept="image/jpeg, image/png, image/jpg" /></td>
          
       </tr>
       <tr>
          <td colspan="2" align="center">
          <input type="button" value="이전" id="back" />
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <input type="submit" value="회원가입" id="join_submit" />
             </td>
       </tr>
@@ -149,30 +150,6 @@ $(document).ready(function() {
 
 <!-- 중복아이디 체크 -->
 <script>
-<<<<<<< HEAD
-	function tIdChk() {
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
-		$(document).ajaxSend(function(e, xhr, options) {
-		    xhr.setRequestHeader(header, token);
-		});
-		$.ajax({
-			url : "/theater/tIdCheck",
-			type : "post",
-			data : {
-				"tId" : $("#tId").val()
-			},
-			success : function(data) {
-				if (data == 'overlap') {
-					alert("중복된 아이디 입니다.");
-				} else {
-					alert("사용가능한 아이디입니다.");
-				}
-			}
-		});
-	
-	}
-=======
    function tIdChk() {
 	   var tIdValue = $("#tId").val();
 	   if (tIdValue === '') {
@@ -220,23 +197,12 @@ $(document).ready(function() {
 
 	  
 	 }
->>>>>>> soobin
 </script>
 
 <!-- 비밀번호 확인 -->
 <script type="text/javascript">
 
 $(function() {
-<<<<<<< HEAD
-	  $("#join_submit").click(function() {
-	    if ($("#tPasswordConfirm").val() === "") {
-	      alert("비밀번호 재확인을 해야합니다.");
-	     return false;
-	      $("#tPasswordConfirm").focus();
-	    } 
-	  });
-	});
-=======
      $("#join_submit").click(function() {
        if ($("#tPasswordConfirm").val() === "") {
          alert("비밀번호 재확인을 해야합니다.");
@@ -245,7 +211,6 @@ $(function() {
        } 
      });
    });
->>>>>>> soobin
 
 </script>
 
@@ -406,24 +371,26 @@ form .errors {
 }
 
 
-input[type="submit"], input[type="button"] {
-   background-color: #ff6666; /* light red */
-   color: white;
-   border: none;
-   border-radius: 4px;
-   padding: 10px 20px;
-   margin: 10px 0;
-   cursor: pointer;
+
+input[type="submit"] {
+  background-color: #ff6666; /* light red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 input[type="submit"]:hover, input[type="button"]:hover {
-   background-color: #ff3333; /* dark red */
-   input[type="button"] {
-   background-color: #4CAF50;
-   color: white;
-   border: none;
-   border-radius: 4px;
-   padding: 10px 20px;
-   cursor: pointer;
+  background-color: #ff3333; /* dark red */
+}
+  input[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
   form:select, form:input {
    background-color: #ffcccc;
@@ -433,5 +400,5 @@ input[type="submit"]:hover, input[type="button"]:hover {
    border-radius: 5px;
    margin-right: 10px;
 }
-  
+
 </style>

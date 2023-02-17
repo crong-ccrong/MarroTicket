@@ -3,7 +3,6 @@ package com.marroticket.umember.reservation.domain;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
 
 import lombok.Getter;
 

@@ -32,7 +32,7 @@ public class EmailServiceImpl implements EmailService {
 		helper.setTo(email.getAddress());
 
 		// 발신자 설정
-		helper.setFrom("MarroTicket <xpsxm617@naver.com>");
+		helper.setFrom("MarroTicket <xpsxm025@naver.com>");
 
 		// 템플릿에 전달할 데이터 설정
 		HashMap<String, String> emailValues = new HashMap<>();
@@ -47,7 +47,6 @@ public class EmailServiceImpl implements EmailService {
 		// 메일 내용 설정 : 템플릿 프로세스
 		String html = templateEngine.process("passwordTemplate", context);
 		helper.setText(html, true);
-
 		// 메일 보내기
 		emailSender.send(message);
 	}
@@ -63,7 +62,7 @@ public class EmailServiceImpl implements EmailService {
 		helper.setTo(email.getAddress());
 
 		// 발신자 설정
-		helper.setFrom("MarroTicket <xpsxm617@naver.com>");
+		helper.setFrom("MarroTicket <xpsxm025@naver.com>");
 
 		// 템플릿에 전달할 데이터 설정
 		HashMap<String, String> emailValues = new HashMap<>();

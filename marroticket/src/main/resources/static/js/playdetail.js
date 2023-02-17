@@ -1,6 +1,12 @@
 $(document)
 	.ready(
 		function() {
+			// ajax 통신을 위한 csrf 설정
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			$(document).ajaxSend(function(e, xhr, options) {
+				xhr.setRequestHeader(header, token);
+			});
 
 			function prevMonth(date) {
 				var target = new Date(date);
@@ -138,7 +144,7 @@ $(document)
 								&& ((pcloseDateJson["date"]
 									.getTime()) >= inDate
 										.getTime())
-								&& (today <= inDate);
+								&& (today < inDate);
 
 							divClass = (index === 0) ? 'sun'
 								: 'calandar_day';
@@ -321,13 +327,6 @@ $(document)
 			$(document).on("click", "a.event", function(e) { //a태그를 이용해서 공연 정보 가져오기
 				e.preventDefault();
 
-				// ajax 통신을 위한 csrf 설정
-				var token = $("meta[name='_csrf']").attr("content");
-				var header = $("meta[name='_csrf_header']").attr("content");
-				$(document).ajaxSend(function(e, xhr, options) {
-					xhr.setRequestHeader(header, token);
-				});
-
 				var href = $(this).attr('href').replace(/-/g, ''); //href = "/reserve/schedule?date=yyyymmdd"
 
 
@@ -406,12 +405,6 @@ $(document)
 					alert('회차를 선택해주세요!');
 					return;
 				}
-				// ajax 통신을 위한 csrf 설정
-				var token = $("meta[name='_csrf']").attr("content");
-				var header = $("meta[name='_csrf_header']").attr("content");
-				$(document).ajaxSend(function(e, xhr, options) {
-					xhr.setRequestHeader(header, token);
-				});
 				$.ajax({
 					type: "POST",
 					url: "/auth/loginCheck",
@@ -435,34 +428,4 @@ $(document)
 				$("#reserveInfoForm").attr("method", "POST"); //임시 end
 				$("#reserveInfoForm").submit();
 			});
-/* 팝업창을 위해서 나중에 복구
-			$("#reserveInfoForm").submit(function(e) {
-				e.preventDefault();
-				
-				// ajax 통신을 위한 csrf 설정
-				var token = $("meta[name='_csrf']").attr("content");
-				var header = $("meta[name='_csrf_header']").attr("content");
-				$(document).ajaxSend(function(e, xhr, options) {
-					xhr.setRequestHeader(header, token);
-				});
-
-				var url = "/reserve/book?pdate=" + $('input[name=reserveDateInfo]').val() + "&pturn=" + $('input[name=turnInfo]').val();
-				var formData = $("#reserveInfoForm").serialize();
-				
-				$.ajax({
-					type: "POST",
-					url: url,
-					data: formData,
-					success: function(data) {
-						var popup = window.open("", "Popup Window", "width=1020,height=890");
-						popup.document.open();
-						popup.document.write(data);
-						popup.document.close();
-						popup.onunload = function() { //새로고침!
-							location.reload();
-						};
-						//location.href = "/reserve/book";
-					},
-				});
-			});*/
 		});

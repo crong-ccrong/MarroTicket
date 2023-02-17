@@ -13,13 +13,13 @@
 		<result property="pagency" column="P_AGENCY" />
 		<result property="pratings" column="P_RATINGS" />
 		<result property="pcasting" column="P_CASTING" />
-		<result property="pticketOpenDate" column="P_TICKETOPENDATE" />
 		<result property="pplot" column="P_PLOT" />
 		<result property="pseatNumber" column="P_SEATNUMBER" />
 		<result property="pticketPrice" column="P_TICKETPRICE" />
 		<result property="pgenre" column="P_GENRE" />
 		<result property="pposterUrl" column="P_POSTERURL" />
 		<result property="pagree" column="P_AGREE" />
+		<result property="pmodifyApproval" column="P_modifyapproval" />
 		<result property="pregistrationApproval"
 			column="P_REGISTRATIONAPPROVAL" />
 		<result property="pfirstStartTime" column="P_FirstStartTime" />
@@ -30,7 +30,7 @@
 	 <select id="playCurrentList" resultMap="play">
 		<![CDATA[ select *
 		from Play 
-		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '0'
+		where p_closeDate >= sysdate and sysdate >= p_startDate and P_REGISTRATIONAPPROVAL = '1'
 		order by p_startDate ]]>
 	</select>
 
@@ -38,30 +38,28 @@
 		<![CDATA[
 		SELECT *
 		FROM Play
-		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '0'
+		WHERE sysdate >= p_closeDate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
 		]]>
 	</select>
 
+
 	<select id="playExpectedList" resultMap="play">
 		<![CDATA[
 		SELECT *
 		FROM Play
-		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '0'
+		WHERE p_startDate >= sysdate and P_REGISTRATIONAPPROVAL = '1'
 		order
 		by
 		p_startDate
 		]]>
 	</select>
-	
+
 	<!-- 공연정보 읽기 -->
-	<select id="read" resultMap="play">
-		SELECT *
-		FROM play
-		WHERE p_number=#{pNumber}
-	</select>
+	<!-- <select id="read" resultMap="play"> SELECT * FROM play <<<<<<< HEAD 
+		WHERE p_number=#{pNumber} </select> ======= WHERE p_number=#{pNumber} </select> -->
 
 	<!-- 미리보기 이미지 표시 -->
 	<select id="getPposter" resultType="String">
@@ -69,6 +67,156 @@
 		FROM play
 		WHERE p_number = #{pnumber}
 	</select>
+
+	<!--관리자 추가 내용 -->
+	<!-- 연극 등록 승인 목록 (연극명 연극번호 극단번호 극단명 승인여부) -->
+	<!-- 페이징 요청 정보를 매개 변수로 받아 페이징 처리를 한 극단회원 승인 목록을 조회 -->
+	<select id="playApproveList"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+<![CDATA[
+	SELECT p_number,
+		 	p_name,
+			t_number,
+ 			p_theaterName,
+ 			p_registrationApproval
+	FROM (select p_number,
+		 			p_name,
+		 			t_number,
+ 					p_theaterName,
+ 					p_registrationApproval,
+				rownum as rnum
+			from (select p_number,
+						 p_name,
+						 t_number,
+ 						p_theaterName,
+ 						p_registrationApproval
+					from play
+					order by p_number DESC
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
+]]>
+	</select>
+
+	<!-- 목록 전체 건수 조회 -->
+	<select id="count" resultType="int">
+	<![CDATA[
+	SELECT count(p_number)
+ 	FROM play
+	WHERE p_number > 0
+]]>
+	</select>
+
+	<!-- 연극 상세 조회 -->
+	<select id="playDetail"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+
+		SELECT *
+		FROM play
+		WHERE p_number = #{pnumber}
+	</select>
+
+	<!-- 연극 등록 승인 -->
+	<update id="playApprove"
+		parameterType="com.marroticket.umember.play.domain.PlayVO">
+		UPDATE play
+		SET p_registrationApproval = 1
+		WHERE p_number
+		= #{pnumber}
+	</update>
+
+
+	<!-- 연극 등록 반려 -->
+	<update id="playReject"
+		parameterType="com.marroticket.umember.play.domain.PlayVO">
+		UPDATE play
+		SET p_registrationApproval = 2
+		WHERE p_number
+		= #{pnumber}
+	</update>
+
+	<!--연극 수정 승인 목록 -->
+	<!-- 페이징 요청 정보를 매개 변수로 받아 페이징 처리를 한 극단회원 승인 목록을 조회 -->
+	<select id="playModifyList"
+		resultType="com.marroticket.umember.play.domain.PlayVO">
+<![CDATA[
+	SELECT  p_number,
+			 p_name,
+			 t_number,
+ 			p_theaterName,
+ 			p_modifyApproval
+	FROM (select p_number,
+			 	 p_name,
+				 t_number,
+ 				 p_theaterName,
+ 				 p_modifyApproval,
+				 rownum as rnum
+			from (select p_number,
+						 p_name,
+						 t_number,
+ 						 p_theaterName,
+ 						 p_modifyApproval
+					from play
+					order by p_number DESC
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page} and p_modifyApproval = 1
 	
-	
+]]>
+	</select>
+
+	<!-- 수정 승인 목록 건수 조회 -->
+	<select id="modifyCount" resultType="int">
+	<![CDATA[
+	SELECT count(p_number)
+ 	FROM play
+	WHERE p_number > 0 and p_modifyApproval = 1
+]]>
+	</select>
+
+	<!-- 연극 수정 승인 -->
+	<update id="playModify"
+		parameterType="com.marroticket.umember.play.domain.PlayVO">
+		UPDATE play
+		SET p_modifyApproval = 0
+		WHERE p_number =
+		#{pnumber}
+	</update>
+	<!-- 극단 등록한 연극 목록 -->
+	<select id="playlist" resultMap="play">
+		<![CDATA[
+			SELECT 	*
+			FROM play p LEFT OUTER JOIN tmember tmem ON p.t_number = tmem.t_number
+			WHERE p.t_number = #{tyumber}
+			ORDER BY p_number DESC
+		]]>
+	</select>
+
+	<!-- 극단 등록한 연극 상세보기 -->
+	<select id="read" resultMap="play">
+		<![CDATA[
+			SELECT *
+			FROM play
+			WHERE p_number = #{pnumber}
+		]]>
+	</select>
+
+	<!-- 극단 등록한 연극 수정 -->
+	<update id="modify">
+		UPDATE play
+		SET p_name = #{pname},
+			P_STARTDATE = #{pstartDate},
+			P_CLOSEDATE = #{pcloseDate},
+			P_RUNNINGTIME = #{prunningTime},
+			P_THEATERNAME = #{ptheaterName},
+			P_THEATERADDRESS = #{ptheaterAddress},
+			P_AGENCY = #{pagency},
+			P_RATINGS = #{pratings},
+			P_CASTING = #{pcasting},
+			P_PLOT = #{pplot},
+			P_SEATNUMBER = #{pseatNumber},
+			P_TICKETPRICE = #{pticketPrice},
+			P_GENRE = #{pgenre},
+			p_MODIFYAPPROVAL = '1'
+		WHERE p_number = #{pnumber}
+	</update>
+
 </mapper>

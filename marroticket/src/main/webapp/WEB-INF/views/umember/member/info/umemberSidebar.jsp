@@ -1,90 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+    
+    <head>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/umember_mypage.css">
+</head>
+    
+    
 
 <!-- sidebar section -->
-<div class="main_aside">
-  <ul >
+<div class="mypage_sidebar">
+  <ul class="menu-hover-fill flex flex-col items-start leading-none text-2xl uppercase space-y-4">
     <li >
-      <a class="submenu_info" href="/umember/umembermypage">내정보</a>
+      <a  href="/umember/umembermypage">내정보</a>
     </li></ul>
   
   
-    <span class="submenu_title">예매확인</span>
+    <span >예매확인</span>
     
   <ul>
     <li >
-      <a  class="submenu_rInfo" href="/umember/umemberReserveInfo">예매 정보</a>
+      <a   href="/umember/umemberReserveInfo">예매 정보</a>
     </li>
     <li>
-      <a class="submenu_cInfo" href="/umember/umemberCancelInfo">예매 취소 정보</a>
+      <a  href="/umember/umemberCancelInfo">예매 취소 정보</a>
     </li>
     </ul>
   <ul>
     <li>
-      <a class="submenu_history"  href="/umember/umemberViewHistory">나의 관람 연극</a>
+      <a   href="/umember/umemberViewHistory">나의 관람 연극</a>
     </li>
     </ul>
   <ul>
    <li>
-      <a class="submenu_custom"  href="/umember/umemberCustomPlayList">나의 맞춤 연극</a>
+      <a  href="/umember/umemberCustomPlayList">나의 맞춤 연극</a>
     </li>
   </ul>
 </div>
     
     
-  <style>
-  
+    <style>
+/* Apply styles to the sidebar container */
+.mypage_sidebar {
+  width: 15%;
+  float: left;
+  padding: 5px;
+}
+
+/* Apply styles to the unordered list */
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* Apply styles to the links within the unordered list */
+ul li a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+ul li a:hover {
+  background-color: #eee;
+}
+
+/* Apply styles to the section title */
+.mypage_sidebar span {
+  display: block;
+  padding: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Apply styles to the footer */
 .footer {
   clear: both;
 }
-/* Side menu container */
-.main_aside {
-  position: fixed;
-  left: 0;
-  top: 60px; /* adjust as needed */
-  bottom: 60px; /* adjust as needed */
-  background-color: #f0f0f0;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Side menu header */
-.submenu_title {
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #555;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.submenu_info,
-.submenu_rInfo,
-.submenu_cInfo,
-.submenu_history,
-.submenu_custom {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
-
-.submenu_info:hover,
-.submenu_rInfo:hover,
-.submenu_cInfo:hover,
-.submenu_history:hover,
-.submenu_custom:hover {
-  background-color: #ddd;
-}
-
-  
 
 </style>
+
     
