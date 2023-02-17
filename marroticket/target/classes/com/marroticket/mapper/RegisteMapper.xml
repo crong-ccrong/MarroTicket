@@ -16,7 +16,6 @@
 		p_agency ,
 		p_ratings ,
 		p_casting ,
-		p_ticketopendate ,
 		p_plot ,
 		p_seatNumber ,
 		p_ticketprice ,
@@ -32,8 +31,7 @@
 
 		select
 		play_seq.nextval,
-		#{pname
-		},
+		#{pname},
 		#{pstartDate},
 		#{pcloseDate},
 		#{prunningTime },
@@ -42,7 +40,6 @@
 		#{pagency },
 		#{pratings },
 		#{pcasting },
-		#{pticketOpenDate},
 		#{pplot },
 		#{pseatNumber },
 		#{pticketPrice},

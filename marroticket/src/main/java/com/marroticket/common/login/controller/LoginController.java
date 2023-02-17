@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public class LoginController { // 로그인 관련 controller
 
-	// 일반회원로그인
 	@RequestMapping("/memberlogin")
 	public String loginForm(String error, String logout, HttpServletRequest request, Model model) {
 		if (error != null) {

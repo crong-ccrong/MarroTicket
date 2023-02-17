@@ -4,8 +4,6 @@ import com.marroticket.common.email.domain.EmailVO;
 import com.marroticket.common.email.service.EmailService;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -520,11 +518,4 @@ public class UmemberController {
 		// console 확인
 		System.out.println("findPasswordSendEmail 임시이메일 발송 완료");
 	}
-	
-
-	
-		
-
-	
-	
-	}
+}

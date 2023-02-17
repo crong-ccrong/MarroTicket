@@ -23,10 +23,16 @@
 		<put-attribute name="content" value="/WEB-INF/views/umember/member/info/{1}.jsp" />
 	</definition>
 	
-	<!-- 고객센터 페이지 -->
-	<definition name="serviceCenter.*" extends="main-template">
+	<!-- 일반 회원 ufaq 페이지 -->
+	<definition name="ufaq.*" extends="main-template">
+		<put-attribute name="title" value="마로티켓 일반 faq" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/ufaq/{1}.jsp" />
+	</definition>
+
+	<!-- 기타 문의 페이지 -->
+	<definition name="*.serviceCenter.*" extends="main-template">
 		<put-attribute name="title" value="마로티켓 고객센터" />
-		<put-attribute name="content" value="/WEB-INF/views/umember/serviceCenter/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}/serviceCenter/{2}.jsp" />
 	</definition>
 	
 	<!-- 연극 공연 정보 페이지 -->
@@ -138,6 +144,12 @@
 	<definition name="info.*" extends="tmember-template">
 		<put-attribute name="title" value="극단 마이페이지" />
 		<put-attribute name="content" value="/WEB-INF/views/tmember/member/info/{1}.jsp" />
+	</definition>
+	
+	<!-- 연극 수정 페이지 -->
+	<definition name="modify.*"  extends="tmember-template">
+		<put-attribute name="title" value="연극 수정" />
+		<put-attribute name="content" value="/WEB-INF/views/tmember/modify/{1}.jsp" />
 	</definition>
 	
 	<!-- 고객센터 페이지 -->

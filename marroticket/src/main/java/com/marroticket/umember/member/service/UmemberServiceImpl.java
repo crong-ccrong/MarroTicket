@@ -63,5 +63,4 @@ public class UmemberServiceImpl implements UmemberService {
 		umembermapper.deleteAuth(umember.getUmemberAuthList().get(0).getUNumber());
 		umembermapper.deleteMember(umember);
 	}
-	
 }

@@ -28,6 +28,7 @@
                path="tBusinessRegistration" value="2" label="법인사업자" /></td>
       </tr>
 
+
       <tr>
          <th class="joinWindow">사업자/법인 등록번호</th>
          <td class="joinInput"><form:input path="tBusinessRegistrationNumber"
@@ -106,7 +107,7 @@
 
       <tr>
          <th class="joinWindow">사업자 등록증</th>
-         <td class="joinInput"><input type="file" name=tBusinessRegisterationImage id="tBusinessRegisterationImage" accept="image/jpeg, image/png, image/jpg" /></td>
+         <td class="joinInput"><input type="file" name=tBusinessRegistrationImage id="tBusinessRegistrationImage" accept="image/jpeg, image/png, image/jpg" /></td>
          
       </tr>
       <tr>
@@ -288,7 +289,7 @@ $(function(){
 <!-- 파일 업로드 유효성 검사 -->
 
 <script type="text/javascript">
-const input = document.querySelector("input[name='tBusinessRegisterationImage']");
+const input = document.querySelector("input[name='tBusinessRegistrationImage']");
 
 input.addEventListener("change", function() {
   if (this.files.length === 0) {

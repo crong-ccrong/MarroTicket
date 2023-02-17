@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marroticket.admin.notice.domain.NoticeVO;
-import com.marroticket.common.domain.PageRequest;
 import com.marroticket.mapper.NoticeMapper;
 
 @Service
