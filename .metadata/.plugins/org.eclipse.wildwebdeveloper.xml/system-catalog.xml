@@ -200,5 +200,5 @@
 <uri name="http://www.w3.org/TR/xmldsig-core/xmldsig-core-schema.xsd" uri="file:///C:/SpringBootProject/sts-4.17.0.RELEASE/configuration/org.eclipse.osgi/696/0/.cp/xsd/xmldsig-core-schema.xsd"/>
 <uri name="http://www.w3.org/2001/XMLSchema" uri="file:///C:/SpringBootProject/sts-4.17.0.RELEASE/configuration/org.eclipse.osgi/722/0/.cp/cache/www.w3.org/2001/XMLSchema.xsd"/>
 <system systemId="http://www.w3.org/2001/xml.xsd" uri="file:///C:/SpringBootProject/sts-4.17.0.RELEASE/configuration/org.eclipse.osgi/722/0/.cp/cache/www.w3.org/2001/xml.xsd"/>
-<public publicId="-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" uri="file:///C:/SpringBootProject/sts-4.17.0.RELEASE/configuration/org.eclipse.osgi/728/0/.cp/dtds/mybatis-generator-config_1_0.dtd"/>
+<public publicId="-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" uri="file:///C:/SpringBootProject/sts-4.17.0.RELEASE/configuration/org.eclipse.osgi/730/0/.cp/dtds/mybatis-generator-config_1_0.dtd"/>
 </catalog>

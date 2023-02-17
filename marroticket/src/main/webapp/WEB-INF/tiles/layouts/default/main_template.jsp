@@ -17,6 +17,7 @@
 		text-decoration: none;
 	}
 </style>
+<link rel="stylesheet" type="text/css" href="/css/playList.css">
 </head>
 <body>
 	<!-- header -->

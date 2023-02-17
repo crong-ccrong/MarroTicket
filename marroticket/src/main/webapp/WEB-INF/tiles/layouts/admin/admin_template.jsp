@@ -18,7 +18,7 @@
 	<tiles:insertAttribute name="header" ignore="true" />
 
 	<!-- menu -->
-	<tiles:insertAttribute name="menu"  ignore="true"/>
+	<tiles:insertAttribute name="menu" ignore="true" />
 
 	<!-- content -->
 	<div align="center">

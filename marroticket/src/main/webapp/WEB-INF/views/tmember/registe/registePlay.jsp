@@ -355,33 +355,13 @@
 				</select> <form:input path="psecondStartTime" id="psecondStartTime"
 						hidden="true" /><font color="red"><form:errors
 							path="psecondStartTime" /></font>
-
-<<<<<<< HEAD
-		<tr>
-			<form:input path="pregistrationApproval" value="0" hidden="true" />
-<<<<<<< HEAD
-			<form:input path="pamendmentApproved" hidden="true" />
-=======
-			<form:input path="pmodifyApproval" hidden="true" />
->>>>>>> soobin
-			<form:input path="pagree" id="pagee" value="1" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
-			<form:input path="tId" hidden="true" value="${principal.tId }" />
-		</tr>
-	</table>
-=======
-				</td>
-
-			</tr>
-
 			<tr>
 				<form:input path="pregistrationApproval" value="0" hidden="true" />
 				<form:input path="pmodifyApproval" hidden="true" />
-				<form:input path="pagree" id="pagree" hidden="true" />
+				<form:input path="pagree" id="pagee" hidden="true" />
 			</tr>
 		</table>
 	</div>
->>>>>>> soobin
 </form:form>
 <br>
 <div>
@@ -499,12 +479,14 @@
 														formObj.submit();
 
 													} else {
-														if ($(
-																"#psecondStartTimeMinute")
-																.val() == ""
-																|| $(
+														if ((psecondStartTimeHour == "" || $(
+																"#psecondStartTimeHour")
+																.val() == null)
+																&& ($(
 																		"#psecondStartTimeMinute")
-																		.val() == null) {
+																		.val() == "" || $(
+																		"#psecondStartTimeMinute")
+																		.val() == null)) {
 															alert("연극 시작 시간을 선택해주세요");
 															document
 																	.getElementById(
