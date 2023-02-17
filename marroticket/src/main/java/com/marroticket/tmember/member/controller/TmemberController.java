@@ -178,18 +178,21 @@ public class TmemberController {
 			vo.setPgenre("로맨스");
 			break;
 		case "2":
-			vo.setPgenre("드라마");
+			vo.setPgenre("코미디");
 			break;
 		case "3":
-			vo.setPgenre("공포");
+			vo.setPgenre("드라마");
 			break;
 		case "4":
-			vo.setPgenre("추리/스릴러");
+			vo.setPgenre("공포");
 			break;
 		case "5":
-			vo.setPgenre("판타지");
+			vo.setPgenre("추리/스릴러");
 			break;
 		case "6":
+			vo.setPgenre("판타지");
+			break;
+		case "7":
 			vo.setPgenre("시대/역사");
 			break;
 		}

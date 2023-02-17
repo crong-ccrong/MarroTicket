@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec"
@@ -8,16 +9,23 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 <link href="/css/registePlay.css" rel="stylesheet" type="text/css">
+
 
 <sec:authentication var="principal" property="principal" />
 <h2>공연 등록 페이지</h2>
+
+
+
 
 
 
@@ -35,8 +43,10 @@
 						readonly>
 마로티켓 서비스 수익 및 비용 정산 약관
 
+
 제1조 (목적)
 본 약관은 마로티켓 회사(이하 “회사”라 함)와 가맹극단 회원(이하 “회원”이라 함) 간에 “회원”이 마로티켓 서비스를 이용함에 있어 수익 및 비용 정산을 하는 데 필요한 사항을 정하는 것을 그 목적으로 합니다. 
+
 
 제2조 (용어의 정의)
 ① 본 약관에서 사용되는 용어의 의미는 다음 각 호와 같습니다.
@@ -46,27 +56,34 @@
 “정산 데이터”라 함은 “회사”가 마로티켓 서비스 가입자(회원)별로 작성한 비용 정산 자료를 말한다.
 ② 본 계약에서 사용하는 용어 중 제1항에서 규정되지 않은 용어의 해석은 관련 법령 및 일반 상관례에 따릅니다. 
 
+
 제3조 (계약의 성립)
 마로티켓 서비스 이용 신청시 “[필수]수익 및 비용 정산 약관”에 “동의" 선택을 하면  약관에 동의하는 것으로 간주되며,  고객의 이용신청에 대해 회사가  승낙함으로써 계약이 성립합니다. 
+
 
 제4조 (약관의 효력 및 변경)
 본 약관은 “정산업무” 서비스를 이용하고자 하는 모든 회원에 대하여 그 효력을 발생합니다.
 본 약관의 내용은 서비스 화면에 게시하거나 기타의 방법으로 회원에게 공지하고, 이에 동의한 회원이 서비스에 가입함으로써 효력이 발생합니다.
 회사는 필요하다고 인정되는 경우 본 약관을 변경할 수 있으며, 회사가 약관을 변경할 경우에는 적용일자 및 변경 사유를 명시하여 제2항과 같은 방법으로 그 적용일자 15일전에 공지합니다. 다만, 회원에게 불리한 약관 변경인 경우에는 그 적용일자 30일전에 공지하며, E-Mail, SMS 등으로 회원에게 개별 통지합니다. 단, 회원의 연락처 미기재, 변경 후 미수정 등으로 인하여 개별 통지가 어려운 경우에 한하여 본 항의 공지를 함으로써 개별 통지한 것으로 간주합니다. 회원이 변경된 서비스 또는 약관 사항에 동의하지 않는 경우 서비스 이용 계약의 해지를 요청할 수 있습니다.
 
+
 제5조 (본 약관 외 준칙)
 본 약관은 “회사”의 마로티켓 서비스와 관련된 “정산업무”에 대하여 적용됩니다. 본 약관에 명시되지 않은 사항에 대해서는 “회사”의 마로티켓 서비스 이용약관, 관련법령 및 “회사”가 정한 서비스의 세부이용지침 등의 규정에 따릅니다.
+
 
 제6조 (정산업무의 범위)
 “회사”가 이행하는 “정산업무”의 범위는 다음 각 호와 같습니다. 
 
+
 “회사”가 요청하는 “정산대상자”에 대한 비용정산
 정산된 비용의 “정산대상자”에 대한 정산내역의 게시
+
 
 제7조 (정산대상자에 대한 대가(정산액) 산정)
 ① 정산대상자에 대한 대가는 “정산대상자”가 자신의 컨텐츠 등에 자신의 “연극”을 노출하고 “이용자”에게 해당 연극티켓번호로 qr코드를 발송하여 구매하는 등의 활동의 대가를 말합니다.
 ② “이용자” 는 “정산대상자”의 티켓을 구매할 시 티켓가격과 수수료500원을 지불합니다. 단, “이용자” 의 환불 요청에 의한 환불 건은 수수료를 제외하고 “정산금” 산정에서 제외합니다. 
 ③ “회사” 는 이를 정산액에서 정산 후 지급합니다. 
+
 
 제8조 (정산 절차 및 수수료)
 ① “회사”가 “정산대상자”에게 정산하는 절차는 다음 각호의 내용에 따릅니다. 
@@ -74,12 +91,16 @@
 “정산대상자”가 등록한 연극의 종료일 이후 “회사”는 정산처리 후 종료일 기준 내달 20일에 지급한다.
 그외 정산 관련 상세 사항은 마로티켓 웹페이지의 공지 및 개별 연락으로 정한 사항 등에 따른다.
 
+
 제9조 (계약기간)
 ① 본 계약은 “정산대상자” 가 본 계약에 동의한 날로부터 “회사” 와 “정산대상자” 간의 마로티켓 서비스 해지 완료 시점까지 유효합니다.
 ② 마로티켓 서비스 해지시 “회사” 는 “정산대상자” 에 대한 지급 및 정산 의무도 동반 종료됩니다.
 
+
 제10조 (권리∙의무의 양도 등 금지)
 “정산대상자”는 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
+
+
 
 
 	
@@ -91,13 +112,16 @@
 							code="registe.checkbox.error" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td align="center" colspan="2"><textarea rows="10" cols="120"
 						readonly>
 마로티켓 연극 등록 서비스 약관
 
+
 제1조 (목적)
 본 약관은 마로티켓 회사(이하 “회사”라 함)와 가맹극단 회원(이하 “회원”이라 함) 간에 “회원”이 마로티켓 연극 등록 서비스를 이용함에 있어  필요한 사항을 정하는 것을 그 목적으로 합니다. 
+
 
 제2조 (용어의 정의)
 ① 본 약관에서 사용되는 용어의 의미는 다음 각 호와 같습니다.
@@ -105,32 +129,42 @@
 “연극 데이터”라 함은 “회원”이 마로티켓 연극 등록 서비스 회원별로 작성한 연극 자료를 말한다.
 ② 본 계약에서 사용하는 용어 중 제1항에서 규정되지 않은 용어의 해석은 관련 법령 및 일반 상관례에 따릅니다. 
 
+
 제3조 (계약의 성립)
 마로티켓 마로티켓 연극 등록 서비스 이용 신청시 “[필수]마로티켓 연극 등록 서비스 약관”에 “동의" 선택을 하면  약관에 동의하는 것으로 간주되며,  고객의 이용신청에 대해 회사가  승낙함으로써 계약이 성립합니다. 
+
 
 제4조 (약관의 효력 및 변경)
 본 약관은 “연극등록” 서비스를 이용하고자 하는 모든 회원에 대하여 그 효력을 발생합니다.
 본 약관의 내용은 서비스 화면에 게시하거나 기타의 방법으로 회원에게 공지하고, 이에 동의한 회원이 서비스에 가입함으로써 효력이 발생합니다.
 회사는 필요하다고 인정되는 경우 본 약관을 변경할 수 있으며, 회사가 약관을 변경할 경우에는 적용일자 및 변경 사유를 명시하여 제2항과 같은 방법으로 그 적용일자 15일전에 공지합니다. 다만, 회원에게 불리한 약관 변경인 경우에는 그 적용일자 30일전에 공지하며, E-Mail, SMS 등으로 회원에게 개별 통지합니다. 단, 회원의 연락처 미기재, 변경 후 미수정 등으로 인하여 개별 통지가 어려운 경우에 한하여 본 항의 공지를 함으로써 개별 통지한 것으로 간주합니다. 회원이 변경된 서비스 또는 약관 사항에 동의하지 않는 경우 서비스 이용 계약의 해지를 요청할 수 있습니다.
 
+
 제5조 (본 약관 외 준칙)
 본 약관은 “회사”의 마로티켓 연극 등록 서비스와 관련된 “연극등록”에 대하여 적용됩니다. 본 약관에 명시되지 않은 사항에 대해서는 “회사”의 마로티켓 연극 등록 서비스 이용약관, 관련법령 및 “회사”가 정한 서비스의 세부이용지침 등의 규정에 따릅니다.
+
 
 제6조 (연극등록의 범위)
 “회사”가 이행하는 “연극등록”의 범위는 다음 각 호와 같습니다. 
 
+
 “회사”가 요청하는 “회원”에 대한 연극 데이터 등록
 입력된 연극 데이터의 대한 연극 목록의 게시 및 예매
+
 
 제7조 (계약기간)
 ① 본 계약은 “회원” 이 본 계약에 동의한 날로부터 “회사” 와 “회원” 간의 마로티켓 연극 등록 서비스 해지 완료 시점까지 유효합니다.
 ② 마로티켓 연극 등록 서비스 해지시 “회사” 는 “회원” 에 대한 연극 등록 서비스 의무도 동반 종료됩니다.
 
+
 제8조 (권리∙의무의 양도 등 금지)
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
 
+
 	</textarea></td>
 			</tr>
+
+
 
 
 			<tr>
@@ -143,8 +177,10 @@
 						readonly>
 마로티켓 예매 좌석 제한 관련 약관
 
+
 제1조 (목적)
 본 약관은 마로티켓 회사(이하 “회사”라 함)와 가맹극단 회원(이하 “회원”이라 함) 간에 “회원”이 마로티켓 연극 등록 서비스를 이용함에 있어  필요한 사항을 정하는 것을 그 목적으로 합니다. 
+
 
 제2조 (용어의 정의)
 ① 본 약관에서 사용되는 용어의 의미는 다음 각 호와 같습니다.
@@ -152,27 +188,34 @@
 “예매 좌석”이라 함은 “회사”가 
 ② 본 계약에서 사용하는 용어 중 제1항에서 규정되지 않은 용어의 해석은 관련 법령 및 일반 상관례에 따릅니다. 
 
+
 제3조 (계약의 성립)
 마로티켓 마로티켓 연극 등록 서비스 이용 신청시 “[필수]마로티켓 마로티켓 예매 좌석 제한 관련 약관”에 “동의" 선택을 하면  약관에 동의하는 것으로 간주되며,  고객의 이용신청에 대해 회사가  승낙함으로써 계약이 성립합니다. 
+
 
 제4조 (약관의 효력 및 변경)
 본 약관은 “연극등록” 서비스를 이용하고자 하는 모든 회원에 대하여 그 효력을 발생합니다.
 본 약관의 내용은 서비스 화면에 게시하거나 기타의 방법으로 회원에게 공지하고, 이에 동의한 회원이 서비스에 가입함으로써 효력이 발생합니다.
 회사는 필요하다고 인정되는 경우 본 약관을 변경할 수 있으며, 회사가 약관을 변경할 경우에는 적용일자 및 변경 사유를 명시하여 제2항과 같은 방법으로 그 적용일자 15일전에 공지합니다. 다만, 회원에게 불리한 약관 변경인 경우에는 그 적용일자 30일전에 공지하며, E-Mail, SMS 등으로 회원에게 개별 통지합니다. 단, 회원의 연락처 미기재, 변경 후 미수정 등으로 인하여 개별 통지가 어려운 경우에 한하여 본 항의 공지를 함으로써 개별 통지한 것으로 간주합니다. 회원이 변경된 서비스 또는 약관 사항에 동의하지 않는 경우 서비스 이용 계약의 해지를 요청할 수 있습니다.
 
+
 제5조 (본 약관 외 준칙)
 본 약관은 “회사”의 마로티켓 연극 등록 서비스와 관련된 “예매 좌석 제한”에 대하여 적용됩니다. 본 약관에 명시되지 않은 사항에 대해서는 “회사”의 마로티켓 연극 등록 서비스 이용약관, 관련법령 및 “회사”가 정한 서비스의 세부이용지침 등의 규정에 따릅니다.
 
+
 제6조 (연극등록의 범위)
 “회사”가 이행하는 “예매 좌석 제한”의 범위는 다음 각 호와 같습니다. 
+
 
 “회사”가 요청하는 “회원”에 대한 연극 데이터 등록
 입력된 연극 데이터의 대한 연극 목록의 게시 및 예매 이후
 예매시 이용자가 예매할 수 있는 좌석 갯수의 제한이 있다.
 
+
 제7조 (계약기간)
 ① 본 계약은 “회원” 이 본 계약에 동의한 날로부터 “회사” 와 “회원” 간의 마로티켓 연극 등록 서비스 해지 완료 시점까지 유효합니다.
 ② 마로티켓 연극 등록 서비스 해지시 “회사” 는 “회원” 에 대한 연극 등록 서비스 의무도 동반 종료됩니다.
+
 
 제8조 (권리∙의무의 양도 등 금지)
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
@@ -186,6 +229,7 @@
 				<td><form:input path="pname" placeholder="연극명 입력칸" /><font
 					color="red"><form:errors path="pname" /></font></td>
 			</tr>
+
 
 			<tr>
 				<td>연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
@@ -207,6 +251,8 @@
 			</tr>
 
 
+
+
 			<tr>
 				<td>연극 소요시간(3자리까지 분단위입력)</td>
 				<td><form:input path="prunningTime" id="prunningTime"
@@ -214,11 +260,13 @@
 							path="prunningTime" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td>극장명</td>
 				<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
 					color="red"><form:errors path="ptheaterName" /> </font></td>
 			</tr>
+
 
 			<tr>
 				<td>극장 주소</td>
@@ -226,11 +274,13 @@
 					value="주소 찾기" /></td>
 			</tr>
 
+
 			<tr>
 				<td colspan="2"><form:input path="ptheaterAddress"
 						id="ptheaterAddress" /> <font color="red"><form:errors
 							path="ptheaterAddress" /> </font></td>
 			</tr>
+
 
 			<tr>
 				<td>연극포스터</td>
@@ -240,12 +290,16 @@
 							code="registe.file.error" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td>기획사 정보</td>
 				<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
 						value="마로기획" /><font color="red"><form:errors
 							path="pagency" /></font></td>
 			</tr>
+
+
+
 
 
 
@@ -262,6 +316,7 @@
 					</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td>관람 등급</td>
 				<td><form:select path="pratings">
@@ -272,12 +327,14 @@
 					</form:select><font color="red"><form:errors path="pratings" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td>티켓 가격(원)</td>
 				<td><form:input type="text" path="pticketPrice"
 						placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
 							path="pticketPrice" /></font></td>
 			</tr>
+
 
 			<tr>
 				<td>캐스팅 데이터</td>
@@ -292,13 +349,16 @@
 							path="pplot" /></font></td>
 			</tr>
 
+
 			<tr>
 				<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
 				<td><form:input type="text" path="pseatNumber"
 						placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
 							path="pseatNumber" /></font></td>
 
+
 			</tr>
+
 
 			<tr>
 				<td>상연 시각</td>
@@ -355,25 +415,8 @@
 				</select> <form:input path="psecondStartTime" id="psecondStartTime"
 						hidden="true" /><font color="red"><form:errors
 							path="psecondStartTime" /></font>
-
-<<<<<<< HEAD
-		<tr>
-			<form:input path="pregistrationApproval" value="0" hidden="true" />
-<<<<<<< HEAD
-			<form:input path="pamendmentApproved" hidden="true" />
-=======
-			<form:input path="pmodifyApproval" hidden="true" />
->>>>>>> soobin
-			<form:input path="pagree" id="pagee" value="1" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
-			<form:input path="tId" hidden="true" value="${principal.tId }" />
-		</tr>
-	</table>
-=======
-				</td>
-
-			</tr>
-
+			</td>
+			</tr>				
 			<tr>
 				<form:input path="pregistrationApproval" value="0" hidden="true" />
 				<form:input path="pmodifyApproval" hidden="true" />
@@ -381,13 +424,14 @@
 			</tr>
 		</table>
 	</div>
->>>>>>> soobin
 </form:form>
 <br>
 <div>
 	<input type="button" value="메인화면으로" id="main" />
 	<button type="submit" id="registeTemporary">임시등록</button>
 </div>
+
+
 
 
 <script>
@@ -398,11 +442,13 @@
 	});
 </script>
 
+
 <script>
 	$(document)
 			.ready(
 					function() {
 						var formObj = $("#playVO");
+
 
 						$.datepicker
 								.setDefaults({
@@ -466,6 +512,7 @@
 											$("#agree3Error").hide();
 											$("#pposterError").hide();
 
+
 											if ($(
 													'input:checkbox[name="agree1"]')
 													.is(":checked") == true
@@ -477,7 +524,9 @@
 															.is(":checked") == true) {
 												$("#pagree").val(1);
 
+
 												if (!$("#pposter").val() == "") {
+
 
 													$("#pfirstStartTime")
 															.val(
@@ -489,14 +538,17 @@
 																					"#pfirstStartTimeMinute")
 																					.val());
 
+
 													if (psecondStartTimeHour == ""
 															|| $(
 																	"#psecondStartTimeHour")
 																	.val() == null) {
 
+
 														$("#psecondStartTime")
 																.val("없음");
 														formObj.submit();
+
 
 													} else {
 														if ($(
@@ -524,6 +576,7 @@
 															formObj.submit();
 														}
 
+
 													}
 												}
 											} else {
@@ -543,13 +596,16 @@
 													$("#agree3Error").show();
 												}
 
+
 												if ($("#pposter").val() == "") {
 													$("#pposterError").show();
+
 
 												}
 											}
 										});
 					});
+
 
 	// 상연 시간 선택
 	function changePFirstStartTime() {
@@ -559,6 +615,7 @@
 		var minute = Number($("#pfirstStartTimeMinute").val());
 		//러닝타임
 		var interval = Number($("#prunningTime").val());
+
 
 		//러닝타임 미입력시 
 		if (interval > 999 || interval == "" || interval < 0) {
@@ -570,12 +627,14 @@
 			$("#pfirstStartTimeMinute option:eq(0)").prop("selected", true);
 		}
 
+
 		//2회차 선택 select를 비활성화 
 		$("#psecondStartTimeHour").attr("disabled", true);
 		$("#psecondStartTimeMinute").attr("disabled", true);
 		//2회차 시간 select를 첫번째 값으로 변경
 		$("#psecondStartTimeHour option:eq(0)").prop("selected", true);
 		$("#psecondStartTimeMinute option:eq(0)").prop("selected", true);
+
 
 		//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
@@ -585,6 +644,7 @@
 			//1회차 시간(분단위) = 1회차 입력 시 * 60 + 1회차 입력 분
 			var time = hour * 60 + minute;
 
+
 		}
 		//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
 		var time = time + interval;
@@ -592,6 +652,7 @@
 		var secondTime = Math.floor(time / 60);
 		//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
 		var secondMinute = Math.round((time / 60 - secondTime) * 60);
+
 
 		//(2회차 선택 가능 시각 >= 22 그리고 2회차 선택 가능 분) 또는 2회차 선택 가능 시각 >22 라면
 		if ((secondTime >= 22 && secondMinute > 50) || secondTime > 22) {
@@ -614,6 +675,7 @@
 			$('#psecondStartTimeHour [value="19"]').prop("disabled", false);
 			$('#psecondStartTimeHour [value="20"]').prop("disabled", false);
 			$('#psecondStartTimeHour [value="21"]').prop("disabled", false);
+
 
 			//2회차 선택 가능 시각의 값에 따라 2회차 선택 시간 select의 값을 비활성화
 			switch (secondTime) {
@@ -771,9 +833,12 @@
 				break;
 			}
 
+
 		}
 
+
 	};
+
 
 	//2회차 상영 시간 선택
 	function changePSecondStartTime() {
@@ -784,6 +849,7 @@
 		//러닝타임
 		var interval = Number($("#prunningTime").val());
 
+
 		//1회차 입력 분의 값이 00이라면
 		if (minute == "00") {
 			//1회차 시간(분단위) = 1회차 입력 시 * 60
@@ -791,6 +857,7 @@
 		} else {
 			//1회차 시간(분단위) = 1회차 입력 시 * 60 + 1회차 입력 분
 			var time = hour * 60 + minute;
+
 
 		}
 		//1회차 시간(분단위) = 1회차 시간(분단위) + 러닝타임
@@ -800,8 +867,10 @@
 		//2회차 선택 가능 분 = (1회차 시각(분단위) /60 - 2회차 선택 가능 시각) * 60 ..소수점반올림
 		var secondMinute = Math.round((time / 60 - secondTime) * 60);
 
+
 		// 2회차 선택 시각 값
 		var psecondStartTimeHour = $("#psecondStartTimeHour").val();
+
 
 		// !(2회차 선택 시작 값 == 없음) 이라면
 		if (!(psecondStartTimeHour == "없음")) {
@@ -815,8 +884,10 @@
 			$('#psecondStartTimeMinute [value="40"]').prop("disabled", false);
 			$('#psecondStartTimeMinute [value="50"]').prop("disabled", false);
 
+
 			// 2회차 선택 시작 값 == 10 이라면
 			if (psecondStartTimeHour == "10") {
+
 
 				// 2회차 선택 시작값 == 2회차 선택 가능 시각값
 				if (psecondStartTimeHour == secondTime) {
@@ -824,86 +895,114 @@
 					minuteComparison(secondMinute);
 				}
 
+
 			} else if (psecondStartTimeHour == "11") {
+
 
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "12") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "13") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "14") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "15") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "16") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "17") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "18") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "19") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "20") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "21") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			} else if (psecondStartTimeHour == "22") {
 
+
 				if (psecondStartTimeHour == secondTime) {
 					minuteComparison(secondMinute);
 				}
+
 
 			}
 		} else {
 			//2회차 분 선택 select 비활성화
 			$("#psecondStartTimeMinute").attr("disabled", true);
 
+
 		}
 
+
 	};
+
 
 	// m에 입력된 2회차 선택 가능 분을 비교
 	function minuteComparison(m) {
@@ -936,10 +1035,14 @@
 		} else {
 			$('#psecondStartTimeMinute [value="00"]').prop("disabled", true);
 
+
 		}
+
 
 	};
 </script>
+
+
 
 
 <script
