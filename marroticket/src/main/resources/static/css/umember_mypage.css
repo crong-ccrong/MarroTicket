@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* Apply styles to the sidebar container */
+.mypage_sidebar {
+  width: 15%;
+  float: left;
+  padding: 5px;
+}
+
+/* Apply styles to the unordered list */
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* Apply styles to the links within the unordered list */
+ul li a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+ul li a:hover {
+  background-color: #eee;
+}
+
+/* Apply styles to the section title */
+.mypage_sidebar span {
+  display: block;
+  padding: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Apply styles to the footer */
+.footer {
+  clear: both;
+}

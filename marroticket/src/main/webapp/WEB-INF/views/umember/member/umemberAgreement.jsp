@@ -28,11 +28,11 @@
 		location.href = "/";
 	}
 </script>
-<title>일반 사용자 회원가입</title>
+
 <form>
 	<h2>일반 사용자 회원가입</h2><br><hr>
-	
 	<br><div class="text" align="center"><b>개인 정보 수집 및 이용 동의(필수)</b></div><br>
+	
 	
 	<textarea rows="10" cols="120" readonly="readonly">
 [수집 목적]
@@ -83,14 +83,30 @@
 			<input type="checkbox" name="agree" id="agree_second"><label for="agree_second"><b>동의합니다.</b></label>
 		</p>
 	</div>
-
 	<div>
-		<br><p>
+		<br><br><p>
 		<input type="button" value="메인 화면으로" onclick="nochk()" />
-			<input type="button" value="다음 " onclick="chk()" />&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="다음 " onclick="chk()" />
 			
 		</p>
 
 	</div>
 
 </form>
+
+<style>
+input[type="button"] {
+  background-color: #ff6666;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #ff4d4d;
+}
+
+</style>

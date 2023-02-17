@@ -113,6 +113,7 @@
       <tr>
          <td colspan="2" align="center">
          <input type="button" value="이전" id="back" />
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <input type="submit" value="회원가입" id="join_submit" />
             </td>
       </tr>
@@ -371,24 +372,26 @@ form .errors {
 }
 
 
-input[type="submit"], input[type="button"] {
-   background-color: #ff6666; /* light red */
-   color: white;
-   border: none;
-   border-radius: 4px;
-   padding: 10px 20px;
-   margin: 10px 0;
-   cursor: pointer;
+
+input[type="submit"] {
+  background-color: #ff6666; /* light red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 input[type="submit"]:hover, input[type="button"]:hover {
-   background-color: #ff3333; /* dark red */
-   input[type="button"] {
-   background-color: #4CAF50;
-   color: white;
-   border: none;
-   border-radius: 4px;
-   padding: 10px 20px;
-   cursor: pointer;
+  background-color: #ff3333; /* dark red */
+}
+  input[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
   form:select, form:input {
    background-color: #ffcccc;
@@ -398,5 +401,5 @@ input[type="submit"]:hover, input[type="button"]:hover {
    border-radius: 5px;
    margin-right: 10px;
 }
-  
+
 </style>

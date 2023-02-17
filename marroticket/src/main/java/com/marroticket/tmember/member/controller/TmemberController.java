@@ -78,9 +78,7 @@ public class TmemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-
 	// 극단 홈
-	//@RequestMapping("")
 	@GetMapping("")
 	//@PreAuthorize("hasRole('ROLE_TMEMBER')")
 	public String home() {

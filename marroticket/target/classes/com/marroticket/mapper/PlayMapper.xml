@@ -26,6 +26,7 @@
 		<result property="tnumber" column="T_Number" />
 	</resultMap>
 
+
 	 <select id="playCurrentList" resultMap="play">
 		<![CDATA[ select *
 		from Play 
