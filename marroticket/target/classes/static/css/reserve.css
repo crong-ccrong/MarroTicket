@@ -1,5 +1,6 @@
 * {
 	/* border: 1px solid black; */
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 body {
@@ -146,7 +147,8 @@ colgroup {
 
 /* #wrap_reserve 의 자식 요소 */
 .reserve_title {
-	padding: 14px 2px 0 30px;
+	/* padding: 14px 2px 0 30px; */
+	margin-top: 50px;
 	font-size: 0;
 	box-sizing: border-box;
 }
@@ -158,6 +160,7 @@ colgroup {
 	vertical-align: middle;
 }
 
+/*stepbox*/
 .reserve_step {
 	overflow: hidden;
 	clear: both;
@@ -238,6 +241,8 @@ colgroup {
 	background-color: black;
 	border-width: 0;
 } */
+
+
 
 /* div.reserve_content */
 .reserve_content {

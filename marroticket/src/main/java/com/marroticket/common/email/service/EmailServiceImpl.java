@@ -32,7 +32,7 @@ public class EmailServiceImpl implements EmailService {
 		helper.setTo(email.getAddress());
 
 		// 발신자 설정
-		helper.setFrom("MarroTicket <xpsxm617@naver.com>");
+		helper.setFrom("MarroTicket <xpsxm025@naver.com>");
 
 		// 템플릿에 전달할 데이터 설정
 		HashMap<String, String> emailValues = new HashMap<>();
@@ -62,7 +62,7 @@ public class EmailServiceImpl implements EmailService {
 		helper.setTo(email.getAddress());
 
 		// 발신자 설정
-		helper.setFrom("MarroTicket <xpsxm617@naver.com>");
+		helper.setFrom("MarroTicket <xpsxm025@naver.com>");
 
 		// 템플릿에 전달할 데이터 설정
 		HashMap<String, String> emailValues = new HashMap<>();

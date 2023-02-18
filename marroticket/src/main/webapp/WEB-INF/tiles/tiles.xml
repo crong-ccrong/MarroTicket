@@ -8,6 +8,8 @@
 		<put-attribute name="title" value="마로티켓" />
 		<put-attribute name="header"
 			value="/WEB-INF/tiles/components/main/header.jsp" />
+		<put-attribute name="logo"
+			value="/WEB-INF/tiles/components/main/logo.jsp" />
 		<put-attribute name="menu"
 			value="/WEB-INF/tiles/components/main/menu.jsp" />
 		<put-attribute name="footer"
@@ -132,11 +134,13 @@
 		template="/WEB-INF/tiles/layouts/umember/play/play_template.jsp">
 		<put-attribute name="title" value="연극 공연 상세페이지" />
 		<put-attribute name="header"
-			value="/WEB-INF/tiles/components/main/header.jsp" />
+			value="/WEB-INF/tiles/components/umember/play/header.jsp" />
+		<put-attribute name="logo"
+			value="/WEB-INF/tiles/components/umember/play/logo.jsp" />
 		<put-attribute name="menu"
-			value="/WEB-INF/tiles/components/main/menu.jsp" />
+			value="/WEB-INF/tiles/components/umember/play/menu.jsp" />
 		<put-attribute name="footer"
-			value="/WEB-INF/tiles/components/main/footer.jsp" />
+			value="/WEB-INF/tiles/components/umember/play/footer.jsp" />
 	</definition>
 	<!-- 연극 공연 상세 페이지 -->
 	<definition name="playDetail" extends="play-template">

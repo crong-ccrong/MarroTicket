@@ -45,3 +45,9 @@
 	</c:choose>
 </table>
 
+<script>
+	$(".header_gnb_link.expected").css({
+    'color': '#EB0000',
+    'font-weight': 'bold'
+	});
+</script>

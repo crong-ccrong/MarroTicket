@@ -162,7 +162,7 @@ $(document)
 											: '')
 									.replace(
 										'__HREF__',
-										(hasEvent) ? 'class="event" href="'
+										(hasEvent) ? 'class="event" tabindex="1" href="'
 											+ href
 											+ ('0' + obj['date'])
 												.slice(-2)
@@ -298,7 +298,7 @@ $(document)
 				$('#turnInfoHidden').empty();
 				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=1 />");
 				$('#play_time_btn_first').css({
-					'background-color': 'red',
+					'background-color': '#EB0000',
 					'color': 'white'
 				});
 				$('#play_time_btn_second').css({
@@ -312,7 +312,7 @@ $(document)
 				$('#turnInfoHidden').empty();
 				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=2 />");
 				$('#play_time_btn_second').css({
-					'background-color': 'red',
+					'background-color': '#EB0000',
 					'color': 'white',
 					'margin-top': '10px'
 				});
@@ -369,7 +369,7 @@ $(document)
 
 						//1회차 좌석 정보(회차선택)
 						var firstTurnInfoElement
-							= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_first" class="play_time_btn" role="option"aria-selected="true" style="background-color:red; color:white;"><span class="play_time">1회차 ' + $('input[name=pfirstStartTime]').val() + '</span></button></li>';
+							= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_first" class="play_time_btn" role="option"aria-selected="true" style="background-color:#EB0000; color:white;"><span class="play_time">1회차 ' + $('input[name=pfirstStartTime]').val() + '</span></button></li>';
 						var firstTurnInfoHidden = '<input type="hidden" name="firstTimeSeatInfo" value="' + result["first"] + '"/>';
 						$(".play_time_list").append(firstTurnInfoElement);
 						$("#hiddenSeatInfoFirst").append(firstTurnInfoHidden);

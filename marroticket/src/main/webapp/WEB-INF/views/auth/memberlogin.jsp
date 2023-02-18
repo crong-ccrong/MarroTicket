@@ -19,7 +19,7 @@
 	<label
 			for="login_status" style="position:static">로그인 상태유지</label>
 		<input type="checkbox" name="remember-me" id="login_status">
-	<span style="margin-left:30%; font-size:1em" id="forgot">
+	<span style="margin-left:38%; font-size:1em" id="forgot">
 		<a href="/memberFindId">아이디 찾기</a> | <a href="/memberFindPassword">비밀번호
 			찾기</a>
 	</span>

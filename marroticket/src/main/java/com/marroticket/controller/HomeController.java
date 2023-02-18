@@ -1,13 +1,48 @@
 package com.marroticket.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.marroticket.umember.play.domain.PlayVO;
+import com.marroticket.umember.play.service.PlayService;
+
 import org.springframework.ui.Model;
 
 @Controller
 public class HomeController {
+	@Value("${upload.path}")
+	private String uploadPath;
+
+	@Autowired
+	private PlayService playService;
+
 	@GetMapping("/")
-	public String home(String modalData) {
+	public String home(Model model) throws Exception {
+
+		List<PlayVO> playCurrentList = new ArrayList<>(); //상연 중
+		List<PlayVO> playExpectedList = new ArrayList<>(); //상연 예정
+		
+		playCurrentList = playService.playCurrentList();
+		playExpectedList = playService.playExpectedList();
+		
+		model.addAttribute("playCurrentList", playCurrentList);
+		model.addAttribute("playExpectedList", playExpectedList);
+
 		return "home";
 	}
 
@@ -108,5 +143,46 @@ public class HomeController {
 	@GetMapping("/serviceCenter/otherInquiries")
 	public String otherInquiries() {
 		return "serviceCenter.otherInquiries";
+	}
+
+	// 포스터 표시
+	@ResponseBody
+	@RequestMapping("/poster")
+	public ResponseEntity<byte[]> pictureFile(Integer pnumber) throws Exception {
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+		String fileName = playService.getPposter(pnumber);
+		try {
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			MediaType mType = getMediaType(formatName);
+			HttpHeaders headers = new HttpHeaders();
+			in = new FileInputStream(uploadPath + File.separator + fileName);
+			if (mType != null) {
+				headers.setContentType(mType);
+			}
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+		} finally {
+			in.close();
+		}
+		return entity;
+	}
+
+	// 파일 확장자로 이미지 형식 확인
+	private MediaType getMediaType(String formatName) {
+		if (formatName != null) {
+			if (formatName.equals("JPG")) {
+				return MediaType.IMAGE_JPEG;
+			}
+			if (formatName.equals("GIF")) {
+				return MediaType.IMAGE_GIF;
+			}
+			if (formatName.equals("PNG")) {
+				return MediaType.IMAGE_PNG;
+			}
+		}
+		return null;
 	}
 }

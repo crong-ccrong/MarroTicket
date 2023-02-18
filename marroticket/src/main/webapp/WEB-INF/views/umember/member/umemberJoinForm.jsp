@@ -255,5 +255,3 @@ input[type="button"] {
 }
 
 </style> 
-
-

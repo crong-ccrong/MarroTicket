@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
 <!-- ajax 통신을 위한 meta tag -->
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">

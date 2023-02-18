@@ -355,11 +355,8 @@
 				</select> <form:input path="psecondStartTime" id="psecondStartTime"
 						hidden="true" /><font color="red"><form:errors
 							path="psecondStartTime" /></font>
-
-				</td>
-
-			</tr>
-
+			</td>
+			</tr>				
 			<tr>
 				<form:input path="pregistrationApproval" value="0" hidden="true" />
 				<form:input path="pmodifyApproval" hidden="true" />

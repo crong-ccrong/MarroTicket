@@ -5,4 +5,20 @@
 		<item key="DIALOG_HEIGHT" value="377"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATION_PROPERTIES_DIALOG_SECTION">
+		<item key="DIALOG_WIDTH" value="914"/>
+		<item key="DIALOG_HEIGHT" value="877"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+=======
+		<item key="DIALOG_WIDTH" value="309"/>
+		<item key="DIALOG_HEIGHT" value="377"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+>>>>>>> 66556ed1019b6037c7c64927eb6a8d714170d0e6
+	</section>
+>>>>>>> c73c73163d75e23899b274e840f41ae0972e09e7
+=======
+>>>>>>> soobin
 </section>
