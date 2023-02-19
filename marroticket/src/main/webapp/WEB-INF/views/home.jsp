@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- main content -->
 <section class="common_section section_hero_banner">
 	<img alt="" src="/images/main_template_background.png">
 </section>
 <!-- Swiper(현재 상연작) -->
-<section class="swiper mySwiper"
-	style="width: 1120px; position: relative; margin: auto; top: -410px">
-	<!-- h1 align="center" style="margin-bottom:30px;color:white; font-family: 'Gowun Batang', serif; font-size:30px">상연 중인 작품</h1-->
+<section class="swiper mySwiper">
 	<div class="swiper-wrapper">
 		<c:choose>
 			<c:when test="${empty playCurrentList }">
@@ -17,6 +16,12 @@
 			<c:otherwise>
 				<c:forEach items="${playCurrentList}" var="list" varStatus="status">
 					<div class="swiper-slide">
+						<p style="font-family: 'Gowun Batang', serif; font-size:1.3em; color:white">
+						<span style="display:block">${list.pname}</span>
+						<span style="display:block; font-size:0.8em;"><fmt:formatDate pattern="YYYY-MM-dd (E)"
+										value="${list.pstartDate}" />~<fmt:formatDate
+										pattern="YYYY-MM-dd (E)" value="${list.pcloseDate }" /></span>
+						</p>
 						<a href="/play/playDetail?pNumber=${list.pnumber}"> <img
 							alt="..." src="poster?pnumber=${list.pnumber}"
 							style="width: 273px; height: 348px; border-radius: 10px;">
@@ -30,26 +35,19 @@
 	<div class="swiper-button-prev" style="color: #EB0000"></div>
 	<div class="swiper-pagination"></div>
 </section>
-<!-- 상연 예정작 -->
-<section class="common_section section_weekly_culture">
-	<div class="container">
-		<div class="section_heading">
-			<h2 class="section_title">상연 예정작</h2>
-		</div>
-		<div class="gallery">
-			<c:choose>
-				<c:when test="${empty playCurrentList }">
-					<h3>상연중인 연극이 없습니다.</h3>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${playExpectedList}" var="list">
-						<img alt="" src="poster?pnumber=${list.pnumber }"
-							class="single-image" />
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</div>
-	</div>
+<section class="common_banner">
+	<div class="common_banner_inner">
+		<a class="common_banner_link" href="/play/playCurrentList">
+			<img alt="test1" src="/images/banner_right.png" class="common_banner_img">
+		</a>
+		<a class="common_banner_link" href="/play/playExpectedList">
+			<img alt="test2" src="/images/banner_left.png" class="common_banner_img">
+		</a>
+	</div>	
+</section>
+<section class="common_content">
+<!-- 비워둘지 고민 -->
+<h1>이번주 연극</h1>
 </section>
 <!-- --------------------------------------------------- -->
 <script>
