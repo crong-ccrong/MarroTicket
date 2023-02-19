@@ -165,11 +165,21 @@ colgroup {
 	overflow: hidden;
 	clear: both;
 	/* background: #505050; */
-	margin-bottom : 8px;
+	margin-bottom : 20px;
 	padding-top : 6px;
 	box-sizing: border-box;
 /* 	font-size : 20px;
 	color : white; */
+	  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 /* .reserve_step li:first-child {
@@ -565,6 +575,7 @@ tfoot {
 }
 .reserve_btn button {
     padding: 13px 0;
+    margin-bottom:30px;
     font-size: 18px;
     line-height: 28px;
     text-align: center;

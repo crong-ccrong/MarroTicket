@@ -37,9 +37,14 @@
 </c:if>
 <!-- body시작 -->
 <br>
-<h3><span style='display:inline-block'><strong style="color: blue; font-size: 23px">${reservation.uname }</strong>님의&nbsp;&nbsp;예매확인</span><button class="snip1535" id="home_btn" >예매확인하기</button></h3>
-<hr><br>
-<div class="reserve_step3" style="clear:both">
+<h3>
+	<span style='display: inline-block'><strong
+		style="color: blue; font-size: 23px">${reservation.uname }</strong>님의&nbsp;&nbsp;예매확인</span>
+	<button class="snip1535" id="reserve_confirm_btn">예매확인하기</button>
+</h3>
+<hr>
+<br>
+<div class="reserve_step3" style="clear: both">
 	<div class="title_box" style="padding-top: 10px">
 		<h4 style="margin: 0; margin-bottom: 10px; font-size: 18px">예매정보</h4>
 	</div>
@@ -58,7 +63,8 @@
 				</tr>
 				<tr>
 					<th scope="row" class="th fbold">예매일</th>
-					<td class="ng-binding"><fmt:formatDate pattern="YYYY-MM-dd (E)" value="${ reservation.rdate}" /></td>
+					<td class="ng-binding"><fmt:formatDate
+							pattern="YYYY-MM-dd (E)" value="${ reservation.rdate}" /></td>
 				</tr>
 				<tr>
 					<th scope="row" class="th fbold" style="height: 50px">결제방식</th>
@@ -72,9 +78,9 @@
 </div>
 <div class="reserve_step3 mgt0">
 	<div class="title_box">
-		<h4 class="title title_txt" style="margin-top: 16px; margin-bottom: 10px;  font-size: 18px">
-			티켓확인
-		</h4>
+		<h4 class="title title_txt"
+			style="margin-top: 16px; margin-bottom: 10px; font-size: 18px">
+			티켓확인</h4>
 	</div>
 	<div class="white_box choice_delivery">
 		<table class="table2">
@@ -119,13 +125,14 @@
 </div>
 <div class="notice_box">
 	<ul class="notice ng-scope">
-		<li class="ng-scope" style="font-size:15px">티켓번호는 모바일티켓에서 확인하실 수 있습니다. 예매자는 관람일 당일 현장에서 모바일티켓에 기재된 티켓번호 확인 및 본인 확인(신분증) 후 입장할
-			수 있습니다.</li>
+		<li class="ng-scope" style="font-size: 15px">티켓번호는 모바일티켓에서 확인하실 수
+			있습니다. 예매자는 관람일 당일 현장에서 모바일티켓에 기재된 티켓번호 확인 및 본인 확인(신분증) 후 입장할 수 있습니다.</li>
 	</ul>
 </div>
 <div class="reserve_step3">
 	<div class="title_box" style="padding-top: 10px">
-		<h4  style="margin-top: 25px; margin-bottom: 10px;  font-size: 18px">공연 정보</h4>
+		<h4 style="margin-top: 25px; margin-bottom: 10px; font-size: 18px">공연
+			정보</h4>
 	</div>
 	<div class="white_box">
 		<table class="table2 table2_v2">
@@ -142,15 +149,14 @@
 				</tr>
 				<tr>
 					<th scope="row" class="th fbold">공연 회차/날짜</th>
-					<td>${reservation.pturn }회차 / 
-						<c:choose>
+					<td>${reservation.pturn }회차/ <c:choose>
 							<c:when test="${reservation.pturn ==1}">
 								${reservation.pfirstStartTime }
 							</c:when>
 							<c:when test="${reservation.pturn ==2}">
 								${reservation.psecondStartTime }
 							</c:when>
-						</c:choose>	
+						</c:choose>
 					</td>
 				</tr>
 				<tr>
@@ -164,7 +170,11 @@
 			</tbody>
 		</table>
 	</div>
-	<br><br><hr><br><br>
+	<br>
+	<br>
+	<hr>
+	<br>
+	<br>
 </div>
 <!-- script -->
 <script>
@@ -176,27 +186,22 @@
 	});
 
 	//css변경
-	$('.step3').css({
-		'left' : '0',
-		'top' : '0',
-		'z-index' : '1',
-		'width' : '198px',
-		'height' : '45px',
-		'background-color' : 'black',
-		'border-width' : '0'
-	});
 	$('.reserve_left').css({
 		'width' : '950px'
 	});
-	
-	//home_btn
-	$(".hover").mouseleave(
-	  function() {
-	    $(this).removeClass("hover");
-	  }
-	);
+
+	//logo click
+	$(".home").on("click", function() {
+		location.href = "/"
+		return;
+	});
+
+	//reserve_confirm_btn
+	$(".hover").mouseleave(function() {
+		$(this).removeClass("hover");
+	});
 	//click
-	$("#home_btn").on("click", function(){
-		location.href="/umember/umemberReserveInfo";
+	$("#reserve_confirm_btn").on("click", function() {
+		location.href = "/umember/umemberReserveInfo";
 	});
 </script>
