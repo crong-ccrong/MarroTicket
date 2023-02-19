@@ -6,11 +6,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h2>
-	등록한 연극 수정하기
-</h2>
+<h2>등록한 연극 수정하기</h2>
 
-<form:form modelAttribute="playVO" action="/theater/playModify" method="post">
+<form:form modelAttribute="playVO" action="/theater/playModify"
+	method="post">
 	<form:hidden path="pnumber" />
 	<table>
 		<tr>
@@ -21,35 +20,35 @@
 
 		<tr>
 			<td>연극명</td>
-			<td><form:input path="pname"/></td>
+			<td><form:input path="pname" /></td>
 			<td><font color="red"><form:errors path="pname" /></font></td>
-			
+
 		</tr>
-		
+
 		<tr>
 			<td>연극 시작일</td>
 			<td><form:input path='pstartDate' type='date' /><font
 				color="red"> <form:errors path="pstartDate" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>연극 종료일</td>
 			<td><form:input path='pcloseDate' type='date' /><font
 				color="red"> <form:errors path="pcloseDate" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>연극 소요 시간(분단위)</td>
 			<td><form:input path="prunningTime" /></td>
 			<td><font color="red"><form:errors path="prunningTime" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>극장 이름</td>
 			<td><form:input path="ptheaterName" /></td>
 			<td><font color="red"><form:errors path="ptheaterName" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>극장 주소</td>
 			<td><form:input path="ptheaterAddress" id="ptheaterAddress" />
@@ -60,13 +59,13 @@
 			<td><input type="button" onclick="sample6_execDaumPostcode()"
 				value="주소 찾기" /></td>
 		</tr>
-			
+
 		<tr>
 			<td>기획사 정보</td>
 			<td><form:input path="pagency" /></td>
 			<td><font color="red"><form:errors path="pagency" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>관람 등급</td>
 			<td><form:select path="pratings">
@@ -76,51 +75,130 @@
 					<option value="4">18세 이상</option>
 				</form:select><font color="red"><form:errors path="pratings" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>캐스팅</td>
 			<td><form:input path="pcasting" /></td>
 			<td><font color="red"><form:errors path="pcasting" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>줄거리</td>
 			<td><form:input path="pplot" /></td>
 			<td><font color="red"><form:errors path="pplot" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>좌석 개수</td>
 			<td><form:input path="pseatNumber" /></td>
 			<td><font color="red"><form:errors path="pseatNumber" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>티켓 가격(원)</td>
 			<td><form:input path="pticketPrice" /></td>
 			<td><font color="red"><form:errors path="pticketPrice" /></font></td>
 		</tr>
-		
+
 		<tr>
 			<td>장르 정보</td>
 			<td><form:select path="pgenre">
-					<option value="1">로맨스극</option>
-					<option value="2">코미디극</option>
-					<option value="3">드라마극</option>
-					<option value="4">공포극</option>
-					<option value="5">추리스릴러극</option>
-					<option value="6">판타지극</option>
-					<option value="7">시대/역사극</option>
+					<form:option value="1">로맨스극</form:option>
+					<form:option value="2">코미디극</form:option>
+					<form:option value="3">드라마극</form:option>
+					<form:option value="4">공포극</form:option>
+					<form:option value="5">추리스릴러극</form:option>
+					<form:option value="6">판타지극</form:option>
+					<form:option value="7">시대/역사극</form:option>
 				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 		</tr>
-		
-		<!-- 연극 포스터 미리보기 및 변경 구현하기
+
+		<!-- 연극 포스터 변경 구현하기 -->
+		<!-- 기존 포스터 이미지 -->
 		<tr>
-			<td>연극 포스터 미리보기 및 변경 구현하기</td>
-			<td><input type="File" name="pPoster" id="pposter"
-				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pposterError"><spring:message code="registe.file.error" /></font></td>
-		</tr> -->
+			<td>	
+				<img alt="..." src="poster?pnumber=${playVO.pnumber }">
+			</td>
+			<!-- 포스터 변경 -->
+			<td>
+				<!-- 포스터 변경 -->
+				<c:if test="${not empty param.pposter}">
+					<form:input type="file" path="pposter" id="pposter"
+						accept="image/jpeg, image/png, image/jpg"></form:input>
+					<font color="red" id="pposterError">
+						<spring:message code="registe.file.error" />
+					</font>
+				</c:if>
+					<c:if test="${empty param.pposter}">
+						<form:form action="uploadPoster" method="post"
+							enctype="multipart/form-data">
+							<input type="File" name="pposter" id="pposter"
+					accept="image/jpeg, image/png, image/jpg" /><font color="red"
+					id="pposterError" hidden="true"><spring:message
+							code="registe.file.error" /></font></td>
+						</form:form>
+					</c:if>
+			</td>
+		</tr>
+		
+		<%-- <tr>
+			<!-- 연극 포스터 보기 -->
+			<td>
+				<!-- 기존 포스터 -->
+				<c:choose>
+					<c:when test="${not empty playVO.pposter}">
+						<img alt="..." src="poster?pnumber=${playVO.pnumber }">
+					</c:when>
+					<c:otherwise>
+						<img alt="No Image" src="poster?pnumber=${playVO.pnumber }">
+					</c:otherwise>
+				</c:choose>
+			</td>
+			<td>
+				<!-- 포스터 변경 할 경우 -->
+				<c:if test="${not empty param.pposter}">
+					<form:input type="file" path="pposter" id="pposter"
+						accept="image/jpeg, image/png, image/jpg"></form:input>
+					<font color="red" id="pposterError">
+						<spring:message code="registe.file.error" />
+					</font>
+				</c:if>
+					<c:if test="${empty param.pposter}">
+						<form:form action="uploadPoster" method="post"
+							enctype="multipart/form-data">
+							<input type="File" name="pposter" id="pposter"
+					accept="image/jpeg, image/png, image/jpg" /><font color="red"
+					id="pposterError" hidden="true"><spring:message
+							code="registe.file.error" /></font></td>
+						</form:form>
+					</c:if>
+			</td>
+		</tr> --%>
+		<%-- 
+		<tr>
+			<td>
+				<!-- 포스터 변경 안 할 경우 -->
+				<c:choose>
+					<c:when test="${not empty playVO.pposter}">
+						<!-- If it does, display the image using the 'poster' servlet -->
+						<img alt="..." src="poster?pnumber=${playVO.pnumber }">
+					</c:when>
+					<c:otherwise>
+						<img alt="No Image" src="poster?pnumber=${playVO.pnumber }">
+					</c:otherwise>
+				</c:choose>
+			</td>
+			<td>
+				<!-- 포스터 변경 할 경우 --> <c:if test="${not empty param.pposter}">
+					<form:input type="file" path="pposter" id="pposter"
+						accept="image/jpeg, image/png, image/jpg" />
+					<font color="red" id="pposterError"> <spring:message
+							code="registe.file.error" />
+					</font>
+				</c:if>
+			</td>
+
+		</tr> --%>
 		<!-- 
 		<tr>
 			<td>동의 여부</td>
@@ -132,11 +210,11 @@
 	</table>
 
 
-<!-- 수정 등록 구현 -->
-<div>
-	<input type="submit" value="수정하기">
-	<input type="button" onclick="location.href='/theater/playRegisteInfo'" value="목록으로 돌아가기" >
-</div>
+	<!-- 수정 등록 구현 -->
+	<div>
+		<input type="submit" value="수정하기"> <input type="button"
+			onclick="location.href='/theater/playRegisteInfo'" value="목록으로 돌아가기">
+	</div>
 </form:form>
 
 
@@ -193,7 +271,7 @@
 			.ready(
 					function() {
 						var formObj = $("#playVO");
-						
+
 						$.datepicker
 								.setDefaults({
 									dateFormat : 'yy-mm-dd',
@@ -271,10 +349,8 @@
 															.is(":checked") == true) {
 												$("pagree").val(1);
 
-												if ( !($("#pPoster")
-																.val() == "" && $(
-																"#pPoster")
-																.val() == null)) {
+												if (!($("#pPoster").val() == "" && $(
+														"#pPoster").val() == null)) {
 													formObj.submit();
 												}
 
@@ -294,7 +370,7 @@
 														.is(":checked") == false) {
 													$("#agree3Error").show();
 												}
-												
+
 												if ($("#pPoster").val() == "") {
 													$("#pPosterError").show();
 

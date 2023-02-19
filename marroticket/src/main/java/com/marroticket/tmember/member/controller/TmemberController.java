@@ -1,6 +1,8 @@
 package com.marroticket.tmember.member.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,10 +14,13 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.apache.commons.io.IOUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -38,7 +43,7 @@ import com.marroticket.admin.payment.domain.PaymentVO;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.marroticket.common.email.domain.EmailVO;
@@ -47,6 +52,7 @@ import com.marroticket.tmember.member.service.TmemberService;
 import com.marroticket.tmember.modify.service.ModifyService;
 import com.marroticket.tmember.registe.service.RegisteService;
 import com.marroticket.umember.play.domain.PlayVO;
+import com.marroticket.umember.play.service.PlayService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -74,6 +80,9 @@ public class TmemberController {
 	ModifyService modifyService;
 
 	@Autowired
+	PlayService playService;
+
+	@Autowired
 	EmailService emailService;
 
 	@Autowired
@@ -85,7 +94,7 @@ public class TmemberController {
 	public String home() {
 		// if (등록한 연극>0) {등록한 연극 포스터} else {공지사항->공지사항 controller}
 		return "redirect:/notice/noticeList";
-		//return "tmemberhome";
+		// return "tmemberhome";
 	}
 
 	// 연극 등록 이동
@@ -219,6 +228,41 @@ public class TmemberController {
 
 	}
 
+	// 포스터 미리보기
+	@ResponseBody
+	@RequestMapping("/playPoster")
+	public ResponseEntity<byte[]> ImageFile(Integer pnumber, Principal principal) throws Exception {
+
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+
+		// tmember tId로 play tId 정보 가져오기
+		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
+		System.out.println(pnumber);
+
+		PlayVO vo = modifyService.read(pnumber);
+		vo.setTnumber(tvo.getTNumber());
+		System.out.println("포스터 url : " + vo.getPposterUrl());
+		String fileName = playService.playPoster(pnumber);
+
+		try {
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			MediaType mType = getMediaType(formatName);
+			HttpHeaders headers = new HttpHeaders();
+			in = new FileInputStream(uploadDir + File.separator + fileName);
+			if (mType != null) {
+				headers.setContentType(mType);
+			}
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+		} finally {
+			in.close();
+		}
+		return entity;
+	}
+
 	// 연극 수정 페이지
 	@RequestMapping(value = "/playModify", method = RequestMethod.GET)
 	public String modifyPlay(int pnumber, Model model, Principal principal) throws Exception {
@@ -232,18 +276,6 @@ public class TmemberController {
 
 		System.out.println("등록한 연극 상세");
 
-		/*
-		 * 수정 시 String으로 값이 변해서 주석 처리하고 jsp에서 변경함 // 연극 등록 승인 상태 0:미승인 1:승인 2:반려 if
-		 * ("0".equals(vo.getPregistrationApproval())) {
-		 * vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다"); } else if
-		 * ("1".equals(vo.getPregistrationApproval())) {
-		 * vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다"); } else {
-		 * vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요"); }
-		 * 
-		 * // 연극 등록 수정 상태 0:수정 가능 1:수정 불가 if ("0".equals(vo.getPmodifyApproval())) {
-		 * vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태"); } else {
-		 * vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다"); }
-		 */
 		model.addAttribute("playVO", vo);
 
 		return "modify.tmemberPlayModify";
@@ -260,6 +292,15 @@ public class TmemberController {
 		// 수정 처리
 		modifyService.modify(playVO);
 
+		// db에 저장될 포스터 파일 입력
+		MultipartFile pposter = playVO.getPposter();
+		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
+		playVO.setPposterUrl(pposterUrl);
+
+		modifyService.modify(playVO);
+
+		log.info(playVO.toString());
+
 		// 업데이트 된 연극 정보 가져오기
 		PlayVO updatedVO = modifyService.read(pnumber);
 
@@ -275,6 +316,47 @@ public class TmemberController {
 	public String modifyTemporaryComplete(PlayVO playVO, Model model) throws Exception {
 
 		return "modify.modifyTemporaryComplete";
+	}
+
+	// 포스터 표시
+	@ResponseBody
+	@RequestMapping("/poster")
+	public ResponseEntity<byte[]> pictureFile(Integer pnumber) throws Exception {
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+		String fileName = playService.getPposter(pnumber);
+		try {
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			MediaType mType = getMediaType(formatName);
+			HttpHeaders headers = new HttpHeaders();
+			in = new FileInputStream(uploadPath + File.separator + fileName);
+			if (mType != null) {
+				headers.setContentType(mType);
+			}
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+		} finally {
+			in.close();
+		}
+		return entity;
+	}
+
+	// 파일 확장자로 이미지 형식 확인
+	private MediaType getMediaType(String formatName) {
+		if (formatName != null) {
+			if (formatName.equals("JPG")) {
+				return MediaType.IMAGE_JPEG;
+			}
+			if (formatName.equals("GIF")) {
+				return MediaType.IMAGE_GIF;
+			}
+			if (formatName.equals("PNG")) {
+				return MediaType.IMAGE_PNG;
+			}
+		}
+		return null;
 	}
 
 	// 극단 정산
@@ -312,9 +394,21 @@ public class TmemberController {
 		} else {
 			vo.setTBusinessRegistration("기업");
 		}
-
 		
-		System.out.println("극단 정보 : "+vo);
+		// 극단 가입 승인 여부 0:미승인 1:승인 2:반려
+		switch (vo.getTAuth()) {
+		case "0":
+			vo.setTAuth("미승인");
+			break;
+		case "1":
+			vo.setTAuth("승인");
+			break;
+		default:
+			vo.setTAuth("반려");
+			break;
+		}
+
+		System.out.println("극단 정보 : " + vo);
 		model.addAttribute("vo", vo);
 		return "info.tmemberMemberInfo";
 	}

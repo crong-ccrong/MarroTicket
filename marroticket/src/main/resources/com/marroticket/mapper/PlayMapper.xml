@@ -200,6 +200,7 @@
 	</select>
 
 	<!-- 극단 등록한 연극 수정 -->
+			
 	<update id="modify">
 		UPDATE play
 		SET p_name = #{pname},
@@ -215,8 +216,17 @@
 			P_SEATNUMBER = #{pseatNumber},
 			P_TICKETPRICE = #{pticketPrice},
 			P_GENRE = #{pgenre},
+			P_POSTER = #{pposter},
 			p_MODIFYAPPROVAL = '1'
 		WHERE p_number = #{pnumber}
 	</update>
+	
+	<!-- 극단 등록한 연극 목록에서 포스터 미리보기 -->
+	<select id="playRegistration" resultType="String">
+		SELECT
+		P_POSTERURL
+		FROM play
+		WHERE p_number = #{pnumber}
+	</select>
 
 </mapper>

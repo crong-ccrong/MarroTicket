@@ -107,20 +107,12 @@
 				</c:choose> --%></td>
 		</tr>
 
-		<!-- 연극 포스터 미리보기 및 변경 구현하기
+		<!-- 연극 포스터 보기 -->
 		<tr>
-			<td>연극 포스터 미리보기 및 변경 구현하기</td>
-			<td><input type="File" name="pposter" id="pposter"
-				accept="image/jpeg, image/png, image/jpg" /><font color="red"
-				id="pposterError"><spring:message code="registe.file.error" /></font></td>
-		</tr> -->
-		<!-- 
-		<tr>
-			<td>동의 여부</td>
-			<td><form:textarea path="pagree" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pagree" /></font></td>
-		</tr>
-		 -->
+         <td>포스터</td>
+         <td><img alt="..." src="poster?pnumber=${playVO.pnumber }">
+         </td>
+      </tr>
 
 		<tr>
 			<td>연극 등록 승인 상태</td>
@@ -135,13 +127,8 @@
 			<td><font color="red"><form:errors path="pmodifyApproval" /></font></td>
 		</tr>
 
-		<!--
-		<tr>
-			 수정 신청 시 modifyApproval 변경
-			<form:input path="pmodifyApproval" value="1" hidden="true" />
-		</tr>	 -->
+		
 	</table>
-	<%-- </form:form> --%>
 
 	<!-- 수정 등록 구현 -->
 	<div>

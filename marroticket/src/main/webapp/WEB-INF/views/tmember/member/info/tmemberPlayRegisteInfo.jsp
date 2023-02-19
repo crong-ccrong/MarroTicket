@@ -16,8 +16,8 @@
 	<tr>
 		<th align="center" width="80">연극 번호</th>
 		<th align="center" width="250">연극 제목</th>
+		<th align="center" width="300">연극 포스터</th>
 		<th align="center" width="80">등록 승인 상태</th>
-		<th align="center" width="180">예매예정일</th>
 		<th align="center" width="180">개막일</th>
 		<th align="center" width="120">수정</th>
 		<th align="center" width="80">수정 승인 상태</th>
@@ -35,6 +35,11 @@
 				<tr>
 					<td align="center">${list.pnumber}</td>
 					<td align="center"><a href="/theater/playRegisteRead?pnumber=${list.pnumber }">${list.pname}</a></td>
+					
+					<td align="center"><img alt="..."
+						src="playPoster?pnumber=${list.pnumber}"
+						width="100" height="100" id="big" /></td>
+					
 					<td align="center">
 						<c:choose>
 							<c:when test="${list.pregistrationApproval eq '0'}">미승인</c:when>
@@ -42,6 +47,7 @@
 							<c:otherwise>반려</c:otherwise>
 						</c:choose>
 					</td>
+					
 					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${list.pstartDate}" /></td>
 							
@@ -155,5 +161,13 @@ box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 .section_terms {
 padding: 10px;
 }
+}
+</style>
+
+<!-- 연극 포스터 호버 -->
+<style>
+#big:hover {
+	width: 400px;
+	height: 400px;
 }
 </style>
