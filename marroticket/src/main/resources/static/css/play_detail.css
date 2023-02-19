@@ -308,6 +308,14 @@ button {
     opacity: 1;
   }
 }
+
+@keyframes blink-effect {
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink-effect 0.1s step-end 1;
+}
 /**/
 
 /* 토요일, 일요일 css */
@@ -326,9 +334,9 @@ button {
 	font-weight: bold;
 }
 
-.calandar_day a.event:focus, .sat a.event:focus, .sun a.event:focus, .calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover {
-	background-color: black;
-	color: lightgray;
+.calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover, .calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover  {
+	background-color: white;
+	color: black;
 	border-radius: 50px;
 	font-weight: bold;
 	padding : 0;
@@ -342,8 +350,44 @@ button {
     padding: 0;
     white-space: nowrap;
     letter-spacing: -0.03em;
+    border : 1px solid black;
 }
-
+.sat a.event:hover {
+	background-color: white;
+	color: blue;
+	border-radius: 50px;
+	font-weight: bold;
+	padding : 0;
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    line-height: 32px;
+    box-sizing: border-box;
+        display: inline-block;
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    border : 1px solid black;
+}
+.sun a.event:hover{
+	background-color: white;
+	color: #EB0000;
+	border-radius: 50px;
+	font-weight: bold;
+	padding : 0;
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    line-height: 32px;
+    box-sizing: border-box;
+        display: inline-block;
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    border : 1px solid black;
+} 
 .sat a.event {
 	color: #0000CD;
 	font-weight: bold;

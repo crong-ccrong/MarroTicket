@@ -18,8 +18,8 @@
 	<div align="left" style="margin-top:17px">
 	<label
 			for="login_status" style="position:static">로그인 상태유지</label>
-		<input type="checkbox" name="remember-me" id="login_status">
-	<span style="margin-left:38%; font-size:1em" id="forgot">
+		<input type="checkbox" name="remember-me" style="accent-color: #EB0000;" id="login_status" checked>
+	<span style="display: inline-block; float:right; font-size:1em" id="forgot">
 		<a href="/memberFindId">아이디 찾기</a> | <a href="/memberFindPassword">비밀번호
 			찾기</a>
 	</span>
@@ -29,6 +29,6 @@
 			아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.
 		<br>입력하신 내용을 다시 확인해주세요.</div>
 	</c:if>
-	<input type="submit" value="로그인">
+	<input type="submit" value="Login">
 <sec:csrfInput />
 </form>

@@ -294,16 +294,45 @@ $(document)
 							drawMonth($(this).data('ym'));
 						});
 			});
+			$(document).on("click", ".event", function() {
+				$('.event').css({
+					'background-color': 'white',
+					'color': 'black'
+				});
+				$('.sat a.event').css({
+					'background-color': 'white',
+					'color': 'blue'
+				});
+				$('.sun a.event').css({
+					'background-color': 'white',
+					'color': '#EB0000'
+				});
+				$(this).css({
+					'background-color': 'black',
+					'color': 'lightgray',
+					'border-radius': '50px',
+					'font-weight': 'bold',
+					'padding': '0',
+					'margin': '0',
+					'width': '34px',
+					'height': '34px',
+					'line-height': '32px',
+					'box-sizing': 'border-box',
+					'display': 'inline-block',
+					'text-align': 'center',
+					'padding': '0',
+					'white-space': 'nowrap',
+					'letter-spacing': '-0.03em'
+				});
+			});
 			$(document).on("click", "#play_time_btn_first", function() {
 				$('#turnInfoHidden').empty();
 				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=1 />");
 				$('#play_time_btn_first').css({
-					'background-color': '#EB0000',
-					'color': 'white'
+					'border': '1px black solid'
 				});
 				$('#play_time_btn_second').css({
-					'background-color': 'white',
-					'color': 'black',
+					'border': '#ecedf2 solid 1px',
 					'margin-top': '10px'
 				});
 				$('.play_seat_remain').html($('input[name=firstTimeSeatInfo]').val());
@@ -312,13 +341,11 @@ $(document)
 				$('#turnInfoHidden').empty();
 				$("#turnInfoHidden").append("<input type='hidden' name='turnInfo' value=2 />");
 				$('#play_time_btn_second').css({
-					'background-color': '#EB0000',
-					'color': 'white',
+					'border': '1px black solid',
 					'margin-top': '10px'
 				});
 				$('#play_time_btn_first').css({
-					'background-color': 'white',
-					'color': 'black'
+					'border': '#ecedf2 solid 1px'
 				});
 				$('.play_seat_remain').html($('input[name=secondTimeSeatInfo]').val());
 			});
@@ -369,7 +396,7 @@ $(document)
 
 						//1회차 좌석 정보(회차선택)
 						var firstTurnInfoElement
-							= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_first" class="play_time_btn" role="option"aria-selected="true" style="background-color:#EB0000; color:white;"><span class="play_time">1회차 ' + $('input[name=pfirstStartTime]').val() + '</span></button></li>';
+							= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_first" class="play_time_btn" role="option"aria-selected="true" style="border : black solid 1px; color:white;"><span class="play_time">1회차 ' + $('input[name=pfirstStartTime]').val() + '</span></button></li>';
 						var firstTurnInfoHidden = '<input type="hidden" name="firstTimeSeatInfo" value="' + result["first"] + '"/>';
 						$(".play_time_list").append(firstTurnInfoElement);
 						$("#hiddenSeatInfoFirst").append(firstTurnInfoHidden);
@@ -388,7 +415,7 @@ $(document)
 								console.log("2회차 잔여좌석 : " + result["second"]);
 
 								var secondTurnInfoElement
-									= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_second" class="play_time_btn" role="option"aria-selected="true" style="margin-top:10px;"><span class="play_time">2회차 ' + $('input[name=psecondStartTime]').val() + '</span></button></li>';
+									= '<li class="play_time_item" role="none"><button type="button" id="play_time_btn_second" class="play_time_btn" role="option"aria-selected="true" style="margin-top:10px; border : #ecedf2 solid 1px"><span class="play_time">2회차 ' + $('input[name=psecondStartTime]').val() + '</span></button></li>';
 								var secondTurnInfoHidden = '<input type="hidden" name="secondTimeSeatInfo" value="' + result["second"] + '"/>';
 
 								$(".play_time_list").append(secondTurnInfoElement);

@@ -7,7 +7,7 @@
 </section>
 <!-- Swiper(현재 상연작) -->
 <section class="swiper mySwiper"
-	style="width: 1120px; position: relative; margin: auto; top: -430px">
+	style="width: 1120px; position: relative; margin: auto; top: -410px">
 	<!-- h1 align="center" style="margin-bottom:30px;color:white; font-family: 'Gowun Batang', serif; font-size:30px">상연 중인 작품</h1-->
 	<div class="swiper-wrapper">
 		<c:choose>

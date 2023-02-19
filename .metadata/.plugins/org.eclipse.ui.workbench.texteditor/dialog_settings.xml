@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="hover"/>
+		<item key="selection" value="form"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="form"/>
+			<item value="from"/>
+			<item value="img"/>
+			<item value="border-radius"/>
+			<item value=".event"/>
+			<item value="@keyframes"/>
+			<item value="today"/>
+			<item value="click"/>
+			<item value="css\"/>
+			<item value="css"/>
+			<item value="black"/>
+			<item value="1px"/>
+			<item value="remove"/>
+			<item value="ajax"/>
 			<item value="hover"/>
-			<item value="event"/>
-			<item value="focus"/>
-			<item value="fofust"/>
-			<item value="text"/>
-			<item value="text-decoration"/>
-			<item value="*"/>
-			<item value="focust"/>
-			<item value="+"/>
-			<item value="outline"/>
-			<item value="#d9534f"/>
-			<item value="#c0392b"/>
-			<item value="margin"/>
-			<item value="red"/>
-			<item value="white"/>
 		</list>
 		<list key="replacehistory">
+			<item value="2px"/>
 			<item value="#EB0000"/>
 			<item value="#505050"/>
 			<item value=""/>
@@ -33,8 +34,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="198"/>
 		<item key="DIALOG_Y_ORIGIN" value="133"/>
-		<item key="DIALOG_WIDTH" value="416"/>
-		<item key="DIALOG_HEIGHT" value="475"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>
