@@ -164,15 +164,15 @@ colgroup {
 .reserve_step {
 	overflow: hidden;
 	clear: both;
-	background: #505050;
+	/* background: #505050; */
 	margin-bottom : 8px;
 	padding-top : 6px;
 	box-sizing: border-box;
-	font-size : 20px;
-	color : white;
+/* 	font-size : 20px;
+	color : white; */
 }
 
-.reserve_step li:first-child {
+/* .reserve_step li:first-child {
 	width: 226px;
 	margin-right: 0;
 }
@@ -214,7 +214,7 @@ colgroup {
 	border-style: solid;
 	border-width: 25px 0 25px 14px;
 	content: '';
-}
+} */
 
 /* .reserve_step li::after {
 	display: block;

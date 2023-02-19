@@ -127,7 +127,7 @@ public class ReservationController {
 																						// parse
 
 		// return
-		return "reserve.selectSeat";
+		return "reserve.1.selectSeat";
 	}
 
 	// 구매 전 확인 및 결제(아직 구매 전 사용자)
@@ -152,7 +152,7 @@ public class ReservationController {
 		model.addAttribute("reservation", vo);
 
 		// return
-		return "reserve.confirmReserve";
+		return "reserve.2.confirmReserve";
 	}
 
 	// 결제 완료.
