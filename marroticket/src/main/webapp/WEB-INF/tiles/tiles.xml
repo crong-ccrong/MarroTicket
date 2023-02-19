@@ -85,11 +85,13 @@
 
 	<!-- 아이디/비밀번호찾기 유형 선택 페이지(일반/극단) -->
 	<definition name="memberFind.*" extends="login-template">
+		<!-- <put-attribute name="content"
+			value="/WEB-INF/views/memberFind{1}.jsp" /> -->
 		<put-attribute name="content"
-			value="/WEB-INF/views/memberFind{1}.jsp" />
+			value="/WEB-INF/views/memberFind{1}.jsp" />	
 	</definition>
 
-	<!-- 일반회원 아이디찾기/비밀번호 찾기 페이지 -->
+	<!-- 일반회원 극단회원 아이디찾기/비밀번호 찾기 페이지 -->
 	<definition name="umemberFind.*" extends="login-template">
 		<put-attribute name="content"
 			value="/WEB-INF/views/umember/member/umemberFind{1}.jsp" />

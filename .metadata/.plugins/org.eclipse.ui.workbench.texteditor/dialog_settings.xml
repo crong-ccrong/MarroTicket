@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="form"/>
+		<item key="selection" value="submit"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="submit"/>
+			<item value="id"/>
+			<item value="tabs"/>
+			<item value="content"/>
+			<item value="%"/>
+			<item value="login-box"/>
+			<item value="body"/>
+			<item value="logo"/>
 			<item value="form"/>
 			<item value="from"/>
 			<item value="img"/>
@@ -15,16 +23,9 @@
 			<item value=".event"/>
 			<item value="@keyframes"/>
 			<item value="today"/>
-			<item value="click"/>
-			<item value="css\"/>
-			<item value="css"/>
-			<item value="black"/>
-			<item value="1px"/>
-			<item value="remove"/>
-			<item value="ajax"/>
-			<item value="hover"/>
 		</list>
 		<list key="replacehistory">
+			<item value="#login_box_total"/>
 			<item value="2px"/>
 			<item value="#EB0000"/>
 			<item value="#505050"/>

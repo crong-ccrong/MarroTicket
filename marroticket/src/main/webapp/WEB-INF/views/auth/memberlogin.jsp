@@ -30,5 +30,5 @@
 		<br>입력하신 내용을 다시 확인해주세요.</div>
 	</c:if>
 	<input type="submit" value="Login">
-<sec:csrfInput />
+<sec:csrfInput /> 
 </form>
