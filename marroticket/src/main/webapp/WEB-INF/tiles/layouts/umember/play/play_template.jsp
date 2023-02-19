@@ -26,7 +26,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 카카오맵 api -->
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d84113920d82c5aedff46d731816bcf9&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services,clusterer,drawing"></script>
 <!-- 달력 자바스크립트 -->
 <script src="/js/playdetail.js"></script>
 </head>

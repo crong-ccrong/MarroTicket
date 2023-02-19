@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="font-family"/>
+		<item key="selection" value="코미디"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="코미디"/>
+			<item value="genre"/>
 			<item value="font-family"/>
 			<item value="1120"/>
 			<item value="list"/>
@@ -21,8 +23,6 @@
 			<item value="btn"/>
 			<item value="butt"/>
 			<item value="step"/>
-			<item value="confirm"/>
-			<item value="reserve."/>
 		</list>
 		<list key="replacehistory">
 			<item value="1300"/>

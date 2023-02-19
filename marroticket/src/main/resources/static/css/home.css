@@ -78,6 +78,13 @@
 	padding-top : 100px;
 	position : static;
 }
+.common_content.genre1 {
+  padding-top: 350px;
+  margin-top: 500px;
+}
+.common_content.genre7 {
+	 margin-bottom:200px;
+}
 .section_heading {
     display: flex;
     align-items: flex-end;
