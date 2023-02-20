@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
+<link rel="stylesheet" type="text/css" href="/css/playList.css">
 
 <h2>현재 상연 목록</h2>
 

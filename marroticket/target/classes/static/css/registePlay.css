@@ -3,9 +3,23 @@ body{
 	font-family: 'Malgon Gothic';
 }
 
-div.button button,div.button input{
+div.button button{
 	display: inline-block;
-    background: #494e56;
+    background: #EB0000;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 600;
+    width: 150px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    vertical-align: middle;
+	
+}
+
+div.button input{
+	display: inline-block;
+    background: #868E96;
     color: #fff !important;
     font-size: 16px;
     font-weight: 600;
