@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# List of external plug-in models previously loaded. Timestamp: 1676525946878
-=======
-# List of external plug-in models previously loaded. Timestamp: 1676598840378
->>>>>>> soobin
-file:/C:/SpringBootProject/sts-4.17.0.RELEASE/dropins/JavaORMPlugin_1.0.0.201411180016.jar
+# List of external plug-in models previously loaded. Timestamp: 1676614300491
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/bcpg_1.72.0.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/bcprov_1.72.0.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/ch.qos.logback.classic_1.2.11.jar
@@ -191,6 +186,9 @@ file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.ecf.provider.f
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.ecf.provider.filetransfer.httpclient5.win32_1.0.501.v20221105-0315.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.ecf.provider.filetransfer.ssl_1.0.201.v20210409-2301.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.ecf.ssl_1.2.401.v20210409-2301.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.eclemma.core_3.1.6.202206011447.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.eclemma.doc_3.1.6.202206011447.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.eclemma.ui_3.1.6.202206011447.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.egit_6.4.0.202211300538-r.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.egit.core_6.4.0.202211300538-r.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.eclipse.egit.doc_6.4.0.202211300538-r.jar
@@ -651,6 +649,9 @@ file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.glassfish.jersey.injec
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.glassfish.jersey.media.jersey-media-json-jackson_2.30.1.v20221112-0806.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.gradle.toolingapi_7.4.2.v20220510-1312-s.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jacoco.agent_0.8.8.v20220415-0921.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jacoco.core_0.8.8.v20220517-1805.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jacoco.report_0.8.8.v20220517-1805.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jboss.tools.m2e.wro4j.core_1.2.0.202209071019.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jboss.tools.m2e.wro4j.ui_1.2.0.202209071019.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.jcodings_1.0.57.jar
@@ -664,8 +665,11 @@ file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.mybatis.generator.ecli
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.mybatis.generator.eclipse.doc_1.4.1.202203082207.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.mybatis.generator.eclipse.ui_1.4.1.202203082207.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm_9.4.0.v20221107-1714.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm_9.3.0.v20220409-0157.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm.analysis_9.4.0.v20221107-1714.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm.commons_9.3.0.v20220409-0157.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm.tree_9.4.0.v20221107-1714.jar
+file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm.tree_9.3.0.v20220409-0157.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.objectweb.asm.util_9.4.0.v20221107-1714.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.opentest4j_1.2.0.jar
 file:/C:/SpringBootProject/sts-4.17.0.RELEASE/plugins/org.osgi.annotation.bundle_2.0.0.202202082230.jar

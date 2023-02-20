@@ -82,8 +82,8 @@
 “정산대상자”는 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
 
 
-	
-	</textarea></td>
+   
+   </textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">연극등록 약관(필수)<input type="checkbox" name="agree2" /><font
@@ -129,7 +129,7 @@
 제8조 (권리∙의무의 양도 등 금지)
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
 
-	</textarea></td>
+   </textarea></td>
 			</tr>
 
 
@@ -176,8 +176,8 @@
 
 제8조 (권리∙의무의 양도 등 금지)
 “회원”은 “회사” 의 사전 서면동의 없이는 본 계약상의 지위 또는 권리 및 의무의 전부 또는 일부를 제3자에게 양도, 위임하거나 담보제공 등의 목적으로 처분할 수 없습니다. 
-	
-	</textarea><br> <br></td>
+   
+   </textarea><br> <br></td>
 			</tr>
 		</table>
 		<table class="information" border="1">
@@ -355,25 +355,8 @@
 				</select> <form:input path="psecondStartTime" id="psecondStartTime"
 						hidden="true" /><font color="red"><form:errors
 							path="psecondStartTime" /></font>
-
-<<<<<<< HEAD
-		<tr>
-			<form:input path="pregistrationApproval" value="0" hidden="true" />
-<<<<<<< HEAD
-			<form:input path="pamendmentApproved" hidden="true" />
-=======
-			<form:input path="pmodifyApproval" hidden="true" />
->>>>>>> soobin
-			<form:input path="pagree" id="pagee" value="1" hidden="true" />
-			<form:input path="tnumber" value="1" hidden="true" />
-			<form:input path="tId" hidden="true" value="${principal.tId }" />
-		</tr>
-	</table>
-=======
 				</td>
-
 			</tr>
-
 			<tr>
 				<form:input path="pregistrationApproval" value="0" hidden="true" />
 				<form:input path="pmodifyApproval" hidden="true" />
@@ -381,7 +364,6 @@
 			</tr>
 		</table>
 	</div>
->>>>>>> soobin
 </form:form>
 <br>
 <div>
