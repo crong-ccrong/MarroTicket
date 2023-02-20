@@ -19,7 +19,11 @@ public interface PlayMapper {
 	/*
 	 * public PlayVO read(Integer pNumber) throws Exception;
 	 */
+	// 극단 등록한 연극 포스터 보기
 	public String getPposter(Integer pnumber) throws Exception;
+	
+	// 극단 등록한 연극 포스터 미리보기
+	public String playRegistration(Integer pnumber) throws Exception;
 
 	// 관리자 추가************************************************
 

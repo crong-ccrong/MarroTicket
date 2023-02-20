@@ -5,8 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<h1>나의 관람 연극 내역</h1>
-<hr>
 
 <link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
 
@@ -23,7 +21,9 @@
     
   </div>
   <div class="content">
-	<table border="1">
+		<h1>나의 관람 연극 내역</h1>
+		<hr>
+		<table border="1">
 		<tr>
 			<th>예매일</th>
 			<th>예매 번호</th>

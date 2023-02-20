@@ -7,8 +7,6 @@
 
 
 
-<h1>예약 정보</h1>
-<hr>
 
 <link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
 
@@ -25,7 +23,9 @@
     
   </div>
   <div class="content">
-	<table border="1">
+		<h1>예약 정보</h1>
+		<hr>
+		<table border="1">
 		<tr>
 			<th>예매일</th>
 			<th>예매 번호</th>

@@ -8,8 +8,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-
-
 <!-- CSS only -->
 <!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -22,9 +20,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 	crossorigin="anonymous"></script> -->
-
-
-<link href="/css/notice.css" rel="stylesheet" type="text/css">
 
 <!-- <
 <style>
@@ -41,82 +36,86 @@ div.pag {
 }
 </style> -->
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/noticelist.css">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
 
-<div>
-	<div class="table" align="center">
+<h2>
+	<spring:message code="notice.header.list" />
+</h2>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="noticeRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
+<table class="table table-hover">
+	<tr>
+		<th class="th1" id="noticelist" align="center" width="80" scope="cols"><spring:message
+				code="notice.no" /></th>
 
-		<h2 align="center">
-			<spring:message code="notice.header.list" />
-		</h2>
+		<th class="th2" align="center" width="320" scope="cols"><spring:message
+				code="notice.title" /></th>
 
-		<table border="1" class="tab1">
-			<thead>
-				<tr align="center">
+		<th class="th3" align="center" width="180" scope="cols"><spring:message
+				code="notice.regdate" /></th>
+	</tr>
 
-					<th class="th1" id="noticelist" align="center" width="80"
-						scope="cols"><spring:message code="notice.no" /></th>
-
-					<th class="th2" align="center" width="320" scope="cols"><spring:message
-							code="notice.title" /></th>
-
-					<th class="th3" align="center" width="180" scope="cols"><spring:message
-							code="notice.regdate" /></th>
+	<tbody>
+		<c:choose>
+			<c:when test="${empty noticeList}">
+				<tr>
+					<td colspan="3"><spring:message code="common.listEmpty" /></td>
 				</tr>
-			</thead>
+			</c:when>
 
-			<tbody>
-				<c:choose>
-					<c:when test="${empty noticeList}">
-						<tr>
-							<td colspan="3"><spring:message code="common.listEmpty" /></td>
-						</tr>
-					</c:when>
-
-					<c:otherwise>
-						<c:forEach items="${noticeList}" var="noticeVO">
+			<c:otherwise>
+				<c:forEach items="${noticeList}" var="noticeVO">
 
 
-							<tr>
-								<td align="center" scope="row">${noticeVO.noticeNo}</td>
-								<!-- 게시글 상세보기할 때 페이징 요청 정보를 매개변수로 전달한다. -->
-								<td align="center" scope="row"><a
-									href="/notice/noticeRead${pagination.makeQuery(pagination.pageRequest.page)}&noticeNo=
+					<tr>
+						<td align="center" scope="row">${noticeVO.noticeNo}</td>
+						<!-- 게시글 상세보기할 때 페이징 요청 정보를 매개변수로 전달한다. -->
+						<td align="center" scope="row"><a
+							href="/notice/noticeRead${pagination.makeQuery(pagination.pageRequest.page)}&noticeNo=
 ${noticeVO.noticeNo}">${noticeVO.title}</a></td>
-								<td align="center" scope="row"><fmt:formatDate
-										pattern="yyyy-MM-dd HH:mm" value="${noticeVO.regDate}" /></td>
-							</tr>
+						<td align="center" scope="row"><fmt:formatDate
+								pattern="yyyy-MM-dd HH:mm" value="${noticeVO.regDate}" /></td>
+					</tr>
 
 
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
-	</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</tbody>
+</table>
+</div>
 
-	<div class="newbtn">
-		<button class="btn" onclick="location.href='noticeRegister'">
-			<spring:message code="action.new" />
-		</button>
-	</div>
+<div class="newbtn">
+	<button class="btn" onclick="location.href='noticeRegister'">
+		<spring:message code="action.new" />
+	</button>
+</div>
 
-	<!-- 페이징 네비게이션 -->
+<!-- 페이징 네비게이션 -->
 
-	<div class="pag" align="center">
-		<c:if test="${pagination.prev}">
-			<a href="${pagination.startPage - 1}">&laquo;</a>
-		</c:if>
+<div class="pag" align="center">
+	<c:if test="${pagination.prev}">
+		<a href="${pagination.startPage - 1}">&laquo;</a>
+	</c:if>
 
-		<c:forEach begin="${pagination.startPage }"
-			end="${pagination.endPage }" var="idx">
+	<c:forEach begin="${pagination.startPage }"
+		end="${pagination.endPage }" var="idx">
 
-			<a href="/notice/noticeList${pagination.makeQuery(idx)}">${idx}</a>
-		</c:forEach>
+		<a href="/notice/noticeList${pagination.makeQuery(idx)}">${idx}</a>
+	</c:forEach>
 
-		<c:if test="${pagination.next && pagination.endPage > 0}">
-			<a href="${pagination.endPage +1}">&raquo;</a>
-		</c:if>
-	</div>
+	<c:if test="${pagination.next && pagination.endPage > 0}">
+		<a href="${pagination.endPage +1}">&raquo;</a>
+	</c:if>
+</div>
 
 </div>
 

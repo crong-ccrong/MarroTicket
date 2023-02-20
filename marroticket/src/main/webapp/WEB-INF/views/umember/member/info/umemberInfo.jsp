@@ -2,11 +2,13 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
+<link rel="stylesheet" type="text/css" href="/css/umember_mypage.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap"
+	rel="stylesheet">
 
 <!-- 일반회원 마이페이지의 내정보 -->
 <script
@@ -15,23 +17,26 @@
 <!-- content section -->
 
 <div class="wrapper">
+	<div class="side">
 
-  <div class="side">
-    
-    <ul class="sidebar">
-      <li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
-    <li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약 정보</a></li>
-    <li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약 취소 정보</a></li>
-    <li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가 본 연극</a></li>
-    <li><a href="/umember/umemberCustomPlayList" data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
-</ul> 
-    
-  </div>
-  <div class="content">
-  <h1>내 정보</h1>
-<hr>
-  
-		<form:form modelAttribute="vo" >
+		<ul class="sidebar">
+			<li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+			<li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약
+					정보</a></li>
+			<li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약
+					취소 정보</a></li>
+			<li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가
+					본 연극</a></li>
+			<li><a href="/umember/umemberCustomPlayList"
+				data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
+		</ul>
+
+	</div>
+	<div class="content">
+		<h1>내 정보</h1>
+		<hr>
+
+		<form:form modelAttribute="vo">
 			<table border="1">
 				<tr>
 					<td>아이디</td>
@@ -64,14 +69,13 @@
 				<tr>
 					<td colspan="2" align="center"><input type="button"
 						value="회원탈퇴" id="deleteMember">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						 <input type="button"
-						value="회원정보수정" onclick="location.href='/umember/umemberModify'">
-					</td>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+						type="button" value="회원정보수정"
+						onclick="location.href='/umember/umemberModify'"></td>
 				</tr>
 			</table>
 		</form:form>
-</div>
+	</div>
 </div>
 
 
@@ -92,5 +96,5 @@ if(Message === '에러메시지') {
 }
 </script> 
  -->
- 
+
 

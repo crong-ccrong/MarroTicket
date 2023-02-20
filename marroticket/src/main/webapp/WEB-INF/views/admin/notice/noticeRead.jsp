@@ -5,6 +5,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/noticeread.css">
+
 <h2>
 	<spring:message code="notice.header.read" />
 </h2>
