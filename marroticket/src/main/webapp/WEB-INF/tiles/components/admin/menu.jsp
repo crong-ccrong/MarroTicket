@@ -50,9 +50,7 @@
          <p>
             <a href="/admin/umemberList">회원목록</a>
          </p>
-         <!-- <p>
-            <a href="/admin/umemberSecedeList">탈퇴회원목록</a>
-         </p> -->
+      
       </div>
    </div>
 

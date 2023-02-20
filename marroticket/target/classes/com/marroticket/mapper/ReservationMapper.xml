@@ -105,6 +105,7 @@
 		u_number = #{unumber} AND
 		p_number = #{pnumber}
 	</delete>
+	
 	<!-- 예매진행중, refresh 또는 페이지 벗어남으로 예매중 취소로 업데이트(해당 unumber의 모든 선택좌석 이력을 지운다) -->
 	<delete id="deleteHistory">
 		DELETE reservation
@@ -113,6 +114,7 @@
 		p_number = #{pnumber} AND
 		r_paystate = 1
 	</delete>
+	
 	<!-- 선택한 좌석이 예매진행중에서 n분이 경과한 후라면 delete -->
 	<delete id="deleteDataAfterTime" parameterType="map">
 		<![CDATA[
