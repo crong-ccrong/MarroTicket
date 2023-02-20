@@ -1,47 +1,83 @@
 @charset "UTF-8";
 
+.common_content_playCurrentList, .common_content_playExpectedList,
+	.common_content_playPassList {
+	width: 1200px;
+	margin: 0 auto;
+	font-family: 'Nanum Gothic', sans-serif;
+	margin-top: 20px;
+}
+
+.common_content_playCurrentList_tables, .common_content_playExpectedList_tables, .common_content_playPassList_tables {
+	
+	padding : 0 0 100px 0;
+	margin: 0 0 90px 50px;
+    width: auto;
+  /*   background: #f8f9fa; */
+    border-radius: 10px;
+   /*  box-shadow: 50px 30px 40px rgba(0, 0, 0, 0.08); */
+}
+
+.play_status {
+	font-family: 'Gowun Batang', serif;
+	font-size : 25px;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 0;
+}
+.play_status:after {
+        content: "";
+        display: block;
+        width: 200px;
+        border-bottom: 1px solid #bcbcbc;
+        margin: 20px auto 0;
+      }
+
 table.playTable {
-	margin: 5px 14px 0 14px;
+	margin: 0;
 	width: 259px;
 	overflow-clip-margin: content-box;
 	overflow: hidden;
 	border-radius: 10px;
 	padding: 10px;
+	padding-top: 50px;
 }
-
 table.playInfo {
 	margin: auto;
+	margin-bottom : 20px;
 }
 
-img.playListImg{
-	width: 259px;
-	height: 350px;
+table.playTable tbody tr td:first-child {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+
+img.playListImg {
+	width: 200px;
+	height: 290px;
 	object-fit: cover;
 	overflow-clip-margin: content-box;
 	overflow: hidden;
 	border-radius: 10px;
-	border: 1px solid gray;
-}
-img.playListImg:hover{
-	border: 2px solid #EB0000;
-	background-color: #EB0000;
+	border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-tr.playName {
+tr.playTheaterName, tr.playTime {
+	font-weight: 300;
+	color: #62676c;
+	letter-spacing: -0.03em;
+	line-height: 22px;
+	font-size: 14px;
+}
+
+tr.playName td {
 	font-weight: bold;
-	font-size: 20px;
-	font-family: 'Malgon Gothic';
+	font-size: 17px;
+	padding-bottom:10px;
+	border-bottom : 1px solid rgba(0, 0, 0, 0.08);
 }
 
 tr.playTheaterName {
 	text-align: left;
-	font-size: 15px;
-	font-family: 'Malgon Gothic';
-	font-size: 15px;
-}
-
-tr.playTime {
-	color: #EB0000;
-	font-size: 15px;
-	font-family: 'Malgon Gothic';
 }

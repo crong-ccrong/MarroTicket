@@ -16,7 +16,7 @@
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+<link rel="stylesheet" type="text/css" href="/css/login_template.css">
 <!-- ajax 통신을 위한 meta tag -->
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">

@@ -2,10 +2,25 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   <%@ include file="umemberSidebar.jsp" %> 
-<h1>예매 취소 내역</h1>
+<h1>예매 취소 정보</h1>
 <hr>
-<div class="info_body">
+
+
+<link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
+
+<div class="wrapper">
+  <div class="side">
+    <!-- Sidebar content goes here -->
+    <ul class="sidebar">
+      <li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+    <li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약 정보</a></li>
+    <li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약 취소 정보</a></li>
+    <li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가 본 연극</a></li>
+    <li><a href="/umember/umemberCustomPlayList" data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
+</ul> 
+    
+  </div>
+  <div class="content">
 	<table border="1">
 		<tr>
 			<th>취소일시</th>
@@ -30,17 +45,4 @@
 
 	</table>
 </div>
-
-
-
-<style>
-.info_body {
-	width: 80%;
-	float: right;
-	padding: 10px;
-}
-
-.footer {
-	clear: both;
-}
-</style>
+</div>

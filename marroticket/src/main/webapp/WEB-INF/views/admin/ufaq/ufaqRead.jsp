@@ -4,40 +4,42 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<h2>
-	<spring:message code="ufaq.header.read" />
-</h2>
-<form:form modelAttribute="ufaqVO">
-	<form:hidden path="ufaqNo" />
-	<table>
-		<tr>
-			<td><spring:message code="ufaq.title" /></td>
-			<td><form:input path="title" readonly="true" /></td>
-			<td><font color="red"><form:errors path="title" /></font></td>
-		</tr>
-
-		<tr>
-			<td><spring:message code="ufaq.content" /></td>
-			<td><form:textarea path="content" readonly="true" /></td>
-			<td><font color="red"><form:errors path="content" /></font></td>
-		</tr>
-	</table>
-</form:form>
-<div>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<button type="submit" id="btnEdit">
-		<spring:message code="action.edit" />
-	</button>
-
-	<button type="submit" id="btnRemove">
-		<spring:message code="action.remove" />
-	</button>
-
-	<button type="submit" id="btnList">
-		<spring:message code="action.list" />
-	</button>
-</sec:authorize>
-</div>
+<div class="common_ufaqRead">
+	<h2>
+		<spring:message code="ufaq.header.read" />
+	</h2>
+	<form:form modelAttribute="ufaqVO">
+		<form:hidden path="ufaqNo" />
+		<table>
+			<tr>
+				<td><spring:message code="ufaq.title" /></td>
+				<td><form:input path="title" readonly="true" /></td>
+				<td><font color="red"><form:errors path="title" /></font></td>
+			</tr>
+	
+			<tr>
+				<td><spring:message code="ufaq.content" /></td>
+				<td><form:textarea path="content" readonly="true" /></td>
+				<td><font color="red"><form:errors path="content" /></font></td>
+			</tr>
+		</table>
+	</form:form>
+	<div>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<button type="submit" id="btnEdit">
+			<spring:message code="action.edit" />
+		</button>
+	
+		<button type="submit" id="btnRemove">
+			<spring:message code="action.remove" />
+		</button>
+	
+		<button type="submit" id="btnList">
+			<spring:message code="action.list" />
+		</button>
+	</sec:authorize>
+	</div>
+</div>	
 <script>
 	$(document).ready(function() {
 
@@ -67,3 +69,10 @@
 		});
 	});
 </script>
+<style>
+	.common_ufaqRead {
+		width : 1120px;
+		margin : 0 auto;
+		font-family: 'Nanum Gothic ', sans-serif;
+	}
+</style>

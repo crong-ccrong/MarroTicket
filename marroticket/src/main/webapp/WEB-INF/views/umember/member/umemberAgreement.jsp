@@ -30,7 +30,7 @@
 </script>
 
 <form>
-	<h2>일반 사용자 회원가입</h2><br><hr>
+	<!-- <h2>일반 사용자 회원가입</h2> --><br><hr>
 	<br><div class="text" align="center"><b>개인 정보 수집 및 이용 동의(필수)</b></div><br>
 	
 	
@@ -96,15 +96,28 @@
 </form>
 
 <style>
+#login_box_total .container {
+	width: 1120px;
+	height : 100%;
+	padding-bottom : 20px;
+	margin-bottom : 150px;
+	font-family: 'Nanum Gothic ', sans-serif;
+}
 input[type="button"] {
+  display : inline-block;
+  margin-bottom : 39px;
+  margin-top : 39px;
   background-color: #ff6666;
+  font-size : 18px;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
+input[type="button"]:nth-child(2) {
+	width : 123.69px;
+}
 input[type="button"]:hover {
   background-color: #ff4d4d;
 }

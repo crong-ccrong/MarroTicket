@@ -6,9 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <link rel="stylesheet" type="text/css" href="/css/playList.css">
-
-<h2>상연 예정 목록</h2>
-
+<!-- 	<h2 class="play_status">상연 예정 목록</h2> -->
+<div class="common_content_playExpectedList">
+	<div class="common_content_playExpectedList_tables">
 <table>
 	<c:choose>
 		<c:when test="${empty playExpectedList }">
@@ -51,7 +51,8 @@
 		</c:otherwise>
 	</c:choose>
 </table>
-
+</div>
+</div>
 <script>
 	$(".header_gnb_link.expected").css({
     'color': '#EB0000',

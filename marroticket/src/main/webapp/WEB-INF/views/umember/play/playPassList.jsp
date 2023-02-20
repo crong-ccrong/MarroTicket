@@ -6,9 +6,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <link rel="stylesheet" type="text/css" href="/css/playList.css">
+<div class="common_content_playPassList">
 
-<h2>지난 상연 목록</h2>
-
+	<div class="common_content_playPassList_tables">
+<!-- <h2 class="play_status">지난 상연 목록</h2> -->	
 <table>
 	<c:choose>
 		<c:when test="${empty playPassList }">
@@ -51,7 +52,8 @@
 		</c:otherwise>
 	</c:choose>
 </table>
-
+</div>
+</div>
 <script>
 	$(".header_gnb_link.pass").css({
     'color': '#EB0000',

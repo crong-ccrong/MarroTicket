@@ -178,6 +178,7 @@ img, form, fieldset, svg, li {
     height: 58px;
 }
 .header_gnb_area {
+    margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -237,7 +238,7 @@ img, form, fieldset, svg, li {
     font-weight: bold;
 }
 .header_lnb_item:first-child {
-    margin-left: 33%;
+    margin-left: 59%;
 }
 .header_lnb_link {
     display: block;

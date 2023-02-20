@@ -1,9 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="umemberSidebar.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
 
+<div class="wrapper">
+  <div class="side">
+    
+    <ul class="sidebar">
+      <li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+    <li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약 정보</a></li>
+    <li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약 취소 정보</a></li>
+    <li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가 본 연극</a></li>
+    <li><a href="/umember/umemberCustomPlayList" data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
+</ul> 
+    
+  </div>
+  <div class="content">
 <form:form modelAttribute="vo" action="/umember/umemberModify">
 	<table border="1">
 		<tr>
@@ -67,6 +80,8 @@
 		</tr>
 	</table>
 </form:form>
+</div>
+</div>
 
 <!-- 취소 버튼 -->
 <script>
