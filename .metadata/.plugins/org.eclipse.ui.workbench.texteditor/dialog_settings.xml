@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-		<item key="selection" value="important"/>
-=======
-		<item key="selection" value="umemberReservationList"/>
->>>>>>> e9bd831afb542ab42481708c511067c9092ecbfe
+		<item key="selection" value="ufaq.*"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="important"/>
-=======
-			<item value="umemberReservationList"/>
-			<item value="re"/>
-			<item value="succ"/>
-			<item value="suce"/>
-			<item value="detail"/>
-			<item value="selectSeat"/>
-			<item value="select"/>
 			<item value="otherInquiries"/>
-			<item value="modifyTem"/>
-			<item value="modify"/>
->>>>>>> e9bd831afb542ab42481708c511067c9092ecbfe
+			<item value="ufaq.*"/>
+			<item value="ufaq.ufaqList"/>
+			<item value="우편번호"/>
+			<item value="joinform"/>
+			<item value="아이디"/>
+			<item value="umemberJoinForm"/>
+			<item value="gnb_inner"/>
+			<item value=".header_lnb_item:first-child"/>
+			<item value="padding"/>
+			<item value="padding : 10"/>
+			<item value="17"/>
+			<item value="tr.playTheaterName"/>
+			<item value="tr.playName td"/>
+			<item value="height"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-<<<<<<< HEAD
-		<item key="DIALOG_X_ORIGIN" value="807"/>
-		<item key="DIALOG_Y_ORIGIN" value="264"/>
-=======
-		<item key="DIALOG_X_ORIGIN" value="339"/>
-		<item key="DIALOG_Y_ORIGIN" value="263"/>
->>>>>>> e9bd831afb542ab42481708c511067c9092ecbfe
+		<item key="DIALOG_X_ORIGIN" value="1131"/>
+		<item key="DIALOG_Y_ORIGIN" value="271"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
