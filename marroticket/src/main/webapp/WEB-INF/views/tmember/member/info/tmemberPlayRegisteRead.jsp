@@ -6,6 +6,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tregisteplayread.css">
+
 <h2>등록한 연극 상세보기</h2>
 
 <form:form modelAttribute="playVO">
@@ -336,7 +339,4 @@
 		});
 	});
 </script>
-
-http://localhost:8080/theater/playRegisteRead?pNumber=5
-http://localhost:8080/theater/playReigsteRead?pNumber=5
  -->

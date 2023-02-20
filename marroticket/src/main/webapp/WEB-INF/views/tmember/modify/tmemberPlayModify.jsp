@@ -6,6 +6,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tregisteplaymodify.css">
+
 <h2>등록한 연극 수정하기</h2>
 
 <form:form modelAttribute="playVO" action="/theater/playModify"
@@ -112,100 +115,6 @@
 					<form:option value="7">시대/역사극</form:option>
 				</form:select><font color="red"><form:errors path="pgenre" /></font></td>
 		</tr>
-
-		<!-- 연극 포스터 변경 구현하기 -->
-		<!-- 기존 포스터 이미지 -->
-		<tr>
-			<td>	
-				<img alt="..." src="poster?pnumber=${playVO.pnumber }">
-			</td>
-			<!-- 포스터 변경 -->
-			<td>
-				<!-- 포스터 변경 -->
-				<c:if test="${not empty param.pposter}">
-					<form:input type="file" path="pposter" id="pposter"
-						accept="image/jpeg, image/png, image/jpg"></form:input>
-					<font color="red" id="pposterError">
-						<spring:message code="registe.file.error" />
-					</font>
-				</c:if>
-					<c:if test="${empty param.pposter}">
-						<form:form action="uploadPoster" method="post"
-							enctype="multipart/form-data">
-							<input type="File" name="pposter" id="pposter"
-					accept="image/jpeg, image/png, image/jpg" /><font color="red"
-					id="pposterError" hidden="true"><spring:message
-							code="registe.file.error" /></font></td>
-						</form:form>
-					</c:if>
-			</td>
-		</tr>
-		
-		<%-- <tr>
-			<!-- 연극 포스터 보기 -->
-			<td>
-				<!-- 기존 포스터 -->
-				<c:choose>
-					<c:when test="${not empty playVO.pposter}">
-						<img alt="..." src="poster?pnumber=${playVO.pnumber }">
-					</c:when>
-					<c:otherwise>
-						<img alt="No Image" src="poster?pnumber=${playVO.pnumber }">
-					</c:otherwise>
-				</c:choose>
-			</td>
-			<td>
-				<!-- 포스터 변경 할 경우 -->
-				<c:if test="${not empty param.pposter}">
-					<form:input type="file" path="pposter" id="pposter"
-						accept="image/jpeg, image/png, image/jpg"></form:input>
-					<font color="red" id="pposterError">
-						<spring:message code="registe.file.error" />
-					</font>
-				</c:if>
-					<c:if test="${empty param.pposter}">
-						<form:form action="uploadPoster" method="post"
-							enctype="multipart/form-data">
-							<input type="File" name="pposter" id="pposter"
-					accept="image/jpeg, image/png, image/jpg" /><font color="red"
-					id="pposterError" hidden="true"><spring:message
-							code="registe.file.error" /></font></td>
-						</form:form>
-					</c:if>
-			</td>
-		</tr> --%>
-		<%-- 
-		<tr>
-			<td>
-				<!-- 포스터 변경 안 할 경우 -->
-				<c:choose>
-					<c:when test="${not empty playVO.pposter}">
-						<!-- If it does, display the image using the 'poster' servlet -->
-						<img alt="..." src="poster?pnumber=${playVO.pnumber }">
-					</c:when>
-					<c:otherwise>
-						<img alt="No Image" src="poster?pnumber=${playVO.pnumber }">
-					</c:otherwise>
-				</c:choose>
-			</td>
-			<td>
-				<!-- 포스터 변경 할 경우 --> <c:if test="${not empty param.pposter}">
-					<form:input type="file" path="pposter" id="pposter"
-						accept="image/jpeg, image/png, image/jpg" />
-					<font color="red" id="pposterError"> <spring:message
-							code="registe.file.error" />
-					</font>
-				</c:if>
-			</td>
-
-		</tr> --%>
-		<!-- 
-		<tr>
-			<td>동의 여부</td>
-			<td><form:textarea path="pagree" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pagree" /></font></td>
-		</tr>
-		 -->
 
 	</table>
 

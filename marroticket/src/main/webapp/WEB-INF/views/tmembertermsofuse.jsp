@@ -1,24 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/css/termsofuse">
+
+
 <h2>이용약관 페이지</h2>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/ttermsofuse.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 <div class="wrap_tab">
-	<ul>
-		<li class="first_tab">
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
 		<c:choose>
 			<c:when test="${empty umember }">
-					<a class="link_tab"
-			title="umemberTermsOfUsePageMoving" href="/theater/umembertermsofuse"> <span
-				class="tabtitle">마로티켓 일반 회원 이용 약관</span>
-		</a>
+					<a class="nav-link" title="umemberTermsOfUsePageMoving" href="/theater/umembertermsofuse">
+						<span class="tabtitle">마로티켓 일반 회원 이용 약관</span>
+					</a>
 			</c:when>
 			<c:otherwise>
-								<a class="link_tab"
-			title="umemberTermsOfUsePageMoving" href="/umembertermsofuse"> <span
-				class="tabtitle">마로티켓 일반 회원 이용 약관</span>
-		</a>
+					<a class="nav-link" title="umemberTermsOfUsePageMoving" href="/umembertermsofuse">
+						<span class="tabtitle">마로티켓 일반 회원 이용 약관</span>
+					</a>
 			</c:otherwise>
 		</c:choose>
 
@@ -26,16 +29,14 @@
 		<li class="on">
 		<c:choose>
 			<c:when test="${empty umember }">
-		<a class="link_tab"
-			title="tmemberTermsOfUsePageMoving" href="/theater/tmembertermsofuse"> <span
-				class="tabtitle">마로티켓 극단 회원 이용 약관</span>
-		</a>
+		<a class="nav-link active" aria-current="page" title="umemberTermsOfUsePageMoving" href="/theater/umembertermsofuse">
+						<span class="tabtitle">마로티켓 극단 회원 이용 약관</span>
+					</a>
 			</c:when>
 			<c:otherwise>
-		<a class="link_tab"
-			title="tmemberTermsOfUsePageMoving" href="/tmembertermsofuse"> <span
-				class="tabtitle">마로티켓 극단 회원 이용 약관</span>
-		</a>
+		<a class="nav-link active" aria-current="page" title="umemberTermsOfUsePageMoving" href="/umembertermsofuse">
+						<span class="tabtitle">마로티켓 극단 회원 이용 약관</span>
+					</a>
 			</c:otherwise>
 		</c:choose>		
 		</li>
@@ -195,7 +196,6 @@
 	</dl>
 </div>
 <!-- //마로티켓 극단 계정 -->
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 <!-- 제3장 서비스의 이용 -->
 <div id="terms03" class="section_terms">
 	<h3>제 3장. 서비스의 이용</h3>
@@ -240,7 +240,6 @@
 									회원의 이메일 계정으로 이메일을 직접 발송할 수 있습니다."</li>
 								<li><span class="bullet">⑦</span> "서비스 이용 중 시스템 오류 등 문제점을
 									발견하신다면 언제든지 마로티켓 고객 센터로 알려주시기 바랍니다."</li>
-								<li><span class="bullet">⑨</span></li>
 							</ol></li>
 					</ol></li>
 			</ol>
@@ -462,88 +461,3 @@
 <!-- 
 공고일자: 2019년 5월 1일
 시행일자: 2019년 6월 3일 -->
-
-
-<style>
-/* Set the background color to a light gray */
-body {
-  background-color: #f8f8f8;
-}
-
-/* Use a modern font family and make the text easy to read */
-body, h2, h3, p, ol, li {
-  font-family: 'Roboto', sans-serif;
-  color: #444;
-  line-height: 1.5;
-}
-
-/* Add some animation to the headings */
-h2, h3 {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Add a bold accent color for links and headings */
-a, h2, h3 {
-  color: #4286f4;
-  font-weight: bold;
-}
-
-/* Add a hover effect for links */
-a:hover {
-  text-decoration: underline;
-}
-
-/* Style the table of contents */
-.tcont_terms {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.type01 {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.type01 li {
-  margin: 10px 0;
-}
-
-.type01 li a {
-  display: block;
-  padding: 5px;
-  border-radius: 3px;
-}
-
-.type01 li a:hover {
-  background-color: #e3e3e3;
-}
-
-/* Style the content sections */
-.section_terms {
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Make the sections responsive */
-@media (max-width: 768px) {
-  .section_terms {
-    padding: 10px;
-  }
-  
-  .tcont_terms {
-    padding: 10px;
-  }
-}
-
-</style>

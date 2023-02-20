@@ -3,8 +3,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tmemberinfo.css">
+
 <form:form modelAttribute="vo" action="/theater/tmemberModify"> 
-<table border="1">
+<table>
   <tr>
 			<td>아이디</td>
 			<td><form:input path="tId" readonly="true" /></td>
@@ -73,12 +76,11 @@
 		</tr>
 		 
 		<tr>
-		<td colspan="2" align="center">
+		<th colspan="2" align="center">
 		<input type="button" value="취소" id="cancle">
 	<input type="submit" value="수정 하기" id="mBtn">
-	
-	</td>
-	</tr> 
+		</th>
+		</tr> 
 	</table>
 	</form:form>
 	

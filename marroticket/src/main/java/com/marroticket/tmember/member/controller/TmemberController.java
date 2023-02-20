@@ -292,13 +292,6 @@ public class TmemberController {
 		// 수정 처리
 		modifyService.modify(playVO);
 
-		// db에 저장될 포스터 파일 입력
-		MultipartFile pposter = playVO.getPposter();
-		String pposterUrl = uploadFile(pposter.getOriginalFilename(), pposter.getBytes());
-		playVO.setPposterUrl(pposterUrl);
-
-		modifyService.modify(playVO);
-
 		log.info(playVO.toString());
 
 		// 업데이트 된 연극 정보 가져오기

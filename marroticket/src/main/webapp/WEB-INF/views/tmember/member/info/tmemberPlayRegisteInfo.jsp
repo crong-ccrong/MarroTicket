@@ -8,6 +8,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tregisteplayinfo.css">
+
 <h2>
 	등록한 연극
 </h2>
@@ -83,86 +86,6 @@
 		</c:otherwise>
 </c:choose>
 </table>
-
-<style>
-body {
-background-color: #f8f8f8;
-}
-
-/* Use a modern font family and make the text easy to read */
-body, h2, th, td, a {
-font-family: 'Roboto', sans-serif;
-color: #444;
-line-height: 1.5;
-}
-
-/* Add some animation to the headings */
-h2 {
-animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-
-/* Add a bold accent color for links and headings */
-a {
-color: #4286f4;
-}
-
-/* Add a hover effect for links */
-a:hover {
-text-decoration: underline;
-}
-
-/* Style the table */
-table {
-border-collapse: collapse;
-width: 100%;
-}
-
-/* Style the table header */
-th {
-background-color: #4286f4;
-color: #fff;
-text-align: center;
-font-weight: bold;
-padding: 10px;
-}
-
-/* Style the table cells */
-td {
-text-align: center;
-padding: 10px;
-}
-
-/* Style the odd rows of the table */
-tr:nth-child(odd) {
-background-color: #f2f2f2;
-}
-
-/* Style the even rows of the table */
-tr:nth-child(even) {
-background-color: #fff;
-}
-
-/* Style the content sections */
-.section_terms {
-margin: 20px 0;
-padding: 20px;
-background-color: #fff;
-border-radius: 5px;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Make the sections responsive */
-@media (max-width: 768px) {
-.section_terms {
-padding: 10px;
-}
-}
-</style>
 
 <!-- 연극 포스터 호버 -->
 <style>

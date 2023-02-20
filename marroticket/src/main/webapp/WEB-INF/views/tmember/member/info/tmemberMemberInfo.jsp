@@ -3,7 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- 극단 회원 정보 + 수정버튼 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tmemberinfo.css">
 
 <h3>극단 회원 정보</h3>
 
@@ -12,7 +13,7 @@
 
 <div class="content">
 <form:form modelAttribute="vo" action="/theater/tmembermypage"> 
-<table border="1">
+<table>
 	<tr>
 		<th align="center" width="180">분류</th>
 		<th align="center" width="400">내용</th>
@@ -77,9 +78,9 @@
 	<!-- 회원 정보 수정 버튼 -->
 	
 	<tr>
-		<td colspan="2" align="center">
+		<th colspan="2" align="center">
 			<input type="button" value="회원정보수정" onclick="location.href='/theater/tmemberModify'">
-		</td>
+		</th>
 	</tr>
 	
 	

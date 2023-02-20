@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <h2>개인정보취급방침</h2>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/privacy.css">
+
 <!-- 목차 -->
 <div class="tcont_terms">
 	<ol class="type01">
@@ -109,86 +112,3 @@
 		<dd>"보유기간 경과 또는 이용목적 달성 시 개인정보를 안전하게 즉시 파기합니다."</dd>
 	</dl>
 </div>
-
-<style>
-/* Set the background color to a light gray */
-body {
-  background-color: #f8f8f8;
-}
-
-/* Use a modern font family and make the text easy to read */
-body, h2, h3, p, ol, li {
-  font-family: 'Roboto', sans-serif;
-  color: #444;
-  line-height: 1.5;
-}
-
-/* Add some animation to the headings */
-h2, h3 {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Add a bold accent color for links and headings */
-a, h2, h3 {
-  color: #4286f4;
-}
-
-/* Add a hover effect for links */
-a:hover {
-  text-decoration: underline;
-}
-
-/* Style the table of contents */
-.tcont_terms {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.type01 {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.type01 li {
-  margin: 10px 0;
-}
-
-.type01 li a {
-  display: block;
-  padding: 5px;
-  border-radius: 3px;
-}
-
-.type01 li a:hover {
-  background-color: #e3e3e3;
-}
-
-/* Style the content sections */
-.section_terms {
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Make the sections responsive */
-@media (max-width: 768px) {
-  .section_terms {
-    padding: 10px;
-  }
-  
-  .tcont_terms {
-    padding: 10px;
-  }
-}
-
-</style>

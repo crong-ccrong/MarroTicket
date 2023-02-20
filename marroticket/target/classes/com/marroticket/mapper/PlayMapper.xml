@@ -216,7 +216,6 @@
 			P_SEATNUMBER = #{pseatNumber},
 			P_TICKETPRICE = #{pticketPrice},
 			P_GENRE = #{pgenre},
-			P_POSTER = #{pposter},
 			p_MODIFYAPPROVAL = '1'
 		WHERE p_number = #{pnumber}
 	</update>
