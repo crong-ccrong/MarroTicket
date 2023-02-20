@@ -247,9 +247,8 @@ img, form, fieldset, svg, li {
     color: #62676c;
 }
 /* -----------------------common_container----------------------- */
-.common_container {
+/* .common_container {
     flex: 1;
-    padding-bottom: 160px;
 }
 
 .common_section, .common_inner {
@@ -258,7 +257,7 @@ img, form, fieldset, svg, li {
 }
 .swiper.mySwiper{
 	clear : both;
-}
+} */
 
 /* -----------------------common_footer----------------------- */
 .common_footer {

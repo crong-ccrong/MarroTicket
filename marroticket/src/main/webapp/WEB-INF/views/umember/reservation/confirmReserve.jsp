@@ -171,24 +171,41 @@ $(document)
 			xhr.setRequestHeader(header, token);
 		});
 
-		//css변경
-		$('.step2').css({
-			'left': '0',
-			'top': '0',
-			'z-index': '1',
-			'width': '198px',
-			'height': '45px',
-			'background-color': 'black',
-			'border-width': '0',
-			'padding-left' :'30px',
-			'padding-right': '30px'
-		});
-
 		//총 결제 금액 변경
 		var rtotalpayment = ${ reservation.rtotalpayment };
 		var rticketcount = ${ reservation.rticketcount };
 		$("#_price_count").empty().html(rticketcount + '개');
 		$("#_price_amount").empty().html(rtotalpayment + '원');
+		
+		//logo click
+		$(".home").on("click", function(){
+			if (confirm("메인페이지로 이동 시, 선택한 좌석은\n취소됩니다.")) {
+				clickHome();
+		    	  location.href="/"
+		    	  return;
+			} 
+		});
+		
+	    //페이지가 logo를 눌러서 home으로 갔을 때
+	    function clickHome(){
+			var pdate = ${reservation.pdate};
+			var unumber = ${reservation.unumber};
+			var pnumber = ${reservation.pnumber};
+		   	   var refreshJson = {
+						"pdate" : pdate,
+						"unumber" : unumber,
+						"pnumber" : pnumber,   
+			   }
+				$.ajax({ // 이선좌 취소
+					type: "POST",
+					url: "/reserve/selectSeatRefresh",
+					contentType: 'application/json',
+					data: JSON.stringify(refreshJson),
+					success: function(response) {
+						console.log(response);
+					}
+				});
+	    }
 
 		//다음단계를 클릭했을 때
 		$('#reserveNext').click(function() {

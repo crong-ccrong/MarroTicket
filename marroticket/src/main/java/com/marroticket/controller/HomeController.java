@@ -35,13 +35,8 @@ public class HomeController {
 	public String home(Model model) throws Exception {
 
 		List<PlayVO> playCurrentList = new ArrayList<>(); //상연 중
-		List<PlayVO> playExpectedList = new ArrayList<>(); //상연 예정
-		
 		playCurrentList = playService.playCurrentList();
-		playExpectedList = playService.playExpectedList();
-		
 		model.addAttribute("playCurrentList", playCurrentList);
-		model.addAttribute("playExpectedList", playExpectedList);
 
 		return "home";
 	}
@@ -68,44 +63,16 @@ public class HomeController {
 		return "loginChoose";
 	}
 
-	// 아이디 찾기 유형 선택
+	// 아이디 찾기
 	@GetMapping("/memberFindId")
 	public String idFindChoose() {
 		return "memberFind.Id";
 	}
 
-	// 비밀번호 찾기 유형 선택
+	// 비밀번호 찾기
 	@GetMapping("/memberFindPassword")
 	public String passwordFindChoose() {
 		return "memberFind.Password";
-	}
-
-	// 일반회원 아이디찾기
-	@GetMapping("/umemberFindId")
-	public String userFindId() {
-		System.out.println("umemberFindId 메세드 호출");
-		return "umemberFind.Id";
-	}
-
-	// 일반회원 비밀번호찾기
-	@GetMapping("/umemberFindPassword")
-	public String userFindPassword() {
-		System.out.println("logincontroller 호출 완료");
-		return "umemberFind.Password";
-	}
-
-	// 극단회원 아이디찾기
-	@GetMapping("/tmemberFindId")
-	public String tmemberFindId() {
-		System.out.println("logincontroller 호출 완료");
-		return "tmemberFind.Id";
-	}
-
-	// 극단회원 비밀번호찾기
-	@GetMapping("/tmemberFindPassword")
-	public String tmemberFindPassword() {
-		System.out.println("logincontroller 호출 완료");
-		return "tmemberFind.Password";
 	}
 
 	// footer

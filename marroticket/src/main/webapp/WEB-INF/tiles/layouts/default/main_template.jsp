@@ -13,17 +13,9 @@
 <meta name="_csrf_header" content="${_csrf.headerName}">
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/css/main_template.css">
-<link rel="stylesheet" type="text/css" href="/css/home.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
-
-<!-- Swiper JS, css -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<!-- Link Swiper's CSS -->
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-	
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">	
 <title><tiles:getAsString name="title" /></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
