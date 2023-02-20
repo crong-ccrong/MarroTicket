@@ -6637,7 +6637,11 @@ Binding(CTRL+SHIFT+C,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+<<<<<<< Updated upstream
 !SESSION 2023-02-21 03:50:58.063 -----------------------------------------------
+=======
+!SESSION 2023-02-21 03:37:34.229 -----------------------------------------------
+>>>>>>> Stashed changes
 eclipse.buildId=4.17.0.202212060857
 java.version=17.0.5
 java.vendor=Eclipse Adoptium
@@ -6645,6 +6649,7 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.springframework.boot.ide.branding.sts4
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
 
+<<<<<<< Updated upstream
 !ENTRY ch.qos.logback.classic 1 0 2023-02-21 03:50:59.433
 !MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
 
@@ -6654,6 +6659,17 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springfra
 !ENTRY org.eclipse.jface 2 0 2023-02-21 03:51:03.270
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-02-21 03:51:03.270
+=======
+!ENTRY ch.qos.logback.classic 1 0 2023-02-21 03:37:35.541
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2023-02-21 03:37:36.657
+!MESSAGE Logback config file: C:\SpringBootProject\marroticket\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.0.20221015-0744.xml
+
+!ENTRY org.eclipse.jface 2 0 2023-02-21 03:37:39.048
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-02-21 03:37:39.048
+>>>>>>> Stashed changes
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
@@ -6671,7 +6687,11 @@ Binding(CTRL+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+<<<<<<< Updated upstream
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-02-21 03:51:03.270
+=======
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-02-21 03:37:39.048
+>>>>>>> Stashed changes
 !MESSAGE A conflict occurred for ALT+SHIFT+R:
 Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
@@ -6690,6 +6710,7 @@ Binding(ALT+SHIFT+R,
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< Updated upstream
 !ENTRY org.eclipse.ui 4 4 2023-02-21 03:51:05.584
 !MESSAGE Unable to create part
 !STACK 1
@@ -6959,12 +6980,16 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/marroticket/s
 !MESSAGE Cannot determine URI for '/marroticket/src/main/resources/static/css/umember_mypage.css'.
 
 !ENTRY org.eclipse.egit.ui 2 0 2023-02-21 03:51:06.251
+=======
+!ENTRY org.eclipse.egit.ui 2 0 2023-02-21 03:37:43.070
+>>>>>>> Stashed changes
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\xpsxm'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< Updated upstream
 !ENTRY org.eclipse.core.jobs 4 2 2023-02-21 03:51:22.916
 !MESSAGE An internal error occurred during: "Auto share git projects".
 !STACK 0
@@ -6995,4 +7020,22 @@ java.nio.file.InvalidPathException: Illegal char <:> at index 0: :.git:
 !MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:52:01.285
+=======
+!ENTRY org.eclipse.ui 2 2 2023-02-21 03:37:50.981
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:37:52.614
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:37:54.546
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:37:54.781
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:38:00.879
+!MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-02-21 03:38:00.992
+>>>>>>> Stashed changes
 !MESSAGE The artifact org.hibernate:hibernate-validator:jar:6.0.16.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.16.Final
