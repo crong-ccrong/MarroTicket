@@ -180,26 +180,26 @@
    </textarea><br> <br></td>
 			</tr>
 		</table>
-		<table class="information" border="1">
+		<table class="information" >
 			<tr>
-				<td>연극명</td>
-				<td><form:input path="pname" placeholder="연극명 입력칸" /><font
+				<td class="inputName">연극명</td>
+				<td class="inputInfo"><form:input path="pname" placeholder="연극명 입력칸" /><font
 					color="red"><form:errors path="pname" /></font></td>
 			</tr>
 
 			<tr>
-				<td>연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
+				<td class="inputName">연극 시작일<br>(현재일 시점부터 최소 30일 이후여야 합니다.)
 				</td>
-				<td><form:input path="pstartDate" id="pstartDate"
+				<td class="inputInfo"><form:input path="pstartDate" id="pstartDate"
 						readonly="true" /><font color="red"><form:errors
 							path="pstartDate">
 							<spring:message code="registe.date.error" />
 						</form:errors></font></td>
 			</tr>
 			<tr>
-				<td>연극 종료일<br>(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)
+				<td class="inputName">연극 종료일<br>(연극 시작일 시점부터 최대 60일까지 선택 가능합니다.)
 				</td>
-				<td><form:input path="pcloseDate" id="pcloseDate"
+				<td class="inputInfo"><form:input path="pcloseDate" id="pcloseDate"
 						readonly="true" /><font color="red"><form:errors
 							path="pcloseDate">
 							<spring:message code="registe.date.error" />
@@ -208,41 +208,41 @@
 
 
 			<tr>
-				<td>연극 소요시간(3자리까지 분단위입력)</td>
-				<td><form:input path="prunningTime" id="prunningTime"
+				<td class="inputName">연극 소요시간(3자리까지 분단위입력)</td>
+				<td class="inputInfo"><form:input path="prunningTime" id="prunningTime"
 						placeholder="연극 소요 시간 입력칸" />분 <font color="red"><form:errors
 							path="prunningTime" /></font></td>
 			</tr>
 
 			<tr>
-				<td>극장명</td>
-				<td><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
+				<td class="inputName">극장명</td>
+				<td class="inputInfo"><form:input path="ptheaterName" placeholder="극장명 입력칸" /> <font
 					color="red"><form:errors path="ptheaterName" /> </font></td>
 			</tr>
 
 			<tr>
-				<td>극장 주소</td>
-				<td><input type="button" onclick="sample6_execDaumPostcode()"
+				<td rowspan="2" class="inputName">극장 주소</td>
+				<td class="inputInfo"><input type="button" onclick="sample6_execDaumPostcode()"
 					value="주소 찾기" /></td>
 			</tr>
 
 			<tr>
-				<td colspan="2"><form:input path="ptheaterAddress"
-						id="ptheaterAddress" /> <font color="red"><form:errors
+				<td class="inputInfo" ><form:input path="ptheaterAddress"
+						id="ptheaterAddress" readonly="true" /> <font color="red"><form:errors
 							path="ptheaterAddress" /> </font></td>
 			</tr>
 
 			<tr>
-				<td>연극포스터</td>
-				<td><input type="File" name="pposter" id="pposter"
+				<td class="inputName">연극포스터</td>
+				<td class="inputInfo"><input type="File" name="pposter" id="pposter"
 					accept="image/jpeg, image/png, image/jpg" /><font color="red"
 					id="pposterError" hidden="true"><spring:message
 							code="registe.file.error" /></font></td>
 			</tr>
 
 			<tr>
-				<td>기획사 정보</td>
-				<td><form:input path="pagency" placeholder="기획사 정보 입력칸"
+				<td class="inputName">기획사 정보</td>
+				<td class="inputInfo"><form:input path="pagency" placeholder="기획사 정보 입력칸"
 						value="마로기획" /><font color="red"><form:errors
 							path="pagency" /></font></td>
 			</tr>
@@ -250,8 +250,8 @@
 
 
 			<tr>
-				<td>장르 정보</td>
-				<td><form:select path="pgenre">
+				<td class="inputName">장르 정보</td>
+				<td class="inputInfo"><form:select path="pgenre">
 						<option value="1">로맨스극</option>
 						<option value="2">코미디극</option>
 						<option value="3">드라마극</option>
@@ -263,8 +263,8 @@
 			</tr>
 
 			<tr>
-				<td>관람 등급</td>
-				<td><form:select path="pratings">
+				<td class="inputName">관람 등급</td>
+				<td class="inputInfo"><form:select path="pratings">
 						<option value="1">전체 이용가</option>
 						<option value="2">12세 이상</option>
 						<option value="3">15세 이상</option>
@@ -273,36 +273,36 @@
 			</tr>
 
 			<tr>
-				<td>티켓 가격(원)</td>
-				<td><form:input type="text" path="pticketPrice"
+				<td class="inputName">티켓 가격(원)</td>
+				<td class="inputInfo"><form:input type="text" path="pticketPrice"
 						placeholder="티켓 가격 입력칸" />원<font color="red"><form:errors
 							path="pticketPrice" /></font></td>
 			</tr>
 
 			<tr>
-				<td>캐스팅 데이터</td>
-				<td><form:textarea rows="10" cols="50" path="pcasting"
+				<td class="inputName">캐스팅 데이터</td>
+				<td class="inputInfo"><form:textarea rows="10" cols="50" path="pcasting"
 						placeholder="캐스팅 정보 입력칸" /><font color="red"><form:errors
 							path="pcasting" /></font></td>
 			</tr>
 			<tr>
-				<td>연극 줄거리</td>
-				<td><form:textarea rows="10" cols="50" path="pplot"
+				<td class="inputName">연극 줄거리</td>
+				<td class="inputInfo"><form:textarea rows="10" cols="50" path="pplot"
 						placeholder="연극 줄거리 입력칸" /><font color="red"><form:errors
 							path="pplot" /></font></td>
 			</tr>
 
 			<tr>
-				<td>좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
-				<td><form:input type="text" path="pseatNumber"
+				<td class="inputName">좌석 개수(최대 100좌석까지만 입력할 수 있습니다.)</td>
+				<td class="inputInfo"><form:input type="text" path="pseatNumber"
 						placeholder="좌석 개수 입력칸" />좌석<font color="red"><form:errors
 							path="pseatNumber" /></font></td>
 
 			</tr>
 
 			<tr>
-				<td>상연 시각</td>
-				<td>1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
+				<td class="inputName">상연 시각</td>
+				<td class="inputInfo">1회차 상연 시간 선택 <select id="pfirstStartTimeHour"
 					onchange="changePFirstStartTime()">
 						<option value="10">10</option>
 						<option value="11">11</option>
@@ -355,7 +355,6 @@
 				</select> <form:input path="psecondStartTime" id="psecondStartTime"
 						hidden="true" /><font color="red"><form:errors
 							path="psecondStartTime" /></font>
-
 				</td>
 			</tr>
 			<tr>
@@ -367,7 +366,7 @@
 	</div>
 </form:form>
 <br>
-<div>
+<div class="button">
 	<input type="button" value="메인화면으로" id="main" />
 	<button type="submit" id="registeTemporary">임시등록</button>
 </div>
@@ -482,12 +481,14 @@
 														formObj.submit();
 
 													} else {
-														if ($(
-																"#psecondStartTimeMinute")
-																.val() == ""
-																|| $(
+														if ((psecondStartTimeHour == "" || $(
+																"#psecondStartTimeHour")
+																.val() == null)
+																&& ($(
 																		"#psecondStartTimeMinute")
-																		.val() == null) {
+																		.val() == "" || $(
+																		"#psecondStartTimeMinute")
+																		.val() == null)) {
 															alert("연극 시작 시간을 선택해주세요");
 															document
 																	.getElementById(
@@ -496,14 +497,7 @@
 														} else {
 															$(
 																	"#psecondStartTime")
-																	.val(
-																			$(
-																					"#psecondStartTimeHour")
-																					.val()
-																					+ ":"
-																					+ $(
-																							"#psecondStartTimeMinute")
-																							.val());
+																	.val("없음");
 															formObj.submit();
 														}
 

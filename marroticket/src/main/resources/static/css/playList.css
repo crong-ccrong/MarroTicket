@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+table.playTable {
+	margin: 5px 14px 0 14px;
+	width: 259px;
+	overflow-clip-margin: content-box;
+	overflow: hidden;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+table.playInfo {
+	margin: auto;
+}
+
+img.playListImg{
+	width: 259px;
+	height: 350px;
+	object-fit: cover;
+	overflow-clip-margin: content-box;
+	overflow: hidden;
+	border-radius: 10px;
+	border: 1px solid gray;
+}
+img.playListImg:hover{
+	border: 2px solid #EB0000;
+	background-color: #EB0000;
+}
+
+tr.playName {
+	font-weight: bold;
+	font-size: 20px;
+	font-family: 'Malgon Gothic';
+}
+
+tr.playTheaterName {
+	text-align: left;
+	font-size: 15px;
+	font-family: 'Malgon Gothic';
+	font-size: 15px;
+}
+
+tr.playTime {
+	color: #EB0000;
+	font-size: 15px;
+	font-family: 'Malgon Gothic';
+}

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e9bd831afb542ab42481708c511067c9092ecbfe
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ExternalProject"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
+<<<<<<< HEAD
 >>>>>>> e956a0b6df06541bd92ed51b11cebd825959ff79
 	<section name="NewWizardAction">
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard"/>
@@ -15,4 +19,6 @@
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
+=======
+>>>>>>> e9bd831afb542ab42481708c511067c9092ecbfe
 </section>

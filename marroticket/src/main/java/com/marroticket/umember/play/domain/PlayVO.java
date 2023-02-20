@@ -31,7 +31,7 @@ public class PlayVO {
 	private String prunningTime; // 연극 소요시간(러닝타임)
 
 	@NotBlank(message = "극장 이름은 필수 입력 값입니다.")
-	@Size(max = 50, message = "50자 이내로 입력해주세요.")
+	@Size(max = 10, message = "10자 이내로 입력해주세요.")
 	private String ptheaterName; // 극장 이름
 
 	@NotBlank(message = "극장 주소는 필수 입력 값입니다.")
@@ -42,7 +42,7 @@ public class PlayVO {
 	private String pposterUrl; // 포스터url
 
 	@NotBlank(message = "기획사 정보는 필수 입력 값입니다.")
-	@Size(max = 20, message = "20자 이내로 입력해주세요.")
+	@Size(max = 10, message = "10자 이내로 입력해주세요.")
 	private String pagency; // 기획사 정보
 
 	@NotBlank(message = "캐스팅 데이터는 필수 입력 값입니다.")
