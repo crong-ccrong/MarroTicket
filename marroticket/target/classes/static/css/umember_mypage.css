@@ -193,7 +193,7 @@ input[type="button"][value="회원정보수정"] {
   clear: both;
 }
 
-<<<<<<< HEAD
+
 .poster_section {
   display: flex;
   flex-direction: column;
@@ -230,7 +230,7 @@ input[type="button"][value="회원정보수정"] {
 
 
 
-=======
+/* =======
 	.footer_info_section_background, .footer_info_section_background img {
 		width: 8000px;
 		height: 550px;
@@ -246,4 +246,4 @@ input[type="button"][value="회원정보수정"] {
 		top : 250px;
 		left : 28%;
 	}
->>>>>>> bb987596727b0e709a30344145a15a9407497ba4
+>>>>>>> bb987596727b0e709a30344145a15a9407497ba4 */
