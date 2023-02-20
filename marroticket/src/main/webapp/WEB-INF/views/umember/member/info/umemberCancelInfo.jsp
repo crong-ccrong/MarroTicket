@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<h1>예매 취소 정보</h1>
-<hr>
 
 
 <link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
@@ -21,7 +19,9 @@
     
   </div>
   <div class="content">
-	<table border="1">
+		<h1>예매 취소 정보</h1>
+		<hr>
+		<table border="1">
 		<tr>
 			<th>취소일시</th>
 			<th>관람일시</th>

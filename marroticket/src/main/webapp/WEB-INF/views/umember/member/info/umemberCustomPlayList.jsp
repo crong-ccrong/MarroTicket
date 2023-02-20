@@ -3,12 +3,6 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
-
-
-<h1>나의 맞춤 연극</h1>
-<hr>
-
-
 <div class="wrapper">
   <div class="side">
     <!-- Sidebar content goes here -->
@@ -22,7 +16,9 @@
     
   </div>
   <div class="content">
-<div class="poster_container">
+		<h1>나의 맞춤 연극</h1>
+		<hr>
+		<div class="poster_container">
 <h2>${uName}님께 추천 드리는 ${uGenre}장르의 상연 중 / 상연 예정 연극 정보 입니다.</h2>
 <c:forEach items="${playList}" var="play">
      <section class="poster_section">

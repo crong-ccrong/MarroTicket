@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* Basic styles for form elements */
+* {
+	     font-family: 'Nanum Gothic', sans-serif;
+}
+
+a {
+  color: #EB0000;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea {
+  border: none;
+  background-color: #f2f2f2;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form input[type="text"]:read-only,
+form input[type="date"]:read-only,
+form textarea:read-only {
+  background-color: #eee;
+}
+
+form input[type="button"] {
+  background-color: #EB0000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form input[type="button"]:hover {
+  background-color: #EB0000;
+}
+
+form font[color="red"] {
+  color: red;
+}
+
+form img {
+  max-width: 100%;
+  height: auto;
+}

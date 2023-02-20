@@ -8,6 +8,7 @@
   display: flex;
   height: 100vh;
   width : 1300px;
+  margin : 0 auto;
 }
 
 
@@ -17,6 +18,7 @@
   height: auto;
   width: 150px;
   padding: 20px;
+  padding-top : 50px;
 }
 
 .content {
@@ -191,6 +193,7 @@ input[type="button"][value="회원정보수정"] {
   clear: both;
 }
 
+<<<<<<< HEAD
 .poster_section {
   display: flex;
   flex-direction: column;
@@ -227,3 +230,20 @@ input[type="button"][value="회원정보수정"] {
 
 
 
+=======
+	.footer_info_section_background, .footer_info_section_background img {
+		width: 8000px;
+		height: 550px;
+		background: #f5f6f9;
+	}
+	.footer_info_section_logo {
+		width : 1300px;
+		margin : 0 auto;
+	}
+	.footer_info_section_logo img{
+		width : 500px;
+		position: absolute;
+		top : 250px;
+		left : 28%;
+	}
+>>>>>>> bb987596727b0e709a30344145a15a9407497ba4

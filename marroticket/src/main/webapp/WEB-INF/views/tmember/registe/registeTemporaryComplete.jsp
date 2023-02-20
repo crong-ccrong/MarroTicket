@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/playtemporary.css">
+
 <h1>
 	연극 정보가 입력되었습니다.<br> 관리자 승인 후 연극이 등록됩니다.
 </h1>

@@ -2,19 +2,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/utermsofuse.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
 <h2>이용약관 페이지</h2>
 
 <div class="wrap_tab">
-	<ul>
-		<li class="first_tab"><c:choose>
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><c:choose>
 				<c:when test="${empty tmember }">
-					<a class="link_tab" title="umemberTermsOfUsePageMoving"
+					<a class="nav-link active" aria-current="page" title="umemberTermsOfUsePageMoving"
 						href="/umembertermsofuse"> <span class="tabtitle">마로티켓
 							일반 회원 이용 약관</span>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a class="link_tab" title="umemberTermsOfUsePageMoving"
+					<a class="nav-link active" aria-current="page" title="umemberTermsOfUsePageMoving"
 						href="/theater/umembertermsofuse"> <span class="tabtitle">마로티켓
 							일반 회원 이용 약관</span>
 					</a>
@@ -23,13 +29,13 @@
 		</li>
 		<li class="on"><c:choose>
 				<c:when test="${empty tmember }">
-					<a class="link_tab" title="tmemberTermsOfUsePageMoving"
+					<a class="nav-link" title="tmemberTermsOfUsePageMoving"
 						href="/tmembertermsofuse"> <span class="tabtitle">마로티켓
 							극단 회원 이용 약관</span>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a class="link_tab" title="tmemberTermsOfUsePageMoving"
+					<a class="nav-link" title="tmemberTermsOfUsePageMoving"
 						href="/theater/tmembertermsofuse"> <span class="tabtitle">마로티켓
 							극단 회원 이용 약관</span>
 					</a>

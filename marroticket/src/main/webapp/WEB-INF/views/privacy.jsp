@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <h2>개인정보취급방침</h2>
 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/privacy.css">
+
 <!-- 목차 -->
 <div class="tcont_terms">
 	<ol class="type01">
@@ -79,7 +82,7 @@
 <!-- //개인정보 이용 -->
 
 <!-- 3. 개인정보 제공 -->
-<div id="terms3" class="section_terms">
+<div id="terms03" class="section_terms">
 	<h3>제 3장. 개인정보 제공</h3>
 	<dl>
 		<dt></dt>
@@ -102,7 +105,7 @@
 <!-- //개인정보 제공 -->
 
 <!-- 3. 개인정보 파기 -->
-<div id="terms4" class="section_terms">
+<div id="terms04" class="section_terms">
 	<h3>제 4장. 개인정보 파기</h3>
 	<dl>
 		<dt></dt>
