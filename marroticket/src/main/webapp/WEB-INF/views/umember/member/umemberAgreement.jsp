@@ -29,8 +29,7 @@
 	}
 </script>
 
-<form>
-	<!-- <h2>일반 사용자 회원가입</h2> --><br><hr>
+<form><br><hr>
 	<br><div class="text" align="center"><b>개인 정보 수집 및 이용 동의(필수)</b></div><br>
 	
 	

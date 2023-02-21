@@ -18,7 +18,7 @@
   <div class="content">
 		<h1>나의 맞춤 연극</h1>
 		<hr>
-		<nav class="genre"><h2>${uName}님께 추천 드리는 ${uGenre}장르의 상연 중 / 상연 예정 연극 정보 입니다.</h2></nav>
+		<nav class="genre"><p>${uName}님께 추천 드리는 ${uGenre}장르의 상연 중 / 상연 예정 연극 정보 입니다.</p></nav>
 		<div class="poster_container">
 <c:forEach items="${playList}" var="play">
     <div class="gallery-item">
