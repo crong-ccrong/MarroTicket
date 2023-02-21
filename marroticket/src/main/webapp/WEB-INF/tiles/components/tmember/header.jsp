@@ -2,25 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
-<!-- 로그인을 한(인증된 사용자인) 경우 -->
-<sec:authorize access="hasRole('ROLE_TMEMBER')">
-	<div style="font-size: 12px; text-align: right">
-		<sec:authentication property="principal.tname" />
-		<a href="#" onclick="document.getElementById('logout').submit();">로그아웃</a>
+<div class="header_util_inner">
+	<div class="header_util_left"></div>
+	<div class="header_util_right">
+		<ul class="header_util_list">
+			<!-- 로그인을 한(인증된 사용자인) 경우 -->
+			<sec:authorize access="hasRole('ROLE_TMEMBER')">
+				<li class="header_util_item"><a class="header_util_link"><sec:authentication
+							property="principal.tname" /></a></li>
+				<li class="header_util_item"><a class="header_util_link"
+					onclick="document.getElementById('logout').submit();" style="cursor : pointer">로그아웃</a></li>
+			</sec:authorize>
+		</ul>
 	</div>
-</sec:authorize>
+</div>
 <form id="logout" action="/memberlogout" method="POST">
 	<input name="${_csrf.parameterName}" type="hidden"
 		value="${_csrf.token}" />
 </form>
-
-
-<br>
-<br>
-
-<div style="font-size: 1.5em; text-align: left">
-	<a href="/theater/">마로티켓극단</a>
-</div>
-
-<hr>

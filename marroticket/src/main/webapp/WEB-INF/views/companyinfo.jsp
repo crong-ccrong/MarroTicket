@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!-- html -->
-<a href="/">
+<sec:authorize access="hasRole('ROLE_TMEMBER') or hasRole('ROLE_GUEST')">
+	<a href="/theater">
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	<a href="/">
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="/admin">
+</sec:authorize>
 	<img class="footer_logo"alt="company_info" src="/images/마로티켓 로고 2-002.png">
 </a>	
 <img class="footer_companyInfo"alt="company_info" src="/images/company_info.png">    
@@ -10,7 +20,7 @@
 	.footer_logo {
 		display : inline-block;
 		position: absolute;
-		left : 450px;
+		left : 35%;
 		margin-top : 200px;
 		width : 550px;
 	}

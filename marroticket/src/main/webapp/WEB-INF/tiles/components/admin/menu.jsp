@@ -1,88 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-
-<style>
-.dropdown {
-   display: inline-block;
-   float: left;
-   position: relative;
-   display: inline-block;
-   text-decoration: none;
-}
-
-.dropdown-content {
-   display: none;
-   position: absolute;
-   background-color: #f9f9f9;
-   min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-   padding: 12px 16px;
-   z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-   display: block;
-}
-</style>
-<div align="left">
-
-   <div class="dropdown">
-      <span>가맹관리|</span>
-      <div class="dropdown-content">
-         <p>
-            <a href="/admin/playApproveList">연극승인</a>
-         </p>
-         <p>
-            <a href="/admin/playModifyList">연극수정승인</a>
-         </p>
-         <p>
-            <a href="/admin/paymentList">정산</a>
-         </p>
-      </div>
-   </div>
-
-   <div class="dropdown">
-      <span>|회원관리|</span>
-      <div class="dropdown-content">
-         <p>
-            <a href="/admin/tmemberApproveList">극단회원목록</a>
-         </p>
-         <p>
-            <a href="/admin/umemberList">회원목록</a>
-         </p>
-      
-      </div>
-   </div>
-
-   <div class="dropdown">
-      <span>|연극관리|</span>
-      <div class="dropdown-content">
-         <p>
-            <a href="/admin/playCurrentList">현재상연작</a>
-         </p>
-         <p>
-            <a href="/admin/playExpectedList">상연예정작</a>
-         </p>
-         <p>
-            <a href="/admin/playPassList">지난상연작</a>
-         </p>
-      </div>
-   </div>
-
-   <div class="dropdown">
-      <span>|게시판관리</span>
-      <div class="dropdown-content">
-         <p>
-            <a href="/notice/noticeList?accept=admin">공지사항</a>
-         </p>
-         <p>
-            <a href="/ufaq/ufaqList?accept=admin">사용자 FAQ</a>
-         </p>
-         <p>
-            <a href="/tfaq/tfaqList?accept=admin">극단 FAQ</a>
-         </p>
-      </div>
-   </div>
+	pageEncoding="UTF-8"%>
+<div class="header_gnb_inner">
+	<nav class="header_gnb_area">
+		<ul class="header_gnb_list" style="padding-left : 0;">
+			<li class="header_gnb_item"><a class="header_gnb_link home"
+				href="/admin">홈</a></li>
+			<li class="header_gnb_item"><a class="header_gnb_link current"
+				href="/admin/playApproveList">가맹 관리</a>
+				<div class="header_lnb ">
+					<ul class="header_lnb_list">
+						<li class="header_lnb_item first"><a class="header_lnb_link"
+							href="/admin/playApproveList">연극승인</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/admin/playModifyList">연극수정승인</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/admin/paymentList">정산</a></li>
+					</ul>
+				</div></li>
+			<li class="header_gnb_item"><a class="header_gnb_link expected"
+				href="/admin/tmemberApproveList">회원 관리</a>
+				<div class="header_lnb ">
+					<ul class="header_lnb_list">
+						<li class="header_lnb_item second"><a class="header_lnb_link"
+							href="/admin/tmemberApproveList">극단회원목록</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/admin/umemberList">일반회원목록</a></li>
+					</ul>
+				</div></li>
+			<li class="header_gnb_item"><a class="header_gnb_link pass"
+				href="/admin/playCurrentList">연극 관리</a>
+				<div class="header_lnb ">
+					<ul class="header_lnb_list">
+						<li class="header_lnb_item third"><a class="header_lnb_link"
+							href="/admin/playCurrentList">현재 상연작</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/admin/playExpectedList">상연 예정작</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/admin/playPassList">지난 상연작</a></li>
+					</ul>
+				</div></li>
+			<li class="header_gnb_item"><a class="header_gnb_link service"
+				href="/notice/noticeList?accept=admin">게시판 관리</a>
+				<div class="header_lnb ">
+					<ul class="header_lnb_list">
+						<li class="header_lnb_item fourth"><a class="header_lnb_link"
+							href="/notice/noticeList?accept=admin">공지사항</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/ufaq/ufaqList?accept=admin">사용자 FAQ</a></li>
+						<li class="header_lnb_item"><a class="header_lnb_link"
+							href="/tfaq/tfaqList?accept=admin">극단 FAQ</a></li>
+					</ul>
+				</div></li>
+		</ul>
+	</nav>
 </div>
-<br>
-<hr>
