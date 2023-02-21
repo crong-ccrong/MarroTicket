@@ -165,17 +165,12 @@ colgroup {
 	overflow: hidden;
 	clear: both;
 	/* background: #505050; */
-<<<<<<< HEAD
+
 	margin-bottom : 8px;
-=======
-	margin-bottom : 20px;
->>>>>>> soobin
 	padding-top : 6px;
 	box-sizing: border-box;
 /* 	font-size : 20px;
 	color : white; */
-<<<<<<< HEAD
-=======
 	  -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -186,7 +181,6 @@ colgroup {
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
->>>>>>> soobin
 }
 
 /* .reserve_step li:first-child {
@@ -564,7 +558,7 @@ tfoot {
 }
 .reserve_result .notice_result li {
     position: relative;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 16px;
 }
 .reserve_result .notice_result span {

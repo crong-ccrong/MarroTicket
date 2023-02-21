@@ -18,10 +18,10 @@
   <div class="content">
 		<h1>나의 맞춤 연극</h1>
 		<hr>
+		<nav class="genre"><h2>${uName}님께 추천 드리는 ${uGenre}장르의 상연 중 / 상연 예정 연극 정보 입니다.</h2></nav>
 		<div class="poster_container">
-<h2>${uName}님께 추천 드리는 ${uGenre}장르의 상연 중 / 상연 예정 연극 정보 입니다.</h2>
 <c:forEach items="${playList}" var="play">
-     <section class="poster_section">
+    <div class="gallery-item">
         <a href="/play/playDetail?pNumber=${play.pnumber}">
        
             <img src="/play/poster?pnumber=${play.pnumber}" alt="${play.pname} 포스터" width="200px">
@@ -32,7 +32,7 @@
             <a href="/play/playDetail?pNumber=${play.pnumber}">
             장소:${play.ptheaterAddress}<br>1회차:${play.pfirstStartTime}<br>2회차:${play.psecondStartTime}</a>
         </div>
-   </section>
+</div>
 </c:forEach>
 </div>
 </div>
