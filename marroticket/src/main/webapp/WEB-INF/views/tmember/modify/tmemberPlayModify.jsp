@@ -11,20 +11,19 @@
 
 <h2>등록한 연극 수정하기</h2>
 
-<form:form modelAttribute="playVO" action="/theater/playModify"
-	method="post">
+<form:form modelAttribute="playVO" action="/theater/playModify" method="post">
 	<form:hidden path="pnumber" />
+	<div>
 	<table>
 		<tr>
 			<td>연극 번호</td>
 			<td><form:input path="pnumber" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pnumber" /></font></td>
+			
 		</tr>
 
 		<tr>
 			<td>연극명</td>
 			<td><form:input path="pname" /></td>
-			<td><font color="red"><form:errors path="pname" /></font></td>
 
 		</tr>
 
@@ -43,13 +42,11 @@
 		<tr>
 			<td>연극 소요 시간(분단위)</td>
 			<td><form:input path="prunningTime" /></td>
-			<td><font color="red"><form:errors path="prunningTime" /></font></td>
 		</tr>
 
 		<tr>
 			<td>극장 이름</td>
 			<td><form:input path="ptheaterName" /></td>
-			<td><font color="red"><form:errors path="ptheaterName" /></font></td>
 		</tr>
 
 		<tr>
@@ -66,7 +63,6 @@
 		<tr>
 			<td>기획사 정보</td>
 			<td><form:input path="pagency" /></td>
-			<td><font color="red"><form:errors path="pagency" /></font></td>
 		</tr>
 
 		<tr>
@@ -82,25 +78,21 @@
 		<tr>
 			<td>캐스팅</td>
 			<td><form:input path="pcasting" /></td>
-			<td><font color="red"><form:errors path="pcasting" /></font></td>
 		</tr>
 
 		<tr>
 			<td>줄거리</td>
 			<td><form:input path="pplot" /></td>
-			<td><font color="red"><form:errors path="pplot" /></font></td>
 		</tr>
 
 		<tr>
 			<td>좌석 개수</td>
 			<td><form:input path="pseatNumber" /></td>
-			<td><font color="red"><form:errors path="pseatNumber" /></font></td>
 		</tr>
 
 		<tr>
 			<td>티켓 가격(원)</td>
 			<td><form:input path="pticketPrice" /></td>
-			<td><font color="red"><form:errors path="pticketPrice" /></font></td>
 		</tr>
 
 		<tr>
@@ -118,14 +110,20 @@
 
 	</table>
 
-
 	<!-- 수정 등록 구현 -->
-	<div>
-		<input type="submit" value="수정하기"> <input type="button"
+	<table>
+		<tr>
+		<th>
+		<input type="submit" value="수정하기">
+		</th>
+		<th>
+		<input type="button"
 			onclick="location.href='/theater/playRegisteInfo'" value="목록으로 돌아가기">
+		</th>
+		</tr>
+	</table>
 	</div>
 </form:form>
-
 
 <!-- 극단 주소 -->
 <script
@@ -290,7 +288,11 @@
 										});
 
 					});
+
 </script>
+
+
+
 
 <!--  -->
 

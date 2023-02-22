@@ -18,13 +18,11 @@
 		<tr>
 			<td>연극 번호</td>
 			<td><form:input path="pnumber" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pnumber" /></font></td>
 		</tr>
 
 		<tr>
 			<td>연극명</td>
 			<td><form:input path="pname" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pname" /></font></td>
 
 		</tr>
 
@@ -43,13 +41,11 @@
 		<tr>
 			<td>연극 소요 시간(분단위)</td>
 			<td><form:input path="prunningTime" readonly="true" /></td>
-			<td><font color="red"><form:errors path="prunningTime" /></font></td>
 		</tr>
 
 		<tr>
 			<td>극장 이름</td>
 			<td><form:input path="ptheaterName" readonly="true" /></td>
-			<td><font color="red"><form:errors path="ptheaterName" /></font></td>
 		</tr>
 
 		<tr>
@@ -62,7 +58,6 @@
 		<tr>
 			<td>기획사 정보</td>
 			<td><form:input path="pagency" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pagency" /></font></td>
 		</tr>
 
 		<tr>
@@ -74,26 +69,22 @@
 		<tr>
 			<td>캐스팅</td>
 			<td><form:input path="pcasting" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pcasting" /></font></td>
 		</tr>
 
 
 		<tr>
 			<td>줄거리</td>
 			<td><form:input path="pplot" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pplot" /></font></td>
 		</tr>
 
 		<tr>
 			<td>좌석 개수</td>
 			<td><form:input path="pseatNumber" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pseatNumber" /></font></td>
 		</tr>
 
 		<tr>
 			<td>티켓 가격(원)</td>
 			<td><form:input path="pticketPrice" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pticketPrice" /></font></td>
 		</tr>
 
 		<tr>
@@ -120,14 +111,11 @@
 		<tr>
 			<td>연극 등록 승인 상태</td>
 			<td><form:textarea path="pregistrationApproval" readonly="true" /></td>
-			<td><font color="red"><form:errors
-						path="pregistrationApproval" /></font></td>
 		</tr>
 
 		<tr>
 			<td>연극 수정 승인 상태</td>
 			<td><form:textarea path="pmodifyApproval" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pmodifyApproval" /></font></td>
 		</tr>
 
 		

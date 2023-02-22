@@ -12,11 +12,14 @@ h2 {
   font-size: 24px;
   font-weight: bold;
   margin: 10px 0;
+  text-align:center;
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
+  width : 800px;
+	margin : 0 auto;
 }
 
 td {
@@ -37,6 +40,9 @@ input[type='submit'], input[type='button'] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  display : blcok;
+  margin:10px auto 0;
+  margin-bottom:10px;
 }
 
 input[type='submit']:hover, input[type='button']:hover {
@@ -48,4 +54,16 @@ font[color='red'] {
   font-style: italic;
   display: block;
   margin-top: 10px;
+
+  
+}
+
+.btn-container {
+text-align: center;
+margin-top: 10px;
+
+}
+
+.edit-btn, .list-btn {
+margin: 0 10px;
 }

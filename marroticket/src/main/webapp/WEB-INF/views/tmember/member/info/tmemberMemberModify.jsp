@@ -4,10 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="/css/tmemberinfo.css">
+<link rel="stylesheet" type="text/css" href="/css/tmembermodify.css">
 
 <form:form modelAttribute="vo" action="/theater/tmemberModify"> 
-<table>
+<table border="1">
   <tr>
 			<td>아이디</td>
 			<td><form:input path="tId" readonly="true" /></td>
@@ -74,14 +74,18 @@
 			<td><form:input path="tBankOwner" /><font color="red"> <form:errors
 						path="tBankOwner" /></font></td>
 		</tr>
-		 
-		<tr>
-		<th colspan="2" align="center">
-		<input type="button" value="취소" id="cancle">
-	<input type="submit" value="수정 하기" id="mBtn">
-		</th>
-		</tr> 
-	</table>
+		</table> 
+		
+		<table>
+			<tr>
+				<th colspan="2" align="center">
+					<input type="button" value="취소" id="cancle">
+				</th>
+				<th>
+					<input type="submit" value="수정 하기" id="mBtn">
+				</th>
+			</tr> 
+		</table>
 	</form:form>
 	
 	<!-- 취소 버튼 -->

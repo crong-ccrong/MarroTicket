@@ -9,9 +9,6 @@
   color: #EB0000;
 }
 
-body {
-  background-color: #f8f8f8;
-}
 
 /* Use a modern font family and make the text easy to read */
 body, h2, th, td, a {
@@ -48,7 +45,7 @@ table {
 
 /* Style the table header */
 th {
-  background-color: rgba(255, 0, 0, 0.27);
+  background-color: #EB0000;
   color: #fff;
   text-align: center;
   font-weight: bold;
