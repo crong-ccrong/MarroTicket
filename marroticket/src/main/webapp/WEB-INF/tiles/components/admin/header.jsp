@@ -10,7 +10,7 @@
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li class="header_util_item"><a href="#"
 					onclick="document.getElementById('logout').submit();"
-					class="header_util_link">로그아웃</a></li>
+					class="header_util_link" style="padding-left : 280px;">로그아웃</a></li>
 			</sec:authorize>
 		</ul>
 	</div>

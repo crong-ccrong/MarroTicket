@@ -5,7 +5,7 @@
 		<ul class="header_gnb_list" style="padding-left : 0;">
 			<li class="header_gnb_item"><a class="header_gnb_link home"
 				href="/admin">홈</a></li>
-			<li class="header_gnb_item"><a class="header_gnb_link current"
+			<li class="header_gnb_item"><a class="header_gnb_link tmember_manage"
 				href="/admin/playApproveList">가맹 관리</a>
 				<div class="header_lnb ">
 					<ul class="header_lnb_list">
@@ -17,7 +17,7 @@
 							href="/admin/paymentList">정산</a></li>
 					</ul>
 				</div></li>
-			<li class="header_gnb_item"><a class="header_gnb_link expected"
+			<li class="header_gnb_item"><a class="header_gnb_link member_manage"
 				href="/admin/tmemberApproveList">회원 관리</a>
 				<div class="header_lnb ">
 					<ul class="header_lnb_list">
@@ -27,7 +27,7 @@
 							href="/admin/umemberList">일반회원목록</a></li>
 					</ul>
 				</div></li>
-			<li class="header_gnb_item"><a class="header_gnb_link pass"
+			<li class="header_gnb_item"><a class="header_gnb_link play_manage"
 				href="/admin/playCurrentList">연극 관리</a>
 				<div class="header_lnb ">
 					<ul class="header_lnb_list">
@@ -39,7 +39,7 @@
 							href="/admin/playPassList">지난 상연작</a></li>
 					</ul>
 				</div></li>
-			<li class="header_gnb_item"><a class="header_gnb_link service"
+			<li class="header_gnb_item"><a class="header_gnb_link board_manage"
 				href="/notice/noticeList?accept=admin">게시판 관리</a>
 				<div class="header_lnb ">
 					<ul class="header_lnb_list">

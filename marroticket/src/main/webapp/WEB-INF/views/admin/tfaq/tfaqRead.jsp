@@ -70,4 +70,8 @@
 			self.location = "/tfaq/tfaqList";
 		});
 	});
+	$(".header_gnb_link.board_manage").css({
+	    'color': '#EB0000',
+	    'font-weight': 'bold'
+		});
 </script>

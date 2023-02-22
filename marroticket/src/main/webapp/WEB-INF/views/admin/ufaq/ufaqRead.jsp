@@ -4,45 +4,49 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/list.css">
+
 <div class="common_ufaqRead">
 	<h2>
-		<spring:message code="ufaq.header.read" />
+		<%-- <spring:message code="ufaq.header.read" /> --%>
 	</h2>
 	<form:form modelAttribute="ufaqVO">
 		<form:hidden path="ufaqNo" />
 		<table>
 			<tr>
-				<td><spring:message code="ufaq.title" /></td>
-				<td><form:input path="title" readonly="true" /></td>
-				<td><font color="red"><form:errors path="title" /></font></td>
+				<%-- <td><spring:message code="ufaq.title" /></td> --%>
+				<td><strong><form:input path="title" readonly="true"  style="padding-left:30px;font-size : 40px;width:500px;border:0px solid white;"/></strong></td>
+				<td><font color="red"><form:errors path="title"   /></font></td>
 			</tr>
-	
+		</table>
+		<hr style="margin-bottom:20px;">
+		<table>
 			<tr>
-				<td><spring:message code="ufaq.content" /></td>
-				<td><form:textarea path="content" readonly="true" /></td>
+				<%-- <td><spring:message code="ufaq.content" /></td> --%>
+				<td><form:textarea path="content" readonly="true" style="font-size : 18px;width:800px;min-height:300px;border:2px solid rgba(0, 0, 0, 0.2);border-radius:10px;padding:50px 150px 50px 50px"/></td>
 				<td><font color="red"><form:errors path="content" /></font></td>
 			</tr>
 		</table>
 	</form:form>
 	<div>
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<button type="submit" id="btnEdit">
-			<spring:message code="action.edit" />
-		</button>
-	
-		<button type="submit" id="btnRemove">
-			<spring:message code="action.remove" />
-		</button>
-	
-		<button type="submit" id="btnList">
-			<spring:message code="action.list" />
-		</button>
-	</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<button type="submit" id="btnEdit">
+				<spring:message code="action.edit" />
+			</button>
+
+			<button type="submit" id="btnRemove">
+				<spring:message code="action.remove" />
+			</button>
+
+			<button type="submit" id="btnList">
+				<spring:message code="action.list" />
+			</button>
+		</sec:authorize>
 	</div>
-</div>	
+</div>
 <script>
 	$(document).ready(function() {
-
 		var formObj = $("#ufaqVO");
 
 		console.log(formObj);
@@ -68,11 +72,14 @@
 			self.location = "/ufaq/ufaqList";
 		});
 	});
+	$(".header_gnb_link.board_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
+	$(".header_gnb_link.service").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 </script>
 <style>
-	.common_ufaqRead {
-		width : 1120px;
-		margin : 0 auto;
-		font-family: 'Nanum Gothic ', sans-serif;
-	}
 </style>

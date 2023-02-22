@@ -54,7 +54,7 @@
 </div>
 </div>
 <script>
-	$(".header_gnb_link.pass").css({
+	$(".header_gnb_link.play_manage").css({
     'color': '#EB0000',
     'font-weight': 'bold'
 	});
