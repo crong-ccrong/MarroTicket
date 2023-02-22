@@ -96,12 +96,6 @@ ${noticeVO.noticeNo}">${noticeVO.title}</a></td>
 </table>
 </div>
 
-<div class="newbtn">
-	<button class="btn" onclick="location.href='noticeRegister'">
-		<spring:message code="action.new" />
-	</button>
-</div>
-
 <!-- 페이징 네비게이션 -->
 
 <div class="pag" align="center">
@@ -119,8 +113,6 @@ ${noticeVO.noticeNo}">${noticeVO.title}</a></td>
 		<a href="/notice/noticeList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
-
-
 <script>
 	var result = "${msg}";
 	if (result === "SUCCESS") {
