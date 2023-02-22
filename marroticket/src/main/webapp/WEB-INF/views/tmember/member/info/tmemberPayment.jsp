@@ -7,6 +7,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tregisteplayinfo.css">
 
 <h2>정산</h2>
 <sec:authorize access="hasRole('ROLE_ADMIN')">

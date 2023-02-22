@@ -45,9 +45,9 @@
 </section>
 <section class="common_banner">
 	<div class="common_banner_inner">
-		<a class="common_banner_link" href="/play/playCurrentList"> <img
+		<a class="common_banner_link" href="/play/playExpectedList"> <img
 			alt="test1" src="/images/banner_right.png" class="common_banner_img">
-		</a> <a class="common_banner_link" href="/play/playExpectedList"> <img
+		</a> <a class="common_banner_link" href="/play/playCurrentList"> <img
 			alt="test2" src="/images/banner_left.png" class="common_banner_img">
 		</a>
 	</div>
@@ -127,7 +127,3 @@
 		'font-weight' : 'bold'
 	});
 </script>
-
-
-
-

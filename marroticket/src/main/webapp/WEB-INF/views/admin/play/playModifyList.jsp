@@ -8,6 +8,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<c:set var="next" value="${pagination.endPage +1}"/>
+<c:set var="pre" value="${pagination.startPage - 1}"/>
+
 <h2>연극 수정 승인 목록</h2>
 
 
@@ -58,7 +61,7 @@
 <!-- 페이징 네비게이션 -->
 <div>
 	<c:if test="${pagination.prev}">
-		<a href="${pagination.startPage - 1}">&laquo;</a>
+		<a href="/admin/playModifyList${pagination.makeQuery(pre)}">&laquo;</a>
 	</c:if>
 
 	<c:forEach begin="${pagination.startPage }"
@@ -68,7 +71,7 @@
 	</c:forEach>
 
 	<c:if test="${pagination.next && pagination.endPage > 0}">
-		<a href="${pagination.endPage +1}">&raquo;</a>
+		<a href="/admin/playModifyList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
 <script>
@@ -76,6 +79,10 @@
 	if (result === "SUCCESS") {
 		alert("<spring:message code='common.processSuccess' />");
 	}
+	$(".header_gnb_link.tmember_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 </script>
 
 

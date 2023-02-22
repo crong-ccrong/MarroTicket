@@ -1,0 +1,129 @@
+@charset "UTF-8";
+.common_container {
+	width: 1120px;
+	margin: 0 auto;
+}
+
+.common_ufaqList, .common_otherInquiries {
+	/* width: 700px; */
+	margin: 40px auto 80px;
+}
+
+.write_btn {
+	float: right;
+}
+.common_ufaqList_list, .common_otherInquiries_list {
+	padding-top:20px;
+}
+.common_ufaqList table, .common_otherInquiries table {
+	clear: both;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.common_ufaqList table, th, td, .common_otherInquiries table th, td {
+	border: none;
+}
+
+.common_ufaqList th, .common_otherInquiries th {
+	background-color: rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+
+.common_ufaqList td, .common_otherInquiries td {
+	text-align: center;
+}
+.common_ufaqList td:last-child, .common_otherInquiries td {
+	text-align: center;
+}
+
+a, a:hover {
+	text-decoration: none;
+}
+
+
+/* paging */
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination-container {
+	width: 400px;
+	height: 30px;
+	padding: 5px 0;
+	background-color: #fff;
+	display: inline-flex;
+	position: relative;
+	overflow: hidden;
+}
+
+.pagination-hover-overlay {
+	background-color: #EB0000;
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	transition-duration: 0.5s;
+	left: 60px;
+	opacity: 0;
+}
+
+.pagination .icon-pagination {
+	color: #EB0000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	z-index: 3;
+	background-color: #fff;
+}
+
+.pagination-prev {
+	margin-right: 4px;
+	margin-left: 2px;
+	display: inline-block;
+	height: 25px;
+	margin: auto 0 auto 5px;
+	padding-top: 7px;
+}
+
+.pagination-next {
+	margin-left: 4px;
+	margin-right: 2px;
+	display: inline-block;
+	height: 25px;
+	margin: auto 0 auto 5px;
+	padding-top: 7px;
+}
+
+.pagination-page-number {
+	border-radius: 30px;
+	color: #212121;
+	width: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition-duration: 0.5s;
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 13px;
+}
+
+.pagination-page-number:hover {
+	color: #fff;
+	background-color: #EB0000;
+}
+
+.pagination-page-number.active {
+	color: #fff;
+	background-color: #EB0000;
+}
+
+/* read */
+.common_ufaqRead{
+	padding : 50px;
+}

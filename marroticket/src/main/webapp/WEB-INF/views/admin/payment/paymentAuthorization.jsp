@@ -46,6 +46,10 @@
 </div>
 
 <script>
+	$(".header_gnb_link.tmember_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 	$(document).ready(function() {
 		$("#back").on("click", function() {
 

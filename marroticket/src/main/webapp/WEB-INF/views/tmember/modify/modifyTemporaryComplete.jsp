@@ -16,7 +16,7 @@
 <script>
 	$(document).ready(function() {
 		$("#main").on("click", function() {
-			location.href = "/theater/";
+			location.href = "/theater";
 		});
 	});
 </script>
@@ -24,7 +24,7 @@
 <script>
 	$(document).ready(function() {
 		$("#RegisteInfo").on("click", function() {
-			location.href = "/theater/playRegisteInfo/";
+			location.href = "/theater/playRegisteInfo";
 		});
 	});
 </script>

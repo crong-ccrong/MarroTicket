@@ -4,6 +4,7 @@
 <style>
 	img.logo{
 		margin-top : 8%;
+		margin-bottom:15px;
 	}
 	#umemberJoin, #tmemberJoin{
 	font-family: 'Nanum Gothic ', sans-serif;
@@ -13,6 +14,7 @@
 	color : black;
 	box-shadow: 10px 30px 40px rgba(0, 0, 0, 0.2);
 	font-weight : 500;
+	letter-spacing: -1.7px;
 	border-color: #EB0000;
 	outline: #EB0000 solid 2px;
 	border: none;

@@ -28,3 +28,9 @@
 		});
 	});
 </script>
+<style>
+	main#content {
+		width : 1120px;
+		margin: 0 auto;
+	}
+</style>

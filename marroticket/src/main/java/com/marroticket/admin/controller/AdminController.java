@@ -115,7 +115,11 @@ public class AdminController {
 		// 총 정산금액 설정
 		int totalPay = 0;// 총 정산금액
 		for (ReservationVO reservationVO : reservationList) {
-			totalPay += reservationVO.getRtotalpayment();
+			if (reservationVO.getRcancelState() == 0) {
+				totalPay += reservationVO.getRtotalpayment();
+			} else if (reservationVO.getRcancelState() == 1) {
+				totalPay += reservationVO.getRfee() * reservationVO.getRticketcount();
+			}
 		}
 		payment.setPayPayment(totalPay);
 

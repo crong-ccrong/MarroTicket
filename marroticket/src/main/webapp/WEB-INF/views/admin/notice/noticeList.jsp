@@ -8,6 +8,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<c:set var="next" value="${pagination.endPage +1}"/>
+<c:set var="pre" value="${pagination.startPage - 1}"/>
+
 <!-- CSS only -->
 <!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -93,17 +96,11 @@ ${noticeVO.noticeNo}">${noticeVO.title}</a></td>
 </table>
 </div>
 
-<div class="newbtn">
-	<button class="btn" onclick="location.href='noticeRegister'">
-		<spring:message code="action.new" />
-	</button>
-</div>
-
 <!-- 페이징 네비게이션 -->
 
 <div class="pag" align="center">
 	<c:if test="${pagination.prev}">
-		<a href="${pagination.startPage - 1}">&laquo;</a>
+		<a href="/notice/noticeList${pagination.makeQuery(pre)}">&laquo;</a>
 	</c:if>
 
 	<c:forEach begin="${pagination.startPage }"
@@ -113,15 +110,16 @@ ${noticeVO.noticeNo}">${noticeVO.title}</a></td>
 	</c:forEach>
 
 	<c:if test="${pagination.next && pagination.endPage > 0}">
-		<a href="${pagination.endPage +1}">&raquo;</a>
+		<a href="/notice/noticeList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
-
-</div>
-
 <script>
 	var result = "${msg}";
 	if (result === "SUCCESS") {
 		alert("<spring:message code='common.processSuccess' />");
 	}
+	$(".header_gnb_link.board_manage").css({
+	    'color': '#EB0000',
+	    'font-weight': 'bold'
+		});
 </script>

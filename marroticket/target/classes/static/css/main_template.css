@@ -259,7 +259,9 @@ img, form, fieldset, svg, li {
 .swiper.mySwiper{
 	clear : both;
 } */
-
+.common_container {
+    min-height : 500px;
+}
 /* -----------------------common_footer----------------------- */
 .common_footer {
     border-top: 1px solid #242428;
