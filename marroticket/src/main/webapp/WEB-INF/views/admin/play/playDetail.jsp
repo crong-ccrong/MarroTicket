@@ -71,12 +71,6 @@
 		</tr>
 
 		<tr>
-			<td>예매오픈 희망일</td>
-			<td><form:textarea path="pticketOpenDate" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pticketOpenDate" /></font></td>
-		</tr>
-
-		<tr>
 			<td>연극 줄거리</td>
 			<td><form:textarea path="pplot" readonly="true" /></td>
 			<td><font color="red"><form:errors path="pplot" /></font></td>
@@ -100,11 +94,11 @@
 			<td><font color="red"><form:errors path="pgenre" /></font></td>
 		</tr>
 
-		<tr>
-			<td>포스터url</td>
-			<td><form:textarea path="pposterUrl" readonly="true" /></td>
-			<td><font color="red"><form:errors path="pposterUrl" /></font></td>
-		</tr>
+ 	<tr>
+         <td>포스터</td>
+         <td><img alt="..." src="poster?pnumber=${playVO.pnumber }">
+         </td>
+      </tr>
 
 		<tr>
 			<td>약관동의여부</td>

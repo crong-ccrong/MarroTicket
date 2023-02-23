@@ -5,9 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h2>지난 상연 목록</h2>
+<link rel="stylesheet" type="text/css" href="/css/playList.css">
+<div class="common_content_playPassList">
 
-<table border="1">
+	<div class="common_content_playPassList_tables">
+<!-- <h2 class="play_status">지난 상연 목록</h2> -->	
+<table>
 	<c:choose>
 		<c:when test="${empty playPassList }">
 			<tr>
@@ -16,26 +19,31 @@
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<c:forEach items="${playPassList}" var="list"
-					varStatus="status">
-					<td><table>
-							<tr>
-								<td align="center"><a
-									href="/play/playDetail?pNumber=${list.pnumber }"><img
-										alt="..." src="poster?pNumber=${list.pnumber }"></a></td>
-							</tr>
-							<tr>
-								<td align="center">${list.pname}</td>
-							</tr>
-							<tr>
-								<td align="center">${list.ptheaterName}</td>
-							</tr>
-							<tr>
-								<td align="center"><fmt:formatDate pattern="YYYY-MM-dd (E)"
-										value="${list.pstartDate}" />~<br> <fmt:formatDate
-										pattern="YYYY-MM-dd (E)" value="${list.pcloseDate }" /></td>
-							</tr>
-						</table></td>
+				<c:forEach items="${playPassList}" var="list" varStatus="status">
+					<td><div class="playDiv">
+
+							<table class="playTable">
+								<tr>
+									<td align="center"><a
+										href="/play/playDetail?pNumber=${list.pnumber }"><img
+											class="playListImg"  alt="..." src="poster?pnumber=${list.pnumber }"></a></td>
+								</tr>
+							</table>
+
+							<table class="playInfo">
+								<tr class="playName">
+									<td align="center">${list.pname}</td>
+								</tr>
+								<tr class="playTheaterName">
+									<td align="center">${list.ptheaterName}</td>
+								</tr>
+								<tr class="playTime">
+									<td align="center"><fmt:formatDate
+											pattern="YYYY-MM-dd (E)" value="${list.pstartDate}" />~ <fmt:formatDate
+											pattern="YYYY-MM-dd (E)" value="${list.pcloseDate }" /></td>
+								</tr>
+							</table>
+						</div></td>
 					<c:if test="${status.count%4 == 0 }">
 						<tr></tr>
 					</c:if>
@@ -44,3 +52,11 @@
 		</c:otherwise>
 	</c:choose>
 </table>
+</div>
+</div>
+<script>
+	$(".header_gnb_link.pass").css({
+    'color': '#EB0000',
+    'font-weight': 'bold'
+	});
+</script>

@@ -7,14 +7,23 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<c:set var="next" value="${pagination.endPage +1}"/>
+<c:set var="pre" value="${pagination.startPage - 1}"/>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/noticelist.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 
 <h2>
+
 	<spring:message code="tfaq.header.list" />
 </h2>
-
-<a href="tfaqRegister"><spring:message code="action.new" /></a>
-
-<table border="1">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="tfaqRegister"><spring:message code="action.new" /></a>
+</sec:authorize>
+<table>
 	<tr>
 		<th align="center" width="80"><spring:message code="tfaq.no" /></th>
 		<th align="center" width="320"><spring:message code="tfaq.title" /></th>
@@ -47,17 +56,17 @@ ${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
 <!-- 페이징 네비게이션 -->
 <div>
 	<c:if test="${pagination.prev}">
-		<a href="${pagination.startPage - 1}">&laquo;</a>
+		<a href="/tfaq/tfaqList${pagination.makeQuery(pre)}">&laquo;</a>
 	</c:if>
-	
+
 	<c:forEach begin="${pagination.startPage }"
 		end="${pagination.endPage }" var="idx">
-		
+
 		<a href="/tfaq/tfaqList${pagination.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
-	
+
 	<c:if test="${pagination.next && pagination.endPage > 0}">
-		<a href="${pagination.endPage +1}">&raquo;</a>
+		<a href="/tfaq/tfaqList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
 
@@ -66,4 +75,8 @@ ${tfaqVO.tfaqNo}">${tfaqVO.title}</a></td>
 	if (result === "SUCCESS") {
 		alert("<spring:message code='common.processSuccess' />");
 	}
+	$(".header_gnb_link.board_manage").css({
+	    'color': '#EB0000',
+	    'font-weight': 'bold'
+		});
 </script>

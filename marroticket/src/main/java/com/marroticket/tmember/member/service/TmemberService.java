@@ -46,4 +46,11 @@ public interface TmemberService {
 	// 계약만료에 따른 극단 회원 권한 다운그레이드 서비스
 	public void tmemberAuthDowngrade(TmemberVO tmemberVO) throws Exception;
 
+	// 마이페이지
+	// 정보 조회
+	public TmemberVO getTmemberByTId(String tId) throws Exception;
+
+	// 정보 수정
+	public void modify(TmemberVO vo) throws Exception;
+
 }

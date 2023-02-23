@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marroticket.mapper.NoticeMapper">
+
+
+	<resultMap
+		type="com.marroticket.admin.notice.domain.NoticeVO" id="notice">
+		<id property="noticeNo" column="n_number" />
+		<result property="title" column="n_title" />
+		<result property="content" column="n_content" />
+		<result property="regDate" column="n_date" />
+	</resultMap>
+
+
+	<!-- 공지사항 등록 처리 -->
+	<insert id="create">
+		INSERT INTO notice
+		(
+		n_number,
+		n_title,
+		n_content
+		)
+		VALUES
+		(
+		notice_seq.NEXTVAL,
+		#{title}, #{content}
+		)
+	</insert>
+
+
+	<!-- 페이징 요청 정보를 매개 변수로 받아 페이징 처리를 한 게시글 목록을 조회 -->
+	<select id="list" resultMap="notice">
+<![CDATA[
+	SELECT n_number,
+			n_title,
+			n_content,
+			n_date
+	FROM (select n_number,
+				n_title,
+				n_content,
+				n_date,
+				rownum as rnum
+			from (select n_number,
+						n_title,
+						n_content,
+						n_date
+					from notice
+					order by n_date desc, n_number desc
+					))
+	where rnum between #{sizePerPage}*#{page}-9 and #{sizePerPage}*#{page}
+]]>
+	</select>
+
+	<!-- 공지사항 상세 조회 -->
+	<select id="read" resultMap="notice">
+		SELECT n_number,
+		n_title,
+		n_content,
+		n_date
+		FROM notice
+		WHERE
+		n_number = #{noticeNo}
+	</select>
+
+	<!-- 공지사항 수정 처리 -->
+	<update id="update">
+		UPDATE notice
+		SET n_title = #{title},
+		n_content =
+		#{content}
+		WHERE n_number = #{noticeNo}
+	</update>
+
+	<!-- 공지사항 삭제 처리 -->
+	<delete id="delete">
+		DELETE FROM notice
+		WHERE n_number = #{noticeNo}
+	</delete>
+
+	<!--게시글 전체 건수 조회 -->
+	<select id="count" resultType="int">
+	<![CDATA[
+	SELECT count(n_number)
+ 	FROM notice
+	WHERE n_number > 0
+]]>
+	</select>
+</mapper>

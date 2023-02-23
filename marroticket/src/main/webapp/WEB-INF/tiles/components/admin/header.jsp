@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-
-<!-- 로그인을 한(인증된 사용자인) 경우 -->
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-   <div style="font-size : 12px; text-align:right"> <a href="#" onclick="document.getElementById('logout').submit();">로그아웃</a></div>
-</sec:authorize>
-
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<div class="header_util_inner">
+	<div class="header_util_left"></div>
+	<div class="header_util_right">
+		<ul class="header_util_list">
+			<!-- 로그인을 한(인증된 사용자인) 경우 -->
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="header_util_item"><a href="#"
+					onclick="document.getElementById('logout').submit();"
+					class="header_util_link" style="padding-left : 280px;">로그아웃</a></li>
+			</sec:authorize>
+		</ul>
+	</div>
+</div>
 <form id="logout" action="/memberlogout" method="POST">
-   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+	<input name="${_csrf.parameterName}" type="hidden"
+		value="${_csrf.token}" />
 </form>
-<br><br>
-<div style="font-size : 1.5em; text-align:left"><a href="/admin">마로티켓</a></div>
-<hr>

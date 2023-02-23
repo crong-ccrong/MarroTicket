@@ -2,7 +2,7 @@ package com.marroticket.umember.play.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.Future;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -31,7 +31,7 @@ public class PlayVO {
 	private String prunningTime; // 연극 소요시간(러닝타임)
 
 	@NotBlank(message = "극장 이름은 필수 입력 값입니다.")
-	@Size(max = 50, message = "50자 이내로 입력해주세요.")
+	@Size(max = 10, message = "10자 이내로 입력해주세요.")
 	private String ptheaterName; // 극장 이름
 
 	@NotBlank(message = "극장 주소는 필수 입력 값입니다.")
@@ -42,7 +42,7 @@ public class PlayVO {
 	private String pposterUrl; // 포스터url
 
 	@NotBlank(message = "기획사 정보는 필수 입력 값입니다.")
-	@Size(max = 20, message = "20자 이내로 입력해주세요.")
+	@Size(max = 10, message = "10자 이내로 입력해주세요.")
 	private String pagency; // 기획사 정보
 
 	@NotBlank(message = "캐스팅 데이터는 필수 입력 값입니다.")
@@ -79,10 +79,6 @@ public class PlayVO {
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pcloseDate; // 연극 종료일
-
-	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date pticketOpenDate; // 예매 오픈 희망일
 
 	@NotNull(message = "1회차 상연 시작 시각은 필수 입력값입니다.")
 	private String pfirstStartTime;// 1회차 상연 시작 시각

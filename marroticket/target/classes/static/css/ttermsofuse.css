@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Nanum Gothic', sans-serif !important;
+}
+
+body, h2, h3, p, ol, li {
+  	list-style:none !important;
+  color: #444 !important;
+  line-height: 1.5 !important;
+  	text-decoration-line: none !important;
+}
+
+/* 이용약관 페이지 제목 페이드인*/
+h2, h3 {
+  animation: fadeIn 0.5s ease;
+}
+
+li {
+	text-align:justify !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+a, h2, h3 {
+	color: #EB0000 !important;
+  text-decoration-line:none !important;
+}
+
+a:hover {
+	text-decoration-line: none !important;
+}
+
+/* 내용 */
+.tcont_terms {
+  background-color: #fff !important;
+  padding: 20px !important;
+  border-radius: 5px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.type01 {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.type01 li {
+  margin: 10px 0 !important;
+}
+
+.type01 li a {
+  display: block !important;
+  padding: 5px !important;
+  border-radius: 3px !important;
+}
+
+.type01 li a:hover {
+  background-color: #e3e3e3 !important;
+}
+
+/* Style the content sections */
+.section_terms {
+  margin: 20px 0 !important;
+  padding: 20px !important;
+  background-color: #fff !important;
+  border-radius: 5px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Make the sections responsive */
+@media (max-width: 768px) {
+  .section_terms {
+    padding: 10px !important;
+  }
+  
+  .tcont_terms {
+    padding: 10px !important;
+  }
+}

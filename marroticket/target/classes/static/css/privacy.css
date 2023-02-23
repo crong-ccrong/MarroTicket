@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/* Set the background color to a light gray */
+/* body {
+  background-color: #f8f8f8;
+} */
+* {
+	     font-family: 'Nanum Gothic', sans-serif;
+}
+
+body, h2, h3, p, ol, li {
+	text-decoration:none !important;
+  	list-style:none;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* 이용약관 페이지 제목 페이드인*/
+h2, h3 {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Add a bold accent color for links and headings */
+a, h2, h3 {
+  color: #EB0000;
+}
+
+/* Add a hover effect for links */
+a:hover {
+	text-decoration-line: none;
+}
+
+/* Style the table of contents */
+.tcont_terms {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.type01 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.type01 li {
+  margin: 10px 0;
+}
+
+.type01 li a {
+  display: block;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.type01 li a:hover {
+  background-color: #e3e3e3;
+}
+
+/* Style the content sections */
+.section_terms {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Make the sections responsive */
+@media (max-width: 768px) {
+  .section_terms {
+    padding: 10px;
+  }
+  
+  .tcont_terms {
+    padding: 10px;
+  }
+}

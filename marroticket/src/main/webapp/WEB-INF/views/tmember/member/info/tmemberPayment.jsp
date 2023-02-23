@@ -7,6 +7,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/tregisteplayinfo.css">
 
 <h2>정산</h2>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -16,8 +18,8 @@
 <table border="1">
 	<tr>
 		<th align="center" width="80">정산번호</th>
-		<th align="center" width="180">정산일자</th>
-		<th align="center" width="180">지급일</th>
+		<th align="center" width="150">정산일자</th>
+		<th align="center" width="150">지급일</th>
 		<th align="center" width="180">금액</th>
 		<th align="center" width="80">연극번호</th>
 	</tr>
@@ -34,10 +36,10 @@
 			<c:forEach items="${theaterPayment}" var="theaterPayment">
 				<tr>
 					<td align="center">${theaterPayment.payNumber}</td>
-					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${theaterPayment.payCalculateDate}" /></td>
 
-					<td align="left"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 							value="${theaterPayment.payPayDate}" /></td>
 
 					<td align="right">${theaterPayment.payTheaterPayment}</td>

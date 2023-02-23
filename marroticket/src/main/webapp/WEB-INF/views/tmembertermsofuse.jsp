@@ -1,49 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
+
+
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/ttermsofuse.css">
+<style>
+.total_wrap {
+	width: 1120px;
+	margin: 50px auto;
+}
+</style>
+
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	<div class="total_wrap">
+</sec:authorize>
 <h2>이용약관 페이지</h2>
-
-<div class="wrap_tab">
-	<ul>
-		<li class="first_tab">
-		<c:choose>
-			<c:when test="${empty umember }">
-					<a class="link_tab"
-			title="umemberTermsOfUsePageMoving" href="/theater/umembertermsofuse"> <span
-				class="tabtitle">마로티켓 일반 회원 이용 약관</span>
-		</a>
-			</c:when>
-			<c:otherwise>
-								<a class="link_tab"
-			title="umemberTermsOfUsePageMoving" href="/umembertermsofuse"> <span
-				class="tabtitle">마로티켓 일반 회원 이용 약관</span>
-		</a>
-			</c:otherwise>
-		</c:choose>
-
-		</li>
-		<li class="on">
-		<c:choose>
-			<c:when test="${empty umember }">
-		<a class="link_tab"
-			title="tmemberTermsOfUsePageMoving" href="/theater/tmembertermsofuse"> <span
-				class="tabtitle">마로티켓 극단 회원 이용 약관</span>
-		</a>
-			</c:when>
-			<c:otherwise>
-		<a class="link_tab"
-			title="tmemberTermsOfUsePageMoving" href="/tmembertermsofuse"> <span
-				class="tabtitle">마로티켓 극단 회원 이용 약관</span>
-		</a>
-			</c:otherwise>
-		</c:choose>		
-		</li>
+<div class="wrap_tab" width=1180px>
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><c:choose>
+				<c:when test="${empty umember }">
+					<a class="nav-link" title="umemberTermsOfUsePageMoving"
+						href="/theater/umembertermsofuse"> <span class="tabtitle">마로티켓
+							일반 회원 이용 약관</span>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a class="nav-link" title="umemberTermsOfUsePageMoving"
+						href="/umembertermsofuse"> <span class="tabtitle">마로티켓
+							일반 회원 이용 약관</span>
+					</a>
+				</c:otherwise>
+			</c:choose></li>
+		<li class="on"><c:choose>
+				<c:when test="${empty umember }">
+					<a class="nav-link active" aria-current="page"
+						title="umemberTermsOfUsePageMoving"
+						href="/theater/umembertermsofuse"> <span class="tabtitle">마로티켓
+							극단 회원 이용 약관</span>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a class="nav-link active" aria-current="page"
+						title="umemberTermsOfUsePageMoving" href="/umembertermsofuse">
+						<span class="tabtitle">마로티켓 극단 회원 이용 약관</span>
+					</a>
+				</c:otherwise>
+			</c:choose></li>
 	</ul>
 </div>
 
 <!-- 목차 -->
-<div class="tcont_terms">
+<div class="tcont_terms" width=1180px>
 	<ol class="type01">
 		<li><a href="#terms01" title="제 1장 총칙 보기"> <span>1.</span>
 				"총칙"
@@ -195,7 +210,6 @@
 	</dl>
 </div>
 <!-- //마로티켓 극단 계정 -->
-
 <!-- 제3장 서비스의 이용 -->
 <div id="terms03" class="section_terms">
 	<h3>제 3장. 서비스의 이용</h3>
@@ -240,7 +254,6 @@
 									회원의 이메일 계정으로 이메일을 직접 발송할 수 있습니다."</li>
 								<li><span class="bullet">⑦</span> "서비스 이용 중 시스템 오류 등 문제점을
 									발견하신다면 언제든지 마로티켓 고객 센터로 알려주시기 바랍니다."</li>
-								<li><span class="bullet">⑨</span></li>
 							</ol></li>
 					</ol></li>
 			</ol>
@@ -457,6 +470,9 @@
 		</dd>
 	</dl>
 </div>
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	</div>
+</sec:authorize>
 <!-- //이용약관 -->
 
 <!-- 

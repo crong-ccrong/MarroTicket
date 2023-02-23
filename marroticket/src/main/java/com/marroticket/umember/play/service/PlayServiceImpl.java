@@ -31,13 +31,29 @@ public class PlayServiceImpl implements PlayService {
 	}
 
 	@Override
-	public PlayVO read(Integer pNumber) throws Exception {
-		return mapper.read(pNumber);
+	public PlayVO read(Integer pnumber) throws Exception {
+		return mapper.read(pnumber);
 	}
 
 	public String getPposter(Integer pnumber) throws Exception {
 		return mapper.getPposter(pnumber);
 	}
+	
+	// 포스터 미리보기
+		@Override
+		public String playPoster(Integer pnumber) throws Exception {
+			return mapper.playRegistration(pnumber);
+		}
+
+//	@Override
+//	public List<PlayVO> playCurrentList(String getuGenre) throws Exception {
+//		return mapper.playCurrentList(getuGenre);
+//	}
+//
+//	@Override
+//	public List<PlayVO> playExpectedList(String getuGenre) throws Exception {
+//		return mapper.playExpectedList(getuGenre);
+//	}
 
 	/*
 	 * @Override public List<PlayVO> quickReserve() throws Exception { return
@@ -92,4 +108,5 @@ public class PlayServiceImpl implements PlayService {
 	public int modifyCount() throws Exception {
 		return mapper.modifyCount();
 	}
+
 }
