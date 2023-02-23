@@ -38,11 +38,11 @@
 	<button type="submit" id="btnRemove">
 		<spring:message code="action.remove" />
 	</button>
-
+</sec:authorize>
 	<button type="submit" id="btnList">
 		<spring:message code="action.list" />
 	</button>
-</sec:authorize>
+
 	
 </div>
 

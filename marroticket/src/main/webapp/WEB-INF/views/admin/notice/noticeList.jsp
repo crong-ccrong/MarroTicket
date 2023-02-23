@@ -51,7 +51,6 @@ div.pag {
 	<h2></h2>
 </div>
 <h2>
-	<spring:message code="notice.header.list" />
 </h2>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="noticeRegister"><spring:message code="action.new" /></a>

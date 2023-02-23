@@ -36,11 +36,11 @@
 		<button type="submit" id="btnRemove">
 			<spring:message code="action.remove" />
 		</button>
-
-		<button type="submit" id="btnList">
-			<spring:message code="action.list" />
-		</button>
 	</sec:authorize>
+	<button type="submit" id="btnList">
+		<spring:message code="action.list" />
+	</button>
+
 </div>
 <script>
 	$(document).ready(function() {
@@ -71,7 +71,7 @@
 		});
 	});
 	$(".header_gnb_link.board_manage").css({
-	    'color': '#EB0000',
-	    'font-weight': 'bold'
-		});
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 </script>
