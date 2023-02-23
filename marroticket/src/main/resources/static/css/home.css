@@ -1,0 +1,174 @@
+/* ------------------------------백그라운드 이미지------------------------------ */
+.section_hero_banner, .section_hero_banner img {
+	width: 8000px;
+	height: 550px;
+	background: #f5f6f9;
+	float: left;
+}
+
+/* ------------------------------swipper(상연작)------------------------------ */
+.swiper.mySwiper {
+	width: 1300px;
+	position: absolute;
+	margin: auto;
+	top: 320px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.swiper-pagination { 
+	--swiper-theme-color: #EB0000;
+}
+
+/* ------------------------------중간 배너------------------------------ */
+.common_banner {
+	width: 1300px;
+	height: 180px;
+	position: absolute;
+	margin: auto;
+	top: 800px;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden;
+	border-radius: 10px;
+	background: #fff;
+	text-align: center;
+	font-size: 0;
+	box-shadow: 30px 30px 40px rgba(0, 0, 0, 0.2);
+}
+/* .common_banner_inner {
+	overflow: hidden;
+    height: 120px;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 0;
+    text-align: center;
+    box-shadow: 0px 17px 21px rgba(0,0,0,0.04);
+}
+.common_banner_link {
+	display: inline-block;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+} */
+.common_banner_img:first-child {   
+    width: 650px !important;
+    height: 180px !important; 
+    vertical-align: top;
+    float: left;
+    cursor: pointer;
+    border-radius: 10px !important;
+}
+.common_banner_img:last-child {   
+    width: 650px !important;
+    height: 180px !important;  
+    vertical-align: top;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px !important;
+}
+
+/* ------------------------------이번주 연극------------------------------ */
+.common_content{
+	width : 1300px;
+	margin : 0 auto;
+	
+	padding-top : 100px;
+	position : static;
+}
+.common_content.genre1 {
+  padding-top: 350px;
+  margin-top: 500px;
+}
+.common_content.genre7 {
+	 margin-bottom:200px;
+}
+.section_heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 34px;
+    line-height: 32px;
+    letter-spacing: -0.05em;
+    flex: 1;
+    color: #242428;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.product_grid {
+    margin: 0;
+    padding: 0;
+}
+.product_grid_list.type_col5 {
+    margin: -50px -30px 0 0;
+}
+.product_grid_list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.product_grid_list.type_col5 .product_grid_item {
+    margin: 50px 65px 0 0;
+    width: 200px;
+    border: 0;
+    vertical-align: top;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.product_grid_list.type_col5 .product_grid_item:first-child , .product_grid_list.type_col5 .product_grid_item:nth-child(5n+1) {
+    margin-left: 4px;
+}
+.product_grid_unit .product_link {
+	    display: block;
+}
+.product_grid_list.type_col5 .product_grid_unit .product_imgbox {
+	    width: 230px;
+    height: 300px;
+}
+.product_grid_unit .product_imgbox {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 0;
+}
+.product_grid_unit .product_imgbox::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #242428;
+    border-radius: 10px;
+    box-sizing: border-box;
+    opacity: 0.1;
+    z-index: 1;
+    content: '';
+}
+.product_grid_unit .product_imgbox .product_img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 0;
+    vertical-align: top;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.product_grid_unit .product_info {
+    margin-top: 16px;
+    font-size: 18px;
+    color : #803232;
+    padding-left : 10px;
+    font-weight : 600;
+    line-height: 22px;
+}
+.product_grid_list.type_col5 .product_grid_unit .product_title {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

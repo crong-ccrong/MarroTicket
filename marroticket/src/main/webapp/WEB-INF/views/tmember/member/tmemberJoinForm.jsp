@@ -6,8 +6,8 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
-<!-- 극단 회원가입 -->
-<h3 class="joinheader">마로 티켓 극단 회원 가입 페이지</h3>
+<!-- 극단 회원가입
+<h3 class="joinheader">마로 티켓 극단 회원 가입 페이지</h3> -->
 
 <form:form method="post" action="/theater/signUp" modelAttribute="tmember"
    enctype="multipart/form-data">
@@ -16,7 +16,7 @@
       <form:hidden path="tAuth" value="승인" />
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       <tr>
-         <th class="joinWindow">대표자 이름</th>
+         <th class="joinWindow" style="width : 20%">대표자 이름</th>
          <td class="joinInput"><form:input path="tOwnerName" placeholder="(필수)6자까지 입력 가능" /><font
             color="red"> <form:errors path="tOwnerName" /></font></td>
       </tr>
@@ -37,7 +37,7 @@
 
       <tr>
          <th class="joinWindow">아이디</th>
-         <td class="joinInput"><form:input path="tId" placeholder="(필수)영문/숫자 포함 8~20자" /><font
+         <td class="joinInput"><form:input path="tId" placeholder="(필수)영문/숫자 포함 8~20자" style="width:74%; display:inline-block; margin-right:28px;" /><font
             color="red"> <form:errors path="tId" /></font>
          <button type="button" id="idCheck" onclick="tIdChk()">중복확인</button></td>
       </tr>
@@ -56,8 +56,8 @@
          <th class="joinWindow">극단 주소</th>
          <!-- tAddress -->
          <td class="joinInput"><input type="text" name=tAddress id="tAddress_postcode"
-            placeholder="우편번호"> <input type="button"
-            onclick="tAddressBtn()" value="우편번호 찾기" id=postChk><br> <input
+            placeholder="우편번호" style="width : 70%; margin-right:15px"> <input type="button"
+            onclick="tAddressBtn()" value="우편번호 찾기" id=postChk style="margin-top:0"><br> <input
             type="text" name='tAddress' id="tAddress_address" placeholder="주소"><br>
             <input type="text" name='tAddress' id="tAddress_detailAddress"
             placeholder="상세주소"> <input type="text" name='tAddress'
@@ -316,6 +316,16 @@ input.addEventListener("change", function() {
 
 
 <style>
+#login_box_total .container {
+	width: 1120px;
+	height : 100%;
+	padding-bottom : 20px;
+	margin-bottom : 150px;
+	font-family: 'Nanum Gothic ', sans-serif;
+}
+.logo {
+	margin-bottom : 40px;
+}
 
 /* 양식 헤더 스타일 지정 */
  .joinheader {
@@ -325,7 +335,7 @@ input.addEventListener("change", function() {
   margin-bottom: 30px;
   }
    .tmemberJoinForm {
-    margin: 0 auto;
+  margin: 0 auto 50px;
     width: 60%;
   }
   /* 양식 레이블 스타일 지정 */
@@ -385,12 +395,17 @@ input[type="submit"]:hover, input[type="button"]:hover {
   background-color: #ff3333; /* dark red */
 }
   input[type="button"] {
+  display: inline-block;
+  margin-top: 50px;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
+}
+input[type="button"]:first-child {
+	width:93.33px;
 }
   form:select, form:input {
    background-color: #ffcccc;

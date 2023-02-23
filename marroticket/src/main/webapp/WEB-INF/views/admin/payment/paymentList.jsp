@@ -7,6 +7,8 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<c:set var="next" value="${pagination.endPage +1}"/>
+<c:set var="pre" value="${pagination.startPage - 1}"/>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -65,7 +67,7 @@
 <!-- 페이징 네비게이션 -->
 <div>
 	<c:if test="${pagination.prev}">
-		<a href="${pagination.startPage - 1}">&laquo;</a>
+		<a href="/admin/paymentList${pagination.makeQuery(pre)}">&laquo;</a>
 	</c:if>
 
 	<c:forEach begin="${pagination.startPage }"
@@ -75,12 +77,16 @@
 	</c:forEach>
 
 	<c:if test="${pagination.next  && pagination.endPage > 0}">
-		<a href="${pagination.endPage +1}">&raquo;</a>
+		<a href="/admin/paymentList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
 
 <!-- 정산 버튼 처리 -->
 <script>
+	$(".header_gnb_link.tmember_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 	function payment(pN) {
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");

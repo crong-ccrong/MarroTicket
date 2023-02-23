@@ -122,13 +122,26 @@
 </form>
 
 <style>
+#login_box_total .container {
+	width: 1120px;
+	height : 100%;
+	padding-bottom : 20px;
+	margin-bottom : 150px;
+	font-family: 'Nanum Gothic ', sans-serif;
+}
 input[type="button"] {
+  display : inline-block;
+  margin-bottom : 39px;
+  margin-top : 39px;
   background-color: #ff6666;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+input[type="button"]:nth-child(2) {
+	width : 123.69px;
 }
 
 input[type="button"]:hover {

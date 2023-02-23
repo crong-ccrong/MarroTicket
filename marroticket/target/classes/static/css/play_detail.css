@@ -41,7 +41,7 @@ button {
 	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 #play_tickect_info {
@@ -106,7 +106,7 @@ button {
 .play_reserve_step {
 	display: block;
 	margin-bottom: 4px;
-	color: #fa2828;
+	color: #EB0000;
 }
 
 .play_reserve_title {
@@ -198,7 +198,7 @@ button {
 }
 
 .day_name:first-child {
-	color: #FF0000;
+	color: #EB0000;
 }
 
 .day_name:last-child {
@@ -246,9 +246,81 @@ button {
 	color: lightgray;
 	font-weight: normal;
 }
+
+/**/
+.event {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  transition: all 0.4s ease-in;
+}
+.event:before {
+  content: '';
+  background-color: #EB0000; /*클릭효과 색*/
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: scale(0.001, 0.001);
+          transform: scale(0.001, 0.001);
+}
+.event:focus {
+  outline: 0;
+}
+.event:focus:before {
+  -webkit-animation: Click_Effect 0.8s ease-out;
+          animation: Click_Effect 0.8s ease-out;
+}
+@-webkit-keyframes Click_Effect {
+  50% {
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    -webkit-transform: scale(0.001, 0.001);
+            transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(0.001, 0.001);
+            transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
+}
+@keyframes Click_Effect {
+  50% {
+    -webkit-transform: scale(1.2, 1.2); /*효과 크기 줄이기*/
+            transform: scale(1.2, 1.2);
+    opacity: 0;
+  }
+  99% {
+    -webkit-transform: scale(0.001, 0.001);
+            transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(0.001, 0.001);
+            transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
+}
+
+@keyframes blink-effect {
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink-effect 0.1s step-end 1;
+}
+/**/
+
 /* 토요일, 일요일 css */
 .sun, div.sun.a.event {
-	color: #FF0000;
+	color: #EB0000;
 }
 
 .sat, div.sat.a.event {
@@ -262,9 +334,9 @@ button {
 	font-weight: bold;
 }
 
-.calandar_day a.event:focus, .sat a.event:focus, .sun a.event:focus, .calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover {
-	background-color: black;
-	color: lightgray;
+.calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover, .calandar_day a.event:hover, .sat a.event:hover, .sun a.event:hover  {
+	background-color: white;
+	color: black;
 	border-radius: 50px;
 	font-weight: bold;
 	padding : 0;
@@ -278,15 +350,51 @@ button {
     padding: 0;
     white-space: nowrap;
     letter-spacing: -0.03em;
+    border : 1px solid black;
 }
-
+.sat a.event:hover {
+	background-color: white;
+	color: blue;
+	border-radius: 50px;
+	font-weight: bold;
+	padding : 0;
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    line-height: 32px;
+    box-sizing: border-box;
+        display: inline-block;
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    border : 1px solid black;
+}
+.sun a.event:hover{
+	background-color: white;
+	color: #EB0000;
+	border-radius: 50px;
+	font-weight: bold;
+	padding : 0;
+	margin: 0;
+    width: 34px;
+    height: 34px;
+    line-height: 32px;
+    box-sizing: border-box;
+        display: inline-block;
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    border : 1px solid black;
+} 
 .sat a.event {
 	color: #0000CD;
 	font-weight: bold;
 }
 
 .sun a.event {
-	color: #FF0000;
+	color: #EB0000;
 	font-weight: bold;
 }
 
@@ -403,7 +511,7 @@ button {
 .reservation_button {
 	margin-top: 30px;
 	margin-right: 4px;
-	background-color: red;
+	background-color: #EB0000;
 	border: none;
 	color: white;
 	width: 30%;
@@ -417,7 +525,7 @@ button {
 	width: 100%;
 	padding-left: 15px;
 	font-size: 1.1em;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 tr .first_column {
@@ -450,7 +558,7 @@ tr .first_column {
 }
 
 li.active {
-	background-color: red;
+	background-color: #EB0000;
 	color: #fff;
 }
 
@@ -494,8 +602,7 @@ section.cancel_notice {
 }
 
 .cancel_toggle_content {
-	font-family: 'Notosans', -apple-system, BlinkMacSystemFont,
-		Apple SD Gothic Neo, 'Malgun Gothic', Arial, sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 14px;
 	letter-spacing: -0.03em;
 	color: #242428;
@@ -509,8 +616,7 @@ section.cancel_notice {
 	margin-top: 15px !important;
 	border-collapse: collapse; 
 	border-spacing: 0;
-	font-family: 'Notosans', -apple-system, BlinkMacSystemFont,
-		Apple SD Gothic Neo, 'Malgun Gothic', Arial, sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 14px;
 	letter-spacing: -0.03em;
 	color: #242428;

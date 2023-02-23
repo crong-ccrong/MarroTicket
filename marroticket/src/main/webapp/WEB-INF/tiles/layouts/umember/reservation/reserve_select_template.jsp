@@ -16,6 +16,10 @@
 <script src="/js/reserve.js"></script>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/css/reserve.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 	<div id="wrap_reserve">

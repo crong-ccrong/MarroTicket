@@ -75,6 +75,7 @@ public class NoticeController {
 	}
 
 	// 공지사항 상세 페이지
+	@PreAuthorize("hasRole('ROLE_TMEMBER') or hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/noticeRead", method = RequestMethod.GET)
 	public String read(int noticeNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model, String accept)
 			throws Exception {

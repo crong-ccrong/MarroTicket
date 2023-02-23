@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<c:set var="next" value="${pagination.endPage +1}"/>
+<c:set var="pre" value="${pagination.startPage - 1}"/>
 
 <!--사업자 등록증 호버 처리 -->
 <style>
@@ -14,6 +16,12 @@
 }
 </style>
 
+<script type="text/javascript">
+	$(".header_gnb_link.member_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
+</script>
 <h2>
 	<spring:message code="member.header.tlist" />
 </h2>
@@ -87,14 +95,14 @@
 <div>
 
 	<c:if test="${pagination.prev}">
-		<a href="${pagination.startPage - 1}">&laquo;</a>
+		<a href="/admin/tmemberApproveList${pagination.makeQuery(pre)}">&laquo;</a>
 	</c:if>
 	<c:forEach begin="${pagination.startPage }"
 		end="${pagination.endPage }" var="idx">
 		<a href="/admin/tmemberApproveList${pagination.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
 	<c:if test="${pagination.next && pagination.endPage > 0}">
-		<a href="${pagination.endPage +1}">&raquo;</a>
+		<a href="/admin/tmemberApproveList${pagination.makeQuery(next)}">&raquo;</a>
 	</c:if>
 </div>
 

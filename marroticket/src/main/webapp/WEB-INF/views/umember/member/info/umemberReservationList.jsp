@@ -4,15 +4,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="umemberSidebar.jsp"%>
 
 
 
-<h1>예매 정보</h1>
-<hr>
 
-<div class="info_body">
-	<table border="1">
+<link rel="stylesheet" type="text/css" href="/css/umember_mypage.css"> 
+
+<div class="wrapper">
+  <div class="side">
+    <!-- Sidebar content goes here -->
+    <ul class="sidebar">
+      <li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+    <li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약 정보</a></li>
+    <li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약 취소 정보</a></li>
+    <li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가 본 연극</a></li>
+    <li><a href="/umember/umemberCustomPlayList" data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
+</ul> 
+    
+  </div>
+  <div class="content">
+		<h1>예약 정보</h1>
+		<hr>
+		<table border="1">
 		<tr>
 			<th>예매일</th>
 			<th>예매 번호</th>
@@ -82,6 +95,8 @@
 	
 
 	</table>
+</div>
+
 </div>
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>

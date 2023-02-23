@@ -12,13 +12,18 @@ public interface PlayService {
 
 	public List<PlayVO> playExpectedList() throws Exception;
 
-	public PlayVO read(Integer pNumber) throws Exception;
-
-	public String getPposter(Integer pnumber) throws Exception;
-
 	/*
 	 * public List<PlayVO> quickReserve() throws Exception;
 	 */
+	
+	// 극단 등록한 연극
+	public PlayVO read(Integer pnumber) throws Exception;
+
+	public String getPposter(Integer pnumber) throws Exception;
+	
+	// 포스터 미리보기
+	public String playPoster(Integer pnumber) throws Exception;
+
 
 	// 관리자 추가************************************************
 

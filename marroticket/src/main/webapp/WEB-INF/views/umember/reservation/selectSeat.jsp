@@ -25,16 +25,6 @@ $(document)
           xhr.setRequestHeader(header, token);
        });
 
-      $('.step1').css({
-         'left': '0',
-         'top': '0',
-         'z-index': '1',
-         'width': '198px',
-         'height': '45px',
-         'background-color': 'black',
-         'border-width': '0'
-      });
-
       var pdate = ${ reservation.pdate };
       var unumber = ${ reservation.unumber };
       var pnumber = ${ reservation.pnumber };
@@ -177,8 +167,16 @@ $(document)
     				$("#reserveInfo").submit(); 
     		    }
       });
+      $(".home").click(function() {
+			if (confirm("메인페이지로 이동 시, 선택한 좌석은\n취소됩니다.")) {
+		    	  refreshOrReopen();
+		    	  location.href="/"
+		    	  return;
+			} 
+      });
       
-      //페이지가 refresh되거나, 닫혔다가 다시 열릴 때
+      
+      //페이지가 refresh되거나, 닫혔다가 다시 열렸거나, logo를 눌러서 home으로 갔을 때
       function refreshOrReopen(){
 	   	   var refreshJson = {
 					"pdate" : pdate,

@@ -8,20 +8,21 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-<h3 class="joinheader">마로 티켓 일반 회원 가입 페이지</h3>
+<!-- <h3 class="joinheader">마로 티켓 일반 회원 가입 페이지</h3> -->
+
 
 <form:form modelAttribute="umember" action="register"> 
 	<table border="1" class="umemberJoinForm">
 		<tr>
-			<th class="joinWindow">이름</th>
-			<td  ><form:input path="uName" placeholder="(필수)6자까지 입력 가능" /><font
+			<th class="joinWindow" style="width : 20%">이름</th>
+			<td  ><form:input path="uName" placeholder="(필수)6자까지 입력 가능"/><font
 				color="red"> <form:errors path="uName" /></font></td>
 		</tr>
 
 		<tr>
 			<th class="joinWindow">아이디</th>
 			<td  ><form:input path="uId" placeholder="(필수)영문/숫자 포함 8~20자"
-					id="uId" /><font color="red"> <form:errors path="uId" /></font>
+					id="uId" style="width:74%; display:inline-block; margin-right:28px;" /><font color="red"> <form:errors path="uId" /></font>
 				<button type="button" id="idCheck" onclick="uIdChk()">중복확인</button></td>
 		</tr>
 		<tr>
@@ -32,7 +33,7 @@
 		</tr>
 
 		<tr>
-			<th class="joinWindow">비밀번호 재확인</th>
+			<th class="joinWindow">비밀번호 <br>재확인</th>
 			<td  ><input type="Password" id="uPasswordConfirm"
 				placeholder="(필수)비밀번호 재입력" /></td>
 		</tr>
@@ -72,6 +73,7 @@
 			<form:radiobutton path="uGenre" value="3" label="드라마" /> 
 			<form:radiobutton path="uGenre" value="4" label="공포" /> 
 			<form:radiobutton path="uGenre" value="5" label="추리/스릴러" /> 
+			<br>
 			<form:radiobutton path="uGenre" value="6" label="판타지" />
 			<form:radiobutton path="uGenre" value="7" label="시대/역사" />
 			
@@ -79,15 +81,10 @@
 		</tr>
 		<form:hidden path="uAgree" value="1" />
 		<tr>
-<<<<<<< HEAD
-			<td colspan="2" align="center"><input type="submit" value="회원가입"  id="joinBtn"/>
-				<input type="button" value="이전" id="back" /></td>
-=======
 			<td colspan="2" align="center"><input type="button" value="이전" id="back" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input  type="submit" value="회원가입"  id="joinBtn"/>
 				</td>
->>>>>>> soobin
 		</tr>
 	</table>
 	</form:form>
@@ -173,6 +170,16 @@ $(function(){
 </script>
  
   <style>
+#login_box_total .container {
+	width: 1120px;
+	height : 100%;
+	padding-bottom : 20px;
+	margin-bottom : 150px;
+	font-family: 'Nanum Gothic ', sans-serif;
+}
+.logo {
+	margin-bottom : 40px;
+}
 /* 양식 헤더 스타일 지정 */
 .joinheader {
   font-size: 24px;
@@ -182,7 +189,7 @@ $(function(){
 }
 
 .umemberJoinForm {
-  margin: 0 auto;
+  margin: 0 auto 50px;
   width: 60%;
 }
 
@@ -206,7 +213,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -251,6 +258,8 @@ input[type="submit"]:hover, input[type="button"]:hover {
 }
 
 input[type="button"] {
+  display: inline-block;
+  margin-top: 50px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -258,11 +267,8 @@ input[type="button"] {
   padding: 10px 20px;
   cursor: pointer;
 }
+input[type="button"]:first-child {
+	width:93.33px;
+}
 
 </style> 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> soobin

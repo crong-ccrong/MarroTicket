@@ -59,7 +59,5 @@
 		<li>취소기한 : <span class="color_point" id="_cancel_time">${playYear }.${playMonth }.${playDate -1}
 				23:59까지</span>
 		</li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취소수수료 : <span class="color_point">티켓금액의 30%</span>
-		</li>
 	</ul>
 </div>

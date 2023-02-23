@@ -15,7 +15,7 @@
 		<th align="center" width="100">정산번호</th>
 		<th align="center" width="100">정산일자</th>
 		<th align="center" width="100">지급일자</th>
-		<th align="center" width="320">총전산액</th>
+		<th align="center" width="320">총정산액</th>
 		<th align="center" width="150">극단정산액</th>
 		<th align="center" width="180">사이트정산액</th>
 	</tr>
@@ -46,6 +46,10 @@
 </div>
 
 <script>
+	$(".header_gnb_link.tmember_manage").css({
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
 	$(document).ready(function() {
 		$("#back").on("click", function() {
 

@@ -4,6 +4,10 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/noticeread.css">
+
 <h2>
 	<spring:message code="tfaq.header.read" />
 </h2>
@@ -66,4 +70,8 @@
 			self.location = "/tfaq/tfaqList";
 		});
 	});
+	$(".header_gnb_link.board_manage").css({
+	    'color': '#EB0000',
+	    'font-weight': 'bold'
+		});
 </script>

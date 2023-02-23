@@ -2,15 +2,40 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="/css/umember_mypage.css">
 
-<!-- 일반회원 마이페이지의 '일반회원정보' -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&display=swap"
+	rel="stylesheet">
+
+<!-- 일반회원 마이페이지의 내정보 -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- content section -->
-<div class="main_content">
-	<%@ include file="umemberSidebar.jsp"%>
-	<div class="main_body">
+
+<div class="wrapper">
+	<div class="side">
+
+		<ul class="sidebar">
+			<li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+			<li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약
+					정보</a></li>
+			<li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약
+					취소 정보</a></li>
+			<li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가
+					본 연극</a></li>
+			<li><a href="/umember/umemberCustomPlayList"
+				data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
+		</ul>
+
+	</div>
+	<div class="content">
+		<h1>내 정보</h1>
+		<hr>
+
 		<form:form modelAttribute="vo">
 			<table border="1">
 				<tr>
@@ -43,9 +68,10 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="button"
-						value="회원탈퇴" id="deleteMember"> <input type="button"
-						value="회원정보수정" onclick="location.href='/umember/umemberModify'">
-					</td>
+						value="회원탈퇴" id="deleteMember">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+						type="button" value="회원정보수정"
+						onclick="location.href='/umember/umemberModify'"></td>
 				</tr>
 			</table>
 		</form:form>
@@ -71,25 +97,4 @@ if(Message === '에러메시지') {
 </script> 
  -->
 
-
-
-<style>
-.main_content {
-	width: 100%;
-	height: auto;
-	/*  background-color: green; */
-	padding: 10px;
-}
-
-.main_body {
-	width: 80%;
-	float: right;
-	/*   background-color: skyblue; */
-	padding: 10px;
-}
-
-.footer {
-	clear: both;
-}
-</style>
 
