@@ -12,13 +12,12 @@ import com.marroticket.umember.play.domain.PlayVO;
 public class ModifyServiceImpl implements ModifyService {
 
 	@Autowired
-	private PlayMapper mapper;
+	private PlayMapper playmapper;
 	
 	// 등록한 연극 목록
 	@Override
 	public List<PlayVO> playlist(Integer tNumber) throws Exception {
-		System.out.println("ModifyServiceImpl 호출");
-		return mapper.playlist(tNumber);
+		return playmapper.playlist(tNumber);
 	}
 	
 
@@ -26,7 +25,7 @@ public class ModifyServiceImpl implements ModifyService {
 	@Override
 	public PlayVO read(int pNumber) throws Exception {
 		System.out.println("ModifyServiceImpl 호출");
-		return mapper.read(pNumber);
+		return playmapper.read(pNumber);
 	}
 
 	
@@ -34,7 +33,7 @@ public class ModifyServiceImpl implements ModifyService {
 	@Override
 	public void modify(PlayVO playVO) throws Exception {
 		System.out.println("ModifyServiceImpl 호출");
-		mapper.modify(playVO);
+		playmapper.modify(playVO);
 	}
 
 

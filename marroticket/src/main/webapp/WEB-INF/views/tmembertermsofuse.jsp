@@ -1,7 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
+
+
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/css/ttermsofuse.css">
+<style>
+.total_wrap {
+	width: 1120px;
+	margin: 50px auto;
+}
+</style>
+
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	<div class="total_wrap">
+</sec:authorize>
 <h2>이용약관 페이지</h2>
 
 <!-- CSS only -->
@@ -42,6 +62,7 @@
 			</c:otherwise>
 		</c:choose>		
 		</li>
+
 	</ul>
 </div>
 
@@ -458,6 +479,9 @@
 		</dd>
 	</dl>
 </div>
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	</div>
+</sec:authorize>
 <!-- //이용약관 -->
 
 <!-- 

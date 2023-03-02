@@ -18,7 +18,6 @@
 
 <h2>
 
-	<spring:message code="tfaq.header.list" />
 </h2>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="tfaqRegister"><spring:message code="action.new" /></a>

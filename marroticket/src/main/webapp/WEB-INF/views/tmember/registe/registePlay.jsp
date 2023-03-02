@@ -441,65 +441,42 @@
 
 
 <script>
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
 						var formObj = $("#playVO");
 
 
 						$.datepicker
 								.setDefaults({
-									dateFormat : 'yy-mm-dd',
-									prevText : '이전 달',
-									nextText : '다음 달',
+									dateFormat : 'yy-mm-dd', prevText : '이전 달', nextText : '다음 달',
 									monthNames : [ '1월', '2월', '3월', '4월',
 											'5월', '6월', '7월', '8월', '9월',
 											'10월', '11월', '12월' ],
 									monthNamesShort : [ '1월', '2월', '3월', '4월',
 											'5월', '6월', '7월', '8월', '9월',
 											'10월', '11월', '12월' ],
-									dayNames : [ '일', '월', '화', '수', '목', '금',
-											'토' ],
-									dayNamesShort : [ '일', '월', '화', '수', '목',
-											'금', '토' ],
-									dayNamesMin : [ '일', '월', '화', '수', '목',
-											'금', '토' ],
-									showMonthAfterYear : true,
-									yearSuffix : '년'
+									dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+									dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+									dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+									showMonthAfterYear : true, yearSuffix : '년'
 								});
 						$('#pstartDate').datepicker();
 						$('#pcloseDate').datepicker();
-						$('#pstartDate')
-								.datepicker("option", "minDate", "+30d");
-						$('#pstartDate').datepicker("option", "maxDate",
-								$("#pcloseDate").val());
-						$('#pstartDate')
-								.datepicker(
-										"option",
-										"onClose",
+						$('#pstartDate').datepicker("option", "minDate", "+30d");
+						$('#pstartDate').datepicker("option", "maxDate", $("#pcloseDate").val());
+						$('#pstartDate').datepicker("option","onClose",
 										function(selectedDate) {
-											$("#pcloseDate").datepicker(
-													"option", "minDate",
-													selectedDate);
-											var endMaxDate = new Date(
-													selectedDate);
-											endMaxDate.setDate(endMaxDate
-													.getDate() + 60);
-											var endDate = endMaxDate
-													.toISOString();
+											$("#pcloseDate").datepicker("option", "minDate", selectedDate);
+											var endMaxDate = new Date(selectedDate);
+											endMaxDate.setDate(endMaxDate.getDate() + 60);
+											var endDate = endMaxDate.toISOString();
 											endDate = endDate.substring(0, 10);
-											$("#pcloseDate").datepicker(
-													"option", "maxDate",
-													endDate);
-											var ticketMaxDate = new Date(
-													selectedDate);
-											ticketMaxDate.setDate(ticketMaxDate
-													.getDate() - 30);
-											var ticketDate = ticketMaxDate
-													.toISOString();
-											ticketDate = ticketDate.substring(
-													0, 10);
+											$("#pcloseDate").datepicker("option", "maxDate", endDate);
+											var ticketMaxDate = new Date(selectedDate);
+											ticketMaxDate.setDate(ticketMaxDate.getDate() - 30);
+											var ticketDate = ticketMaxDate.toISOString();
+											ticketDate = ticketDate.substring(0, 10);
 										});
+						
 						$("#registeTemporary")
 								.on(
 										"click",

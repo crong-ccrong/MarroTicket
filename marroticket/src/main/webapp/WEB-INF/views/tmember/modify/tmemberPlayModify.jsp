@@ -82,7 +82,7 @@
 
 		<tr>
 			<td>줄거리</td>
-			<td><form:input path="pplot" /></td>
+			<td><form:textarea path="pplot" /></td>
 		</tr>
 
 		<tr>

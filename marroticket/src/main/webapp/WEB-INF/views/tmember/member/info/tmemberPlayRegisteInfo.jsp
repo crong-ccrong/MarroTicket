@@ -73,7 +73,8 @@
 					</td>
 					<td align="center">
 						<c:choose>
-							<c:when test="${list.pmodifyApproval eq '0'}">수정 없음/완료</c:when>
+							<c:when test="${empty list.pmodifyApproval }"></c:when>
+							<c:when test="${list.pmodifyApproval eq '0'}">수정 완료</c:when>
 							<c:otherwise>수정 검토 중</c:otherwise>
 						</c:choose>
 					

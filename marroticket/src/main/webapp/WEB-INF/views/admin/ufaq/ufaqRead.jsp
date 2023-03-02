@@ -21,10 +21,12 @@
 			</tr>
 		</table>
 		<hr style="margin-bottom:20px;">
+		
 		<table>
 			<tr>
 				<%-- <td><spring:message code="ufaq.content" /></td> --%>
-				<td><form:textarea path="content" readonly="true" style="font-size : 18px;width:800px;min-height:300px;border:2px solid rgba(0, 0, 0, 0.2);border-radius:10px;padding:50px 150px 50px 50px"/></td>
+				<td><form:textarea path="content" readonly="true"
+						style="font-size : 18px;width:800px;min-height:300px;border:2px solid rgba(0, 0, 0, 0.2);border-radius:10px;padding:50px 150px 50px 50px" /></td>
 				<td><font color="red"><form:errors path="content" /></font></td>
 			</tr>
 		</table>
@@ -43,6 +45,9 @@
 				<spring:message code="action.list" />
 			</button>
 		</sec:authorize>
+		<button type="submit" id="btnList" class="list_btn">
+			<spring:message code="action.list" />
+		</button>
 	</div>
 </div>
 <script>
@@ -82,4 +87,22 @@
 	});
 </script>
 <style>
+<<<<<<< HEAD
+=======
+.list_btn {
+	display: inline-block;
+	border-radius: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.02);
+	width: 67px;
+	padding: 2px;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+
+.list_btn a {
+	color: black;
+}
+>>>>>>> 1ece4c5f1ae0a4231030598bc1f2a3a98089a8c2
 </style>

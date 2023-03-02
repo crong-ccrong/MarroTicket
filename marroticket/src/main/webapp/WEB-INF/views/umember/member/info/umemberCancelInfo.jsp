@@ -11,8 +11,13 @@
     <!-- Sidebar content goes here -->
     <ul class="sidebar">
       <li><a href="/umember/umembermypage" data-text="내 정보">내 정보</a></li>
+<<<<<<< HEAD
     <li><a href="/umember/umemberReserveInfo" data-text="예약 정보">예약 정보</a></li>
     <li><a href="/umember/umemberCancelInfo" data-text="예약 취소 정보">예약 취소 정보</a></li>
+=======
+    <li><a href="/umember/umemberReserveInfo" data-text="예매 정보">예매 정보</a></li>
+    <li><a href="/umember/umemberCancelInfo" data-text="예매 취소 정보">예매 취소 정보</a></li>
+>>>>>>> 1ece4c5f1ae0a4231030598bc1f2a3a98089a8c2
     <li><a href="/umember/umemberViewHistory" data-text="내가 본 연극">내가 본 연극</a></li>
     <li><a href="/umember/umemberCustomPlayList" data-text="나의 맞춤 연극">나의 맞춤 연극</a></li>
 </ul> 

@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<h2>개인정보취급방침</h2>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/css/privacy.css">
 
+<style>
+.total_wrap {
+	width: 1120px;
+	margin: 50px auto;
+}
+</style>
 <!-- 목차 -->
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	<div class="total_wrap">
+</sec:authorize>
+<h2>개인정보취급방침</h2>
 <div class="tcont_terms">
 	<ol class="type01">
 		<li><a href="#terms01" title="개인정보 수집"> <span>1.</span>
@@ -112,3 +123,6 @@
 		<dd>"보유기간 경과 또는 이용목적 달성 시 개인정보를 안전하게 즉시 파기합니다."</dd>
 	</dl>
 </div>
+<sec:authorize access="hasRole('ROLE_UMEMBER') or isAnonymous()">
+	</div>
+</sec:authorize>

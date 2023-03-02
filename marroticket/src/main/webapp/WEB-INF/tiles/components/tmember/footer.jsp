@@ -11,9 +11,12 @@
 			<li class="footer_menu_item">
 				<a href="/theater/privacy" class="footer_menu_link">개인정보취급방침</a>
 			</li>
+<<<<<<< HEAD
 			<li class="footer_menu_item">
 				<a href="/tfaq/tfaqList?accept=tmember" class="footer_menu_link">고객센터</a>
 			</li>
+=======
+>>>>>>> 1ece4c5f1ae0a4231030598bc1f2a3a98089a8c2
 		</ul>
 	</div>	
 </div>

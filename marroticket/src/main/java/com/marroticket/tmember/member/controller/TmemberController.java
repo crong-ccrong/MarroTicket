@@ -149,7 +149,7 @@ public class TmemberController {
 	public String playRegisteInfo(Principal principal, Model model, PlayVO playVO) throws Exception {
 		System.out.println("tmemberController 호출");
 
-		// tmember tId로 play tId 정보 가져오기
+		// tmember tId로 play tNumber 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		playVO.setTnumber(tvo.getTNumber());
 
@@ -169,58 +169,15 @@ public class TmemberController {
 	}
 
 	// 등록한 연극 상세 페이지
-	@RequestMapping(value = "/playRegisteRead", method = RequestMethod.GET)
+	@GetMapping("/playRegisteRead")
 	public String read(int pnumber, Model model, Principal principal) throws Exception {
 
-		// tmember tId로 play tId 정보 가져오기
+		// tmember tId로 play tNumber 정보 가져오기
 		TmemberVO tvo = tmemberService.getTmemberByTId(principal.getName());
 		System.out.println(pnumber);
 
 		PlayVO vo = modifyService.read(pnumber);
 		vo.setTnumber(tvo.getTNumber());
-
-		System.out.println("등록한 연극 상세");
-
-		// 장르표시
-		switch (vo.getPgenre()) {
-		case "1":
-			vo.setPgenre("로맨스");
-			break;
-		case "2":
-			vo.setPgenre("코미디");
-			break;
-		case "3":
-			vo.setPgenre("드라마");
-			break;
-		case "4":
-			vo.setPgenre("공포");
-			break;
-		case "5":
-			vo.setPgenre("추리/스릴러");
-			break;
-		case "6":
-			vo.setPgenre("판타지");
-			break;
-		case "7":
-			vo.setPgenre("시대/역사");
-			break;
-		}
-
-		// 연극 등록 승인 상태 0:미승인 1:승인 2:반려
-		if ("0".equals(vo.getPregistrationApproval())) {
-			vo.setPregistrationApproval("미승인 : 관리자 승인 중에 있습니다");
-		} else if ("1".equals(vo.getPregistrationApproval())) {
-			vo.setPregistrationApproval("승인 : 연극이 정상등록 되었습니다");
-		} else {
-			vo.setPregistrationApproval("반려 : 연극 정보를 정확히 확인하고 변경해주세요");
-		}
-
-		// 연극 등록 수정 상태 0:수정 가능 1:수정 불가
-		if ("0".equals(vo.getPmodifyApproval())) {
-			vo.setPmodifyApproval("수정 가능 (연극 정상 등록/수정 승인) 상태");
-		} else {
-			vo.setPmodifyApproval("수정 불가 : 수정 내용 관리자 확인 중에 있습니다");
-		}
 
 		model.addAttribute("playVO", vo);
 
@@ -407,7 +364,7 @@ public class TmemberController {
 	}
 
 	// 회원정보 수정 페이지
-	@RequestMapping(value = "/tmemberModify", method = RequestMethod.GET)
+	@GetMapping("/tmemberModify")
 	public String tmemberMemberModify(Model model) throws Exception {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String tId = authentication.getName();

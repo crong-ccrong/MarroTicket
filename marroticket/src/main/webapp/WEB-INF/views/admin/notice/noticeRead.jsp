@@ -18,32 +18,31 @@
 		<tr>
 			<td><spring:message code="notice.title" /></td>
 			<td><form:input path="title" readonly="true" /></td>
-			<td><font color="red"><form:errors path="title" /></font></td>
 		</tr>
 
 		<tr>
 			<td><spring:message code="notice.content" /></td>
 			<td><form:textarea path="content" readonly="true" /></td>
-			<td><font color="red"><form:errors path="content" /></font></td>
 		</tr>
 	</table>
 </form:form>
 
 <div>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<button type="submit" id="btnEdit">
-		<spring:message code="action.edit" />
-	</button>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<button type="submit" id="btnEdit">
+			<spring:message code="action.edit" />
+		</button>
+
 
 	<button type="submit" id="btnRemove">
 		<spring:message code="action.remove" />
 	</button>
-</sec:authorize>
+
+	</sec:authorize>
 	<button type="submit" id="btnList">
 		<spring:message code="action.list" />
 	</button>
 
-	
 </div>
 
 <script>
@@ -75,7 +74,13 @@
 		});
 	});
 	$(".header_gnb_link.board_manage").css({
+
 	    'color': '#EB0000',
 	    'font-weight': 'bold'
 		});
+
+		'color' : '#EB0000',
+		'font-weight' : 'bold'
+	});
+
 </script>
